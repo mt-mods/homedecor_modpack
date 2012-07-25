@@ -58,10 +58,12 @@ minetest.register_craft({
 minetest.register_craft( {
         output = 'homedecor:flower_pot_green',
         recipe = {
-                { 'unifieddyes:green', '', '' },
+                { 'unifieddyes:dark_green', '', '' },
                 { 'homedecor:plastic_sheeting', 'default:dirt', 'homedecor:plastic_sheeting' },
                 { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
         },
+	replacements = { {'unifieddyes:dark_green', 'unifieddyes:empty_bottle'}, },
+
 })
 
 minetest.register_craft( {
@@ -71,6 +73,11 @@ minetest.register_craft( {
                 { 'homedecor:plastic_sheeting', 'default:dirt', 'homedecor:plastic_sheeting' },
                 { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
         },
+	replacements = {
+			{'unifieddyes:black', 'unifieddyes:empty_bottle'},
+			{'unifieddyes:black', 'unifieddyes:empty_bottle'},
+			{'unifieddyes:black', 'unifieddyes:empty_bottle'}
+	}
 })
 
 --
@@ -152,6 +159,10 @@ minetest.register_craft( {
                 { 'default:sand', 'unifieddyes:black', 'default:sand' },
                 { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
         },
+	replacements = {
+			{'unifieddyes:black', 'unifieddyes:empty_bottle'},
+			{'unifieddyes:black', 'unifieddyes:empty_bottle'},
+	}
 })
 
 --
@@ -273,9 +284,9 @@ minetest.register_craft( {
         output = 'homedecor:shutter_black',
         recipe = {
                 'unifieddyes:black',
-                'unifieddyes:black',
 		'homedecor:shutter_oak'
         },
+	replacements = { {'unifieddyes:black', 'unifieddyes:empty_bottle'}, },
 })
 
 minetest.register_craft({
@@ -290,9 +301,10 @@ minetest.register_craft( {
 	type = 'shapeless',
         output = 'homedecor:shutter_dark_grey',
         recipe = {
-                'unifieddyes:black',
+                'unifieddyes:darkgrey_paint',
 		'homedecor:shutter_oak'
         },
+	replacements = { {'unifieddyes:darkgrey_paint', 'bucket:bucket_empty'}, },
 })
 
 minetest.register_craft({
@@ -308,11 +320,10 @@ minetest.register_craft( {
 	type = 'shapeless',
         output = 'homedecor:shutter_grey',
         recipe = {
-                'unifieddyes:black',
-		'unifieddyes:white_paint',
+		'unifieddyes:grey_paint',
 		'homedecor:shutter_oak'
         },
-	replacements = { {'unifieddyes:white_paint', 'bucket:bucket_empty'}, },
+	replacements = { {'unifieddyes:grey_paint', 'bucket:bucket_empty'}, },
 })
 
 minetest.register_craft({
@@ -328,8 +339,9 @@ minetest.register_craft( {
         output = 'homedecor:shutter_forest_green',
         recipe = {
                 'homedecor:shutter_oak',
-                'unifieddyes:green',
+                'unifieddyes:dark_green',
         },
+	replacements = { {'unifieddyes:dark_green', 'unifieddyes:empty_bottle'}, },
 })
 
 minetest.register_craft({
@@ -443,9 +455,9 @@ minetest.register_craft( {
         output = 'homedecor:nightstand_mahogany_one_drawer',
         recipe = {
                 'homedecor:nightstand_oak_one_drawer',
-                'unifieddyes:black',
-                'unifieddyes:red',
+                'unifieddyes:dark_orange',
         },
+	replacements = { {'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'}, },
 })
 
 minetest.register_craft({
@@ -459,9 +471,9 @@ minetest.register_craft( {
         output = 'homedecor:nightstand_mahogany_two_drawers',
         recipe = {
                 'homedecor:nightstand_oak_two_drawers',
-                'unifieddyes:black',
-                'unifieddyes:red',
+                'unifieddyes:dark_orange',
         },
+	replacements = { {'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'}, },
 })
 
 minetest.register_craft({
@@ -530,11 +542,13 @@ minetest.register_craft( {
         output = 'homedecor:dresser_mahogany',
         recipe = {
 		'homedecor:dresser_oak',
-		'unifieddyes:red',
-		'unifieddyes:red',
-		'unifieddyes:black',
-		'unifieddyes:black'
+		'unifieddyes:dark_orange',
+		'unifieddyes:dark_orange',
         },
+	replacements = {
+			{'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'},
+			{'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'}
+	},
 })
 
 minetest.register_craft({
@@ -623,7 +637,6 @@ end
 
 if ( minetest.get_modpath("wool") ) ~= nil then
 
-
 	minetest.register_craft( {
 		type = 'shapeless',
 	        output = 'homedecor:rug_small 8',
@@ -664,9 +677,9 @@ minetest.register_craft( {
         output = 'homedecor:shutter_mahogany',
        	recipe = {
 		'homedecor:shutter_oak',
-		'unifieddyes:red',
-		'unifieddyes:black'
+		'unifieddyes:dark_orange',
 	},
+	replacements = { {'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'}, },
 })
 
 minetest.register_craft({
@@ -682,6 +695,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'unifieddyes:violet',
 	},
+	replacements = { {'unifieddyes:violet', 'unifieddyes:empty_bottle'}, },
 })
 
 minetest.register_craft({
@@ -697,6 +711,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'unifieddyes:red',
 	},
+	replacements = { {'unifieddyes:red', 'unifieddyes:empty_bottle'}, },
 })
 
 minetest.register_craft({
@@ -712,6 +727,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'unifieddyes:yellow',
 	},
+	replacements = { {'unifieddyes:yellow', 'unifieddyes:empty_bottle'}, },
 })
 
 minetest.register_craft({
@@ -725,10 +741,9 @@ minetest.register_craft( {
         output = 'homedecor:shutter_light_blue',
        	recipe = {
 		'homedecor:shutter_oak',
-		'unifieddyes:white_paint',
-		'unifieddyes:blue',
+		'unifieddyes:light_blue',
 	},
-	replacements = { {'unifieddyes:white_paint', 'bucket:bucket_empty'}, },
+	replacements = { {'unifieddyes:light_blue',        'unifieddyes:empty_bottle'}, },
 })
 
 minetest.register_craft({
