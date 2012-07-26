@@ -1,7 +1,7 @@
 Changelog
 ---------
 
-2012-07-24:  Updated to use the Vessels mod to give back empty dye bottles.
+2012-07-26:  Updated to use the Vessels mod to give back empty dye bottles.
 
 2012-07-24: Made all objects that use a dye require a more appropriate color, 
 made all objects that use a dye give back empty bottles on craft, made grey 
