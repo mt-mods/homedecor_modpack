@@ -62,7 +62,7 @@ minetest.register_craft( {
                 { 'homedecor:plastic_sheeting', 'default:dirt', 'homedecor:plastic_sheeting' },
                 { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
         },
-	replacements = { {'unifieddyes:dark_green', 'unifieddyes:empty_bottle'}, },
+	replacements = { {'unifieddyes:dark_green', 'vessels:glass_bottle'}, },
 
 })
 
@@ -74,9 +74,9 @@ minetest.register_craft( {
                 { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
         },
 	replacements = {
-			{'unifieddyes:black', 'unifieddyes:empty_bottle'},
-			{'unifieddyes:black', 'unifieddyes:empty_bottle'},
-			{'unifieddyes:black', 'unifieddyes:empty_bottle'}
+			{'unifieddyes:black', 'vessels:glass_bottle'},
+			{'unifieddyes:black', 'vessels:glass_bottle'},
+			{'unifieddyes:black', 'vessels:glass_bottle'}
 	}
 })
 
@@ -160,8 +160,8 @@ minetest.register_craft( {
                 { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
         },
 	replacements = {
-			{'unifieddyes:black', 'unifieddyes:empty_bottle'},
-			{'unifieddyes:black', 'unifieddyes:empty_bottle'},
+			{'unifieddyes:black', 'vessels:glass_bottle'},
+			{'unifieddyes:black', 'vessels:glass_bottle'},
 	}
 })
 
@@ -286,7 +286,7 @@ minetest.register_craft( {
                 'unifieddyes:black',
 		'homedecor:shutter_oak'
         },
-	replacements = { {'unifieddyes:black', 'unifieddyes:empty_bottle'}, },
+	replacements = { {'unifieddyes:black', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft({
@@ -341,7 +341,7 @@ minetest.register_craft( {
                 'homedecor:shutter_oak',
                 'unifieddyes:dark_green',
         },
-	replacements = { {'unifieddyes:dark_green', 'unifieddyes:empty_bottle'}, },
+	replacements = { {'unifieddyes:dark_green', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft({
@@ -457,7 +457,7 @@ minetest.register_craft( {
                 'homedecor:nightstand_oak_one_drawer',
                 'unifieddyes:dark_orange',
         },
-	replacements = { {'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'}, },
+	replacements = { {'unifieddyes:dark_orange', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft({
@@ -473,7 +473,7 @@ minetest.register_craft( {
                 'homedecor:nightstand_oak_two_drawers',
                 'unifieddyes:dark_orange',
         },
-	replacements = { {'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'}, },
+	replacements = { {'unifieddyes:dark_orange', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft({
@@ -546,8 +546,8 @@ minetest.register_craft( {
 		'unifieddyes:dark_orange',
         },
 	replacements = {
-			{'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'},
-			{'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'}
+			{'unifieddyes:dark_orange', 'vessels:glass_bottle'},
+			{'unifieddyes:dark_orange', 'vessels:glass_bottle'}
 	},
 })
 
@@ -679,7 +679,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'unifieddyes:dark_orange',
 	},
-	replacements = { {'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'}, },
+	replacements = { {'unifieddyes:dark_orange', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft({
@@ -695,7 +695,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'unifieddyes:violet',
 	},
-	replacements = { {'unifieddyes:violet', 'unifieddyes:empty_bottle'}, },
+	replacements = { {'unifieddyes:violet', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft({
@@ -711,7 +711,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'unifieddyes:red',
 	},
-	replacements = { {'unifieddyes:red', 'unifieddyes:empty_bottle'}, },
+	replacements = { {'unifieddyes:red', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft({
@@ -727,7 +727,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'unifieddyes:yellow',
 	},
-	replacements = { {'unifieddyes:yellow', 'unifieddyes:empty_bottle'}, },
+	replacements = { {'unifieddyes:yellow', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft({
@@ -743,7 +743,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'unifieddyes:light_blue',
 	},
-	replacements = { {'unifieddyes:light_blue',        'unifieddyes:empty_bottle'}, },
+	replacements = { {'unifieddyes:light_blue',        'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft({
