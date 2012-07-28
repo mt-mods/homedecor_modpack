@@ -40,7 +40,7 @@ end
 minetest.register_node('homedecor:folding_door_mahogany', {
 	description = "Mahogany Folding Door (Left Opening)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany.png' },
+	tiles = { 'homedecor_folding_door_mahogany.png' },
 	inventory_image = 'homedecor_folding_door_mahogany.png',
 	wield_image = 'homedecor_folding_door_mahogany.png',
 	paramtype2 = "wallmounted",
@@ -150,7 +150,7 @@ minetest.register_on_dignode( on_mahogany_folding_door_digged )
 
 minetest.register_node('homedecor:folding_door_mahogany_a_c', {
 	description = "Mahogany Folding Door (top, closed)",
-	tile_images = { 'homedecor_folding_door_mahogany_a.png' },
+	tiles = { 'homedecor_folding_door_mahogany_a.png' },
 	inventory_image = 'homedecor_folding_door_mahogany_a.png',
 	drawtype = 'signlike',
 	sunlight_propagates = false,
@@ -165,7 +165,7 @@ minetest.register_node('homedecor:folding_door_mahogany_a_c', {
 minetest.register_node('homedecor:folding_door_mahogany_b_c', {
 	description = "Mahogany Folding Door (bottom, closed)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_b.png' },
+	tiles = { 'homedecor_folding_door_mahogany_b.png' },
 	inventory_image = 'homedecor_folding_door_mahogany_b.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -179,7 +179,7 @@ minetest.register_node('homedecor:folding_door_mahogany_b_c', {
 minetest.register_node('homedecor:folding_door_mahogany_a_o', {
 	description = "Mahogany Folding Door (top, open)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_a_r.png' },
+	tiles = { 'homedecor_folding_door_mahogany_a_r.png' },
 	inventory_image = 'homedecor_folding_door_mahogany_a_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -193,7 +193,7 @@ minetest.register_node('homedecor:folding_door_mahogany_a_o', {
 minetest.register_node('homedecor:folding_door_mahogany_b_o', {
 	description = "Mahogany Folding Door (bottom, open)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_b_r.png' },
+	tiles = { 'homedecor_folding_door_mahogany_b_r.png' },
 	inventory_image = 'homedecor_folding_door_mahogany_b_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -214,7 +214,7 @@ minetest.register_node('homedecor:folding_door_mahogany_b_o', {
 minetest.register_node('homedecor:folding_door_mahogany_right', {
 	description = "Mahogany Folding Door (Right Opening)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_right.png' },
+	tiles = { 'homedecor_folding_door_mahogany_right.png' },
 	inventory_image = 'homedecor_folding_door_mahogany_right.png',
 	wield_image = 'homedecor_folding_door_mahogany_right.png',
 	paramtype2 = "wallmounted",
@@ -326,7 +326,7 @@ minetest.register_on_dignode( on_mahogany_folding_door_digged_right )
 
 minetest.register_node('homedecor:folding_door_mahogany_a_c_right', {
 	description = "Mahogany Folding Door (top, closed, right)",
-	tile_images = { 'homedecor_folding_door_mahogany_a_r.png' },
+	tiles = { 'homedecor_folding_door_mahogany_a_r.png' },
 	inventory_image = 'homedecor_folding_door_mahogany_a_r.png',
 	drawtype = 'signlike',
 	sunlight_propagates = false,
@@ -341,7 +341,7 @@ minetest.register_node('homedecor:folding_door_mahogany_a_c_right', {
 minetest.register_node('homedecor:folding_door_mahogany_b_c_right', {
 	description = "Mahogany Folding Door (bottom, closed, right)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_b_r.png' },
+	tiles = { 'homedecor_folding_door_mahogany_b_r.png' },
 	inventory_image = 'homedecor_folding_door_mahogany_b_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -355,7 +355,7 @@ minetest.register_node('homedecor:folding_door_mahogany_b_c_right', {
 minetest.register_node('homedecor:folding_door_mahogany_a_o_right', {
 	description = "Mahogany Folding Door (top, open, right)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_a.png' },
+	tiles = { 'homedecor_folding_door_mahogany_a.png' },
 	inventory_image = 'homedecor_folding_door_mahogany_a.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -369,7 +369,7 @@ minetest.register_node('homedecor:folding_door_mahogany_a_o_right', {
 minetest.register_node('homedecor:folding_door_mahogany_b_o_right', {
 	description = "Mahogany Folding Door (bottom, open, right)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_b.png' },
+	tiles = { 'homedecor_folding_door_mahogany_b.png' },
 	inventory_image = 'homedecor_folding_door_mahogany_b.png',
 	sunlight_propagates = false,
 	paramtype = "light",

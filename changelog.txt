@@ -1,6 +1,11 @@
 Changelog
 ---------
 
+2012-07-28: Noticed I technically had left/right textures swapped on a few 
+blocks.  The textures were drawn to counteract this, without my realizing I was 
+doing just that. :-) Fixed.  Also replaced all "tile_images" references with 
+"tiles", since the former is deprecated in favor of the latter.
+
 2012-07-26:  Updated to use the Vessels mod to give back empty dye bottles.
 
 2012-07-24: Made all objects that use a dye require a more appropriate color, 

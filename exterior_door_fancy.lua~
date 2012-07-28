@@ -1,7 +1,11 @@
--- Mahogany "folding" doors - part of home decor mod by VanessaE
+-- Fancy Exterior doors - part of home decor mod by VanessaE
 -- 2012-06-10
 --
--- Copied and modified from Minetest's default doors mod.  
+-- Copied and modified from Minetest's default doors mod.
+--
+-- Textures derived from...
+-- http://commons.wikimedia.org/wiki/File:Front_door_of_Morey_Mansion.jpg
+-- ...plus the standard Minetest logo.
 --
 -- License: GPL
 --
@@ -20,7 +24,7 @@ local WALLPZr = 5
 
 local dbg = function(s)
 	if DEBUG == 1 then
-		print('[FOLDINGDOORS] ' .. s)
+		print('[ExteriorDoorFancy] ' .. s)
 	end
 end
 
@@ -37,21 +41,21 @@ end
 
 -- Actual nodes that you place
 
-minetest.register_node('homedecor:folding_door_mahogany', {
-	description = "Mahogany Folding Door (Left Opening)",
+minetest.register_node('homedecor:exterior_door_fancy', {
+	description = "Fancy Wood/Glass Exterior Door (Left Opening)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany.png' },
-	inventory_image = 'homedecor_folding_door_mahogany.png',
-	wield_image = 'homedecor_folding_door_mahogany.png',
+	tile_images = { 'homedecor_exterior_door_fancy.png' },
+	inventory_image = 'homedecor_exterior_door_fancy.png',
+	wield_image = 'homedecor_exterior_door_fancy.png',
 	paramtype2 = "wallmounted",
 	selection_box = { type = "wallmounted" },
 	groups = { choppy = 2, dig_immediate=2 },
 })
 
--- Mahogany door functions
+-- Fancy Exterior door functions
 
-local on_mahogany_folding_door_placed = function( pos, node, placer )
-        if node.name ~= 'homedecor:folding_door_mahogany' then return end
+local on_exterior_door_fancy_placed = function( pos, node, placer )
+        if node.name ~= 'homedecor:exterior_door_fancy' then return end
 
         upos = { x = pos.x, y = pos.y - 1, z = pos.z }
         apos = { x = pos.x, y = pos.y + 1, z = pos.z }
@@ -71,20 +75,20 @@ local on_mahogany_folding_door_placed = function( pos, node, placer )
         end
 
         if und.name == 'air' then
-                minetest.env:add_node( pos,  { name = 'homedecor:folding_door_mahogany_a_c', param2 = newparam } )
-                minetest.env:add_node( upos, { name = 'homedecor:folding_door_mahogany_b_c', param2 = newparam } )
+                minetest.env:add_node( pos,  { name = 'homedecor:exterior_door_fancy_a_c', param2 = newparam } )
+                minetest.env:add_node( upos, { name = 'homedecor:exterior_door_fancy_b_c', param2 = newparam } )
         elseif abv.name == 'air' then
-                minetest.env:add_node( pos,  { name = 'homedecor:folding_door_mahogany_b_c', param2 = newparam } )
-                minetest.env:add_node( apos, { name = 'homedecor:folding_door_mahogany_a_c', param2 = newparam } )
+                minetest.env:add_node( pos,  { name = 'homedecor:exterior_door_fancy_b_c', param2 = newparam } )
+                minetest.env:add_node( apos, { name = 'homedecor:exterior_door_fancy_a_c', param2 = newparam } )
         else
                 minetest.env:remove_node( pos )
-                placer:get_inventory():add_item( "main", 'homedecor:folding_door_mahogany' )
+                placer:get_inventory():add_item( "main", 'homedecor:exterior_door_fancy' )
                 minetest.chat_send_player( placer:get_player_name(), 'not enough space' )
         end
 end
 
-local on_mahogany_folding_door_punched = function( pos, node, puncher )
-        if string.find( node.name, 'homedecor:folding_door_mahogany' ) == nil then return end
+local on_exterior_door_fancy_punched = function( pos, node, puncher )
+        if string.find( node.name, 'homedecor:exterior_door_fancy' ) == nil then return end
 
         upos = { x = pos.x, y = pos.y - 1, z = pos.z }
         apos = { x = pos.x, y = pos.y + 1, z = pos.z }
@@ -111,47 +115,47 @@ local on_mahogany_folding_door_punched = function( pos, node, puncher )
                 end
         end
 
-        if ( node.name == 'homedecor:folding_door_mahogany_a_c' ) then
-                minetest.env:add_node( pos,  { name = 'homedecor:folding_door_mahogany_a_o', param2 = newparam } )
-                minetest.env:add_node( upos, { name = 'homedecor:folding_door_mahogany_b_o', param2 = newparam } )
+        if ( node.name == 'homedecor:exterior_door_fancy_a_c' ) then
+                minetest.env:add_node( pos,  { name = 'homedecor:exterior_door_fancy_a_o', param2 = newparam } )
+                minetest.env:add_node( upos, { name = 'homedecor:exterior_door_fancy_b_o', param2 = newparam } )
 
-        elseif ( node.name == 'homedecor:folding_door_mahogany_b_c' ) then
-                minetest.env:add_node( pos,  { name = 'homedecor:folding_door_mahogany_b_o', param2 = newparam } )
-                minetest.env:add_node( apos, { name = 'homedecor:folding_door_mahogany_a_o', param2 = newparam } )
+        elseif ( node.name == 'homedecor:exterior_door_fancy_b_c' ) then
+                minetest.env:add_node( pos,  { name = 'homedecor:exterior_door_fancy_b_o', param2 = newparam } )
+                minetest.env:add_node( apos, { name = 'homedecor:exterior_door_fancy_a_o', param2 = newparam } )
 
-        elseif ( node.name == 'homedecor:folding_door_mahogany_a_o' ) then
-                minetest.env:add_node( pos,  { name = 'homedecor:folding_door_mahogany_a_c', param2 = newparam } )
-                minetest.env:add_node( upos, { name = 'homedecor:folding_door_mahogany_b_c', param2 = newparam } )
+        elseif ( node.name == 'homedecor:exterior_door_fancy_a_o' ) then
+                minetest.env:add_node( pos,  { name = 'homedecor:exterior_door_fancy_a_c', param2 = newparam } )
+                minetest.env:add_node( upos, { name = 'homedecor:exterior_door_fancy_b_c', param2 = newparam } )
 
-        elseif ( node.name == 'homedecor:folding_door_mahogany_b_o' ) then
-                minetest.env:add_node( pos,  { name = 'homedecor:folding_door_mahogany_b_c', param2 = newparam } )
-                minetest.env:add_node( apos, { name = 'homedecor:folding_door_mahogany_a_c', param2 = newparam } )
+        elseif ( node.name == 'homedecor:exterior_door_fancy_b_o' ) then
+                minetest.env:add_node( pos,  { name = 'homedecor:exterior_door_fancy_b_c', param2 = newparam } )
+                minetest.env:add_node( apos, { name = 'homedecor:exterior_door_fancy_a_c', param2 = newparam } )
 
         end
 end
 
-local on_mahogany_folding_door_digged = function( pos, node, digger )
+local on_exterior_door_fancy_digged = function( pos, node, digger )
         upos = { x = pos.x, y = pos.y - 1, z = pos.z }
         apos = { x = pos.x, y = pos.y + 1, z = pos.z }
 
-        if ( node.name == 'homedecor:folding_door_mahogany_a_c' ) or ( node.name == 'homedecor:folding_door_mahogany_a_o' ) then
+        if ( node.name == 'homedecor:exterior_door_fancy_a_c' ) or ( node.name == 'homedecor:exterior_door_fancy_a_o' ) then
                 minetest.env:remove_node( upos )
-        elseif ( node.name == 'homedecor:folding_door_mahogany_b_c' ) or ( node.name == 'homedecor:folding_door_mahogany_b_o' ) then
+        elseif ( node.name == 'homedecor:exterior_door_fancy_b_c' ) or ( node.name == 'homedecor:exterior_door_fancy_b_o' ) then
                 minetest.env:remove_node( apos )
         end
 end
 
-minetest.register_on_placenode( on_mahogany_folding_door_placed )
-minetest.register_on_punchnode( on_mahogany_folding_door_punched )
-minetest.register_on_dignode( on_mahogany_folding_door_digged )
+minetest.register_on_placenode( on_exterior_door_fancy_placed )
+minetest.register_on_punchnode( on_exterior_door_fancy_punched )
+minetest.register_on_dignode( on_exterior_door_fancy_digged )
 
 
--- Nodes used to build up mahogany doors
+-- Nodes used to build up Fancy Exterior doors
 
-minetest.register_node('homedecor:folding_door_mahogany_a_c', {
-	description = "Mahogany Folding Door (top, closed)",
-	tile_images = { 'homedecor_folding_door_mahogany_a.png' },
-	inventory_image = 'homedecor_folding_door_mahogany_a.png',
+minetest.register_node('homedecor:exterior_door_fancy_a_c', {
+	description = "Fancy Wood/Glass Exterior Door (top, closed)",
+	tile_images = { 'homedecor_exterior_door_fancy_a.png' },
+	inventory_image = 'homedecor_exterior_door_fancy_a.png',
 	drawtype = 'signlike',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -159,49 +163,49 @@ minetest.register_node('homedecor:folding_door_mahogany_a_c', {
 	walkable = true,
 	groups = { choppy = 2, dig_immediate=2 },
 	selection_box = { type = "wallmounted" },
-	drop = 'homedecor:folding_door_mahogany',
+	drop = 'homedecor:exterior_door_fancy',
 })
 
-minetest.register_node('homedecor:folding_door_mahogany_b_c', {
-	description = "Mahogany Folding Door (bottom, closed)",
+minetest.register_node('homedecor:exterior_door_fancy_b_c', {
+	description = "Fancy Wood/Glass Exterior Door (bottom, closed)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_b.png' },
-	inventory_image = 'homedecor_folding_door_mahogany_b.png',
+	tile_images = { 'homedecor_exterior_door_fancy_b.png' },
+	inventory_image = 'homedecor_exterior_door_fancy_b.png',
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	walkable = true,
 	groups = { choppy = 2, dig_immediate=2 },
 	selection_box = { type = "wallmounted" },
-	drop = 'homedecor:folding_door_mahogany',
+	drop = 'homedecor:exterior_door_fancy',
 })
 
-minetest.register_node('homedecor:folding_door_mahogany_a_o', {
-	description = "Mahogany Folding Door (top, open)",
+minetest.register_node('homedecor:exterior_door_fancy_a_o', {
+	description = "Fancy Wood/Glass Exterior Door (top, open)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_a_r.png' },
-	inventory_image = 'homedecor_folding_door_mahogany_a_r.png',
+	tile_images = { 'homedecor_exterior_door_fancy_a_r.png' },
+	inventory_image = 'homedecor_exterior_door_fancy_a_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	walkable = false,
 	groups = { choppy = 2, dig_immediate=2 },
 	selection_box = { type = "wallmounted", },
-	drop = 'homedecor:folding_door_mahogany',
+	drop = 'homedecor:exterior_door_fancy',
 })
 
-minetest.register_node('homedecor:folding_door_mahogany_b_o', {
-	description = "Mahogany Folding Door (bottom, open)",
+minetest.register_node('homedecor:exterior_door_fancy_b_o', {
+	description = "Fancy Wood/Glass Exterior Door (bottom, open)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_b_r.png' },
-	inventory_image = 'homedecor_folding_door_mahogany_b_r.png',
+	tile_images = { 'homedecor_exterior_door_fancy_b_r.png' },
+	inventory_image = 'homedecor_exterior_door_fancy_b_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = 'wallmounted',
 	walkable = false,
 	groups = { choppy = 2, dig_immediate=2 },
 	selection_box = { type = "wallmounted", },
-	drop = 'homedecor:folding_door_mahogany',
+	drop = 'homedecor:exterior_door_fancy',
 })
 
 
@@ -211,22 +215,22 @@ minetest.register_node('homedecor:folding_door_mahogany_b_o', {
 
 -- Actual nodes that you place
 
-minetest.register_node('homedecor:folding_door_mahogany_right', {
-	description = "Mahogany Folding Door (Right Opening)",
+minetest.register_node('homedecor:exterior_door_fancy_right', {
+	description = "Fancy Wood/Glass Exterior Door (Right Opening)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_right.png' },
-	inventory_image = 'homedecor_folding_door_mahogany_right.png',
-	wield_image = 'homedecor_folding_door_mahogany_right.png',
+	tile_images = { 'homedecor_exterior_door_fancy_right.png' },
+	inventory_image = 'homedecor_exterior_door_fancy_right.png',
+	wield_image = 'homedecor_exterior_door_fancy_right.png',
 	paramtype2 = "wallmounted",
 	selection_box = { type = "wallmounted" },
 	groups = { choppy = 2, dig_immediate=2 },
 })
 
 
--- Mahogany door functions
+-- Fancy Exterior door functions
 
-local on_mahogany_folding_door_placed_right = function( pos, node, placer )
-        if node.name ~= 'homedecor:folding_door_mahogany_right' then return end
+local on_exterior_door_fancy_placed_right = function( pos, node, placer )
+        if node.name ~= 'homedecor:exterior_door_fancy_right' then return end
 
         upos = { x = pos.x, y = pos.y - 1, z = pos.z }
         apos = { x = pos.x, y = pos.y + 1, z = pos.z }
@@ -246,21 +250,21 @@ local on_mahogany_folding_door_placed_right = function( pos, node, placer )
         end
 
         if und.name == 'air' then
-                minetest.env:add_node( pos,  { name = 'homedecor:folding_door_mahogany_a_c_right', param2 = newparam } )
-                minetest.env:add_node( upos, { name = 'homedecor:folding_door_mahogany_b_c_right', param2 = newparam } )
+                minetest.env:add_node( pos,  { name = 'homedecor:exterior_door_fancy_a_c_right', param2 = newparam } )
+                minetest.env:add_node( upos, { name = 'homedecor:exterior_door_fancy_b_c_right', param2 = newparam } )
         elseif abv.name == 'air' then
-                minetest.env:add_node( pos,  { name = 'homedecor:folding_door_mahogany_b_c_right', param2 = newparam } )
-                minetest.env:add_node( apos, { name = 'homedecor:folding_door_mahogany_a_c_right', param2 = newparam } )
+                minetest.env:add_node( pos,  { name = 'homedecor:exterior_door_fancy_b_c_right', param2 = newparam } )
+                minetest.env:add_node( apos, { name = 'homedecor:exterior_door_fancy_a_c_right', param2 = newparam } )
         else
                 minetest.env:remove_node( pos )
-                placer:get_inventory():add_item( "main", 'homedecor:folding_door_mahogany_right' )
+                placer:get_inventory():add_item( "main", 'homedecor:exterior_door_fancy_right' )
                 minetest.chat_send_player( placer:get_player_name(), 'not enough space' )
         end
 end
 
-local on_mahogany_folding_door_punched_right = function( pos, node, puncher )
+local on_exterior_door_fancy_punched_right = function( pos, node, puncher )
 
-        if string.find( node.name, 'homedecor:folding_door_mahogany' ) == nil then return end
+        if string.find( node.name, 'homedecor:exterior_door_fancy' ) == nil then return end
 
         upos = { x = pos.x, y = pos.y - 1, z = pos.z }
         apos = { x = pos.x, y = pos.y + 1, z = pos.z }
@@ -287,47 +291,47 @@ local on_mahogany_folding_door_punched_right = function( pos, node, puncher )
                 end
         end
 
-        if ( node.name == 'homedecor:folding_door_mahogany_a_c_right' ) then
-                minetest.env:add_node( pos,  { name = 'homedecor:folding_door_mahogany_a_o_right', param2 = newparam } )
-                minetest.env:add_node( upos, { name = 'homedecor:folding_door_mahogany_b_o_right', param2 = newparam } )
+        if ( node.name == 'homedecor:exterior_door_fancy_a_c_right' ) then
+                minetest.env:add_node( pos,  { name = 'homedecor:exterior_door_fancy_a_o_right', param2 = newparam } )
+                minetest.env:add_node( upos, { name = 'homedecor:exterior_door_fancy_b_o_right', param2 = newparam } )
 
-        elseif ( node.name == 'homedecor:folding_door_mahogany_b_c_right' ) then
-                minetest.env:add_node( pos,  { name = 'homedecor:folding_door_mahogany_b_o_right', param2 = newparam } )
-                minetest.env:add_node( apos, { name = 'homedecor:folding_door_mahogany_a_o_right', param2 = newparam } )
+        elseif ( node.name == 'homedecor:exterior_door_fancy_b_c_right' ) then
+                minetest.env:add_node( pos,  { name = 'homedecor:exterior_door_fancy_b_o_right', param2 = newparam } )
+                minetest.env:add_node( apos, { name = 'homedecor:exterior_door_fancy_a_o_right', param2 = newparam } )
 
-        elseif ( node.name == 'homedecor:folding_door_mahogany_a_o_right' ) then
-                minetest.env:add_node( pos,  { name = 'homedecor:folding_door_mahogany_a_c_right', param2 = newparam } )
-                minetest.env:add_node( upos, { name = 'homedecor:folding_door_mahogany_b_c_right', param2 = newparam } )
+        elseif ( node.name == 'homedecor:exterior_door_fancy_a_o_right' ) then
+                minetest.env:add_node( pos,  { name = 'homedecor:exterior_door_fancy_a_c_right', param2 = newparam } )
+                minetest.env:add_node( upos, { name = 'homedecor:exterior_door_fancy_b_c_right', param2 = newparam } )
 
-        elseif ( node.name == 'homedecor:folding_door_mahogany_b_o_right' ) then
-                minetest.env:add_node( pos,  { name = 'homedecor:folding_door_mahogany_b_c_right', param2 = newparam } )
-                minetest.env:add_node( apos, { name = 'homedecor:folding_door_mahogany_a_c_right', param2 = newparam } )
+        elseif ( node.name == 'homedecor:exterior_door_fancy_b_o_right' ) then
+                minetest.env:add_node( pos,  { name = 'homedecor:exterior_door_fancy_b_c_right', param2 = newparam } )
+                minetest.env:add_node( apos, { name = 'homedecor:exterior_door_fancy_a_c_right', param2 = newparam } )
 
         end
 end
 
-local on_mahogany_folding_door_digged_right = function( pos, node, digger )
+local on_exterior_door_fancy_digged_right = function( pos, node, digger )
         upos = { x = pos.x, y = pos.y - 1, z = pos.z }
         apos = { x = pos.x, y = pos.y + 1, z = pos.z }
 
-        if ( node.name == 'homedecor:folding_door_mahogany_a_c_right' ) or ( node.name == 'homedecor:folding_door_mahogany_a_o_right' ) then
+        if ( node.name == 'homedecor:exterior_door_fancy_a_c_right' ) or ( node.name == 'homedecor:exterior_door_fancy_a_o_right' ) then
                 minetest.env:remove_node( upos )
-        elseif ( node.name == 'homedecor:folding_door_mahogany_b_c_right' ) or ( node.name == 'homedecor:folding_door_mahogany_b_o_right' ) then
+        elseif ( node.name == 'homedecor:exterior_door_fancy_b_c_right' ) or ( node.name == 'homedecor:exterior_door_fancy_b_o_right' ) then
                 minetest.env:remove_node( apos )
         end
 end
 
-minetest.register_on_placenode( on_mahogany_folding_door_placed_right )
-minetest.register_on_punchnode( on_mahogany_folding_door_punched_right )
-minetest.register_on_dignode( on_mahogany_folding_door_digged_right )
+minetest.register_on_placenode( on_exterior_door_fancy_placed_right )
+minetest.register_on_punchnode( on_exterior_door_fancy_punched_right )
+minetest.register_on_dignode( on_exterior_door_fancy_digged_right )
 
 
--- Nodes used to build up mahogany doors
+-- Nodes used to build up Fancy Exterior doors
 
-minetest.register_node('homedecor:folding_door_mahogany_a_c_right', {
-	description = "Mahogany Folding Door (top, closed, right)",
-	tile_images = { 'homedecor_folding_door_mahogany_a_r.png' },
-	inventory_image = 'homedecor_folding_door_mahogany_a_r.png',
+minetest.register_node('homedecor:exterior_door_fancy_a_c_right', {
+	description = "Fancy Wood/Glass Exterior Door (top, closed, right)",
+	tile_images = { 'homedecor_exterior_door_fancy_a_r.png' },
+	inventory_image = 'homedecor_exterior_door_fancy_a_r.png',
 	drawtype = 'signlike',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -335,108 +339,89 @@ minetest.register_node('homedecor:folding_door_mahogany_a_c_right', {
 	walkable = true,
 	groups = { choppy = 2, dig_immediate=2 },
 	selection_box = { type = "wallmounted" },
-	drop = 'homedecor:folding_door_mahogany_right',
+	drop = 'homedecor:exterior_door_fancy_right',
 })
 
-minetest.register_node('homedecor:folding_door_mahogany_b_c_right', {
-	description = "Mahogany Folding Door (bottom, closed, right)",
+minetest.register_node('homedecor:exterior_door_fancy_b_c_right', {
+	description = "Fancy Wood/Glass Exterior Door (bottom, closed, right)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_b_r.png' },
-	inventory_image = 'homedecor_folding_door_mahogany_b_r.png',
+	tile_images = { 'homedecor_exterior_door_fancy_b_r.png' },
+	inventory_image = 'homedecor_exterior_door_fancy_b_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	walkable = true,
 	groups = { choppy = 2, dig_immediate=2 },
 	selection_box = { type = "wallmounted" },
-	drop = 'homedecor:folding_door_mahogany_right',
+	drop = 'homedecor:exterior_door_fancy_right',
 })
 
-minetest.register_node('homedecor:folding_door_mahogany_a_o_right', {
-	description = "Mahogany Folding Door (top, open, right)",
+minetest.register_node('homedecor:exterior_door_fancy_a_o_right', {
+	description = "Fancy Wood/Glass Exterior Door (top, open, right)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_a.png' },
-	inventory_image = 'homedecor_folding_door_mahogany_a.png',
+	tile_images = { 'homedecor_exterior_door_fancy_a.png' },
+	inventory_image = 'homedecor_exterior_door_fancy_a.png',
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	walkable = false,
 	groups = { choppy = 2, dig_immediate=2 },
 	selection_box = { type = "wallmounted", },
-	drop = 'homedecor:folding_door_mahogany_right',
+	drop = 'homedecor:exterior_door_fancy_right',
 })
 
-minetest.register_node('homedecor:folding_door_mahogany_b_o_right', {
-	description = "Mahogany Folding Door (bottom, open, right)",
+minetest.register_node('homedecor:exterior_door_fancy_b_o_right', {
+	description = "Fancy Wood/Glass Exterior Door (bottom, open, right)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_folding_door_mahogany_b.png' },
-	inventory_image = 'homedecor_folding_door_mahogany_b.png',
+	tile_images = { 'homedecor_exterior_door_fancy_b.png' },
+	inventory_image = 'homedecor_exterior_door_fancy_b.png',
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = 'wallmounted',
 	walkable = false,
 	groups = { choppy = 2, dig_immediate=2 },
 	selection_box = { type = "wallmounted", },
-	drop = 'homedecor:folding_door_mahogany_right',
+	drop = 'homedecor:exterior_door_fancy_right',
 })
 
 
--- =======================================
--- Crafting recipes for all types of doors
--- =======================================
+-- ================
+-- crafting recipes
+
+minetest.register_craft( {
+        output = 'homedecor:exterior_door_fancy',
+        recipe = {
+                { 'default:wood', 'default:glass' },
+                { 'default:wood', 'default:wood' },
+                { 'default:wood', 'default:wood' },
+        },
+})
+
 
 minetest.register_craft( {
 	type = 'shapeless',
-        output = 'homedecor:folding_door_mahogany_right',
+        output = 'homedecor:exterior_door_fancy_right',
         recipe = {
-		'homedecor:folding_door_mahogany',
+		'homedecor:exterior_door_fancy',
         },
 })
 
 minetest.register_craft({
 	type = 'shapeless',
-	output = 'homedecor:folding_door_mahogany',
+	output = 'homedecor:exterior_door_fancy',
 	recipe = {
-		'homedecor:folding_door_mahogany_right',
+		'homedecor:exterior_door_fancy_right',
 	},
 })
 
 minetest.register_craft({
 	type = 'fuel',
-	recipe = 'homedecor:folding_door_mahogany',
+	recipe = 'homedecor:exterior_door_fancy',
 	burntime = 30,
 })
 
 minetest.register_craft({
 	type = 'fuel',
-	recipe = 'homedecor:folding_door_mahogany_right',
+	recipe = 'homedecor:exterior_door_fancy_right',
         burntime = 30,
 })
-
-
--- You only need flowers to get the red dye necessary to actually
--- craft a mahogany door (either one), but not to /give or use one.
-
-if ( minetest.get_modpath("flowers") ) ~= nil then
-
-        minetest.register_craft( {
-                type = 'shapeless',
-                output = 'homedecor:folding_door_mahogany',
-                recipe = {
-                        'homedecor:folding_door_oak',
-                        'unifieddyes:black',
-                        'unifieddyes:red',
-                },
-        })
-
-        minetest.register_craft( {
-                type = 'shapeless',
-                output = 'homedecor:folding_door_mahogany_right',
-                recipe = {
-                        'homedecor:folding_door_oak_right',
-                        'unifieddyes:black',
-                        'unifieddyes:red',
-                },
-        })
-
-end

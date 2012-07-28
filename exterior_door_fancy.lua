@@ -44,7 +44,7 @@ end
 minetest.register_node('homedecor:exterior_door_fancy', {
 	description = "Fancy Wood/Glass Exterior Door (Left Opening)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_exterior_door_fancy.png' },
+	tiles = { 'homedecor_exterior_door_fancy.png' },
 	inventory_image = 'homedecor_exterior_door_fancy.png',
 	wield_image = 'homedecor_exterior_door_fancy.png',
 	paramtype2 = "wallmounted",
@@ -154,7 +154,7 @@ minetest.register_on_dignode( on_exterior_door_fancy_digged )
 
 minetest.register_node('homedecor:exterior_door_fancy_a_c', {
 	description = "Fancy Wood/Glass Exterior Door (top, closed)",
-	tile_images = { 'homedecor_exterior_door_fancy_a.png' },
+	tiles = { 'homedecor_exterior_door_fancy_a.png' },
 	inventory_image = 'homedecor_exterior_door_fancy_a.png',
 	drawtype = 'signlike',
 	sunlight_propagates = false,
@@ -169,7 +169,7 @@ minetest.register_node('homedecor:exterior_door_fancy_a_c', {
 minetest.register_node('homedecor:exterior_door_fancy_b_c', {
 	description = "Fancy Wood/Glass Exterior Door (bottom, closed)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_exterior_door_fancy_b.png' },
+	tiles = { 'homedecor_exterior_door_fancy_b.png' },
 	inventory_image = 'homedecor_exterior_door_fancy_b.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -183,7 +183,7 @@ minetest.register_node('homedecor:exterior_door_fancy_b_c', {
 minetest.register_node('homedecor:exterior_door_fancy_a_o', {
 	description = "Fancy Wood/Glass Exterior Door (top, open)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_exterior_door_fancy_a_r.png' },
+	tiles = { 'homedecor_exterior_door_fancy_a_r.png' },
 	inventory_image = 'homedecor_exterior_door_fancy_a_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -197,7 +197,7 @@ minetest.register_node('homedecor:exterior_door_fancy_a_o', {
 minetest.register_node('homedecor:exterior_door_fancy_b_o', {
 	description = "Fancy Wood/Glass Exterior Door (bottom, open)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_exterior_door_fancy_b_r.png' },
+	tiles = { 'homedecor_exterior_door_fancy_b_r.png' },
 	inventory_image = 'homedecor_exterior_door_fancy_b_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -218,7 +218,7 @@ minetest.register_node('homedecor:exterior_door_fancy_b_o', {
 minetest.register_node('homedecor:exterior_door_fancy_right', {
 	description = "Fancy Wood/Glass Exterior Door (Right Opening)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_exterior_door_fancy_right.png' },
+	tiles = { 'homedecor_exterior_door_fancy_right.png' },
 	inventory_image = 'homedecor_exterior_door_fancy_right.png',
 	wield_image = 'homedecor_exterior_door_fancy_right.png',
 	paramtype2 = "wallmounted",
@@ -330,7 +330,7 @@ minetest.register_on_dignode( on_exterior_door_fancy_digged_right )
 
 minetest.register_node('homedecor:exterior_door_fancy_a_c_right', {
 	description = "Fancy Wood/Glass Exterior Door (top, closed, right)",
-	tile_images = { 'homedecor_exterior_door_fancy_a_r.png' },
+	tiles = { 'homedecor_exterior_door_fancy_a_r.png' },
 	inventory_image = 'homedecor_exterior_door_fancy_a_r.png',
 	drawtype = 'signlike',
 	sunlight_propagates = false,
@@ -345,7 +345,7 @@ minetest.register_node('homedecor:exterior_door_fancy_a_c_right', {
 minetest.register_node('homedecor:exterior_door_fancy_b_c_right', {
 	description = "Fancy Wood/Glass Exterior Door (bottom, closed, right)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_exterior_door_fancy_b_r.png' },
+	tiles = { 'homedecor_exterior_door_fancy_b_r.png' },
 	inventory_image = 'homedecor_exterior_door_fancy_b_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -359,7 +359,7 @@ minetest.register_node('homedecor:exterior_door_fancy_b_c_right', {
 minetest.register_node('homedecor:exterior_door_fancy_a_o_right', {
 	description = "Fancy Wood/Glass Exterior Door (top, open, right)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_exterior_door_fancy_a.png' },
+	tiles = { 'homedecor_exterior_door_fancy_a.png' },
 	inventory_image = 'homedecor_exterior_door_fancy_a.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -373,7 +373,7 @@ minetest.register_node('homedecor:exterior_door_fancy_a_o_right', {
 minetest.register_node('homedecor:exterior_door_fancy_b_o_right', {
 	description = "Fancy Wood/Glass Exterior Door (bottom, open, right)",
 	drawtype = 'signlike',
-	tile_images = { 'homedecor_exterior_door_fancy_b.png' },
+	tiles = { 'homedecor_exterior_door_fancy_b.png' },
 	inventory_image = 'homedecor_exterior_door_fancy_b.png',
 	sunlight_propagates = false,
 	paramtype = "light",

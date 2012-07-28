@@ -38,7 +38,7 @@ end
 minetest.register_node('homedecor:folding_door_oak', {
 	description = "Oak Folding Door (Left Opening)",
 	drawtype = 'signlike',
-	tiles = { 'homedecor_folding_door_oak.png' },
+	tile_images = { 'homedecor_folding_door_oak.png' },
 	inventory_image = 'homedecor_folding_door_oak.png',
 	wield_image = 'homedecor_folding_door_oak.png',
 	paramtype2 = "wallmounted",
@@ -148,7 +148,7 @@ minetest.register_on_dignode( on_oak_folding_door_digged )
 minetest.register_node('homedecor:folding_door_oak_a_c', {
 	description = "Oak Folding Door (top, closed)",
 	drawtype = 'signlike',
-	tiles = { 'homedecor_folding_door_oak_a.png' },
+	tile_images = { 'homedecor_folding_door_oak_a.png' },
 	inventory_image = 'homedecor_folding_door_oak_a.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -162,7 +162,7 @@ minetest.register_node('homedecor:folding_door_oak_a_c', {
 minetest.register_node('homedecor:folding_door_oak_b_c', {
 	description = "Oak Folding Door (bottom, closed)",
 	drawtype = 'signlike',
-	tiles = { 'homedecor_folding_door_oak_b.png' },
+	tile_images = { 'homedecor_folding_door_oak_b.png' },
 	inventory_image = 'homedecor_folding_door_oak_b.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -176,7 +176,7 @@ minetest.register_node('homedecor:folding_door_oak_b_c', {
 minetest.register_node('homedecor:folding_door_oak_a_o', {
 	description = "Oak Folding Door (top, open)",
 	drawtype = 'signlike',
-	tiles = { 'homedecor_folding_door_oak_a_r.png' },
+	tile_images = { 'homedecor_folding_door_oak_a_r.png' },
 	inventory_image = 'homedecor_folding_door_oak_a_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -190,7 +190,7 @@ minetest.register_node('homedecor:folding_door_oak_a_o', {
 minetest.register_node('homedecor:folding_door_oak_b_o', {
 	description = "Oak Folding Door (bottom, open)",
 	drawtype = 'signlike',
-	tiles = { 'homedecor_folding_door_oak_b_r.png' },
+	tile_images = { 'homedecor_folding_door_oak_b_r.png' },
 	inventory_image = 'homedecor_folding_door_oak_b_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -211,7 +211,7 @@ minetest.register_node('homedecor:folding_door_oak_b_o', {
 minetest.register_node('homedecor:folding_door_oak_right', {
 	description = "Oak Folding Door (Right Opening)",
 	drawtype = 'signlike',
-	tiles = { 'homedecor_folding_door_oak_right.png' },
+	tile_images = { 'homedecor_folding_door_oak_right.png' },
 	inventory_image = 'homedecor_folding_door_oak_right.png',
 	wield_image = 'homedecor_folding_door_oak_right.png',
 	paramtype2 = "wallmounted",
@@ -322,7 +322,7 @@ minetest.register_on_dignode( on_oak_folding_door_digged_right )
 minetest.register_node('homedecor:folding_door_oak_a_c_right', {
 	description = "Oak Folding Door (top, closed, right)",
 	drawtype = 'signlike',
-	tiles = { 'homedecor_folding_door_oak_a_r.png' },
+	tile_images = { 'homedecor_folding_door_oak_a_r.png' },
 	inventory_image = 'homedecor_folding_door_oak_a_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -336,7 +336,7 @@ minetest.register_node('homedecor:folding_door_oak_a_c_right', {
 minetest.register_node('homedecor:folding_door_oak_b_c_right', {
 	description = "Oak Folding Door (bottom, closed, right)",
 	drawtype = 'signlike',
-	tiles = { 'homedecor_folding_door_oak_b_r.png' },
+	tile_images = { 'homedecor_folding_door_oak_b_r.png' },
 	inventory_image = 'homedecor_folding_door_oak_b_r.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -350,7 +350,7 @@ minetest.register_node('homedecor:folding_door_oak_b_c_right', {
 minetest.register_node('homedecor:folding_door_oak_a_o_right', {
 	description = "Oak Folding Door (top, open, right)",
 	drawtype = 'signlike',
-	tiles = { 'homedecor_folding_door_oak_a.png' },
+	tile_images = { 'homedecor_folding_door_oak_a.png' },
 	inventory_image = 'homedecor_folding_door_oak_a.png',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -364,7 +364,7 @@ minetest.register_node('homedecor:folding_door_oak_a_o_right', {
 minetest.register_node('homedecor:folding_door_oak_b_o_right', {
 	description = "Oak Folding Door (bottom, open, right)",
 	drawtype = 'signlike',
-	tiles = { 'homedecor_folding_door_oak_b.png' },
+	tile_images = { 'homedecor_folding_door_oak_b.png' },
 	inventory_image = 'homedecor_folding_door_oak_b.png',
 	sunlight_propagates = false,
 	paramtype = "light",
