@@ -18,7 +18,7 @@ dofile(minetest.get_modpath("homedecor").."/foldingdoors_mahogany.lua")
 dofile(minetest.get_modpath("homedecor").."/exterior_door_fancy.lua")
 dofile(minetest.get_modpath("homedecor").."/crafts.lua")
 
-local DEBUG = 1
+local DEBUG = 0
 
 -- Local Functions
 
