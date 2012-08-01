@@ -1,6 +1,10 @@
 Changelog
 ---------
 
+2012-08-01: Added optional recipes for items that use wool to also use cotton
+instead.  Choose one or the other in any given recipe (you can't mix the two).
+No, it isn't a Kosher thing. ;-)
+
 2012-07-28: Noticed I technically had left/right textures swapped on a few 
 blocks.  The textures were drawn to counteract this, without my realizing I was 
 doing just that. :-) Fixed.  Also replaced all "tile_images" references with 

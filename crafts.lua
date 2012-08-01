@@ -632,45 +632,53 @@ if ( minetest.get_modpath("mesecons") ) ~= nil then
 end
 
 
--- ======================================================
--- Recipes that require materials from Jordach's Wool mod
+-- ===========================================================
+-- Recipes that require materials from wool (cotton alternate)
 
-if ( minetest.get_modpath("wool") ) ~= nil then
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:rug_small 8',
+       	recipe = {
+       		'wool:red',
+		'wool:yellow',
+		'wool:blue',
+		'wool:black'
+	},
+})
 
-	minetest.register_craft( {
-		type = 'shapeless',
-	        output = 'homedecor:rug_small 8',
-	       	recipe = {
-               		'wool:red',
-			'wool:yellow',
-			'wool:blue',
-			'wool:black'
-		},
-	})
+-- cotton version:
 
-	minetest.register_craft({
-        	type = 'fuel',
-        	recipe = 'homedecor:rug_small',
-        	burntime = 30,
-	})
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:rug_small 8',
+       	recipe = {
+       		'cotton:red',
+		'cotton:yellow',
+		'cotton:blue',
+		'cotton:black'
+	},
+})
 
+minetest.register_craft({
+       	type = 'fuel',
+       	recipe = 'homedecor:rug_small',
+       	burntime = 30,
+})
 
-	minetest.register_craft( {
-		type = 'shapeless',
-	        output = 'homedecor:rug_large 2',
-	       	recipe = {
-			'homedecor:rug_small',
-			'homedecor:rug_small',
-		},
-	})
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:rug_large 2',
+       	recipe = {
+		'homedecor:rug_small',
+		'homedecor:rug_small',
+	},
+})
 
-	minetest.register_craft({
-        	type = 'fuel',
-        	recipe = 'homedecor:rug_large',
-        	burntime = 30,
-	})
-
-end
+minetest.register_craft({
+       	type = 'fuel',
+       	recipe = 'homedecor:rug_large',
+       	burntime = 30,
+})
 
 minetest.register_craft( {
 	type = 'shapeless',
@@ -752,30 +760,44 @@ minetest.register_craft({
        	burntime = 30,
 })
 
--- ================================================================
--- Speakers require both Jordache's wool and Jeija's mesecons mods.
+-- =====================================================================
+-- Speakers require both Jeija's mesecons mod abnd either wool or cotton
 
-if ( minetest.get_modpath("wool") ) ~= nil then
-	if ( minetest.get_modpath("mesecons") ) ~= nil then
-	
-		minetest.register_craft( {
-		        output = 'homedecor:speaker',
-        		recipe = {
-				{ 'default:wood', 'wool:black', 'default:wood' },
-				{ 'default:wood', 'mesecons:noteblock', 'default:wood' },
-				{ 'default:wood', 'wool:black', 'default:wood' },
-			},
-		})
+minetest.register_craft( {
+        output = 'homedecor:speaker',
+      		recipe = {
+		{ 'default:wood', 'wool:black', 'default:wood' },
+		{ 'default:wood', 'mesecons:noteblock', 'default:wood' },
+		{ 'default:wood', 'wool:black', 'default:wood' },
+	},
+})
 
-		minetest.register_craft( {
-		        output = 'homedecor:speaker_small',
-        		recipe = {
-				{ 'default:wood', 'wool:black', 'default:wood' },
-				{ 'default:wood', 'mesecons:noteblock', 'default:wood' },
-			},
-		})
-	end
-end
+minetest.register_craft( {
+        output = 'homedecor:speaker_small',
+      		recipe = {
+		{ 'default:wood', 'wool:black', 'default:wood' },
+		{ 'default:wood', 'mesecons:noteblock', 'default:wood' },
+	},
+})
+
+-- cotton version
+
+minetest.register_craft( {
+        output = 'homedecor:speaker',
+      		recipe = {
+		{ 'default:wood', 'cotton:black', 'default:wood' },
+		{ 'default:wood', 'mesecons:noteblock', 'default:wood' },
+		{ 'default:wood', 'cotton:black', 'default:wood' },
+	},
+})
+
+minetest.register_craft( {
+        output = 'homedecor:speaker_small',
+      		recipe = {
+		{ 'default:wood', 'cotton:black', 'default:wood' },
+		{ 'default:wood', 'mesecons:noteblock', 'default:wood' },
+	},
+})
 
 
 
