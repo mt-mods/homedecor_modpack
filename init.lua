@@ -51,7 +51,7 @@ minetest.register_node('homedecor:skylight', {
 	inventory_image = 'default_glass.png',
 	paramtype = 'light',
 	sunlight_propagates = true,
-	walkable = false,
+	walkable = true,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
 })
