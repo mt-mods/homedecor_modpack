@@ -161,7 +161,7 @@ minetest.register_node('homedecor:exterior_door_fancy_a_c', {
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	walkable = true,
-	groups = { choppy = 2, dig_immediate=2 },
+	groups = { choppy = 2, dig_immediate=2, not_in_creative_inventory=1},
 	selection_box = { type = "wallmounted" },
 	drop = 'homedecor:exterior_door_fancy',
 })
@@ -175,7 +175,7 @@ minetest.register_node('homedecor:exterior_door_fancy_b_c', {
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	walkable = true,
-	groups = { choppy = 2, dig_immediate=2 },
+	groups = { choppy = 2, dig_immediate=2, not_in_creative_inventory=1 },
 	selection_box = { type = "wallmounted" },
 	drop = 'homedecor:exterior_door_fancy',
 })
@@ -189,7 +189,7 @@ minetest.register_node('homedecor:exterior_door_fancy_a_o', {
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	walkable = false,
-	groups = { choppy = 2, dig_immediate=2 },
+	groups = { choppy = 2, dig_immediate=2, not_in_creative_inventory=1 },
 	selection_box = { type = "wallmounted", },
 	drop = 'homedecor:exterior_door_fancy',
 })
@@ -203,7 +203,7 @@ minetest.register_node('homedecor:exterior_door_fancy_b_o', {
 	paramtype = "light",
 	paramtype2 = 'wallmounted',
 	walkable = false,
-	groups = { choppy = 2, dig_immediate=2 },
+	groups = { choppy = 2, dig_immediate=2, not_in_creative_inventory=1 },
 	selection_box = { type = "wallmounted", },
 	drop = 'homedecor:exterior_door_fancy',
 })
@@ -337,7 +337,7 @@ minetest.register_node('homedecor:exterior_door_fancy_a_c_right', {
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	walkable = true,
-	groups = { choppy = 2, dig_immediate=2 },
+	groups = { choppy = 2, dig_immediate=2, not_in_creative_inventory=1 },
 	selection_box = { type = "wallmounted" },
 	drop = 'homedecor:exterior_door_fancy_right',
 })
@@ -351,7 +351,7 @@ minetest.register_node('homedecor:exterior_door_fancy_b_c_right', {
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	walkable = true,
-	groups = { choppy = 2, dig_immediate=2 },
+	groups = { choppy = 2, dig_immediate=2, not_in_creative_inventory=1 },
 	selection_box = { type = "wallmounted" },
 	drop = 'homedecor:exterior_door_fancy_right',
 })
@@ -365,7 +365,7 @@ minetest.register_node('homedecor:exterior_door_fancy_a_o_right', {
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	walkable = false,
-	groups = { choppy = 2, dig_immediate=2 },
+	groups = { choppy = 2, dig_immediate=2, not_in_creative_inventory=1 },
 	selection_box = { type = "wallmounted", },
 	drop = 'homedecor:exterior_door_fancy_right',
 })
@@ -379,7 +379,7 @@ minetest.register_node('homedecor:exterior_door_fancy_b_o_right', {
 	paramtype = "light",
 	paramtype2 = 'wallmounted',
 	walkable = false,
-	groups = { choppy = 2, dig_immediate=2 },
+	groups = { choppy = 2, dig_immediate=2, not_in_creative_inventory=1 },
 	selection_box = { type = "wallmounted", },
 	drop = 'homedecor:exterior_door_fancy_right',
 })

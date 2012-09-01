@@ -569,7 +569,7 @@ minetest.register_node('homedecor:dresser_mahogany_left_side', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, not_in_creative_inventory=1 },
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -585,7 +585,7 @@ minetest.register_node('homedecor:dresser_mahogany_right_side', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, not_in_creative_inventory=1 },
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -601,7 +601,7 @@ minetest.register_node('homedecor:dresser_oak_left_side', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, not_in_creative_inventory=1 },
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -617,7 +617,7 @@ minetest.register_node('homedecor:dresser_oak_right_side', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, not_in_creative_inventory=1 },
 	sounds = default.node_sound_leaves_defaults(),
 })
 
