@@ -611,21 +611,34 @@ end
 
 if ( minetest.get_modpath("mesecons") ) ~= nil then
 
+	minetest.register_craftitem("homedecor:ic", {
+		description = "Simple Integrated Circuit",
+		inventory_image = "homedecor_ic.png",
+	})
+
 	minetest.register_craft( {
-	        output = 'homedecor:television',
-        	recipe = {
-        	        { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
-        	        { 'homedecor:plastic_sheeting', 'default:glass', 'homedecor:plastic_sheeting' },
-        	        { 'mesecons_materials:ic', 'mesecons_materials:ic', 'mesecons_materials:ic' },
+		output = "homedecor:ic 4",
+		recipe = {
+			{ "mesecons_materials:silicon", "mesecons_materials:silicon" },
+			{ "mesecons_materials:silicon", "default:steel_ingot" },
 		},
 	})
 
 	minetest.register_craft( {
-	        output = 'homedecor:stereo',
-        	recipe = {
-                        { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
-                        { 'homedecor:plastic_sheeting', 'mesecons_materials:ic', 'homedecor:plastic_sheeting' },
-        	        { 'default:steel_ingot', 'mesecons_materials:ic', 'default:steel_ingot' },
+		output = 'homedecor:television',
+		recipe = {
+			{ 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
+			{ 'homedecor:plastic_sheeting', 'default:glass', 'homedecor:plastic_sheeting' },
+			{ 'homedecor:ic', 'homedecor:ic', 'homedecor:ic' },
+		},
+	})
+
+	minetest.register_craft( {
+		output = 'homedecor:stereo',
+		recipe = {
+			{ 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
+			{ 'homedecor:plastic_sheeting', 'homedecor:ic', 'homedecor:plastic_sheeting' },
+			{ 'default:steel_ingot', 'homedecor:ic', 'default:steel_ingot' },
 		},
 	})
 
@@ -761,7 +774,7 @@ minetest.register_craft({
 })
 
 -- =====================================================================
--- Speakers require both Jeija's mesecons mod abnd either wool or cotton
+-- Speakers require both Jeija's mesecons mod and either wool or cotton
 
 minetest.register_craft( {
         output = 'homedecor:speaker',
