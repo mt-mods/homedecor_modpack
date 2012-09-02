@@ -46,7 +46,7 @@ minetest.register_craftitem("homedecor:plastic_sheeting", {
 minetest.register_craft({
         type = "cooking",
         output = "homedecor:plastic_sheeting",
-        recipe = "default:junglegrass 2",
+        recipe = "default:junglegrass",
 })
 
 minetest.register_craft({
