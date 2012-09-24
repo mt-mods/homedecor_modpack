@@ -170,8 +170,16 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = 'homedecor:shingles_wood 12',
         recipe = {
-                { 'default:wood', 'default:wood'},
-                { 'default:wood', 'default:wood'},
+                { 'default:stick', 'default:wood'},
+                { 'default:wood', 'default:stick'},
+        },
+})
+
+minetest.register_craft( {
+        output = 'homedecor:shingles_wood 12',
+        recipe = {
+                { 'default:wood', 'default:stick'},
+                { 'default:stick', 'default:wood'},
         },
 })
 
