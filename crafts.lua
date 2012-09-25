@@ -50,6 +50,12 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+        type = "cooking",
+        output = "homedecor:plastic_sheeting",
+        recipe = "default:dry_shrub",
+})
+
+minetest.register_craft({
         type = 'fuel',
         recipe = 'homedecor:plastic_sheeting',
         burntime = 30,
@@ -59,6 +65,17 @@ minetest.register_craft( {
         output = 'homedecor:flower_pot_green',
         recipe = {
                 { 'unifieddyes:dark_green', '', '' },
+                { 'homedecor:plastic_sheeting', 'default:dirt', 'homedecor:plastic_sheeting' },
+                { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
+        },
+	replacements = { {'unifieddyes:dark_green', 'vessels:glass_bottle'}, },
+
+})
+
+minetest.register_craft( {
+        output = 'homedecor:flower_pot_green',
+        recipe = {
+                { 'default:leaves', '', 'default:leaves' },
                 { 'homedecor:plastic_sheeting', 'default:dirt', 'homedecor:plastic_sheeting' },
                 { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
         },
@@ -80,6 +97,14 @@ minetest.register_craft( {
 	}
 })
 
+minetest.register_craft( {
+        output = 'homedecor:flower_pot_black',
+        recipe = {
+                { 'default:coal_lump', 'default:coal_lump', 'default:coal_lump' },
+                { 'homedecor:plastic_sheeting', 'default:dirt', 'homedecor:plastic_sheeting' },
+                { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
+        },
+})
 --
 
 minetest.register_craft( {
@@ -165,6 +190,14 @@ minetest.register_craft( {
 	}
 })
 
+minetest.register_craft( {
+        output = 'homedecor:shingles_asphalt 6',
+        recipe = {
+                { 'default:dirt', 'default:coal_lump', 'default:dirt' },
+                { 'default:sand', 'default:coal_lump', 'default:sand' },
+                { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
+        },
+})
 --
 
 minetest.register_craft( {
@@ -297,6 +330,16 @@ minetest.register_craft( {
 	replacements = { {'unifieddyes:black', 'vessels:glass_bottle'}, },
 })
 
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:shutter_black',
+        recipe = {
+                'default:coal_lump',
+                'default:coal_lump',
+		'homedecor:shutter_oak'
+        },
+})
+
 minetest.register_craft({
         type = 'fuel',
         recipe = 'homedecor:shutter_black',
@@ -321,7 +364,6 @@ minetest.register_craft({
         burntime = 30,
 })
 
-
 --
 
 minetest.register_craft( {
@@ -334,6 +376,14 @@ minetest.register_craft( {
 	replacements = { {'unifieddyes:grey_paint', 'bucket:bucket_empty'}, },
 })
 
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:shutter_grey',
+        recipe = {
+                'default:coal_lump',
+		'homedecor:shutter_oak'
+        },
+})
 minetest.register_craft({
         type = 'fuel',
         recipe = 'homedecor:shutter_grey',
@@ -350,6 +400,16 @@ minetest.register_craft( {
                 'unifieddyes:dark_green',
         },
 	replacements = { {'unifieddyes:dark_green', 'vessels:glass_bottle'}, },
+})
+
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:shutter_forest_green',
+        recipe = {
+                'homedecor:shutter_oak',
+                'default:leaves',
+                'default:coal_lump',
+        },
 })
 
 minetest.register_craft({
@@ -450,6 +510,14 @@ minetest.register_craft( {
         },
 })
 
+minetest.register_craft( {
+        output = 'homedecor:nightstand_oak_two_drawers',
+        recipe = {
+                { 'homedecor:nightstand_oak_one_drawer' },
+                { 'homedecor:drawer_small' },
+        },
+})
+
 minetest.register_craft({
         type = 'fuel',
         recipe = 'homedecor:nightstand_oak_two_drawers',
@@ -468,6 +536,16 @@ minetest.register_craft( {
 	replacements = { {'unifieddyes:dark_orange', 'vessels:glass_bottle'}, },
 })
 
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:nightstand_mahogany_one_drawer',
+        recipe = {
+                'homedecor:nightstand_oak_one_drawer',
+                'default:dirt',
+		'default:coal_lump',
+        },
+})
+
 minetest.register_craft({
         type = 'fuel',
         recipe = 'homedecor:nightstand_mahogany_one_drawer',
@@ -482,6 +560,16 @@ minetest.register_craft( {
                 'unifieddyes:dark_orange',
         },
 	replacements = { {'unifieddyes:dark_orange', 'vessels:glass_bottle'}, },
+})
+
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:nightstand_mahogany_two_drawers',
+        recipe = {
+                'homedecor:nightstand_oak_two_drawers',
+                'default:dirt',
+		'default:coal_lump',
+        },
 })
 
 minetest.register_craft({
@@ -559,6 +647,18 @@ minetest.register_craft( {
 	},
 })
 
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:dresser_mahogany',
+        recipe = {
+		'homedecor:dresser_oak',
+                'default:dirt',
+                'default:dirt',
+		'default:coal_lump',
+		'default:coal_lump',
+        },
+})
+
 minetest.register_craft({
         type = 'fuel',
         recipe = 'homedecor:dresser_oak',
@@ -573,85 +673,92 @@ minetest.register_craftitem("homedecor:brass_ingot", {
         inventory_image = "homedecor_brass_ingot.png",
 })
 
-if ( minetest.get_modpath("moreores") ) ~= nil then
-
-	minetest.register_craft( {
-		type = 'shapeless',
-	        output = 'homedecor:brass_ingot 2',
-        	recipe = {
-			'moreores:silver_ingot',
-			'moreores:copper_ingot',
-		},
-	})
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:brass_ingot 2',
+	recipe = {
+		'moreores:silver_ingot',
+		'moreores:copper_ingot',
+	},
+})
 
 
-	minetest.register_craft( {
-	        output = 'homedecor:table_legs_brass 2',
-        	recipe = {
-			{ '', 'homedecor:brass_ingot', '' },
-			{ '', 'homedecor:brass_ingot', '' },
-			{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' }
-		},
-	})
+minetest.register_craft( {
+        output = 'homedecor:table_legs_brass 2',
+	recipe = {
+		{ '', 'homedecor:brass_ingot', '' },
+		{ '', 'homedecor:brass_ingot', '' },
+		{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' }
+	},
+})
 
-	minetest.register_craft( {
-	        output = 'homedecor:pole_brass 2',
-        	recipe = {
-			{ '', 'homedecor:brass_ingot', '' },
-			{ '', 'homedecor:brass_ingot', '' },
-			{ '', 'homedecor:brass_ingot', '' }
-		},
-	})
+minetest.register_craft( {
+        output = 'homedecor:pole_brass 2',
+	recipe = {
+		{ '', 'homedecor:brass_ingot', '' },
+		{ '', 'homedecor:brass_ingot', '' },
+		{ '', 'homedecor:brass_ingot', '' }
+	},
+})
 
-	minetest.register_craft( {
-	        output = 'homedecor:fence_brass 4',
-        	recipe = {
-			{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' },
-			{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' },
-		},
-	})
-
-end
-
+minetest.register_craft( {
+        output = 'homedecor:fence_brass 4',
+	recipe = {
+		{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' },
+		{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' },
+	},
+})
 
 -- ========================================================
 -- Recipes that require materials from Jeija's Mesecons mod
 
-if ( minetest.get_modpath("mesecons") ) ~= nil then
+if ( minetest.get_modpath("mesecons") ) == nil then
 
-	minetest.register_craftitem("homedecor:ic", {
-		description = "Simple Integrated Circuit",
-		inventory_image = "homedecor_ic.png",
+	minetest.register_craftitem(":mesecons_materials:silicon", {
+		description = "Silicon lump",
+		inventory_image = "homedecor_silicon.png",
 	})
 
 	minetest.register_craft( {
-		output = "homedecor:ic 4",
+		output = "mesecons_materials:silicon 4",
 		recipe = {
-			{ "mesecons_materials:silicon", "mesecons_materials:silicon" },
-			{ "mesecons_materials:silicon", "default:steel_ingot" },
-		},
-	})
-
-	minetest.register_craft( {
-		output = 'homedecor:television',
-		recipe = {
-			{ 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
-			{ 'homedecor:plastic_sheeting', 'default:glass', 'homedecor:plastic_sheeting' },
-			{ 'homedecor:ic', 'homedecor:ic', 'homedecor:ic' },
-		},
-	})
-
-	minetest.register_craft( {
-		output = 'homedecor:stereo',
-		recipe = {
-			{ 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
-			{ 'homedecor:plastic_sheeting', 'homedecor:ic', 'homedecor:plastic_sheeting' },
-			{ 'default:steel_ingot', 'homedecor:ic', 'default:steel_ingot' },
+			{ "default:sand", "default:sand" },
+			{ "default:sand", "default:steel_ingot" },
 		},
 	})
 
 end
 
+minetest.register_craft( {
+	output = "homedecor:ic 4",
+	recipe = {
+		{ "mesecons_materials:silicon", "mesecons_materials:silicon" },
+		{ "mesecons_materials:silicon", "default:steel_ingot" },
+	},
+})
+
+minetest.register_craftitem("homedecor:ic", {
+	description = "Simple Integrated Circuit",
+	inventory_image = "homedecor_ic.png",
+})
+
+minetest.register_craft( {
+	output = 'homedecor:television',
+	recipe = {
+		{ 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
+		{ 'homedecor:plastic_sheeting', 'default:glass', 'homedecor:plastic_sheeting' },
+		{ 'homedecor:ic', 'homedecor:ic', 'homedecor:ic' },
+	},
+})
+
+minetest.register_craft( {
+	output = 'homedecor:stereo',
+	recipe = {
+		{ 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
+		{ 'homedecor:plastic_sheeting', 'homedecor:ic', 'homedecor:plastic_sheeting' },
+		{ 'default:steel_ingot', 'homedecor:ic', 'default:steel_ingot' },
+	},
+})
 
 -- ===========================================================
 -- Recipes that require materials from wool (cotton alternate)
@@ -711,6 +818,16 @@ minetest.register_craft( {
 	replacements = { {'unifieddyes:dark_orange', 'vessels:glass_bottle'}, },
 })
 
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:shutter_mahogany',
+       	recipe = {
+		'homedecor:shutter_oak',
+		'default:coal_lump',
+		'default:dirt',
+	},
+})
+
 minetest.register_craft({
        	type = 'fuel',
        	recipe = 'homedecor:shutter_mahogany',
@@ -743,6 +860,15 @@ minetest.register_craft( {
 	replacements = { {'unifieddyes:red', 'vessels:glass_bottle'}, },
 })
 
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:shutter_red',
+       	recipe = {
+		'homedecor:shutter_oak',
+		'default:apple',
+	},
+})
+
 minetest.register_craft({
        	type = 'fuel',
        	recipe = 'homedecor:shutter_red',
@@ -757,6 +883,15 @@ minetest.register_craft( {
 		'unifieddyes:yellow',
 	},
 	replacements = { {'unifieddyes:yellow', 'vessels:glass_bottle'}, },
+})
+
+minetest.register_craft( {
+	type = 'shapeless',
+        output = 'homedecor:shutter_yellow',
+       	recipe = {
+		'homedecor:shutter_oak',
+		'default:mese',
+	},
 })
 
 minetest.register_craft({
@@ -781,14 +916,14 @@ minetest.register_craft({
        	burntime = 30,
 })
 
--- =====================================================================
--- Speakers require both Jeija's mesecons mod and either wool or cotton
+-- =====================================
+-- Speakers require copper from moreores
 
 minetest.register_craft( {
         output = 'homedecor:speaker',
       		recipe = {
 		{ 'default:wood', 'wool:black', 'default:wood' },
-		{ 'default:wood', 'mesecons:noteblock', 'default:wood' },
+		{ 'default:wood', 'moreores:copper_ingot', 'default:wood' },
 		{ 'default:wood', 'wool:black', 'default:wood' },
 	},
 })
@@ -797,7 +932,7 @@ minetest.register_craft( {
         output = 'homedecor:speaker_small',
       		recipe = {
 		{ 'default:wood', 'wool:black', 'default:wood' },
-		{ 'default:wood', 'mesecons:noteblock', 'default:wood' },
+		{ 'default:wood', 'moreores:copper_ingot', 'default:wood' },
 	},
 })
 
@@ -807,7 +942,7 @@ minetest.register_craft( {
         output = 'homedecor:speaker',
       		recipe = {
 		{ 'default:wood', 'cotton:black', 'default:wood' },
-		{ 'default:wood', 'mesecons:noteblock', 'default:wood' },
+		{ 'default:wood', 'moreores:copper_ingot', 'default:wood' },
 		{ 'default:wood', 'cotton:black', 'default:wood' },
 	},
 })
@@ -816,7 +951,7 @@ minetest.register_craft( {
         output = 'homedecor:speaker_small',
       		recipe = {
 		{ 'default:wood', 'cotton:black', 'default:wood' },
-		{ 'default:wood', 'mesecons:noteblock', 'default:wood' },
+		{ 'default:wood', 'moreores:copper_ingot', 'default:wood' },
 	},
 })
 

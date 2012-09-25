@@ -413,30 +413,42 @@ minetest.register_craft({
         burntime = 30,
 })
 
+minetest.register_craft( {
+        type = 'shapeless',
+        output = 'homedecor:folding_door_mahogany',
+        recipe = {
+                'homedecor:folding_door_oak',
+                'unifieddyes:dark_orange',
+        },
+	replacements = { {'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'}, },
+})
 
--- You only need Unfiied Dyes to get the dark orange necessary to actually
--- craft a mahogany door (either one), but not to /give or use one.
+minetest.register_craft( {
+        type = 'shapeless',
+        output = 'homedecor:folding_door_mahogany',
+        recipe = {
+                'homedecor:folding_door_oak',
+                'default:coal_lump',
+		'default:dirt',
+        },
+})
 
-if ( minetest.get_modpath("flowers") ) ~= nil then
+minetest.register_craft( {
+        type = 'shapeless',
+        output = 'homedecor:folding_door_mahogany_right',
+        recipe = {
+                'homedecor:folding_door_oak_right',
+                'unifieddyes:dark_orange',
+        },
+	replacements = { {'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'}, },
+})
 
-        minetest.register_craft( {
-                type = 'shapeless',
-                output = 'homedecor:folding_door_mahogany',
-                recipe = {
-                        'homedecor:folding_door_oak',
-                        'unifieddyes:dark_orange',
-                },
-		replacements = { {'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'}, },
-        })
-
-        minetest.register_craft( {
-                type = 'shapeless',
-                output = 'homedecor:folding_door_mahogany_right',
-                recipe = {
-                        'homedecor:folding_door_oak_right',
-                        'unifieddyes:dark_orange',
-                },
-		replacements = { {'unifieddyes:dark_orange', 'unifieddyes:empty_bottle'}, },
-        })
-
-end
+minetest.register_craft( {
+        type = 'shapeless',
+        output = 'homedecor:folding_door_mahogany_right',
+        recipe = {
+                'homedecor:folding_door_oak_right',
+                'default:coal_lump',
+		'default:dirt',
+        },
+})
