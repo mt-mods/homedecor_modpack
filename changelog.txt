@@ -1,5 +1,9 @@
 Changelog
 ---------
+2012-09-25: Added alternate recipes for most items that use dyes.  Removed 
+Mesecons dependency from TV and stereo (uses in-built silicon lumps if Mesecons 
+isn't present).  Replaced speakers' Mesecons Noteblocks with copper ingots from 
+Moreores.
 
 2012-08-01: Added optional recipes for items that use wool to also use cotton
 instead.  Choose one or the other in any given recipe (you can't mix the two).
