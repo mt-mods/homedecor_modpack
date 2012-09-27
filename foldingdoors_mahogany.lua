@@ -415,8 +415,9 @@ minetest.register_craft({
 
 minetest.register_craft( {
         type = 'shapeless',
-        output = 'homedecor:folding_door_mahogany',
+        output = 'homedecor:folding_door_mahogany 2',
         recipe = {
+                'homedecor:folding_door_oak',
                 'homedecor:folding_door_oak',
                 'unifieddyes:dark_orange',
         },
@@ -425,8 +426,9 @@ minetest.register_craft( {
 
 minetest.register_craft( {
         type = 'shapeless',
-        output = 'homedecor:folding_door_mahogany',
+        output = 'homedecor:folding_door_mahogany 2',
         recipe = {
+                'homedecor:folding_door_oak',
                 'homedecor:folding_door_oak',
                 'default:coal_lump',
 		'default:dirt',
@@ -435,8 +437,9 @@ minetest.register_craft( {
 
 minetest.register_craft( {
         type = 'shapeless',
-        output = 'homedecor:folding_door_mahogany_right',
+        output = 'homedecor:folding_door_mahogany_right 2',
         recipe = {
+                'homedecor:folding_door_oak_right',
                 'homedecor:folding_door_oak_right',
                 'unifieddyes:dark_orange',
         },
@@ -445,8 +448,9 @@ minetest.register_craft( {
 
 minetest.register_craft( {
         type = 'shapeless',
-        output = 'homedecor:folding_door_mahogany_right',
+        output = 'homedecor:folding_door_mahogany_right 2',
         recipe = {
+                'homedecor:folding_door_oak_right',
                 'homedecor:folding_door_oak_right',
                 'default:coal_lump',
 		'default:dirt',
