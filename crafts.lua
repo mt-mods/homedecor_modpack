@@ -120,7 +120,7 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = 'homedecor:flower_pot_black',
         recipe = {
-                { 'unifieddyes:black', 'unifieddyes:black', 'unifieddyes:black' },
+                { 'group:dye,basecolor_black', 'group:dye,basecolor_black', 'group:dye,basecolor_black' },
                 { 'homedecor:plastic_sheeting', 'default:dirt', 'homedecor:plastic_sheeting' },
                 { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
         },
@@ -214,8 +214,8 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = 'homedecor:shingles_asphalt 6',
         recipe = {
-                { 'default:dirt', 'unifieddyes:black', 'default:dirt' },
-                { 'default:sand', 'unifieddyes:black', 'default:sand' },
+                { 'default:dirt', 'group:dye,basecolor_black', 'default:dirt' },
+                { 'default:sand', 'group:dye,basecolor_black', 'default:sand' },
                 { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
         },
 	replacements = {
@@ -356,7 +356,7 @@ minetest.register_craft( {
 	type = 'shapeless',
         output = 'homedecor:shutter_black 4',
         recipe = {
-                'unifieddyes:black',
+                'group:dye,basecolor_black',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
@@ -411,7 +411,7 @@ minetest.register_craft( {
 	type = 'shapeless',
         output = 'homedecor:shutter_grey 4',
         recipe = {
-		'unifieddyes:grey_paint',
+		'group:dye,basecolor_grey',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
@@ -499,7 +499,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
-		'unifieddyes:red',
+		'group:dye,basecolor_red',
 	},
 	replacements = { {'unifieddyes:red', 'vessels:glass_bottle'}, },
 })
@@ -530,7 +530,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
-		'unifieddyes:yellow',
+		'group:dye,basecolor_yellow',
 	},
 	replacements = { {'unifieddyes:yellow', 'vessels:glass_bottle'}, },
 })
@@ -794,7 +794,6 @@ minetest.register_craft({
         burntime = 30,
 })
 
-
 --
 
 minetest.register_craftitem("homedecor:dresser_oak", {
@@ -824,7 +823,6 @@ minetest.register_craftitem("homedecor:dresser_mahogany", {
         description = "Three-Drawer Mahogany Dresser",
         inventory_image = "homedecor_dresser_mahogany_inv.png",
 })
-
 
 minetest.register_craft( {
 	type = 'shapeless',
