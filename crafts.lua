@@ -266,28 +266,6 @@ minetest.register_craft( {
 
 --
 
-minetest.register_craftitem("homedecor:utility_table_legs", {
-        description = "Legs for Small Utility table",
-        inventory_image = "homedecor_utility_table_legs.png",
-})
-
-minetest.register_craft( {
-        output = 'homedecor:utility_table_legs',
-        recipe = {
-                { 'default:stick', 'default:stick', 'default:stick' },
-                { 'default:stick', '', 'default:stick' },
-                { 'default:stick', '', 'default:stick' },
-        },
-})
-
-minetest.register_craft({
-        type = 'fuel',
-        recipe = 'homedecor:utility_table_legs',
-        burntime = 30,
-})
-
---
-
 minetest.register_craft( {
         output = 'homedecor:wood_table_small_round 15',
         recipe = {
@@ -623,36 +601,6 @@ minetest.register_craft({
        	burntime = 30,
 })
 
--- Table legs and stuff
-
-minetest.register_craft( {
-        output = 'homedecor:table_legs_wrought_iron 3',
-        recipe = {
-                { '', 'default:iron_lump', '' },
-                { '', 'default:iron_lump', '' },
-                { 'default:iron_lump', 'default:iron_lump', 'default:iron_lump' },
-        },
-})
-
--- 
-
-minetest.register_craft( {
-        output = 'homedecor:pole_wrought_iron 4',
-        recipe = {
-                { 'default:iron_lump', },
-                { 'default:iron_lump', },
-                { 'default:iron_lump', },
-        },
-})
-
-minetest.register_craft( {
-        output = 'homedecor:fence_wrought_iron 6',
-        recipe = {
-                { 'default:iron_lump','default:iron_lump','default:iron_lump' },
-                { 'default:iron_lump','default:iron_lump','default:iron_lump' },
-        },
-})
-
 --
 
 minetest.register_craftitem("homedecor:drawer_small", {
@@ -767,9 +715,6 @@ minetest.register_craft({
         burntime = 30,
 })
 
--- ==========================================================
--- Recipes that require materials from Calinou's Moreores mod
-
 minetest.register_craftitem("homedecor:brass_ingot", {
         description = "Brass Ingot",
         inventory_image = "homedecor_brass_ingot.png",
@@ -784,6 +729,16 @@ minetest.register_craft( {
 	},
 })
 
+-- Table legs
+
+minetest.register_craft( {
+        output = 'homedecor:table_legs_wrought_iron 3',
+        recipe = {
+                { '', 'default:iron_lump', '' },
+                { '', 'default:iron_lump', '' },
+                { 'default:iron_lump', 'default:iron_lump', 'default:iron_lump' },
+        },
+})
 
 minetest.register_craft( {
         output = 'homedecor:table_legs_brass 3',
@@ -793,6 +748,28 @@ minetest.register_craft( {
 		{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' }
 	},
 })
+
+minetest.register_craftitem("homedecor:utility_table_legs", {
+        description = "Legs for Small Utility table",
+        inventory_image = "homedecor_utility_table_legs.png",
+})
+
+minetest.register_craft( {
+        output = 'homedecor:utility_table_legs',
+        recipe = {
+                { 'default:stick', 'default:stick', 'default:stick' },
+                { 'default:stick', '', 'default:stick' },
+                { 'default:stick', '', 'default:stick' },
+        },
+})
+
+minetest.register_craft({
+        type = 'fuel',
+        recipe = 'homedecor:utility_table_legs',
+        burntime = 30,
+})
+
+-- vertical poles/lampposts
 
 minetest.register_craft( {
         output = 'homedecor:pole_brass 4',
@@ -804,15 +781,15 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = 'homedecor:fence_brass 6',
-	recipe = {
-		{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' },
-		{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' },
-	},
+        output = 'homedecor:pole_wrought_iron 4',
+        recipe = {
+                { 'default:iron_lump', },
+                { 'default:iron_lump', },
+                { 'default:iron_lump', },
+        },
 })
 
--- ========================================================
--- Recipes that require materials from Jeija's Mesecons mod
+-- Home electronics
 
 if ( minetest.get_modpath("mesecons") ) == nil then
 
@@ -1115,5 +1092,59 @@ minetest.register_craft({
 		{"default:stick" },
 		{"moreblocks:superglowglass" },
 	}
+})
+
+-- Fences
+
+minetest.register_craft( {
+        output = 'homedecor:fence_brass 6',
+	recipe = {
+		{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' },
+		{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' },
+	},
+})
+
+minetest.register_craft( {
+        output = 'homedecor:fence_wrought_iron 6',
+        recipe = {
+                { 'default:iron_lump','default:iron_lump','default:iron_lump' },
+                { 'default:iron_lump','default:iron_lump','default:iron_lump' },
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:fence_picket 6",
+        recipe = {
+                { "default:stick", "default:stick", "default:stick" },
+                { "default:stick", "", "default:stick" },
+                { "default:stick", "default:stick", "default:stick" }
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:fence_picket_white 6",
+        recipe = {
+                { "default:stick", "default:stick", "default:stick" },
+                { "default:stick", "unifieddyes:white_paint", "default:stick" },
+                { "default:stick", "default:stick", "default:stick" }
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:fence_privacy 6",
+        recipe = {
+                { "default:wood", "default:stick", "default:wood" },
+                { "default:wood", "", "default:wood" },
+                { "default:wood", "default:stick", "default:wood" }
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:fence_barbed_wire 6",
+        recipe = {
+                { "default:stick", "default:iron_lump", "default:stick" },
+                { "default:stick", "", "default:stick" },
+                { "default:stick", "default:iron_lump", "default:stick" }
+        },
 })
 

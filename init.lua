@@ -11,6 +11,7 @@
 -- License: LGPL
 --
 
+dofile(minetest.get_modpath("homedecor").."/fences.lua")
 dofile(minetest.get_modpath("homedecor").."/kitchen_cabinet.lua")
 dofile(minetest.get_modpath("homedecor").."/refrigerator.lua")
 dofile(minetest.get_modpath("homedecor").."/oven.lua")
@@ -479,70 +480,6 @@ minetest.register_node('homedecor:folding_door_oak', {
 	},
 })
 
-minetest.register_node('homedecor:dresser_mahogany_left_side', {
-	description = "Mahogany Dresser (Left Half)",
-	tiles = { 'homedecor_dresser_mahogany_sides.png',
-			'homedecor_dresser_mahogany_sides.png',
-			'homedecor_dresser_mahogany_sides.png',
-			'homedecor_dresser_mahogany_sides.png',
-			'homedecor_dresser_mahogany_sides.png',
-			'homedecor_dresser_mahogany_front_left.png'},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
-	groups = { snappy = 3, not_in_creative_inventory=1 },
-	sounds = default.node_sound_leaves_defaults(),
-})
-
-minetest.register_node('homedecor:dresser_mahogany_right_side', {
-	description = "Mahogany Dresser (Right Half)",
-	tiles = { 'homedecor_dresser_mahogany_sides.png',
-			'homedecor_dresser_mahogany_sides.png',
-			'homedecor_dresser_mahogany_sides.png',
-			'homedecor_dresser_mahogany_sides.png',
-			'homedecor_dresser_mahogany_sides.png',
-			'homedecor_dresser_mahogany_front_right.png'},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
-	groups = { snappy = 3, not_in_creative_inventory=1 },
-	sounds = default.node_sound_leaves_defaults(),
-})
-
-minetest.register_node('homedecor:dresser_oak_left_side', {
-	description = "Oak Dresser (Left Half)",
-	tiles = { 'homedecor_dresser_oak_sides.png',
-			'homedecor_dresser_oak_sides.png',
-			'homedecor_dresser_oak_sides.png',
-			'homedecor_dresser_oak_sides.png',
-			'homedecor_dresser_oak_sides.png',
-			'homedecor_dresser_oak_front_left.png'},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
-	groups = { snappy = 3, not_in_creative_inventory=1 },
-	sounds = default.node_sound_leaves_defaults(),
-})
-
-minetest.register_node('homedecor:dresser_oak_right_side', {
-	description = "Oak Dresser (Right Half)",
-	tiles = { 'homedecor_dresser_oak_sides.png',
-			'homedecor_dresser_oak_sides.png',
-			'homedecor_dresser_oak_sides.png',
-			'homedecor_dresser_oak_sides.png',
-			'homedecor_dresser_oak_sides.png',
-			'homedecor_dresser_oak_front_right.png'},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
-	groups = { snappy = 3, not_in_creative_inventory=1 },
-	sounds = default.node_sound_leaves_defaults(),
-})
-
 minetest.register_node('homedecor:shutter_black', {
 	description = "Wooden Shutter (Black)",
 	tiles = { 'homedecor_window_shutter_black.png' },
@@ -822,41 +759,6 @@ minetest.register_node("homedecor:pole_wrought_iron", {
         sounds = default.node_sound_wood_defaults(),
 	walkable = true,
 })
-
-minetest.register_node("homedecor:fence_brass", {
-        description = "Brass Fence/railing",
-        drawtype = "fencelike",
-        tiles = {"homedecor_tile_brass.png"},
-        inventory_image = "homedecor_fence_brass.png",
-        wield_image = "homedecor_pole_brass.png",
-        paramtype = "light",
-        is_ground_content = true,
-        selection_box = {
-                type = "fixed",
-                fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
-        },
-        groups = {snappy=3},
-        sounds = default.node_sound_wood_defaults(),
-	walkable = true,
-})
-
-minetest.register_node("homedecor:fence_wrought_iron", {
-        description = "Wrought Iron Fence/railing",
-        drawtype = "fencelike",
-        tiles = {"homedecor_tile_wrought_iron.png"},
-        inventory_image = "homedecor_fence_wrought_iron.png",
-        wield_image = "homedecor_pole_wrought_iron.png",
-        paramtype = "light",
-        is_ground_content = true,
-        selection_box = {
-                type = "fixed",
-                fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
-        },
-        groups = {snappy=3},
-        sounds = default.node_sound_wood_defaults(),
-	walkable = true,
-})
-
 
 minetest.register_node('homedecor:speaker', {
 	description = "Large Stereo Speaker",
