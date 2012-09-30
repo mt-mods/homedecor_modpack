@@ -1,18 +1,21 @@
 -- Home Decor mod by VanessaE
--- 2012-06-12
+-- 2012-09-30
 --
 -- Mostly my own code, with bits and pieces lifted from Minetest's default
--- lua files, from ironzorg's flowers mod
+-- lua files and from ironzorg's flowers mod.  Many thanks to GloopMaster
+-- for helping me figure out the inventories used in the nightstands/dressers.
 --
--- See also, foldingdoors.lua (borrowed heavily from Minetest's default 
--- doors mod)
+-- The code for ovens, nightstands, refrigerators are basically modified 
+-- copies of the code for chests and furnaces.
 --
--- This mod requires the presence of the "unifieddyes" mod, which also
--- supplies ironzorg's flowers mod.
---
--- License: GPL
+-- License: LGPL
 --
 
+dofile(minetest.get_modpath("homedecor").."/kitchen_cabinet.lua")
+dofile(minetest.get_modpath("homedecor").."/refrigerator.lua")
+dofile(minetest.get_modpath("homedecor").."/oven.lua")
+dofile(minetest.get_modpath("homedecor").."/nightstands.lua")
+dofile(minetest.get_modpath("homedecor").."/dressers.lua")
 dofile(minetest.get_modpath("homedecor").."/television.lua")
 dofile(minetest.get_modpath("homedecor").."/foldingdoors_oak.lua")
 dofile(minetest.get_modpath("homedecor").."/foldingdoors_mahogany.lua")
@@ -288,180 +291,6 @@ minetest.register_node('homedecor:stereo', {
 	walkable = true,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
-})
-
-minetest.register_node('homedecor:nightstand_oak_one_drawer', {
-	description = "Oak Nightstand with One Drawer",
-	tiles = { 'homedecor_nightstand_oak_sides.png',
-			'homedecor_nightstand_oak_sides.png',
-			'homedecor_nightstand_oak_sides.png',
-			'homedecor_nightstand_oak_sides.png',
-			'homedecor_nightstand_oak_sides.png',
-			'homedecor_nightstand_oak_1_drawer_front.png'},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
-	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
-
-	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
-		meta:set_string("formspec",
-				"size[8,6]"..
-				"list[current_name;main;0,0;8,1;]"..
-				"list[current_player;main;0,2;8,4;]")
-		meta:set_string("infotext", "One-drawer Nightstand")
-		local inv = meta:get_inventory()
-		inv:set_size("main", 8)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
-	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff in nightstand at "..minetest.pos_to_string(pos))
-	end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff to nightstand at "..minetest.pos_to_string(pos))
-	end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" takes stuff from nightstand at "..minetest.pos_to_string(pos))
-	end,
-})
-
-minetest.register_node('homedecor:nightstand_oak_two_drawers', {
-	description = "Oak Nightstand with One Drawer",
-	tiles = { 'homedecor_nightstand_oak_sides.png',
-			'homedecor_nightstand_oak_sides.png',
-			'homedecor_nightstand_oak_sides.png',
-			'homedecor_nightstand_oak_sides.png',
-			'homedecor_nightstand_oak_sides.png',
-			'homedecor_nightstand_oak_2_drawer_front.png'},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
-	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
-	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
-		meta:set_string("formspec",
-				"size[8,7]"..
-				"list[current_name;main;0,0;8,2;]"..
-				"list[current_player;main;0,3;8,4;]")
-		meta:set_string("infotext", "Two-drawer Nightstand")
-		local inv = meta:get_inventory()
-		inv:set_size("main", 16)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
-	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff in nightstand at "..minetest.pos_to_string(pos))
-	end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff to nightstand at "..minetest.pos_to_string(pos))
-	end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" takes stuff from nightstand at "..minetest.pos_to_string(pos))
-	end,
-})
-
-minetest.register_node('homedecor:nightstand_mahogany_one_drawer', {
-	description = "Oak Nightstand with One Drawer",
-	tiles = { 'homedecor_nightstand_mahogany_sides.png',
-			'homedecor_nightstand_mahogany_sides.png',
-			'homedecor_nightstand_mahogany_sides.png',
-			'homedecor_nightstand_mahogany_sides.png',
-			'homedecor_nightstand_mahogany_sides.png',
-			'homedecor_nightstand_mahogany_1_drawer_front.png'},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
-	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
-
-	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
-		meta:set_string("formspec",
-				"size[8,6]"..
-				"list[current_name;main;0,0;8,1;]"..
-				"list[current_player;main;0,2;8,4;]")
-		meta:set_string("infotext", "One-drawer Nightstand")
-		local inv = meta:get_inventory()
-		inv:set_size("main", 8)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
-	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff in nightstand at "..minetest.pos_to_string(pos))
-	end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff to nightstand at "..minetest.pos_to_string(pos))
-	end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" takes stuff from nightstand at "..minetest.pos_to_string(pos))
-	end,
-})
-
-minetest.register_node('homedecor:nightstand_mahogany_two_drawers', {
-	description = "Oak Nightstand with One Drawer",
-	tiles = { 'homedecor_nightstand_mahogany_sides.png',
-			'homedecor_nightstand_mahogany_sides.png',
-			'homedecor_nightstand_mahogany_sides.png',
-			'homedecor_nightstand_mahogany_sides.png',
-			'homedecor_nightstand_mahogany_sides.png',
-			'homedecor_nightstand_mahogany_2_drawer_front.png'},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
-	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
-	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
-		meta:set_string("formspec",
-				"size[8,7]"..
-				"list[current_name;main;0,0;8,2;]"..
-				"list[current_player;main;0,3;8,4;]")
-		meta:set_string("infotext", "Two-drawer Nightstand")
-		local inv = meta:get_inventory()
-		inv:set_size("main", 16)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
-	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff in nightstand at "..minetest.pos_to_string(pos))
-	end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff to nightstand at "..minetest.pos_to_string(pos))
-	end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" takes stuff from nightstand at "..minetest.pos_to_string(pos))
-	end,
 })
 
 minetest.register_node('homedecor:utility_table_top', {
@@ -941,10 +770,6 @@ minetest.register_node('homedecor:utilitytable2', {
 	sounds = default.node_sound_leaves_defaults(),
 })
 
--- ===================================================
--- everything after this line is for testing purposes.
--- ===================================================
-
 -- cylinder-shaped objects courtesy Jeija
 
 local cylbox = {}
@@ -1075,5 +900,92 @@ minetest.register_node('homedecor:speaker_small', {
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
 })
+
+minetest.register_node('homedecor:glowlight_thick', {
+	description = "Glowlight (thick)",
+	drawtype = "nodebox",
+	tiles = { 'homedecor_glowlight_tb.png',
+			'homedecor_glowlight_tb.png',
+			'homedecor_glowlight_thick_sides.png',
+			'homedecor_glowlight_thick_sides.png',
+			'homedecor_glowlight_thick_sides.png',
+			'homedecor_glowlight_thick_sides.png'},
+        selection_box = {
+                type = "fixed",
+                fixed = { -0.5, 0, -0.5, 0.5, 0.5, 0.5 }
+        },
+        node_box = {
+                type = "fixed",
+                fixed = { -0.5, 0, -0.5, 0.5, 0.5, 0.5 }
+        },
+
+	sunlight_propagates = false,
+	paramtype = "light",
+	walkable = true,
+	groups = { snappy = 3 },
+	light_source = LIGHT_MAX,
+	sounds = default.node_sound_leaves_defaults(),
+})
+
+minetest.register_node('homedecor:glowlight_thin', {
+	description = "Glowlight (thin)",
+	drawtype = "nodebox",
+	tiles = { 'homedecor_glowlight_tb.png',
+			'homedecor_glowlight_tb.png',
+			'homedecor_glowlight_thin_sides.png',
+			'homedecor_glowlight_thin_sides.png',
+			'homedecor_glowlight_thin_sides.png',
+			'homedecor_glowlight_thin_sides.png'},
+        selection_box = {
+                type = "fixed",
+                fixed = { -0.5, 0.25, -0.5, 0.5, 0.5, 0.5 }
+        },
+        node_box = {
+                type = "fixed",
+                fixed = { -0.5, 0.25, -0.5, 0.5, 0.5, 0.5 }
+        },
+
+	sunlight_propagates = false,
+	paramtype = "light",
+	walkable = true,
+	groups = { snappy = 3 },
+	light_source = LIGHT_MAX-1,
+	sounds = default.node_sound_leaves_defaults(),
+})
+
+--
+
+local curtaincolors = {
+	"red",
+	"green",
+	"blue",
+	"white",
+	"pink",
+	"violet"
+}
+
+for c in ipairs(curtaincolors) do
+	local color = curtaincolors[c]
+
+minetest.register_node("homedecor:curtain_"..color, {
+	description = "Curtains ("..color..")",
+	tiles = { "homedecor_curtain_"..color..".png" },
+	inventory_image = "homedecor_curtain_"..color..".png",
+	wield_image = "homedecor_curtain_"..color..".png",
+	drawtype = 'signlike',
+	sunlight_propagates = false,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	walkable = false,
+	groups = { snappy = 3 },
+	sounds = default.node_sound_leaves_defaults(),
+	paramtype2 = 'wallmounted',
+	selection_box = {
+		type = "wallmounted",
+		--wall_side = = <default>
+	},
+})
+
+end
 
 print("[HomeDecor] Loaded!")

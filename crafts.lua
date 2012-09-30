@@ -194,19 +194,17 @@ minetest.register_craft( {
 --
 
 minetest.register_craft( {
-        output = 'homedecor:glass_table_small_square 2',
-        recipe = {
-		{ 'homedecor:glass_table_small_round', 'homedecor:glass_table_small_round', 'homedecor:glass_table_small_round' },
-        },
+	type = "shapeless",
+        output = 'homedecor:glass_table_small_square',
+        recipe = { 'homedecor:glass_table_small_round' },
 })
 
 --
 
 minetest.register_craft( {
-        output = 'homedecor:glass_table_large 2',
-        recipe = {
-                { 'homedecor:glass_table_small_square', 'homedecor:glass_table_small_square' },
-        },
+	type = "shapeless",
+        output = 'homedecor:glass_table_large',
+        recipe = { 'homedecor:glass_table_small_square' },
 })
 
 --
@@ -306,10 +304,9 @@ minetest.register_craft({
 })
 
 minetest.register_craft( {
+	type = "shapeless",
         output = 'homedecor:wood_table_small_square 2',
-        recipe = { 
-		{ 'homedecor:wood_table_small_round', 'homedecor:wood_table_small_round', 'homedecor:wood_table_small_round' },
-        },
+        recipe = { 'homedecor:wood_table_small_round' },
 })
 
 minetest.register_craft({
@@ -321,10 +318,9 @@ minetest.register_craft({
 --
 
 minetest.register_craft( {
+	type = "shapeless",
         output = 'homedecor:wood_table_large 2',
-        recipe = {
-                { 'homedecor:wood_table_small_square', 'homedecor:wood_table_small_square' },
-        },
+        recipe = { 'homedecor:wood_table_small_square' },
 })
 
 minetest.register_craft({
@@ -630,7 +626,7 @@ minetest.register_craft({
 -- Table legs and stuff
 
 minetest.register_craft( {
-        output = 'homedecor:table_legs_wrought_iron 2',
+        output = 'homedecor:table_legs_wrought_iron 3',
         recipe = {
                 { '', 'default:iron_lump', '' },
                 { '', 'default:iron_lump', '' },
@@ -641,7 +637,7 @@ minetest.register_craft( {
 -- 
 
 minetest.register_craft( {
-        output = 'homedecor:pole_wrought_iron 2',
+        output = 'homedecor:pole_wrought_iron 4',
         recipe = {
                 { 'default:iron_lump', },
                 { 'default:iron_lump', },
@@ -650,7 +646,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = 'homedecor:fence_wrought_iron 4',
+        output = 'homedecor:fence_wrought_iron 6',
         recipe = {
                 { 'default:iron_lump','default:iron_lump','default:iron_lump' },
                 { 'default:iron_lump','default:iron_lump','default:iron_lump' },
@@ -771,91 +767,6 @@ minetest.register_craft({
         burntime = 30,
 })
 
-
---
-
-minetest.register_craftitem("homedecor:drawer_large", {
-        description = "Large Wooden Drawer",
-        inventory_image = "homedecor_drawer_large.png",
-})
-
-
-minetest.register_craft( {
-        output = 'homedecor:drawer_large',
-        recipe = {
-                { 'default:wood', 'default:steel_ingot', 'default:wood' },
-                { 'default:wood', 'default:wood', 'default:wood' },
-        },
-})
-
-minetest.register_craft({
-        type = 'fuel',
-        recipe = 'homedecor:drawer_large',
-        burntime = 30,
-})
-
---
-
-minetest.register_craftitem("homedecor:dresser_oak", {
-        description = "Three-Drawer Oak Dresser",
-        inventory_image = "homedecor_dresser_oak_inv.png",
-})
-
-
-minetest.register_craft( {
-        output = 'homedecor:dresser_oak',
-        recipe = {
-                { 'default:wood', 'homedecor:drawer_large', 'default:wood' },
-                { 'default:wood', 'homedecor:drawer_large', 'default:wood' },
-                { 'default:wood', 'homedecor:drawer_large', 'default:wood' },
-        },
-})
-
-minetest.register_craft({
-        type = 'fuel',
-        recipe = 'homedecor:dresser_oak',
-        burntime = 30,
-})
-
---
-
-minetest.register_craftitem("homedecor:dresser_mahogany", {
-        description = "Three-Drawer Mahogany Dresser",
-        inventory_image = "homedecor_dresser_mahogany_inv.png",
-})
-
-minetest.register_craft( {
-	type = 'shapeless',
-        output = 'homedecor:dresser_mahogany',
-        recipe = {
-		'homedecor:dresser_oak',
-		'unifieddyes:dark_orange',
-		'unifieddyes:dark_orange',
-        },
-	replacements = {
-			{'unifieddyes:dark_orange', 'vessels:glass_bottle'},
-			{'unifieddyes:dark_orange', 'vessels:glass_bottle'}
-	},
-})
-
-minetest.register_craft( {
-	type = 'shapeless',
-        output = 'homedecor:dresser_mahogany',
-        recipe = {
-		'homedecor:dresser_oak',
-                'default:dirt',
-                'default:dirt',
-		'default:coal_lump',
-		'default:coal_lump',
-        },
-})
-
-minetest.register_craft({
-        type = 'fuel',
-        recipe = 'homedecor:dresser_oak',
-        burntime = 30,
-})
-
 -- ==========================================================
 -- Recipes that require materials from Calinou's Moreores mod
 
@@ -875,7 +786,7 @@ minetest.register_craft( {
 
 
 minetest.register_craft( {
-        output = 'homedecor:table_legs_brass 2',
+        output = 'homedecor:table_legs_brass 3',
 	recipe = {
 		{ '', 'homedecor:brass_ingot', '' },
 		{ '', 'homedecor:brass_ingot', '' },
@@ -884,7 +795,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = 'homedecor:pole_brass 2',
+        output = 'homedecor:pole_brass 4',
 	recipe = {
 		{ '', 'homedecor:brass_ingot', '' },
 		{ '', 'homedecor:brass_ingot', '' },
@@ -893,7 +804,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = 'homedecor:fence_brass 4',
+        output = 'homedecor:fence_brass 6',
 	recipe = {
 		{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' },
 		{ 'homedecor:brass_ingot', 'homedecor:brass_ingot', 'homedecor:brass_ingot' },
@@ -1038,5 +949,154 @@ minetest.register_craft( {
 	},
 })
 
+-- Curtains
+
+local curtaincolors = {
+	"red",
+	"green",
+	"blue",
+	"white",
+	"pink",
+	"violet"
+}
+
+for c in ipairs(curtaincolors) do
+	local color = curtaincolors[c]
+	minetest.register_craft( {
+		output = "homedecor:curtain_"..color.." 3",
+	      		recipe = {
+			{ "wool:"..color, "", ""},
+			{ "wool:"..color, "", ""},
+			{ "wool:"..color, "", ""},
+		},
+	})
+end
+
+
+-- Recycling recipes
+
+-- Glass object recycle via the glass fragments item/recipe in the Vessels mod.
+
+minetest.register_craft({
+        type = "shapeless",
+        output = "vessels:glass_fragments",
+        recipe = {
+		"homedecor:glass_table_small_round",
+		"homedecor:glass_table_small_round",
+		"homedecor:glass_table_small_round"
+	}
+})
+
+minetest.register_craft({
+        type = "shapeless",
+        output = "vessels:glass_fragments",
+        recipe = {
+		"homedecor:glass_table_small_square",
+		"homedecor:glass_table_small_square",
+		"homedecor:glass_table_small_square"
+	}
+})
+
+minetest.register_craft({
+        type = "shapeless",
+        output = "vessels:glass_fragments",
+        recipe = {
+		"homedecor:glass_table_large",
+		"homedecor:glass_table_large",
+		"homedecor:glass_table_large"
+	}
+})
+
+-- Wooden tabletops can turn into sticks
+
+minetest.register_craft({
+        type = "shapeless",
+        output = "default:stick 4",
+        recipe = {
+		"homedecor:wood_table_small_round",
+		"homedecor:wood_table_small_round",
+		"homedecor:wood_table_small_round"
+	}
+})
+
+minetest.register_craft({
+        type = "shapeless",
+        output = "default:stick 4",
+        recipe = {
+		"homedecor:wood_table_small_square",
+		"homedecor:wood_table_small_square",
+		"homedecor:wood_table_small_square"
+	}
+})
+
+minetest.register_craft({
+        type = "shapeless",
+        output = "default:stick 4",
+        recipe = {
+		"homedecor:wood_table_large",
+		"homedecor:wood_table_large",
+		"homedecor:wood_table_large"
+	}
+})
+
+-- Kitchen stuff
+
+minetest.register_craft({
+        output = "homedecor:oven",
+        recipe = {
+		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot", },
+		{"default:steel_ingot", "moreblocks:ironglass", "default:steel_ingot", },
+		{"default:steel_ingot", "moreores:copper_ingot", "default:steel_ingot", },
+	}
+})
+
+minetest.register_craft({
+        output = "homedecor:refrigerator 2",
+        recipe = {
+		{"default:steel_ingot", "moreblocks:glowglass", "default:steel_ingot", },
+		{"default:steel_ingot", "moreores:tin_ingot", "default:steel_ingot", },
+		{"default:steel_ingot", "default:clay", "default:steel_ingot", },
+	}
+})
+
+minetest.register_craft({
+        output = "homedecor:kitchen_cabinet",
+        recipe = {
+		{"default:wood", "default:stick", "default:wood", },
+		{"default:wood", "default:stick", "default:wood", },
+		{"default:wood", "default:stick", "default:wood", },
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+        output = "homedecor:kitchen_cabinet_half 2",
+        recipe = { "homedecor:kitchen_cabinet" }
+})
+
+minetest.register_craft({
+        output = "homedecor:kitchen_cabinet_with_sink",
+        recipe = {
+		{"default:wood", "default:steel_ingot", "default:wood", },
+		{"default:wood", "default:steel_ingot", "default:wood", },
+		{"default:wood", "default:stick", "default:wood", },
+	}
+})
+
+-- Lighting
+
+minetest.register_craft({
+        output = "homedecor:glowlight_thick 6",
+        recipe = {
+		{"moreblocks:superglowglass", "moreblocks:superglowglass", "moreblocks:superglowglass", },
+	}
+})
+
+minetest.register_craft({
+        output = "homedecor:glowlight_thin 6",
+        recipe = {
+		{"homedecor:glowlight_thick", "homedecor:glowlight_thick", "homedecor:glowlight_thick", },
+	}
+})
 
 
