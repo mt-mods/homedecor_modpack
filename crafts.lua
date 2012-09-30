@@ -305,7 +305,7 @@ minetest.register_craft({
 
 minetest.register_craft( {
 	type = "shapeless",
-        output = 'homedecor:wood_table_small_square 2',
+        output = 'homedecor:wood_table_small_square',
         recipe = { 'homedecor:wood_table_small_round' },
 })
 
@@ -975,7 +975,7 @@ end
 
 -- Recycling recipes
 
--- Glass object recycle via the glass fragments item/recipe in the Vessels mod.
+-- Some glass objects recycle via the glass fragments item/recipe in the Vessels mod.
 
 minetest.register_craft({
         type = "shapeless",
@@ -1004,6 +1004,17 @@ minetest.register_craft({
 		"homedecor:glass_table_large",
 		"homedecor:glass_table_large",
 		"homedecor:glass_table_large"
+	}
+})
+
+minetest.register_craft({
+        type = "shapeless",
+        output = "vessels:glass_fragments 2",
+        recipe = {
+		"homedecor:skylight",
+		"homedecor:skylight",
+		"homedecor:skylight",
+		"homedecor:skylight"
 	}
 })
 
