@@ -148,3 +148,34 @@ minetest.register_node("homedecor:fence_barbed_wire", {
         },
 })
 
+minetest.register_node("homedecor:fence_chainlink", {
+	drawtype = "nodebox",
+        description = "Chainlink Fence",
+        tiles = {
+		"homedecor_fence_chainlink_tb.png",
+		"homedecor_fence_chainlink_tb.png",
+		"homedecor_fence_chainlink_sides.png",
+		"homedecor_fence_chainlink_sides.png",
+		"homedecor_fence_chainlink_fb.png",
+		"homedecor_fence_chainlink_fb.png",
+	},
+        paramtype = "light",
+        is_ground_content = true,
+        groups = {snappy=3},
+        sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+        selection_box = {
+                type = "fixed",
+                fixed = { -0.5, -0.5, 0.375, 0.5, 0.5, 0.5 }
+        },
+        node_box = {
+                type = "fixed",
+		fixed = {
+			{ -8/16, -8/16,  6/16, -7/16, 8/16,  8/16 },	-- left post
+			{  7/16, -8/16,  6/16,  8/16, 8/16,  8/16 }, 	-- right post
+			{ -8/16,  7/16, 13/32,  8/16, 8/16, 15/32 },	-- top piece
+			{ -8/16, -8/16,  7/16,  8/16, 8/16,  7/16 }	-- the chainlink itself
+		}		
+        },
+})

@@ -1149,3 +1149,11 @@ minetest.register_craft( {
         },
 })
 
+minetest.register_craft( {
+        output = "homedecor:fence_chainlink 9",
+        recipe = {
+                { "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" },
+                { "default:steel_ingot", "default:iron_lump", "default:steel_ingot" },
+                { "default:steel_ingot", "default:iron_lump", "default:steel_ingot" }
+        },
+})
