@@ -1109,4 +1109,11 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+        output = "homedecor:glowlight_small_cube 8",
+        recipe = {
+		{"default:stick" },
+		{"moreblocks:superglowglass" },
+	}
+})
 
