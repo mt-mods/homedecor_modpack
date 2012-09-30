@@ -1009,12 +1009,11 @@ minetest.register_craft({
 
 minetest.register_craft({
         type = "shapeless",
-        output = "vessels:glass_fragments 2",
+        output = "vessels:glass_fragments",
         recipe = {
 		"homedecor:skylight",
 		"homedecor:skylight",
 		"homedecor:skylight",
-		"homedecor:skylight"
 	}
 })
 
