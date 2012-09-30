@@ -70,7 +70,7 @@ minetest.register_node('homedecor:kitchen_cabinet_half', {
 		local meta = minetest.env:get_meta(pos)
 		meta:set_string("formspec",
 				"size[8,7]"..
-				"list[current_name;main;0,0;6,2;]"..
+				"list[current_name;main;1,0;6,2;]"..
 				"list[current_player;main;0,3;8,4;]")
 		meta:set_string("infotext", "Kitchen cabinet")
 		local inv = meta:get_inventory()
