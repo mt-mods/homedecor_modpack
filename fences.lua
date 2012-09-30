@@ -35,6 +35,7 @@ minetest.register_node("homedecor:fence_wrought_iron", {
 })
 
 minetest.register_node("homedecor:fence_picket", {
+	drawtype = "signlike",
         description = "Unpainted Picket Fence",
         tiles = {"homedecor_fence_picket.png"},
         inventory_image = "homedecor_fence_picket.png",
@@ -51,6 +52,7 @@ minetest.register_node("homedecor:fence_picket", {
 })
 
 minetest.register_node("homedecor:fence_picket_white", {
+	drawtype = "signlike",
         description = "White Picket Fence",
         tiles = {"homedecor_fence_picket_white.png"},
         inventory_image = "homedecor_fence_picket_white.png",
@@ -67,6 +69,7 @@ minetest.register_node("homedecor:fence_picket_white", {
 })
 
 minetest.register_node("homedecor:fence_privacy", {
+	drawtype = "signlike",
         description = "Wooden Privacy Fence",
         tiles = {"homedecor_fence_privacy.png"},
         inventory_image = "homedecor_fence_privacy.png",
@@ -83,6 +86,7 @@ minetest.register_node("homedecor:fence_privacy", {
 })
 
 minetest.register_node("homedecor:fence_barbed_wire", {
+	drawtype = "signlike",
         description = "Barbed Wire Fence",
         tiles = {"homedecor_fence_barbed_wire.png"},
         inventory_image = "homedecor_fence_barbed_wire.png",
