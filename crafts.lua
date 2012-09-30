@@ -319,7 +319,7 @@ minetest.register_craft({
 
 minetest.register_craft( {
 	type = "shapeless",
-        output = 'homedecor:wood_table_large 2',
+        output = 'homedecor:wood_table_large',
         recipe = { 'homedecor:wood_table_small_square' },
 })
 
