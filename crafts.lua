@@ -1128,6 +1128,7 @@ minetest.register_craft( {
                 { "default:stick", "unifieddyes:white_paint", "default:stick" },
                 { "default:stick", "default:stick", "default:stick" }
         },
+	replacements = { {'unifieddyes:white_paint', 'bucket:bucket_empty'}, },
 })
 
 minetest.register_craft( {
