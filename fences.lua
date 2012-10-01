@@ -45,8 +45,8 @@ minetest.register_node("homedecor:fence_picket", {
 		"homedecor_fence_picket_backside.png",
 		"homedecor_fence_picket.png"
 	},
-        inventory_image = "homedecor_fence_picket.png",
-        wield_image = "homedecor_fence_picket.png",
+--        inventory_image = "homedecor_fence_picket.png",
+--        wield_image = "homedecor_fence_picket.png",
         paramtype = "light",
         is_ground_content = true,
         groups = {snappy=3},
@@ -74,8 +74,8 @@ minetest.register_node("homedecor:fence_picket_white", {
 		"homedecor_fence_picket_white_backside.png",
 		"homedecor_fence_picket_white.png"
 	},
-        inventory_image = "homedecor_fence_picket_white.png",
-        wield_image = "homedecor_fence_picket_white.png",
+--        inventory_image = "homedecor_fence_picket_white.png",
+--        wield_image = "homedecor_fence_picket_white.png",
         paramtype = "light",
         is_ground_content = true,
         groups = {snappy=3},
@@ -181,6 +181,195 @@ minetest.register_node("homedecor:fence_chainlink", {
         },
 })
 
+
+-- =====
+-- Gates
+
+minetest.register_node("homedecor:fence_picket_gate_closed", {
+	drawtype = "nodebox",
+        description = "Unpainted Picket Fence Gate",
+        tiles = {
+		"homedecor_fence_picket_gate.png",
+		"homedecor_fence_picket_gate.png",
+		"homedecor_fence_picket_gate.png",
+		"homedecor_fence_picket_gate.png",
+		"homedecor_fence_picket_gate_backside.png",
+		"homedecor_fence_picket_gate.png"
+	},
+--        inventory_image = "homedecor_fence_picket_gate.png",
+--        wield_image = "homedecor_fence_picket_gate.png",
+        paramtype = "light",
+        is_ground_content = true,
+        groups = {snappy=3},
+        sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+        selection_box = {
+                type = "fixed",
+                fixed = { -0.5, -0.5, 0.4, 0.5, 0.5, 0.5 }
+        },
+        node_box = {
+                type = "fixed",
+                fixed = { -0.5, -0.5, 0.495, 0.5, 0.5, 0.495 }
+        },
+})
+
+minetest.register_node("homedecor:fence_picket_gate_open", {
+	drawtype = "nodebox",
+        description = "Unpainted Picket Fence Gate",
+        tiles = {
+		"homedecor_fence_picket_gate.png",
+		"homedecor_fence_picket_gate.png",
+		"homedecor_fence_picket_gate.png",
+		"homedecor_fence_picket_gate_backside.png",
+		"homedecor_fence_picket_gate.png",
+		"homedecor_fence_picket_gate.png"
+	},
+--        inventory_image = "homedecor_fence_picket_gate.png",
+--        wield_image = "homedecor_fence_picket_gate.png",
+        paramtype = "light",
+        is_ground_content = true,
+        groups = {snappy=3, not_in_creative_inventory=1},
+        sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+        selection_box = {
+                type = "fixed",
+                fixed = { 0.4, -0.5, -0.5, 0.5, 0.5, 0.5 }
+        },
+        node_box = {
+                type = "fixed",
+                fixed = { 0.495, -0.5, -0.5, 0.495, 0.5, 0.5 }
+        },
+	drop = "homedecor:fence_picket_gate_closed"
+})
+
+minetest.register_node("homedecor:fence_picket_gate_white_closed", {
+	drawtype = "nodebox",
+        description = "White Picket Fence Gate",
+        tiles = {
+		"homedecor_fence_picket_gate_white.png",
+		"homedecor_fence_picket_gate_white.png",
+		"homedecor_fence_picket_gate_white.png",
+		"homedecor_fence_picket_gate_white.png",
+		"homedecor_fence_picket_gate_white_backside.png",
+		"homedecor_fence_picket_gate_white.png"
+	},
+--        inventory_image = "homedecor_fence_picket_gate.png",
+--        wield_image = "homedecor_fence_picket_gate.png",
+        paramtype = "light",
+        is_ground_content = true,
+        groups = {snappy=3},
+        sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+        selection_box = {
+                type = "fixed",
+                fixed = { -0.5, -0.5, 0.4, 0.5, 0.5, 0.5 }
+        },
+        node_box = {
+                type = "fixed",
+                fixed = { -0.5, -0.5, 0.495, 0.5, 0.5, 0.495 }
+        },
+})
+
+minetest.register_node("homedecor:fence_picket_gate_white_open", {
+	drawtype = "nodebox",
+        description = "White Picket Fence Gate",
+        tiles = {
+		"homedecor_fence_picket_gate_white.png",
+		"homedecor_fence_picket_gate_white.png",
+		"homedecor_fence_picket_gate_white.png",
+		"homedecor_fence_picket_gate_white_backside.png",
+		"homedecor_fence_picket_gate_white.png",
+		"homedecor_fence_picket_gate_white.png"
+	},
+--        inventory_image = "homedecor_fence_picket_gate.png",
+--        wield_image = "homedecor_fence_picket_gate.png",
+        paramtype = "light",
+        is_ground_content = true,
+        groups = {snappy=3, not_in_creative_inventory=1},
+        sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+        selection_box = {
+                type = "fixed",
+                fixed = { 0.4, -0.5, -0.5, 0.5, 0.5, 0.5 }
+        },
+        node_box = {
+                type = "fixed",
+                fixed = { 0.495, -0.5, -0.5, 0.495, 0.5, 0.5 }
+        },
+	drop = "homedecor:fence_picket_gate_closed"
+})
+
+minetest.register_node("homedecor:fence_barbed_wire_gate_closed", {
+	drawtype = "nodebox",
+        description = "Barbed Wire Fence Gate",
+        tiles = {
+		"homedecor_fence_barbed_wire_gate_edges.png",
+		"homedecor_fence_barbed_wire_gate_edges.png",
+		"homedecor_fence_barbed_wire_gate_edges.png",
+		"homedecor_fence_barbed_wire_gate_edges.png",
+		"homedecor_fence_barbed_wire_gate_backside.png",
+		"homedecor_fence_barbed_wire_gate_front.png"
+	},
+        paramtype = "light",
+        is_ground_content = true,
+        groups = {snappy=3},
+        sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+        selection_box = {
+                type = "fixed",
+                fixed = { -0.5, -0.5, 0.375, 0.5, 0.5, 0.5 }
+        },
+        node_box = {
+                type = "fixed",
+		fixed = {
+			{ -8/16, -8/16, 6/16, -6/16, 8/16, 8/16 },	-- left post
+			{  6/16, -8/16, 6/16,  8/16, 8/16, 8/16 }, 	-- right post
+			{ -8/16,  7/16, 13/32,  8/16,  8/16, 15/32 },	-- top piece
+			{ -8/16, -8/16, 13/32,  8/16, -7/16, 15/32 },	-- bottom piece
+			{ -6/16, -8/16, 7/16,  6/16, 8/16, 7/16 }	-- the wire
+		}		
+        },
+})
+
+minetest.register_node("homedecor:fence_barbed_wire_gate_open", {
+	drawtype = "nodebox",
+        description = "Barbed Wire Fence Gate",
+        tiles = {
+		"homedecor_fence_barbed_wire_gate_edges.png",
+		"homedecor_fence_barbed_wire_gate_edges.png",
+		"homedecor_fence_barbed_wire_gate_front.png",
+		"homedecor_fence_barbed_wire_gate_backside.png",
+		"homedecor_fence_barbed_wire_gate_edges.png",
+		"homedecor_fence_barbed_wire_gate_edges.png"
+	},
+        paramtype = "light",
+        is_ground_content = true,
+        groups = {snappy=3, not_in_creative_inventory=1},
+        sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+        selection_box = {
+                type = "fixed",
+                fixed = { 0.375, -0.5, -0.5, 0.5, 0.5, 0.5 }
+        },
+        node_box = {
+                type = "fixed",
+		fixed = {
+			{  6/16, -8/16, -8/16,  8/16,  8/16, -6/16 },	-- left post
+			{  6/16, -8/16,  6/16,  8/16,  8/16,  8/16 }, 	-- right post
+			{ 13/32,  7/16, -8/16, 15/32,  8/16,  8/16 },	-- top piece
+			{ 13/32, -8/16, -8/16, 15/32, -7/16,  8/16 },	-- bottom piece
+			{  7/16, -8/16, -6/16,  7/16,  8/16,  6/16 }	-- the wire
+		}		
+        },
+	drop = "homedecor:fence_barbed_wire_gate_closed"
+})
+
 minetest.register_node("homedecor:fence_chainlink_gate_closed", {
 	drawtype = "nodebox",
         description = "Chainlink Fence Gate",
@@ -251,6 +440,48 @@ minetest.register_node("homedecor:fence_chainlink_gate_open", {
 })
 
 minetest.register_on_punchnode(function (pos, node)
+	if node.name=="homedecor:fence_picket_gate_white_closed" then 
+		fdir=node.param2
+		minetest.env:add_node(pos, { name = "homedecor:fence_picket_gate_white_open", param2 = fdir })
+	end
+end)
+
+minetest.register_on_punchnode(function (pos, node)
+	if node.name=="homedecor:fence_picket_gate_white_open" then 
+		fdir=node.param2
+		minetest.env:add_node(pos, { name = "homedecor:fence_picket_gate_white_closed", param2 = fdir })
+	end
+end)
+
+minetest.register_on_punchnode(function (pos, node)
+	if node.name=="homedecor:fence_picket_gate_closed" then 
+		fdir=node.param2
+		minetest.env:add_node(pos, { name = "homedecor:fence_picket_gate_open", param2 = fdir })
+	end
+end)
+
+minetest.register_on_punchnode(function (pos, node)
+	if node.name=="homedecor:fence_picket_gate_open" then 
+		fdir=node.param2
+		minetest.env:add_node(pos, { name = "homedecor:fence_picket_gate_closed", param2 = fdir })
+	end
+end)
+
+minetest.register_on_punchnode(function (pos, node)
+	if node.name=="homedecor:fence_barbed_wire_gate_closed" then 
+		fdir=node.param2
+		minetest.env:add_node(pos, { name = "homedecor:fence_barbed_wire_gate_open", param2 = fdir })
+	end
+end)
+
+minetest.register_on_punchnode(function (pos, node)
+	if node.name=="homedecor:fence_barbed_wire_gate_open" then 
+		fdir=node.param2
+		minetest.env:add_node(pos, { name = "homedecor:fence_barbed_wire_gate_closed", param2 = fdir })
+	end
+end)
+
+minetest.register_on_punchnode(function (pos, node)
 	if node.name=="homedecor:fence_chainlink_gate_closed" then 
 		fdir=node.param2
 		minetest.env:add_node(pos, { name = "homedecor:fence_chainlink_gate_open", param2 = fdir })
@@ -263,4 +494,5 @@ minetest.register_on_punchnode(function (pos, node)
 		minetest.env:add_node(pos, { name = "homedecor:fence_chainlink_gate_closed", param2 = fdir })
 	end
 end)
+
 

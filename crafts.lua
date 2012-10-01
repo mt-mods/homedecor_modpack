@@ -1160,6 +1160,54 @@ minetest.register_craft( {
 
 minetest.register_craft( {
 	type = "shapeless",
+        output = "homedecor:fence_picket_gate_white_closed",
+        recipe = {
+		"homedecor:fence_picket_white"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:fence_picket_white",
+        recipe = {
+		"homedecor:fence_picket_gate_white_closed"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:fence_picket_gate_closed",
+        recipe = {
+		"homedecor:fence_picket"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:fence_picket",
+        recipe = {
+		"homedecor:fence_picket_gate_closed"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:fence_barbed_wire_gate_closed",
+        recipe = {
+		"homedecor:fence_barbed_wire"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:fence_barbed_wire",
+        recipe = {
+		"homedecor:fence_barbed_wire_gate_closed"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
         output = "homedecor:fence_chainlink_gate_closed",
         recipe = {
 		"homedecor:fence_chainlink"
