@@ -172,10 +172,95 @@ minetest.register_node("homedecor:fence_chainlink", {
         node_box = {
                 type = "fixed",
 		fixed = {
-			{ -8/16, -8/16,  6/16, -7/16, 8/16,  8/16 },	-- left post
-			{  7/16, -8/16,  6/16,  8/16, 8/16,  8/16 }, 	-- right post
-			{ -8/16,  7/16, 13/32,  8/16, 8/16, 15/32 },	-- top piece
-			{ -8/16, -8/16,  7/16,  8/16, 8/16,  7/16 }	-- the chainlink itself
+			{ -8/16, -8/16,  6/16, -7/16,  8/16,  8/16 },	-- left post
+			{  7/16, -8/16,  6/16,  8/16,  8/16,  8/16 }, 	-- right post
+			{ -8/16,  7/16, 13/32,  8/16,  8/16, 15/32 },	-- top piece
+			{ -8/16, -8/16, 13/32,  8/16, -7/16, 15/32 },	-- bottom piece
+			{ -8/16, -8/16,  7/16,  8/16,  8/16,  7/16 }	-- the chainlink itself
 		}		
         },
 })
+
+minetest.register_node("homedecor:fence_chainlink_gate_closed", {
+	drawtype = "nodebox",
+        description = "Chainlink Fence Gate",
+        tiles = {
+		"homedecor_fence_chainlink_gate_tb.png",
+		"homedecor_fence_chainlink_gate_tb.png",
+		"homedecor_fence_chainlink_gate_sides.png",
+		"homedecor_fence_chainlink_gate_sides.png",
+		"homedecor_fence_chainlink_gate_backside.png",
+		"homedecor_fence_chainlink_gate_front.png",
+	},
+        paramtype = "light",
+        is_ground_content = true,
+        groups = {snappy=3},
+        sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+        selection_box = {
+                type = "fixed",
+                fixed = { -0.5, -0.5, 0.375, 0.5, 0.5, 0.5 }
+        },
+        node_box = {
+                type = "fixed",
+		fixed = {
+			{ -8/16, -8/16,  6/16, -7/16,  8/16,  8/16 },	-- left post
+			{  6/16, -8/16,  6/16,  8/16,  8/16,  8/16 }, 	-- right post
+			{ -8/16,  7/16, 13/32,  8/16,  8/16, 15/32 },	-- top piece
+			{ -8/16, -8/16, 13/32,  8/16, -7/16, 15/32 },	-- bottom piece
+			{ -8/16, -8/16,  7/16,  8/16,  8/16,  7/16 },	-- the chainlink itself
+			{ -8/16, -3/16,  6/16, -6/16,  3/16,  8/16 }	-- the lump representing the lock
+		}		
+        },
+})
+
+minetest.register_node("homedecor:fence_chainlink_gate_open", {
+	drawtype = "nodebox",
+        description = "Chainlink Fence Gate (open)",
+        tiles = {
+		"homedecor_fence_chainlink_gate_tb.png",
+		"homedecor_fence_chainlink_gate_tb.png",
+		"homedecor_fence_chainlink_gate_front.png",
+		"homedecor_fence_chainlink_gate_backside.png",
+		"homedecor_fence_chainlink_gate_sides.png",
+		"homedecor_fence_chainlink_gate_sides.png",
+	},
+        paramtype = "light",
+        is_ground_content = true,
+        groups = {snappy=3, not_in_creative_inventory=1},
+        sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+        selection_box = {
+                type = "fixed",
+                fixed = { 0.375, -0.5, -0.5, 0.5, 0.5, 0.5 }
+        },
+        node_box = {
+                type = "fixed",
+		fixed = {
+			{  6/16, -8/16, -8/16,  8/16,  8/16, -7/16 },	-- left post
+			{  6/16, -8/16,  6/16,  8/16,  8/16,  8/16 }, 	-- right post
+			{ 13/32,  7/16, -8/16, 15/32,  8/16,  8/16 },	-- top piece
+			{ 13/32, -8/16, -8/16, 15/32, -7/16,  8/16 },	-- bottom piece
+			{  7/16, -8/16, -8/16,  7/16,  8/16,  8/16 },	-- the chainlink itself
+			{  6/16, -3/16, -8/16,  8/16,  3/16, -6/16 }	-- the lump representing the lock
+		}		
+        },
+	drop = "homedecor:fence_chainlink_gate_closed"
+})
+
+minetest.register_on_punchnode(function (pos, node)
+	if node.name=="homedecor:fence_chainlink_gate_closed" then 
+		fdir=node.param2
+		minetest.env:add_node(pos, { name = "homedecor:fence_chainlink_gate_open", param2 = fdir })
+	end
+end)
+
+minetest.register_on_punchnode(function (pos, node)
+	if node.name=="homedecor:fence_chainlink_gate_open" then 
+		fdir=node.param2
+		minetest.env:add_node(pos, { name = "homedecor:fence_chainlink_gate_closed", param2 = fdir })
+	end
+end)
+

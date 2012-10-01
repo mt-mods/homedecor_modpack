@@ -1157,3 +1157,19 @@ minetest.register_craft( {
                 { "default:steel_ingot", "default:iron_lump", "default:steel_ingot" }
         },
 })
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:fence_chainlink_gate_closed",
+        recipe = {
+		"homedecor:fence_chainlink"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:fence_chainlink",
+        recipe = {
+		"homedecor:fence_chainlink_gate_closed"
+        },
+})
