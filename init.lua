@@ -11,6 +11,7 @@
 -- License: LGPL
 --
 
+dofile(minetest.get_modpath("homedecor").."/lighting.lua")
 dofile(minetest.get_modpath("homedecor").."/fences.lua")
 dofile(minetest.get_modpath("homedecor").."/kitchen_cabinet.lua")
 dofile(minetest.get_modpath("homedecor").."/refrigerator.lua")
@@ -779,12 +780,14 @@ minetest.register_node('homedecor:speaker', {
 minetest.register_node('homedecor:speaker_small', {
 	description = "Small Surround Speaker",
 	drawtype = "nodebox",
-	tiles = { 'homedecor_speaker_top.png',
-			'homedecor_speaker_bottom.png',
-			'homedecor_speaker_right.png',
-			'homedecor_speaker_left.png',
-			'homedecor_speaker_back.png',
-			'homedecor_speaker_front.png'},
+	tiles = {
+		'homedecor_speaker_top.png',
+		'homedecor_speaker_bottom.png',
+		'homedecor_speaker_right.png',
+		'homedecor_speaker_left.png',
+		'homedecor_speaker_back.png',
+		'homedecor_speaker_front.png'
+	},
         selection_box = {
                 type = "fixed",
                 fixed = { -0.2, -0.5, 0, 0.2, 0, 0.4 }
@@ -799,85 +802,6 @@ minetest.register_node('homedecor:speaker_small', {
 	paramtype2 = "facedir",
 	walkable = true,
 	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
-})
-
-minetest.register_node('homedecor:glowlight_thick', {
-	description = "Glowlight (thick)",
-	drawtype = "nodebox",
-	tiles = { 'homedecor_glowlight_tb.png',
-			'homedecor_glowlight_tb.png',
-			'homedecor_glowlight_thick_sides.png',
-			'homedecor_glowlight_thick_sides.png',
-			'homedecor_glowlight_thick_sides.png',
-			'homedecor_glowlight_thick_sides.png'},
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.5, 0, -0.5, 0.5, 0.5, 0.5 }
-        },
-        node_box = {
-                type = "fixed",
-                fixed = { -0.5, 0, -0.5, 0.5, 0.5, 0.5 }
-        },
-
-	sunlight_propagates = false,
-	paramtype = "light",
-	walkable = true,
-	groups = { snappy = 3 },
-	light_source = LIGHT_MAX,
-	sounds = default.node_sound_leaves_defaults(),
-})
-
-minetest.register_node('homedecor:glowlight_thin', {
-	description = "Glowlight (thin)",
-	drawtype = "nodebox",
-	tiles = { 'homedecor_glowlight_tb.png',
-			'homedecor_glowlight_tb.png',
-			'homedecor_glowlight_thin_sides.png',
-			'homedecor_glowlight_thin_sides.png',
-			'homedecor_glowlight_thin_sides.png',
-			'homedecor_glowlight_thin_sides.png'},
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.5, 0.25, -0.5, 0.5, 0.5, 0.5 }
-        },
-        node_box = {
-                type = "fixed",
-                fixed = { -0.5, 0.25, -0.5, 0.5, 0.5, 0.5 }
-        },
-
-	sunlight_propagates = false,
-	paramtype = "light",
-	walkable = true,
-	groups = { snappy = 3 },
-	light_source = LIGHT_MAX-1,
-	sounds = default.node_sound_leaves_defaults(),
-})
-
-minetest.register_node('homedecor:glowlight_small_cube', {
-	description = "Glowlight (small cube)",
-	drawtype = "nodebox",
-	tiles = {'homedecor_glowlight_cube_tb.png',
-		 'homedecor_glowlight_cube_tb.png',
-		 'homedecor_glowlight_cube_sides.png',
-		 'homedecor_glowlight_cube_sides.png',
-		 'homedecor_glowlight_cube_sides.png',
-		 'homedecor_glowlight_cube_sides.png'
-		},
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-        },
-        node_box = {
-                type = "fixed",
-                fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-        },
-
-	sunlight_propagates = false,
-	paramtype = "light",
-	walkable = true,
-	groups = { snappy = 3 },
-	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_leaves_defaults(),
 })
 
