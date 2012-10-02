@@ -13,7 +13,7 @@ minetest.register_craftitem("homedecor:terracotta_base", {
 
 minetest.register_craft( {
 	type = "shapeless",
-        output = "homedecor:terracotta_base 4",
+        output = "homedecor:terracotta_base 8",
         recipe = {
 		"default:dirt",
 		"default:clay_lump",
