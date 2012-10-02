@@ -6,8 +6,21 @@
 -- License: GPL
 --
 
--- ====================================
--- Smelting recipes and resultant items
+minetest.register_craftitem("homedecor:terracotta_base", {
+        description = "Uncooked Terracotta Base",
+        inventory_image = "homedecor_terracotta_base.png",
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:terracotta_base 4",
+        recipe = {
+		"default:dirt",
+		"default:clay_lump",
+		"bucket:bucket_water"
+        },
+	replacements = { {'bucket:bucket_water', 'bucket:bucket_empty'}, },
+})
 
 minetest.register_craftitem("homedecor:roof_tile_terracotta", {
         description = "Terracotta Roof Tile",
@@ -16,8 +29,8 @@ minetest.register_craftitem("homedecor:roof_tile_terracotta", {
 
 minetest.register_craft({
         type = "cooking",
-        output = "homedecor:roof_tile_terracotta 4",
-        recipe = "default:dirt",
+        output = "homedecor:roof_tile_terracotta",
+        recipe = "homedecor:terracotta_base",
 })
 
 minetest.register_craft( {
