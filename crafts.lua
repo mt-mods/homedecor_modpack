@@ -1109,6 +1109,22 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	type = "shapeless",
+        output = "homedecor:glowlight_small_cube_yellow_ceiling",
+        recipe = {
+		"homedecor:glowlight_small_cube_yellow",
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+        output = "homedecor:glowlight_small_cube_yellow",
+        recipe = {
+		"homedecor:glowlight_small_cube_yellow_ceiling",
+	}
+})
+
 -- white
 
 minetest.register_craft({
@@ -1141,6 +1157,22 @@ minetest.register_craft({
         recipe = {
 		{"wool:white" },
 		{"moreblocks:superglowglass" },
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+        output = "homedecor:glowlight_small_cube_white_ceiling",
+        recipe = {
+		"homedecor:glowlight_small_cube_white",
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+        output = "homedecor:glowlight_small_cube_white",
+        recipe = {
+		"homedecor:glowlight_small_cube_white_ceiling",
 	}
 })
 
