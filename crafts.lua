@@ -838,7 +838,7 @@ minetest.register_craft( {
 	output = 'homedecor:television',
 	recipe = {
 		{ 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
-		{ 'homedecor:plastic_sheeting', 'default:glass', 'homedecor:plastic_sheeting' },
+		{ 'homedecor:plastic_sheeting', 'moreblocks:glowglass', 'homedecor:plastic_sheeting' },
 		{ 'homedecor:ic', 'homedecor:ic', 'homedecor:ic' },
 	},
 })
