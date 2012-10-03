@@ -1,28 +1,42 @@
 -- This file supplies refrigerators
 
 minetest.register_node('homedecor:refrigerator', {
+	drawtype = "nodebox",
 	description = "Refrigerator",
-	tiles = { 'homedecor_refrigerator_top.png',
-			'homedecor_refrigerator_bottom.png',
-			'homedecor_refrigerator_right.png',
-			'homedecor_refrigerator_left.png',
-			'homedecor_refrigerator_back.png',
-			'homedecor_refrigerator_front.png'},
+	tiles = {
+		'homedecor_refrigerator_top.png',
+		'homedecor_refrigerator_bottom.png',
+		'homedecor_refrigerator_right.png',
+		'homedecor_refrigerator_left.png',
+		'homedecor_refrigerator_back.png',	
+		'homedecor_refrigerator_front.png'
+	},
+	inventory_image = "homedecor_refrigerator_inv.png",
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
 	groups = { snappy = 3 },
+
+        selection_box = {
+                type = "fixed",
+                fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
+        },
+        node_box = {
+                type = "fixed",
+                fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
+        },
+
 	sounds = default.node_sound_leaves_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
 		meta:set_string("formspec",
-				"size[8,8]"..
-				"list[current_name;main;0,0;8,3;]"..
-				"list[current_player;main;0,4;8,4;]")
+				"size[10,10]"..
+				"list[current_name;main;0,0;10,5;]"..
+				"list[current_player;main;1,6;8,4;]")
 		meta:set_string("infotext", "Refrigerator")
 		local inv = meta:get_inventory()
-		inv:set_size("main", 24)
+		inv:set_size("main",50)
 	end,
 	can_dig = function(pos,player)
 		local meta = minetest.env:get_meta(pos);
