@@ -38,6 +38,16 @@ minetest.register_node('homedecor:refrigerator', {
 		local inv = meta:get_inventory()
 		inv:set_size("main",50)
 	end,
+
+	after_place_node = function(pos, placer)
+		ntop = minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z})
+		if ntop.name ~= "air" then
+			minetest.env:remove_node(pos)
+			placer:get_inventory():add_item("main", "homedecor:refrigerator")
+        	        minetest.chat_send_player( placer:get_player_name(), 'Not enough vertical space to place a refrigerator!' )
+		end
+	end,
+
 	can_dig = function(pos,player)
 		local meta = minetest.env:get_meta(pos);
 		local inv = meta:get_inventory()
