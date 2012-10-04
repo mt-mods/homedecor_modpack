@@ -11,6 +11,12 @@
 -- License: LGPL
 --
 
+dofile(minetest.get_modpath("homedecor").."/door_glass.lua")
+dofile(minetest.get_modpath("homedecor").."/door_glass_and_wood.lua")
+dofile(minetest.get_modpath("homedecor").."/door_exterior_fancy.lua")
+dofile(minetest.get_modpath("homedecor").."/door_closet_oak.lua")
+dofile(minetest.get_modpath("homedecor").."/door_closet_mahogany.lua")
+
 dofile(minetest.get_modpath("homedecor").."/lighting.lua")
 dofile(minetest.get_modpath("homedecor").."/fences.lua")
 dofile(minetest.get_modpath("homedecor").."/kitchen_cabinet.lua")
@@ -18,9 +24,7 @@ dofile(minetest.get_modpath("homedecor").."/refrigerator.lua")
 dofile(minetest.get_modpath("homedecor").."/oven.lua")
 dofile(minetest.get_modpath("homedecor").."/nightstands.lua")
 dofile(minetest.get_modpath("homedecor").."/television.lua")
-dofile(minetest.get_modpath("homedecor").."/foldingdoors_oak.lua")
-dofile(minetest.get_modpath("homedecor").."/foldingdoors_mahogany.lua")
-dofile(minetest.get_modpath("homedecor").."/exterior_door_fancy.lua")
+
 dofile(minetest.get_modpath("homedecor").."/crafts.lua")
 
 local DEBUG = 0
@@ -441,44 +445,6 @@ minetest.register_node('homedecor:wood_table_small_square', {
                          --wall_bottom = <default>
                          --wall_side = <default>
                         },
-})
-
-minetest.register_node('homedecor:folding_door_mahogany', {
-	description = "Mahogany Folding Door",
-	tiles = { 'homedecor_folding_door_mahogany.png' },
-	inventory_image = 'homedecor_folding_door_mahogany.png',
-	wield_image = 'homedecor_folding_door_mahogany.png',
-	drawtype = 'signlike',
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = false,
-	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
-	paramtype2 = 'wallmounted',
-	selection_box = {
-		type = "wallmounted",
-		--wall_side = = <default>
-	},
-})
-
-minetest.register_node('homedecor:folding_door_oak', {
-	description = "Oak Folding Door",
-	tiles = { 'homedecor_folding_door_oak.png' },
-	inventory_image = 'homedecor_folding_door_oak.png',
-	wield_image = 'homedecor_folding_door_oak.png',
-	drawtype = 'signlike',
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = false,
-	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
-	paramtype2 = 'wallmounted',
-	selection_box = {
-		type = "wallmounted",
-		--wall_side = = <default>
-	},
 })
 
 minetest.register_node('homedecor:shutter_black', {

@@ -1367,3 +1367,158 @@ minetest.register_craft( {
 		"homedecor:fence_chainlink_gate_closed"
         },
 })
+
+-- doors
+
+-- fancy exterior
+
+minetest.register_craft( {
+        output = "homedecor:door_exterior_fancy_bottom_left 2",
+        recipe = {
+		{ "default:wood", "default:glass" },
+		{ "default:wood", "default:wood" },
+		{ "default:wood", "default:wood" },
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_exterior_fancy_bottom_left",
+        recipe = {
+		"homedecor:door_exterior_fancy_bottom_right"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_exterior_fancy_bottom_right",
+        recipe = {
+		"homedecor:door_exterior_fancy_bottom_left"
+        },
+})
+
+
+-- wood and glass (grid style)
+
+minetest.register_craft( {
+        output = "homedecor:door_wood_glass_bottom_left 2",
+        recipe = {
+		{ "default:glass", "default:wood" },
+		{ "default:wood", "default:glass" },
+		{ "default:glass", "default:wood" },
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_glass_bottom_left",
+        recipe = {
+		"homedecor:door_wood_glass_bottom_right"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_glass_bottom_right",
+        recipe = {
+		"homedecor:door_wood_glass_bottom_left"
+        },
+})
+
+-- Solid glass with metal handle
+
+minetest.register_craft( {
+        output = "homedecor:door_glass_bottom_left 2",
+        recipe = {
+		{ "default:glass", "default:glass" },
+		{ "default:glass", "default:steel_ingot" },
+		{ "default:glass", "default:glass" },
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_glass_bottom_left",
+        recipe = {
+		"homedecor:door_glass_bottom_right"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_glass_bottom_right",
+        recipe = {
+		"homedecor:door_glass_bottom_left"
+        },
+})
+
+-- Closet doors
+
+-- oak
+
+minetest.register_craft( {
+        output = "homedecor:door_closet_oak_bottom_left 2",
+        recipe = {
+		{ "", "default:stick", "default:stick" },
+		{ "default:steel_ingot", "default:stick", "default:stick" },
+		{ "", "default:stick", "default:stick" },
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_closet_oak_bottom_left",
+        recipe = {
+		"homedecor:door_closet_oak_bottom_right"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_closet_oak_bottom_right",
+        recipe = {
+		"homedecor:door_closet_oak_bottom_left"
+        },
+})
+
+-- mahogany
+
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_closet_mahogany_bottom_left 2",
+        recipe = {
+		"homedecor:door_closet_oak_bottom_left",
+		"homedecor:door_closet_oak_bottom_left",
+		"default:dirt",
+		"default:coal_lump",
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_closet_mahogany_bottom_left 2",
+        recipe = {
+		"homedecor:door_closet_oak_bottom_left",
+		"homedecor:door_closet_oak_bottom_left",
+		"unifieddyes:dark_orange"
+        },
+	replacements = { {'unifieddyes:dark_orange', 'vessels:glass_bottle'}, },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_closet_mahogany_bottom_left",
+        recipe = {
+		"homedecor:door_closet_mahogany_bottom_right"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_closet_mahogany_bottom_right",
+        recipe = {
+		"homedecor:door_closet_mahogany_bottom_left"
+        },
+})
+
