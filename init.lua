@@ -13,6 +13,8 @@
 
 dofile(minetest.get_modpath("homedecor").."/door_glass.lua")
 dofile(minetest.get_modpath("homedecor").."/door_glass_and_wood.lua")
+dofile(minetest.get_modpath("homedecor").."/door_glass_and_wood_mahogany.lua")
+dofile(minetest.get_modpath("homedecor").."/door_glass_and_wood_white.lua")
 dofile(minetest.get_modpath("homedecor").."/door_exterior_fancy.lua")
 dofile(minetest.get_modpath("homedecor").."/door_closet_oak.lua")
 dofile(minetest.get_modpath("homedecor").."/door_closet_mahogany.lua")

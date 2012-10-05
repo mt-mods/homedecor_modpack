@@ -1459,6 +1459,8 @@ minetest.register_craft( {
 
 -- wood and glass (grid style)
 
+-- bare
+
 minetest.register_craft( {
         output = "homedecor:door_wood_glass_bottom_left 2",
         recipe = {
@@ -1481,6 +1483,106 @@ minetest.register_craft( {
         output = "homedecor:door_wood_glass_bottom_right",
         recipe = {
 		"homedecor:door_wood_glass_bottom_left"
+        },
+})
+
+-- mahogany
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_glass_mahogany_bottom_left 2",
+        recipe = {
+		"default:dirt",
+		"default:coal_lump",
+		"homedecor:door_wood_glass_bottom_left",
+		"homedecor:door_wood_glass_bottom_left"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_glass_mahogany_bottom_right 2",
+        recipe = {
+		"default:dirt",
+		"default:coal_lump",
+		"homedecor:door_wood_glass_bottom_right",
+		"homedecor:door_wood_glass_bottom_right"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_glass_mahogany_bottom_left 2",
+        recipe = {
+		"unifieddyes:dark_orange",
+		"homedecor:door_wood_glass_bottom_left",
+		"homedecor:door_wood_glass_bottom_left"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_glass_mahogany_bottom_right 2",
+        recipe = {
+		"unifieddyes:dark_orange",
+		"homedecor:door_wood_glass_bottom_right",
+		"homedecor:door_wood_glass_bottom_right"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_glass_mahogany_bottom_left",
+        recipe = {
+		"homedecor:door_wood_glass_mahogany_bottom_right"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_glass_mahogany_bottom_right",
+        recipe = {
+		"homedecor:door_wood_glass_mahogany_bottom_left"
+        },
+})
+
+-- white
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_glass_white_bottom_left 2",
+        recipe = {
+		"unifieddyes:white_paint",
+		"homedecor:door_wood_glass_bottom_left",
+		"homedecor:door_wood_glass_bottom_left"
+        },
+	replacements = { {'unifieddyes:white_paint', 'bucket:bucket_empty'}, },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_glass_white_bottom_right 2",
+        recipe = {
+		"unifieddyes:white_paint",
+		"homedecor:door_wood_glass_bottom_right",
+		"homedecor:door_wood_glass_bottom_right"
+        },
+	replacements = { {'unifieddyes:white_paint', 'bucket:bucket_empty'}, },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_glass_white_bottom_left",
+        recipe = {
+		"homedecor:door_wood_glass_white_bottom_right"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_glass_white_bottom_right",
+        recipe = {
+		"homedecor:door_wood_glass_white_bottom_left"
         },
 })
 
@@ -1541,7 +1643,6 @@ minetest.register_craft( {
 })
 
 -- mahogany
-
 
 minetest.register_craft( {
 	type = "shapeless",
