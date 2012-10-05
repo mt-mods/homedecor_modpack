@@ -215,13 +215,13 @@ minetest.register_node("homedecor:door_exterior_fancy_bottom_right", {
 -- good enough to avoid losing any items, though some doors may
 -- need to be dug up and placed again to correct their orientations.
 
-minetest.register_alias("homedecor:door_exterior_fancy_a_c", "homedecor:door_exterior_fancy_top_left")
-minetest.register_alias("homedecor:door_exterior_fancy_a_o", "homedecor:door_exterior_fancy_top_right")
-minetest.register_alias("homedecor:door_exterior_fancy_b_c", "homedecor:door_exterior_fancy_bottom_left")
-minetest.register_alias("homedecor:door_exterior_fancy_b_o", "homedecor:door_exterior_fancy_bottom_right")
-minetest.register_alias("homedecor:door_exterior_fancy_a_c_right", "homedecor:door_exterior_fancy_top_right")
-minetest.register_alias("homedecor:door_exterior_fancy_a_o_right", "homedecor:door_exterior_fancy_top_left")
-minetest.register_alias("homedecor:door_exterior_fancy_b_c_right", "homedecor:door_exterior_fancy_bottom_right")
-minetest.register_alias("homedecor:door_exterior_fancy_b_o_right", "homedecor:door_exterior_fancy_bottom_left")
-minetest.register_alias("homedecor:door_exterior_fancy", "homedecor:door_exterior_fancy_bottom_left")
-minetest.register_alias("homedecor:door_exterior_fancy_right", "homedecor:door_exterior_fancy_bottom_right")
+minetest.register_alias("homedecor:exterior_door_fancy_a_c", "homedecor:door_exterior_fancy_top_left")
+minetest.register_alias("homedecor:exterior_door_fancy_a_o", "homedecor:door_exterior_fancy_top_right")
+minetest.register_alias("homedecor:exterior_door_fancy_b_c", "homedecor:door_exterior_fancy_bottom_left")
+minetest.register_alias("homedecor:exterior_door_fancy_b_o", "homedecor:door_exterior_fancy_bottom_right")
+minetest.register_alias("homedecor:exterior_door_fancy_a_c_right", "homedecor:door_exterior_fancy_top_right")
+minetest.register_alias("homedecor:exterior_door_fancy_a_o_right", "homedecor:door_exterior_fancy_top_left")
+minetest.register_alias("homedecor:exterior_door_fancy_b_c_right", "homedecor:door_exterior_fancy_bottom_right")
+minetest.register_alias("homedecor:exterior_door_fancy_b_o_right", "homedecor:door_exterior_fancy_bottom_left")
+minetest.register_alias("homedecor:exterior_door_fancy", "homedecor:door_exterior_fancy_bottom_left")
+minetest.register_alias("homedecor:exterior_door_fancy_right", "homedecor:door_exterior_fancy_bottom_right")
