@@ -7,7 +7,8 @@
 --
 
 -- Some recipes need white paint.  If Unified Dyes isn't present,
--- implement the standard white paint recipe here instead.
+-- implement the standard white paint production method here instead,
+-- plus some alternate recipes in the event of material shorages.
 
 if ( minetest.get_modpath("unifieddyes") ) == nil then
 
