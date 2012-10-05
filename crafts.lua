@@ -6,6 +6,64 @@
 -- License: GPL
 --
 
+-- Some recipes need white paint.  If Unified Dyes isn't present,
+-- implement the standard white paint recipe here instead.
+
+if ( minetest.get_modpath("unifieddyes") ) == nil then
+
+	minetest.register_craftitem(":unifieddyes:titanium_dioxide", {
+		description = "Titanium Dioxide",
+		inventory_image = "homedecor_titanium_dioxide.png",
+	})
+
+	minetest.register_craft({
+		type = "cooking",
+		output = "unifieddyes:titanium_dioxide 10",
+		recipe = "default:stone",
+	})
+
+	minetest.register_craftitem(":unifieddyes:white_paint", {
+		description = "Bucket of white paint",
+		inventory_image = "homedecor_white_paint.png",
+	})
+
+	minetest.register_craft( {
+		type = "shapeless",
+		output = "unifieddyes:white_paint",
+		recipe = {
+		        "unifieddyes:titanium_dioxide",
+		        "bucket:bucket_water",
+		        "default:junglegrass",
+		},
+	})
+
+	minetest.register_craft( {
+		type = "shapeless",
+		output = "unifieddyes:white_paint",
+		recipe = {
+		        "unifieddyes:titanium_dioxide",
+		        "bucket:bucket_water",
+		        "default:dry_shrub",
+		        "default:dry_shrub",
+		},
+	})
+
+	minetest.register_craft( {
+		type = "shapeless",
+		output = "unifieddyes:white_paint",
+		recipe = {
+		        "unifieddyes:titanium_dioxide",
+		        "bucket:bucket_water",
+		        "default:leaves",
+		        "default:leaves",
+		        "default:leaves",
+		},
+	})
+end
+
+
+-- misc stuff :D
+
 minetest.register_craftitem("homedecor:terracotta_base", {
         description = "Uncooked Terracotta Base",
         inventory_image = "homedecor_terracotta_base.png",
