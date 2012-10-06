@@ -1429,6 +1429,33 @@ minetest.register_craft( {
 
 -- doors
 
+-- plain wood, non-windowed
+
+minetest.register_craft( {
+        output = "homedecor:door_wood_plain_bottom_left 2",
+        recipe = {
+		{ "default:wood", "default:wood", "" },
+		{ "default:wood", "default:wood", "default:steel_ingot" },
+		{ "default:wood", "default:wood", "" },
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_plain_bottom_left",
+        recipe = {
+		"homedecor:door_wood_plain_bottom_right"
+        },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+        output = "homedecor:door_wood_plain_bottom_right",
+        recipe = {
+		"homedecor:door_wood_plain_bottom_left"
+        },
+})
+
 -- fancy exterior
 
 minetest.register_craft( {

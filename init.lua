@@ -11,6 +11,7 @@
 -- License: LGPL
 --
 
+dofile(minetest.get_modpath("homedecor").."/door_wood_plain.lua")
 dofile(minetest.get_modpath("homedecor").."/door_glass.lua")
 dofile(minetest.get_modpath("homedecor").."/door_glass_and_wood.lua")
 dofile(minetest.get_modpath("homedecor").."/door_glass_and_wood_mahogany.lua")
