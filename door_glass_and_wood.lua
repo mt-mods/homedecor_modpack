@@ -86,15 +86,23 @@ minetest.register_node("homedecor:door_wood_glass_bottom_left", {
 		}
 	},
 	on_place = function(itemstack, placer, pointed_thing)
-		fdir = minetest.dir_to_facedir(placer:get_look_dir())
 		local pos = pointed_thing.above
-		if minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name ~= "air" then
-			minetest.chat_send_player( placer:get_player_name(), 'Not enough vertical space to place a door!' )
-			return
+		local pd = true
+		if type(IsPlayerNodeOwner)=="function" then
+			if not IsPlayerNodeOwner(pos, placer:get_player_name()) and HasOwner(pos) then
+				minetest.chat_send_player( placer:get_player_name(), "Sorry, "..getLastOwner(pos).." owns that spot." )
+				pd = false
+			end
 		end
-		minetest.env:add_node({x=pos.x, y=pos.y+1, z=pos.z}, { name =  "homedecor:door_wood_glass_top_left", param2=fdir})
-		return minetest.item_place(itemstack, placer, pointed_thing)
-	
+		if pd then
+			fdir = minetest.dir_to_facedir(placer:get_look_dir())
+			if minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name ~= "air" then
+				minetest.chat_send_player( placer:get_player_name(), 'Not enough vertical space to place a door!' )
+				return
+			end
+			minetest.env:add_node({x=pos.x, y=pos.y+1, z=pos.z}, { name =  "homedecor:door_wood_glass_top_left", param2=fdir})
+			return minetest.item_place(itemstack, placer, pointed_thing)
+		end	
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		if minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name == "homedecor:door_wood_glass_top_left" then
@@ -196,15 +204,23 @@ minetest.register_node("homedecor:door_wood_glass_bottom_right", {
 	},
 	drop = "homedecor:door_wood_glass_bottom_left",
 	on_place = function(itemstack, placer, pointed_thing)
-		fdir = minetest.dir_to_facedir(placer:get_look_dir())
 		local pos = pointed_thing.above
-		if minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name ~= "air" then
-			minetest.chat_send_player( placer:get_player_name(), 'Not enough vertical space to place a door!' )
-			return
+		local pd = true
+		if type(IsPlayerNodeOwner)=="function" then
+			if not IsPlayerNodeOwner(pos, placer:get_player_name()) and HasOwner(pos) then
+				minetest.chat_send_player( placer:get_player_name(), "Sorry, "..getLastOwner(pos).." owns that spot." )
+				pd = false
+			end
 		end
-		minetest.env:add_node({x=pos.x, y=pos.y+1, z=pos.z}, { name =  "homedecor:door_wood_glass_top_right", param2=fdir})
-		return minetest.item_place(itemstack, placer, pointed_thing)
-	
+		if pd then
+			fdir = minetest.dir_to_facedir(placer:get_look_dir())
+			if minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name ~= "air" then
+				minetest.chat_send_player( placer:get_player_name(), 'Not enough vertical space to place a door!' )
+				return
+			end
+			minetest.env:add_node({x=pos.x, y=pos.y+1, z=pos.z}, { name =  "homedecor:door_wood_glass_top_right", param2=fdir})
+			return minetest.item_place(itemstack, placer, pointed_thing)
+		end	
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		if minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name == "homedecor:door_wood_glass_top_right" then
