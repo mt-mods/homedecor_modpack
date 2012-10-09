@@ -72,7 +72,7 @@ minetest.register_node("homedecor:door_wood_plain_bottom_left", {
 	on_place = function(itemstack, placer, pointed_thing)
 		local pos = pointed_thing.above
 		if type(IsPlayerNodeOwner)=="function" then
-			if not IsPlayerNodeOwner(pos, user:get_player_name()) then
+			if not IsPlayerNodeOwner(pos, placer:get_player_name()) then
 				minetest.chat_send_player( placer:get_player_name(), "Sorry, "..getLastOwner(pos).." owns that spot." )
 			end
 		else
@@ -172,7 +172,7 @@ minetest.register_node("homedecor:door_wood_plain_bottom_right", {
 	on_place = function(itemstack, placer, pointed_thing)
 		local pos = pointed_thing.above
 		if type(IsPlayerNodeOwner)=="function" then
-			if not IsPlayerNodeOwner(pos, user:get_player_name()) then
+			if not IsPlayerNodeOwner(pos, placer:get_player_name()) then
 				minetest.chat_send_player( placer:get_player_name(), "Sorry, "..getLastOwner(pos).." owns that spot." )
 			end
 		else
