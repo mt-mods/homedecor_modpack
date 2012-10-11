@@ -94,6 +94,12 @@ minetest.register_node("homedecor:door_wood_glass_mahogany_bottom_left", {
 				pd = false
 			end
 		end
+		if type(isprotect)=="function" then
+			pd = isprotect(5, pos, placer)
+			if not pd then 
+				minetest.chat_send_player( placer:get_player_name(), "Sorry, someone owns that spot." )
+			end
+		end
 		if pd then
 			fdir = minetest.dir_to_facedir(placer:get_look_dir())
 			if minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name ~= "air" then
@@ -210,6 +216,12 @@ minetest.register_node("homedecor:door_wood_glass_mahogany_bottom_right", {
 			if not IsPlayerNodeOwner(pos, placer:get_player_name()) and HasOwner(pos) then
 				minetest.chat_send_player( placer:get_player_name(), "Sorry, "..getLastOwner(pos).." owns that spot." )
 				pd = false
+			end
+		end
+		if type(isprotect)=="function" then
+			pd = isprotect(5, pos, placer)
+			if not pd then 
+				minetest.chat_send_player( placer:get_player_name(), "Sorry, someone owns that spot." )
 			end
 		end
 		if pd then
