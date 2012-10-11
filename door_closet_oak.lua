@@ -115,7 +115,7 @@ minetest.register_node("homedecor:door_closet_oak_bottom_left", {
 			end
 		end
 		if type(isprotect)=="function" then
-			pd = isprotect(5, pos, placer:get_player_name())
+			pd = isprotect(5, pos, placer)
 			if not pd then 
 				minetest.chat_send_player( placer:get_player_name(), "Sorry, someone owns that spot." )
 			end
@@ -259,7 +259,7 @@ minetest.register_node("homedecor:door_closet_oak_bottom_right", {
 			end
 		end
 		if type(isprotect)=="function" then
-			pd = isprotect(5, pos, placer:get_player_name())
+			pd = isprotect(5, pos, placer)
 			if not pd then 
 				minetest.chat_send_player( placer:get_player_name(), "Sorry, someone owns that spot." )
 			end
