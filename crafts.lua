@@ -123,16 +123,18 @@ minetest.register_craftitem("homedecor:plastic_base", {
 
 minetest.register_craft({
         type = "shapeless",
-        output = 'homedecor:plastic_base 4',
+        output = 'homedecor:plastic_base 6',
         recipe = { "default:junglegrass",
+		   "default:junglegrass",
 		   "default:junglegrass"
 	}
 })
 
 minetest.register_craft({
         type = "shapeless",
-        output = 'homedecor:plastic_base 2',
+        output = 'homedecor:plastic_base 3',
         recipe = { "default:dry_shrub",
+		   "default:dry_shrub",
 		   "default:dry_shrub"
 	},
 })
