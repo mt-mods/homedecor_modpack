@@ -8,8 +8,8 @@ minetest.register_node("homedecor:door_glass_top_left", {
 	tiles = {
 		"homedecor_door_glass_tb.png",
 		"homedecor_blanktile.png",
-		"homedecor_door_glass_lr.png",
-		"homedecor_door_glass_lr.png",
+		"homedecor_door_glass_lrt.png",
+		"homedecor_door_glass_lrt.png",
 		"homedecor_door_glass_right_top.png",
 		"homedecor_door_glass_left_top.png",
 	},
@@ -49,8 +49,8 @@ minetest.register_node("homedecor:door_glass_bottom_left", {
 	tiles = {
 		"homedecor_blanktile.png",
 		"homedecor_door_glass_tb.png",
-		"homedecor_door_glass_lr.png",
-		"homedecor_door_glass_lr.png",
+		"homedecor_door_glass_lrb.png",
+		"homedecor_door_glass_lrb.png",
 		"homedecor_door_glass_right_bottom.png",
 		"homedecor_door_glass_left_bottom.png",
 	},
@@ -119,8 +119,8 @@ minetest.register_node("homedecor:door_glass_top_right", {
 	tiles = {
 		"homedecor_door_glass_tb.png",
 		"homedecor_blanktile.png",
-		"homedecor_door_glass_lr.png",
-		"homedecor_door_glass_lr.png",
+		"homedecor_door_glass_lrt.png",
+		"homedecor_door_glass_lrt.png",
 		"homedecor_door_glass_left_top.png",
 		"homedecor_door_glass_right_top.png",
 	},
@@ -160,8 +160,8 @@ minetest.register_node("homedecor:door_glass_bottom_right", {
 	tiles = {
 		"homedecor_blanktile.png",
 		"homedecor_door_glass_tb.png",
-		"homedecor_door_glass_lr.png",
-		"homedecor_door_glass_lr.png",
+		"homedecor_door_glass_lrb.png",
+		"homedecor_door_glass_lrb.png",
 		"homedecor_door_glass_left_bottom.png",
 		"homedecor_door_glass_right_bottom.png",
 	},
