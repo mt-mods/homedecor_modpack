@@ -21,7 +21,7 @@ minetest.register_node("homedecor:door_glass_top_left", {
 	walkable = true,
 	selection_box = {
 	        type = "fixed",
-		fixed = { -8/16, -8/16, 6/16, 8/16, 8/16, 8/16 },
+		fixed = { -8/16, -1.5, 6/16, 8/16, 8/16, 8/16 },
 	},
 	node_box = {
 	        type = "fixed",
@@ -65,7 +65,7 @@ minetest.register_node("homedecor:door_glass_bottom_left", {
 	walkable = true,
 	selection_box = {
 	        type = "fixed",
-	        fixed = { -8/16, -8/16, 6/16, 8/16, 8/16, 8/16 },
+	        fixed = { -8/16, -8/16, 6/16, 8/16, 1.5, 8/16 },
 	},
 	node_box = {
 	        type = "fixed",
@@ -132,7 +132,7 @@ minetest.register_node("homedecor:door_glass_top_right", {
 	walkable = true,
 	selection_box = {
 	        type = "fixed",
-	        fixed =	{ -8/16, -8/16, 6/16, 8/16, 8/16, 8/16 },
+	        fixed =	{ -8/16, -1.5, 6/16, 8/16, 8/16, 8/16 },
 	},
 	node_box = {
 	        type = "fixed",
@@ -176,7 +176,7 @@ minetest.register_node("homedecor:door_glass_bottom_right", {
 	walkable = true,
 	selection_box = {
 	        type = "fixed",
-	        fixed = { -8/16, -8/16, 6/16, 8/16, 8/16, 8/16 },
+	        fixed = { -8/16, -8/16, 6/16, 8/16, 1.5, 8/16 },
 	},
 	node_box = {
 	        type = "fixed",

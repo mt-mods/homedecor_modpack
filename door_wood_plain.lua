@@ -21,7 +21,7 @@ minetest.register_node("homedecor:door_wood_plain_top_left", {
 	walkable = true,
 	selection_box = {
 	        type = "fixed",
-		fixed = { -0.5, -0.5, 6/16, 0.5, 0.5, 8/16 }
+		fixed = { -0.5, -1.5, 6/16, 0.5, 0.5, 8/16 }
 	},
 	node_box = {
 	        type = "fixed",
@@ -63,7 +63,7 @@ minetest.register_node("homedecor:door_wood_plain_bottom_left", {
 	walkable = true,
 	selection_box = {
 	        type = "fixed",
-		fixed = { -0.5, -0.5, 6/16, 0.5, 0.5, 8/16 }
+		fixed = { -0.5, -0.5, 6/16, 0.5, 1.5, 8/16 }
 	},
 	node_box = {
 	        type = "fixed",
@@ -128,7 +128,7 @@ minetest.register_node("homedecor:door_wood_plain_top_right", {
 	walkable = true,
 	selection_box = {
 	        type = "fixed",
-		fixed = { -0.5, -0.5, 6/16, 0.5, 0.5, 8/16 }
+		fixed = { -0.5, -1.5, 6/16, 0.5, 0.5, 8/16 }
 	},
 	node_box = {
 	        type = "fixed",
@@ -170,7 +170,7 @@ minetest.register_node("homedecor:door_wood_plain_bottom_right", {
 	walkable = true,
 	selection_box = {
 	        type = "fixed",
-		fixed = { -0.5, -0.5, 6/16, 0.5, 0.5, 8/16 }
+		fixed = { -0.5, -0.5, 6/16, 0.5, 1.5, 8/16 }
 	},
 	node_box = {
 	        type = "fixed",
