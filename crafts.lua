@@ -591,7 +591,9 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
-		'default:mese',
+		'default:mese_crystal_fragment',
+		'default:mese_crystal_fragment',
+		'default:mese_crystal_fragment'
 	},
 })
 
