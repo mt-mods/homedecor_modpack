@@ -3,7 +3,7 @@
 -- Left-opening
 
 minetest.register_node("homedecor:door_wood_plain_top_left", {
-	description = "wood/glass door top half",
+	description = "plain wooden door top half",
 	drawtype = "nodebox",
 	tiles = {
 		"homedecor_door_wood_plain_tb.png",
@@ -42,7 +42,7 @@ minetest.register_node("homedecor:door_wood_plain_top_left", {
 })
 
 minetest.register_node("homedecor:door_wood_plain_bottom_left", {
-	description = "Wood and Glass Grid-Style Door",
+	description = "Plain Windowless Wooden Door",
 	drawtype = "nodebox",
 	tiles = {
 		"homedecor_door_wood_plain_tb.png",
@@ -110,7 +110,7 @@ minetest.register_node("homedecor:door_wood_plain_bottom_left", {
 -- Right-opening
 
 minetest.register_node("homedecor:door_wood_plain_top_right", {
-	description = "wood/glass door top half",
+	description = "plain wooden door top half",
 	drawtype = "nodebox",
 	tiles = {
 		"homedecor_door_wood_plain_tb.png",
@@ -149,7 +149,7 @@ minetest.register_node("homedecor:door_wood_plain_top_right", {
 })
 
 minetest.register_node("homedecor:door_wood_plain_bottom_right", {
-	description = "Wood and Glass Grid-Style Door (Right-opening)",
+	description = "Plain Windowless Wooden Door (Right-opening)",
 	drawtype = "nodebox",
 	tiles = {
 		"homedecor_door_wood_plain_tb.png",
