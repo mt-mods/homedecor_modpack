@@ -11,25 +11,6 @@
 -- License: LGPL
 --
 
-dofile(minetest.get_modpath("homedecor").."/door_wood_plain.lua")
-dofile(minetest.get_modpath("homedecor").."/door_glass.lua")
-dofile(minetest.get_modpath("homedecor").."/door_glass_and_wood.lua")
-dofile(minetest.get_modpath("homedecor").."/door_glass_and_wood_mahogany.lua")
-dofile(minetest.get_modpath("homedecor").."/door_glass_and_wood_white.lua")
-dofile(minetest.get_modpath("homedecor").."/door_exterior_fancy.lua")
-dofile(minetest.get_modpath("homedecor").."/door_closet_oak.lua")
-dofile(minetest.get_modpath("homedecor").."/door_closet_mahogany.lua")
-
-dofile(minetest.get_modpath("homedecor").."/lighting.lua")
-dofile(minetest.get_modpath("homedecor").."/fences.lua")
-dofile(minetest.get_modpath("homedecor").."/kitchen_cabinet.lua")
-dofile(minetest.get_modpath("homedecor").."/refrigerator.lua")
-dofile(minetest.get_modpath("homedecor").."/oven.lua")
-dofile(minetest.get_modpath("homedecor").."/nightstands.lua")
-dofile(minetest.get_modpath("homedecor").."/television.lua")
-
-dofile(minetest.get_modpath("homedecor").."/crafts.lua")
-
 local DEBUG = 0
 
 -- Local Functions
@@ -808,5 +789,18 @@ minetest.register_node("homedecor:curtain_"..color, {
 })
 
 end
+
+dofile(minetest.get_modpath("homedecor").."/door_models.lua")
+dofile(minetest.get_modpath("homedecor").."/door_nodes.lua")
+
+dofile(minetest.get_modpath("homedecor").."/lighting.lua")
+dofile(minetest.get_modpath("homedecor").."/fences.lua")
+dofile(minetest.get_modpath("homedecor").."/kitchen_cabinet.lua")
+dofile(minetest.get_modpath("homedecor").."/refrigerator.lua")
+dofile(minetest.get_modpath("homedecor").."/oven.lua")
+dofile(minetest.get_modpath("homedecor").."/nightstands.lua")
+dofile(minetest.get_modpath("homedecor").."/television.lua")
+
+dofile(minetest.get_modpath("homedecor").."/crafts.lua")
 
 print("[HomeDecor] Loaded!")
