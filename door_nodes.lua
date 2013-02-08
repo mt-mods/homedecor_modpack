@@ -159,35 +159,6 @@ for i in ipairs(sides) do
 				end,
 				on_place = function(itemstack, placer, pointed_thing)
 
-
-					--[[
-					-- for some obscure reason, this callback is used if the target node
-					-- is a homedecor door, probably because they have an on_rightclick
-					-- setting -- but only if you're weilding a door! 
-
-					if string.find(node.name, "homedecor:door_") then
-
-						local lr = nil
-						if string.find(node.name, "left") then
-							lr = "left"
-						else
-							lr = "right"
-						end
-
-						local tb = nil
-						if string.find(node.name, "top") then
-							tb = "top"
-						else
-							tb = "bottom"
-						end
-
-						local dname = string.gsub(string.gsub(string.gsub(node.name, "homedecor:door_", ""), "_"..lr, ""), "_"..tb, "")
-
-						print(node.name)
-						print(dname)
-						print(lr)
-					]]--
-
 					local node=minetest.env:get_node(pointed_thing.under)
 					if not minetest.registered_nodes[node.name].on_rightclick then
 						return homedecor_place_door(itemstack, placer, pointed_thing, doorname, side)
