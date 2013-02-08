@@ -793,8 +793,10 @@ end
 dofile(minetest.get_modpath("homedecor").."/door_models.lua")
 dofile(minetest.get_modpath("homedecor").."/door_nodes.lua")
 
-dofile(minetest.get_modpath("homedecor").."/lighting.lua")
+dofile(minetest.get_modpath("homedecor").."/signs_lib.lua")
 dofile(minetest.get_modpath("homedecor").."/fences.lua")
+
+dofile(minetest.get_modpath("homedecor").."/lighting.lua")
 dofile(minetest.get_modpath("homedecor").."/kitchen_cabinet.lua")
 dofile(minetest.get_modpath("homedecor").."/refrigerator.lua")
 dofile(minetest.get_modpath("homedecor").."/oven.lua")

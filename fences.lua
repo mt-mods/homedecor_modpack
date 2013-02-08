@@ -1,38 +1,147 @@
 -- This file adds fences of various types
 
 minetest.register_node("homedecor:fence_brass", {
-        description = "Brass Fence/railing",
-        drawtype = "fencelike",
-        tiles = {"homedecor_tile_brass.png"},
-        inventory_image = "homedecor_fence_brass.png",
-        wield_image = "homedecor_pole_brass.png",
-        paramtype = "light",
-        is_ground_content = true,
-        selection_box = {
-                type = "fixed",
-                fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
-        },
-        groups = {snappy=3},
-        sounds = default.node_sound_wood_defaults(),
+	description = "Brass Fence/railing",
+	drawtype = "fencelike",
+	tiles = {"homedecor_tile_brass.png"},
+	inventory_image = "homedecor_fence_brass.png",
+	wield_image = "homedecor_pole_brass.png",
+	paramtype = "light",
+	selection_box = {
+	        type = "fixed",
+	        fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
+	},
+	groups = {snappy=3},
+	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
 })
 
+
 minetest.register_node("homedecor:fence_wrought_iron", {
-        description = "Wrought Iron Fence/railing",
-        drawtype = "fencelike",
-        tiles = {"homedecor_tile_wrought_iron.png"},
-        inventory_image = "homedecor_fence_wrought_iron.png",
-        wield_image = "homedecor_pole_wrought_iron.png",
-        paramtype = "light",
-        is_ground_content = true,
-        selection_box = {
-                type = "fixed",
-                fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
-        },
-        groups = {snappy=3},
-        sounds = default.node_sound_wood_defaults(),
+	description = "Wrought Iron Fence/railing",
+	drawtype = "fencelike",
+	tiles = {"homedecor_tile_wrought_iron.png"},
+	inventory_image = "homedecor_fence_wrought_iron.png",
+	wield_image = "homedecor_pole_wrought_iron.png",
+	paramtype = "light",
+	selection_box = {
+	        type = "fixed",
+	        fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
+	},
+	groups = {snappy=3},
+	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
 })
+
+-- brass/wrought iron with signs:
+
+minetest.register_node("homedecor:fence_brass_with_sign", {
+	description = "Brass Fence/railing with sign",
+	drawtype = "nodebox",
+	tiles = {
+		"homedecor_sign_brass_post_top.png",
+		"homedecor_sign_brass_post_bottom.png",
+		"homedecor_sign_brass_post_side.png",
+		"homedecor_sign_brass_post_side.png",
+		"homedecor_sign_brass_post_back.png",
+		"homedecor_sign_brass_post_front.png",
+	},
+	inventory_image = "homedecor_sign_brass_post.png",
+	wield_image = "homedecor_sign_brass_post.png",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	node_box = {
+		type = "fixed",
+		fixed = { 
+			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
+			{ -0.45, -0.1875, -0.225, 0.45, 0.4375, -0.125 },
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 
+			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
+			{ -0.45, -0.1875, -0.225, 0.45, 0.4375, -0.125 },
+		}
+	},
+	groups = {snappy=3},
+	sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	drop = {
+		max_items = 2,
+		items = {
+			{ items = { "default:sign_wall" }},
+			{ items = { "homedecor:fence_brass" }},
+		},
+	},
+	on_construct = function(pos)
+		homedecor_construct_sign(pos)
+	end,
+	on_destruct = function(pos)
+		homedecor_destruct_sign(pos)
+	end,
+	on_receive_fields = function(pos, formname, fields, sender)
+		homedecor_update_sign(pos, fields)
+	end,
+	on_punch = function(pos, node, puncher)
+		homedecor_update_sign(pos)
+	end,
+})
+
+minetest.register_node("homedecor:fence_wrought_iron_with_sign", {
+	description = "Wrought Iron Fence/railing with sign",
+	drawtype = "nodebox",
+		tiles = {
+		"homedecor_sign_wrought_iron_post_top.png",
+		"homedecor_sign_wrought_iron_post_bottom.png",
+		"homedecor_sign_wrought_iron_post_side.png",
+		"homedecor_sign_wrought_iron_post_side.png",
+		"homedecor_sign_wrought_iron_post_back.png",
+		"homedecor_sign_wrought_iron_post_front.png",
+	},
+	inventory_image = "homedecor_sign_wrought_iron_post.png",
+	wield_image = "homedecor_sign_wrought_iron_post.png",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	node_box = {
+		type = "fixed",
+		fixed = { 
+			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
+			{ -0.45, -0.1875, -0.225, 0.45, 0.4375, -0.125 },
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 
+			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
+			{ -0.45, -0.1875, -0.225, 0.45, 0.4375, -0.125 },
+		}
+	},
+	groups = {snappy=3},
+	sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	drop = {
+		max_items = 2,
+		items = {
+			{ items = { "default:sign_wall" }},
+			{ items = { "homedecor:fence_wrought_iron" }},
+		},
+	},
+	on_construct = function(pos)
+		homedecor_construct_sign(pos)
+	end,
+	on_destruct = function(pos)
+		homedecor_destruct_sign(pos)
+	end,
+	on_receive_fields = function(pos, formname, fields, sender)
+		homedecor_update_sign(pos, fields)
+	end,
+	on_punch = function(pos, node, puncher)
+		homedecor_update_sign(pos)
+	end,
+})
+
+-- other types of fences
 
 minetest.register_node("homedecor:fence_picket", {
 	drawtype = "nodebox",
