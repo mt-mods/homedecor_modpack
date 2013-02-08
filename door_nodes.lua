@@ -158,11 +158,13 @@ for i in ipairs(sides) do
 					end
 				end,
 				on_place = function(itemstack, placer, pointed_thing)
+
+
+					--[[
 					-- for some obscure reason, this callback is used if the target node
 					-- is a homedecor door, probably because they have an on_rightclick
 					-- setting -- but only if you're weilding a door! 
 
-					local node=minetest.env:get_node(pointed_thing.under)
 					if string.find(node.name, "homedecor:door_") then
 
 						local lr = nil
@@ -184,11 +186,13 @@ for i in ipairs(sides) do
 						print(node.name)
 						print(dname)
 						print(lr)
+					]]--
 
-						homedecor_flip_door(pointed_thing.under, node, placer, dname, lr)
-						return
-					else
+					local node=minetest.env:get_node(pointed_thing.under)
+					if not minetest.registered_nodes[node.name].on_rightclick then
 						return homedecor_place_door(itemstack, placer, pointed_thing, doorname, side)
+					else 
+						minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 					end
 				end,
 				on_rightclick = function(pos, node, clicker)
