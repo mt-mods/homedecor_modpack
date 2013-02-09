@@ -103,7 +103,7 @@ minetest.register_node("homedecor:fence_brass_with_sign", {
 			{ -0.45, -0.1875, -0.225, 0.45, 0.4375, -0.125 },
 		}
 	},
-	groups = {snappy=3},
+	groups = {snappy=3,not_in_creative_inventory=1},
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
 	drop = {
@@ -155,7 +155,7 @@ minetest.register_node("homedecor:fence_wrought_iron_with_sign", {
 			{ -0.45, -0.1875, -0.225, 0.45, 0.4375, -0.125 },
 		}
 	},
-	groups = {snappy=3},
+	groups = {snappy=3,not_in_creative_inventory=1},
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
 	drop = {
