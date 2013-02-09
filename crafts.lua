@@ -1321,27 +1321,6 @@ minetest.register_craft( {
         },
 })
 
--- the version of brass/wrought iron fences with signs attached
-
-
-minetest.register_craft( {
-	type = "shapeless",
-        output = 'homedecor:fence_brass_with_sign',
-	recipe = {
-		'homedecor:fence_brass',
-		'default:sign_wall',
-	},
-})
-
-minetest.register_craft( {
-	type = "shapeless",
-        output = 'homedecor:fence_wrought_iron_with_sign',
-	recipe = {
-		'homedecor:fence_wrought_iron',
-		'default:sign_wall',
-	},
-})
-
 -- other types of fences/gates
 
 minetest.register_craft( {
