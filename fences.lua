@@ -15,24 +15,28 @@ minetest.register_node("homedecor:fence_brass", {
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
 	on_rightclick = function(pos, node, clicker)
-		local fdir = minetest.dir_to_facedir(clicker:get_look_dir())
-		local itemstack = clicker:get_wielded_item()
-		if itemstack:get_name() == "default:sign_wall" then
-			minetest.env:add_node(pos, {name = "homedecor:fence_brass_with_sign", param2 = fdir})
-			itemstack:take_item()
-			return itemstack
-		else
-			print("want to simply place the wielded item like usual.")
-			-- What goes here if I want to just place the wielded node (dirt, cobble, etc) normally?
+		if not homedecor_node_is_owned(pos, clicker) then
+			local fdir = minetest.dir_to_facedir(clicker:get_look_dir())
+			local itemstack = clicker:get_wielded_item()
+			if itemstack:get_name() == "default:sign_wall" then
+				minetest.env:add_node(pos, {name = "homedecor:fence_brass_with_sign", param2 = fdir})
+				itemstack:take_item()
+				return itemstack
+			else
+				print("want to simply place the wielded item like usual.")
+				-- What goes here if I want to just place the wielded node (dirt, cobble, etc) normally?
+			end
 		end
 	end,
 
 	on_place = function(itemstack, placer, pointed_thing)
-		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-		minetest.env:add_node(pointed_thing.above, {name = "homedecor:fence_brass", param2 = fdir})
-		itemstack:take_item()
-		placer:set_wielded_item(itemstack)
-		return itemstack
+		if not homedecor_node_is_owned(pointed_thing.under, placer) then
+			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+			minetest.env:add_node(pointed_thing.above, {name = "homedecor:fence_brass", param2 = fdir})
+			itemstack:take_item()
+			placer:set_wielded_item(itemstack)
+			return itemstack
+		end
 	end
 })
 
@@ -51,25 +55,29 @@ minetest.register_node("homedecor:fence_wrought_iron", {
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
 	on_rightclick = function(pos, node, clicker)
-		local fdir = minetest.dir_to_facedir(clicker:get_look_dir())
-		local itemstack = clicker:get_wielded_item()
-		if itemstack:get_name() == "default:sign_wall" then
-			minetest.env:add_node(pos, {name = "homedecor:fence_wrought_iron_with_sign", param2 = fdir})
-			itemstack:take_item()
-			clicker:set_wielded_item(itemstack)
-			return itemstack
-		else
-			print("want to simply place the wielded item like usual.")
-			-- What goes here if I want to just place the wielded node (dirt, cobble, etc) normally?
+		if not homedecor_node_is_owned(pos, clicker) then
+			local fdir = minetest.dir_to_facedir(clicker:get_look_dir())
+			local itemstack = clicker:get_wielded_item()
+			if itemstack:get_name() == "default:sign_wall" then
+				minetest.env:add_node(pos, {name = "homedecor:fence_wrought_iron_with_sign", param2 = fdir})
+				itemstack:take_item()
+				clicker:set_wielded_item(itemstack)
+				return itemstack
+			else
+				print("want to simply place the wielded item like usual.")
+				-- What goes here if I want to just place the wielded node (dirt, cobble, etc) normally?
+			end
 		end
 	end,
 
 	on_place = function(itemstack, placer, pointed_thing)
-		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-		minetest.env:add_node(pointed_thing.above, {name = "homedecor:fence_wrought_iron", param2 = fdir})
-		itemstack:take_item()
-		placer:set_wielded_item(itemstack)
-		return itemstack
+		if not homedecor_node_is_owned(pointed_thing.under, placer) then
+			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+			minetest.env:add_node(pointed_thing.above, {name = "homedecor:fence_wrought_iron", param2 = fdir})
+			itemstack:take_item()
+			placer:set_wielded_item(itemstack)
+			return itemstack
+		end
 	end
 })
 
