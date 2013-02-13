@@ -1536,6 +1536,15 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
+        output = "homedecor:door_wood_glass_bottom_left 2",
+        recipe = {
+		{ "default:wood", "default:glass" },
+		{ "default:glass", "default:wood" },
+		{ "default:wood", "default:glass" },
+        },
+})
+
+minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:door_wood_glass_bottom_left",
         recipe = {
