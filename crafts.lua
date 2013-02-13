@@ -888,7 +888,7 @@ minetest.register_craft( {
 	output = "homedecor:ic 4",
 	recipe = {
 		{ "mesecons_materials:silicon", "mesecons_materials:silicon" },
-		{ "mesecons_materials:silicon", "default:steel_ingot" },
+		{ "mesecons_materials:silicon", "moreores:copper_ingot" },
 	},
 })
 
@@ -1153,7 +1153,7 @@ minetest.register_craft({
 minetest.register_craft({
         output = "homedecor:glowlight_thick_yellow 6",
         recipe = {
-		{"moreblocks:superglowglass", "moreblocks:superglowglass", "moreblocks:superglowglass", },
+		{"moreblocks:superglowglass", "moreblocks:glowglass", "moreblocks:superglowglass", },
 	}
 })
 
@@ -1197,9 +1197,9 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-        output = "homedecor:glowlight_small_cube_yellow 8",
+        output = "homedecor:glowlight_small_cube_yellow 16",
         recipe = {
-		{"default:stick" },
+		{"moreblocks:glowglass" },
 		{"moreblocks:superglowglass" },
 	}
 })
@@ -1220,13 +1220,29 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+        output = "homedecor:glowlight_thick_yellow",
+        recipe = {
+		{"homedecor:glowlight_small_cube_yellow","homedecor:glowlight_small_cube_yellow"},
+		{"homedecor:glowlight_small_cube_yellow","homedecor:glowlight_small_cube_yellow"}
+	}
+})
+
+minetest.register_craft({
+        output = "homedecor:glowlight_thick_yellow",
+        recipe = {
+		{"homedecor:glowlight_small_cube_yellow_ceiling","homedecor:glowlight_small_cube_yellow_ceiling"},
+		{"homedecor:glowlight_small_cube_yellow_ceiling","homedecor:glowlight_small_cube_yellow_ceiling"}
+	}
+})
+
 -- white
 
 minetest.register_craft({
         output = "homedecor:glowlight_thick_white 6",
         recipe = {
 		{ "wool:white", "wool:white", "wool:white" },
-		{"moreblocks:superglowglass", "moreblocks:superglowglass", "moreblocks:superglowglass", },
+		{"moreblocks:superglowglass", "moreblocks:glowglass", "moreblocks:superglowglass", },
 	}
 })
 
@@ -1300,6 +1316,22 @@ minetest.register_craft({
         output = "homedecor:glowlight_small_cube_white",
         recipe = {
 		"homedecor:glowlight_small_cube_white_ceiling",
+	}
+})
+
+minetest.register_craft({
+        output = "homedecor:glowlight_thick_white",
+        recipe = {
+		{"homedecor:glowlight_small_cube_white","homedecor:glowlight_small_cube_white"},
+		{"homedecor:glowlight_small_cube_white","homedecor:glowlight_small_cube_white"}
+	}
+})
+
+minetest.register_craft({
+        output = "homedecor:glowlight_thick_white",
+        recipe = {
+		{"homedecor:glowlight_small_cube_white_ceiling","homedecor:glowlight_small_cube_white_ceiling"},
+		{"homedecor:glowlight_small_cube_white_ceiling","homedecor:glowlight_small_cube_white_ceiling"}
 	}
 })
 
