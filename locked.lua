@@ -1,0 +1,129 @@
+-- Locked Stuff for Home Decor mod, by Kaeza
+-- 2013-02-19
+--
+-- The code is mostly copypasta from default:chest_locked, with a few
+-- tidbits to ease creation of new items, should need arise.
+--
+-- License: LGPL
+--
+
+--[[
+  |  create_locked ( name, infotext )
+  |
+  |  Description:
+  |   This function takes a base node name such as "homedecor:refrigerator",
+  |   copies the definition from the original item into a new table, modifies
+  |   it a bit, and registers a new node with a "_locked" suffix such as
+  |   "homedecor:refrigerator_locked". The new node behaves identically to
+  |   the base node, except that moving items to/from the node's inventory
+  |   is only allowed for the original placer. In addition, it register a new
+  |   shapeless recipe for the node, using the base node plus a steel ingot.
+  |
+  |  Arguments:
+  |   name      The base node name
+  |   infotext  The infotext description (in case the name is too long).
+  |
+  |  Example Usage:
+  |   create_locked("homedecor:refrigerator", "Locked Fridge")
+  |   ^ This generates a new "Locked Refrigerator" node, whose infotext is
+  |   "Locked Fridge (owned by <placer>)".
+  |
+  |  Notes:
+  |   If <infotext> is not specified (or is nil), the infotext will be the
+  |   base node's description prefixed by "Locked ".
+  |
+  ]]
+local function create_locked ( name, infotext )
+    local def = { }
+    for k, v in pairs(minetest.registered_nodes[name]) do
+        def[k] = v
+    end
+    def.type = nil
+    def.name = nil
+    local desc = "Locked "..def.description
+    def.description = desc
+    local after_place_node = def.after_place_node
+    def.after_place_node = function(pos, placer)
+        local meta = minetest.env:get_meta(pos)
+        meta:set_string("owner", placer:get_player_name() or "")
+        meta:set_string("infotext", (infotext or desc).." (owned by "..
+                        meta:get_string("owner")..")")
+        if (after_place_node) then
+            return after_place_node(pos, placer)
+        end
+    end
+    local allow_metadata_inventory_move = def.allow_metadata_inventory_move;
+	def.allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
+		local meta = minetest.env:get_meta(pos)
+        if (player:get_player_name() ~= meta:get_string("owner")) then
+			minetest.log("action", player:get_player_name()..
+					" tried to access a "..desc.." belonging to "..
+					meta:get_string("owner").." at "..
+					minetest.pos_to_string(pos))
+			return 0
+		end
+		if (allow_metadata_inventory_move) then
+		    return allow_metadata_inventory_move(pos, from_list, from_index, to_list, to_index, count, player)
+		else
+		    return count
+        end
+	end
+	local allow_metadata_inventory_put = def.allow_metadata_inventory_put;
+    def.allow_metadata_inventory_put = function(pos, listname, index, stack, player)
+        local meta = minetest.env:get_meta(pos)
+        if (player:get_player_name() ~= meta:get_string("owner")) then
+            minetest.log("action", player:get_player_name()..
+                    " tried to access a "..desc.." belonging to "..
+                    meta:get_string("owner").." at "..
+                    minetest.pos_to_string(pos))
+            return 0
+        end
+        if (allow_metadata_inventory_put) then
+            return allow_metadata_inventory_put(pos, listname, index, stack, player)
+        else
+            return stack:get_count()
+        end
+    end
+    local allow_metadata_inventory_take = def.allow_metadata_inventory_take;
+    def.allow_metadata_inventory_take = function(pos, listname, index, stack, player)
+        local meta = minetest.env:get_meta(pos)
+        if (player:get_player_name() ~= meta:get_string("owner")) then
+            minetest.log("action", player:get_player_name()..
+                    " tried to access a "..desc.." belonging to "..
+                    meta:get_string("owner").." at "..
+                    minetest.pos_to_string(pos))
+            return 0
+        end
+        if (allow_metadata_inventory_take) then
+            return allow_metadata_inventory_take(pos, listname, index, stack, player)
+        else
+            return stack:get_count()
+        end
+    end
+    minetest.register_node(name.."_locked", def)
+    minetest.register_craft({
+        output = name.."_locked",
+        type = "shapeless",
+        recipe = {
+            name,
+            "default:steel_ingot",
+        }
+    })
+end
+
+local items = {
+    { "refrigerator", "Fridge" },
+    { "kitchen_cabinet", "Cabinet" },
+    { "kitchen_cabinet_half", "Cabinet" },
+    { "kitchen_cabinet_with_sink", "Cabinet" },
+    { "nightstand_oak_one_drawer", "Nightstand" },
+    { "nightstand_oak_two_drawers", "Nightstand" },
+    { "nightstand_mahogany_one_drawer", "Nightstand" },
+    { "nightstand_mahogany_two_drawers", "Nightstand" },
+    { "oven", "Oven" },
+}
+
+for _,item in ipairs(items) do
+    local info = (item[2] and "Locked "..item[2]);
+    create_locked("homedecor:"..item[1], info);
+end
