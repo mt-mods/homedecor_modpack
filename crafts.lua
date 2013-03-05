@@ -1412,6 +1412,18 @@ minetest.register_craft( {
 
 minetest.register_craft( {
 	type = "shapeless",
+	output = "homedecor:fence_chainlink_corner",
+	recipe = { "homedecor:fence_chainlink", "homedecor:fence_chainlink" },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:fence_chainlink 2",
+	recipe = { "homedecor:fence_chainlink_corner" },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
         output = "homedecor:fence_picket_gate_white_closed",
         recipe = {
 		"homedecor:fence_picket_white"
