@@ -337,6 +337,47 @@ minetest.register_node("homedecor:fence_chainlink", {
 })
 
 
+minetest.register_node("homedecor:fence_chainlink_corner", {
+	drawtype = "nodebox",
+	description = "Chainlink Fence",
+	tiles = {
+		"homedecor_fence_chainlink_gate_tb.png",
+		"homedecor_fence_chainlink_gate_tb.png",
+		"homedecor_fence_chainlink_corner_sides.png",
+		"homedecor_fence_chainlink_corner_sides.png",
+		"homedecor_fence_chainlink_corner_sides.png",
+		"homedecor_fence_chainlink_corner_sides.png",
+	},
+	paramtype = "light",
+	is_ground_content = true,
+	groups = {snappy=3},
+	sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{ -0.5, -0.5, 0.375, 0.5, 0.5, 0.5 },
+			{ -0.5, -0.5, -0.5, -0.375, 0.5, 0.5 }
+		}
+	},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{  -8/16, -8/16,  6/16,  -6/16,  8/16,  8/16 },	-- left post, rear
+			{  -8/16, -8/16, -8/16,  -6/16,  8/16, -7/16 }, -- left post, front
+			{   7/16, -8/16,  6/16,   8/16,  8/16,  8/16 }, -- right post, rear
+			{  -8/16,  7/16, 13/32,   8/16,  8/16, 15/32 },	-- top piece, rear
+			{  -8/16, -8/16, 13/32,   8/16, -7/16, 15/32 },	-- bottom piece, rear
+			{ -15/32,  7/16, -8/16, -13/32,  8/16,  8/16 },	-- top piece, side
+			{ -15/32, -8/16, -8/16, -13/32, -7/16,  8/16 },	-- bottom piece, side
+			{  -8/16, -8/16,  7/16,   8/16,  8/16,  7/16 },	-- the chainlink itself, rear
+			{  -7/16, -8/16, -8/16,  -7/16,  8/16,  8/16 }	-- the chainlink itself, side
+		}
+	},
+})
+
+
 -- =====
 -- Gates
 
