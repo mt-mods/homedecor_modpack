@@ -1,5 +1,14 @@
 -- Node definitions for Homedecor doors
 
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if (minetest.get_modpath("intllib")) then
+    dofile(minetest.get_modpath("intllib").."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
+
 local sides = {"left", "right"}
 local rsides = {"right", "left"}
 
@@ -58,7 +67,7 @@ for i in ipairs(sides) do
 		if use_rightclick == nil then -- register the version that uses on_punch
 
 			minetest.register_node("homedecor:door_"..doorname.."_top_"..side, {
-				description = doordesc.." (Top Half, "..side.."-opening)",
+				description = doordesc.." "..S("(Top Half, %s-opening)"):format(side),
 				drawtype = "nodebox",
 				tiles = tiles_top,
 				paramtype = "light",
@@ -83,7 +92,7 @@ for i in ipairs(sides) do
 			})
 
 			minetest.register_node("homedecor:door_"..doorname.."_bottom_"..side, {
-				description = doordesc.." ("..side.."-opening)",
+				description = doordesc.." "..S("(%s-opening)"):format(side),
 				drawtype = "nodebox",
 				tiles = tiles_bottom,
 				inventory_image = "homedecor_door_"..doorname.."_"..side.."_inv.png",
@@ -113,7 +122,7 @@ for i in ipairs(sides) do
 		else	-- register the version that uses on_rightclick
 
 			minetest.register_node("homedecor:door_"..doorname.."_top_"..side, {
-				description = doordesc.." (Top Half, "..side.."-opening)",
+				description = doordesc.." "..S("(Top Half, %s-opening)"):format(side),
 				drawtype = "nodebox",
 				tiles = tiles_top,
 				paramtype = "light",
@@ -138,7 +147,7 @@ for i in ipairs(sides) do
 			})
 
 			minetest.register_node("homedecor:door_"..doorname.."_bottom_"..side, {
-				description = doordesc.." ("..side.."-opening)",
+				description = doordesc.." "..S("(%s-opening)"):format(side),
 				drawtype = "nodebox",
 				tiles = tiles_bottom,
 				inventory_image = "homedecor_door_"..doorname.."_"..side.."_inv.png",
@@ -184,7 +193,7 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 		if field == nil then
 			fdir = minetest.dir_to_facedir(placer:get_look_dir())
 			if minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name ~= "air" then
-				minetest.chat_send_player( placer:get_player_name(), 'Not enough vertical space to place a door!' )
+				minetest.chat_send_player( placer:get_player_name(), S('Not enough vertical space to place a door!') )
 				return
 			end
 			minetest.env:add_node({x=pos.x, y=pos.y+1, z=pos.z}, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})

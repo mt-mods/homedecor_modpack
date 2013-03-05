@@ -1,8 +1,17 @@
 -- This file supplies nightstands
 
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if (minetest.get_modpath("intllib")) then
+    dofile(minetest.get_modpath("intllib").."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
+
 minetest.register_node('homedecor:nightstand_oak_one_drawer', {
 	drawtype = "nodebox",
-	description = "Oak Nightstand with One Drawer",
+	description = S("Oak Nightstand with One Drawer"),
 	tiles = { 'homedecor_nightstand_oak_top.png',
 			'homedecor_nightstand_oak_bottom.png',
 			'homedecor_nightstand_oak_right.png',
@@ -37,7 +46,7 @@ minetest.register_node('homedecor:nightstand_oak_one_drawer', {
 				"size[8,6]"..
 				"list[current_name;main;0,0;8,1;]"..
 				"list[current_player;main;0,2;8,4;]")
-		meta:set_string("infotext", "One-drawer Nightstand")
+		meta:set_string("infotext", S("One-drawer Nightstand"))
 		local inv = meta:get_inventory()
 		inv:set_size("main", 8)
 	end,
@@ -47,22 +56,28 @@ minetest.register_node('homedecor:nightstand_oak_one_drawer', {
 		return inv:is_empty("main")
 	end,
 	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff in nightstand at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff in nightstand at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff to nightstand at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff to nightstand at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" takes stuff from nightstand at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s takes stuff from nightstand at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
 })
 
 minetest.register_node('homedecor:nightstand_oak_two_drawers', {
 	drawtype = "nodebox",
-	description = "Oak Nightstand with One Drawer",
+	description = S("Oak Nightstand with Two Drawers"),
 	tiles = { 'homedecor_nightstand_oak_top.png',
 			'homedecor_nightstand_oak_bottom.png',
 			'homedecor_nightstand_oak_right.png',
@@ -94,7 +109,7 @@ minetest.register_node('homedecor:nightstand_oak_two_drawers', {
 				"size[8,7]"..
 				"list[current_name;main;0,0;8,2;]"..
 				"list[current_player;main;0,3;8,4;]")
-		meta:set_string("infotext", "Two-drawer Nightstand")
+		meta:set_string("infotext", S("Two-drawer Nightstand"))
 		local inv = meta:get_inventory()
 		inv:set_size("main", 16)
 	end,
@@ -104,22 +119,28 @@ minetest.register_node('homedecor:nightstand_oak_two_drawers', {
 		return inv:is_empty("main")
 	end,
 	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff in nightstand at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff in nightstand at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff to nightstand at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff to nightstand at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" takes stuff from nightstand at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s takes stuff from nightstand at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
 })
 
 minetest.register_node('homedecor:nightstand_mahogany_one_drawer', {
 	drawtype = "nodebox",
-	description = "Mahogany Nightstand with One Drawer",
+	description = S("Mahogany Nightstand with One Drawer"),
 	tiles = { 'homedecor_nightstand_mahogany_top.png',
 			'homedecor_nightstand_mahogany_bottom.png',
 			'homedecor_nightstand_mahogany_right.png',
@@ -154,7 +175,7 @@ minetest.register_node('homedecor:nightstand_mahogany_one_drawer', {
 				"size[8,6]"..
 				"list[current_name;main;0,0;8,1;]"..
 				"list[current_player;main;0,2;8,4;]")
-		meta:set_string("infotext", "One-drawer Nightstand")
+		meta:set_string("infotext", S("One-drawer Nightstand"))
 		local inv = meta:get_inventory()
 		inv:set_size("main", 8)
 	end,
@@ -164,22 +185,28 @@ minetest.register_node('homedecor:nightstand_mahogany_one_drawer', {
 		return inv:is_empty("main")
 	end,
 	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff in nightstand at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff in nightstand at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff to nightstand at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff to nightstand at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" takes stuff from nightstand at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s takes stuff from nightstand at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
 })
 
 minetest.register_node('homedecor:nightstand_mahogany_two_drawers', {
 	drawtype = "nodebox",
-	description = "Mahogany Nightstand with Two Drawers",
+	description = S("Mahogany Nightstand with Two Drawers"),
 	tiles = { 'homedecor_nightstand_mahogany_top.png',
 			'homedecor_nightstand_mahogany_bottom.png',
 			'homedecor_nightstand_mahogany_right.png',
@@ -211,7 +238,7 @@ minetest.register_node('homedecor:nightstand_mahogany_two_drawers', {
 				"size[8,7]"..
 				"list[current_name;main;0,0;8,2;]"..
 				"list[current_player;main;0,3;8,4;]")
-		meta:set_string("infotext", "Two-drawer Nightstand")
+		meta:set_string("infotext", S("Two-drawer Nightstand"))
 		local inv = meta:get_inventory()
 		inv:set_size("main", 16)
 	end,
@@ -221,15 +248,21 @@ minetest.register_node('homedecor:nightstand_mahogany_two_drawers', {
 		return inv:is_empty("main")
 	end,
 	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff in nightstand at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff in nightstand at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff to nightstand at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff to nightstand at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" takes stuff from nightstand at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s takes stuff from nightstand at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
 })

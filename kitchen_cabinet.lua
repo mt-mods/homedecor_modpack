@@ -1,7 +1,16 @@
 -- This file supplies Kitchen cabinets and kitchen sink
 
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if (minetest.get_modpath("intllib")) then
+    dofile(minetest.get_modpath("intllib").."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
+
 minetest.register_node('homedecor:kitchen_cabinet', {
-	description = "Kitchen Cabinet",
+	description = S("Kitchen Cabinet"),
 	tiles = { 'homedecor_kitchen_cabinet_top.png',
 			'homedecor_kitchen_cabinet_bottom.png',
 			'homedecor_kitchen_cabinet_sides.png',
@@ -20,7 +29,7 @@ minetest.register_node('homedecor:kitchen_cabinet', {
 				"size[8,8]"..
 				"list[current_name;main;0,0;8,3;]"..
 				"list[current_player;main;0,4;8,4;]")
-		meta:set_string("infotext", "Kitchen cabinet")
+		meta:set_string("infotext", S("Kitchen Cabinet"))
 		local inv = meta:get_inventory()
 		inv:set_size("main", 24)
 	end,
@@ -30,16 +39,22 @@ minetest.register_node('homedecor:kitchen_cabinet', {
 		return inv:is_empty("main")
 	end,
 	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff in kitchen cabinet at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff in kitchen cabinet at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff to kitchen cabinet at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff to kitchen cabinet at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" takes stuff from kitchen cabinet at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s takes stuff from kitchen cabinet at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
 })
 
@@ -72,7 +87,7 @@ minetest.register_node('homedecor:kitchen_cabinet_half', {
 				"size[8,7]"..
 				"list[current_name;main;1,0;6,2;]"..
 				"list[current_player;main;0,3;8,4;]")
-		meta:set_string("infotext", "Kitchen cabinet")
+		meta:set_string("infotext", S("Kitchen Cabinet"))
 		local inv = meta:get_inventory()
 		inv:set_size("main", 12)
 	end,
@@ -82,23 +97,28 @@ minetest.register_node('homedecor:kitchen_cabinet_half', {
 		return inv:is_empty("main")
 	end,
 	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff in kitchen cabinet at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff in kitchen cabinet at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff to kitchen cabinet at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff to kitchen cabinet at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" takes stuff from kitchen cabinet at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s takes stuff from kitchen cabinet at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
 })
 
 
-
 minetest.register_node('homedecor:kitchen_cabinet_with_sink', {
-	description = "Kitchen Cabinet with sink",
+	description = S("Kitchen Cabinet with sink"),
 	tiles = { 'homedecor_kitchen_cabinet_sinktop.png',
 			'homedecor_kitchen_cabinet_bottom.png',
 			'homedecor_kitchen_cabinet_sides.png',
@@ -117,7 +137,7 @@ minetest.register_node('homedecor:kitchen_cabinet_with_sink', {
 				"size[8,7]"..
 				"list[current_name;main;0,0;8,2;]"..
 				"list[current_player;main;0,3;8,4;]")
-		meta:set_string("infotext", "Under-sink cabinet")
+		meta:set_string("infotext", S("Under-sink cabinet"))
 		local inv = meta:get_inventory()
 		inv:set_size("main", 16)
 	end,
@@ -127,16 +147,21 @@ minetest.register_node('homedecor:kitchen_cabinet_with_sink', {
 		return inv:is_empty("main")
 	end,
 	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff in under-sink cabinet at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff in kitchen cabinet at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" moves stuff to under-sink cabinet at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s moves stuff to kitchen cabinet at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
     on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", player:get_player_name()..
-				" takes stuff from under-sink cabinet at "..minetest.pos_to_string(pos))
+		minetest.log("action", S("%s takes stuff from kitchen cabinet at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
 	end,
 })
-

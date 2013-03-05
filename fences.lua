@@ -1,7 +1,16 @@
 -- This file adds fences of various types
 
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if (minetest.get_modpath("intllib")) then
+    dofile(minetest.get_modpath("intllib").."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
+
 minetest.register_node("homedecor:fence_brass", {
-	description = "Brass Fence/railing",
+	description = S("Brass Fence/railing"),
 	drawtype = "fencelike",
 	tiles = {"homedecor_tile_brass.png"},
 	inventory_image = "homedecor_fence_brass.png",
@@ -23,7 +32,7 @@ minetest.register_node("homedecor:fence_brass", {
 				itemstack:take_item()
 				return itemstack
 			else
-				print("want to simply place the wielded item like usual.")
+				print(S("want to simply place the wielded item like usual."))
 				-- What goes here if I want to just place the wielded node (dirt, cobble, etc) normally?
 			end
 		end
@@ -41,7 +50,7 @@ minetest.register_node("homedecor:fence_brass", {
 })
 
 minetest.register_node("homedecor:fence_wrought_iron", {
-	description = "Wrought Iron Fence/railing",
+	description = S("Wrought Iron Fence/railing"),
 	drawtype = "fencelike",
 	tiles = {"homedecor_tile_wrought_iron.png"},
 	inventory_image = "homedecor_fence_wrought_iron.png",
@@ -64,7 +73,7 @@ minetest.register_node("homedecor:fence_wrought_iron", {
 				clicker:set_wielded_item(itemstack)
 				return itemstack
 			else
-				print("want to simply place the wielded item like usual.")
+				print(S("want to simply place the wielded item like usual."))
 				-- What goes here if I want to just place the wielded node (dirt, cobble, etc) normally?
 			end
 		end
@@ -84,7 +93,7 @@ minetest.register_node("homedecor:fence_wrought_iron", {
 -- brass/wrought iron with signs:
 
 minetest.register_node("homedecor:fence_brass_with_sign", {
-	description = "Brass Fence/railing with sign",
+	description = S("Brass Fence/railing with sign"),
 	drawtype = "nodebox",
 	tiles = {
 		"homedecor_sign_brass_post_top.png",
@@ -136,7 +145,7 @@ minetest.register_node("homedecor:fence_brass_with_sign", {
 })
 
 minetest.register_node("homedecor:fence_wrought_iron_with_sign", {
-	description = "Wrought Iron Fence/railing with sign",
+	description = S("Wrought Iron Fence/railing with sign"),
 	drawtype = "nodebox",
 		tiles = {
 		"homedecor_sign_wrought_iron_post_top.png",
@@ -191,7 +200,7 @@ minetest.register_node("homedecor:fence_wrought_iron_with_sign", {
 
 minetest.register_node("homedecor:fence_picket", {
 	drawtype = "nodebox",
-        description = "Unpainted Picket Fence",
+        description = S("Unpainted Picket Fence"),
         tiles = {
 		"homedecor_fence_picket.png",
 		"homedecor_fence_picket.png",
@@ -220,7 +229,7 @@ minetest.register_node("homedecor:fence_picket", {
 
 minetest.register_node("homedecor:fence_picket_white", {
 	drawtype = "nodebox",
-        description = "White Picket Fence",
+        description = S("White Picket Fence"),
         tiles = {
 		"homedecor_fence_picket_white.png",
 		"homedecor_fence_picket_white.png",
@@ -249,7 +258,7 @@ minetest.register_node("homedecor:fence_picket_white", {
 
 minetest.register_node("homedecor:fence_privacy", {
 	drawtype = "nodebox",
-        description = "Wooden Privacy Fence",
+        description = S("Wooden Privacy Fence"),
         tiles = {
 		"homedecor_fence_privacy_tb.png",
 		"homedecor_fence_privacy_tb.png",
@@ -281,7 +290,7 @@ minetest.register_node("homedecor:fence_privacy", {
 
 minetest.register_node("homedecor:fence_barbed_wire", {
 	drawtype = "nodebox",
-        description = "Barbed Wire Fence",
+        description = S("Barbed Wire Fence"),
         tiles = {"homedecor_fence_barbed_wire.png"},
         paramtype = "light",
         is_ground_content = true,
@@ -305,7 +314,7 @@ minetest.register_node("homedecor:fence_barbed_wire", {
 
 minetest.register_node("homedecor:fence_chainlink", {
 	drawtype = "nodebox",
-        description = "Chainlink Fence",
+        description = S("Chainlink Fence"),
         tiles = {
 		"homedecor_fence_chainlink_tb.png",
 		"homedecor_fence_chainlink_tb.png",
@@ -342,7 +351,7 @@ minetest.register_node("homedecor:fence_chainlink", {
 
 minetest.register_node("homedecor:fence_picket_gate_closed", {
 	drawtype = "nodebox",
-        description = "Unpainted Picket Fence Gate",
+        description = S("Unpainted Picket Fence Gate"),
         tiles = {
 		"homedecor_fence_picket_gate.png",
 		"homedecor_fence_picket_gate.png",
@@ -371,7 +380,7 @@ minetest.register_node("homedecor:fence_picket_gate_closed", {
 
 minetest.register_node("homedecor:fence_picket_gate_open", {
 	drawtype = "nodebox",
-        description = "Unpainted Picket Fence Gate",
+        description = S("Unpainted Picket Fence Gate"),
         tiles = {
 		"homedecor_fence_picket_gate.png",
 		"homedecor_fence_picket_gate.png",
@@ -401,7 +410,7 @@ minetest.register_node("homedecor:fence_picket_gate_open", {
 
 minetest.register_node("homedecor:fence_picket_gate_white_closed", {
 	drawtype = "nodebox",
-        description = "White Picket Fence Gate",
+        description = S("White Picket Fence Gate"),
         tiles = {
 		"homedecor_fence_picket_gate_white.png",
 		"homedecor_fence_picket_gate_white.png",
@@ -430,7 +439,7 @@ minetest.register_node("homedecor:fence_picket_gate_white_closed", {
 
 minetest.register_node("homedecor:fence_picket_gate_white_open", {
 	drawtype = "nodebox",
-        description = "White Picket Fence Gate",
+        description = S("White Picket Fence Gate"),
         tiles = {
 		"homedecor_fence_picket_gate_white.png",
 		"homedecor_fence_picket_gate_white.png",
@@ -460,7 +469,7 @@ minetest.register_node("homedecor:fence_picket_gate_white_open", {
 
 minetest.register_node("homedecor:fence_barbed_wire_gate_closed", {
 	drawtype = "nodebox",
-        description = "Barbed Wire Fence Gate",
+        description = S("Barbed Wire Fence Gate"),
         tiles = {
 		"homedecor_fence_barbed_wire_gate_edges.png",
 		"homedecor_fence_barbed_wire_gate_edges.png",
@@ -493,7 +502,7 @@ minetest.register_node("homedecor:fence_barbed_wire_gate_closed", {
 
 minetest.register_node("homedecor:fence_barbed_wire_gate_open", {
 	drawtype = "nodebox",
-        description = "Barbed Wire Fence Gate",
+        description = S("Barbed Wire Fence Gate"),
         tiles = {
 		"homedecor_fence_barbed_wire_gate_edges.png",
 		"homedecor_fence_barbed_wire_gate_edges.png",
@@ -527,7 +536,7 @@ minetest.register_node("homedecor:fence_barbed_wire_gate_open", {
 
 minetest.register_node("homedecor:fence_chainlink_gate_closed", {
 	drawtype = "nodebox",
-        description = "Chainlink Fence Gate",
+        description = S("Chainlink Fence Gate"),
         tiles = {
 		"homedecor_fence_chainlink_gate_tb.png",
 		"homedecor_fence_chainlink_gate_tb.png",
@@ -561,7 +570,7 @@ minetest.register_node("homedecor:fence_chainlink_gate_closed", {
 
 minetest.register_node("homedecor:fence_chainlink_gate_open", {
 	drawtype = "nodebox",
-        description = "Chainlink Fence Gate (open)",
+        description = S("Chainlink Fence Gate (open)"),
         tiles = {
 		"homedecor_fence_chainlink_gate_tb.png",
 		"homedecor_fence_chainlink_gate_tb.png",

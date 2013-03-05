@@ -1,5 +1,14 @@
 -- This code supplies an oven/stove. Basically it's just a copy of the default furnace with different textures.
 
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if (minetest.get_modpath("intllib")) then
+    dofile(minetest.get_modpath("intllib").."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
+
 default.oven_inactive_formspec =
 	"size[8,9]"..
 	"image[2,2;1,1;default_furnace_fire_bg.png]"..
@@ -9,7 +18,7 @@ default.oven_inactive_formspec =
 	"list[current_player;main;0,5;8,4;]"
 
 minetest.register_node("homedecor:oven", {
-	description = "Oven",
+	description = S("Oven"),
 	tiles = {"homedecor_oven_top.png", "homedecor_oven_bottom.png", "homedecor_oven_side.png",
 		"homedecor_oven_side.png", "homedecor_oven_side.png", "homedecor_oven_front.png"},
 	paramtype2 = "facedir",
@@ -40,7 +49,7 @@ minetest.register_node("homedecor:oven", {
 })
 
 minetest.register_node("homedecor:oven_active", {
-	description = "Oven",
+	description = S("Oven"),
 	tiles = {"homedecor_oven_top.png", "homedecor_oven_bottom.png", "homedecor_oven_side.png",
 		"homedecor_oven_side.png", "homedecor_oven_side.png", "homedecor_oven_front_active.png"},
 	paramtype2 = "facedir",
@@ -52,7 +61,7 @@ minetest.register_node("homedecor:oven_active", {
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
 		meta:set_string("formspec", default.oven_inactive_formspec)
-		meta:set_string("infotext", "Oven");
+		meta:set_string("infotext", S("Oven"))
 		local inv = meta:get_inventory()
 		inv:set_size("fuel", 1)
 		inv:set_size("src", 1)
@@ -128,7 +137,7 @@ minetest.register_abm({
 					srcstack:take_item()
 					inv:set_stack("src", 1, srcstack)
 				else
-					print("Could not insert '"..cooked.item:to_string().."'")
+					print(S("Could not insert '%s'"):format(cooked.item:to_string()))
 				end
 				meta:set_string("src_time", 0)
 			end
@@ -137,7 +146,7 @@ minetest.register_abm({
 		if meta:get_float("fuel_time") < meta:get_float("fuel_totaltime") then
 			local percent = math.floor(meta:get_float("fuel_time") /
 					meta:get_float("fuel_totaltime") * 100)
-			meta:set_string("infotext","Oven active: "..percent.."%")
+			meta:set_string("infotext",S("Oven active: %d%%"):format(percent))
 			hacky_swap_node(pos,"homedecor:oven_active")
 			meta:set_string("formspec",
 				"size[8,9]"..
@@ -163,7 +172,7 @@ minetest.register_abm({
 		end
 
 		if fuel.time <= 0 then
-			meta:set_string("infotext","Oven out of fuel")
+			meta:set_string("infotext",S("Oven out of fuel"))
 			hacky_swap_node(pos,"homedecor:oven")
 			meta:set_string("formspec", default.oven_inactive_formspec)
 			return
@@ -171,7 +180,7 @@ minetest.register_abm({
 
 		if cooked.item:is_empty() then
 			if was_active then
-				meta:set_string("infotext","Oven is empty")
+				meta:set_string("infotext",S("Oven is empty"))
 				hacky_swap_node(pos,"homedecor:oven")
 				meta:set_string("formspec", default.oven_inactive_formspec)
 			end
