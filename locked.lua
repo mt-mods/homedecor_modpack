@@ -7,6 +7,15 @@
 -- License: LGPL
 --
 
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if (minetest.get_modpath("intllib")) then
+    dofile(minetest.get_modpath("intllib").."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
+
 --[[
   |  create_locked ( name, infotext )
   |
@@ -40,14 +49,12 @@ local function create_locked ( name, infotext )
     end
     def.type = nil
     def.name = nil
-    local desc = "Locked "..def.description
-    def.description = desc
+    def.description = S("%s (Locked)"):format(def.description)
     local after_place_node = def.after_place_node
     def.after_place_node = function(pos, placer)
         local meta = minetest.env:get_meta(pos)
         meta:set_string("owner", placer:get_player_name() or "")
-        meta:set_string("infotext", (infotext or desc).." (owned by "..
-                        meta:get_string("owner")..")")
+        meta:set_string("infotext", S("%s (owned by %s)"):format(infotext,meta:get_string("owner")))
         if (after_place_node) then
             return after_place_node(pos, placer)
         end
@@ -56,10 +63,12 @@ local function create_locked ( name, infotext )
 	def.allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
 		local meta = minetest.env:get_meta(pos)
         if (player:get_player_name() ~= meta:get_string("owner")) then
-			minetest.log("action", player:get_player_name()..
-					" tried to access a "..desc.." belonging to "..
-					meta:get_string("owner").." at "..
-					minetest.pos_to_string(pos))
+            minetest.log("action", S("%s tried to access a %s belonging to %s at %s"):format(
+                player:get_player_name(),
+                infotext,
+                meta:get_string("owner"),
+                minetest.pos_to_string(pos)
+            ))
 			return 0
 		end
 		if (allow_metadata_inventory_move) then
@@ -72,10 +81,12 @@ local function create_locked ( name, infotext )
     def.allow_metadata_inventory_put = function(pos, listname, index, stack, player)
         local meta = minetest.env:get_meta(pos)
         if (player:get_player_name() ~= meta:get_string("owner")) then
-            minetest.log("action", player:get_player_name()..
-                    " tried to access a "..desc.." belonging to "..
-                    meta:get_string("owner").." at "..
-                    minetest.pos_to_string(pos))
+            minetest.log("action", S("%s tried to access a %s belonging to %s at %s"):format(
+                player:get_player_name(),
+                infotext,
+                meta:get_string("owner"),
+                minetest.pos_to_string(pos)
+            ))
             return 0
         end
         if (allow_metadata_inventory_put) then
@@ -88,10 +99,12 @@ local function create_locked ( name, infotext )
     def.allow_metadata_inventory_take = function(pos, listname, index, stack, player)
         local meta = minetest.env:get_meta(pos)
         if (player:get_player_name() ~= meta:get_string("owner")) then
-            minetest.log("action", player:get_player_name()..
-                    " tried to access a "..desc.." belonging to "..
-                    meta:get_string("owner").." at "..
-                    minetest.pos_to_string(pos))
+            minetest.log("action", S("%s tried to access a %s belonging to %s at %s"):format(
+                player:get_player_name(),
+                infotext,
+                meta:get_string("owner"),
+                minetest.pos_to_string(pos)
+            ))
             return 0
         end
         if (allow_metadata_inventory_take) then
@@ -112,18 +125,27 @@ local function create_locked ( name, infotext )
 end
 
 local items = {
-    { "refrigerator", "Fridge" },
-    { "kitchen_cabinet", "Cabinet" },
-    { "kitchen_cabinet_half", "Cabinet" },
-    { "kitchen_cabinet_with_sink", "Cabinet" },
-    { "nightstand_oak_one_drawer", "Nightstand" },
-    { "nightstand_oak_two_drawers", "Nightstand" },
-    { "nightstand_mahogany_one_drawer", "Nightstand" },
-    { "nightstand_mahogany_two_drawers", "Nightstand" },
-    { "oven", "Oven" },
+    { "refrigerator",
+      "Cabinet" },
+    { "kitchen_cabinet",
+      "Cabinet" },
+    { "kitchen_cabinet_half",
+      "Cabinet" },
+    { "kitchen_cabinet_with_sink",
+      "Cabinet" },
+    { "nightstand_oak_one_drawer",
+      "Nightstand" },
+    { "nightstand_oak_two_drawers",
+      "Nightstand" },
+    { "nightstand_mahogany_one_drawer",
+      "Nightstand" },
+    { "nightstand_mahogany_two_drawers",
+      "Nightstand" },
+    { "oven",
+      "Oven" },
 }
 
 for _,item in ipairs(items) do
-    local info = (item[2] and "Locked "..item[2]);
-    create_locked("homedecor:"..item[1], info);
+    local name, info = item[1], item[2];
+    create_locked("homedecor:"..name, S("Locked "..info));
 end

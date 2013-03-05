@@ -1,7 +1,17 @@
+
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if (minetest.get_modpath("intllib")) then
+    dofile(minetest.get_modpath("intllib").."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
+
 homedecor_door_models = {
 	{
 		"closet_mahogany",
-		"Mahogany Closet Door",
+		S("Mahogany Closet Door"),
 
 		{{ -8/16, 5/16, 6/16, 8/16, 8/16, 8/16 },
 		{ -8/16, 8/32, 13/32, 8/16, 9/32, 15/32 },
@@ -72,7 +82,7 @@ homedecor_door_models = {
 
 	{
 		"closet_oak",
-		"Oak Closet Door",
+		S("Oak Closet Door"),
 
 		{{ -8/16, 5/16, 6/16, 8/16, 8/16, 8/16 },
 		{ -8/16, 8/32, 13/32, 8/16, 9/32, 15/32 },
@@ -143,7 +153,7 @@ homedecor_door_models = {
 
 	{
 		"exterior_fancy",
-		"Fancy Wood/Glass Door",
+		S("Fancy Wood/Glass Door"),
 
 		{{ -8/16, 6/16, 6/16, 8/16, 8/16, 8/16 },
 		{ -8/16, -8/16, 6/16, -6/16, 8/16, 8/16 },
@@ -170,7 +180,7 @@ homedecor_door_models = {
 
 	{
 		"glass",
-		"Glass Office Door",
+		S("Glass Office Door"),
 
 		{{ -8/16, -8/16, 6/16, 8/16, 8/16, 8/16 }},
 
@@ -185,7 +195,7 @@ homedecor_door_models = {
 
 	{
 		"wood_glass",
-		"Glass and Wood, Oak-colored",
+		S("Glass and Wood, Oak-colored"),
 
 		{{ -8/16, 6/16, 6/16, 8/16, 8/16, 8/16 },
 		{ -8/16, -3/32, 6/16, 8/16, 1/32, 8/16 },
@@ -224,7 +234,7 @@ homedecor_door_models = {
 
 	{
 		"wood_glass_mahogany",
-		"Glass and Wood, Mahogany-colored",
+		S("Glass and Wood, Mahogany-colored"),
 
 		{{ -8/16, 6/16, 6/16, 8/16, 8/16, 8/16 },
 		{ -8/16, -3/32, 6/16, 8/16, 1/32, 8/16 },
@@ -263,7 +273,7 @@ homedecor_door_models = {
 
 	{
 		"wood_glass_white",
-		"Glass and Wood, White",
+		S("Glass and Wood, White"),
 
 		{{ -8/16, 6/16, 6/16, 8/16, 8/16, 8/16 },
 		{ -8/16, -3/32, 6/16, 8/16, 1/32, 8/16 },
@@ -302,7 +312,7 @@ homedecor_door_models = {
 
 	{
 		"wood_plain",
-		"Plain Wooden Door",
+		S("Plain Wooden Door"),
 
 		{{ -8/16, -8/16, 6/16, 8/16, 8/16, 8/16 }},
 

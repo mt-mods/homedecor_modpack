@@ -2,12 +2,21 @@
 
 -- Font: 04.jp.org
 
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if (minetest.get_modpath("intllib")) then
+    dofile(minetest.get_modpath("intllib").."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
+
 -- load characters map
 local chars_file = io.open(minetest.get_modpath("homedecor").."/characters", "r")
 local charmap = {}
 local max_chars = 16
 if not chars_file then
-    print("[homedecor] E: character map file not found")
+    print("[homedecor] "..S("E: character map file not found"))
 else
     while true do
         local char = chars_file:read("*l")
@@ -169,7 +178,7 @@ homedecor_generate_line = function(s, ypos)
             file = charmap[s:sub(i, i + 1)]
             i = i + 2
         else
-            print("[homedecor] W: unknown symbol in '"..s.."' at "..i.." (probably "..s:sub(i, i)..")")
+            print("[homedecor] "..S("W: unknown symbol in '%s' at %d (probably %s)"):format(s, i, s:sub(i, i)))
             i = i + 1
         end
         if file ~= nil then

@@ -13,6 +13,15 @@
 
 local DEBUG = 0
 
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if (minetest.get_modpath("intllib")) then
+    dofile(minetest.get_modpath("intllib").."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
+
 -- Various Functions
 
 local dbg = function(s)
@@ -31,19 +40,19 @@ function homedecor_node_is_owned(pos, placer)
 				elseif type(GetNodeOwnerName) == "function" then	-- ...is a recent version
 					ownername = GetNodeOwnerName(pos)
 				else
-					ownername = "someone"
+					ownername = S("someone")
 				end
 			end
 		end
 
 	elseif type(isprotect)=="function" then 					-- glomie's protection mod
 		if not isprotect(5, pos, placer) then
-			ownername = "someone"
+			ownername = S("someone")
 		end
 	end
 
 	if ownername ~= false then
-		minetest.chat_send_player( placer:get_player_name(), "Sorry, "..ownername.." owns that spot." )
+		minetest.chat_send_player( placer:get_player_name(), S("Sorry, %s owns that spot."):format(ownername) )
 		return true
 	else
 		return false
@@ -53,7 +62,7 @@ end
 -- Nodes
 
 minetest.register_node('homedecor:shingles_wood', {
-	description = "Wood Shingles",
+	description = S("Wood Shingles"),
 	drawtype = 'raillike',
 	tiles = { 'homedecor_shingles_wood.png' },
 	wield_image = 'homedecor_shingles_wood.png',
@@ -66,7 +75,7 @@ minetest.register_node('homedecor:shingles_wood', {
 })
 
 minetest.register_node('homedecor:skylight', {
-	description = "Glass Skylight",
+	description = S("Glass Skylight"),
 	drawtype = 'raillike',
 	tiles = { 'default_glass.png' },
 	wield_image = 'default_glass.png',
@@ -79,7 +88,7 @@ minetest.register_node('homedecor:skylight', {
 })
 
 minetest.register_node('homedecor:shingles_asphalt', {
-	description = "Asphalt Shingles",
+	description = S("Asphalt Shingles"),
 	drawtype = 'raillike',
 	tiles = { 'homedecor_shingles_asphalt.png' },
 	wield_image = 'homedecor_shingles_asphalt.png',
@@ -92,7 +101,7 @@ minetest.register_node('homedecor:shingles_asphalt', {
 })
 
 minetest.register_node('homedecor:shingles_terracotta', {
-	description = "Terracotta Roofing",
+	description = S("Terracotta Roofing"),
 	drawtype = 'raillike',
 	tiles = { 'homedecor_shingles_terracotta.png' },
 	wield_image = 'homedecor_shingles_terracotta.png',
@@ -107,7 +116,7 @@ minetest.register_node('homedecor:shingles_terracotta', {
 })
 
 minetest.register_node('homedecor:projection_screen', {
-	description = "Projection Screen Material",
+	description = S("Projection Screen Material"),
 	drawtype = 'signlike',
 	tiles = { 'homedecor_projection_screen.png' },
 	wield_image = 'homedecor_projection_screen_inv.png',
@@ -125,7 +134,7 @@ minetest.register_node('homedecor:projection_screen', {
 })
 
 minetest.register_node('homedecor:ceiling_paint', {
-	description = "Textured Ceiling Paint",
+	description = S("Textured Ceiling Paint"),
 	drawtype = 'signlike',
 	tiles = { 'homedecor_ceiling_paint.png' },
 	inventory_image = 'homedecor_ceiling_paint_roller.png',
@@ -144,7 +153,7 @@ minetest.register_node('homedecor:ceiling_paint', {
 })
 
 minetest.register_node('homedecor:ceiling_tile', {
-	description = "Drop-Ceiling Tile",
+	description = S("Drop-Ceiling Tile"),
 	drawtype = 'signlike',
 	tiles = { 'homedecor_ceiling_tile.png' },
 	wield_image = 'homedecor_ceiling_tile.png',
@@ -163,7 +172,7 @@ minetest.register_node('homedecor:ceiling_tile', {
 })
 
 minetest.register_node('homedecor:rug_small', {
-	description = "Small Throw Rug",
+	description = S("Small Throw Rug"),
 	drawtype = 'signlike',
 	tiles = { 'homedecor_rug_small.png' },
 	wield_image = 'homedecor_rug_small.png',
@@ -184,7 +193,7 @@ minetest.register_node('homedecor:rug_small', {
 })
 
 minetest.register_node('homedecor:rug_large', {
-	description = "Large Area Rug",
+	description = S("Large Area Rug"),
 	drawtype = 'signlike',
 	tiles = { 'homedecor_rug_large.png' },
 	wield_image = 'homedecor_rug_large.png',
@@ -205,7 +214,7 @@ minetest.register_node('homedecor:rug_large', {
 	})
 
 minetest.register_node('homedecor:glass_table_large', {
-	description = "Large Glass Table Piece",
+	description = S("Large Glass Table Piece"),
 	drawtype = 'signlike',
 	tiles = { 'homedecor_glass_table_large.png' },
 	wield_image = 'homedecor_glass_table_large.png',
@@ -226,7 +235,7 @@ minetest.register_node('homedecor:glass_table_large', {
 })
 
 minetest.register_node('homedecor:glass_table_small_round', {
-	description = "Glass Table (Small, Round)",
+	description = S("Glass Table (Small, Round)"),
 	drawtype = 'signlike',
 	tiles = { 'homedecor_glass_table_small_round.png' },
 	wield_image = 'homedecor_glass_table_small_round.png',
@@ -247,7 +256,7 @@ minetest.register_node('homedecor:glass_table_small_round', {
 })
 
 minetest.register_node('homedecor:glass_table_small_square', {
-	description = "Glass Table (Small, Square)",
+	description = S("Glass Table (Small, Square)"),
 	drawtype = 'signlike',
 	tiles = { 'homedecor_glass_table_small_square.png' },
 	wield_image = 'homedecor_glass_table_small_square.png',
@@ -268,7 +277,7 @@ minetest.register_node('homedecor:glass_table_small_square', {
 })
 
 minetest.register_node("homedecor:table_legs_brass", {
-        description = "Brass Table Legs",
+        description = S("Brass Table Legs"),
         drawtype = "plantlike",
         tiles = {"homedecor_table_legs_brass.png"},
         inventory_image = "homedecor_table_legs_brass.png",
@@ -282,7 +291,7 @@ minetest.register_node("homedecor:table_legs_brass", {
 })
 
 minetest.register_node("homedecor:table_legs_wrought_iron", {
-        description = "Brass Table Legs",
+        description = S("Brass Table Legs"),
         drawtype = "plantlike",
         tiles = {"homedecor_table_legs_wrought_iron.png"},
         inventory_image = "homedecor_table_legs_wrought_iron.png",
@@ -296,7 +305,7 @@ minetest.register_node("homedecor:table_legs_wrought_iron", {
 })
 
 minetest.register_node('homedecor:stereo', {
-	description = "Stereo Receiver",
+	description = S("Stereo Receiver"),
 	tiles = { 'homedecor_stereo_top.png',
 			'homedecor_stereo_bottom.png',
 			'homedecor_stereo_right.png',
@@ -312,7 +321,7 @@ minetest.register_node('homedecor:stereo', {
 })
 
 minetest.register_node('homedecor:utility_table_top', {
-	description = "Utility Table",
+	description = S("Utility Table"),
 	tiles = { 'homedecor_utility_table_top.png' },
 	inventory_image = 'homedecor_utility_table_top.png',
 	wield_image = 'homedecor_utility_table_top.png',
@@ -335,7 +344,7 @@ minetest.register_node('homedecor:utility_table_top', {
 })
 
 minetest.register_node('homedecor:utility_table_legs', {
-	description = "Legs for Utility Table",
+	description = S("Legs for Utility Table"),
 	tiles = { 'homedecor_utility_table_legs.png' },
 	inventory_image = 'homedecor_utility_table_legs_inv.png',
 	wield_image = 'homedecor_utility_table_legs.png',
@@ -350,7 +359,7 @@ minetest.register_node('homedecor:utility_table_legs', {
 })
 
 minetest.register_node('homedecor:flower_pot_terracotta', {
-	description = "Terracotta Flower Pot",
+	description = S("Terracotta Flower Pot"),
 	tiles = { 'homedecor_flower_pot_terracotta_top.png',
 			'homedecor_flower_pot_terracotta_bottom.png',
 			'homedecor_flower_pot_terracotta_sides.png',
@@ -366,7 +375,7 @@ minetest.register_node('homedecor:flower_pot_terracotta', {
 })
 
 minetest.register_node('homedecor:flower_pot_black', {
-	description = "Black Plastic Flower Pot",
+	description = S("Black Plastic Flower Pot"),
 	tiles = { 'homedecor_flower_pot_black_top.png',
 			'homedecor_flower_pot_black_bottom.png',
 			'homedecor_flower_pot_black_sides.png',
@@ -382,7 +391,7 @@ minetest.register_node('homedecor:flower_pot_black', {
 })
 
 minetest.register_node('homedecor:flower_pot_green', {
-	description = "Green Plastic Flower Pot",
+	description = S("Green Plastic Flower Pot"),
 	tiles = { 'homedecor_flower_pot_green_top.png',
 			'homedecor_flower_pot_green_bottom.png',
 			'homedecor_flower_pot_green_sides.png',
@@ -398,7 +407,7 @@ minetest.register_node('homedecor:flower_pot_green', {
 })
 
 minetest.register_node('homedecor:wood_table_large', {
-	description = "Wooden Tabletop piece",
+	description = S("Wooden Tabletop piece"),
 	tiles = { 'homedecor_wood_table_large.png' },
 	inventory_image = 'homedecor_wood_table_large.png',
 	wield_image = 'homedecor_wood_table_large.png',
@@ -419,7 +428,7 @@ minetest.register_node('homedecor:wood_table_large', {
 })
 
 minetest.register_node('homedecor:wood_table_small_round', {
-	description = "Wooden Tabletop (Small, Round)",
+	description = S("Wooden Tabletop (Small, Round)"),
 	tiles = { 'homedecor_wood_table_small_round.png' },
 	inventory_image = 'homedecor_wood_table_small_round.png',
 	wield_image = 'homedecor_wood_table_small_round.png',
@@ -440,7 +449,7 @@ minetest.register_node('homedecor:wood_table_small_round', {
 })
 
 minetest.register_node('homedecor:wood_table_small_square', {
-	description = "Wooden Tabletop (Small, Square)",
+	description = S("Wooden Tabletop (Small, Square)"),
 	tiles = { 'homedecor_wood_table_small_square.png' },
 	inventory_image = 'homedecor_wood_table_small_square.png',
 	wield_image = 'homedecor_wood_table_small_square.png',
@@ -461,7 +470,7 @@ minetest.register_node('homedecor:wood_table_small_square', {
 })
 
 minetest.register_node('homedecor:shutter_black', {
-	description = "Wooden Shutter (Black)",
+	description = S("Wooden Shutter (Black)"),
 	tiles = { 'homedecor_window_shutter_black.png' },
 	inventory_image = 'homedecor_window_shutter_black.png',
 	wield_image = 'homedecor_window_shutter_black.png',
@@ -480,7 +489,7 @@ minetest.register_node('homedecor:shutter_black', {
 })
 
 minetest.register_node('homedecor:shutter_mahogany', {
-	description = "Wooden Shutter (Unpainted Mahogany)",
+	description = S("Wooden Shutter (Unpainted Mahogany)"),
 	tiles = { 'homedecor_window_shutter_mahogany.png' },
 	inventory_image = 'homedecor_window_shutter_mahogany.png',
 	wield_image = 'homedecor_window_shutter_mahogany.png',
@@ -499,7 +508,7 @@ minetest.register_node('homedecor:shutter_mahogany', {
 })
 
 minetest.register_node('homedecor:shutter_oak', {
-	description = "Wooden Shutter (Unpainted Oak)",
+	description = S("Wooden Shutter (Unpainted Oak)"),
 	tiles = { 'homedecor_window_shutter_oak.png' },
 	inventory_image = 'homedecor_window_shutter_oak.png',
 	wield_image = 'homedecor_window_shutter_oak.png',
@@ -518,7 +527,7 @@ minetest.register_node('homedecor:shutter_oak', {
 })
 
 minetest.register_node('homedecor:shutter_dark_grey', {
-	description = "Wooden Shutter (Dark Grey)",
+	description = S("Wooden Shutter (Dark Grey)"),
 	tiles = { 'homedecor_window_shutter_dark_grey.png' },
 	inventory_image = 'homedecor_window_shutter_dark_grey.png',
 	wield_image = 'homedecor_window_shutter_dark_grey.png',
@@ -537,7 +546,7 @@ minetest.register_node('homedecor:shutter_dark_grey', {
 })
 
 minetest.register_node('homedecor:shutter_forest_green', {
-	description = "Wooden Shutter (Forest Green)",
+	description = S("Wooden Shutter (Forest Green)"),
 	tiles = { 'homedecor_window_shutter_forest_green.png' },
 	inventory_image = 'homedecor_window_shutter_forest_green.png',
 	wield_image = 'homedecor_window_shutter_forest_green.png',
@@ -556,7 +565,7 @@ minetest.register_node('homedecor:shutter_forest_green', {
 })
 
 minetest.register_node('homedecor:shutter_grey', {
-	description = "Wooden Shutter (Grey)",
+	description = S("Wooden Shutter (Grey)"),
 	tiles = { 'homedecor_window_shutter_grey.png' },
 	inventory_image = 'homedecor_window_shutter_grey.png',
 	wield_image = 'homedecor_window_shutter_grey.png',
@@ -575,7 +584,7 @@ minetest.register_node('homedecor:shutter_grey', {
 })
 
 minetest.register_node('homedecor:shutter_light_blue', {
-	description = "Wooden Shutter (Light Blue)",
+	description = S("Wooden Shutter (Light Blue)"),
 	tiles = { 'homedecor_window_shutter_light_blue.png' },
 	inventory_image = 'homedecor_window_shutter_light_blue.png',
 	wield_image = 'homedecor_window_shutter_light_blue.png',
@@ -594,7 +603,7 @@ minetest.register_node('homedecor:shutter_light_blue', {
 })
 
 minetest.register_node('homedecor:shutter_purple', {
-	description = "Wooden Shutter (Purple)",
+	description = S("Wooden Shutter (Purple)"),
 	tiles = { 'homedecor_window_shutter_purple.png' },
 	inventory_image = 'homedecor_window_shutter_purple.png',
 	wield_image = 'homedecor_window_shutter_purple.png',
@@ -613,7 +622,7 @@ minetest.register_node('homedecor:shutter_purple', {
 })
 
 minetest.register_node('homedecor:shutter_red', {
-	description = "Wooden Shutter (Red)",
+	description = S("Wooden Shutter (Red)"),
 	tiles = { 'homedecor_window_shutter_red.png' },
 	inventory_image = 'homedecor_window_shutter_red.png',
 	wield_image = 'homedecor_window_shutter_red.png',
@@ -632,7 +641,7 @@ minetest.register_node('homedecor:shutter_red', {
 })
 
 minetest.register_node('homedecor:shutter_white', {
-	description = "Wooden Shutter (White)",
+	description = S("Wooden Shutter (White)"),
 	tiles = { 'homedecor_window_shutter_white.png' },
 	inventory_image = 'homedecor_window_shutter_white.png',
 	wield_image = 'homedecor_window_shutter_white.png',
@@ -651,7 +660,7 @@ minetest.register_node('homedecor:shutter_white', {
 })
 
 minetest.register_node('homedecor:shutter_yellow', {
-	description = "Wooden Shutter (Yellow)",
+	description = S("Wooden Shutter (Yellow)"),
 	tiles = { 'homedecor_window_shutter_yellow.png' },
 	inventory_image = 'homedecor_window_shutter_yellow.png',
 	wield_image = 'homedecor_window_shutter_yellow.png',
@@ -671,7 +680,7 @@ minetest.register_node('homedecor:shutter_yellow', {
 
 
 minetest.register_node('homedecor:utilitytable2', {
-	description = "Utility table mk2",
+	description = S("Utility table mk2"),
 	tiles = { 'homedecor_utility_table_top.png',
 			'homedecor_blanktile.png',
 			'homedecor_utility_table_legs.png',
@@ -699,7 +708,7 @@ for i = 1, detail-1 do
 end
 
 minetest.register_node("homedecor:pole_brass", {
-        description = "Brass Pole",
+        description = S("Brass Pole"),
         drawtype = "nodebox",
         tiles = {"homedecor_tile_brass2.png"},
         inventory_image = "homedecor_pole_brass2.png",
@@ -720,7 +729,7 @@ minetest.register_node("homedecor:pole_brass", {
 })
 	
 minetest.register_node("homedecor:pole_wrought_iron", {
-        description = "Wrought Iron Pole",
+        description = S("Wrought Iron Pole"),
         drawtype = "nodebox",
         tiles = {"homedecor_tile_wrought_iron2.png"},
         inventory_image = "homedecor_pole_wrought_iron.png",
@@ -741,7 +750,7 @@ minetest.register_node("homedecor:pole_wrought_iron", {
 })
 
 minetest.register_node('homedecor:speaker', {
-	description = "Large Stereo Speaker",
+	description = S("Large Stereo Speaker"),
 	tiles = { 'homedecor_speaker_top.png',
 			'homedecor_speaker_bottom.png',
 			'homedecor_speaker_right.png',
@@ -757,7 +766,7 @@ minetest.register_node('homedecor:speaker', {
 })
 
 minetest.register_node('homedecor:speaker_small', {
-	description = "Small Surround Speaker",
+	description = S("Small Surround Speaker"),
 	drawtype = "nodebox",
 	tiles = {
 		'homedecor_speaker_top.png',
@@ -796,10 +805,10 @@ local curtaincolors = {
 }
 
 for c in ipairs(curtaincolors) do
-	local color = curtaincolors[c]
+	local color = S(curtaincolors[c])
 
 minetest.register_node("homedecor:curtain_"..color, {
-	description = "Curtains ("..color..")",
+	description = S("Curtains (%s)"):format(color),
 	tiles = { "homedecor_curtain_"..color..".png" },
 	inventory_image = "homedecor_curtain_"..color..".png",
 	wield_image = "homedecor_curtain_"..color..".png",
@@ -836,4 +845,4 @@ dofile(minetest.get_modpath("homedecor").."/crafts.lua")
 
 dofile(minetest.get_modpath("homedecor").."/locked.lua")
 
-print("[HomeDecor] Loaded!")
+print("[HomeDecor] "..S("Loaded!"))

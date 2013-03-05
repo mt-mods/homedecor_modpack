@@ -1,7 +1,16 @@
 -- This file provides a semi-animated television.
 
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if (minetest.get_modpath("intllib")) then
+    dofile(minetest.get_modpath("intllib").."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
+
 minetest.register_node('homedecor:television', {
-	description = "Small CRT Television",
+	description = S("Small CRT Television"),
 	tiles = { 'homedecor_television_top.png',
 		  'homedecor_television_bottom.png',
 		  'homedecor_television_right.png',
