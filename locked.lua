@@ -41,6 +41,7 @@ end
   |   If <infotext> is not specified (or is nil), the infotext will be the
   |   base node's description prefixed by "Locked ".
   |
+  |   The ABM for the locked oven is defined in oven.lua.
   ]]
 local function create_locked ( name, infotext )
     local def = { }
@@ -143,6 +144,8 @@ local items = {
       "Nightstand" },
     { "oven",
       "Oven" },
+    { "oven_active",
+      "Oven (active)" }
 }
 
 for _,item in ipairs(items) do
