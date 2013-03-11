@@ -23,20 +23,6 @@ minetest.register_node("homedecor:fence_brass", {
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
-	on_rightclick = function(pos, node, clicker)
-		if not homedecor_node_is_owned(pos, clicker) then
-			local fdir = minetest.dir_to_facedir(clicker:get_look_dir())
-			local itemstack = clicker:get_wielded_item()
-			if itemstack:get_name() == "default:sign_wall" then
-				minetest.env:add_node(pos, {name = "homedecor:fence_brass_with_sign", param2 = fdir})
-				itemstack:take_item()
-				return itemstack
-			else
-				print(S("want to simply place the wielded item like usual."))
-				-- What goes here if I want to just place the wielded node (dirt, cobble, etc) normally?
-			end
-		end
-	end,
 
 	on_place = function(itemstack, placer, pointed_thing)
 		if not homedecor_node_is_owned(pointed_thing.under, placer) then
@@ -63,31 +49,6 @@ minetest.register_node("homedecor:fence_wrought_iron", {
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
-	on_rightclick = function(pos, node, clicker)
-		if not homedecor_node_is_owned(pos, clicker) then
-			local fdir = minetest.dir_to_facedir(clicker:get_look_dir())
-			local itemstack = clicker:get_wielded_item()
-			if itemstack:get_name() == "default:sign_wall" then
-				minetest.env:add_node(pos, {name = "homedecor:fence_wrought_iron_with_sign", param2 = fdir})
-				itemstack:take_item()
-				clicker:set_wielded_item(itemstack)
-				return itemstack
-			else
-				print(S("want to simply place the wielded item like usual."))
-				-- What goes here if I want to just place the wielded node (dirt, cobble, etc) normally?
-			end
-		end
-	end,
-
-	on_place = function(itemstack, placer, pointed_thing)
-		if not homedecor_node_is_owned(pointed_thing.under, placer) then
-			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-			minetest.env:add_node(pointed_thing.above, {name = "homedecor:fence_wrought_iron", param2 = fdir})
-			itemstack:take_item()
-			placer:set_wielded_item(itemstack)
-			return itemstack
-		end
-	end
 })
 
 -- brass/wrought iron with signs:
@@ -130,18 +91,6 @@ minetest.register_node("homedecor:fence_brass_with_sign", {
 			{ items = { "homedecor:fence_brass" }},
 		},
 	},
-	on_construct = function(pos)
-		homedecor_construct_sign(pos)
-	end,
-	on_destruct = function(pos)
-		homedecor_destruct_sign(pos)
-	end,
-	on_receive_fields = function(pos, formname, fields, sender)
-		homedecor_update_sign(pos, fields)
-	end,
-	on_punch = function(pos, node, puncher)
-		homedecor_update_sign(pos)
-	end,
 })
 
 minetest.register_node("homedecor:fence_wrought_iron_with_sign", {
@@ -182,18 +131,6 @@ minetest.register_node("homedecor:fence_wrought_iron_with_sign", {
 			{ items = { "homedecor:fence_wrought_iron" }},
 		},
 	},
-	on_construct = function(pos)
-		homedecor_construct_sign(pos)
-	end,
-	on_destruct = function(pos)
-		homedecor_destruct_sign(pos)
-	end,
-	on_receive_fields = function(pos, formname, fields, sender)
-		homedecor_update_sign(pos, fields)
-	end,
-	on_punch = function(pos, node, puncher)
-		homedecor_update_sign(pos)
-	end,
 })
 
 -- other types of fences
@@ -700,4 +637,8 @@ minetest.register_on_punchnode(function (pos, node)
 	end
 end)
 
+minetest.register_alias("homedecor:fence_wood_with_sign", "signs:sign_post")
 
+homedecor_register_fence_with_sign("default:fence_wood", "signs:sign_post")
+homedecor_register_fence_with_sign("homedecor:fence_brass", "homedecor:fence_brass_with_sign")
+homedecor_register_fence_with_sign("homedecor:fence_wrought_iron", "homedecor:fence_wrought_iron_with_sign")
