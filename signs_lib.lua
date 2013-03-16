@@ -79,7 +79,7 @@ homedecor_update_sign = function(pos, fields)
 		sign_info = signs_yard[minetest.env:get_node(pos).param2 + 1]
 	elseif minetest.env:get_node(pos).name == "default:sign_wall" then
 		sign_info = signs[minetest.env:get_node(pos).param2 + 1]
-	elseif minetest.env:get_node(pos).name == "signs:sign_post" then
+	else --if minetest.env:get_node(pos).name == "signs:sign_post" then
 		sign_info = signs_post[minetest.env:get_node(pos).param2 + 1]
 	end
 	if sign_info == nil then
