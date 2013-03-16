@@ -370,14 +370,18 @@ local function copy ( t )
 end
 
 function homedecor_register_fence_with_sign(fencename, fencewithsignname)
-    local def = copy(minetest.registered_nodes[fencename])
-    local def_sign = copy(minetest.registered_nodes[fencewithsignname])
+    local def = minetest.registered_nodes[fencename]
+    local def_sign = minetest.registered_nodes[fencewithsignname]
     if not (def and def_sign) then
         error("Attempt to register unknown node as fence")
     end
+    def = copy(def)
+    def_sign = copy(def_sign)
     fences_with_sign[fencename] = fencewithsignname
     def.on_place = function(itemstack, placer, pointed_thing, ...)
-		if not homedecor_node_is_owned(pointed_thing.under, placer) then
+        local def = minetest.registered_nodes[minetest.env:get_node(pointed_thing.above).name]
+		if (not homedecor_node_is_owned(pointed_thing.under, placer))
+		 and def.buildable_to then
 			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 			minetest.env:add_node(pointed_thing.above, {name = fencename, param2 = fdir})
 			itemstack:take_item()
