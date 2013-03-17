@@ -22,7 +22,7 @@ minetest.register_node('homedecor:kitchen_cabinet', {
 	paramtype2 = "facedir",
 	walkable = true,
 	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
 		meta:set_string("formspec",
@@ -80,7 +80,7 @@ minetest.register_node('homedecor:kitchen_cabinet_half', {
                 fixed = { -0.5, 0, -0.5, 0.5, 0.5, 0.5 }
         },
 	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
 		meta:set_string("formspec",
@@ -130,7 +130,7 @@ minetest.register_node('homedecor:kitchen_cabinet_with_sink', {
 	paramtype2 = "facedir",
 	walkable = true,
 	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
 		meta:set_string("formspec",

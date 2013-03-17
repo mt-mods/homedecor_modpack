@@ -37,7 +37,7 @@ minetest.register_node('homedecor:glowlight_thick_yellow', {
 	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_node('homedecor:glowlight_thick_yellow_wall', {
@@ -65,7 +65,7 @@ minetest.register_node('homedecor:glowlight_thick_yellow_wall', {
 	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_node('homedecor:glowlight_thin_yellow', {
@@ -93,7 +93,7 @@ minetest.register_node('homedecor:glowlight_thin_yellow', {
 	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_node('homedecor:glowlight_thin_yellow_wall', {
@@ -121,7 +121,7 @@ minetest.register_node('homedecor:glowlight_thin_yellow_wall', {
 	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_node('homedecor:glowlight_small_cube_yellow', {
@@ -149,7 +149,7 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow', {
 	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_node('homedecor:glowlight_small_cube_yellow_ceiling', {
@@ -177,7 +177,7 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow_ceiling', {
 	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 })
 
 -- White
@@ -207,7 +207,7 @@ minetest.register_node('homedecor:glowlight_thick_white', {
 	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_node('homedecor:glowlight_thick_white_wall', {
@@ -235,7 +235,7 @@ minetest.register_node('homedecor:glowlight_thick_white_wall', {
 	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_node('homedecor:glowlight_thin_white', {
@@ -263,7 +263,7 @@ minetest.register_node('homedecor:glowlight_thin_white', {
 	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_node('homedecor:glowlight_thin_white_wall', {
@@ -291,7 +291,7 @@ minetest.register_node('homedecor:glowlight_thin_white_wall', {
 	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_node('homedecor:glowlight_small_cube_white', {
@@ -319,7 +319,7 @@ minetest.register_node('homedecor:glowlight_small_cube_white', {
 	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_node('homedecor:glowlight_small_cube_white_ceiling', {
@@ -347,5 +347,5 @@ minetest.register_node('homedecor:glowlight_small_cube_white_ceiling', {
 	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 })

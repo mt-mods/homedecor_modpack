@@ -24,7 +24,7 @@ minetest.register_node("homedecor:oven", {
 	paramtype2 = "facedir",
 	groups = {cracky=2},
 	legacy_facedir_simple = true,
-	sounds = default.node_sound_stone_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
 		meta:set_string("formspec", default.oven_inactive_formspec)

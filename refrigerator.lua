@@ -36,7 +36,7 @@ minetest.register_node('homedecor:refrigerator', {
                 fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
         },
 
-    sounds = default.node_sound_leaves_defaults(),
+    sounds = default.node_sound_wood_defaults(),
     on_construct = function(pos)
         local meta = minetest.env:get_meta(pos)
         meta:set_string("formspec",

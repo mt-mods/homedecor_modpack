@@ -38,7 +38,7 @@ minetest.register_node('homedecor:nightstand_oak_one_drawer', {
 		}
         },
 	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
@@ -102,7 +102,7 @@ minetest.register_node('homedecor:nightstand_oak_two_drawers', {
 		}
         },
 	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
 		meta:set_string("formspec",
@@ -167,7 +167,7 @@ minetest.register_node('homedecor:nightstand_mahogany_one_drawer', {
 		}
         },
 	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
@@ -231,7 +231,7 @@ minetest.register_node('homedecor:nightstand_mahogany_two_drawers', {
 		}
         },
 	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
 		meta:set_string("formspec",
