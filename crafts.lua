@@ -834,11 +834,6 @@ minetest.register_craft( {
 	},
 })
 
-minetest.register_craftitem("homedecor:utility_table_legs", {
-        description = S("Legs for Small Utility table"),
-        inventory_image = "homedecor_utility_table_legs.png",
-})
-
 minetest.register_craft( {
         output = 'homedecor:utility_table_legs',
         recipe = {
