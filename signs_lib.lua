@@ -144,17 +144,18 @@ minetest.register_node(":default:sign_wall", {
 				itemstack:take_item()
 				return itemstack
 		elseif wdir == 1 then
-            local def = minetest.registered_nodes[minetest.env:get_node(pointed_thing.above).name]
-            if homedecor_node_is_owned(pointed_thing.above, placer)
-             or (not def.buildable_to) then
-                return
-            end
 		    minetest.env:add_node(above, {name = "signs:sign_yard", param2 = fdir})
 		    sign_info = signs_yard[fdir + 1]
 		else
 		    minetest.env:add_node(above, {name = "default:sign_wall", param2 = fdir})
 		    sign_info = signs[fdir + 1]
 		end
+
+        local def = minetest.registered_nodes[minetest.env:get_node(pointed_thing.above).name]
+        if homedecor_node_is_owned(pointed_thing.above, placer)
+         or (not def.buildable_to) then
+            return
+        end
 
 		local text = minetest.env:add_entity({x = above.x + sign_info.delta.x,
 		                                      y = above.y + sign_info.delta.y,
