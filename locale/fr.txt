@@ -176,3 +176,5 @@ Small CRT Television = Petite télévision à tube cathodique
 E: character map file not found = E: fichier de table de caractère non trouvé
 ## 1: Full String, 2: pos in string, 3: current char at pos
 W: unknown symbol in '%s' at %d (probably %s) = A: symbole inconnu dans '%s' dans %d (probablement %s)
+%s wrote "%s" to sign at %s =
+signs loaded =

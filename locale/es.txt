@@ -176,3 +176,5 @@ Small CRT Television = Pequeña Televisión CRT
 E: character map file not found = E: archivo de mapa de caracteres no encontrado
 ## 1: Full String, 2: pos in string, 3: current char at pos
 W: unknown symbol in '%s' at %d (probably %s) = A: símbolo desconocido en '%s' posición %d (probablemente %s)
+%s wrote "%s" to sign at %s = %s ha escrito "%s" en el letrero en %s
+signs loaded = letreros cargados

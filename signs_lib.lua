@@ -1,11 +1,20 @@
 -- Font: 04.jp.org
 
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if (minetest.get_modpath("intllib")) then
+    dofile(minetest.get_modpath("intllib").."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
+
 -- load characters map
 local chars_file = io.open(minetest.get_modpath("homedecor").."/characters", "r")
 local charmap = {}
 local max_chars = 16
 if not chars_file then
-    print("[signs] E: character map file not found")
+    print("[signs] "..S("E: character map file not found"))
 else
     while true do
         local char = chars_file:read("*l")
@@ -144,17 +153,18 @@ minetest.register_node(":default:sign_wall", {
 				itemstack:take_item()
 				return itemstack
 		elseif wdir == 1 then
-            local def = minetest.registered_nodes[minetest.env:get_node(pointed_thing.above).name]
-            if homedecor_node_is_owned(pointed_thing.above, placer)
-             or (not def.buildable_to) then
-                return
-            end
 		    minetest.env:add_node(above, {name = "signs:sign_yard", param2 = fdir})
 		    sign_info = signs_yard[fdir + 1]
 		else
 		    minetest.env:add_node(above, {name = "default:sign_wall", param2 = fdir})
 		    sign_info = signs[fdir + 1]
 		end
+
+        local def = minetest.registered_nodes[minetest.env:get_node(pointed_thing.above).name]
+        if homedecor_node_is_owned(pointed_thing.above, placer)
+         or (not def.buildable_to) then
+            return
+        end
 
 		local text = minetest.env:add_entity({x = above.x + sign_info.delta.x,
 		                                      y = above.y + sign_info.delta.y,
@@ -172,6 +182,13 @@ minetest.register_node(":default:sign_wall", {
         homedecor_destruct_sign(pos)
     end,
     on_receive_fields = function(pos, formname, fields, sender)
+        if fields then
+            print(S("%s wrote \"%s\" to sign at %s"):format(
+                (sender:get_player_name() or ""),
+                fields.text,
+                minetest.pos_to_string(pos)
+            ))
+        end
         homedecor_update_sign(pos, fields)
     end,
     on_punch = function(pos, node, puncher)
@@ -200,6 +217,13 @@ minetest.register_node(":signs:sign_yard", {
         homedecor_destruct_sign(pos)
     end,
     on_receive_fields = function(pos, formname, fields, sender)
+        if fields then
+            print(S("%s wrote \"%s\" to sign at %s"):format(
+                (sender:get_player_name() or ""),
+                fields.text,
+                minetest.pos_to_string(pos)
+            ))
+        end
         homedecor_update_sign(pos, fields)
     end,
 	on_punch = function(pos, node, puncher)
@@ -401,6 +425,13 @@ function homedecor_register_fence_with_sign(fencename, fencewithsignname)
 		homedecor_destruct_sign(pos)
 	end
 	def_sign.on_receive_fields = function(pos, formname, fields, sender, ...)
+        if fields then
+            print(S("%s wrote \"%s\" to sign at %s"):format(
+                (sender:get_player_name() or ""),
+                fields.text,
+                minetest.pos_to_string(pos)
+            ))
+        end
 		homedecor_update_sign(pos, fields)
 	end
 	def_sign.on_punch = function(pos, node, puncher, ...)
@@ -418,5 +449,5 @@ function homedecor_register_fence_with_sign(fencename, fencewithsignname)
 end
 
 if minetest.setting_get("log_mods") then
-	minetest.log("action", "signs loaded")
+	minetest.log("action", S("signs loaded"))
 end
