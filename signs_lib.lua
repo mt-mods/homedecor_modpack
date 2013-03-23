@@ -115,6 +115,12 @@ minetest.register_node(":default:sign_wall", {
     groups = sign_groups,
 
     on_place = function(itemstack, placer, pointed_thing)
+        local def = minetest.registered_nodes[minetest.env:get_node(pointed_thing.above).name]
+        if homedecor_node_is_owned(pointed_thing.above, placer)
+         or (not def.buildable_to) then
+            return itemstack
+        end
+
 	local node=minetest.env:get_node(pointed_thing.under)
 	if minetest.registered_nodes[node.name].on_rightclick then
 		return minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
@@ -159,12 +165,6 @@ minetest.register_node(":default:sign_wall", {
 		    minetest.env:add_node(above, {name = "default:sign_wall", param2 = fdir})
 		    sign_info = signs[fdir + 1]
 		end
-
-        local def = minetest.registered_nodes[minetest.env:get_node(pointed_thing.above).name]
-        if homedecor_node_is_owned(pointed_thing.above, placer)
-         or (not def.buildable_to) then
-            return
-        end
 
 		local text = minetest.env:add_entity({x = above.x + sign_info.delta.x,
 		                                      y = above.y + sign_info.delta.y,
