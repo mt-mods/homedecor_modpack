@@ -84,5 +84,6 @@ dofile(minetest.get_modpath("homedecor").."/locked.lua")
 dofile(minetest.get_modpath("homedecor").."/furniture.lua")
 dofile(minetest.get_modpath("homedecor").."/furniture_medieval.lua")
 dofile(minetest.get_modpath("homedecor").."/furniture_bathroom.lua")
+dofile(minetest.get_modpath("homedecor").."/furniture_recipes.lua")
 
 print("[HomeDecor] "..S("Loaded!"))
