@@ -70,6 +70,7 @@ minetest.register_node("homedecor:chains", {
         "forniture_black_metal_s2.png",
         "forniture_black_metal_s2.png",
     },
+    inventory_image="3dforniture_inv_chains.png",
     drawtype = "nodebox",
     sunlight_propagates = true,
     paramtype = "light",
@@ -150,6 +151,7 @@ minetest.register_node("homedecor:torch_wall", {
             },
         },
     },
+    inventory_image="3dforniture_inv_torch_wall.png",
     paramtype = "light",
     paramtype2 = "facedir",
     node_box = {
