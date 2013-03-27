@@ -132,7 +132,7 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:chains 4",
     recipe = {
-        { "glooptest:chainlink", "default:steel_ingot", "glooptest:chainlink"},
+        { "default:steel_ingot", "", "default:steel_ingot"},
         { "glooptest:chainlink", "", "glooptest:chainlink" },
         { "glooptest:chainlink", "", "glooptest:chainlink" },
     },
