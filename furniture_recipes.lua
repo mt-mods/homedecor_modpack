@@ -31,9 +31,9 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:armchair 2",
     recipe = {
-        { "default:wood",""},
+        { "wool:black",""},
         { "default:wood","default:wood" },
-        { "default:wood","default:wood" },
+        { "wool:black","wool:black" },
     },
 })
 
@@ -123,9 +123,18 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:chains 4",
     recipe = {
-        {"","default:steel_ingot",""},
+        {"","default:steel_ingot","default:steel_ingot"},
         { "default:steel_ingot","", "default:steel_ingot" },
-        { "", "default:steel_ingot", "" },
+        { "default:steel_ingot", "default:steel_ingot", "" },
+    },
+})
+
+minetest.register_craft({
+    output = "homedecor:chains 4",
+    recipe = {
+        { "glooptest:chainlink", "default:steel_ingot", "glooptest:chainlink"},
+        { "glooptest:chainlink", "", "glooptest:chainlink" },
+        { "glooptest:chainlink", "", "glooptest:chainlink" },
     },
 })
 
