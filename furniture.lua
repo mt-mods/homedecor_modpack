@@ -28,6 +28,7 @@ minetest.register_node("homedecor:table", {
     },
     groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 })  
+
 minetest.register_node("homedecor:chair", {
     description = "Chair",
     tiles = {
@@ -59,43 +60,66 @@ minetest.register_node("homedecor:chair", {
     groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 })
 
-minetest.register_node("homedecor:armchair", {
-    description = "Armchair",
-    tiles = {
-        "forniture_armchair_top.png",
-        "forniture_armchair_top.png",
-        "forniture_armchair_lat1.png",
-        "forniture_armchair_lat1.png",
-        "forniture_armchair_lat2.png",
-        "forniture_armchair_lat2.png",
-    },
-    drawtype = "nodebox",
-    sunlight_propagates = true,
-    paramtype = "light",
-    paramtype2 = "facedir",
-    node_box = {
-        type = "fixed",
-        fixed = {
-            { -0.50, -0.50, -0.45, -0.30,  0.05,  0.30 },
-            { -0.45, -0.50, -0.50, -0.35,  0.05, -0.45 },
-            { -0.45,  0.05, -0.45, -0.35,  0.10,  0.15 },
-            {  0.30, -0.50, -0.45,  0.50,  0.05,  0.30 },
-            {  0.35, -0.50, -0.50,  0.45,  0.05, -0.45 },
-            {  0.35,  0.05, -0.45,  0.45,  0.10,  0.15 },
-            { -0.50, -0.50,  0.30,  0.50,  0.45,  0.50 },
-            { -0.45,  0.45,  0.35,  0.45,  0.50,  0.45 },
-            { -0.30, -0.45, -0.35,  0.30, -0.10,  0.30 },
-            { -0.30, -0.45, -0.40,  0.30, -0.15, -0.35 },
-            { -0.50,  0.05,  0.15, -0.30,  0.45,  0.30 },
-            { -0.45,  0.10,  0.10, -0.35,  0.45,  0.15 },
-            { -0.45,  0.45,  0.15, -0.35,  0.50,  0.35 },
-            {  0.30,  0.05,  0.15,  0.50,  0.45,  0.30 },
-            {  0.35,  0.10,  0.10,  0.45,  0.45,  0.15 },
-            {  0.35,  0.45,  0.15,  0.45,  0.50,  0.35 },
-        },
-    },
-    groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
-})
+local chaircolors = {
+	{ "black", "Black" },
+	{ "red", "Red" },
+	{ "pink", "Pink" },
+	{ "violet", "Violet" },
+	{ "blue", "Blue" },
+	{ "dark_green", "Dark Green" },
+}
+
+for i in ipairs(chaircolors) do
+	color = chaircolors[i][1]
+	name = chaircolors[i][2]
+	minetest.register_node("homedecor:armchair_"..color, {
+	    description = "Armchair ("..name..")",
+	    tiles = {
+		"forniture_armchair_top_"..color..".png",
+		"forniture_armchair_top_"..color..".png",
+		"forniture_armchair_lat1_"..color..".png",
+		"forniture_armchair_lat1_"..color..".png",
+		"forniture_armchair_lat2_"..color..".png",
+		"forniture_armchair_lat2_"..color..".png",
+	    },
+	    drawtype = "nodebox",
+	    sunlight_propagates = true,
+	    paramtype = "light",
+	    paramtype2 = "facedir",
+	    node_box = {
+		type = "fixed",
+		fixed = {
+		    { -0.50, -0.50, -0.45, -0.30,  0.05,  0.30 },
+		    { -0.45, -0.50, -0.50, -0.35,  0.05, -0.45 },
+		    { -0.45,  0.05, -0.45, -0.35,  0.10,  0.15 },
+		    {  0.30, -0.50, -0.45,  0.50,  0.05,  0.30 },
+		    {  0.35, -0.50, -0.50,  0.45,  0.05, -0.45 },
+		    {  0.35,  0.05, -0.45,  0.45,  0.10,  0.15 },
+		    { -0.50, -0.50,  0.30,  0.50,  0.45,  0.50 },
+		    { -0.45,  0.45,  0.35,  0.45,  0.50,  0.45 },
+		    { -0.30, -0.45, -0.35,  0.30, -0.10,  0.30 },
+		    { -0.30, -0.45, -0.40,  0.30, -0.15, -0.35 },
+		    { -0.50,  0.05,  0.15, -0.30,  0.45,  0.30 },
+		    { -0.45,  0.10,  0.10, -0.35,  0.45,  0.15 },
+		    { -0.45,  0.45,  0.15, -0.35,  0.50,  0.35 },
+		    {  0.30,  0.05,  0.15,  0.50,  0.45,  0.30 },
+		    {  0.35,  0.10,  0.10,  0.45,  0.45,  0.15 },
+		    {  0.35,  0.45,  0.15,  0.45,  0.50,  0.35 },
+		},
+	    },
+	    groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+	})
+
+	minetest.register_craft({
+	    output = "homedecor:armchair_"..color.." 2",
+	    recipe = {
+		{ "wool:"..color,""},
+		{ "default:wood","default:wood" },
+		{ "wool:"..color,"wool:"..color },
+	    },
+	})
+
+end
 
 
 function homedecor_table_lamp_on_punch(pos, node, puncher)
@@ -159,7 +183,8 @@ reg_lamp("max", "off", nil, "x", 14)
 -- Aliases for 3dforniture mod.
 minetest.register_alias("3dforniture:table", "homedecor:table")
 minetest.register_alias("3dforniture:chair", "homedecor:chair")
-minetest.register_alias("3dforniture:armchair", "homedecor:armchair")
+minetest.register_alias("3dforniture:armchair", "homedecor:armchair_black")
+minetest.register_alias("homedecor:armchair", "homedecor:armchair_black")
 
 minetest.register_alias('table', 'homedecor:table')
 minetest.register_alias('chair', 'homedecor:chair')

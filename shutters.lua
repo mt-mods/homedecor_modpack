@@ -142,11 +142,11 @@ minetest.register_node('homedecor:shutter_light_blue', {
 	},
 })
 
-minetest.register_node('homedecor:shutter_purple', {
-	description = S("Wooden Shutter (Purple)"),
-	tiles = { 'homedecor_window_shutter_purple.png' },
-	inventory_image = 'homedecor_window_shutter_purple.png',
-	wield_image = 'homedecor_window_shutter_purple.png',
+minetest.register_node('homedecor:shutter_violet', {
+	description = S("Wooden Shutter (Violet)"),
+	tiles = { 'homedecor_window_shutter_violet.png' },
+	inventory_image = 'homedecor_window_shutter_violet.png',
+	wield_image = 'homedecor_window_shutter_violet.png',
 	drawtype = 'signlike',
 	sunlight_propagates = false,
 	paramtype = "light",
@@ -217,3 +217,5 @@ minetest.register_node('homedecor:shutter_yellow', {
 		--wall_side = = <default>
 	},
 })
+
+minetest.register_alias("homedecor:shutter_purple", "homedecor:shutter_violet")

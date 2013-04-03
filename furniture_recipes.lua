@@ -29,15 +29,6 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-    output = "homedecor:armchair 2",
-    recipe = {
-        { "wool:black",""},
-        { "default:wood","default:wood" },
-        { "wool:black","wool:black" },
-    },
-})
-
-minetest.register_craft({
     type = "fuel",
     recipe = "homedecor:armchair",
     burntime = 30,
