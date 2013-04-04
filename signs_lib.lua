@@ -122,9 +122,9 @@ minetest.register_node(":default:sign_wall", {
         end
 
 	local node=minetest.env:get_node(pointed_thing.under)
-	if minetest.registered_nodes[node.name].on_rightclick then
+
+	if minetest.registered_nodes[node.name] and minetest.registered_nodes[node.name].on_rightclick then
 		return minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
-		
 	else
 		local above = pointed_thing.above
 		local under = pointed_thing.under
