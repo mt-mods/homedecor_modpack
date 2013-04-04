@@ -169,7 +169,8 @@ for i in ipairs(sides) do
 				on_place = function(itemstack, placer, pointed_thing)
 
 					local node=minetest.env:get_node(pointed_thing.under)
-					if not minetest.registered_nodes[node.name].on_rightclick then
+					if not minetest.registered_nodes[node.name]
+					    or not minetest.registered_nodes[node.name].on_rightclick then
 						return homedecor_place_door(itemstack, placer, pointed_thing, doorname, side)
 					else 
 						minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
@@ -188,7 +189,9 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 	if homedecor_node_is_owned(pointed_thing.under, placer) == false then
 
 		local nodename = minetest.env:get_node(pointed_thing.under).name
-		local field = minetest.registered_nodes[nodename].on_rightclick
+		local field = nil
+
+		if minetest.registered_nodes[nodename] then field = minetest.registered_nodes[nodename].on_rightclick end
 
 		if field == nil then
 			fdir = minetest.dir_to_facedir(placer:get_look_dir())
