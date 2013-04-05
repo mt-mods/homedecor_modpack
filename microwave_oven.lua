@@ -44,7 +44,7 @@ minetest.register_node("homedecor:microwave_oven", {
 		local inv = meta:get_inventory()
 		inv:set_size("fuel", 1)
 		inv:set_size("src", 1)
-		inv:set_size("dst", 1)
+		inv:set_size("dst", 2)
 	end,
 	can_dig = function(pos,player)
 		local meta = minetest.env:get_meta(pos);
@@ -57,6 +57,43 @@ minetest.register_node("homedecor:microwave_oven", {
 			return false
 		end
 		return true
+	end,
+	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
+		local meta = minetest.env:get_meta(pos)
+		local inv = meta:get_inventory()
+		if listname == "fuel" then
+			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
+				if inv:is_empty("src") then
+					meta:set_string("infotext",S("Furnace is empty"))
+				end
+				return stack:get_count()
+			else
+				return 0
+			end
+		elseif listname == "src" then
+			return stack:get_count()
+		elseif listname == "dst" then
+			return 0
+		end
+	end,
+	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
+		local meta = minetest.env:get_meta(pos)
+		local inv = meta:get_inventory()
+		local stack = inv:get_stack(from_list, from_index)
+		if to_list == "fuel" then
+			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
+				if inv:is_empty("src") then
+					meta:set_string("infotext",S("Furnace is empty"))
+				end
+				return count
+			else
+				return 0
+			end
+		elseif to_list == "src" then
+			return count
+		elseif to_list == "dst" then
+			return 0
+		end
 	end,
 })
 
@@ -84,8 +121,8 @@ minetest.register_node("homedecor:microwave_oven_active", {
 	sounds = default.node_sound_stone_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
-		meta:set_string("formspec", default.oven_inactive_formspec)
-		meta:set_string("infotext", S("Oven"))
+		meta:set_string("formspec", mw_oven_inactive_formspec)
+		meta:set_string("infotext", S("Microwave Oven"))
 		local inv = meta:get_inventory()
 		inv:set_size("fuel", 1)
 		inv:set_size("src", 1)
@@ -102,6 +139,43 @@ minetest.register_node("homedecor:microwave_oven_active", {
 			return false
 		end
 		return true
+	end,
+	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
+		local meta = minetest.env:get_meta(pos)
+		local inv = meta:get_inventory()
+		if listname == "fuel" then
+			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
+				if inv:is_empty("src") then
+					meta:set_string("infotext",S("Oven is empty"))
+				end
+				return stack:get_count()
+			else
+				return 0
+			end
+		elseif listname == "src" then
+			return stack:get_count()
+		elseif listname == "dst" then
+			return 0
+		end
+	end,
+	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
+		local meta = minetest.env:get_meta(pos)
+		local inv = meta:get_inventory()
+		local stack = inv:get_stack(from_list, from_index)
+		if to_list == "fuel" then
+			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
+				if inv:is_empty("src") then
+					meta:set_string("infotext",S("Oven is empty"))
+				end
+				return count
+			else
+				return 0
+			end
+		elseif to_list == "src" then
+			return count
+		elseif to_list == "dst" then
+			return 0
+		end
 	end,
 })
 
@@ -140,9 +214,10 @@ minetest.register_abm({
 
 		local srclist = inv:get_list("src")
 		local cooked = nil
+		local aftercooked
 		
 		if srclist then
-			cooked = minetest.get_craft_result({method = "cooking", width = 1, items = srclist})
+			cooked, aftercooked = minetest.get_craft_result({method = "cooking", width = 1, items = srclist})
 		end
 		
 		local was_active = false
@@ -157,9 +232,7 @@ minetest.register_abm({
 					-- Put result in "dst" list
 					inv:add_item("dst", cooked.item)
 					-- take stuff from "src" list
-					srcstack = inv:get_stack("src", 1)
-					srcstack:take_item()
-					inv:set_stack("src", 1, srcstack)
+					inv:set_stack("src", 1, aftercooked.items[1])
 				else
 					print(S("Could not insert '%s'"):format(cooked.item:to_string()))
 				end
@@ -184,6 +257,7 @@ minetest.register_abm({
 		end
 
 		local fuel = nil
+		local afterfuel
 		local cooked = nil
 		local fuellist = inv:get_list("fuel")
 		local srclist = inv:get_list("src")
@@ -192,7 +266,7 @@ minetest.register_abm({
 			cooked = minetest.get_craft_result({method = "cooking", width = 1, items = srclist})
 		end
 		if fuellist then
-			fuel = minetest.get_craft_result({method = "fuel", width = 1, items = fuellist})
+			fuel, afterfuel = minetest.get_craft_result({method = "fuel", width = 1, items = fuellist})
 		end
 
 		if fuel.time <= 0 then
@@ -214,8 +288,6 @@ minetest.register_abm({
 		meta:set_string("fuel_totaltime", fuel.time)
 		meta:set_string("fuel_time", 0)
 		
-		local stack = inv:get_stack("fuel", 1)
-		stack:take_item()
-		inv:set_stack("fuel", 1, stack)
+		inv:set_stack("fuel", 1, afterfuel.items[1])
 	end,
 })
