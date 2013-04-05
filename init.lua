@@ -75,6 +75,7 @@ dofile(minetest.get_modpath("homedecor").."/lighting.lua")
 dofile(minetest.get_modpath("homedecor").."/kitchen_cabinet.lua")
 dofile(minetest.get_modpath("homedecor").."/refrigerator.lua")
 dofile(minetest.get_modpath("homedecor").."/oven.lua")
+dofile(minetest.get_modpath("homedecor").."/microwave_oven.lua")
 dofile(minetest.get_modpath("homedecor").."/nightstands.lua")
 
 dofile(minetest.get_modpath("homedecor").."/crafts.lua")
