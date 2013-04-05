@@ -1118,6 +1118,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+        output = "homedecor:microwave_oven 2",
+        recipe = {
+		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot", },
+		{"default:steel_ingot", "moreblocks:ironglass", "mesecons_materials:silicon", },
+		{"default:steel_ingot", "moreores:copper_ingot", "default:mese_crystal", },
+	}
+})
+
+minetest.register_craft({
         output = "homedecor:refrigerator",
         recipe = {
 		{"default:steel_ingot", "moreblocks:glowglass", "default:steel_ingot", },
