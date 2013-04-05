@@ -69,8 +69,8 @@ end
 
 homedecor_update_sign = function(pos, fields)
     local meta = minetest.env:get_meta(pos)
-	meta:set_string("infotext", "")
 	if fields then
+		meta:set_string("infotext", fields.text)
 		meta:set_string("text", fields.text)
 	end
     local text = meta:get_string("text")
