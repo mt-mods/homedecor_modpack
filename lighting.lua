@@ -38,6 +38,33 @@ minetest.register_node('homedecor:glowlight_thick_yellow', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
 	sounds = default.node_sound_wood_defaults(),
+
+	on_place = function(itemstack, placer, pointed_thing)
+
+		local node = minetest.env:get_node(pointed_thing.under)
+		if not minetest.registered_nodes[node.name] or not minetest.registered_nodes[node.name].on_rightclick then
+
+			local above = pointed_thing.above
+			local under = pointed_thing.under
+			local pitch = placer:get_look_pitch()
+			local node = minetest.env:get_node(above)
+
+			if node.name ~= "air" then return end
+
+			if above.x ~= under.x or above.z ~= under.z then 
+				local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_thick_yellow_wall', param2 = fdir})
+			else
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_thick_yellow'})
+			end
+			if not minetest.setting_getbool("creative_mode") then
+				itemstack:take_item()
+			end
+			return minetest.item_place_node(itemstack, placer, pointed_thing)
+		else
+			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
+		end
+	end
 })
 
 minetest.register_node('homedecor:glowlight_thick_yellow_wall', {
@@ -63,9 +90,10 @@ minetest.register_node('homedecor:glowlight_thick_yellow_wall', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, not_in_creative_inventory=1 },
 	light_source = LIGHT_MAX,
 	sounds = default.node_sound_wood_defaults(),
+	drop = 'homedecor:glowlight_thick_yellow'
 })
 
 minetest.register_node('homedecor:glowlight_thin_yellow', {
@@ -94,6 +122,32 @@ minetest.register_node('homedecor:glowlight_thin_yellow', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
+	on_place = function(itemstack, placer, pointed_thing)
+
+		local node = minetest.env:get_node(pointed_thing.under)
+		if not minetest.registered_nodes[node.name] or not minetest.registered_nodes[node.name].on_rightclick then
+
+			local above = pointed_thing.above
+			local under = pointed_thing.under
+			local pitch = placer:get_look_pitch()
+			local node = minetest.env:get_node(above)
+
+			if node.name ~= "air" then return end
+
+			if above.x ~= under.x or above.z ~= under.z then 
+				local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_thin_yellow_wall', param2 = fdir})
+			else
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_thin_yellow'})
+			end
+			if not minetest.setting_getbool("creative_mode") then
+				itemstack:take_item()
+			end
+			return minetest.item_place_node(itemstack, placer, pointed_thing)
+		else
+			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
+		end
+	end
 })
 
 minetest.register_node('homedecor:glowlight_thin_yellow_wall', {
@@ -119,9 +173,10 @@ minetest.register_node('homedecor:glowlight_thin_yellow_wall', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, not_in_creative_inventory=1 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
+	drop = 'homedecor:glowlight_thin_yellow'
 })
 
 minetest.register_node('homedecor:glowlight_small_cube_yellow', {
@@ -150,6 +205,34 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
+
+	on_place = function(itemstack, placer, pointed_thing)
+
+		local node = minetest.env:get_node(pointed_thing.under)
+		if not minetest.registered_nodes[node.name] or not minetest.registered_nodes[node.name].on_rightclick then
+
+			local above = pointed_thing.above
+			local under = pointed_thing.under
+			local pitch = placer:get_look_pitch()
+			local node = minetest.env:get_node(above)
+
+			if node.name ~= "air" then return end
+
+			if above.x == under.x and above.z == under.z and pitch > 0 then
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_yellow_ceiling'})
+			else
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_yellow'})
+			end
+			if not minetest.setting_getbool("creative_mode") then
+				itemstack:take_item()
+			end
+			return minetest.item_place_node(itemstack, placer, pointed_thing)
+		else
+			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
+		end
+	end
+
+
 })
 
 minetest.register_node('homedecor:glowlight_small_cube_yellow_ceiling', {
@@ -175,9 +258,10 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow_ceiling', {
 	sunlight_propagates = false,
 	paramtype = "light",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, not_in_creative_inventory=1 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
+	drop = "homedecor:glowlight_small_cube_yellow",
 })
 
 -- White
@@ -208,6 +292,32 @@ minetest.register_node('homedecor:glowlight_thick_white', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
 	sounds = default.node_sound_wood_defaults(),
+	on_place = function(itemstack, placer, pointed_thing)
+
+		local node = minetest.env:get_node(pointed_thing.under)
+		if not minetest.registered_nodes[node.name] or not minetest.registered_nodes[node.name].on_rightclick then
+
+			local above = pointed_thing.above
+			local under = pointed_thing.under
+			local pitch = placer:get_look_pitch()
+			local node = minetest.env:get_node(above)
+
+			if node.name ~= "air" then return end
+
+			if above.x ~= under.x or above.z ~= under.z then 
+				local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_thick_white_wall', param2 = fdir})
+			else
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_thick_white'})
+			end
+			if not minetest.setting_getbool("creative_mode") then
+				itemstack:take_item()
+			end
+			return minetest.item_place_node(itemstack, placer, pointed_thing)
+		else
+			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
+		end
+	end
 })
 
 minetest.register_node('homedecor:glowlight_thick_white_wall', {
@@ -233,9 +343,10 @@ minetest.register_node('homedecor:glowlight_thick_white_wall', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, not_in_creative_inventory=1 },
 	light_source = LIGHT_MAX,
 	sounds = default.node_sound_wood_defaults(),
+	drop = 'homedecor:glowlight_thick_white'
 })
 
 minetest.register_node('homedecor:glowlight_thin_white', {
@@ -264,6 +375,32 @@ minetest.register_node('homedecor:glowlight_thin_white', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
+	on_place = function(itemstack, placer, pointed_thing)
+
+		local node = minetest.env:get_node(pointed_thing.under)
+		if not minetest.registered_nodes[node.name] or not minetest.registered_nodes[node.name].on_rightclick then
+
+			local above = pointed_thing.above
+			local under = pointed_thing.under
+			local pitch = placer:get_look_pitch()
+			local node = minetest.env:get_node(above)
+
+			if node.name ~= "air" then return end
+
+			if above.x ~= under.x or above.z ~= under.z then 
+				local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_thin_white_wall', param2 = fdir})
+			else
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_thin_white'})
+			end
+			if not minetest.setting_getbool("creative_mode") then
+				itemstack:take_item()
+			end
+			return minetest.item_place_node(itemstack, placer, pointed_thing)
+		else
+			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
+		end
+	end
 })
 
 minetest.register_node('homedecor:glowlight_thin_white_wall', {
@@ -289,9 +426,10 @@ minetest.register_node('homedecor:glowlight_thin_white_wall', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, not_in_creative_inventory=1 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
+	drop = 'homedecor:glowlight_thin_white'
 })
 
 minetest.register_node('homedecor:glowlight_small_cube_white', {
@@ -320,6 +458,31 @@ minetest.register_node('homedecor:glowlight_small_cube_white', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
+	on_place = function(itemstack, placer, pointed_thing)
+
+		local node = minetest.env:get_node(pointed_thing.under)
+		if not minetest.registered_nodes[node.name] or not minetest.registered_nodes[node.name].on_rightclick then
+
+			local above = pointed_thing.above
+			local under = pointed_thing.under
+			local pitch = placer:get_look_pitch()
+			local node = minetest.env:get_node(above)
+
+			if node.name ~= "air" then return end
+
+			if above.x == under.x and above.z == under.z and pitch > 0 then
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_white_ceiling'})
+			else
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_white'})
+			end
+			if not minetest.setting_getbool("creative_mode") then
+				itemstack:take_item()
+			end
+			return minetest.item_place_node(itemstack, placer, pointed_thing)
+		else
+			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
+		end
+	end
 })
 
 minetest.register_node('homedecor:glowlight_small_cube_white_ceiling', {
@@ -345,7 +508,8 @@ minetest.register_node('homedecor:glowlight_small_cube_white_ceiling', {
 	sunlight_propagates = false,
 	paramtype = "light",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, not_in_creative_inventory=1 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
+	drop = "homedecor:glowlight_small_cube_white",
 })
