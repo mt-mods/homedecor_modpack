@@ -10,8 +10,6 @@ else
     S = function ( s ) return s end
 end
 
-local unified_inventory = minetest.get_modpath("unified_inventory")
-
 -- Yellow
 
 minetest.register_node('homedecor:glowlight_thick_yellow', {
@@ -59,8 +57,7 @@ minetest.register_node('homedecor:glowlight_thick_yellow', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thick_yellow'})
 			end
-			print("get_stack_max() of homedecor:glowlight_thick_yellow = "..itemstack:get_stack_max())
-			if not minetest.setting_getbool("creative_mode") or unified_inventory then
+			if not homedecor_expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
 			end
@@ -114,7 +111,7 @@ minetest.register_node('homedecor:glowlight_thick_yellow_wall', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thick_yellow'})
 			end
-			if not minetest.setting_getbool("creative_mode") or unified_inventory then
+			if not homedecor_expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
 			end
@@ -169,7 +166,7 @@ minetest.register_node('homedecor:glowlight_thin_yellow', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thin_yellow'})
 			end
-			if not minetest.setting_getbool("creative_mode") or unified_inventory then
+			if not homedecor_expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
 			end
@@ -223,7 +220,7 @@ minetest.register_node('homedecor:glowlight_thin_yellow_wall', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thin_yellow'})
 			end
-			if not minetest.setting_getbool("creative_mode") or unified_inventory then
+			if not homedecor_expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
 			end
@@ -278,7 +275,7 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_yellow'})
 			end
-			if not minetest.setting_getbool("creative_mode") or unified_inventory then
+			if not homedecor_expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
 			end
@@ -327,11 +324,11 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow_ceiling', {
 			if node.name ~= "air" then return end
 
 			if above.x == under.x and above.z == under.z and pitch > 0 then
-				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_white_ceiling'})
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_yellow_ceiling'})
 			else
-				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_white'})
+				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_yellow'})
 			end
-			if not minetest.setting_getbool("creative_mode") or unified_inventory then
+			if not homedecor_expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
 			end
@@ -388,7 +385,7 @@ minetest.register_node('homedecor:glowlight_thick_white', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thick_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") or unified_inventory then
+			if not homedecor_expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
 			end
@@ -442,7 +439,7 @@ minetest.register_node('homedecor:glowlight_thick_white_wall', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thick_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") or unified_inventory then
+			if not homedecor_expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
 			end
@@ -497,7 +494,7 @@ minetest.register_node('homedecor:glowlight_thin_white', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thin_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") or unified_inventory then
+			if not homedecor_expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
 			end
@@ -551,7 +548,7 @@ minetest.register_node('homedecor:glowlight_thin_white_wall', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thin_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") or unified_inventory then
+			if not homedecor_expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
 			end
@@ -605,7 +602,7 @@ minetest.register_node('homedecor:glowlight_small_cube_white', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") or unified_inventory then
+			if not homedecor_expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
 			end
@@ -658,7 +655,7 @@ minetest.register_node('homedecor:glowlight_small_cube_white_ceiling', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") or unified_inventory then
+			if not homedecor_expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
 			end

@@ -79,7 +79,7 @@ for i in ipairs(materials) do
 				else
 					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_small_square_b'})
 				end
-				if not minetest.setting_getbool("creative_mode") or unified_inventory then
+				if not homedecor_expect_infinite_stacks then
 					itemstack:take_item()
 					return itemstack
 				end
@@ -125,12 +125,12 @@ for i in ipairs(materials) do
 		description = S(d.." Table (Small, Square)"),
 		drawtype = 'nodebox',
 		tiles = {
+			'homedecor_'..m..'_table_small_square_edges.png',
+			'homedecor_'..m..'_table_small_square_edges.png',
+			'homedecor_'..m..'_table_small_square_edges.png',
+			'homedecor_'..m..'_table_small_square_edges.png',
 			'homedecor_'..m..'_table_small_square_tb.png',
 			'homedecor_'..m..'_table_small_square_tb.png',
-			'homedecor_'..m..'_table_small_square_edges.png',
-			'homedecor_'..m..'_table_small_square_edges.png',
-			'homedecor_'..m..'_table_small_square_edges.png',
-			'homedecor_'..m..'_table_small_square_edges.png'
 		},
 		sunlight_propagates = true,
 		paramtype = 'light',
@@ -207,7 +207,7 @@ for i in ipairs(materials) do
 				else
 					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_small_round_b'})
 				end
-				if not minetest.setting_getbool("creative_mode") or unified_inventory then
+				if not homedecor_expect_infinite_stacks then
 					itemstack:take_item()
 					return itemstack
 				end
@@ -334,7 +334,7 @@ for i in ipairs(materials) do
 				else
 					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_large_b'})
 				end
-				if not minetest.setting_getbool("creative_mode") or unified_inventory then
+				if not homedecor_expect_infinite_stacks then
 					itemstack:take_item()
 					return itemstack
 				end
@@ -371,6 +371,7 @@ for i in ipairs(materials) do
 			type = "fixed",
 			fixed =    { -0.5, 0.4375, -0.5, 0.5, 0.5, 0.5 },
 		},
+		drop = 'homedecor:'..m..'_table_large_b'
 	})
 
 	minetest.register_node('homedecor:'..m..'_table_large_s', {
@@ -400,6 +401,7 @@ for i in ipairs(materials) do
 			type = "fixed",
 			fixed =   { -0.5, -0.5, 0.4375, 0.5, 0.5, 0.5 },
 		},
+		drop = 'homedecor:'..m..'_table_large_b'
 	})
 
 	minetest.register_alias('homedecor:'..m..'_table_large', 'homedecor:'..m..'_table_large_b')

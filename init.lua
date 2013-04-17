@@ -59,6 +59,12 @@ function homedecor_node_is_owned(pos, placer)
 	end
 end
 
+if minetest.get_modpath("unified_inventory") or not minetest.setting_getbool("creative_mode") then
+	homedecor_expect_infinite_stacks = false
+else
+	homedecor_expect_infinite_stacks = true
+end
+
 dofile(minetest.get_modpath("homedecor").."/nodes.lua")					-- the catch-all for all misc nodes
 dofile(minetest.get_modpath("homedecor").."/tables.lua")
 dofile(minetest.get_modpath("homedecor").."/electronics.lua")
