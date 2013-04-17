@@ -10,6 +10,8 @@ else
     S = function ( s ) return s end
 end
 
+local unified_inventory = minetest.get_modpath("unified_inventory")
+
 -- Yellow
 
 minetest.register_node('homedecor:glowlight_thick_yellow', {
@@ -57,10 +59,11 @@ minetest.register_node('homedecor:glowlight_thick_yellow', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thick_yellow'})
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			print("get_stack_max() of homedecor:glowlight_thick_yellow = "..itemstack:get_stack_max())
+			if not minetest.setting_getbool("creative_mode") or unified_inventory then
 				itemstack:take_item()
+				return itemstack
 			end
-			return minetest.item_place_node(itemstack, placer, pointed_thing)
 		else
 			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 		end
@@ -111,10 +114,10 @@ minetest.register_node('homedecor:glowlight_thick_yellow_wall', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thick_yellow'})
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.setting_getbool("creative_mode") or unified_inventory then
 				itemstack:take_item()
+				return itemstack
 			end
-			return minetest.item_place_node(itemstack, placer, pointed_thing)
 		else
 			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 		end
@@ -166,10 +169,10 @@ minetest.register_node('homedecor:glowlight_thin_yellow', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thin_yellow'})
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.setting_getbool("creative_mode") or unified_inventory then
 				itemstack:take_item()
+				return itemstack
 			end
-			return minetest.item_place_node(itemstack, placer, pointed_thing)
 		else
 			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 		end
@@ -220,10 +223,10 @@ minetest.register_node('homedecor:glowlight_thin_yellow_wall', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thin_yellow'})
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.setting_getbool("creative_mode") or unified_inventory then
 				itemstack:take_item()
+				return itemstack
 			end
-			return minetest.item_place_node(itemstack, placer, pointed_thing)
 		else
 			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 		end
@@ -275,10 +278,10 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_yellow'})
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.setting_getbool("creative_mode") or unified_inventory then
 				itemstack:take_item()
+				return itemstack
 			end
-			return minetest.item_place_node(itemstack, placer, pointed_thing)
 		else
 			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 		end
@@ -328,10 +331,10 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow_ceiling', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.setting_getbool("creative_mode") or unified_inventory then
 				itemstack:take_item()
+				return itemstack
 			end
-			return minetest.item_place_node(itemstack, placer, pointed_thing)
 		else
 			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 		end
@@ -385,10 +388,10 @@ minetest.register_node('homedecor:glowlight_thick_white', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thick_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.setting_getbool("creative_mode") or unified_inventory then
 				itemstack:take_item()
+				return itemstack
 			end
-			return minetest.item_place_node(itemstack, placer, pointed_thing)
 		else
 			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 		end
@@ -439,10 +442,10 @@ minetest.register_node('homedecor:glowlight_thick_white_wall', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thick_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.setting_getbool("creative_mode") or unified_inventory then
 				itemstack:take_item()
+				return itemstack
 			end
-			return minetest.item_place_node(itemstack, placer, pointed_thing)
 		else
 			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 		end
@@ -494,10 +497,10 @@ minetest.register_node('homedecor:glowlight_thin_white', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thin_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.setting_getbool("creative_mode") or unified_inventory then
 				itemstack:take_item()
+				return itemstack
 			end
-			return minetest.item_place_node(itemstack, placer, pointed_thing)
 		else
 			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 		end
@@ -548,10 +551,10 @@ minetest.register_node('homedecor:glowlight_thin_white_wall', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_thin_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.setting_getbool("creative_mode") or unified_inventory then
 				itemstack:take_item()
+				return itemstack
 			end
-			return minetest.item_place_node(itemstack, placer, pointed_thing)
 		else
 			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 		end
@@ -602,10 +605,10 @@ minetest.register_node('homedecor:glowlight_small_cube_white', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.setting_getbool("creative_mode") or unified_inventory then
 				itemstack:take_item()
+				return itemstack
 			end
-			return minetest.item_place_node(itemstack, placer, pointed_thing)
 		else
 			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 		end
@@ -655,10 +658,10 @@ minetest.register_node('homedecor:glowlight_small_cube_white_ceiling', {
 			else
 				minetest.env:add_node(above, {name = 'homedecor:glowlight_small_cube_white'})
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.setting_getbool("creative_mode") or unified_inventory then
 				itemstack:take_item()
+				return itemstack
 			end
-			return minetest.item_place_node(itemstack, placer, pointed_thing)
 		else
 			minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 		end

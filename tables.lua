@@ -79,10 +79,10 @@ for i in ipairs(materials) do
 				else
 					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_small_square_b'})
 				end
-				if not minetest.setting_getbool("creative_mode") then
+				if not minetest.setting_getbool("creative_mode") or unified_inventory then
 					itemstack:take_item()
+					return itemstack
 				end
-				return minetest.item_place_node(itemstack, placer, pointed_thing)
 			else
 				minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 			end
@@ -207,10 +207,10 @@ for i in ipairs(materials) do
 				else
 					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_small_round_b'})
 				end
-				if not minetest.setting_getbool("creative_mode") then
+				if not minetest.setting_getbool("creative_mode") or unified_inventory then
 					itemstack:take_item()
+					return itemstack
 				end
-				return minetest.item_place_node(itemstack, placer, pointed_thing)
 			else
 				minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 			end
@@ -334,10 +334,10 @@ for i in ipairs(materials) do
 				else
 					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_large_b'})
 				end
-				if not minetest.setting_getbool("creative_mode") then
+				if not minetest.setting_getbool("creative_mode") or unified_inventory then
 					itemstack:take_item()
+					return itemstack
 				end
-				return minetest.item_place_node(itemstack, placer, pointed_thing)
 			else
 				minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
 			end
