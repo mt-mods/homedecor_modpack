@@ -1324,6 +1324,23 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:fence_picket_corner",
+	recipe = {
+		"homedecor:fence_picket",
+		"homedecor:fence_picket"
+	},
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:fence_picket 2",
+	recipe = {
+		"homedecor:fence_picket_corner"
+	},
+})
+
+minetest.register_craft( {
         output = "homedecor:fence_picket_white 6",
         recipe = {
                 { "default:stick", "default:stick", "default:stick" },
@@ -1331,6 +1348,23 @@ minetest.register_craft( {
                 { "default:stick", "default:stick", "default:stick" }
         },
 	replacements = { {'unifieddyes:white_paint', 'bucket:bucket_empty'}, },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:fence_picket_corner_white",
+	recipe = {
+		"homedecor:fence_picket_white",
+		"homedecor:fence_picket_white"
+	},
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:fence_picket_white 2",
+	recipe = {
+		"homedecor:fence_picket_corner_white"
+	},
 })
 
 minetest.register_craft( {
@@ -1349,6 +1383,18 @@ minetest.register_craft( {
                 { "default:stick", "", "default:stick" },
                 { "default:stick", "default:iron_lump", "default:stick" }
         },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:fence_barbed_wire_corner",
+	recipe = { "homedecor:fence_barbed_wire", "homedecor:fence_barbed_wire" },
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:fence_barbed_wire 2",
+	recipe = { "homedecor:fence_barbed_wire_corner" },
 })
 
 minetest.register_craft( {

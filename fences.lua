@@ -146,8 +146,6 @@ minetest.register_node("homedecor:fence_picket", {
 		"homedecor_fence_picket_backside.png",
 		"homedecor_fence_picket.png"
 	},
---        inventory_image = "homedecor_fence_picket.png",
---        wield_image = "homedecor_fence_picket.png",
         paramtype = "light",
         is_ground_content = true,
         groups = {snappy=3},
@@ -160,8 +158,41 @@ minetest.register_node("homedecor:fence_picket", {
         },
         node_box = {
                 type = "fixed",
-                fixed = { -0.5, -0.5, 0.495, 0.5, 0.5, 0.495 }
+                fixed = { -0.5, -0.5, 0.498, 0.5, 0.5, 0.498 }
         },
+})
+
+minetest.register_node("homedecor:fence_picket_corner", {
+	drawtype = "nodebox",
+	description = S("Unpainted Picket Fence Corner"),
+	tiles = {
+		"homedecor_fence_picket.png",
+		"homedecor_fence_picket.png",
+		"homedecor_fence_picket.png",
+		"homedecor_fence_picket_backside.png",
+		"homedecor_fence_picket_backside.png",
+		"homedecor_fence_picket.png",
+	},
+	paramtype = "light",
+	is_ground_content = true,
+	groups = {snappy=3},
+	sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+	selection_box = {
+	type = "fixed",
+		fixed = {
+			{ -0.5, -0.5, 0.4, 0.5, 0.5, 0.5 },
+			{ -0.5, -0.5, -0.5, -0.4, 0.5, 0.5 }
+		}
+	},
+	node_box = {
+	type = "fixed",
+		fixed = {
+			{ -0.5, -0.5, 0.498, 0.5, 0.5, 0.5 },
+			{ -0.5, -0.5, -0.5, -0.498, 0.5, 0.5 }
+		}
+	},
 })
 
 minetest.register_node("homedecor:fence_picket_white", {
@@ -175,8 +206,6 @@ minetest.register_node("homedecor:fence_picket_white", {
 		"homedecor_fence_picket_white_backside.png",
 		"homedecor_fence_picket_white.png"
 	},
---        inventory_image = "homedecor_fence_picket_white.png",
---        wield_image = "homedecor_fence_picket_white.png",
         paramtype = "light",
         is_ground_content = true,
         groups = {snappy=3},
@@ -189,8 +218,41 @@ minetest.register_node("homedecor:fence_picket_white", {
         },
         node_box = {
                 type = "fixed",
-                fixed = { -0.5, -0.5, 0.495, 0.5, 0.5, 0.495 }
+                fixed = { -0.5, -0.5, 0.498, 0.5, 0.5, 0.498 }
         },
+})
+
+minetest.register_node("homedecor:fence_picket_corner_white", {
+	drawtype = "nodebox",
+	description = S("White Picket Fence Corner"),
+	tiles = {
+		"homedecor_fence_picket_white.png",
+		"homedecor_fence_picket_white.png",
+		"homedecor_fence_picket_white.png",
+		"homedecor_fence_picket_white_backside.png",
+		"homedecor_fence_picket_white_backside.png",
+		"homedecor_fence_picket_white.png",
+	},
+	paramtype = "light",
+	is_ground_content = true,
+	groups = {snappy=3},
+	sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+	selection_box = {
+	type = "fixed",
+		fixed = {
+			{ -0.5, -0.5, 0.4, 0.5, 0.5, 0.5 },
+			{ -0.5, -0.5, -0.5, -0.4, 0.5, 0.5 }
+		}
+	},
+	node_box = {
+	type = "fixed",
+		fixed = {
+			{ -0.5, -0.5, 0.498, 0.5, 0.5, 0.5 },
+			{ -0.5, -0.5, -0.5, -0.498, 0.5, 0.5 }
+		}
+	},
 })
 
 minetest.register_node("homedecor:fence_privacy", {
@@ -249,6 +311,38 @@ minetest.register_node("homedecor:fence_barbed_wire", {
         },
 })
 
+minetest.register_node("homedecor:fence_barbed_wire_corner", {
+	drawtype = "nodebox",
+        description = S("Barbed Wire Fence"),
+        tiles = {
+		"homedecor_fence_barbed_wire.png"
+	},
+        paramtype = "light",
+        is_ground_content = true,
+        groups = {snappy=3},
+        sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+        selection_box = {
+                type = "fixed",
+                fixed = {
+			{ -0.5, -0.5, 0.375, 0.5, 0.5, 0.5 },
+                	{ -0.5, -0.5, -0.5, -0.375, 0.5, 0.5 }
+		}
+        },
+        node_box = {
+                type = "fixed",
+		fixed = {
+			{ -8/16, -8/16,  6/16, -6/16, 8/16,  8/16 },	-- left post
+			{  6/16, -8/16,  6/16,  8/16, 8/16,  8/16 }, 	-- right post
+			{ -6/16, -8/16,  7/16,  6/16, 8/16,  7/16 },	-- the wire
+
+			{  -8/16, -8/16, -8/16, -6/16, 8/16, -6/16 },	-- front post
+			{  -7/16, -8/16, -6/16, -7/16, 8/16,  6/16 }	-- more wire
+		}		
+        },
+})
+
 minetest.register_node("homedecor:fence_chainlink", {
 	drawtype = "nodebox",
         description = S("Chainlink Fence"),
@@ -281,7 +375,6 @@ minetest.register_node("homedecor:fence_chainlink", {
 		}		
         },
 })
-
 
 minetest.register_node("homedecor:fence_chainlink_corner", {
 	drawtype = "nodebox",
@@ -338,8 +431,6 @@ minetest.register_node("homedecor:fence_picket_gate_closed", {
 		"homedecor_fence_picket_gate_backside.png",
 		"homedecor_fence_picket_gate.png"
 	},
---        inventory_image = "homedecor_fence_picket_gate.png",
---        wield_image = "homedecor_fence_picket_gate.png",
         paramtype = "light",
         is_ground_content = true,
         groups = {snappy=3},
@@ -352,7 +443,7 @@ minetest.register_node("homedecor:fence_picket_gate_closed", {
         },
         node_box = {
                 type = "fixed",
-                fixed = { -0.5, -0.5, 0.495, 0.5, 0.5, 0.495 }
+                fixed = { -0.5, -0.5, 0.498, 0.5, 0.5, 0.498 }
         },
 })
 
@@ -367,8 +458,6 @@ minetest.register_node("homedecor:fence_picket_gate_open", {
 		"homedecor_fence_picket_gate.png",
 		"homedecor_fence_picket_gate.png"
 	},
---        inventory_image = "homedecor_fence_picket_gate.png",
---        wield_image = "homedecor_fence_picket_gate.png",
         paramtype = "light",
         is_ground_content = true,
         groups = {snappy=3, not_in_creative_inventory=1},
@@ -381,7 +470,7 @@ minetest.register_node("homedecor:fence_picket_gate_open", {
         },
         node_box = {
                 type = "fixed",
-                fixed = { 0.495, -0.5, -0.5, 0.495, 0.5, 0.5 }
+                fixed = { 0.498, -0.5, -0.5, 0.498, 0.5, 0.5 }
         },
 	drop = "homedecor:fence_picket_gate_closed"
 })
@@ -411,7 +500,7 @@ minetest.register_node("homedecor:fence_picket_gate_white_closed", {
         },
         node_box = {
                 type = "fixed",
-                fixed = { -0.5, -0.5, 0.495, 0.5, 0.5, 0.495 }
+                fixed = { -0.5, -0.5, 0.498, 0.5, 0.5, 0.498 }
         },
 })
 
@@ -440,7 +529,7 @@ minetest.register_node("homedecor:fence_picket_gate_white_open", {
         },
         node_box = {
                 type = "fixed",
-                fixed = { 0.495, -0.5, -0.5, 0.495, 0.5, 0.5 }
+                fixed = { 0.498, -0.5, -0.5, 0.498, 0.5, 0.5 }
         },
 	drop = "homedecor:fence_picket_gate_closed"
 })
