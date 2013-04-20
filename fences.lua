@@ -295,7 +295,7 @@ minetest.register_node("homedecor:fence_privacy_corner", {
 		"homedecor_fence_privacy_corner_bottom.png",
 		"homedecor_fence_privacy_corner_right.png",
 		"homedecor_fence_privacy_backside.png",
-		"homedecor_fence_privacy_backside.png",
+		"homedecor_fence_privacy_backside2.png",
 		"homedecor_fence_privacy_corner_front.png"
 	},
         paramtype = "light",
