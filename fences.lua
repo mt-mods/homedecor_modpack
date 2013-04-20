@@ -420,8 +420,8 @@ minetest.register_node("homedecor:fence_chainlink_corner", {
 	drawtype = "nodebox",
 	description = "Chainlink Fence",
 	tiles = {
-		"homedecor_fence_chainlink_gate_tb.png",
-		"homedecor_fence_chainlink_gate_tb.png",
+		"homedecor_fence_chainlink_corner_tb.png",
+		"homedecor_fence_chainlink_corner_tb.png",
 		"homedecor_fence_chainlink_corner_sides.png",
 		"homedecor_fence_chainlink_corner_sides.png",
 		"homedecor_fence_chainlink_corner_sides.png",
