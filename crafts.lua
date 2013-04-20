@@ -274,20 +274,67 @@ minetest.register_craft( {
         },
 })
 
---
+minetest.register_craft( {
+        output = 'homedecor:glass_table_small_square 4',
+        recipe = {
+		{'homedecor:glass_table_small_round', 'homedecor:glass_table_small_round' },
+		{'homedecor:glass_table_small_round', 'homedecor:glass_table_small_round' }
+	}
+})
 
 minetest.register_craft( {
-	type = "shapeless",
-        output = 'homedecor:glass_table_small_square',
-        recipe = { 'homedecor:glass_table_small_round' },
+        output = 'homedecor:glass_table_large 4',
+        recipe = { 
+		{ 'homedecor:glass_table_small_square', 'homedecor:glass_table_small_square' },
+		{ 'homedecor:glass_table_small_square', 'homedecor:glass_table_small_square' }
+	}
 })
 
 --
 
 minetest.register_craft( {
-	type = "shapeless",
-        output = 'homedecor:glass_table_large',
-        recipe = { 'homedecor:glass_table_small_square' },
+        output = 'homedecor:wood_table_small_round 15',
+        recipe = {
+                { '', 'default:wood', '' },
+                { 'default:wood', 'default:wood', 'default:wood' },
+                { '', 'default:wood', '' },
+        },
+})
+
+minetest.register_craft( {
+        output = 'homedecor:wood_table_small_square 4',
+        recipe = { 
+		{ 'homedecor:wood_table_small_round','homedecor:wood_table_small_round' },
+		{ 'homedecor:wood_table_small_round','homedecor:wood_table_small_round' }
+	}
+})
+
+minetest.register_craft( {
+        output = 'homedecor:wood_table_large 4',
+        recipe = { 
+		{ 'homedecor:wood_table_small_square', 'homedecor:wood_table_small_square' },
+		{ 'homedecor:wood_table_small_square', 'homedecor:wood_table_small_square' }
+	}
+})
+
+--
+
+minetest.register_craft({
+        type = 'fuel',
+        recipe = 'homedecor:wood_table_small_round',
+        burntime = 30,
+})
+
+minetest.register_craft({
+        type = 'fuel',
+        recipe = 'homedecor:wood_table_small_square',
+        burntime = 30,
+})
+
+minetest.register_craft({
+        type = 'fuel',
+        recipe = 'homedecor:wood_table_large',
+        burntime = 30,
 })
 
 --
@@ -345,49 +392,6 @@ minetest.register_craft( {
 		{ 'default:glass', 'default:glass' },
 		{ 'default:glass', 'default:glass' },
         },
-})
-
---
-
-minetest.register_craft( {
-        output = 'homedecor:wood_table_small_round 15',
-        recipe = {
-                { '', 'default:wood', '' },
-                { 'default:wood', 'default:wood', 'default:wood' },
-                { '', 'default:wood', '' },
-        },
-})
-
-minetest.register_craft({
-        type = 'fuel',
-        recipe = 'homedecor:wood_table_small_round',
-        burntime = 30,
-})
-
-minetest.register_craft( {
-	type = "shapeless",
-        output = 'homedecor:wood_table_small_square',
-        recipe = { 'homedecor:wood_table_small_round' },
-})
-
-minetest.register_craft({
-        type = 'fuel',
-        recipe = 'homedecor:wood_table_small_square',
-        burntime = 30,
-})
-
---
-
-minetest.register_craft( {
-	type = "shapeless",
-        output = 'homedecor:wood_table_large',
-        recipe = { 'homedecor:wood_table_small_square' },
-})
-
-minetest.register_craft({
-        type = 'fuel',
-        recipe = 'homedecor:wood_table_large',
-        burntime = 30,
 })
 
 -- Various colors of shutters
@@ -810,7 +814,7 @@ minetest.register_craft( {
         output = 'homedecor:brass_ingot 2',
 	recipe = {
 		'moreores:silver_ingot',
-		'moreores:copper_ingot',
+		'default:copper_ingot',
 	},
 })
 
