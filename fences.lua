@@ -287,6 +287,46 @@ minetest.register_node("homedecor:fence_privacy", {
         },
 })
 
+minetest.register_node("homedecor:fence_privacy_corner", {
+	drawtype = "nodebox",
+        description = S("Wooden Privacy Fence"),
+        tiles = {
+		"homedecor_fence_privacy_corner_top.png",
+		"homedecor_fence_privacy_corner_bottom.png",
+		"homedecor_fence_privacy_corner_right.png",
+		"homedecor_fence_privacy_backside.png",
+		"homedecor_fence_privacy_backside.png",
+		"homedecor_fence_privacy_corner_front.png"
+	},
+        paramtype = "light",
+        is_ground_content = true,
+        groups = {snappy=3},
+        sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+        selection_box = {
+                type = "fixed",
+                fixed = {
+			{ -0.5, -0.5, 5/16,   0.5, 0.5,  0.5 },
+			{ -0.5, -0.5, -0.5, -5/16, 0.5, 5/16 },
+		}			
+        },
+        node_box = {
+                type = "fixed",
+		fixed = {
+			{ -7/16, -8/16, 5/16, -5/16, 8/16, 7/16 },	-- left part
+			{ -4/16, -8/16, 5/16,  3/16, 8/16, 7/16 },	-- middle part
+			{  4/16, -8/16, 5/16,  8/16, 8/16, 7/16 },	-- right part
+			{ -8/16, -2/16, 7/16,  8/16, 2/16, 8/16 },	-- back-side connecting rung
+
+			{ -7/16, -8/16,  4/16, -5/16, 8/16,  7/16 },	-- back-most part
+			{ -7/16, -8/16, -4/16, -5/16, 8/16,  3/16 },	-- middle part
+			{ -7/16, -8/16, -8/16, -5/16, 8/16, -5/16 },	-- front-most part
+			{ -8/16, -2/16, -8/16, -7/16, 2/16,  7/16 },	-- left-side connecting rung
+		}
+        },
+})
+
 minetest.register_node("homedecor:fence_barbed_wire", {
 	drawtype = "nodebox",
         description = S("Barbed Wire Fence"),

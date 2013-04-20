@@ -1377,6 +1377,23 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:fence_privacy_corner",
+	recipe = {
+		"homedecor:fence_privacy",
+		"homedecor:fence_privacy"
+	},
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:fence_privacy 2",
+	recipe = {
+		"homedecor:fence_privacy_corner"
+	},
+})
+
+minetest.register_craft( {
         output = "homedecor:fence_barbed_wire 6",
         recipe = {
                 { "default:stick", "default:iron_lump", "default:stick" },
