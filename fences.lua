@@ -183,7 +183,7 @@ minetest.register_node("homedecor:fence_picket_corner", {
 	type = "fixed",
 		fixed = {
 			{ -0.5, -0.5, 0.4, 0.5, 0.5, 0.5 },
-			{ -0.5, -0.5, -0.5, -0.4, 0.5, 0.5 }
+			{ -0.5, -0.5, -0.5, -0.4, 0.5, 0.4 }
 		}
 	},
 	node_box = {
@@ -243,7 +243,7 @@ minetest.register_node("homedecor:fence_picket_corner_white", {
 	type = "fixed",
 		fixed = {
 			{ -0.5, -0.5, 0.4, 0.5, 0.5, 0.5 },
-			{ -0.5, -0.5, -0.5, -0.4, 0.5, 0.5 }
+			{ -0.5, -0.5, -0.5, -0.4, 0.5, 0.4 }
 		}
 	},
 	node_box = {
@@ -367,7 +367,7 @@ minetest.register_node("homedecor:fence_barbed_wire_corner", {
                 type = "fixed",
                 fixed = {
 			{ -0.5, -0.5, 0.375, 0.5, 0.5, 0.5 },
-                	{ -0.5, -0.5, -0.5, -0.375, 0.5, 0.5 }
+                	{ -0.5, -0.5, -0.5, -0.375, 0.5, 0.375 }
 		}
         },
         node_box = {
@@ -437,7 +437,7 @@ minetest.register_node("homedecor:fence_chainlink_corner", {
 		type = "fixed",
 		fixed = {
 			{ -0.5, -0.5, 0.375, 0.5, 0.5, 0.5 },
-			{ -0.5, -0.5, -0.5, -0.375, 0.5, 0.5 }
+			{ -0.5, -0.5, -0.5, -0.375, 0.5, 0.375 }
 		}
 	},
 	node_box = {
