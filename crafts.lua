@@ -1294,7 +1294,8 @@ minetest.register_craft({
 	}
 })
 
--- Fences and gates
+-- Brass/wrought iron fences
+
 
 minetest.register_craft( {
         output = 'homedecor:fence_brass 6',
@@ -1312,7 +1313,8 @@ minetest.register_craft( {
         },
 })
 
--- other types of fences/gates
+-- other types of fences
+
 
 minetest.register_craft( {
         output = "homedecor:fence_picket 6",
@@ -1339,6 +1341,9 @@ minetest.register_craft( {
 		"homedecor:fence_picket_corner"
 	},
 })
+
+--
+
 
 minetest.register_craft( {
         output = "homedecor:fence_picket_white 6",
@@ -1367,6 +1372,9 @@ minetest.register_craft( {
 	},
 })
 
+--
+
+
 minetest.register_craft( {
         output = "homedecor:fence_privacy 6",
         recipe = {
@@ -1393,6 +1401,9 @@ minetest.register_craft( {
 	},
 })
 
+--
+
+
 minetest.register_craft( {
         output = "homedecor:fence_barbed_wire 6",
         recipe = {
@@ -1413,6 +1424,9 @@ minetest.register_craft( {
 	output = "homedecor:fence_barbed_wire 2",
 	recipe = { "homedecor:fence_barbed_wire_corner" },
 })
+
+--
+
 
 minetest.register_craft( {
         output = "homedecor:fence_chainlink 9",
@@ -1435,9 +1449,12 @@ minetest.register_craft( {
 	recipe = { "homedecor:fence_chainlink_corner" },
 })
 
+
+-- Gates
+
 minetest.register_craft( {
 	type = "shapeless",
-        output = "homedecor:fence_picket_gate_white_closed",
+        output = "homedecor:gate_picket_white_closed",
         recipe = {
 		"homedecor:fence_picket_white"
         },
@@ -1447,13 +1464,13 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:fence_picket_white",
         recipe = {
-		"homedecor:fence_picket_gate_white_closed"
+		"homedecor:gate_picket_white_closed"
         },
 })
 
 minetest.register_craft( {
 	type = "shapeless",
-        output = "homedecor:fence_picket_gate_closed",
+        output = "homedecor:gate_picket_closed",
         recipe = {
 		"homedecor:fence_picket"
         },
@@ -1463,13 +1480,13 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:fence_picket",
         recipe = {
-		"homedecor:fence_picket_gate_closed"
+		"homedecor:gate_picket_closed"
         },
 })
 
 minetest.register_craft( {
 	type = "shapeless",
-        output = "homedecor:fence_barbed_wire_gate_closed",
+        output = "homedecor:gate_barbed_wire_closed",
         recipe = {
 		"homedecor:fence_barbed_wire"
         },
@@ -1479,13 +1496,13 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:fence_barbed_wire",
         recipe = {
-		"homedecor:fence_barbed_wire_gate_closed"
+		"homedecor:gate_barbed_wire_closed"
         },
 })
 
 minetest.register_craft( {
 	type = "shapeless",
-        output = "homedecor:fence_chainlink_gate_closed",
+        output = "homedecor:gate_chainlink_closed",
         recipe = {
 		"homedecor:fence_chainlink"
         },
@@ -1495,11 +1512,11 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:fence_chainlink",
         recipe = {
-		"homedecor:fence_chainlink_gate_closed"
+		"homedecor:gate_chainlink_closed"
         },
 })
 
--- doors
+------ Doors
 
 -- plain wood, non-windowed
 

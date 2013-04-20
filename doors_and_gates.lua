@@ -232,10 +232,10 @@ for i in ipairs(gates_list) do
 
 end
 
-minetest.register_alias("homedecor:fence_barbed_wire_gate_open",    "homedecor:gate_chainlink_open")
-minetest.register_alias("homedecor:fence_barbed_wire_gate_closed",  "homedecor:gate_chainlink_closed")
-minetest.register_alias("homedecor:fence_chainlink_gate_open",      "homedecor:gate_barbed_wire_open")
-minetest.register_alias("homedecor:fence_chainlink_gate_closed",    "homedecor:gate_barbed_wire_closed")
+minetest.register_alias("homedecor:fence_barbed_wire_gate_open",    "homedecor:gate_barbed_wire_open")
+minetest.register_alias("homedecor:fence_barbed_wire_gate_closed",  "homedecor:gate_barbed_wire_closed")
+minetest.register_alias("homedecor:fence_chainlink_gate_open",      "homedecor:gate_chainlink_open")
+minetest.register_alias("homedecor:fence_chainlink_gate_closed",    "homedecor:gate_chainlink_closed")
 minetest.register_alias("homedecor:fence_picket_gate_open",         "homedecor:gate_picket_open")
 minetest.register_alias("homedecor:fence_picket_gate_closed",       "homedecor:gate_picket_closed")
 minetest.register_alias("homedecor:fence_picket_gate_white_open",   "homedecor:gate_picket_white_open")
