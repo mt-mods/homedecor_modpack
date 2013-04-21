@@ -121,64 +121,56 @@ for i in ipairs(chaircolors) do
 
 end
 
-
-function homedecor_table_lamp_on_punch(pos, node, puncher)
-    local repl = { off="low", low="med", med="hi", hi="max", max="off", }
-    local s = minetest.registered_nodes[node.name].homedecor_table_lamp_next
-    if (not s) or (not repl[s]) then return end
-    node.name = "homedecor:table_lamp_"..repl[s]
-    minetest.env:set_node(pos, node)
-    nodeupdate(pos)
-end
-
+local repl = { off="low", low="med", med="hi", hi="max", max="off", }
 
 local function reg_lamp(suffix, nxt, desc, tilesuffix, light)
-    minetest.register_node("homedecor:table_lamp_"..suffix, {
-        description = desc,
-        drawtype = "nodebox",
-        tiles = {
-            "forniture_table_lamp_s"..tilesuffix..".png",
-            "forniture_table_lamp_s"..tilesuffix..".png",
-            "forniture_table_lamp_l"..tilesuffix..".png",
-        },
-        paramtype = "light",
-        paramtype2 = "facedir",
-        node_box = {
-            type = "fixed",
-            fixed = {
-                { -0.1500, -0.500, -0.1500,  0.1500, -0.45,  0.1500 },
-                { -0.0500, -0.450, -0.0500,  0.0500, -0.40,  0.0500 },
-                { -0.0250, -0.400, -0.0250,  0.0250, -0.10,  0.0250 },
-                { -0.0125, -0.125, -0.2000,  0.0125, -0.10,  0.2000 },
-                { -0.2000, -0.125, -0.0125,  0.2000, -0.10,  0.0125 },
-                { -0.2000, -0.100, -0.2000, -0.1750,  0.30,  0.2000 },
-                {  0.1750, -0.100, -0.2000,  0.2000,  0.30,  0.2000 },
-                { -0.1750, -0.100, -0.2000,  0.1750,  0.30, -0.1750 },
-                { -0.1750, -0.100,  0.1750,  0.1750,  0.30,  0.2000 },
-            },
-        },
-        walkable = false,
-        light_source = light,
-        selection_box = {
-            type = "fixed",
-            fixed = { -0.2, -0.5, -0.2, 0.2, 0.30, 0.2 },
-        },
-        groups = {cracky=2,oddly_breakable_by_hand=1,
-            not_in_creative_inventory=((desc == nil) and 1) or nil,
-        },
-        drop = "homedecor:table_lamp_off",
-        homedecor_table_lamp_next = nxt,
-        on_punch = homedecor_table_lamp_on_punch,
-    })
-    minetest.register_alias("3dforniture:table_lamp_"..suffix,
-                            "homedecor:table_lamp_"..suffix)
+	minetest.register_node("homedecor:table_lamp_"..suffix, {
+	description = desc,
+	drawtype = "nodebox",
+	tiles = {
+		"forniture_table_lamp_s"..tilesuffix..".png",
+		"forniture_table_lamp_s"..tilesuffix..".png",
+		"forniture_table_lamp_l"..tilesuffix..".png",
+	},
+	paramtype = "light",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{ -0.1500, -0.500, -0.1500,  0.1500, -0.45,  0.1500 },
+			{ -0.0500, -0.450, -0.0500,  0.0500, -0.40,  0.0500 },
+			{ -0.0250, -0.400, -0.0250,  0.0250, -0.10,  0.0250 },
+			{ -0.0125, -0.125, -0.2000,  0.0125, -0.10,  0.2000 },
+			{ -0.2000, -0.125, -0.0125,  0.2000, -0.10,  0.0125 },
+			{ -0.2000, -0.100, -0.2000, -0.1750,  0.30,  0.2000 },
+			{  0.1750, -0.100, -0.2000,  0.2000,  0.30,  0.2000 },
+			{ -0.1750, -0.100, -0.2000,  0.1750,  0.30, -0.1750 },
+			{ -0.1750, -0.100,  0.1750,  0.1750,  0.30,  0.2000 },
+		},
+	},
+	walkable = false,
+	light_source = light,
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.2, -0.5, -0.2, 0.2, 0.30, 0.2 },
+	},
+	groups = {cracky=2,oddly_breakable_by_hand=1,
+		not_in_creative_inventory=((desc == nil) and 1) or nil,
+	},
+	drop = "homedecor:table_lamp_off",
+	on_punch = function(pos, node, puncher)
+		node.name = "homedecor:table_lamp_"..repl[suffix]
+		minetest.env:set_node(pos, node)
+		nodeupdate(pos)
+	end,
+	})
+	minetest.register_alias("3dforniture:table_lamp_"..suffix, "homedecor:table_lamp_"..suffix)
 end
 
-reg_lamp("off", "low", "Table Lamp", "", nil)
-reg_lamp("low", "med", nil, "l", 3)
-reg_lamp("med", "hi",  nil, "m", 7)
-reg_lamp("hi",  "max", nil, "h", 11)
-reg_lamp("max", "off", nil, "x", 14)
+reg_lamp("off", "low", "Table Lamp",  "", nil )
+reg_lamp("low", "med", nil,          "l", 3   )
+reg_lamp("med", "hi" , nil,          "m", 7   )
+reg_lamp("hi" , "max", nil,          "h", 11  )
+reg_lamp("max", "off", nil,          "x", 14  )
 
 -- Aliases for 3dforniture mod.
 minetest.register_alias("3dforniture:table", "homedecor:table")
