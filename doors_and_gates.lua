@@ -69,6 +69,7 @@ for i in ipairs(sides) do
 			groups = {snappy=3, not_in_creative_inventory=1},
 			sounds = default.node_sound_wood_defaults(),
 			walkable = true,
+--			use_texture_alpha = true,
 			selection_box = selectboxes_top,
 			node_box = {
 				type = "fixed",
@@ -95,6 +96,7 @@ for i in ipairs(sides) do
 			groups = {snappy=3},
 			sounds = default.node_sound_wood_defaults(),
 			walkable = true,
+--			use_texture_alpha = true,
 			selection_box = selectboxes_bottom,
 			node_box = {
 				type = "fixed",
