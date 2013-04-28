@@ -34,7 +34,7 @@ for i in ipairs(sides) do
 
 		local tiles_top = {
 				"homedecor_door_"..doorname.."_tb.png",
-				"homedecor_door_"..doorname.."_tb.png",
+				"homedecor_blanktile.png",
 				"homedecor_door_"..doorname.."_lrt.png",
 				"homedecor_door_"..doorname.."_lrt.png",
 				"homedecor_door_"..doorname.."_"..rside.."_top.png",
@@ -42,7 +42,7 @@ for i in ipairs(sides) do
 				}
 
 		local tiles_bottom = {
-				"homedecor_door_"..doorname.."_tb.png",
+				"homedecor_blanktile.png",
 				"homedecor_door_"..doorname.."_tb.png",
 				"homedecor_door_"..doorname.."_lrb.png",
 				"homedecor_door_"..doorname.."_lrb.png",
