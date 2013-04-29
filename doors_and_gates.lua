@@ -276,10 +276,22 @@ function homedecor_flip_door(pos, node, player, name, side)
 		rside = "right"
 		nfdir=node.param2 - 1
 		if nfdir < 0 then nfdir = 3 end
+	        minetest.sound_play({
+			name="homedecor_door_open",
+			pos=pos,
+			max_hear_distance = 10,
+			gain = 2
+		})
 	else
 		rside = "left"
 		nfdir=node.param2 + 1
 		if nfdir > 3 then nfdir = 0 end
+	        minetest.sound_play({
+			name="homedecor_door_close",
+			pos=pos,
+			max_hear_distance = 10,
+			gain = 2
+		})
 	end
 	minetest.env:add_node({x=pos.x, y=pos.y+1, z=pos.z}, { name =  "homedecor:door_"..name.."_top_"..rside, param2=nfdir})
 	minetest.env:add_node(pos, { name = "homedecor:door_"..name.."_bottom_"..rside, param2=nfdir})
@@ -293,4 +305,11 @@ function homedecor_flip_gate(pos, node, player, gate, oc)
 	else
 		minetest.env:add_node(pos, { name = "homedecor:gate_"..gate.."_closed", param2=fdir})
 	end
+
+        minetest.sound_play({
+		name="homedecor_gate_open_close",
+		pos=pos,
+		max_hear_distance = 10,
+		gain = 2
+	})
 end
