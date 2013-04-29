@@ -32,17 +32,25 @@ for i in ipairs(sides) do
 			nodeboxes_bottomtom =	homedecor_door_models[j][6]
 		end
 
-		local tiles_top = {
+		local lower_top_side = "homedecor_door_"..doorname.."_tb.png"
+		local upper_bottom_side = "homedecor_door_"..doorname.."_tb.png"
+
+		if doorname == "glass" then
+			lower_top_side = "homedecor_blanktile.png"
+			upper_bottom_side = "homedecor_blanktile.png"
+		end
+
+		local tiles_upper = {
 				"homedecor_door_"..doorname.."_tb.png",
-				"homedecor_blanktile.png",
+				upper_bottom_side,
 				"homedecor_door_"..doorname.."_lrt.png",
 				"homedecor_door_"..doorname.."_lrt.png",
 				"homedecor_door_"..doorname.."_"..rside.."_top.png",
 				"homedecor_door_"..doorname.."_"..side.."_top.png",
 				}
 
-		local tiles_bottom = {
-				"homedecor_blanktile.png",
+		local tiles_lower = {
+				lower_top_side,
 				"homedecor_door_"..doorname.."_tb.png",
 				"homedecor_door_"..doorname.."_lrb.png",
 				"homedecor_door_"..doorname.."_lrb.png",
@@ -63,7 +71,7 @@ for i in ipairs(sides) do
 		minetest.register_node("homedecor:door_"..doorname.."_top_"..side, {
 			description = doordesc.." "..S("(Top Half, %s-opening)"):format(side),
 			drawtype = "nodebox",
-			tiles = tiles_top,
+			tiles = tiles_upper,
 			paramtype = "light",
 			paramtype2 = "facedir",
 			groups = {snappy=3, not_in_creative_inventory=1},
@@ -89,7 +97,7 @@ for i in ipairs(sides) do
 		minetest.register_node("homedecor:door_"..doorname.."_bottom_"..side, {
 			description = doordesc.." "..S("(%s-opening)"):format(side),
 			drawtype = "nodebox",
-			tiles = tiles_bottom,
+			tiles = tiles_lower,
 			inventory_image = "homedecor_door_"..doorname.."_"..side.."_inv.png",
 			paramtype = "light",
 			paramtype2 = "facedir",
@@ -108,14 +116,8 @@ for i in ipairs(sides) do
 				end
 			end,
 			on_place = function(itemstack, placer, pointed_thing)
-
-				local node=minetest.env:get_node(pointed_thing.under)
-				if not minetest.registered_nodes[node.name]
-				    or not minetest.registered_nodes[node.name].on_rightclick then
-					return homedecor_place_door(itemstack, placer, pointed_thing, doorname, side)
-				else 
-					minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
-				end
+				homedecor_place_door(itemstack, placer, pointed_thing, doorname, side)
+				return itemstack
 			end,
 			on_rightclick = function(pos, node, clicker)
 				homedecor_flip_door(pos, node, clicker, doorname, side)
@@ -245,27 +247,54 @@ minetest.register_alias("homedecor:fence_picket_gate_white_closed", "homedecor:g
 
 ----- helper functions
 
+local function get_nodedef_field(nodename, fieldname)
+	if not minetest.registered_nodes[nodename] then
+		return nil
+	end
+	return minetest.registered_nodes[nodename][fieldname]
+end
+
 function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
-	local pos = pointed_thing.above
-	if homedecor_node_is_owned(pointed_thing.under, placer) == false then
 
-		local nodename = minetest.env:get_node(pointed_thing.under).name
-		local field = nil
+	local pointed = pointed_thing.under
+	local pnode = minetest.env:get_node(pointed)
+	local pname = pnode.name
 
-		if minetest.registered_nodes[nodename] then field = minetest.registered_nodes[nodename].on_rightclick end
+	if not minetest.registered_nodes[pname]
+	    or not minetest.registered_nodes[pname].on_rightclick then
 
-		if field == nil then
-			fdir = minetest.dir_to_facedir(placer:get_look_dir())
-			if minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name ~= "air" then
-				minetest.chat_send_player( placer:get_player_name(), S('Not enough vertical space to place a door!') )
-				return
-			end
-			minetest.env:add_node({x=pos.x, y=pos.y+1, z=pos.z}, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})
-			minetest.env:add_node(pos, { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir})
-			itemstack:take_item()
-			return itemstack
+		local pos1 = nil
+		local pos2 = nil
+
+		if minetest.registered_nodes[pname]["buildable_to"] then
+			pos1 = pointed
+			pos2 = {x=pointed.x, y=pointed.y+1, z=pointed.z}
+		else
+			pos1 = pointed_thing.above
+			pos2 = {x=pointed_thing.above.x, y=pointed_thing.above.y+1, z=pointed_thing.above.z}
 		end
-		return minetest.item_place(itemstack, placer, pointed_thing)
+
+		local node_bottom = minetest.env:get_node(pos1)
+		local node_top = minetest.env:get_node(pos2)
+
+		if not homedecor_node_is_owned(pos1, placer) 
+		    and not homedecor_node_is_owned(pos2, placer) then
+
+			if not get_nodedef_field(node_bottom.name, "buildable_to") 
+			    or not get_nodedef_field(node_top.name, "buildable_to") then
+				minetest.chat_send_player( placer:get_player_name(), S('Not enough space above that spot to place a door!') )
+			else
+				local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+				minetest.env:add_node(pos1, { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir})
+				minetest.env:add_node(pos2, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})
+				if not homedecor_expect_infinite_stacks then
+					itemstack:take_item()
+					return itemstack
+				end
+			end
+		end
+	else 
+		minetest.registered_nodes[pname].on_rightclick(pointed_thing.under, pnode, placer)
 	end
 end
 
