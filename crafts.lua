@@ -1019,7 +1019,7 @@ minetest.register_craft({
 minetest.register_craft({
         output = "homedecor:glowlight_half_white 6",
         recipe = {
-		{ "wool:white", "wool:white", "wool:white" },
+		{ "group:dye,basecolor_white", "group:dye,basecolor_white", "group:dye,basecolor_white" },
 		{"moreblocks:superglowglass", "moreblocks:glowglass", "moreblocks:superglowglass", },
 	}
 })
@@ -1028,7 +1028,7 @@ minetest.register_craft({
 	type = "shapeless",
         output = "homedecor:glowlight_half_white 2",
         recipe = {
-		"wool:white",
+		"group:dye,basecolor_white",
 		"homedecor:glowlight_half_yellow",
 		"homedecor:glowlight_half_yellow",
 	}
@@ -1044,7 +1044,7 @@ minetest.register_craft({
 minetest.register_craft({
         output = "homedecor:glowlight_small_cube_white 8",
         recipe = {
-		{"wool:white" },
+		{"group:dye,basecolor_white" },
 		{"moreblocks:superglowglass" },
 	}
 })
