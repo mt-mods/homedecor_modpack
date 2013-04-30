@@ -375,7 +375,7 @@ minetest.register_craft( {
 	type = 'shapeless',
         output = 'homedecor:shutter_grey 4',
         recipe = {
-		'group:dye,basecolor_grey',
+		'group:dye,excolor_grey',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
@@ -593,16 +593,6 @@ minetest.register_craft( {
         },
 })
 
-minetest.register_craft( {
-	type = 'shapeless',
-        output = 'homedecor:nightstand_mahogany_one_drawer',
-        recipe = {
-                'homedecor:nightstand_oak_one_drawer',
-                'default:dirt',
-		'default:coal_lump',
-        },
-})
-
 minetest.register_craft({
         type = 'fuel',
         recipe = 'homedecor:nightstand_mahogany_one_drawer',
@@ -615,16 +605,6 @@ minetest.register_craft( {
         recipe = {
                 'homedecor:nightstand_oak_two_drawers',
                 'group:dye,unicolor_dark_orange',
-        },
-})
-
-minetest.register_craft( {
-	type = 'shapeless',
-        output = 'homedecor:nightstand_mahogany_two_drawers',
-        recipe = {
-                'homedecor:nightstand_oak_two_drawers',
-                'default:dirt',
-		'default:coal_lump',
         },
 })
 
