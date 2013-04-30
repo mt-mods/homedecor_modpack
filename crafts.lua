@@ -15,63 +15,6 @@ else
     S = function ( s ) return s end
 end
 
--- Some recipes need white paint.  If Unified Dyes isn't present,
--- implement the standard white paint production method here instead,
--- plus some alternate recipes in the event of material shorages.
-
-if ( minetest.get_modpath("unifieddyes") ) == nil then
-
-	minetest.register_craftitem(":unifieddyes:titanium_dioxide", {
-		description = S("Titanium Dioxide"),
-		inventory_image = "homedecor_titanium_dioxide.png",
-	})
-
-	minetest.register_craft({
-		type = "cooking",
-		output = "unifieddyes:titanium_dioxide 10",
-		recipe = "default:stone",
-	})
-
-	minetest.register_craftitem(":unifieddyes:white_paint", {
-		description = S("Bucket of white paint"),
-		inventory_image = "homedecor_white_paint.png",
-	})
-
-	minetest.register_craft( {
-		type = "shapeless",
-		output = "unifieddyes:white_paint",
-		recipe = {
-		        "unifieddyes:titanium_dioxide",
-		        "bucket:bucket_water",
-		        "default:junglegrass",
-		},
-	})
-
-	minetest.register_craft( {
-		type = "shapeless",
-		output = "unifieddyes:white_paint",
-		recipe = {
-		        "unifieddyes:titanium_dioxide",
-		        "bucket:bucket_water",
-		        "default:dry_shrub",
-		        "default:dry_shrub",
-		},
-	})
-
-	minetest.register_craft( {
-		type = "shapeless",
-		output = "unifieddyes:white_paint",
-		recipe = {
-		        "unifieddyes:titanium_dioxide",
-		        "bucket:bucket_water",
-		        "default:leaves",
-		        "default:leaves",
-		        "default:leaves",
-		},
-	})
-end
-
-
 -- misc stuff :D
 
 minetest.register_craftitem("homedecor:terracotta_base", {
@@ -181,23 +124,10 @@ minetest.register_craft({
 minetest.register_craft( {
         output = 'homedecor:flower_pot_green',
         recipe = {
-                { 'unifieddyes:dark_green', '', '' },
+                { '', 'group:dye,unicolor_dark_green', '' },
                 { 'homedecor:plastic_sheeting', 'default:dirt', 'homedecor:plastic_sheeting' },
                 { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
         },
-	replacements = { {'unifieddyes:dark_green', 'vessels:glass_bottle'}, },
-
-})
-
-minetest.register_craft( {
-        output = 'homedecor:flower_pot_green',
-        recipe = {
-                { 'default:leaves', '', 'default:leaves' },
-                { 'homedecor:plastic_sheeting', 'default:dirt', 'homedecor:plastic_sheeting' },
-                { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
-        },
-	replacements = { {'unifieddyes:dark_green', 'vessels:glass_bottle'}, },
-
 })
 
 minetest.register_craft( {
@@ -207,21 +137,8 @@ minetest.register_craft( {
                 { 'homedecor:plastic_sheeting', 'default:dirt', 'homedecor:plastic_sheeting' },
                 { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
         },
-	replacements = {
-			{'unifieddyes:black', 'vessels:glass_bottle'},
-			{'unifieddyes:black', 'vessels:glass_bottle'},
-			{'unifieddyes:black', 'vessels:glass_bottle'}
-	}
 })
 
-minetest.register_craft( {
-        output = 'homedecor:flower_pot_black',
-        recipe = {
-                { 'default:coal_lump', 'default:coal_lump', 'default:coal_lump' },
-                { 'homedecor:plastic_sheeting', 'default:dirt', 'homedecor:plastic_sheeting' },
-                { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
-        },
-})
 --
 
 minetest.register_craft( {
@@ -243,22 +160,23 @@ minetest.register_craft({
 
 minetest.register_craft( {
 	type = 'shapeless',
-        output = 'homedecor:ceiling_paint 10',
+        output = 'homedecor:ceiling_paint 20',
         recipe = {
-                'unifieddyes:white_paint',
-                'default:stone',
+                'group:dye,basecolor_white',
+                'group:dye,basecolor_white',
+                'default:sand',
+		'bucket:bucket_water',
         },
-	replacements = { {'unifieddyes:white_paint', 'bucket:bucket_empty'}, },
+	replacements = { { 'bucket:bucket_water','bucket:bucket_empty' } }
 })
 
 minetest.register_craft( {
         output = 'homedecor:ceiling_tile 10',
         recipe = {
-                { '', 'unifieddyes:white_paint', '' },
+                { '', 'group:dye,basecolor_white', '' },
                 { 'default:steel_ingot', 'default:stone', 'default:steel_ingot' },
 
         },
-	replacements = { {'unifieddyes:white_paint', 'bucket:bucket_empty'}, },
 })
 
 
@@ -342,24 +260,12 @@ minetest.register_craft({
 minetest.register_craft( {
         output = 'homedecor:shingles_asphalt 6',
         recipe = {
-                { 'default:dirt', 'group:dye,basecolor_black', 'default:dirt' },
+                { 'default:gravel', 'group:dye,basecolor_black', 'default:gravel' },
                 { 'default:sand', 'group:dye,basecolor_black', 'default:sand' },
                 { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
         },
-	replacements = {
-			{'unifieddyes:black', 'vessels:glass_bottle'},
-			{'unifieddyes:black', 'vessels:glass_bottle'},
-	}
 })
 
-minetest.register_craft( {
-        output = 'homedecor:shingles_asphalt 6',
-        recipe = {
-                { 'default:dirt', 'default:coal_lump', 'default:dirt' },
-                { 'default:sand', 'default:coal_lump', 'default:sand' },
-                { 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting', 'homedecor:plastic_sheeting' },
-        },
-})
 --
 
 minetest.register_craft( {
@@ -435,20 +341,6 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak'
         },
-	replacements = { {'unifieddyes:black', 'vessels:glass_bottle'}, },
-})
-
-minetest.register_craft( {
-	type = 'shapeless',
-        output = 'homedecor:shutter_black 4',
-        recipe = {
-                'default:coal_lump',
-                'default:coal_lump',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak'
-        },
 })
 
 minetest.register_craft({
@@ -463,13 +355,12 @@ minetest.register_craft( {
 	type = 'shapeless',
         output = 'homedecor:shutter_dark_grey 4',
         recipe = {
-                'unifieddyes:darkgrey_paint',
+                'group:dye,excolor_darkgrey',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak'
         },
-	replacements = { {'unifieddyes:darkgrey_paint', 'bucket:bucket_empty'}, },
 })
 
 minetest.register_craft({
@@ -490,20 +381,8 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak'
         },
-	replacements = { {'unifieddyes:grey_paint', 'bucket:bucket_empty'}, },
 })
 
-minetest.register_craft( {
-	type = 'shapeless',
-        output = 'homedecor:shutter_grey 4',
-        recipe = {
-                'default:coal_lump',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak'
-        },
-})
 minetest.register_craft({
         type = 'fuel',
         recipe = 'homedecor:shutter_grey',
@@ -520,9 +399,8 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
-                'unifieddyes:white_paint',
+                'group:dye,basecolor_white',
         },
-	replacements = { {'unifieddyes:white_paint', 'bucket:bucket_empty'}, },
 })
 
 minetest.register_craft({
@@ -541,21 +419,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
-		'unifieddyes:dark_orange',
-	},
-	replacements = { {'unifieddyes:dark_orange', 'vessels:glass_bottle'}, },
-})
-
-minetest.register_craft( {
-	type = 'shapeless',
-        output = 'homedecor:shutter_mahogany 4',
-       	recipe = {
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'default:coal_lump',
-		'default:dirt',
+		'group:dye,unicolor_dark_orange',
 	},
 })
 
@@ -574,19 +438,6 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'group:dye,basecolor_red',
 	},
-	replacements = { {'unifieddyes:red', 'vessels:glass_bottle'}, },
-})
-
-minetest.register_craft( {
-	type = 'shapeless',
-        output = 'homedecor:shutter_red 4',
-       	recipe = {
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'default:apple',
-	},
 })
 
 minetest.register_craft({
@@ -603,22 +454,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
-		'group:dye,basecolor_yellow',
-	},
-	replacements = { {'unifieddyes:yellow', 'vessels:glass_bottle'}, },
-})
-
-minetest.register_craft( {
-	type = 'shapeless',
-        output = 'homedecor:shutter_yellow 4',
-       	recipe = {
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'default:mese_crystal_fragment',
-		'default:mese_crystal_fragment',
-		'default:mese_crystal_fragment'
+		'group:dye,unicolor_yellow',
 	},
 })
 
@@ -638,21 +474,7 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
-                'unifieddyes:dark_green',
-        },
-	replacements = { {'unifieddyes:dark_green', 'vessels:glass_bottle'}, },
-})
-
-minetest.register_craft( {
-	type = 'shapeless',
-        output = 'homedecor:shutter_forest_green 4',
-        recipe = {
-                'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-		'homedecor:shutter_oak',
-                'default:leaves',
-                'default:coal_lump',
+                'group:dye,unicolor_dark_green',
         },
 })
 
@@ -674,7 +496,6 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'unifieddyes:light_blue',
 	},
-	replacements = { {'unifieddyes:light_blue', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft({
@@ -691,9 +512,8 @@ minetest.register_craft( {
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
 		'homedecor:shutter_oak',
-		'unifieddyes:violet',
+		'group:dye,excolor_violet',
 	},
-	replacements = { {'unifieddyes:violet', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft({
@@ -769,9 +589,8 @@ minetest.register_craft( {
         output = 'homedecor:nightstand_mahogany_one_drawer',
         recipe = {
                 'homedecor:nightstand_oak_one_drawer',
-                'unifieddyes:dark_orange',
+                'group:dye,unicolor_dark_orange',
         },
-	replacements = { {'unifieddyes:dark_orange', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft( {
@@ -795,9 +614,8 @@ minetest.register_craft( {
         output = 'homedecor:nightstand_mahogany_two_drawers',
         recipe = {
                 'homedecor:nightstand_oak_two_drawers',
-                'unifieddyes:dark_orange',
+                'group:dye,unicolor_dark_orange',
         },
-	replacements = { {'unifieddyes:dark_orange', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft( {
@@ -1321,10 +1139,9 @@ minetest.register_craft( {
         output = "homedecor:fence_picket_white 6",
         recipe = {
                 { "default:stick", "default:stick", "default:stick" },
-                { "default:stick", "unifieddyes:white_paint", "default:stick" },
+                { "default:stick", "group:dye,basecolor_white", "default:stick" },
                 { "default:stick", "default:stick", "default:stick" }
         },
-	replacements = { {'unifieddyes:white_paint', 'bucket:bucket_empty'}, },
 })
 
 minetest.register_craft( {
@@ -1611,7 +1428,7 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:door_wood_glass_mahogany_bottom_left 2",
         recipe = {
-		"unifieddyes:dark_orange",
+		"group:dye,unicolor_dark_orange",
 		"homedecor:door_wood_glass_bottom_left",
 		"homedecor:door_wood_glass_bottom_left"
         },
@@ -1621,7 +1438,7 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:door_wood_glass_mahogany_bottom_right 2",
         recipe = {
-		"unifieddyes:dark_orange",
+		"group:dye,unicolor_dark_orange",
 		"homedecor:door_wood_glass_bottom_right",
 		"homedecor:door_wood_glass_bottom_right"
         },
@@ -1649,22 +1466,20 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:door_wood_glass_white_bottom_left 2",
         recipe = {
-		"unifieddyes:white_paint",
+		"group:dye,basecolor_white",
 		"homedecor:door_wood_glass_bottom_left",
 		"homedecor:door_wood_glass_bottom_left"
         },
-	replacements = { {'unifieddyes:white_paint', 'bucket:bucket_empty'}, },
 })
 
 minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:door_wood_glass_white_bottom_right 2",
         recipe = {
-		"unifieddyes:white_paint",
+		"group:dye,basecolor_white",
 		"homedecor:door_wood_glass_bottom_right",
 		"homedecor:door_wood_glass_bottom_right"
         },
-	replacements = { {'unifieddyes:white_paint', 'bucket:bucket_empty'}, },
 })
 
 minetest.register_craft( {
@@ -1758,9 +1573,8 @@ minetest.register_craft( {
         recipe = {
 		"homedecor:door_closet_oak_bottom_left",
 		"homedecor:door_closet_oak_bottom_left",
-		"unifieddyes:dark_orange"
+		"group:dye,unicolor_dark_orange"
         },
-	replacements = { {'unifieddyes:dark_orange', 'vessels:glass_bottle'}, },
 })
 
 minetest.register_craft( {
