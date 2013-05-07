@@ -70,6 +70,7 @@ dofile(minetest.get_modpath("homedecor").."/tables.lua")
 dofile(minetest.get_modpath("homedecor").."/electronics.lua")
 dofile(minetest.get_modpath("homedecor").."/shutters.lua")
 dofile(minetest.get_modpath("homedecor").."/shingles.lua")
+dofile(minetest.get_modpath("homedecor").."/slopes.lua")
 
 dofile(minetest.get_modpath("homedecor").."/door_models.lua")
 dofile(minetest.get_modpath("homedecor").."/doors_and_gates.lua")
