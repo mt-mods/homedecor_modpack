@@ -115,11 +115,20 @@ minetest.register_node(":default:sign_wall", {
     groups = sign_groups,
 
     on_place = function(itemstack, placer, pointed_thing)
-        local def = minetest.registered_nodes[minetest.env:get_node(pointed_thing.above).name]
-        if homedecor_node_is_owned(pointed_thing.above, placer)
-         or (not def.buildable_to) then
-            return itemstack
-        end
+		local name
+		name = minetest.env:get_node(pointed_thing.under).name
+		if fences_with_sign[name] then
+			if homedecor_node_is_owned(pointed_thing.under, placer) then
+				return itemstack
+			end
+		else
+			name = minetest.env:get_node(pointed_thing.above).name
+			local def = minetest.registered_nodes[name]
+			if homedecor_node_is_owned(pointed_thing.above, placer)
+			 or (not def.buildable_to) then
+				return itemstack
+			end
+		end
 
 	local node=minetest.env:get_node(pointed_thing.under)
 
