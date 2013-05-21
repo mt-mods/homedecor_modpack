@@ -49,6 +49,10 @@ function homedecor_node_is_owned(pos, placer)
 		if not isprotect(5, pos, placer) then
 			ownername = S("someone")
 		end
+	elseif type(protector)=="table" and type(protector.can_dig)=="function" then 					-- Zeg9's protection mod
+		if not protector.can_dig(5, pos, placer) then
+			ownername = S("someone")
+		end
 	end
 
 	if ownername ~= false then
