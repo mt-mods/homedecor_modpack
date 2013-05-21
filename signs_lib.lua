@@ -441,6 +441,7 @@ function homedecor_register_fence_with_sign(fencename, fencewithsignname)
                 minetest.pos_to_string(pos)
             ))
         end
+		if not homedecor_node_is_owned(pos, sender) then return end
 		homedecor_update_sign(pos, fields)
 	end
 	def_sign.on_punch = function(pos, node, puncher, ...)
