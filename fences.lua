@@ -23,16 +23,6 @@ minetest.register_node("homedecor:fence_brass", {
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
-
-	on_place = function(itemstack, placer, pointed_thing)
-		if not homedecor_node_is_owned(pointed_thing.under, placer) then
-			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-			minetest.env:add_node(pointed_thing.above, {name = "homedecor:fence_brass", param2 = fdir})
-			itemstack:take_item()
-			placer:set_wielded_item(itemstack)
-			return itemstack
-		end
-	end
 })
 
 minetest.register_node("homedecor:fence_wrought_iron", {
