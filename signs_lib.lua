@@ -417,11 +417,23 @@ function homedecor_register_fence_with_sign(fencename, fencewithsignname)
     def = copy(def)
     def_sign = copy(def_sign)
     fences_with_sign[fencename] = fencewithsignname
+
     def.on_place = function(itemstack, placer, pointed_thing, ...)
-        local def = minetest.registered_nodes[minetest.env:get_node(pointed_thing.above).name]
-		if (not homedecor_node_is_owned(pointed_thing.under, placer))
-		 and def.buildable_to then
-			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+		local node_above = minetest.env:get_node(pointed_thing.above)
+		local node_under = minetest.env:get_node(pointed_thing.under)
+		local def_above = minetest.registered_nodes[node_above.name]
+		local def_under = minetest.registered_nodes[node_under.name]
+		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+		if def_under and def_under.on_rightclick then
+			return def_under.on_rightclick(pointed_thing.under, node_under, placer, itemstack) or itemstack
+		elseif (not homedecor_node_is_owned(pointed_thing.under, placer))
+		 and def_under.buildable_to then
+			minetest.env:add_node(pointed_thing.under, {name = fencename, param2 = fdir})
+			itemstack:take_item()
+			placer:set_wielded_item(itemstack)
+			return itemstack
+		elseif (not homedecor_node_is_owned(pointed_thing.above, placer))
+		 and def_above.buildable_to then
 			minetest.env:add_node(pointed_thing.above, {name = fencename, param2 = fdir})
 			itemstack:take_item()
 			placer:set_wielded_item(itemstack)
