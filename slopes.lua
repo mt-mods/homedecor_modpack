@@ -17,7 +17,7 @@ homedecor_register_outer_corner = function(modname, subname, groups, images, des
 	local slopeboxedge = {}
 	local detail = homedecor_detail_level
 	for i = 0, detail-1 do
-		slopeboxedge[i+1]={-0.5, -0.5+(1/detail), (i/detail)-0.5, 0.5-(i/detail), (i/detail)-0.5+(1.25/detail), 0.5}
+		slopeboxedge[i+1]={-0.5, -0.5, (i/detail)-0.5, 0.5-(i/detail), (i/detail)-0.5+(1.25/detail), 0.5}
 	end
 	minetest.register_node(modname..":shingle_outer_corner_" .. subname, {
 		description = S(description.. " (outer corner)"),
@@ -47,8 +47,8 @@ homedecor_register_inner_corner = function(modname, subname, groups, images, des
 	local slopeboxedge = {}
 	local detail = homedecor_detail_level
 	for i = 0, detail-1 do
-		slopeboxedge[i+1]={-0.5, -0.5+(1/detail), -0.5, 0.5-(i/detail), (i/detail)-0.5+(1.25/detail), 0.5}
-		slopeboxedge[i+detail+1]={-0.5, -0.5+(1/detail), (i/detail)-0.5, 0.5, (i/detail)-0.5+(1.25/detail), 0.5}
+		slopeboxedge[i+1]={-0.5, -0.5, -0.5, 0.5-(i/detail), (i/detail)-0.5+(1.25/detail), 0.5}
+		slopeboxedge[i+detail+1]={-0.5, -0.5, (i/detail)-0.5, 0.5, (i/detail)-0.5+(1.25/detail), 0.5}
 	end
 	minetest.register_node(modname..":shingle_inner_corner_" .. subname, {
 		description = S(description.. " (inner corner)"),
@@ -73,7 +73,7 @@ homedecor_register_slope = function(modname, subname, recipeitem, groups, images
 	local slopeboxedge = {}
 	local detail = homedecor_detail_level
 	for i = 0, detail-1 do
-		slopeboxedge[i+1]={-0.5, -0.5+(1/detail), (i/detail)-0.5, 0.5, (i/detail)-0.5+(1.25/detail), 0.5}
+		slopeboxedge[i+1]={-0.5, -0.5, (i/detail)-0.5, 0.5, (i/detail)-0.5+(1.25/detail), 0.5}
 	end
 	minetest.register_node(modname..":shingle_side_" .. subname, {
 		description = S(description),
