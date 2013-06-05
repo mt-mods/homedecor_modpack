@@ -308,7 +308,7 @@ function homedecor_flip_door(pos, node, player, name, side)
 	        minetest.sound_play({
 			name="homedecor_door_open",
 			pos=pos,
-			max_hear_distance = 10,
+			max_hear_distance = 5,
 			gain = 1,
 		})
 	else
@@ -318,7 +318,7 @@ function homedecor_flip_door(pos, node, player, name, side)
 	        minetest.sound_play({
 			name="homedecor_door_close",
 			pos=pos,
-			max_hear_distance = 10,
+			max_hear_distance = 5,
 			gain = 1,
 		})
 	end
@@ -327,18 +327,31 @@ function homedecor_flip_door(pos, node, player, name, side)
 end
 
 function homedecor_flip_gate(pos, node, player, gate, oc)
-	local fdir = node.param2
-
-	if oc == "closed" then
-		minetest.env:add_node(pos, { name = "homedecor:gate_"..gate.."_open", param2=fdir})
-	else
-		minetest.env:add_node(pos, { name = "homedecor:gate_"..gate.."_closed", param2=fdir})
-	end
-
         minetest.sound_play({
 		name="homedecor_gate_open_close",
 		pos=pos,
-		max_hear_distance = 10,
+		max_hear_distance = 5,
 		gain = 1,
 	})
+
+	local fdir = node.param2
+
+	if oc == "closed" then
+		gateresult = "homedecor:gate_"..gate.."_open"
+	else
+		gateresult = "homedecor:gate_"..gate.."_closed"
+	end
+
+	minetest.env:add_node(pos, { name = gateresult, param2=fdir})
+	nodeabove = minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z})
+	nodebelow = minetest.env:get_node({x=pos.x, y=pos.y-1, z=pos.z})
+
+	if string.find(nodeabove.name, "homedecor:gate_"..gate) then
+		minetest.env:add_node({x=pos.x, y=pos.y+1, z=pos.z}, {name=gateresult, param2=fdir} )
+	end
+
+	if string.find(nodebelow.name, "homedecor:gate_"..gate) then
+		minetest.env:add_node({x=pos.x, y=pos.y-1, z=pos.z}, {name=gateresult, param2=fdir} )
+	end
 end
+
