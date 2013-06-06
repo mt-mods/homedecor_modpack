@@ -180,7 +180,10 @@ minetest.register_node(":default:sign_wall", {
 		                                      z = above.z + sign_info.delta.z}, "signs:text")
 		text:setyaw(sign_info.yaw)
 
-		itemstack:take_item()
+		
+		if not homedecor_expect_infinite_stacks then
+			itemstack:take_item()
+		end
 		return itemstack
 	end
     end,
@@ -429,13 +432,17 @@ function homedecor_register_fence_with_sign(fencename, fencewithsignname)
 		elseif (not homedecor_node_is_owned(pointed_thing.under, placer))
 		 and def_under.buildable_to then
 			minetest.env:add_node(pointed_thing.under, {name = fencename, param2 = fdir})
-			itemstack:take_item()
+			if not homedecor_expect_infinite_stacks then
+				itemstack:take_item()
+			end
 			placer:set_wielded_item(itemstack)
 			return itemstack
 		elseif (not homedecor_node_is_owned(pointed_thing.above, placer))
 		 and def_above.buildable_to then
 			minetest.env:add_node(pointed_thing.above, {name = fencename, param2 = fdir})
-			itemstack:take_item()
+			if not homedecor_expect_infinite_stacks then
+				itemstack:take_item()
+			end
 			placer:set_wielded_item(itemstack)
 			return itemstack
 		end
