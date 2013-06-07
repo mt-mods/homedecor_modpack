@@ -294,7 +294,7 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 			end
 		end
 	else 
-		minetest.registered_nodes[pname].on_rightclick(pointed_thing.under, pnode, placer)
+		minetest.registered_nodes[pname].on_rightclick(pointed_thing.under, pnode, placer, itemstack)
 	end
 end
 

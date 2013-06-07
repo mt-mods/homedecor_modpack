@@ -43,7 +43,7 @@ function homedecor_rotate_and_place(itemstack, placer, pointed_thing)
 			return itemstack
 		end
 	else
-		minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer)
+		minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer, itemstack)
 	end
 end
 
