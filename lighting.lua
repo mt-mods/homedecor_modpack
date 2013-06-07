@@ -134,6 +134,7 @@ minetest.register_node('homedecor:glowlight_half_yellow', {
 
 	on_place = function(itemstack, placer, pointed_thing)
 		homedecor_rotate_and_place(itemstack, placer, pointed_thing)
+		return itemstack
 	end
 })
 
@@ -166,6 +167,7 @@ minetest.register_node('homedecor:glowlight_quarter_yellow', {
 	sounds = default.node_sound_wood_defaults(),
 	on_place = function(itemstack, placer, pointed_thing)
 		homedecor_rotate_and_place(itemstack, placer, pointed_thing)
+		return itemstack
 	end
 })
 
@@ -202,6 +204,7 @@ minetest.register_node('homedecor:glowlight_half_white', {
 	sounds = default.node_sound_wood_defaults(),
 	on_place = function(itemstack, placer, pointed_thing)
 		homedecor_rotate_and_place(itemstack, placer, pointed_thing)
+		return itemstack
 	end
 })
 
@@ -234,6 +237,7 @@ minetest.register_node('homedecor:glowlight_quarter_white', {
 	sounds = default.node_sound_wood_defaults(),
 	on_place = function(itemstack, placer, pointed_thing)
 		homedecor_rotate_and_place(itemstack, placer, pointed_thing)
+		return itemstack
 	end
 })
 
@@ -269,6 +273,7 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow', {
 
 	on_place = function(itemstack, placer, pointed_thing)
 		homedecor_rotate_and_place(itemstack, placer, pointed_thing)
+		return itemstack
 	end
 })
 
@@ -301,6 +306,7 @@ minetest.register_node('homedecor:glowlight_small_cube_white', {
 	sounds = default.node_sound_wood_defaults(),
 	on_place = function(itemstack, placer, pointed_thing)
 		homedecor_rotate_and_place(itemstack, placer, pointed_thing)
+		return itemstack
 	end
 })
 
