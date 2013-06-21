@@ -285,7 +285,7 @@ minetest.register_abm({
 			return
 		end
 
-		if inv:room_for_item("dst",cooked.item) then
+		if not inv:room_for_item("dst",cooked.item) then
 			meta:set_string("infotext", S("Oven output bins are full"))
 			hacky_swap_node(pos, "homedecor:microwave_oven")
 			meta:set_string("formspec", mw_oven_inactive_formspec)
