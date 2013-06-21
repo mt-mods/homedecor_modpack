@@ -64,7 +64,7 @@ minetest.register_node("homedecor:microwave_oven", {
 		if listname == "fuel" then
 			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
 				if inv:is_empty("src") then
-					meta:set_string("infotext",S("Furnace is empty"))
+					meta:set_string("infotext",S("Microwave is empty"))
 				end
 				return stack:get_count()
 			else
@@ -83,7 +83,7 @@ minetest.register_node("homedecor:microwave_oven", {
 		if to_list == "fuel" then
 			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
 				if inv:is_empty("src") then
-					meta:set_string("infotext",S("Furnace is empty"))
+					meta:set_string("infotext",S("Microwave is empty"))
 				end
 				return count
 			else
