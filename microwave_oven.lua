@@ -146,7 +146,7 @@ minetest.register_node("homedecor:microwave_oven_active", {
 		if listname == "fuel" then
 			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
 				if inv:is_empty("src") then
-					meta:set_string("infotext",S("Oven is empty"))
+					meta:set_string("infotext",S("Microwave is empty"))
 				end
 				return stack:get_count()
 			else
@@ -165,7 +165,7 @@ minetest.register_node("homedecor:microwave_oven_active", {
 		if to_list == "fuel" then
 			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
 				if inv:is_empty("src") then
-					meta:set_string("infotext",S("Oven is empty"))
+					meta:set_string("infotext",S("Microwave is empty"))
 				end
 				return count
 			else
@@ -243,7 +243,7 @@ minetest.register_abm({
 		if meta:get_float("fuel_time") < meta:get_float("fuel_totaltime") then
 			local percent = math.floor(meta:get_float("fuel_time") /
 					meta:get_float("fuel_totaltime") * 100)
-			meta:set_string("infotext",S("Oven active: %d%%"):format(percent))
+			meta:set_string("infotext",S("Microwave active: %d%%"):format(percent))
 			hacky_swap_node(pos,"homedecor:microwave_oven_active")
 			meta:set_string("formspec",
 				"size[8,9]"..
@@ -270,7 +270,7 @@ minetest.register_abm({
 		end
 
 		if fuel.time <= 0 then
-			meta:set_string("infotext",S("Oven out of fuel"))
+			meta:set_string("infotext",S("Microwave out of fuel"))
 			hacky_swap_node(pos,"homedecor:microwave_oven")
 			meta:set_string("formspec", mw_oven_inactive_formspec)
 			return
@@ -278,7 +278,7 @@ minetest.register_abm({
 
 		if cooked.item:is_empty() then
 			if was_active then
-				meta:set_string("infotext",S("Oven is empty"))
+				meta:set_string("infotext",S("Microwave is empty"))
 				hacky_swap_node(pos,"homedecor:microwave_oven")
 				meta:set_string("formspec", mw_oven_inactive_formspec)
 			end
@@ -286,7 +286,7 @@ minetest.register_abm({
 		end
 
 		if not inv:room_for_item("dst",cooked.item) then
-			meta:set_string("infotext", S("Oven output bins are full"))
+			meta:set_string("infotext", S("Microwave output bins are full"))
 			hacky_swap_node(pos, "homedecor:microwave_oven")
 			meta:set_string("formspec", mw_oven_inactive_formspec)
 			return
