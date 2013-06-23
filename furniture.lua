@@ -1,4 +1,5 @@
 
+-- Test
 minetest.register_node("homedecor:table", {
     description = "Table",
     tiles = {
