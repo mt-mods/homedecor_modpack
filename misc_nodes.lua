@@ -226,3 +226,27 @@ minetest.register_node("homedecor:curtain_"..color, {
 
 end
 
+minetest.register_node('homedecor:air_conditioner', {
+	drawtype = "nodebox",
+	description = S("Air Conditioner"),
+	tiles = { 'homedecor_ac_tb.png',
+		  'homedecor_ac_tb.png',
+		  'homedecor_ac_sides.png',
+		  'homedecor_ac_sides.png',
+		  'homedecor_ac_back.png',
+		  'homedecor_ac_front.png'},
+	sunlight_propagates = false,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	walkable = true,
+	groups = { snappy = 3 },
+	sounds = default.node_sound_leaves_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.124, 0.5 }, -- off by just a tad to force the adjoining faces to be drawn.
+			{-0.5, 0.125, -0.5, 0.5, 0.5, 0.5 },
+		}
+	},
+	selection_box = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
+})

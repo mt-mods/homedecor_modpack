@@ -69,7 +69,7 @@ else
 	homedecor_expect_infinite_stacks = true
 end
 
-dofile(minetest.get_modpath("homedecor").."/nodes.lua")					-- the catch-all for all misc nodes
+dofile(minetest.get_modpath("homedecor").."/misc_nodes.lua")					-- the catch-all for all misc nodes
 dofile(minetest.get_modpath("homedecor").."/tables.lua")
 dofile(minetest.get_modpath("homedecor").."/electronics.lua")
 dofile(minetest.get_modpath("homedecor").."/shutters.lua")
