@@ -121,8 +121,8 @@ minetest.register_node('homedecor:glowlight_half_yellow', {
 	description = S("Yellow Glowlight (thick)"),
 	drawtype = "nodebox",
 	tiles = {
-		'homedecor_glowlight_yellow_tb.png',
-		'homedecor_glowlight_yellow_tb.png',
+		'homedecor_glowlight_yellow_top.png',
+		'homedecor_glowlight_yellow_bottom.png',
 		'homedecor_glowlight_thick_yellow_sides.png',
 		'homedecor_glowlight_thick_yellow_sides.png',
 		'homedecor_glowlight_thick_yellow_sides.png',
@@ -155,8 +155,8 @@ minetest.register_node('homedecor:glowlight_quarter_yellow', {
 	description = S("Yellow Glowlight (thin)"),
 	drawtype = "nodebox",
 	tiles = {
-		'homedecor_glowlight_yellow_tb.png',
-		'homedecor_glowlight_yellow_tb.png',
+		'homedecor_glowlight_yellow_top.png',
+		'homedecor_glowlight_yellow_bottom.png',
 		'homedecor_glowlight_thin_yellow_sides.png',
 		'homedecor_glowlight_thin_yellow_sides.png',
 		'homedecor_glowlight_thin_yellow_sides.png',
@@ -192,8 +192,8 @@ minetest.register_node('homedecor:glowlight_half_white', {
 	description = S("White Glowlight (thick)"),
 	drawtype = "nodebox",
 	tiles = {
-		'homedecor_glowlight_white_tb.png',
-		'homedecor_glowlight_white_tb.png',
+		'homedecor_glowlight_white_top.png',
+		'homedecor_glowlight_white_bottom.png',
 		'homedecor_glowlight_thick_white_sides.png',
 		'homedecor_glowlight_thick_white_sides.png',
 		'homedecor_glowlight_thick_white_sides.png',
@@ -225,8 +225,8 @@ minetest.register_node('homedecor:glowlight_quarter_white', {
 	description = S("White Glowlight (thin)"),
 	drawtype = "nodebox",
 	tiles = {
-		'homedecor_glowlight_white_tb.png',
-		'homedecor_glowlight_white_tb.png',
+		'homedecor_glowlight_white_top.png',
+		'homedecor_glowlight_white_bottom.png',
 		'homedecor_glowlight_thin_white_sides.png',
 		'homedecor_glowlight_thin_white_sides.png',
 		'homedecor_glowlight_thin_white_sides.png',
