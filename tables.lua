@@ -61,23 +61,23 @@ for i in ipairs(materials) do
 
 		on_place = function(itemstack, placer, pointed_thing)
 
-			local node = minetest.env:get_node(pointed_thing.under)
+			local node = minetest.get_node(pointed_thing.under)
 			if not minetest.registered_nodes[node.name] or not minetest.registered_nodes[node.name].on_rightclick then
 
 				local above = pointed_thing.above
 				local under = pointed_thing.under
 				local pitch = placer:get_look_pitch()
-				local node = minetest.env:get_node(above)
+				local node = minetest.get_node(above)
 
 				if node.name ~= "air" then return end
 
 				if above.x ~= under.x or above.z ~= under.z then 
 					local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_small_square_s', param2 = fdir})
+					minetest.add_node(above, {name = 'homedecor:'..m..'_table_small_square_s', param2 = fdir})
 				elseif pitch > 0 then 
-					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_small_square_t'})
+					minetest.add_node(above, {name = 'homedecor:'..m..'_table_small_square_t'})
 				else
-					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_small_square_b'})
+					minetest.add_node(above, {name = 'homedecor:'..m..'_table_small_square_b'})
 				end
 				if not homedecor_expect_infinite_stacks then
 					itemstack:take_item()
@@ -189,23 +189,23 @@ for i in ipairs(materials) do
 			fixed = { -0.5, -0.5, -0.5, 0.5, -0.4375, 0.5 },
 		},
 		on_place = function(itemstack, placer, pointed_thing)
-			local node = minetest.env:get_node(pointed_thing.under)
+			local node = minetest.get_node(pointed_thing.under)
 			if not minetest.registered_nodes[node.name] or not minetest.registered_nodes[node.name].on_rightclick then
 
 				local above = pointed_thing.above
 				local under = pointed_thing.under
 				local pitch = placer:get_look_pitch()
-				local node = minetest.env:get_node(above)
+				local node = minetest.get_node(above)
 
 				if node.name ~= "air" then return end
 
 				if above.x ~= under.x or above.z ~= under.z then 
 					local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_small_round_s', param2 = fdir})
+					minetest.add_node(above, {name = 'homedecor:'..m..'_table_small_round_s', param2 = fdir})
 				elseif pitch > 0 then 
-					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_small_round_t'})
+					minetest.add_node(above, {name = 'homedecor:'..m..'_table_small_round_t'})
 				else
-					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_small_round_b'})
+					minetest.add_node(above, {name = 'homedecor:'..m..'_table_small_round_b'})
 				end
 				if not homedecor_expect_infinite_stacks then
 					itemstack:take_item()
@@ -316,23 +316,23 @@ for i in ipairs(materials) do
 		},
 		on_place = function(itemstack, placer, pointed_thing)
 
-			local node = minetest.env:get_node(pointed_thing.under)
+			local node = minetest.get_node(pointed_thing.under)
 			if not minetest.registered_nodes[node.name] or not minetest.registered_nodes[node.name].on_rightclick then
 
 				local above = pointed_thing.above
 				local under = pointed_thing.under
 				local pitch = placer:get_look_pitch()
-				local node = minetest.env:get_node(above)
+				local node = minetest.get_node(above)
 
 				if node.name ~= "air" then return end
 
 				if above.x ~= under.x or above.z ~= under.z then 
 					local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_large_s', param2 = fdir})
+					minetest.add_node(above, {name = 'homedecor:'..m..'_table_large_s', param2 = fdir})
 				elseif pitch > 0 then 
-					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_large_t'})
+					minetest.add_node(above, {name = 'homedecor:'..m..'_table_large_t'})
 				else
-					minetest.env:add_node(above, {name = 'homedecor:'..m..'_table_large_b'})
+					minetest.add_node(above, {name = 'homedecor:'..m..'_table_large_b'})
 				end
 				if not homedecor_expect_infinite_stacks then
 					itemstack:take_item()

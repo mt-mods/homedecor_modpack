@@ -85,8 +85,8 @@ for i in ipairs(sides) do
 			},
 			drop = "homedecor:door_"..doorname.."_bottom_"..side,
 			after_dig_node = function(pos, oldnode, oldmetadata, digger)
-				if minetest.env:get_node({x=pos.x, y=pos.y-1, z=pos.z}).name == "homedecor:door_"..doorname.."_bottom_"..side then
-					minetest.env:remove_node({x=pos.x, y=pos.y-1, z=pos.z})
+				if minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name == "homedecor:door_"..doorname.."_bottom_"..side then
+					minetest.remove_node({x=pos.x, y=pos.y-1, z=pos.z})
 				end
 			end,
 			on_rightclick = function(pos, node, clicker)
@@ -111,8 +111,8 @@ for i in ipairs(sides) do
 				fixed = nodeboxes_bottomtom
 			},
 			after_dig_node = function(pos, oldnode, oldmetadata, digger)
-				if minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name == "homedecor:door_"..doorname.."_top_"..side then
-					minetest.env:remove_node({x=pos.x, y=pos.y+1, z=pos.z})
+				if minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name == "homedecor:door_"..doorname.."_top_"..side then
+					minetest.remove_node({x=pos.x, y=pos.y+1, z=pos.z})
 				end
 			end,
 			on_place = function(itemstack, placer, pointed_thing)
@@ -257,7 +257,7 @@ end
 function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 
 	local pointed = pointed_thing.under
-	local pnode = minetest.env:get_node(pointed)
+	local pnode = minetest.get_node(pointed)
 	local pname = pnode.name
 
 	if not minetest.registered_nodes[pname]
@@ -274,8 +274,8 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 			pos2 = {x=pointed_thing.above.x, y=pointed_thing.above.y+1, z=pointed_thing.above.z}
 		end
 
-		local node_bottom = minetest.env:get_node(pos1)
-		local node_top = minetest.env:get_node(pos2)
+		local node_bottom = minetest.get_node(pos1)
+		local node_top = minetest.get_node(pos2)
 
 		if not homedecor_node_is_owned(pos1, placer) 
 		    and not homedecor_node_is_owned(pos2, placer) then
@@ -285,8 +285,8 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 				minetest.chat_send_player( placer:get_player_name(), S('Not enough space above that spot to place a door!') )
 			else
 				local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-				minetest.env:add_node(pos1, { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir})
-				minetest.env:add_node(pos2, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})
+				minetest.add_node(pos1, { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir})
+				minetest.add_node(pos2, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})
 				if not homedecor_expect_infinite_stacks then
 					itemstack:take_item()
 					return itemstack
@@ -320,8 +320,8 @@ function homedecor_flip_door(pos, node, player, name, side)
 			gain = 2,
 		})
 	end
-	minetest.env:add_node({x=pos.x, y=pos.y+1, z=pos.z}, { name =  "homedecor:door_"..name.."_top_"..rside, param2=nfdir})
-	minetest.env:add_node(pos, { name = "homedecor:door_"..name.."_bottom_"..rside, param2=nfdir})
+	minetest.add_node({x=pos.x, y=pos.y+1, z=pos.z}, { name =  "homedecor:door_"..name.."_top_"..rside, param2=nfdir})
+	minetest.add_node(pos, { name = "homedecor:door_"..name.."_bottom_"..rside, param2=nfdir})
 end
 
 function homedecor_flip_gate(pos, node, player, gate, oc)
@@ -339,16 +339,16 @@ function homedecor_flip_gate(pos, node, player, gate, oc)
 		gateresult = "homedecor:gate_"..gate.."_closed"
 	end
 
-	minetest.env:add_node(pos, { name = gateresult, param2=fdir})
-	nodeabove = minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z})
-	nodebelow = minetest.env:get_node({x=pos.x, y=pos.y-1, z=pos.z})
+	minetest.add_node(pos, { name = gateresult, param2=fdir})
+	nodeabove = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
+	nodebelow = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z})
 
 	if string.find(nodeabove.name, "homedecor:gate_"..gate) then
-		minetest.env:add_node({x=pos.x, y=pos.y+1, z=pos.z}, {name=gateresult, param2=fdir} )
+		minetest.add_node({x=pos.x, y=pos.y+1, z=pos.z}, {name=gateresult, param2=fdir} )
 	end
 
 	if string.find(nodebelow.name, "homedecor:gate_"..gate) then
-		minetest.env:add_node({x=pos.x, y=pos.y-1, z=pos.z}, {name=gateresult, param2=fdir} )
+		minetest.add_node({x=pos.x, y=pos.y-1, z=pos.z}, {name=gateresult, param2=fdir} )
 	end
 end
 

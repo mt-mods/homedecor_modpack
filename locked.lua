@@ -53,7 +53,7 @@ local function create_locked ( name, infotext )
     def.description = S("%s (Locked)"):format(def.description)
     local after_place_node = def.after_place_node
     def.after_place_node = function(pos, placer)
-        local meta = minetest.env:get_meta(pos)
+        local meta = minetest.get_meta(pos)
         meta:set_string("owner", placer:get_player_name() or "")
         meta:set_string("infotext", S("%s (owned by %s)"):format(infotext,meta:get_string("owner")))
         if (after_place_node) then
@@ -62,7 +62,7 @@ local function create_locked ( name, infotext )
     end
     local allow_metadata_inventory_move = def.allow_metadata_inventory_move;
 	def.allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
         if (player:get_player_name() ~= meta:get_string("owner")) then
             minetest.log("action", S("%s tried to access a %s belonging to %s at %s"):format(
                 player:get_player_name(),
@@ -80,7 +80,7 @@ local function create_locked ( name, infotext )
 	end
 	local allow_metadata_inventory_put = def.allow_metadata_inventory_put;
     def.allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-        local meta = minetest.env:get_meta(pos)
+        local meta = minetest.get_meta(pos)
         if (player:get_player_name() ~= meta:get_string("owner")) then
             minetest.log("action", S("%s tried to access a %s belonging to %s at %s"):format(
                 player:get_player_name(),
@@ -98,7 +98,7 @@ local function create_locked ( name, infotext )
     end
     local allow_metadata_inventory_take = def.allow_metadata_inventory_take;
     def.allow_metadata_inventory_take = function(pos, listname, index, stack, player)
-        local meta = minetest.env:get_meta(pos)
+        local meta = minetest.get_meta(pos)
         if (player:get_player_name() ~= meta:get_string("owner")) then
             minetest.log("action", S("%s tried to access a %s belonging to %s at %s"):format(
                 player:get_player_name(),

@@ -38,7 +38,7 @@ minetest.register_node("homedecor:microwave_oven", {
 	legacy_facedir_simple = true,
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec", mw_oven_inactive_formspec)
 		meta:set_string("infotext", S("Microwave Oven"))
 		local inv = meta:get_inventory()
@@ -47,7 +47,7 @@ minetest.register_node("homedecor:microwave_oven", {
 		inv:set_size("dst", 2)
 	end,
 	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
+		local meta = minetest.get_meta(pos);
 		local inv = meta:get_inventory()
 		if not inv:is_empty("fuel") then
 			return false
@@ -59,7 +59,7 @@ minetest.register_node("homedecor:microwave_oven", {
 		return true
 	end,
 	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		if listname == "fuel" then
 			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
@@ -77,7 +77,7 @@ minetest.register_node("homedecor:microwave_oven", {
 		end
 	end,
 	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		local stack = inv:get_stack(from_list, from_index)
 		if to_list == "fuel" then
@@ -120,7 +120,7 @@ minetest.register_node("homedecor:microwave_oven_active", {
 	legacy_facedir_simple = true,
 	sounds = default.node_sound_stone_defaults(),
 	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec", mw_oven_inactive_formspec)
 		meta:set_string("infotext", S("Microwave Oven"))
 		local inv = meta:get_inventory()
@@ -129,7 +129,7 @@ minetest.register_node("homedecor:microwave_oven_active", {
 		inv:set_size("dst", 2)
 	end,
 	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
+		local meta = minetest.get_meta(pos);
 		local inv = meta:get_inventory()
 		if not inv:is_empty("fuel") then
 			return false
@@ -141,7 +141,7 @@ minetest.register_node("homedecor:microwave_oven_active", {
 		return true
 	end,
 	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		if listname == "fuel" then
 			if minetest.get_craft_result({method="fuel",width=1,items={stack}}).time ~= 0 then
@@ -159,7 +159,7 @@ minetest.register_node("homedecor:microwave_oven_active", {
 		end
 	end,
 	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 		local stack = inv:get_stack(from_list, from_index)
 		if to_list == "fuel" then
@@ -180,16 +180,16 @@ minetest.register_node("homedecor:microwave_oven_active", {
 })
 
 local function hacky_swap_node(pos,name)
-	local node = minetest.env:get_node(pos)
-	local meta = minetest.env:get_meta(pos)
+	local node = minetest.get_node(pos)
+	local meta = minetest.get_meta(pos)
 	local meta0 = meta:to_table()
 	if node.name == name then
 		return
 	end
 	node.name = name
 	local meta0 = meta:to_table()
-	minetest.env:set_node(pos,node)
-	meta = minetest.env:get_meta(pos)
+	minetest.set_node(pos,node)
+	meta = minetest.get_meta(pos)
 	meta:from_table(meta0)
 end
 
@@ -198,7 +198,7 @@ minetest.register_abm({
 	interval = 1.0,
 	chance = 1,
 	action = function(pos, node, active_object_count, active_object_count_wider)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		for i, name in ipairs({
 				"fuel_totaltime",
 				"fuel_time",

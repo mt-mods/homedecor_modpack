@@ -38,7 +38,7 @@ minetest.register_node('homedecor:refrigerator', {
 
     sounds = default.node_sound_wood_defaults(),
     on_construct = function(pos)
-        local meta = minetest.env:get_meta(pos)
+        local meta = minetest.get_meta(pos)
         meta:set_string("formspec",
                 "size[10,10]"..
                 "list[current_name;main;0,0;10,5;]"..
@@ -50,7 +50,7 @@ minetest.register_node('homedecor:refrigerator', {
 
     on_place = function(itemstack, placer, pointed_thing)
         local pos = pointed_thing.above
-        if minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name ~= "air" then
+        if minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name ~= "air" then
             minetest.chat_send_player( placer:get_player_name(), S('Not enough vertical space to place a refrigerator!') )
             return
         end
@@ -58,7 +58,7 @@ minetest.register_node('homedecor:refrigerator', {
     end,
 
     can_dig = function(pos,player)
-        local meta = minetest.env:get_meta(pos);
+        local meta = minetest.get_meta(pos);
         local inv = meta:get_inventory()
         return inv:is_empty("main")
     end,

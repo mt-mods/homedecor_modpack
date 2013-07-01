@@ -16,14 +16,14 @@ local dirs2 = { 9, 18, 7, 12 }
 function homedecor_rotate_and_place(itemstack, placer, pointed_thing)
 	if not homedecor_node_is_owned(pointed_thing.under, placer) 
 	   and not homedecor_node_is_owned(pointed_thing.above, placer) then
-		local node = minetest.env:get_node(pointed_thing.under)
+		local node = minetest.get_node(pointed_thing.under)
 		if not minetest.registered_nodes[node.name] or not minetest.registered_nodes[node.name].on_rightclick then
 
 			local above = pointed_thing.above
 			local under = pointed_thing.under
 			local pitch = placer:get_look_pitch()
-			local pname = minetest.env:get_node(under).name
-			local node = minetest.env:get_node(above)
+			local pname = minetest.get_node(under).name
+			local node = minetest.get_node(above)
 			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 			local wield_name = itemstack:get_name()
 
@@ -39,14 +39,14 @@ function homedecor_rotate_and_place(itemstack, placer, pointed_thing)
 					iswall = false
 				end
 
-				if not minetest.registered_nodes[minetest.env:get_node(pos1).name]["buildable_to"] then return end
+				if not minetest.registered_nodes[minetest.get_node(pos1).name]["buildable_to"] then return end
 
 				if iswall then 
-					minetest.env:add_node(pos1, {name = wield_name, param2 = dirs2[fdir+1] }) -- place wall variant
+					minetest.add_node(pos1, {name = wield_name, param2 = dirs2[fdir+1] }) -- place wall variant
 				elseif isceiling then
-					minetest.env:add_node(pos1, {name = wield_name, param2 = 20 }) -- place upside down variant
+					minetest.add_node(pos1, {name = wield_name, param2 = 20 }) -- place upside down variant
 				else
-					minetest.env:add_node(pos1, {name = wield_name, param2 = 0 }) -- place right side up
+					minetest.add_node(pos1, {name = wield_name, param2 = 0 }) -- place right side up
 				end
 
 				if not homedecor_expect_infinite_stacks then
@@ -70,7 +70,7 @@ for i in ipairs(colors) do
 		interval = 1,
 		chance = 1,
 		action = function(pos, node, active_object_count, active_object_count_wider)
-			minetest.env:add_node(pos, {name = "homedecor:glowlight_quarter_"..color, param2 = 20})
+			minetest.add_node(pos, {name = "homedecor:glowlight_quarter_"..color, param2 = 20})
 		end,
 	})
 
@@ -79,7 +79,7 @@ for i in ipairs(colors) do
 		interval = 1,
 		chance = 1,
 		action = function(pos, node, active_object_count, active_object_count_wider)
-			minetest.env:add_node(pos, {name = "homedecor:glowlight_half_"..color, param2 = 20})
+			minetest.add_node(pos, {name = "homedecor:glowlight_half_"..color, param2 = 20})
 		end,
 	})
 
@@ -90,7 +90,7 @@ for i in ipairs(colors) do
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			local fdir = node.param2 or 0
 				nfdir = dirs2[fdir+1]
-			minetest.env:add_node(pos, {name = "homedecor:glowlight_quarter_"..color, param2 = nfdir})
+			minetest.add_node(pos, {name = "homedecor:glowlight_quarter_"..color, param2 = nfdir})
 		end,
 	})
 
@@ -101,7 +101,7 @@ for i in ipairs(colors) do
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			local fdir = node.param2 or 0
 				nfdir = dirs2[fdir+1]
-			minetest.env:add_node(pos, {name = "homedecor:glowlight_half_"..color, param2 = nfdir})
+			minetest.add_node(pos, {name = "homedecor:glowlight_half_"..color, param2 = nfdir})
 		end,
 	})
 
@@ -110,7 +110,7 @@ for i in ipairs(colors) do
 		interval = 1,
 		chance = 1,
 		action = function(pos, node, active_object_count, active_object_count_wider)
-			minetest.env:add_node(pos, {name = "homedecor:glowlight_small_cube_"..color, param2 = 20})
+			minetest.add_node(pos, {name = "homedecor:glowlight_small_cube_"..color, param2 = 20})
 		end,
 	})
 end

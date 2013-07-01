@@ -160,7 +160,7 @@ local function reg_lamp(suffix, nxt, desc, tilesuffix, light)
 	drop = "homedecor:table_lamp_off",
 	on_punch = function(pos, node, puncher)
 		node.name = "homedecor:table_lamp_"..repl[suffix]
-		minetest.env:set_node(pos, node)
+		minetest.set_node(pos, node)
 		nodeupdate(pos)
 	end,
 	})

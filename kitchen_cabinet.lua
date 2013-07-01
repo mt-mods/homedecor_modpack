@@ -24,7 +24,7 @@ minetest.register_node('homedecor:kitchen_cabinet', {
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec",
 				"size[8,8]"..
 				"list[current_name;main;0,0;8,3;]"..
@@ -34,7 +34,7 @@ minetest.register_node('homedecor:kitchen_cabinet', {
 		inv:set_size("main", 24)
 	end,
 	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
+		local meta = minetest.get_meta(pos);
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,
@@ -82,7 +82,7 @@ minetest.register_node('homedecor:kitchen_cabinet_half', {
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec",
 				"size[8,7]"..
 				"list[current_name;main;1,0;6,2;]"..
@@ -92,7 +92,7 @@ minetest.register_node('homedecor:kitchen_cabinet_half', {
 		inv:set_size("main", 12)
 	end,
 	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
+		local meta = minetest.get_meta(pos);
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,
@@ -132,7 +132,7 @@ minetest.register_node('homedecor:kitchen_cabinet_with_sink', {
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec",
 				"size[8,7]"..
 				"list[current_name;main;0,0;8,2;]"..
@@ -142,7 +142,7 @@ minetest.register_node('homedecor:kitchen_cabinet_with_sink', {
 		inv:set_size("main", 16)
 	end,
 	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
+		local meta = minetest.get_meta(pos);
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,

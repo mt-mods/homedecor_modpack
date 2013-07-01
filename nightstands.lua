@@ -41,7 +41,7 @@ minetest.register_node('homedecor:nightstand_oak_one_drawer', {
 	sounds = default.node_sound_wood_defaults(),
 
 	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec",
 				"size[8,6]"..
 				"list[current_name;main;0,0;8,1;]"..
@@ -51,7 +51,7 @@ minetest.register_node('homedecor:nightstand_oak_one_drawer', {
 		inv:set_size("main", 8)
 	end,
 	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
+		local meta = minetest.get_meta(pos);
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,
@@ -104,7 +104,7 @@ minetest.register_node('homedecor:nightstand_oak_two_drawers', {
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec",
 				"size[8,7]"..
 				"list[current_name;main;0,0;8,2;]"..
@@ -114,7 +114,7 @@ minetest.register_node('homedecor:nightstand_oak_two_drawers', {
 		inv:set_size("main", 16)
 	end,
 	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
+		local meta = minetest.get_meta(pos);
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,
@@ -170,7 +170,7 @@ minetest.register_node('homedecor:nightstand_mahogany_one_drawer', {
 	sounds = default.node_sound_wood_defaults(),
 
 	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec",
 				"size[8,6]"..
 				"list[current_name;main;0,0;8,1;]"..
@@ -180,7 +180,7 @@ minetest.register_node('homedecor:nightstand_mahogany_one_drawer', {
 		inv:set_size("main", 8)
 	end,
 	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
+		local meta = minetest.get_meta(pos);
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,
@@ -233,7 +233,7 @@ minetest.register_node('homedecor:nightstand_mahogany_two_drawers', {
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec",
 				"size[8,7]"..
 				"list[current_name;main;0,0;8,2;]"..
@@ -243,7 +243,7 @@ minetest.register_node('homedecor:nightstand_mahogany_two_drawers', {
 		inv:set_size("main", 16)
 	end,
 	can_dig = function(pos,player)
-		local meta = minetest.env:get_meta(pos);
+		local meta = minetest.get_meta(pos);
 		local inv = meta:get_inventory()
 		return inv:is_empty("main")
 	end,

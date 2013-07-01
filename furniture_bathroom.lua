@@ -26,7 +26,7 @@ minetest.register_node("homedecor:toilet", {
     sounds = default.node_sound_stone_defaults(),
     on_punch = function (pos, node, puncher)
         node.name = "homedecor:toilet_open"
-        minetest.env:set_node(pos, node)
+        minetest.set_node(pos, node)
     end,
 })
 
@@ -62,7 +62,7 @@ minetest.register_node("homedecor:toilet_open", {
     sounds = default.node_sound_stone_defaults(),
     on_punch = function (pos, node, puncher)
         node.name = "homedecor:toilet"
-        minetest.env:set_node(pos, node)
+        minetest.set_node(pos, node)
         minetest.sound_play({name="homedecor_toilet_flush", pos=pos,})
     end,
 })
