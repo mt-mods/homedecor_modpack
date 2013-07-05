@@ -624,6 +624,7 @@ minetest.register_craft({
 minetest.register_craftitem("homedecor:brass_ingot", {
         description = S("Brass Ingot"),
         inventory_image = "homedecor_brass_ingot.png",
+	groups = { brass_ingot=1 }
 })
 
 minetest.register_craft( {
@@ -649,9 +650,9 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:table_legs_brass 3",
 	recipe = {
-		{ "", "homedecor:brass_ingot", "" },
-		{ "", "homedecor:brass_ingot", "" },
-		{ "homedecor:brass_ingot", "homedecor:brass_ingot", "homedecor:brass_ingot" }
+		{ "", "group:brass_ingot", "" },
+		{ "", "group:brass_ingot", "" },
+		{ "group:brass_ingot", "group:brass_ingot", "group:brass_ingot" }
 	},
 })
 
@@ -675,9 +676,9 @@ minetest.register_craft({
 minetest.register_craft( {
         output = "homedecor:pole_brass 4",
 	recipe = {
-		{ "", "homedecor:brass_ingot", "" },
-		{ "", "homedecor:brass_ingot", "" },
-		{ "", "homedecor:brass_ingot", "" }
+		{ "", "group:brass_ingot", "" },
+		{ "", "group:brass_ingot", "" },
+		{ "", "group:brass_ingot", "" }
 	},
 })
 
@@ -1077,8 +1078,8 @@ minetest.register_craft({
 minetest.register_craft( {
         output = "homedecor:fence_brass 6",
 	recipe = {
-		{ "homedecor:brass_ingot", "homedecor:brass_ingot", "homedecor:brass_ingot" },
-		{ "homedecor:brass_ingot", "homedecor:brass_ingot", "homedecor:brass_ingot" },
+		{ "group:brass_ingot", "group:brass_ingot", "group:brass_ingot" },
+		{ "group:brass_ingot", "group:brass_ingot", "group:brass_ingot" },
 	},
 })
 
