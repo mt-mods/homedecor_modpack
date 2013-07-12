@@ -145,7 +145,11 @@ local items = {
     { "oven",
       "Oven" },
     { "oven_active",
-      "Oven (active)" }
+      "Oven (active)" },
+    { "microwave_oven",
+      "Microwave Oven" },
+    { "microwave_oven_active",
+      "Microwave Oven (active)" },
 }
 
 for _,item in ipairs(items) do

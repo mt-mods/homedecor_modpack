@@ -85,17 +85,16 @@ dofile(minetest.get_modpath("homedecor").."/fences.lua")
 dofile(minetest.get_modpath("homedecor").."/lighting.lua")
 dofile(minetest.get_modpath("homedecor").."/kitchen_cabinet.lua")
 dofile(minetest.get_modpath("homedecor").."/refrigerator.lua")
-dofile(minetest.get_modpath("homedecor").."/oven.lua")
-dofile(minetest.get_modpath("homedecor").."/microwave_oven.lua")
+dofile(minetest.get_modpath("homedecor").."/furnaces.lua")
 dofile(minetest.get_modpath("homedecor").."/nightstands.lua")
 
 dofile(minetest.get_modpath("homedecor").."/crafts.lua")
-
-dofile(minetest.get_modpath("homedecor").."/locked.lua")
 
 dofile(minetest.get_modpath("homedecor").."/furniture.lua")
 dofile(minetest.get_modpath("homedecor").."/furniture_medieval.lua")
 dofile(minetest.get_modpath("homedecor").."/furniture_bathroom.lua")
 dofile(minetest.get_modpath("homedecor").."/furniture_recipes.lua")
+
+dofile(minetest.get_modpath("homedecor").."/locked.lua")
 
 print("[HomeDecor] "..S("Loaded!"))
