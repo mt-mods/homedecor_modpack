@@ -245,7 +245,7 @@ minetest.register_abm({
 			fuel, afterfuel = minetest.get_craft_result({method = "fuel", width = 1, items = fuellist})
 		end
 
-		if fuel.time <= 0 then
+		if (not fuel) or (fuel.time <= 0) then
 			meta:set_string("infotext",S("Oven out of fuel"))
 			hacky_swap_node(pos,"homedecor:oven")
 			meta:set_string("formspec", oven_inactive_formspec)
