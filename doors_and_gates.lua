@@ -23,6 +23,10 @@ for i in ipairs(sides) do
 		local doordesc =		homedecor_door_models[j][2]
 		local nodeboxes_top = nil
 		local nodeboxes_bottom = nil
+		local texalpha = false
+		if doorname == "exterior_fancy" then
+			texalpha = true
+		end
 
 		if side == "left" then
 			nodeboxes_top =	homedecor_door_models[j][3]
@@ -77,7 +81,7 @@ for i in ipairs(sides) do
 			groups = {snappy=3, not_in_creative_inventory=1},
 			sounds = default.node_sound_wood_defaults(),
 			walkable = true,
-			use_texture_alpha = true,
+			use_texture_alpha = texalpha,
 			selection_box = selectboxes_top,
 			node_box = {
 				type = "fixed",
@@ -104,7 +108,7 @@ for i in ipairs(sides) do
 			groups = {snappy=3},
 			sounds = default.node_sound_wood_defaults(),
 			walkable = true,
-			use_texture_alpha = true,
+			use_texture_alpha = texalpha,
 			selection_box = selectboxes_bottom,
 			node_box = {
 				type = "fixed",
