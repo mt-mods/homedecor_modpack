@@ -169,6 +169,7 @@ function homedecor_register_furnace(name, furnacedef)
 	}
 
 	local def_active = {
+		description = furnacedef.description.." (active)",
 		tiles = tiles_active,
 		paramtype = furnacedef.paramtype,
 		paramtype2 = furnacedef.paramtype2 or "facedir",
