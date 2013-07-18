@@ -40,9 +40,6 @@ Dependencies: none (just the game's default stuff)
 Recommends: buckets, flowers, unifieddyes, junglegrass, moreores, 
 mesecons, wool
 
-License: GPL for all lua code.  WTFPL for all of my textures and 
-everything else.
-
 The distribution archive also supplies a copy of Ironzorg's Flowers mod 
 and of my Unified Dyes mod, since this mod provides more stuff when 
 those two are present.  You can remove these if you want - they're only 
