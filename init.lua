@@ -22,6 +22,10 @@ else
     S = function ( s ) return s end
 end
 
+-- Global stuff
+
+homedecor_disable_signs = minetest.setting_getbool("homedecor.disable_signs")
+
 -- Various Functions
 
 local dbg = function(s)
@@ -79,7 +83,10 @@ dofile(minetest.get_modpath("homedecor").."/slopes.lua")
 dofile(minetest.get_modpath("homedecor").."/door_models.lua")
 dofile(minetest.get_modpath("homedecor").."/doors_and_gates.lua")
 
-dofile(minetest.get_modpath("homedecor").."/signs_lib.lua")
+if not homedecor_disable_signs then
+	dofile(minetest.get_modpath("homedecor").."/signs_lib.lua")
+end
+
 dofile(minetest.get_modpath("homedecor").."/fences.lua")
 
 dofile(minetest.get_modpath("homedecor").."/lighting.lua")
