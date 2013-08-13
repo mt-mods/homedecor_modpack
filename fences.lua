@@ -446,8 +446,10 @@ minetest.register_node("homedecor:fence_chainlink_corner", {
 	},
 })
 
-minetest.register_alias("homedecor:fence_wood_with_sign", "signs:sign_post")
+if not homedecor_disable_signs then
+	minetest.register_alias("homedecor:fence_wood_with_sign", "signs:sign_post")
 
-homedecor_register_fence_with_sign("default:fence_wood", "signs:sign_post")
-homedecor_register_fence_with_sign("homedecor:fence_brass", "homedecor:fence_brass_with_sign")
-homedecor_register_fence_with_sign("homedecor:fence_wrought_iron", "homedecor:fence_wrought_iron_with_sign")
+	homedecor_register_fence_with_sign("default:fence_wood", "signs:sign_post")
+	homedecor_register_fence_with_sign("homedecor:fence_brass", "homedecor:fence_brass_with_sign")
+	homedecor_register_fence_with_sign("homedecor:fence_wrought_iron", "homedecor:fence_wrought_iron_with_sign")
+end
