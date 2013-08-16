@@ -83,9 +83,7 @@ dofile(minetest.get_modpath("homedecor").."/slopes.lua")
 dofile(minetest.get_modpath("homedecor").."/door_models.lua")
 dofile(minetest.get_modpath("homedecor").."/doors_and_gates.lua")
 
-if not homedecor_disable_signs then
-	dofile(minetest.get_modpath("homedecor").."/signs_lib.lua")
-end
+dofile(minetest.get_modpath("homedecor").."/signs_lib.lua")
 
 dofile(minetest.get_modpath("homedecor").."/fences.lua")
 
