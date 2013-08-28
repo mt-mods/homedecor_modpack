@@ -211,7 +211,7 @@ minetest.register_node("homedecor:curtain_"..color, {
 	inventory_image = "homedecor_curtain_"..color..".png",
 	wield_image = "homedecor_curtain_"..color..".png",
 	drawtype = 'signlike',
-	sunlight_propagates = false,
+	sunlight_propagates = true,
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = false,
