@@ -153,13 +153,13 @@ homedecor_register_slope = function(modname, subname, recipeitem, groups, images
 
 	minetest.register_craft({
 		type = "shapeless",
-		output = recipeitem.." 3",
+		output = recipeitem.." 1",
 		recipe = { modname..":shingle_outer_corner_"..subname }
 	})
 
 	minetest.register_craft({
 		type = "shapeless",
-		output = recipeitem.." 3",
+		output = recipeitem.." 1",
 		recipe = { modname..":shingle_inner_corner_"..subname }
 	})
 end
@@ -173,7 +173,7 @@ minetest.register_craft( {
 
 minetest.register_craft( {
         output = "homedecor:roof_tile_terracotta 8",
-        recipe = { 
+        recipe = {
 			{ "homedecor:shingle_inner_corner_terracotta", "homedecor:shingle_inner_corner_terracotta" }
 		}
 })
@@ -210,8 +210,8 @@ end
 
 -- corners
 
-homedecor_register_roof("homedecor", "wood", 
-	{ snappy = 3 }, 
+homedecor_register_roof("homedecor", "wood",
+	{ snappy = 3 },
 	{
 		"homedecor_shingles_wood_c_t.png",
 		"homedecor_shingles_wood_c_x.png",
@@ -219,12 +219,12 @@ homedecor_register_roof("homedecor", "wood",
 		"homedecor_shingles_wood_c_x.png",
 		"homedecor_shingles_wood_c_z.png",
 		"homedecor_shingles_wood_c_z.png",
-	}, 
+	},
 	"Wood Shingles"
 )
 
-homedecor_register_roof("homedecor", "asphalt", 
-	{ snappy = 3 }, 
+homedecor_register_roof("homedecor", "asphalt",
+	{ snappy = 3 },
 	{
 		"homedecor_shingles_asphalt_c_t.png",
 		"homedecor_shingles_asphalt_c_x.png",
@@ -232,12 +232,12 @@ homedecor_register_roof("homedecor", "asphalt",
 		"homedecor_shingles_asphalt_c_x.png",
 		"homedecor_shingles_asphalt_c_z.png",
 		"homedecor_shingles_asphalt_c_z.png",
-	}, 
+	},
 	"Asphalt Shingles"
 )
 
-homedecor_register_roof("homedecor", "terracotta", 
-	{ snappy = 3 }, 
+homedecor_register_roof("homedecor", "terracotta",
+	{ snappy = 3 },
 	{
 		"homedecor_shingles_terracotta_c_t.png",
 		"homedecor_shingles_terracotta_c_x.png",
@@ -251,9 +251,9 @@ homedecor_register_roof("homedecor", "terracotta",
 
 -- register just the slopes
 
-homedecor_register_slope("homedecor", "wood", 
-	"homedecor:shingles_wood", 
-	{ snappy = 3 }, 
+homedecor_register_slope("homedecor", "wood",
+	"homedecor:shingles_wood",
+	{ snappy = 3 },
 	{
 		"homedecor_shingles_wood_s_t.png",
 		"homedecor_shingles_wood_s_z.png",
@@ -261,13 +261,13 @@ homedecor_register_slope("homedecor", "wood",
 		"homedecor_shingles_wood_s_z.png",
 		"homedecor_shingles_wood_s_z.png",
 		"homedecor_shingles_wood_s_z.png",
-	}, 
+	},
 	"Wood Shingles"
 )
 
-homedecor_register_slope("homedecor", "asphalt", 
-	"homedecor:shingles_asphalt", 
-	{ snappy = 3 }, 
+homedecor_register_slope("homedecor", "asphalt",
+	"homedecor:shingles_asphalt",
+	{ snappy = 3 },
 	{
 		"homedecor_shingles_asphalt_s_t.png",
 		"homedecor_shingles_asphalt_s_z.png",
@@ -275,13 +275,13 @@ homedecor_register_slope("homedecor", "asphalt",
 		"homedecor_shingles_asphalt_s_z.png",
 		"homedecor_shingles_asphalt_s_z.png",
 		"homedecor_shingles_asphalt_s_z.png",
-	}, 
+	},
 	"Asphalt Shingles"
 )
 
-homedecor_register_slope("homedecor", "terracotta", 
-	"homedecor:shingles_terracotta", 
-	{ snappy = 3 }, 
+homedecor_register_slope("homedecor", "terracotta",
+	"homedecor:shingles_terracotta",
+	{ snappy = 3 },
 	{
 		"homedecor_shingles_terracotta_s_t.png",
 		"homedecor_shingles_terracotta_s_z.png",
