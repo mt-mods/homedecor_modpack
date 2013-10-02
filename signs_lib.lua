@@ -202,6 +202,7 @@ if not homedecor_disable_signs then
 					minetest.pos_to_string(pos)
 				))
 			end
+			if homedecor_node_is_owned(pos, sender) then return end
 			homedecor_update_sign(pos, fields)
 		end,
 		on_punch = function(pos, node, puncher)
