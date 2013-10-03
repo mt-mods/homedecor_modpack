@@ -127,8 +127,8 @@ homedecor_register_slope = function(modname, subname, recipeitem, groups, images
 	minetest.register_craft({
 		output = modname..":shingle_outer_corner_"..subname.." 3",
 		recipe = {
-			{ "", modname..":shingles_side_"..subname, "" },
-			{ modname..":shingles_side_"..subname, "", modname..":shingles_side_"..subname },
+			{ "", modname..":shingle_side_"..subname, "" },
+			{ modname..":shingle_side_"..subname, "", modname..":shingle_side_"..subname },
 		}
 	})
 
@@ -145,8 +145,8 @@ homedecor_register_slope = function(modname, subname, recipeitem, groups, images
 	minetest.register_craft({
 		output = modname..":shingle_inner_corner_"..subname.." 3",
 		recipe = {
-			{modname..":shingles_side_"..subname, modname..":shingles_side_"..subname},
-			{"", modname..":shingles_side_"..subname}
+			{modname..":shingle_side_"..subname, modname..":shingle_side_"..subname},
+			{"", modname..":shingle_side_"..subname}
 		}
 	})
 	-- convert between flat shingles and inner/outer corners
