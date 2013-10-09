@@ -2,8 +2,8 @@
 
 -- Boilerplate to support localized strings if intllib mod is installed.
 local S
-if intllib_modpath then
-    dofile(intllib_modpath.."/intllib.lua")
+if homedecor.intllib_modpath then
+    dofile(homedecor.intllib_modpath.."/intllib.lua")
     S = intllib.Getter(minetest.get_current_modname())
 else
     S = function ( s ) return s end
@@ -448,6 +448,6 @@ minetest.register_node("homedecor:fence_chainlink_corner", {
 
 minetest.register_alias("homedecor:fence_wood_with_sign", "signs:sign_post")
 
-homedecor_register_fence_with_sign("default:fence_wood", "signs:sign_post")
-homedecor_register_fence_with_sign("homedecor:fence_brass", "homedecor:fence_brass_with_sign")
-homedecor_register_fence_with_sign("homedecor:fence_wrought_iron", "homedecor:fence_wrought_iron_with_sign")
+homedecor.register_fence_with_sign("default:fence_wood", "signs:sign_post")
+homedecor.register_fence_with_sign("homedecor:fence_brass", "homedecor:fence_brass_with_sign")
+homedecor.register_fence_with_sign("homedecor:fence_wrought_iron", "homedecor:fence_wrought_iron_with_sign")

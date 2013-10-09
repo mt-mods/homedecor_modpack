@@ -2,8 +2,8 @@
 
 -- Boilerplate to support localized strings if intllib mod is installed.
 local S
-if intllib_modpath then
-    dofile(intllib_modpath.."/intllib.lua")
+if homedecor.intllib_modpath then
+    dofile(homedecor.intllib_modpath.."/intllib.lua")
     S = intllib.Getter(minetest.get_current_modname())
 else
     S = function ( s ) return s end
@@ -82,7 +82,7 @@ local function make_tiles(tiles, fmt, active)
 	return tiles
 end
 
-function homedecor_register_furnace(name, furnacedef)
+function homedecor.register_furnace(name, furnacedef)
 
 	local furnacedef = furnacedef
 
@@ -351,7 +351,7 @@ function homedecor_register_furnace(name, furnacedef)
 
 end
 
-homedecor_register_furnace("homedecor:oven", {
+homedecor.register_furnace("homedecor:oven", {
 	description = "Oven",
 	tile_format = "homedecor_oven_%s%s.png",
 	output_slots = 4,
@@ -359,7 +359,7 @@ homedecor_register_furnace("homedecor:oven", {
 	cook_speed = 1.25,
 })
 
-homedecor_register_furnace("homedecor:microwave_oven", {
+homedecor.register_furnace("homedecor:microwave_oven", {
 	description = "Microwave Oven",
 	tiles = {
 		"homedecor_microwave_top.png", "homedecor_microwave_bottom.png",

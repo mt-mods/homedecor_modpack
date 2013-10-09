@@ -3,8 +3,8 @@
 
 -- Boilerplate to support localized strings if intllib mod is installed.
 local S
-if intllib_modpath then
-    dofile(intllib_modpath.."/intllib.lua")
+if homedecor.intllib_modpath then
+    dofile(homedecor.intllib_modpath.."/intllib.lua")
     S = intllib.Getter(minetest.get_current_modname())
 else
     S = function ( s ) return s end
@@ -13,9 +13,9 @@ end
 local dirs1 = { 20, 23, 22, 21 }
 local dirs2 = { 9, 18, 7, 12 }
 
-function homedecor_rotate_and_place(itemstack, placer, pointed_thing)
-	if not homedecor_node_is_owned(pointed_thing.under, placer) 
-	   and not homedecor_node_is_owned(pointed_thing.above, placer) then
+function homedecor.rotate_and_place(itemstack, placer, pointed_thing)
+	if not homedecor.node_is_owned(pointed_thing.under, placer) 
+	   and not homedecor.node_is_owned(pointed_thing.above, placer) then
 		local node = minetest.get_node(pointed_thing.under)
 		if not minetest.registered_nodes[node.name] or not minetest.registered_nodes[node.name].on_rightclick then
 
@@ -49,7 +49,7 @@ function homedecor_rotate_and_place(itemstack, placer, pointed_thing)
 					minetest.add_node(pos1, {name = wield_name, param2 = 0 }) -- place right side up
 				end
 
-				if not homedecor_expect_infinite_stacks then
+				if not homedecor.expect_infinite_stacks then
 					itemstack:take_item()
 					return itemstack
 				end
@@ -146,7 +146,7 @@ minetest.register_node('homedecor:glowlight_half_yellow', {
 	sounds = default.node_sound_wood_defaults(),
 
 	on_place = function(itemstack, placer, pointed_thing)
-		homedecor_rotate_and_place(itemstack, placer, pointed_thing)
+		homedecor.rotate_and_place(itemstack, placer, pointed_thing)
 		return itemstack
 	end
 })
@@ -179,7 +179,7 @@ minetest.register_node('homedecor:glowlight_quarter_yellow', {
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
 	on_place = function(itemstack, placer, pointed_thing)
-		homedecor_rotate_and_place(itemstack, placer, pointed_thing)
+		homedecor.rotate_and_place(itemstack, placer, pointed_thing)
 		return itemstack
 	end
 })
@@ -216,7 +216,7 @@ minetest.register_node('homedecor:glowlight_half_white', {
 	light_source = LIGHT_MAX,
 	sounds = default.node_sound_wood_defaults(),
 	on_place = function(itemstack, placer, pointed_thing)
-		homedecor_rotate_and_place(itemstack, placer, pointed_thing)
+		homedecor.rotate_and_place(itemstack, placer, pointed_thing)
 		return itemstack
 	end
 })
@@ -249,7 +249,7 @@ minetest.register_node('homedecor:glowlight_quarter_white', {
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
 	on_place = function(itemstack, placer, pointed_thing)
-		homedecor_rotate_and_place(itemstack, placer, pointed_thing)
+		homedecor.rotate_and_place(itemstack, placer, pointed_thing)
 		return itemstack
 	end
 })
@@ -285,7 +285,7 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow', {
 	sounds = default.node_sound_wood_defaults(),
 
 	on_place = function(itemstack, placer, pointed_thing)
-		homedecor_rotate_and_place(itemstack, placer, pointed_thing)
+		homedecor.rotate_and_place(itemstack, placer, pointed_thing)
 		return itemstack
 	end
 })
@@ -318,7 +318,7 @@ minetest.register_node('homedecor:glowlight_small_cube_white', {
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
 	on_place = function(itemstack, placer, pointed_thing)
-		homedecor_rotate_and_place(itemstack, placer, pointed_thing)
+		homedecor.rotate_and_place(itemstack, placer, pointed_thing)
 		return itemstack
 	end
 })

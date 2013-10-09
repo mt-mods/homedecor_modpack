@@ -2,8 +2,8 @@
 
 -- Boilerplate to support localized strings if intllib mod is installed.
 local S
-if intllib_modpath then
-    dofile(intllib_modpath.."/intllib.lua")
+if homedecor.intllib_modpath then
+    dofile(homedecor.intllib_modpath.."/intllib.lua")
     S = intllib.Getter(minetest.get_current_modname())
 else
     S = function ( s ) return s end
@@ -52,13 +52,13 @@ local sign_groups = {choppy=2, dig_immediate=2}
 
 local fences_with_sign = { }
 
-homedecor_construct_sign = function(pos)
+homedecor.construct_sign = function(pos)
     local meta = minetest.get_meta(pos)
 	meta:set_string("formspec", "field[text;;${text}]")
 	meta:set_string("infotext", "")
 end
 
-homedecor_destruct_sign = function(pos)
+homedecor.destruct_sign = function(pos)
     local objects = minetest.get_objects_inside_radius(pos, 0.5)
     for _, v in ipairs(objects) do
         if v:get_entity_name() == "signs:text" then
@@ -67,17 +67,17 @@ homedecor_destruct_sign = function(pos)
     end
 end
 
-homedecor_update_sign = function(pos, fields)
+homedecor.update_sign = function(pos, fields)
     local meta = minetest.get_meta(pos)
 	if fields then
-		meta:set_string("infotext", table.concat(homedecor_create_lines(fields.text), "\n"))
+		meta:set_string("infotext", table.concat(homedecor.create_lines(fields.text), "\n"))
 		meta:set_string("text", fields.text)
 	end
     local text = meta:get_string("text")
     local objects = minetest.get_objects_inside_radius(pos, 0.5)
     for _, v in ipairs(objects) do
         if v:get_entity_name() == "signs:text" then
-            v:set_properties({textures={homedecor_generate_texture(homedecor_create_lines(text))}})
+            v:set_properties({textures={homedecor.generate_texture(homedecor.create_lines(text))}})
 			return
         end
     end
@@ -100,7 +100,7 @@ homedecor_update_sign = function(pos, fields)
 	text:setyaw(sign_info.yaw)
 end
 
-if not homedecor_disable_signs then
+if not homedecor.disable_signs then
 	minetest.register_node(":default:sign_wall", {
 		description = "Sign",
 		inventory_image = "default_sign_wall.png",
@@ -119,13 +119,13 @@ if not homedecor_disable_signs then
 			local name
 			name = minetest.get_node(pointed_thing.under).name
 			if fences_with_sign[name] then
-				if homedecor_node_is_owned(pointed_thing.under, placer) then
+				if homedecor.node_is_owned(pointed_thing.under, placer) then
 					return itemstack
 				end
 			else
 				name = minetest.get_node(pointed_thing.above).name
 				local def = minetest.registered_nodes[name]
-				if homedecor_node_is_owned(pointed_thing.above, placer)
+				if homedecor.node_is_owned(pointed_thing.above, placer)
 				 or (not def.buildable_to) then
 					return itemstack
 				end
@@ -182,17 +182,17 @@ if not homedecor_disable_signs then
 			text:setyaw(sign_info.yaw)
 
 			
-			if not homedecor_expect_infinite_stacks then
+			if not homedecor.expect_infinite_stacks then
 				itemstack:take_item()
 			end
 			return itemstack
 		end
 		end,
 		on_construct = function(pos)
-			homedecor_construct_sign(pos)
+			homedecor.construct_sign(pos)
 		end,
 		on_destruct = function(pos)
-			homedecor_destruct_sign(pos)
+			homedecor.destruct_sign(pos)
 		end,
 		on_receive_fields = function(pos, formname, fields, sender)
 			if fields then
@@ -202,11 +202,11 @@ if not homedecor_disable_signs then
 					minetest.pos_to_string(pos)
 				))
 			end
-			if homedecor_node_is_owned(pos, sender) then return end
-			homedecor_update_sign(pos, fields)
+			if homedecor.node_is_owned(pos, sender) then return end
+			homedecor.update_sign(pos, fields)
 		end,
 		on_punch = function(pos, node, puncher)
-			homedecor_update_sign(pos)
+			homedecor.update_sign(pos)
 		end,
 	})
 end
@@ -226,10 +226,10 @@ minetest.register_node(":signs:sign_yard", {
     drop = "default:sign_wall",
 
     on_construct = function(pos)
-        homedecor_construct_sign(pos)
+        homedecor.construct_sign(pos)
     end,
     on_destruct = function(pos)
-        homedecor_destruct_sign(pos)
+        homedecor.destruct_sign(pos)
     end,
     on_receive_fields = function(pos, formname, fields, sender)
         if fields then
@@ -239,11 +239,11 @@ minetest.register_node(":signs:sign_yard", {
                 minetest.pos_to_string(pos)
             ))
         end
-		if homedecor_node_is_owned(pos, sender) then return end
-        homedecor_update_sign(pos, fields)
+		if homedecor.node_is_owned(pos, sender) then return end
+        homedecor.update_sign(pos, fields)
     end,
 	on_punch = function(pos, node, puncher)
-		homedecor_update_sign(pos)
+		homedecor.update_sign(pos)
 	end,
 })
 
@@ -286,11 +286,11 @@ minetest.register_node(":signs:sign_post", {
 
 local signs_text_on_activate
 
-if not homedecor_disable_signs then
+if not homedecor.disable_signs then
 	signs_text_on_activate = function(self)
 		local meta = minetest.get_meta(self.object:getpos())
 		local text = meta:get_string("text")
-		self.object:set_properties({textures={homedecor_generate_texture(homedecor_create_lines(text))}})
+		self.object:set_properties({textures={homedecor.generate_texture(homedecor.create_lines(text))}})
 	end
 else
 	signs_text_on_activate = function(self)
@@ -318,7 +318,7 @@ local NUMBER_OF_LINES = 4
 local LINE_HEIGHT = 14
 local CHAR_WIDTH = 5
 
-homedecor_string_to_array = function(str)
+homedecor.string_to_array = function(str)
 	local tab = {}
 	for i=1,string.len(str) do
 		table.insert(tab, string.sub(str, i,i))
@@ -326,11 +326,11 @@ homedecor_string_to_array = function(str)
 	return tab
 end
 
-homedecor_string_to_word_array = function(str)
+homedecor.string_to_word_array = function(str)
 	local tab = {}
 	local current = 1
 	tab[1] = ""
-	for _,char in ipairs(homedecor_string_to_array(str)) do
+	for _,char in ipairs(homedecor.string_to_array(str)) do
 		if char ~= " " then
 			tab[current] = tab[current]..char
 		else
@@ -341,11 +341,11 @@ homedecor_string_to_word_array = function(str)
 	return tab
 end
 
-homedecor_create_lines = function(text)
+homedecor.create_lines = function(text)
 	local line = ""
 	local line_num = 1
 	local tab = {}
-	for _,word in ipairs(homedecor_string_to_word_array(text)) do
+	for _,word in ipairs(homedecor.string_to_word_array(text)) do
 		if string.len(line)+string.len(word) < LINE_LENGTH and word ~= "|" then
 			if line ~= "" then
 				line = line.." "..word
@@ -369,17 +369,17 @@ homedecor_create_lines = function(text)
 	return tab
 end
 
-homedecor_generate_texture = function(lines)
+homedecor.generate_texture = function(lines)
     local texture = "[combine:"..SIGN_WITH.."x"..SIGN_WITH
     local ypos = 12
     for i = 1, #lines do
-        texture = texture..homedecor_generate_line(lines[i], ypos)
+        texture = texture..homedecor.generate_line(lines[i], ypos)
         ypos = ypos + LINE_HEIGHT
     end
     return texture
 end
 
-homedecor_generate_line = function(s, ypos)
+homedecor.generate_line = function(s, ypos)
     local i = 1
     local parsed = {}
     local width = 0
@@ -425,7 +425,7 @@ local function copy ( t )
     return nt
 end
 
-function homedecor_register_fence_with_sign(fencename, fencewithsignname)
+function homedecor.register_fence_with_sign(fencename, fencewithsignname)
     local def = minetest.registered_nodes[fencename]
     local def_sign = minetest.registered_nodes[fencewithsignname]
     if not (def and def_sign) then
@@ -443,18 +443,18 @@ function homedecor_register_fence_with_sign(fencename, fencewithsignname)
 		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 		if def_under and def_under.on_rightclick then
 			return def_under.on_rightclick(pointed_thing.under, node_under, placer, itemstack) or itemstack
-		elseif (not homedecor_node_is_owned(pointed_thing.under, placer))
+		elseif (not homedecor.node_is_owned(pointed_thing.under, placer))
 		 and def_under.buildable_to then
 			minetest.add_node(pointed_thing.under, {name = fencename, param2 = fdir})
-			if not homedecor_expect_infinite_stacks then
+			if not homedecor.expect_infinite_stacks then
 				itemstack:take_item()
 			end
 			placer:set_wielded_item(itemstack)
 			return itemstack
-		elseif (not homedecor_node_is_owned(pointed_thing.above, placer))
+		elseif (not homedecor.node_is_owned(pointed_thing.above, placer))
 		 and def_above.buildable_to then
 			minetest.add_node(pointed_thing.above, {name = fencename, param2 = fdir})
-			if not homedecor_expect_infinite_stacks then
+			if not homedecor.expect_infinite_stacks then
 				itemstack:take_item()
 			end
 			placer:set_wielded_item(itemstack)
@@ -462,10 +462,10 @@ function homedecor_register_fence_with_sign(fencename, fencewithsignname)
 		end
 	end
 	def_sign.on_construct = function(pos, ...)
-		homedecor_construct_sign(pos)
+		homedecor.construct_sign(pos)
 	end
 	def_sign.on_destruct = function(pos, ...)
-		homedecor_destruct_sign(pos)
+		homedecor.destruct_sign(pos)
 	end
 	def_sign.on_receive_fields = function(pos, formname, fields, sender, ...)
         if fields then
@@ -475,11 +475,11 @@ function homedecor_register_fence_with_sign(fencename, fencewithsignname)
                 minetest.pos_to_string(pos)
             ))
         end
-		if homedecor_node_is_owned(pos, sender) then return end
-		homedecor_update_sign(pos, fields)
+		if homedecor.node_is_owned(pos, sender) then return end
+		homedecor.update_sign(pos, fields)
 	end
 	def_sign.on_punch = function(pos, node, puncher, ...)
-		homedecor_update_sign(pos)
+		homedecor.update_sign(pos)
 	end
 	local fencename = fencename
 	def_sign.after_dig_node = function(pos, node, ...)

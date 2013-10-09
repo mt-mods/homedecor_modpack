@@ -2,8 +2,8 @@
 
 -- Boilerplate to support localized strings if intllib mod is installed.
 local S
-if intllib_modpath then
-    dofile(intllib_modpath.."/intllib.lua")
+if homedecor.intllib_modpath then
+    dofile(homedecor.intllib_modpath.."/intllib.lua")
     S = intllib.Getter(minetest.get_current_modname())
 else
     S = function ( s ) return s end
@@ -11,11 +11,11 @@ end
 
 -- Corner shingle nodes, courtesy Bas080
 
-homedecor_detail_level = 16
+homedecor.detail_level = 16
 
-homedecor_register_outer_corner = function(modname, subname, groups, images, description)
+homedecor.register_outer_corner = function(modname, subname, groups, images, description)
 	local slopeboxedge = {}
-	local detail = homedecor_detail_level
+	local detail = homedecor.detail_level
 	for i = 0, detail-1 do
 		slopeboxedge[i+1]={-0.5, -0.5, (i/detail)-0.5, 0.5-(i/detail), (i/detail)-0.5+(1.25/detail), 0.5}
 	end
@@ -43,9 +43,9 @@ homedecor_register_outer_corner = function(modname, subname, groups, images, des
 	})
 end
 
-homedecor_register_inner_corner = function(modname, subname, groups, images, description)
+homedecor.register_inner_corner = function(modname, subname, groups, images, description)
 	local slopeboxedge = {}
-	local detail = homedecor_detail_level
+	local detail = homedecor.detail_level
 	for i = 0, detail-1 do
 		slopeboxedge[i+1]={-0.5, -0.5, -0.5, 0.5-(i/detail), (i/detail)-0.5+(1.25/detail), 0.5}
 		slopeboxedge[i+detail+1]={-0.5, -0.5, (i/detail)-0.5, 0.5, (i/detail)-0.5+(1.25/detail), 0.5}
@@ -69,9 +69,9 @@ homedecor_register_inner_corner = function(modname, subname, groups, images, des
 	})
 end
 
-homedecor_register_slope = function(modname, subname, recipeitem, groups, images, description)
+homedecor.register_slope = function(modname, subname, recipeitem, groups, images, description)
 	local slopeboxedge = {}
-	local detail = homedecor_detail_level
+	local detail = homedecor.detail_level
 	for i = 0, detail-1 do
 		slopeboxedge[i+1]={-0.5, -0.5, (i/detail)-0.5, 0.5, (i/detail)-0.5+(1.25/detail), 0.5}
 	end
@@ -203,14 +203,14 @@ minetest.register_craft({
 	burntime = 30,
 })
 
-homedecor_register_roof = function(modname, subname, groups, images , description)
-	homedecor_register_outer_corner(modname, subname, groups, images, description)
-	homedecor_register_inner_corner(modname, subname, groups, images, description)
+homedecor.register_roof = function(modname, subname, groups, images , description)
+	homedecor.register_outer_corner(modname, subname, groups, images, description)
+	homedecor.register_inner_corner(modname, subname, groups, images, description)
 end
 
 -- corners
 
-homedecor_register_roof("homedecor", "wood",
+homedecor.register_roof("homedecor", "wood",
 	{ snappy = 3 },
 	{
 		"homedecor_shingles_wood_c_t.png",
@@ -223,7 +223,7 @@ homedecor_register_roof("homedecor", "wood",
 	"Wood Shingles"
 )
 
-homedecor_register_roof("homedecor", "asphalt",
+homedecor.register_roof("homedecor", "asphalt",
 	{ snappy = 3 },
 	{
 		"homedecor_shingles_asphalt_c_t.png",
@@ -236,7 +236,7 @@ homedecor_register_roof("homedecor", "asphalt",
 	"Asphalt Shingles"
 )
 
-homedecor_register_roof("homedecor", "terracotta",
+homedecor.register_roof("homedecor", "terracotta",
 	{ snappy = 3 },
 	{
 		"homedecor_shingles_terracotta_c_t.png",
@@ -251,7 +251,7 @@ homedecor_register_roof("homedecor", "terracotta",
 
 -- register just the slopes
 
-homedecor_register_slope("homedecor", "wood",
+homedecor.register_slope("homedecor", "wood",
 	"homedecor:shingles_wood",
 	{ snappy = 3 },
 	{
@@ -265,7 +265,7 @@ homedecor_register_slope("homedecor", "wood",
 	"Wood Shingles"
 )
 
-homedecor_register_slope("homedecor", "asphalt",
+homedecor.register_slope("homedecor", "asphalt",
 	"homedecor:shingles_asphalt",
 	{ snappy = 3 },
 	{
@@ -279,7 +279,7 @@ homedecor_register_slope("homedecor", "asphalt",
 	"Asphalt Shingles"
 )
 
-homedecor_register_slope("homedecor", "terracotta",
+homedecor.register_slope("homedecor", "terracotta",
 	"homedecor:shingles_terracotta",
 	{ snappy = 3 },
 	{

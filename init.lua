@@ -11,14 +11,17 @@
 -- License: LGPL 2.0 or higher
 --
 
-local DEBUG = 0
-homedecor_modpath = minetest.get_modpath("homedecor")
-intllib_modpath = minetest.get_modpath("intllib")
+homedecor = {}
+
+local homedecor.debug = 0
+
+homedecor.modpath = minetest.get_modpath("homedecor")
+homedecor.intllib_modpath = minetest.get_modpath("intllib")
 
 -- Boilerplate to support localized strings if intllib mod is installed.
 local S
-if intllib_modpath then
-    dofile(intllib_modpath.."/intllib.lua")
+if homedecor.intllib_modpath then
+    dofile(homedecor.intllib_modpath.."/intllib.lua")
     S = intllib.Getter(minetest.get_current_modname())
 else
     S = function ( s ) return s end
@@ -26,17 +29,17 @@ end
 
 -- Global stuff
 
-homedecor_disable_signs = minetest.setting_getbool("homedecor.disable_signs")
+homedecor.disable_signs = minetest.setting_getbool("homedecor.disable_signs")
 
 -- Various Functions
 
 local dbg = function(s)
-	if DEBUG == 1 then
+	if homedecor.debug == 1 then
 		print('[HomeDecor] ' .. s)
 	end
 end
 
-function homedecor_node_is_owned(pos, placer)
+function homedecor.node_is_owned(pos, placer)
 	local ownername = false
 	if type(IsPlayerNodeOwner) == "function" then					-- node_ownership mod
 		if HasOwner(pos, placer) then						-- returns true if the node is owned
@@ -70,38 +73,38 @@ function homedecor_node_is_owned(pos, placer)
 end
 
 if minetest.get_modpath("unified_inventory") or not minetest.setting_getbool("creative_mode") then
-	homedecor_expect_infinite_stacks = false
+	homedecor.expect_infinite_stacks = false
 else
-	homedecor_expect_infinite_stacks = true
+	homedecor.expect_infinite_stacks = true
 end
 
-dofile(homedecor_modpath.."/misc_nodes.lua")					-- the catch-all for all misc nodes
-dofile(homedecor_modpath.."/tables.lua")
-dofile(homedecor_modpath.."/electronics.lua")
-dofile(homedecor_modpath.."/shutters.lua")
-dofile(homedecor_modpath.."/shingles.lua")
-dofile(homedecor_modpath.."/slopes.lua")
+dofile(homedecor.modpath.."/misc_nodes.lua")					-- the catch-all for all misc nodes
+dofile(homedecor.modpath.."/tables.lua")
+dofile(homedecor.modpath.."/electronics.lua")
+dofile(homedecor.modpath.."/shutters.lua")
+dofile(homedecor.modpath.."/shingles.lua")
+dofile(homedecor.modpath.."/slopes.lua")
 
-dofile(homedecor_modpath.."/door_models.lua")
-dofile(homedecor_modpath.."/doors_and_gates.lua")
+dofile(homedecor.modpath.."/door_models.lua")
+dofile(homedecor.modpath.."/doors_and_gates.lua")
 
-dofile(homedecor_modpath.."/signs_lib.lua")
+dofile(homedecor.modpath.."/signs_lib.lua")
 
-dofile(homedecor_modpath.."/fences.lua")
+dofile(homedecor.modpath.."/fences.lua")
 
-dofile(homedecor_modpath.."/lighting.lua")
-dofile(homedecor_modpath.."/kitchen_cabinet.lua")
-dofile(homedecor_modpath.."/refrigerator.lua")
-dofile(homedecor_modpath.."/furnaces.lua")
-dofile(homedecor_modpath.."/nightstands.lua")
+dofile(homedecor.modpath.."/lighting.lua")
+dofile(homedecor.modpath.."/kitchen_cabinet.lua")
+dofile(homedecor.modpath.."/refrigerator.lua")
+dofile(homedecor.modpath.."/furnaces.lua")
+dofile(homedecor.modpath.."/nightstands.lua")
 
-dofile(homedecor_modpath.."/crafts.lua")
+dofile(homedecor.modpath.."/crafts.lua")
 
-dofile(homedecor_modpath.."/furniture.lua")
-dofile(homedecor_modpath.."/furniture_medieval.lua")
-dofile(homedecor_modpath.."/furniture_bathroom.lua")
-dofile(homedecor_modpath.."/furniture_recipes.lua")
+dofile(homedecor.modpath.."/furniture.lua")
+dofile(homedecor.modpath.."/furniture_medieval.lua")
+dofile(homedecor.modpath.."/furniture_bathroom.lua")
+dofile(homedecor.modpath.."/furniture_recipes.lua")
 
-dofile(homedecor_modpath.."/locked.lua")
+dofile(homedecor.modpath.."/locked.lua")
 
 print("[HomeDecor] "..S("Loaded!"))

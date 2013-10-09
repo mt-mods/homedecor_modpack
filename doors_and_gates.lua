@@ -2,8 +2,8 @@
 
 -- Boilerplate to support localized strings if intllib mod is installed.
 local S
-if intllib_modpath then
-    dofile(intllib_modpath.."/intllib.lua")
+if homedecor.intllib_modpath then
+    dofile(homedecor.intllib_modpath.."/intllib.lua")
     S = intllib.Getter(minetest.get_current_modname())
 else
     S = function ( s ) return s end
@@ -18,9 +18,9 @@ for i in ipairs(sides) do
 	local side = sides[i]
 	local rside = rsides[i]
 
-	for j in ipairs(homedecor_door_models) do
-		local doorname =		homedecor_door_models[j][1]
-		local doordesc =		homedecor_door_models[j][2]
+	for j in ipairs(homedecor.door_models) do
+		local doorname =		homedecor.door_models[j][1]
+		local doordesc =		homedecor.door_models[j][2]
 		local nodeboxes_top = nil
 		local nodeboxes_bottom = nil
 		local texalpha = false
@@ -29,11 +29,11 @@ for i in ipairs(sides) do
 		end
 
 		if side == "left" then
-			nodeboxes_top =	homedecor_door_models[j][3]
-			nodeboxes_bottomtom =	homedecor_door_models[j][4]
+			nodeboxes_top =	homedecor.door_models[j][3]
+			nodeboxes_bottomtom =	homedecor.door_models[j][4]
 		else
-			nodeboxes_top =	homedecor_door_models[j][5]
-			nodeboxes_bottomtom =	homedecor_door_models[j][6]
+			nodeboxes_top =	homedecor.door_models[j][5]
+			nodeboxes_bottomtom =	homedecor.door_models[j][6]
 		end
 
 		local lower_top_side = "homedecor_door_"..doorname.."_tb.png"
@@ -94,7 +94,7 @@ for i in ipairs(sides) do
 				end
 			end,
 			on_rightclick = function(pos, node, clicker)
-				homedecor_flip_door({x=pos.x, y=pos.y-1, z=pos.z}, node, clicker, doorname, side)
+				homedecor.flip_door({x=pos.x, y=pos.y-1, z=pos.z}, node, clicker, doorname, side)
 			end
 		})
 
@@ -120,11 +120,11 @@ for i in ipairs(sides) do
 				end
 			end,
 			on_place = function(itemstack, placer, pointed_thing)
-				homedecor_place_door(itemstack, placer, pointed_thing, doorname, side)
+				homedecor.place_door(itemstack, placer, pointed_thing, doorname, side)
 				return itemstack
 			end,
 			on_rightclick = function(pos, node, clicker)
-				homedecor_flip_door(pos, node, clicker, doorname, side)
+				homedecor.flip_door(pos, node, clicker, doorname, side)
 			end
 		})
 	end
@@ -203,7 +203,7 @@ for i in ipairs(gates_list) do
 			fixed = gate_models_closed[i]
 		},
 		on_rightclick = function(pos, node, clicker)
-			homedecor_flip_gate(pos, node, clicker, gate, "closed")
+			homedecor.flip_gate(pos, node, clicker, gate, "closed")
 		end
 	})
 
@@ -234,7 +234,7 @@ for i in ipairs(gates_list) do
 		},
 		drop = "homedecor:gate_"..gate.."_closed",
 		on_rightclick = function(pos, node, clicker)
-			homedecor_flip_gate(pos, node, clicker, gate, "open")
+			homedecor.flip_gate(pos, node, clicker, gate, "open")
 		end
 	})
 
@@ -258,7 +258,7 @@ local function get_nodedef_field(nodename, fieldname)
 	return minetest.registered_nodes[nodename][fieldname]
 end
 
-function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
+function homedecor.place_door(itemstack, placer, pointed_thing, name, side)
 
 	local pointed = pointed_thing.under
 	local pnode = minetest.get_node(pointed)
@@ -281,8 +281,8 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 		local node_bottom = minetest.get_node(pos1)
 		local node_top = minetest.get_node(pos2)
 
-		if not homedecor_node_is_owned(pos1, placer) 
-		    and not homedecor_node_is_owned(pos2, placer) then
+		if not homedecor.node_is_owned(pos1, placer) 
+		    and not homedecor.node_is_owned(pos2, placer) then
 
 			if not get_nodedef_field(node_bottom.name, "buildable_to") 
 			    or not get_nodedef_field(node_top.name, "buildable_to") then
@@ -291,7 +291,7 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 				local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 				minetest.add_node(pos1, { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir})
 				minetest.add_node(pos2, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})
-				if not homedecor_expect_infinite_stacks then
+				if not homedecor.expect_infinite_stacks then
 					itemstack:take_item()
 					return itemstack
 				end
@@ -302,7 +302,7 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 	end
 end
 
-function homedecor_flip_door(pos, node, player, name, side)
+function homedecor.flip_door(pos, node, player, name, side)
 	local rside = nil
 	local nfdir = nil
 	if side == "left" then
@@ -328,7 +328,7 @@ function homedecor_flip_door(pos, node, player, name, side)
 	minetest.add_node(pos, { name = "homedecor:door_"..name.."_bottom_"..rside, param2=nfdir})
 end
 
-function homedecor_flip_gate(pos, node, player, gate, oc)
+function homedecor.flip_gate(pos, node, player, gate, oc)
         minetest.sound_play("homedecor_gate_open_close", {
 		pos=pos,
 		max_hear_distance = 5,

@@ -2,8 +2,8 @@
 
 -- Boilerplate to support localized strings if intllib mod is installed.
 local S
-if intllib_modpath then
-    dofile(intllib_modpath.."/intllib.lua")
+if homedecor.intllib_modpath then
+    dofile(homedecor.intllib_modpath.."/intllib.lua")
     S = intllib.Getter(minetest.get_current_modname())
 else
     S = function ( s ) return s end
@@ -79,7 +79,7 @@ for i in ipairs(materials) do
 				else
 					minetest.add_node(above, {name = 'homedecor:'..m..'_table_small_square_b'})
 				end
-				if not homedecor_expect_infinite_stacks then
+				if not homedecor.expect_infinite_stacks then
 					itemstack:take_item()
 					return itemstack
 				end
@@ -207,7 +207,7 @@ for i in ipairs(materials) do
 				else
 					minetest.add_node(above, {name = 'homedecor:'..m..'_table_small_round_b'})
 				end
-				if not homedecor_expect_infinite_stacks then
+				if not homedecor.expect_infinite_stacks then
 					itemstack:take_item()
 					return itemstack
 				end
@@ -334,7 +334,7 @@ for i in ipairs(materials) do
 				else
 					minetest.add_node(above, {name = 'homedecor:'..m..'_table_large_b'})
 				end
-				if not homedecor_expect_infinite_stacks then
+				if not homedecor.expect_infinite_stacks then
 					itemstack:take_item()
 					return itemstack
 				end
