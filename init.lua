@@ -12,11 +12,13 @@
 --
 
 local DEBUG = 0
+homedecor_modpath = minetest.get_modpath("homedecor")
+intllib_modpath = minetest.get_modpath("intllib")
 
 -- Boilerplate to support localized strings if intllib mod is installed.
 local S
-if (minetest.get_modpath("intllib")) then
-    dofile(minetest.get_modpath("intllib").."/intllib.lua")
+if intllib_modpath then
+    dofile(intllib_modpath.."/intllib.lua")
     S = intllib.Getter(minetest.get_current_modname())
 else
     S = function ( s ) return s end
@@ -73,33 +75,33 @@ else
 	homedecor_expect_infinite_stacks = true
 end
 
-dofile(minetest.get_modpath("homedecor").."/misc_nodes.lua")					-- the catch-all for all misc nodes
-dofile(minetest.get_modpath("homedecor").."/tables.lua")
-dofile(minetest.get_modpath("homedecor").."/electronics.lua")
-dofile(minetest.get_modpath("homedecor").."/shutters.lua")
-dofile(minetest.get_modpath("homedecor").."/shingles.lua")
-dofile(minetest.get_modpath("homedecor").."/slopes.lua")
+dofile(homedecor_modpath.."/misc_nodes.lua")					-- the catch-all for all misc nodes
+dofile(homedecor_modpath.."/tables.lua")
+dofile(homedecor_modpath.."/electronics.lua")
+dofile(homedecor_modpath.."/shutters.lua")
+dofile(homedecor_modpath.."/shingles.lua")
+dofile(homedecor_modpath.."/slopes.lua")
 
-dofile(minetest.get_modpath("homedecor").."/door_models.lua")
-dofile(minetest.get_modpath("homedecor").."/doors_and_gates.lua")
+dofile(homedecor_modpath.."/door_models.lua")
+dofile(homedecor_modpath.."/doors_and_gates.lua")
 
-dofile(minetest.get_modpath("homedecor").."/signs_lib.lua")
+dofile(homedecor_modpath.."/signs_lib.lua")
 
-dofile(minetest.get_modpath("homedecor").."/fences.lua")
+dofile(homedecor_modpath.."/fences.lua")
 
-dofile(minetest.get_modpath("homedecor").."/lighting.lua")
-dofile(minetest.get_modpath("homedecor").."/kitchen_cabinet.lua")
-dofile(minetest.get_modpath("homedecor").."/refrigerator.lua")
-dofile(minetest.get_modpath("homedecor").."/furnaces.lua")
-dofile(minetest.get_modpath("homedecor").."/nightstands.lua")
+dofile(homedecor_modpath.."/lighting.lua")
+dofile(homedecor_modpath.."/kitchen_cabinet.lua")
+dofile(homedecor_modpath.."/refrigerator.lua")
+dofile(homedecor_modpath.."/furnaces.lua")
+dofile(homedecor_modpath.."/nightstands.lua")
 
-dofile(minetest.get_modpath("homedecor").."/crafts.lua")
+dofile(homedecor_modpath.."/crafts.lua")
 
-dofile(minetest.get_modpath("homedecor").."/furniture.lua")
-dofile(minetest.get_modpath("homedecor").."/furniture_medieval.lua")
-dofile(minetest.get_modpath("homedecor").."/furniture_bathroom.lua")
-dofile(minetest.get_modpath("homedecor").."/furniture_recipes.lua")
+dofile(homedecor_modpath.."/furniture.lua")
+dofile(homedecor_modpath.."/furniture_medieval.lua")
+dofile(homedecor_modpath.."/furniture_bathroom.lua")
+dofile(homedecor_modpath.."/furniture_recipes.lua")
 
-dofile(minetest.get_modpath("homedecor").."/locked.lua")
+dofile(homedecor_modpath.."/locked.lua")
 
 print("[HomeDecor] "..S("Loaded!"))
