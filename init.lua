@@ -13,7 +13,7 @@
 
 homedecor = {}
 
-local homedecor.debug = 0
+homedecor.debug = 0
 
 homedecor.modpath = minetest.get_modpath("homedecor")
 homedecor.intllib_modpath = minetest.get_modpath("intllib")
