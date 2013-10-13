@@ -119,13 +119,13 @@ if not homedecor.disable_signs then
 			local name
 			name = minetest.get_node(pointed_thing.under).name
 			if fences_with_sign[name] then
-				if homedecor.node_is_owned(pointed_thing.under, placer) then
+				if homedecor:node_is_owned(pointed_thing.under, placer) then
 					return itemstack
 				end
 			else
 				name = minetest.get_node(pointed_thing.above).name
 				local def = minetest.registered_nodes[name]
-				if homedecor.node_is_owned(pointed_thing.above, placer)
+				if homedecor:node_is_owned(pointed_thing.above, placer)
 				 or (not def.buildable_to) then
 					return itemstack
 				end
@@ -202,7 +202,7 @@ if not homedecor.disable_signs then
 					minetest.pos_to_string(pos)
 				))
 			end
-			if homedecor.node_is_owned(pos, sender) then return end
+			if homedecor:node_is_owned(pos, sender) then return end
 			homedecor.update_sign(pos, fields)
 		end,
 		on_punch = function(pos, node, puncher)
@@ -239,7 +239,7 @@ minetest.register_node(":signs:sign_yard", {
                 minetest.pos_to_string(pos)
             ))
         end
-		if homedecor.node_is_owned(pos, sender) then return end
+		if homedecor:node_is_owned(pos, sender) then return end
         homedecor.update_sign(pos, fields)
     end,
 	on_punch = function(pos, node, puncher)
@@ -443,7 +443,7 @@ function homedecor.register_fence_with_sign(fencename, fencewithsignname)
 		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 		if def_under and def_under.on_rightclick then
 			return def_under.on_rightclick(pointed_thing.under, node_under, placer, itemstack) or itemstack
-		elseif (not homedecor.node_is_owned(pointed_thing.under, placer))
+		elseif (not homedecor:node_is_owned(pointed_thing.under, placer))
 		 and def_under.buildable_to then
 			minetest.add_node(pointed_thing.under, {name = fencename, param2 = fdir})
 			if not homedecor.expect_infinite_stacks then
@@ -451,7 +451,7 @@ function homedecor.register_fence_with_sign(fencename, fencewithsignname)
 			end
 			placer:set_wielded_item(itemstack)
 			return itemstack
-		elseif (not homedecor.node_is_owned(pointed_thing.above, placer))
+		elseif (not homedecor:node_is_owned(pointed_thing.above, placer))
 		 and def_above.buildable_to then
 			minetest.add_node(pointed_thing.above, {name = fencename, param2 = fdir})
 			if not homedecor.expect_infinite_stacks then
@@ -475,7 +475,7 @@ function homedecor.register_fence_with_sign(fencename, fencewithsignname)
                 minetest.pos_to_string(pos)
             ))
         end
-		if homedecor.node_is_owned(pos, sender) then return end
+		if homedecor:node_is_owned(pos, sender) then return end
 		homedecor.update_sign(pos, fields)
 	end
 	def_sign.on_punch = function(pos, node, puncher, ...)

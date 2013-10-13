@@ -281,8 +281,8 @@ function homedecor.place_door(itemstack, placer, pointed_thing, name, side)
 		local node_bottom = minetest.get_node(pos1)
 		local node_top = minetest.get_node(pos2)
 
-		if not homedecor.node_is_owned(pos1, placer) 
-		    and not homedecor.node_is_owned(pos2, placer) then
+		if not homedecor:node_is_owned(pos1, placer) 
+		    and not homedecor:node_is_owned(pos2, placer) then
 
 			if not get_nodedef_field(node_bottom.name, "buildable_to") 
 			    or not get_nodedef_field(node_top.name, "buildable_to") then
