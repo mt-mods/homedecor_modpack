@@ -20,6 +20,13 @@ homedecor.modpath = minetest.get_modpath("homedecor")
 homedecor.intllib_modpath = minetest.get_modpath("intllib")
 
 -- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if homedecor.intllib_modpath then
+    dofile(homedecor.intllib_modpath.."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
 
 local dbg = function(s)
 	if homedecor.debug == 1 then
