@@ -317,54 +317,13 @@ local NUMBER_OF_LINES = 4
 local LINE_HEIGHT = 14
 local CHAR_WIDTH = 5
 
-homedecor.string_to_array = function(str)
-	local tab = {}
-	for i=1,string.len(str) do
-		table.insert(tab, string.sub(str, i,i))
-	end
-	return tab
-end
-
-homedecor.string_to_word_array = function(str)
-	local tab = {}
-	local current = 1
-	tab[1] = ""
-	for _,char in ipairs(homedecor.string_to_array(str)) do
-		if char ~= " " then
-			tab[current] = tab[current]..char
-		else
-			current = current+1
-			tab[current] = ""
-		end
-	end
-	return tab
-end
-
 homedecor.create_lines = function(text)
-	local line = ""
-	local line_num = 1
 	local tab = {}
-	for _,word in ipairs(homedecor.string_to_word_array(text)) do
-		if string.len(line)+string.len(word) < LINE_LENGTH and word ~= "|" then
-			if line ~= "" then
-				line = line.." "..word
-			else
-				line = word
-			end
-		else
-			table.insert(tab, line)
-			if word ~= "|" then
-				line = word
-			else
-				line = ""
-			end
-			line_num = line_num+1
-			if line_num > NUMBER_OF_LINES then
-				return tab
-			end
-		end
+	for line in text:gmatch("([^|]+)|?") do
+		line = line:gsub("^%s*(.*)%s*$", "%1") -- Trim whitespace
+		table.insert(tab, line)
+		if #tab >= NUMBER_OF_LINES then break end
 	end
-	table.insert(tab, line)
 	return tab
 end
 
