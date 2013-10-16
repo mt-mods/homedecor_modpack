@@ -99,14 +99,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-        type = "shapeless",
-        output = "homedecor:plastic_base 4",
-        recipe = { "default:leaves",
-        	   "default:leaves",
-        	   "default:leaves",
-        	   "default:leaves",
-        	   "default:leaves",
-		   "default:leaves"
+    type = "shapeless",
+    output = "homedecor:plastic_base 4",
+    recipe = {
+		"group:leaves",
+		"group:leaves",
+		"group:leaves",
+		"group:leaves",
+		"group:leaves",
+		"group:leaves"
 	}
 })
 
