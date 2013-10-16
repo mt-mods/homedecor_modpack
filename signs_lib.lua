@@ -299,7 +299,6 @@ else
 end
 
 
-
 minetest.register_entity(":signs:text", {
     collisionbox = { 0, 0, 0, 0, 0, 0 },
     visual = "upright_sprite",
@@ -429,7 +428,8 @@ function homedecor.register_fence_with_sign(fencename, fencewithsignname)
     local def = minetest.registered_nodes[fencename]
     local def_sign = minetest.registered_nodes[fencewithsignname]
     if not (def and def_sign) then
-        error("Attempt to register unknown node as fence")
+        minetest.log("warning", "[homedecor] Attempt to register unknown node as fence")
+        return
     end
     def = copy(def)
     def_sign = copy(def_sign)
