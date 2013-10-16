@@ -53,7 +53,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:roof_tile_terracotta 4",
+        output = "homedecor:roof_tile_terracotta 8",
         recipe = {
 			{ "homedecor:shingles_terracotta", "homedecor:shingles_terracotta" }
 		}
