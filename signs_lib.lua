@@ -1,46 +1,3 @@
--- Font: 04.jp.org
-
--- CONSTANTS
-
-local SIGN_WIDTH = 110
-local SIGN_PADDING = 8
-
-local LINE_LENGTH = 16
-local NUMBER_OF_LINES = 4
-
-local LINE_HEIGHT = 14
-local CHAR_WIDTH = 5
-
-local signs = {
-    {delta = {x = -0.06, y = 0, z = 0.399}, yaw = 0},
-    {delta = {x = 0.399, y = 0, z = 0.06}, yaw = math.pi / -2},
-    {delta = {x = 0.06, y = 0, z = -0.399}, yaw = math.pi},
-    {delta = {x = -0.399, y = 0, z = -0.06}, yaw = math.pi / 2},
-}
-
-local signs_yard = {
-    {delta = {x = -0.06, y = 0, z = -0.05}, yaw = 0},
-    {delta = {x = -0.05, y = 0, z = 0.06}, yaw = math.pi / -2},
-    {delta = {x = 0.06, y = 0, z = 0.05}, yaw = math.pi},
-    {delta = {x = 0.05, y = 0, z = -0.06}, yaw = math.pi / 2},
-}
-
-local signs_post = {
-    {delta = {x = -0.06, y = 0, z = -0.226}, yaw = 0},
-    {delta = {x = -0.226, y = 0, z = 0.06}, yaw = math.pi / -2},
-    {delta = {x = 0.06, y = 0, z = 0.226}, yaw = math.pi},
-    {delta = {x = 0.226, y = 0, z = -0.06}, yaw = math.pi / 2},
-}
-
-local sign_groups = {choppy=2, dig_immediate=2}
-
-local fences_with_sign = { }
-
--- Misc variables
-
-local chars_file = io.open(minetest.get_modpath("homedecor").."/characters", "r")
-local charmap = {}
-local max_chars = 16
 
 -- Boilerplate to support localized strings if intllib mod is installed.
 local S
@@ -50,6 +7,174 @@ if homedecor.intllib_modpath then
 else
     S = function ( s ) return s end
 end
+
+-- CONSTANTS
+
+local NUMBER_OF_LINES = 6
+
+local MP = minetest.get_modpath("homedecor")
+
+-- Used by `build_char_db' to locate the file.
+local FONT_FMT = "%s/hdf_%02x.png"
+
+-- Simple texture name for building text texture.
+local FONT_FMT_SIMPLE = "hdf_%02x.png"
+
+-- Path to the textures.
+local TP = MP.."/textures"
+
+local TEXT_SCALE = {x=0.9, y=0.7}
+
+-- Lots of overkill here. KISS advocates, go away, shoo! ;) -- kaeza
+
+local PNG_HDR = string.char(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
+
+-- Read the image size from a PNG file.
+-- Returns image_w, image_h.
+-- Only the LSB is read from each field!
+local function read_png_size(f)
+	f:seek("set", 0x0)
+	local hdr = f:read(8)
+	if hdr ~= PNG_HDR then return end
+	f:seek("set", 0x13)
+	local ws = f:read(1)
+	f:seek("set", 0x17)
+	local hs = f:read(1)
+	return ws:byte(), hs:byte()
+end
+
+-- Set by build_char_db()
+local LINE_HEIGHT
+local SIGN_WIDTH
+local SIGN_PADDING
+
+-- This holds the individual character widths.
+-- Indexed by the actual character (e.g. charwidth["A"])
+local charwidth = { }
+
+-- File to cache the font size to.
+local CHARDB_FILE = minetest.get_worldpath().."/homedecor_chardb"
+
+local function build_char_db()
+
+	LINE_HEIGHT = nil
+	SIGN_WIDTH = nil
+	SIGN_PADDING = nil
+
+	-- To calculate average char width.
+	local total_width = 0
+	local char_count = 0
+
+	-- Try to load cached data to avoid heavy disk I/O.
+
+	local cdbf = io.open(CHARDB_FILE, "rt")
+
+	if cdbf then
+		minetest.log("info", "[homedecor] Reading cached character database.")
+		for line in cdbf:lines() do
+			local ch, w = line:match("(0x[0-9A-Fa-f]+)%s+([0-9][0-9]+)")
+			if ch and w then
+				local c = tonumber(ch, 16)
+				w = tonumber(w)
+				if c and w then
+					if c == 0 then
+						LINE_HEIGHT = h
+					elseif (c >= 32) and (c < 127) then
+						charwidth[string.char(c)] = w
+						total_width = total_width + w
+						char_count = char_count + 1
+					end
+				end
+			end
+		end
+		cdbf:close()
+		if LINE_HEIGHT then
+			-- XXX: Is there a better way to calc this?
+			-- XXX: Remember to change similar lines below if this changes.
+			SIGN_WIDTH = math.floor((total_width / char_count) * 16)
+			SIGN_PADDING = SIGN_WIDTH / 14 -- Totally arbitrary.
+			return
+		else
+			minetest.log("warning", "[homedecor]"
+				.." Could not find font line height in cached DB."
+				.." Trying brute force."
+			)
+		end
+	end
+
+	-- OK, something went wrong... try brute force loading from texture files.
+
+	total_width = 0
+	char_count = 0
+	LINE_HEIGHT = nil
+
+	for c = 32, 126 do
+		local filename = FONT_FMT:format(TP, c)
+		local f = io.open(filename)
+		if f then
+			local ch = string.char(c)
+			local w, h = read_png_size(f)
+			f:close()
+			if w and h then
+				charwidth[ch] = w
+				total_width = total_width + w
+				char_count = char_count + 1
+				if not LINE_HEIGHT then LINE_HEIGHT = h end
+			end
+		end
+	end
+
+	if not LINE_HEIGHT then
+		error("Could not find font line height.")
+	end
+
+	SIGN_WIDTH = math.floor((total_width / char_count) * 16)
+	SIGN_PADDING = SIGN_WIDTH / 14 -- Totally arbitrary.
+
+	-- Try to save cached list back to disk.
+
+	local e -- Note: `cdbf' is already declared local above.
+	cdbf, e = io.open(CHARDB_FILE, "wt")
+	if not cdbf then
+		minetest.log("warning", "[homedecor] Could not save cached char DB: "..(e or ""))
+		return
+	end
+
+	cdbf:write(("0x00 %d\n"):format(LINE_HEIGHT))
+	for c = 32, 126 do
+		local w = charwidth[string.char(c)]
+		if w then
+			cdbf:write(("0x%02X %d\n"):format(c, w))
+		end
+	end
+	cdbf:close()
+
+end
+
+local signs = {
+    {delta = {x =  0,     y = 0, z =  0.399}, yaw = 0},
+    {delta = {x =  0.399, y = 0, z =  0    }, yaw = math.pi / -2},
+    {delta = {x =  0,     y = 0, z = -0.399}, yaw = math.pi},
+    {delta = {x = -0.399, y = 0, z =  0    }, yaw = math.pi / 2},
+}
+
+local signs_yard = {
+    {delta = {x =  0,     y = 0.05, z = -0.05}, yaw = 0},
+    {delta = {x = -0.05,  y = 0.05, z =  0}, yaw = math.pi / -2},
+    {delta = {x =  0,     y = 0.05, z =  0.05}, yaw = math.pi},
+    {delta = {x =  0.05,  y = 0.05, z =  0}, yaw = math.pi / 2},
+}
+
+local signs_post = {
+    {delta = {x = 0, y = 0, z = -0.226}, yaw = 0},
+    {delta = {x = -0.226, y = 0, z = 0}, yaw = math.pi / -2},
+    {delta = {x = 0, y = 0, z = 0.226}, yaw = math.pi},
+    {delta = {x = 0.226, y = 0, z = 0}, yaw = math.pi / 2},
+}
+
+local sign_groups = {choppy=2, dig_immediate=2}
+
+local fences_with_sign = { }
 
 -- some local helper functions
 
@@ -66,52 +191,56 @@ end
 local math_max = math.max
 
 local homedecor_generate_line = function(s, lineno)
-    local i = 1
-    local parsed = {}
-    local width = 0
-    local maxw = 0
-    local chars = 0
-    while i <= #s do
-        local file = nil
-        if charmap[s:sub(i, i)] ~= nil then
-            file = charmap[s:sub(i, i)]
-            i = i + 1
-        elseif i < #s and charmap[s:sub(i, i + 1)] ~= nil then
-            file = charmap[s:sub(i, i + 1)]
-            i = i + 2
-        else
-            print("[signs] W: unknown symbol in '"..s.."' at "..i.." (probably "..s:sub(i, i)..")")
-            i = i + 1
-        end
-        if file ~= nil then
-            width = width + CHAR_WIDTH
-            maxw = math_max(width, maxw)
-			chars = chars + 1
-			if chars > max_chars then
+
+	local width = 0
+	local maxw = 0
+
+	local chars = { }
+
+	local max_line_w = SIGN_WIDTH - (SIGN_PADDING * 2)
+
+	-- We check which chars are available here.
+	for i = 1, #s do
+		local c = s:sub(i, i)
+		local w = charwidth[c]
+		if w then
+			width = width + w + 1
+			maxw = math_max(width, maxw)
+			if width >= max_line_w then
 				width = 0
 			end
-            table.insert(parsed, file)
-        end
-    end
-    maxw = maxw - 1
+			table.insert(chars, c)
+		end
+	end
 
-    local texture = { }
-    local start_xpos = math.floor((SIGN_WIDTH - 2 * SIGN_PADDING - maxw) / 2 + SIGN_PADDING)
-    local xpos = start_xpos
-    local linepos = 0
-    for i = 1, #parsed do
-		if lineno >= NUMBER_OF_LINES then break end
-		local ypos = 12 + (LINE_HEIGHT * lineno)
-        table.insert(texture, (":%d,%d=%s.png"):format(xpos, ypos, parsed[i]))
-        xpos = xpos + CHAR_WIDTH + 1
-        linepos = linepos + 1
-        if linepos > max_chars then
+	maxw = maxw - 1
+
+	-- Okay, we actually build the "line texture" here.
+
+	local start_xpos = math.floor((SIGN_WIDTH - 2 * SIGN_PADDING - maxw) / 2 + SIGN_PADDING)
+	local xpos = start_xpos
+	local texture = { }
+	local ypos = (LINE_HEIGHT * (lineno --[[+ 1]]))
+
+	width = 0
+
+	for i = 1, #s do
+		local c = s:sub(i, i)
+		local w = charwidth[c]
+		local tex = FONT_FMT_SIMPLE:format(c:byte())
+		table.insert(texture, (":%d,%d=%s"):format(xpos, ypos, tex))
+		xpos = xpos + w + 1
+		width = width + w + 1
+		if width > max_line_w then
 			xpos = start_xpos
-			linepos = 0
+			ypos = ypos + LINE_HEIGHT
+			width = 0
 			lineno = lineno + 1
 		end
-    end
-    return table.concat(texture, ""), lineno
+		if lineno >= NUMBER_OF_LINES then break end
+	end
+
+	return table.concat(texture, ""), lineno
 end
 
 local function copy ( t )
@@ -138,20 +267,11 @@ local homedecor_generate_texture = function(lines)
     return table.concat(texture, "")
 end
 
--- load characters map
-
-if not chars_file then
-    print("[signs] "..S("E: character map file not found"))
-else
-    while true do
-        local char = chars_file:read("*l")
-        if char == nil then
-            break
-        end
-        local img = chars_file:read("*l")
-        chars_file:read("*l")
-        charmap[char] = img
-    end
+local function set_obj_text(obj, text)
+	obj:set_properties({
+		textures={homedecor_generate_texture(homedecor_create_lines(text))},
+		visual_size = TEXT_SCALE,
+	})
 end
 
 homedecor.construct_sign = function(pos)
@@ -179,7 +299,7 @@ homedecor.update_sign = function(pos, fields)
     local objects = minetest.get_objects_inside_radius(pos, 0.5)
     for _, v in ipairs(objects) do
         if v:get_entity_name() == "signs:text" then
-            v:set_properties({textures={homedecor_generate_texture(homedecor_create_lines(text))}})
+			set_obj_text(v, text)
 			return
         end
     end
@@ -392,7 +512,7 @@ if not homedecor.disable_signs then
 	signs_text_on_activate = function(self)
 		local meta = minetest.get_meta(self.object:getpos())
 		local text = meta:get_string("text")
-		self.object:set_properties({textures={homedecor_generate_texture(homedecor_create_lines(text))}})
+		set_obj_text(self.object, text)
 	end
 else
 	signs_text_on_activate = function(self)
@@ -478,6 +598,8 @@ function homedecor.register_fence_with_sign(fencename, fencewithsignname)
 	minetest.register_node(":"..fencewithsignname, def_sign)
 	print("Registered "..fencename.." and "..fencewithsignname)
 end
+
+build_char_db()
 
 if minetest.setting_get("log_mods") then
 	minetest.log("action", S("signs loaded"))
