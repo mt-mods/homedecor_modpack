@@ -280,7 +280,7 @@ local homedecor_generate_line = function(s, lineno)
 		width = width + w + 1
 		if width > max_line_w then
 			xpos = start_xpos
-			ypos = ypos + LINE_HEIGHT
+			ypos = ypos + (LINE_HEIGHT * 1.05)
 			width = 0
 			lineno = lineno + 1
 		end
