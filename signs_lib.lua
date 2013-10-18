@@ -308,7 +308,7 @@ minetest.register_entity(":signs:text", {
 })
 
 -- CONSTANTS
-local SIGN_WITH = 110
+local SIGN_WIDTH = 110
 local SIGN_PADDING = 8
 
 local LINE_LENGTH = 16
@@ -328,21 +328,25 @@ homedecor.create_lines = function(text)
 end
 
 homedecor.generate_texture = function(lines)
-    local texture = "[combine:"..SIGN_WITH.."x"..SIGN_WITH
+    local texture = { ("[combine:%dx%d"):format(SIGN_WIDTH, SIGN_WIDTH) }
     local ypos = 12
     for i = 1, #lines do
-        texture = texture..homedecor.generate_line(lines[i], ypos)
-        ypos = ypos + LINE_HEIGHT
+        local linetex, yp = homedecor.generate_line(lines[i], ypos)
+        table.insert(texture, linetex)
+        ypos = yp + LINE_HEIGHT
     end
-    return texture
+    return table.concat(texture, "")
 end
+
+local math_max = math.max
 
 homedecor.generate_line = function(s, ypos)
     local i = 1
     local parsed = {}
     local width = 0
+    local maxw = 0
     local chars = 0
-    while chars < max_chars and i <= #s do
+    while i <= #s do
         local file = nil
         if charmap[s:sub(i, i)] ~= nil then
             file = charmap[s:sub(i, i)]
@@ -356,19 +360,31 @@ homedecor.generate_line = function(s, ypos)
         end
         if file ~= nil then
             width = width + CHAR_WIDTH
+            maxw = math_max(width, maxw)
+			chars = chars + 1
+			if chars > max_chars then
+				width = 0
+			end
             table.insert(parsed, file)
-            chars = chars + 1
         end
     end
-    width = width - 1
+    maxw = maxw - 1
 
-    local texture = ""
-    local xpos = math.floor((SIGN_WITH - 2 * SIGN_PADDING - width) / 2 + SIGN_PADDING)
+    local texture = { }
+    local start_xpos = math.floor((SIGN_WIDTH - 2 * SIGN_PADDING - maxw) / 2 + SIGN_PADDING)
+    local xpos = start_xpos
+    local linepos = 0
     for i = 1, #parsed do
-        texture = texture..":"..xpos..","..ypos.."="..parsed[i]..".png"
+        table.insert(texture, (":%d,%d=%s.png"):format(xpos, ypos, parsed[i]))
         xpos = xpos + CHAR_WIDTH + 1
+        linepos = linepos + 1
+        if linepos > max_chars then
+			xpos = start_xpos
+			linepos = 0
+			ypos = ypos + LINE_HEIGHT
+		end
     end
-    return texture
+    return table.concat(texture, ""), ypos
 end
 
 local function copy ( t )
