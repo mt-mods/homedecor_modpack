@@ -55,6 +55,37 @@ local charwidth = { }
 -- File to cache the font size to.
 local CHARDB_FILE = minetest.get_worldpath().."/homedecor_chardb"
 
+local function check_random_chars()
+	for i = 1, 5 do
+		local c = math.random(32, 126)
+		local filename = FONT_FMT:format(TP, c)
+		local f = io.open(filename)
+
+		-- File does not exist (or cannot be read, or ...).
+		-- Just assume it's different.
+		if not f then return true end
+
+		local w, h = read_png_size(f)
+		f:close()
+
+		-- File is not a PNG... wut?
+		-- Just assume it's different.
+		if not (w and h) then return true end
+
+		local ch = string.char(c)
+		if  (not charwidth[ch])                     -- Char is not cached.
+		 or (charwidth[ch] ~= w)                    -- Width differs.
+		 or (LINE_HEIGHT and (LINE_HEIGHT ~= h))    -- Height differs
+		 then
+			-- In any case, file is different; rebuild cache.
+			return true
+		end
+	end
+	-- OK, our superficial check passed. If the textures are messed up,
+	-- it's not our problem.
+	return false
+end
+
 local function build_char_db()
 
 	LINE_HEIGHT = nil
@@ -72,13 +103,14 @@ local function build_char_db()
 	if cdbf then
 		minetest.log("info", "[homedecor] Reading cached character database.")
 		for line in cdbf:lines() do
-			local ch, w = line:match("(0x[0-9A-Fa-f]+)%s+([0-9][0-9]+)")
+			local ch, w = line:match("(0x[0-9A-Fa-f]+)%s+([0-9][0-9]*)")
 			if ch and w then
-				local c = tonumber(ch, 16)
+				local c = tonumber(ch)
 				w = tonumber(w)
+				print("*** DEBUG: c="..tostring(c)..", w="..tostring(w))
 				if c and w then
 					if c == 0 then
-						LINE_HEIGHT = h
+						LINE_HEIGHT = w
 					elseif (c >= 32) and (c < 127) then
 						charwidth[string.char(c)] = w
 						total_width = total_width + w
@@ -93,8 +125,21 @@ local function build_char_db()
 			-- XXX: Remember to change similar lines below if this changes.
 			SIGN_WIDTH = math.floor((total_width / char_count) * 16)
 			SIGN_PADDING = SIGN_WIDTH / 14 -- Totally arbitrary.
-			return
+
+			-- Check some random characters to see if the file on disk differs
+			-- from the cached one. If so, then ditch cached data and rebuild
+			-- (font probably was changed).
+			print("*** DEBUG: Randomly checking cache.")
+			if not check_random_chars() then
+				print("*** DEBUG: yey all ok.")
+				return
+			end
+			print("*** DEBUG: something's fucked up; rebuild cache.")
 		else
+			print("[homedecor] Warning:"
+				.." Could not find font line height in cached DB."
+				.." Trying brute force."
+			)
 			minetest.log("warning", "[homedecor]"
 				.." Could not find font line height in cached DB."
 				.." Trying brute force."
@@ -103,6 +148,8 @@ local function build_char_db()
 	end
 
 	-- OK, something went wrong... try brute force loading from texture files.
+
+	charwidth = { }
 
 	total_width = 0
 	char_count = 0
