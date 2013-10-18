@@ -207,24 +207,24 @@ local function build_char_db()
 end
 
 local signs = {
-    {delta = {x =  0,     y = 0, z =  0.399}, yaw = 0},
-    {delta = {x =  0.399, y = 0, z =  0    }, yaw = math.pi / -2},
-    {delta = {x =  0,     y = 0, z = -0.399}, yaw = math.pi},
-    {delta = {x = -0.399, y = 0, z =  0    }, yaw = math.pi / 2},
+    {delta = {x =  0,     y = 0.15, z =  0.399}, yaw = 0},
+    {delta = {x =  0.399, y = 0.15, z =  0    }, yaw = math.pi / -2},
+    {delta = {x =  0,     y = 0.15, z = -0.399}, yaw = math.pi},
+    {delta = {x = -0.399, y = 0.15, z =  0    }, yaw = math.pi / 2},
 }
 
 local signs_yard = {
     {delta = {x =  0,     y = 0.15, z = -0.05}, yaw = 0},
-    {delta = {x = -0.05,  y = 0.15, z =  0}, yaw = math.pi / -2},
+    {delta = {x = -0.05,  y = 0.15, z =  0   }, yaw = math.pi / -2},
     {delta = {x =  0,     y = 0.15, z =  0.05}, yaw = math.pi},
-    {delta = {x =  0.05,  y = 0.15, z =  0}, yaw = math.pi / 2},
+    {delta = {x =  0.05,  y = 0.15, z =  0   }, yaw = math.pi / 2},
 }
 
 local signs_post = {
-    {delta = {x = 0, y = 0, z = -0.226}, yaw = 0},
-    {delta = {x = -0.226, y = 0, z = 0}, yaw = math.pi / -2},
-    {delta = {x = 0, y = 0, z = 0.226}, yaw = math.pi},
-    {delta = {x = 0.226, y = 0, z = 0}, yaw = math.pi / 2},
+    {delta = {x = 0,      y = 0.15, z = -0.226}, yaw = 0},
+    {delta = {x = -0.226, y = 0.15, z = 0     }, yaw = math.pi / -2},
+    {delta = {x = 0,      y = 0.15, z = 0.226 }, yaw = math.pi},
+    {delta = {x = 0.226,  y = 0.15, z = 0     }, yaw = math.pi / 2},
 }
 
 local sign_groups = {choppy=2, dig_immediate=2}
