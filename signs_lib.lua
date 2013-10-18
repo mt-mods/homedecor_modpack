@@ -1,5 +1,47 @@
 -- Font: 04.jp.org
 
+-- CONSTANTS
+
+local SIGN_WIDTH = 110
+local SIGN_PADDING = 8
+
+local LINE_LENGTH = 16
+local NUMBER_OF_LINES = 4
+
+local LINE_HEIGHT = 14
+local CHAR_WIDTH = 5
+
+local signs = {
+    {delta = {x = -0.06, y = 0, z = 0.399}, yaw = 0},
+    {delta = {x = 0.399, y = 0, z = 0.06}, yaw = math.pi / -2},
+    {delta = {x = 0.06, y = 0, z = -0.399}, yaw = math.pi},
+    {delta = {x = -0.399, y = 0, z = -0.06}, yaw = math.pi / 2},
+}
+
+local signs_yard = {
+    {delta = {x = -0.06, y = 0, z = -0.05}, yaw = 0},
+    {delta = {x = -0.05, y = 0, z = 0.06}, yaw = math.pi / -2},
+    {delta = {x = 0.06, y = 0, z = 0.05}, yaw = math.pi},
+    {delta = {x = 0.05, y = 0, z = -0.06}, yaw = math.pi / 2},
+}
+
+local signs_post = {
+    {delta = {x = -0.06, y = 0, z = -0.226}, yaw = 0},
+    {delta = {x = -0.226, y = 0, z = 0.06}, yaw = math.pi / -2},
+    {delta = {x = 0.06, y = 0, z = 0.226}, yaw = math.pi},
+    {delta = {x = 0.226, y = 0, z = -0.06}, yaw = math.pi / 2},
+}
+
+local sign_groups = {choppy=2, dig_immediate=2}
+
+local fences_with_sign = { }
+
+-- Misc variables
+
+local chars_file = io.open(minetest.get_modpath("homedecor").."/characters", "r")
+local charmap = {}
+local max_chars = 16
+
 -- Boilerplate to support localized strings if intllib mod is installed.
 local S
 if homedecor.intllib_modpath then
@@ -9,10 +51,92 @@ else
     S = function ( s ) return s end
 end
 
+-- some local helper functions
+
+local homedecor_create_lines = function(text)
+	local tab = {}
+	for line in text:gmatch("([^|]+)|?") do
+		line = line:gsub("^%s*(.*)%s*$", "%1") -- Trim whitespace
+		table.insert(tab, line)
+		if #tab >= NUMBER_OF_LINES then break end
+	end
+	return tab
+end
+
+local math_max = math.max
+
+local homedecor_generate_line = function(s, ypos)
+    local i = 1
+    local parsed = {}
+    local width = 0
+    local maxw = 0
+    local chars = 0
+    while i <= #s do
+        local file = nil
+        if charmap[s:sub(i, i)] ~= nil then
+            file = charmap[s:sub(i, i)]
+            i = i + 1
+        elseif i < #s and charmap[s:sub(i, i + 1)] ~= nil then
+            file = charmap[s:sub(i, i + 1)]
+            i = i + 2
+        else
+            print("[signs] W: unknown symbol in '"..s.."' at "..i.." (probably "..s:sub(i, i)..")")
+            i = i + 1
+        end
+        if file ~= nil then
+            width = width + CHAR_WIDTH
+            maxw = math_max(width, maxw)
+			chars = chars + 1
+			if chars > max_chars then
+				width = 0
+			end
+            table.insert(parsed, file)
+        end
+    end
+    maxw = maxw - 1
+
+    local texture = { }
+    local start_xpos = math.floor((SIGN_WIDTH - 2 * SIGN_PADDING - maxw) / 2 + SIGN_PADDING)
+    local xpos = start_xpos
+    local linepos = 0
+    for i = 1, #parsed do
+        table.insert(texture, (":%d,%d=%s.png"):format(xpos, ypos, parsed[i]))
+        xpos = xpos + CHAR_WIDTH + 1
+        linepos = linepos + 1
+        if linepos > max_chars then
+			xpos = start_xpos
+			linepos = 0
+			ypos = ypos + LINE_HEIGHT
+		end
+    end
+    return table.concat(texture, ""), ypos
+end
+
+local function copy ( t )
+    local nt = { };
+    for k, v in pairs(t) do
+        if type(v) == "table" then
+            nt[k] = copy(v)
+        else
+            nt[k] = v
+        end
+    end
+    return nt
+end
+
+local homedecor_generate_texture = function(lines)
+    local texture = { ("[combine:%dx%d"):format(SIGN_WIDTH, SIGN_WIDTH) }
+    local ypos = 12
+    for i = 1, #lines do
+        local linetex, yp = homedecor_generate_line(lines[i], ypos)
+        table.insert(texture, linetex)
+        ypos = yp + LINE_HEIGHT
+    end
+    return table.concat(texture, "")
+end
+
 -- load characters map
-local chars_file = io.open(minetest.get_modpath("homedecor").."/characters", "r")
-local charmap = {}
-local max_chars = 16
+
 if not chars_file then
     print("[signs] "..S("E: character map file not found"))
 else
@@ -26,31 +150,6 @@ else
         charmap[char] = img
     end
 end
-
-local signs = {
-    {delta = {x = 0, y = 0, z = 0.399}, yaw = 0},
-    {delta = {x = 0.399, y = 0, z = 0}, yaw = math.pi / -2},
-    {delta = {x = 0, y = 0, z = -0.399}, yaw = math.pi},
-    {delta = {x = -0.399, y = 0, z = 0}, yaw = math.pi / 2},
-}
-
-local signs_yard = {
-    {delta = {x = 0, y = 0, z = -0.05}, yaw = 0},
-    {delta = {x = -0.05, y = 0, z = 0}, yaw = math.pi / -2},
-    {delta = {x = 0, y = 0, z = 0.05}, yaw = math.pi},
-    {delta = {x = 0.05, y = 0, z = 0}, yaw = math.pi / 2},
-}
-
-local signs_post = {
-    {delta = {x = 0, y = 0, z = -0.226}, yaw = 0},
-    {delta = {x = -0.226, y = 0, z = 0}, yaw = math.pi / -2},
-    {delta = {x = 0, y = 0, z = 0.226}, yaw = math.pi},
-    {delta = {x = 0.226, y = 0, z = 0}, yaw = math.pi / 2},
-}
-
-local sign_groups = {choppy=2, dig_immediate=2}
-
-local fences_with_sign = { }
 
 homedecor.construct_sign = function(pos)
     local meta = minetest.get_meta(pos)
@@ -70,14 +169,14 @@ end
 homedecor.update_sign = function(pos, fields)
     local meta = minetest.get_meta(pos)
 	if fields then
-		meta:set_string("infotext", table.concat(homedecor.create_lines(fields.text), "\n"))
+		meta:set_string("infotext", table.concat(homedecor_create_lines(fields.text), "\n"))
 		meta:set_string("text", fields.text)
 	end
     local text = meta:get_string("text")
     local objects = minetest.get_objects_inside_radius(pos, 0.5)
     for _, v in ipairs(objects) do
         if v:get_entity_name() == "signs:text" then
-            v:set_properties({textures={homedecor.generate_texture(homedecor.create_lines(text))}})
+            v:set_properties({textures={homedecor_generate_texture(homedecor_create_lines(text))}})
 			return
         end
     end
@@ -290,7 +389,7 @@ if not homedecor.disable_signs then
 	signs_text_on_activate = function(self)
 		local meta = minetest.get_meta(self.object:getpos())
 		local text = meta:get_string("text")
-		self.object:set_properties({textures={homedecor.generate_texture(homedecor.create_lines(text))}})
+		self.object:set_properties({textures={homedecor_generate_texture(homedecor_create_lines(text))}})
 	end
 else
 	signs_text_on_activate = function(self)
@@ -307,97 +406,7 @@ minetest.register_entity(":signs:text", {
 	on_activate = signs_text_on_activate,
 })
 
--- CONSTANTS
-local SIGN_WIDTH = 110
-local SIGN_PADDING = 8
-
-local LINE_LENGTH = 16
-local NUMBER_OF_LINES = 4
-
-local LINE_HEIGHT = 14
-local CHAR_WIDTH = 5
-
-homedecor.create_lines = function(text)
-	local tab = {}
-	for line in text:gmatch("([^|]+)|?") do
-		line = line:gsub("^%s*(.*)%s*$", "%1") -- Trim whitespace
-		table.insert(tab, line)
-		if #tab >= NUMBER_OF_LINES then break end
-	end
-	return tab
-end
-
-homedecor.generate_texture = function(lines)
-    local texture = { ("[combine:%dx%d"):format(SIGN_WIDTH, SIGN_WIDTH) }
-    local ypos = 12
-    for i = 1, #lines do
-        local linetex, yp = homedecor.generate_line(lines[i], ypos)
-        table.insert(texture, linetex)
-        ypos = yp + LINE_HEIGHT
-    end
-    return table.concat(texture, "")
-end
-
-local math_max = math.max
-
-homedecor.generate_line = function(s, ypos)
-    local i = 1
-    local parsed = {}
-    local width = 0
-    local maxw = 0
-    local chars = 0
-    while i <= #s do
-        local file = nil
-        if charmap[s:sub(i, i)] ~= nil then
-            file = charmap[s:sub(i, i)]
-            i = i + 1
-        elseif i < #s and charmap[s:sub(i, i + 1)] ~= nil then
-            file = charmap[s:sub(i, i + 1)]
-            i = i + 2
-        else
-            print("[signs] W: unknown symbol in '"..s.."' at "..i.." (probably "..s:sub(i, i)..")")
-            i = i + 1
-        end
-        if file ~= nil then
-            width = width + CHAR_WIDTH
-            maxw = math_max(width, maxw)
-			chars = chars + 1
-			if chars > max_chars then
-				width = 0
-			end
-            table.insert(parsed, file)
-        end
-    end
-    maxw = maxw - 1
-
-    local texture = { }
-    local start_xpos = math.floor((SIGN_WIDTH - 2 * SIGN_PADDING - maxw) / 2 + SIGN_PADDING)
-    local xpos = start_xpos
-    local linepos = 0
-    for i = 1, #parsed do
-        table.insert(texture, (":%d,%d=%s.png"):format(xpos, ypos, parsed[i]))
-        xpos = xpos + CHAR_WIDTH + 1
-        linepos = linepos + 1
-        if linepos > max_chars then
-			xpos = start_xpos
-			linepos = 0
-			ypos = ypos + LINE_HEIGHT
-		end
-    end
-    return table.concat(texture, ""), ypos
-end
-
-local function copy ( t )
-    local nt = { };
-    for k, v in pairs(t) do
-        if type(v) == "table" then
-            nt[k] = copy(v)
-        else
-            nt[k] = v
-        end
-    end
-    return nt
-end
+-- And the good stuff here! :-)
 
 function homedecor.register_fence_with_sign(fencename, fencewithsignname)
     local def = minetest.registered_nodes[fencename]
