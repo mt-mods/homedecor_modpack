@@ -65,7 +65,7 @@ end
 
 local math_max = math.max
 
-local homedecor_generate_line = function(s, ypos)
+local homedecor_generate_line = function(s, lineno)
     local i = 1
     local parsed = {}
     local width = 0
@@ -100,16 +100,18 @@ local homedecor_generate_line = function(s, ypos)
     local xpos = start_xpos
     local linepos = 0
     for i = 1, #parsed do
+		if lineno >= NUMBER_OF_LINES then break end
+		local ypos = 12 + (LINE_HEIGHT * lineno)
         table.insert(texture, (":%d,%d=%s.png"):format(xpos, ypos, parsed[i]))
         xpos = xpos + CHAR_WIDTH + 1
         linepos = linepos + 1
         if linepos > max_chars then
 			xpos = start_xpos
 			linepos = 0
-			ypos = ypos + LINE_HEIGHT
+			lineno = lineno + 1
 		end
     end
-    return table.concat(texture, ""), ypos
+    return table.concat(texture, ""), lineno
 end
 
 local function copy ( t )
@@ -126,11 +128,12 @@ end
 
 local homedecor_generate_texture = function(lines)
     local texture = { ("[combine:%dx%d"):format(SIGN_WIDTH, SIGN_WIDTH) }
-    local ypos = 12
+    local lineno = 0
     for i = 1, #lines do
-        local linetex, yp = homedecor_generate_line(lines[i], ypos)
+		if lineno >= NUMBER_OF_LINES then break end
+        local linetex, ln = homedecor_generate_line(lines[i], lineno)
         table.insert(texture, linetex)
-        ypos = yp + LINE_HEIGHT
+        lineno = ln + 1
     end
     return table.concat(texture, "")
 end
