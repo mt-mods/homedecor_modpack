@@ -10,8 +10,6 @@ end
 
 -- CONSTANTS
 
-local NUMBER_OF_LINES = 6
-
 local MP = minetest.get_modpath("homedecor")
 
 -- Used by `build_char_db' to locate the file.
@@ -23,7 +21,7 @@ local FONT_FMT_SIMPLE = "hdf_%02x.png"
 -- Path to the textures.
 local TP = MP.."/textures"
 
-local TEXT_SCALE = {x=0.9, y=0.7}
+local TEXT_SCALE = {x=0.9, y=0.5}
 
 -- Lots of overkill here. KISS advocates, go away, shoo! ;) -- kaeza
 
@@ -47,6 +45,17 @@ end
 local LINE_HEIGHT
 local SIGN_WIDTH
 local SIGN_PADDING
+
+-- Size of the canvas, in characters.
+-- Please note that CHARS_PER_LINE is multiplied by the average character
+-- width to get the total width of the canvas, so for proportional fonts,
+-- either more or fewer characters may fit on a line.
+local CHARS_PER_LINE = 30
+local NUMBER_OF_LINES = 6
+
+-- Separation between lines. 1.0 means no separation (ypos offset by text
+-- height), 2.0 is one "line" (ypos offset by two times text height), etc.
+local LINE_SEP = 1.2
 
 -- This holds the individual character widths.
 -- Indexed by the actual character (e.g. charwidth["A"])
@@ -121,18 +130,12 @@ local function build_char_db()
 		end
 		cdbf:close()
 		if LINE_HEIGHT then
-			-- XXX: Is there a better way to calc this?
-			-- XXX: Remember to change similar lines below if this changes.
-			SIGN_WIDTH = math.floor((total_width / char_count) * 16)
-			SIGN_PADDING = SIGN_WIDTH / 14 -- Totally arbitrary.
-
 			-- Check some random characters to see if the file on disk differs
 			-- from the cached one. If so, then ditch cached data and rebuild
 			-- (font probably was changed).
 			print("*** DEBUG: Randomly checking cache.")
 			if not check_random_chars() then
 				print("*** DEBUG: yey all ok.")
-				return
 			end
 			print("*** DEBUG: something's fucked up; rebuild cache.")
 		else
@@ -147,36 +150,41 @@ local function build_char_db()
 		end
 	end
 
-	-- OK, something went wrong... try brute force loading from texture files.
+	if not LINE_HEIGHT then
+		-- OK, something went wrong... try brute force loading from texture files.
 
-	charwidth = { }
+		charwidth = { }
 
-	total_width = 0
-	char_count = 0
-	LINE_HEIGHT = nil
+		total_width = 0
+		char_count = 0
+		LINE_HEIGHT = nil
 
-	for c = 32, 126 do
-		local filename = FONT_FMT:format(TP, c)
-		local f = io.open(filename)
-		if f then
-			local ch = string.char(c)
-			local w, h = read_png_size(f)
-			f:close()
-			if w and h then
-				charwidth[ch] = w
-				total_width = total_width + w
-				char_count = char_count + 1
-				if not LINE_HEIGHT then LINE_HEIGHT = h end
+		for c = 32, 126 do
+			local filename = FONT_FMT:format(TP, c)
+			local f = io.open(filename)
+			if f then
+				local ch = string.char(c)
+				local w, h = read_png_size(f)
+				f:close()
+				if w and h then
+					charwidth[ch] = w
+					total_width = total_width + w
+					char_count = char_count + 1
+					if not LINE_HEIGHT then LINE_HEIGHT = h end
+				end
 			end
 		end
+
+		if not LINE_HEIGHT then
+			error("Could not find font line height.")
+		end
+
 	end
 
-	if not LINE_HEIGHT then
-		error("Could not find font line height.")
-	end
-
-	SIGN_WIDTH = math.floor((total_width / char_count) * 16)
-	SIGN_PADDING = SIGN_WIDTH / 14 -- Totally arbitrary.
+	-- XXX: Is there a better way to calc this?
+	-- XXX: Remember to change similar lines below if this changes.
+	SIGN_WIDTH = math.floor((total_width / char_count) * CHARS_PER_LINE)
+	SIGN_PADDING = SIGN_WIDTH / 16 -- Totally arbitrary.
 
 	-- Try to save cached list back to disk.
 
@@ -206,10 +214,10 @@ local signs = {
 }
 
 local signs_yard = {
-    {delta = {x =  0,     y = 0.05, z = -0.05}, yaw = 0},
-    {delta = {x = -0.05,  y = 0.05, z =  0}, yaw = math.pi / -2},
-    {delta = {x =  0,     y = 0.05, z =  0.05}, yaw = math.pi},
-    {delta = {x =  0.05,  y = 0.05, z =  0}, yaw = math.pi / 2},
+    {delta = {x =  0,     y = 0.15, z = -0.05}, yaw = 0},
+    {delta = {x = -0.05,  y = 0.15, z =  0}, yaw = math.pi / -2},
+    {delta = {x =  0,     y = 0.15, z =  0.05}, yaw = math.pi},
+    {delta = {x =  0.05,  y = 0.15, z =  0}, yaw = math.pi / 2},
 }
 
 local signs_post = {
@@ -280,7 +288,7 @@ local homedecor_generate_line = function(s, lineno)
 		width = width + w + 1
 		if width > max_line_w then
 			xpos = start_xpos
-			ypos = ypos + (LINE_HEIGHT * 1.05)
+			ypos = ypos + (LINE_HEIGHT * LINE_SEP)
 			width = 0
 			lineno = lineno + 1
 		end
@@ -303,7 +311,7 @@ local function copy ( t )
 end
 
 local homedecor_generate_texture = function(lines)
-    local texture = { ("[combine:%dx%d"):format(SIGN_WIDTH, SIGN_WIDTH) }
+    local texture = { ("[combine:%dx%d"):format(SIGN_WIDTH, LINE_HEIGHT * NUMBER_OF_LINES * LINE_SEP) }
     local lineno = 0
     for i = 1, #lines do
 		if lineno >= NUMBER_OF_LINES then break end
