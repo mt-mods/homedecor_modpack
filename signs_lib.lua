@@ -116,7 +116,6 @@ local function build_char_db()
 			if ch and w then
 				local c = tonumber(ch)
 				w = tonumber(w)
-				print("*** DEBUG: c="..tostring(c)..", w="..tostring(w))
 				if c and w then
 					if c == 0 then
 						LINE_HEIGHT = w
@@ -135,14 +134,13 @@ local function build_char_db()
 			-- (font probably was changed).
 			print("*** DEBUG: Randomly checking cache.")
 			if not check_random_chars() then
-				print("*** DEBUG: yey all ok.")
+				LINE_HEIGHT = nil
+				minetest.log("info", "[homedecor]"
+					.." Font seems to have changed."
+					.." Rebuilding cache."
+				)
 			end
-			print("*** DEBUG: something's fucked up; rebuild cache.")
 		else
-			print("[homedecor] Warning:"
-				.." Could not find font line height in cached DB."
-				.." Trying brute force."
-			)
 			minetest.log("warning", "[homedecor]"
 				.." Could not find font line height in cached DB."
 				.." Trying brute force."
@@ -157,7 +155,6 @@ local function build_char_db()
 
 		total_width = 0
 		char_count = 0
-		LINE_HEIGHT = nil
 
 		for c = 32, 126 do
 			local filename = FONT_FMT:format(TP, c)
