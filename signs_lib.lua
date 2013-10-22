@@ -103,7 +103,7 @@ local function build_char_db()
 	local cdbf = io.open(CHARDB_FILE, "rt")
 
 	if cdbf then
-		minetest.log("info", "[homedecor] Reading cached character database.")
+		minetest.log("info", "[homedecor] "..S("Reading cached character database."))
 		for line in cdbf:lines() do
 			local ch, w = line:match("(0x[0-9A-Fa-f]+)%s+([0-9][0-9]*)")
 			if ch and w then
@@ -125,18 +125,15 @@ local function build_char_db()
 			-- Check some random characters to see if the file on disk differs
 			-- from the cached one. If so, then ditch cached data and rebuild
 			-- (font probably was changed).
-			print("*** DEBUG: Randomly checking cache.")
 			if not check_random_chars() then
 				LINE_HEIGHT = nil
-				minetest.log("info", "[homedecor]"
-					.." Font seems to have changed."
-					.." Rebuilding cache."
+				minetest.log("info", "[homedecor] "
+					..S("Font seems to have changed. Rebuilding cache.")
 				)
 			end
 		else
-			minetest.log("warning", "[homedecor]"
-				.." Could not find font line height in cached DB."
-				.." Trying brute force."
+			minetest.log("warning", "[homedecor] "
+				..S("Could not find font line height in cached DB. Trying brute force.")
 			)
 		end
 	end
@@ -641,7 +638,7 @@ function homedecor.register_fence_with_sign(fencename, fencewithsignname)
     def_sign.drop = "default:sign_wall"
 	minetest.register_node(":"..fencename, def)
 	minetest.register_node(":"..fencewithsignname, def_sign)
-	print("Registered "..fencename.." and "..fencewithsignname)
+	print(S("Registered %s and %s"):format(fencename, fencewithsignname))
 end
 
 build_char_db()
