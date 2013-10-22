@@ -27,6 +27,7 @@ if homedecor.intllib_modpath then
 else
     S = function ( s ) return s end
 end
+homedecor.gettext = S
 
 local dbg = function(s)
 	if homedecor.debug == 1 then
