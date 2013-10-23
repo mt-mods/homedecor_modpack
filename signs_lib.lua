@@ -14,7 +14,7 @@ local FONT_FMT_SIMPLE = "hdf_%02x.png"
 -- Path to the textures.
 local TP = MP.."/textures"
 
-local TEXT_SCALE = {x=0.9, y=0.5}
+local TEXT_SCALE = {x=0.8, y=0.5}
 
 -- Lots of overkill here. KISS advocates, go away, shoo! ;) -- kaeza
 
@@ -37,7 +37,6 @@ end
 -- Set by build_char_db()
 local LINE_HEIGHT
 local SIGN_WIDTH
-local SIGN_PADDING
 
 -- Size of the canvas, in characters.
 -- Please note that CHARS_PER_LINE is multiplied by the average character
@@ -92,7 +91,6 @@ local function build_char_db()
 
 	LINE_HEIGHT = nil
 	SIGN_WIDTH = nil
-	SIGN_PADDING = nil
 
 	-- To calculate average char width.
 	local total_width = 0
@@ -169,9 +167,7 @@ local function build_char_db()
 	end
 
 	-- XXX: Is there a better way to calc this?
-	-- XXX: Remember to change similar lines below if this changes.
 	SIGN_WIDTH = math.floor((total_width / char_count) * CHARS_PER_LINE)
-	SIGN_PADDING = SIGN_WIDTH / 16 -- Totally arbitrary.
 
 	-- Try to save cached list back to disk.
 
@@ -239,17 +235,16 @@ local homedecor_generate_line = function(s, lineno)
 
 	local chars = { }
 
-	local max_line_w = SIGN_WIDTH - (SIGN_PADDING * 2)
-
 	-- We check which chars are available here.
 	for i = 1, #s do
 		local c = s:sub(i, i)
 		local w = charwidth[c]
 		if w then
 			width = width + w + 1
-			maxw = math_max(width, maxw)
-			if width >= max_line_w then
+			if width >= SIGN_WIDTH then
 				width = 0
+			else
+				maxw = math_max(width, maxw)
 			end
 			table.insert(chars, c)
 		end
@@ -259,7 +254,7 @@ local homedecor_generate_line = function(s, lineno)
 
 	-- Okay, we actually build the "line texture" here.
 
-	local start_xpos = math.floor((SIGN_WIDTH - 2 * SIGN_PADDING - maxw) / 2 + SIGN_PADDING)
+	local start_xpos = math.floor((SIGN_WIDTH - maxw) / 2)
 	local xpos = start_xpos
 	local texture = { }
 	local ypos = (LINE_HEIGHT * (lineno --[[+ 1]]))
@@ -273,7 +268,7 @@ local homedecor_generate_line = function(s, lineno)
 		table.insert(texture, (":%d,%d=%s"):format(xpos, ypos, tex))
 		xpos = xpos + w + 1
 		width = width + w + 1
-		if width > max_line_w then
+		if width > maxw then
 			xpos = start_xpos
 			ypos = ypos + (LINE_HEIGHT * LINE_SEP)
 			width = 0
