@@ -62,6 +62,7 @@ local charwidth = { }
 -- File to cache the font size to.
 local CHARDB_FILE = minetest.get_worldpath().."/homedecor_chardb"
 
+-- Returns true if any file differs from cached one.
 local function check_random_chars()
 	for i = 1, 5 do
 		local c = math.random(32, 126)
@@ -120,7 +121,7 @@ local function build_char_db()
 			-- Check some random characters to see if the file on disk differs
 			-- from the cached one. If so, then ditch cached data and rebuild
 			-- (font probably was changed).
-			if not check_random_chars() then
+			if check_random_chars() then
 				LINE_HEIGHT = nil
 				minetest.log("info", "[homedecor] "
 					..S("Font seems to have changed. Rebuilding cache.")
