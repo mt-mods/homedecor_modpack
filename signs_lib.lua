@@ -60,7 +60,7 @@ local function check_random_chars()
 	for i = 1, 5 do
 		local c = math.random(32, 126)
 		local filename = FONT_FMT:format(TP, c)
-		local f = io.open(filename)
+		local f = io.open(filename, "rb")
 
 		-- File does not exist (or cannot be read, or ...).
 		-- Just assume it's different.
@@ -146,7 +146,7 @@ local function build_char_db()
 
 		for c = 32, 126 do
 			local filename = FONT_FMT:format(TP, c)
-			local f = io.open(filename)
+			local f = io.open(filename, "rb")
 			if f then
 				local ch = string.char(c)
 				local w, h = read_png_size(f)
