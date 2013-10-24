@@ -23,14 +23,20 @@ local PNG_HDR = string.char(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
 -- Read the image size from a PNG file.
 -- Returns image_w, image_h.
 -- Only the LSB is read from each field!
-local function read_png_size(f)
+local function read_char_size(c)
+	local filename = FONT_FMT:format(TP, c)
+	local f = io.open(filename, "rb")
 	f:seek("set", 0x0)
 	local hdr = f:read(8)
-	if hdr ~= PNG_HDR then return end
+	if hdr ~= PNG_HDR then
+		f:close()
+		return
+	end
 	f:seek("set", 0x13)
 	local ws = f:read(1)
 	f:seek("set", 0x17)
 	local hs = f:read(1)
+	f:close()
 	return ws:byte(), hs:byte()
 end
 
@@ -59,18 +65,9 @@ local CHARDB_FILE = minetest.get_worldpath().."/homedecor_chardb"
 local function check_random_chars()
 	for i = 1, 5 do
 		local c = math.random(32, 126)
-		local filename = FONT_FMT:format(TP, c)
-		local f = io.open(filename, "rb")
-
-		-- File does not exist (or cannot be read, or ...).
-		-- Just assume it's different.
-		if not f then return true end
-
-		local w, h = read_png_size(f)
-		f:close()
+		local w, h = read_char_size(c)
 
 		-- File is not a PNG... wut?
-		-- Just assume it's different.
 		if not (w and h) then return true end
 
 		local ch = string.char(c)
@@ -145,18 +142,13 @@ local function build_char_db()
 		char_count = 0
 
 		for c = 32, 126 do
-			local filename = FONT_FMT:format(TP, c)
-			local f = io.open(filename, "rb")
-			if f then
+			local w, h = read_char_size(c)
+			if w and h then
 				local ch = string.char(c)
-				local w, h = read_png_size(f)
-				f:close()
-				if w and h then
-					charwidth[ch] = w
-					total_width = total_width + w
-					char_count = char_count + 1
-					if not LINE_HEIGHT then LINE_HEIGHT = h end
-				end
+				charwidth[ch] = w
+				total_width = total_width + w
+				char_count = char_count + 1
+				if not LINE_HEIGHT then LINE_HEIGHT = h end
 			end
 		end
 
