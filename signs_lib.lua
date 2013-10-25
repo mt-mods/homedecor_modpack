@@ -245,7 +245,7 @@ local function make_line_texture(line, lineno)
 			local w = charwidth[c]
 			if w then
 				width = width + w + 1
-				if width >= SIGN_WIDTH then
+				if width >= (SIGN_WIDTH - charwidth[" "]) then
 					width = 0
 				else
 					maxw = math_max(width, maxw)
