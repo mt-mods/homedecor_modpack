@@ -328,7 +328,8 @@ end
 homedecor.destruct_sign = function(pos)
     local objects = minetest.get_objects_inside_radius(pos, 0.5)
     for _, v in ipairs(objects) do
-        if v:get_entity_name() == "signs:text" then
+		local e = v:get_luaentity()
+        if e and e.name == "signs:text" then
             v:remove()
         end
     end
@@ -352,7 +353,8 @@ homedecor.update_sign = function(pos, fields)
     local text = meta:get_string("text")
     local objects = minetest.get_objects_inside_radius(pos, 0.5)
     for _, v in ipairs(objects) do
-        if v:get_entity_name() == "signs:text" then
+		local e = v:get_luaentity()
+		if e and e.name == "signs:text" then
 			set_obj_text(v, text)
 			return
         end
