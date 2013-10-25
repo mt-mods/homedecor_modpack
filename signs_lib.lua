@@ -209,65 +209,80 @@ local fences_with_sign = { }
 
 -- some local helper functions
 
-local homedecor_create_lines = function(text)
-	local tab = {}
-	for line in text:gmatch("([^|]+)|?") do
-		line = line:gsub("^%s*(.*)%s*$", "%1") -- Trim whitespace
-		table.insert(tab, line)
-		if #tab >= NUMBER_OF_LINES then break end
+local function split_lines_and_words(text)
+	local lines = { }
+	local line = { }
+	for word in text:gmatch("%S+") do
+		if word == "|" then
+			table.insert(lines, line)
+			if #lines >= NUMBER_OF_LINES then break end
+			line = { }
+		elseif word == "\\|" then
+			table.insert(line, "|")
+		else
+			table.insert(line, word)
+		end
 	end
-	return tab
+	table.insert(lines, line)
+	return lines
 end
 
 local math_max = math.max
 
-local homedecor_generate_line = function(s, lineno)
+local function make_line_texture(line, lineno)
 
 	local width = 0
 	local maxw = 0
 
-	local chars = { }
+	local words = { }
 
 	-- We check which chars are available here.
-	for i = 1, #s do
-		local c = s:sub(i, i)
-		local w = charwidth[c]
-		if w then
-			width = width + w + 1
-			if width >= SIGN_WIDTH then
-				width = 0
-			else
-				maxw = math_max(width, maxw)
+	for word_i, word in ipairs(line) do
+		local chars = { }
+		local ch_offs = 0
+		for i = 1, #word do
+			local c = word:sub(i, i)
+			local w = charwidth[c]
+			if w then
+				width = width + w + 1
+				if width >= SIGN_WIDTH then
+					width = 0
+				else
+					maxw = math_max(width, maxw)
+				end
+				table.insert(chars, {
+					off=ch_offs,
+					tex=FONT_FMT_SIMPLE:format(c:byte())
+				})
+				ch_offs = ch_offs + w + 1
 			end
-			table.insert(chars, c)
 		end
+		width = width + charwidth[" "] + 1
+		maxw = math_max(width, maxw)
+		table.insert(words, { chars=chars, w=ch_offs })
 	end
-
-	maxw = maxw - 1
 
 	-- Okay, we actually build the "line texture" here.
 
-	local start_xpos = math.floor((SIGN_WIDTH - maxw) / 2)
-	local xpos = start_xpos
 	local texture = { }
-	local ypos = (LINE_HEIGHT * (lineno --[[+ 1]]))
 
-	width = 0
+	local start_xpos = math.floor((SIGN_WIDTH - maxw) / 2)
 
-	for i = 1, #s do
-		local c = s:sub(i, i)
-		local w = charwidth[c]
-		local tex = FONT_FMT_SIMPLE:format(c:byte())
-		table.insert(texture, (":%d,%d=%s"):format(xpos, ypos, tex))
-		xpos = xpos + w + 1
-		width = width + w + 1
-		if width > maxw then
+	local xpos = start_xpos
+	local ypos = (LINE_HEIGHT * lineno)
+
+	for word_i, word in ipairs(words) do
+		local xoffs = (xpos - start_xpos)
+		if (xoffs > 0) and ((xoffs + word.w) > maxw) then
 			xpos = start_xpos
 			ypos = ypos + (LINE_HEIGHT * LINE_SEP)
-			width = 0
 			lineno = lineno + 1
+			if lineno >= NUMBER_OF_LINES then break end
 		end
-		if lineno >= NUMBER_OF_LINES then break end
+		for ch_i, ch in ipairs(word.chars) do
+			table.insert(texture, (":%d,%d=%s"):format(xpos + ch.off, ypos, ch.tex))
+		end
+		xpos = xpos + word.w + charwidth[" "]
 	end
 
 	return table.concat(texture, ""), lineno
@@ -285,21 +300,21 @@ local function copy ( t )
     return nt
 end
 
-local homedecor_generate_texture = function(lines)
-    local texture = { ("[combine:%dx%d"):format(SIGN_WIDTH, LINE_HEIGHT * NUMBER_OF_LINES * LINE_SEP) }
-    local lineno = 0
-    for i = 1, #lines do
+local function make_sign_texture(lines)
+	local texture = { ("[combine:%dx%d"):format(SIGN_WIDTH, LINE_HEIGHT * NUMBER_OF_LINES * LINE_SEP) }
+	local lineno = 0
+	for i = 1, #lines do
 		if lineno >= NUMBER_OF_LINES then break end
-        local linetex, ln = homedecor_generate_line(lines[i], lineno)
-        table.insert(texture, linetex)
-        lineno = ln + 1
-    end
-    return table.concat(texture, "")
+		local linetex, ln = make_line_texture(lines[i], lineno)
+		table.insert(texture, linetex)
+		lineno = ln + 1
+	end
+	return table.concat(texture, "")
 end
 
 local function set_obj_text(obj, text)
 	obj:set_properties({
-		textures={homedecor_generate_texture(homedecor_create_lines(text))},
+		textures={make_sign_texture(split_lines_and_words(text))},
 		visual_size = TEXT_SCALE,
 	})
 end
@@ -319,10 +334,19 @@ homedecor.destruct_sign = function(pos)
     end
 end
 
+local function make_infotext(text)
+	local lines = split_lines_and_words(text)
+	local lines2 = { }
+	for _, line in ipairs(lines) do
+		table.insert(lines2, table.concat(line, " "))
+	end
+	return table.concat(lines2, "\n")
+end
+
 homedecor.update_sign = function(pos, fields)
     local meta = minetest.get_meta(pos)
 	if fields then
-		meta:set_string("infotext", table.concat(homedecor_create_lines(fields.text), "\n"))
+		meta:set_string("infotext", make_infotext(fields.text))
 		meta:set_string("text", fields.text)
 	end
     local text = meta:get_string("text")
