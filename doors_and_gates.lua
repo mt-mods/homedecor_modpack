@@ -11,6 +11,23 @@ end
 
 -- doors
 
+-- isClosed flag, is 0 or 1 0 = open, 1 = closed
+function getClosed(pos)
+    local isClosed = minetest.get_meta(pos):get_int('closed')
+    if isClosed == nil then
+        -- doors when unknown, are closed.
+        return 1
+    else
+        -- may be closed or open (0 or 1)
+        return isClosed
+    end
+end
+
+function addDoorNode(pos,def,isClosed)
+    minetest.add_node(pos, def)
+    minetest.get_meta(pos):set_int('closed',isClosed)
+end
+
 local sides = {"left", "right"}
 local rsides = {"right", "left"}
 
@@ -95,7 +112,28 @@ for i in ipairs(sides) do
 			end,
 			on_rightclick = function(pos, node, clicker)
 				homedecor_flip_door({x=pos.x, y=pos.y-1, z=pos.z}, node, clicker, doorname, side)
-			end
+			end,
+
+            -- both left and right doors may be used for open or closed doors
+            -- so they have to have both action_on and action_off and just
+            -- check when that action is invoked if to continue
+
+            mesecons = {
+                effector = {
+                    action_on = function(pos,node)
+                        local isClosed = getClosed(pos)
+                        if isClosed==1 then
+                            homedecor_flip_door(pos,node,nil,doorname,side,isClosed)
+                        end
+                    end,
+                    action_off = function(pos,node)
+                        local isClosed = getClosed(pos)
+                        if isClosed==0 then
+                            homedecor_flip_door(pos,node,nil,doorname,side,isClosed)
+                        end
+                    end
+                }
+            }
 		})
 
 		minetest.register_node("homedecor:door_"..doorname.."_bottom_"..side, {
@@ -177,7 +215,7 @@ for i in ipairs(gates_list) do
 
 	local gate=gates_list[i]
 
-	minetest.register_node("homedecor:gate_"..gate.."_closed", {
+    local def = {
 		drawtype = "nodebox",
 		description = S(gate_names[i].." Fence Gate"),
 		tiles = {
@@ -204,40 +242,31 @@ for i in ipairs(gates_list) do
 		},
 		on_rightclick = function(pos, node, clicker)
 			homedecor_flip_gate(pos, node, clicker, gate, "closed")
-		end
-	})
+		end,
+        mesecons = {
+            effector = {
+                action_on = function(pos,node) homedecor_flip_gate(pos,node,player,gate, "closed") end
+            }
+        }
+	}
 
-	minetest.register_node("homedecor:gate_"..gate.."_open", {
-		drawtype = "nodebox",
-		description = S(gate_names[i].." Fence Gate"),
-		tiles = {
-			"homedecor_gate_"..gate.."_top.png",
-			"homedecor_gate_"..gate.."_bottom.png",
-			"homedecor_gate_"..gate.."_front.png",
-			"homedecor_gate_"..gate.."_back.png",
-			"homedecor_gate_"..gate.."_left.png",
-			"homedecor_gate_"..gate.."_right.png"
-		},
-		paramtype = "light",
-		is_ground_content = true,
-		groups = {snappy=3, not_in_creative_inventory=1},
-		sounds = default.node_sound_wood_defaults(),
-		walkable = true,
-		paramtype2 = "facedir",
-		selection_box = {
-			type = "fixed",
-			fixed ={ 0.4, -0.5, -0.5, 0.5, 0.5, 0.5 }
-		},
-		node_box = {
-			type = "fixed",
-			fixed = gate_models_open[i]
-		},
-		drop = "homedecor:gate_"..gate.."_closed",
-		on_rightclick = function(pos, node, clicker)
-			homedecor_flip_gate(pos, node, clicker, gate, "open")
-		end
-	})
+    -- gates when placed default to closed, closed.
 
+	minetest.register_node("homedecor:gate_"..gate.."_closed", def)
+
+    -- this is either a terrible idea or a great one
+    def.groups.not_in_creative_inventory = 1
+    def.selection_box.fixed = { 0.4, -0.5, -0.5, 0.5, 0.5, 0.5 }
+    def.node_box.fixed = gate_models_open[i]
+    def.drop = "homedecor:gate_"..gate.."_closed"
+	def.on_rightclick = function(pos, node, clicker)
+        homedecor_flip_gate(pos, node, clicker, gate, "open")
+	end
+    def.mesecons.effector = {
+        action_off = function(pos,node) homedecor_flip_gate(pos,node,player,gate, "open") end
+    }
+
+	minetest.register_node("homedecor:gate_"..gate.."_open", def)
 end
 
 minetest.register_alias("homedecor:fence_barbed_wire_gate_open",    "homedecor:gate_barbed_wire_open")
@@ -281,15 +310,16 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 		local node_bottom = minetest.get_node(pos1)
 		local node_top = minetest.get_node(pos2)
 
-		if not homedecor_node_is_owned(pos1, placer) 
+		if not homedecor_node_is_owned(pos1, placer)
 		    and not homedecor_node_is_owned(pos2, placer) then
 
-			if not get_nodedef_field(node_bottom.name, "buildable_to") 
+			if not get_nodedef_field(node_bottom.name, "buildable_to")
 			    or not get_nodedef_field(node_top.name, "buildable_to") then
 				minetest.chat_send_player( placer:get_player_name(), S('Not enough space above that spot to place a door!') )
 			else
 				local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-				minetest.add_node(pos1, { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir})
+                local def = { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir}
+                addDoorNode(pos1, def, 1)
 				minetest.add_node(pos2, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})
 				if not homedecor_expect_infinite_stacks then
 					itemstack:take_item()
@@ -297,39 +327,47 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 				end
 			end
 		end
-	else 
+	else
 		minetest.registered_nodes[pname].on_rightclick(pointed_thing.under, pnode, placer, itemstack)
 	end
 end
 
-function homedecor_flip_door(pos, node, player, name, side)
+-- to open a door, you switch left for right and subtract from param2, or vice versa right for left
+-- that is to say open "right" doors become left door nodes, and open left doors right door nodes.
+-- also adjusting param2 so the node is at 90 degrees.
+
+function homedecor_flip_door(pos, node, player, name, side, isClosed)
 	local rside = nil
 	local nfdir = nil
 	if side == "left" then
 		rside = "right"
 		nfdir=node.param2 - 1
 		if nfdir < 0 then nfdir = 3 end
-	        minetest.sound_play("homedecor_door_open", {
-			pos=pos,
-			max_hear_distance = 5,
-			gain = 2,
-		})
 	else
 		rside = "left"
 		nfdir=node.param2 + 1
 		if nfdir > 3 then nfdir = 0 end
-	        minetest.sound_play("homedecor_door_close", {
-			pos=pos,
-			max_hear_distance = 5,
-			gain = 2,
-		})
 	end
+    local sound;
+    if isClosed then
+        sound = 'close'
+    else
+        sound = 'open'
+    end
+	minetest.sound_play("homedecor_door_"+sound, {
+		pos=pos,
+        max_hear_distance = 5,
+		gain = 2,
+	})
+    -- XXX: does the top half have to remember open/closed too?
 	minetest.add_node({x=pos.x, y=pos.y+1, z=pos.z}, { name =  "homedecor:door_"..name.."_top_"..rside, param2=nfdir})
-	minetest.add_node(pos, { name = "homedecor:door_"..name.."_bottom_"..rside, param2=nfdir})
+
+    addDoorNode(pos,{ name = "homedecor:door_"..name.."_bottom_"..rside, param2=nfdir },isClosed)
 end
 
 function homedecor_flip_gate(pos, node, player, gate, oc)
-        minetest.sound_play("homedecor_gate_open_close", {
+    local isClosed = getClosed(pos);
+    minetest.sound_play("homedecor_gate_open_close", {
 		pos=pos,
 		max_hear_distance = 5,
 		gain = 2,
@@ -337,22 +375,33 @@ function homedecor_flip_gate(pos, node, player, gate, oc)
 
 	local fdir = node.param2
 
+    -- since right facing gates use "open" nodes for closed, we need an
+    -- isClosed flag to tell if it's "really" closed.
+
 	if oc == "closed" then
 		gateresult = "homedecor:gate_"..gate.."_open"
 	else
 		gateresult = "homedecor:gate_"..gate.."_closed"
 	end
 
-	minetest.add_node(pos, { name = gateresult, param2=fdir})
-	nodeabove = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
-	nodebelow = minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z})
+    local def = {name=gateresult, param2=fdir}
+
+    addDoorNode(pos, def, isClosed)
+
+    -- the following opens and closes gates below and above in sync with this one
+    -- (without three gate open/close sounds)
+
+    local above = {x=pos.x, y=pos.y+1, z=pos.z}
+    local below = {x=pos.x, y=pos.y-1, z=pos.z}
+    local nodeabove = minetest.get_node(above)
+    local nodebelow = minetest.get_node(below)
 
 	if string.find(nodeabove.name, "homedecor:gate_"..gate) then
-		minetest.add_node({x=pos.x, y=pos.y+1, z=pos.z}, {name=gateresult, param2=fdir} )
+        addDoorNode(above, def, isClosed)
 	end
 
 	if string.find(nodebelow.name, "homedecor:gate_"..gate) then
-		minetest.add_node({x=pos.x, y=pos.y-1, z=pos.z}, {name=gateresult, param2=fdir} )
+        addDoorNode(below, def, isClosed)
 	end
 end
 
