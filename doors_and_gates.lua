@@ -11,19 +11,145 @@ end
 
 -- doors
 
+function isSolid(pos,adj)
+    adj = vector.new(adj[1],adj[2],adj[3])
+    local node = minetest.get_node(vector.add(pos,adj))
+    if node then
+        local idef = minetest.registered_nodes[minetest.get_node(vector.add(pos,adj)).name]
+        print('doop')
+        if idef then
+            return idef.walkable
+        end
+    end
+    return false
+end
+
+function countSolids(pos,node,level)
+    local solids = 0
+    for x = -1, 1 do
+        for z = -1, 1 do
+            local y = 0
+            if node.param2 == 5 then 
+                y = -level 
+            else
+                y =  level
+            end
+            -- special cases when x == z == 0
+            if x == 0 and z == 0 then
+                if level == 1 then
+                    -- when looking past the trap door, cannot be solid in center
+                    if isSolid(pos,{x,y,z}) then
+                        return false
+                    end
+                    -- no else. it doesn't matter if x == y == z is solid, that's us.
+                end
+            elseif isSolid(pos,{x,y,z}) then
+                solids = solids + 1
+            end
+        end
+    end
+    return solids
+end
+
+function calculateClosed(pos)
+    local node = minetest.get_node(pos)
+    -- the door is considered closed if it is closing off something.
+
+    local solids = 0
+    local direction = node.param2 % 6
+    local isTrap = direction == 0 or direction == 5
+    if isTrap then
+        -- the trap door is considered closed when all nodes on its sides are solid
+        -- or all nodes in the 3x3 above/below it are solid except the center
+        for levels = 0, 1 do
+            local fail = false
+            local solids = countSolids(pos,node,level)
+            if solids == 8 then
+                return true
+            end
+        end
+        return false
+    else
+        -- the door is considered closed when the nodes on its sides are solid
+        -- or the 3 nodes in its facing direction are solid nonsolid solid
+        -- if the door has two levels (i.e. not a gate) then this must
+        -- be true for the top node as well.
+
+        -- sorry I dunno the math to figure whether to x or z
+        if direction == 1 or direction == 2 then
+            if isSolid(pos,{0,0,-1}) and isSolid(pos,{0,0,1}) then
+                if string.find(node.name,'_bottom_') then
+                    return calculateClosed({x=pos.x,y=pos.y+1,z=pos.z})
+                else
+                    return true
+                end
+            end
+            local x
+            if direction == 1 then
+                x = 1
+            else
+                x = -1
+            end
+            if isSolid(pos,{x,0,-1}) and not isSolid(pos,{x,0,0}) and isSolid(pos,{x,0,1}) then
+                if string.find(node.name,'_bottom_') then
+                    return calculateClosed({x=pos.x,y=pos.y+1,z=pos.z})
+                else
+                    return true
+                end
+            end
+            return false            
+        else
+            -- direction == 3 or 4                
+            if isSolid(pos,{-1,0,0}) and isSolid(pos,{1,0,0}) then
+                if string.find(node.name,'_bottom_') then
+                    return calculateClosed({x=pos.x,y=pos.y+1,z=pos.z})
+                else
+                    return true
+                end
+            end
+            local z
+            if direction == 3 then
+                z = 1
+            else
+                z = -1
+            end
+            if isSolid(pos,{-1,0,z}) and not isSolid(pos,{0,0,z}) and isSolid(pos,{1,0,z}) then
+                if string.find(node.name,'_bottom_') then
+                    return calculateClosed({x=pos.x,y=pos.y+1,z=pos.z})
+                else
+                    return true
+                end
+            end
+            return false
+        end
+        error("What direction is this???",direction)
+    end
+end
+
 -- isClosed flag, is 0 or 1 0 = open, 1 = closed
 function getClosed(pos)
-    local isClosed = minetest.get_meta(pos):get_int('closed')
-    if isClosed == nil then
-        -- doors when unknown, are closed.
-        return 1
+    local isClosed = minetest.get_meta(pos):get_string('closed')
+    print('closed!'..isClosed)
+    assert(pos)
+    if isClosed=='' then
+        if calculateClosed(pos) then
+            return true
+        else
+            return false
+        end
     else
-        -- may be closed or open (0 or 1)
-        return isClosed
+        isClosed = tonumber(isClosed)
+        -- may be closed or open (1 or 0)
+        return isClosed == 1
     end
 end
 
 function addDoorNode(pos,def,isClosed)
+    if isClosed then
+        isClosed = 1
+    else
+        isClosed = 0
+    end
     minetest.add_node(pos, def)
     minetest.get_meta(pos):set_int('closed',isClosed)
 end
@@ -112,28 +238,8 @@ for i in ipairs(sides) do
 			end,
 			on_rightclick = function(pos, node, clicker)
 				homedecor_flip_door({x=pos.x, y=pos.y-1, z=pos.z}, node, clicker, doorname, side)
-			end,
+			end
 
-            -- both left and right doors may be used for open or closed doors
-            -- so they have to have both action_on and action_off and just
-            -- check when that action is invoked if to continue
-
-            mesecons = {
-                effector = {
-                    action_on = function(pos,node)
-                        local isClosed = getClosed(pos)
-                        if isClosed==1 then
-                            homedecor_flip_door(pos,node,nil,doorname,side,isClosed)
-                        end
-                    end,
-                    action_off = function(pos,node)
-                        local isClosed = getClosed(pos)
-                        if isClosed==0 then
-                            homedecor_flip_door(pos,node,nil,doorname,side,isClosed)
-                        end
-                    end
-                }
-            }
 		})
 
 		minetest.register_node("homedecor:door_"..doorname.."_bottom_"..side, {
@@ -163,7 +269,32 @@ for i in ipairs(sides) do
 			end,
 			on_rightclick = function(pos, node, clicker)
 				homedecor_flip_door(pos, node, clicker, doorname, side)
-			end
+			end,
+            -- both left and right doors may be used for open or closed doors
+            -- so they have to have both action_on and action_off and just
+            -- check when that action is invoked if to continue
+
+            on_punch = function(pos, node, puncher)
+                print('erasing closed status')
+                minetest.get_meta(pos):set_string('closed',nil)
+            end,
+            mesecons = {
+                effector = {
+                    action_on = function(pos,node)
+                        local isClosed = getClosed(pos)
+                        if isClosed then
+                            print('closing')
+                            homedecor_flip_door(pos,node,nil,doorname,side,isClosed)
+                        end
+                    end,
+                    action_off = function(pos,node)
+                        local isClosed = getClosed(pos)
+                        if not isClosed then
+                            homedecor_flip_door(pos,node,nil,doorname,side,isClosed)
+                        end
+                    end
+                }
+            }
 		})
 	end
 end
@@ -319,7 +450,7 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 			else
 				local fdir = minetest.dir_to_facedir(placer:get_look_dir())
                 local def = { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir}
-                addDoorNode(pos1, def, 1)
+                addDoorNode(pos1, def, true)
 				minetest.add_node(pos2, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})
 				if not homedecor_expect_infinite_stacks then
 					itemstack:take_item()
@@ -337,6 +468,14 @@ end
 -- also adjusting param2 so the node is at 90 degrees.
 
 function homedecor_flip_door(pos, node, player, name, side, isClosed)
+    if isClosed == nil then
+        isClosed = getClosed(pos)
+    end
+    -- this is where we swap the isClosed status!
+    -- i.e. if isClosed, we're adding an open door
+    -- and if not isClosed, a closed door
+    isClosed = not isClosed
+
 	local rside = nil
 	local nfdir = nil
 	if side == "left" then
@@ -354,7 +493,7 @@ function homedecor_flip_door(pos, node, player, name, side, isClosed)
     else
         sound = 'open'
     end
-	minetest.sound_play("homedecor_door_"+sound, {
+	minetest.sound_play("homedecor_door_"..sound, {
 		pos=pos,
         max_hear_distance = 5,
 		gain = 2,
