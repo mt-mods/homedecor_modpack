@@ -16,7 +16,6 @@ function isSolid(pos,adj)
     local node = minetest.get_node(vector.add(pos,adj))
     if node then
         local idef = minetest.registered_nodes[minetest.get_node(vector.add(pos,adj)).name]
-        print('doop')
         if idef then
             return idef.walkable
         end
@@ -129,8 +128,6 @@ end
 -- isClosed flag, is 0 or 1 0 = open, 1 = closed
 function getClosed(pos)
     local isClosed = minetest.get_meta(pos):get_string('closed')
-    print('closed!'..isClosed)
-    assert(pos)
     if isClosed=='' then
         if calculateClosed(pos) then
             return true
@@ -275,7 +272,6 @@ for i in ipairs(sides) do
             -- check when that action is invoked if to continue
 
             on_punch = function(pos, node, puncher)
-                print('erasing closed status')
                 minetest.get_meta(pos):set_string('closed',nil)
             end,
             mesecons = {
@@ -283,7 +279,6 @@ for i in ipairs(sides) do
                     action_on = function(pos,node)
                         local isClosed = getClosed(pos)
                         if isClosed then
-                            print('closing')
                             homedecor_flip_door(pos,node,nil,doorname,side,isClosed)
                         end
                     end,
