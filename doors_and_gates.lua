@@ -381,15 +381,24 @@ for i in ipairs(gates_list) do
 	minetest.register_node("homedecor:gate_"..gate.."_closed", def)
 
     -- this is either a terrible idea or a great one
+    def = table.copy(def)
     def.groups.not_in_creative_inventory = 1
     def.selection_box.fixed = { 0.4, -0.5, -0.5, 0.5, 0.5, 0.5 }
+    def.tiles = {
+		"homedecor_gate_"..gate.."_top.png",
+		"homedecor_gate_"..gate.."_bottom.png",
+		"homedecor_gate_"..gate.."_front.png",
+		"homedecor_gate_"..gate.."_back.png",
+		"homedecor_gate_"..gate.."_left.png",
+        "homedecor_gate_"..gate.."_right.png"
+    },
     def.node_box.fixed = gate_models_open[i]
     def.drop = "homedecor:gate_"..gate.."_closed"
 	def.on_rightclick = function(pos, node, clicker)
-        homedecor_flip_gate(pos, node, clicker, gate, "open")
+        homedecor.flip_gate(pos, node, clicker, gate, "open")
 	end
     def.mesecons.effector = {
-        action_off = function(pos,node) homedecor_flip_gate(pos,node,player,gate, "open") end
+        action_off = function(pos,node) homedecor.flip_gate(pos,node,player,gate, "open") end
     }
 
 	minetest.register_node("homedecor:gate_"..gate.."_open", def)
@@ -499,7 +508,7 @@ function homedecor_flip_door(pos, node, player, name, side, isClosed)
     addDoorNode(pos,{ name = "homedecor:door_"..name.."_bottom_"..rside, param2=nfdir },isClosed)
 end
 
-function homedecor_flip_gate(pos, node, player, gate, oc)
+function homedecor.flip_gate(pos, node, player, gate, oc)
     local isClosed = getClosed(pos);
     minetest.sound_play("homedecor_gate_open_close", {
 		pos=pos,
