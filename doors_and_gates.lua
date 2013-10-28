@@ -231,6 +231,11 @@ for i in ipairs(sides) do
 			end
 		})
 
+		local dgroups = {snappy=3, not_in_creative_inventory=1}
+		if side == "left" then 
+			dgroups = {snappy=3}
+		end
+
 		minetest.register_node("homedecor:door_"..doorname.."_bottom_"..side, {
 			description = doordesc.." "..S("(%s-opening)"):format(side),
 			drawtype = "nodebox",
@@ -238,7 +243,7 @@ for i in ipairs(sides) do
 			inventory_image = "homedecor_door_"..doorname.."_"..side.."_inv.png",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {snappy=3},
+			groups = dgroups,
 			sounds = default.node_sound_wood_defaults(),
 			walkable = true,
 			use_texture_alpha = texalpha,
@@ -253,7 +258,8 @@ for i in ipairs(sides) do
 				end
 			end,
 			on_place = function(itemstack, placer, pointed_thing)
-				homedecor.place_door(itemstack, placer, pointed_thing, doorname, side)
+				local keys=placer:get_player_control()
+				homedecor.place_door(itemstack, placer, pointed_thing, doorname, keys["sneak"])
 				return itemstack
 			end,
 			on_rightclick = function(pos, node, clicker)
@@ -266,6 +272,7 @@ for i in ipairs(sides) do
             on_punch = function(pos, node, puncher)
                 minetest.get_meta(pos):set_string('closed',nil)
             end,
+			drop = "homedecor:door_"..doorname.."_bottom_left",
             mesecons = {
                 effector = {
                     action_on = function(pos,node)
@@ -414,7 +421,7 @@ local function get_nodedef_field(nodename, fieldname)
 	return minetest.registered_nodes[nodename][fieldname]
 end
 
-function homedecor.place_door(itemstack, placer, pointed_thing, name, side)
+function homedecor.place_door(itemstack, placer, pointed_thing, name, forceright)
 
 	local pointed = pointed_thing.under
 	local pnode = minetest.get_node(pointed)
@@ -445,6 +452,20 @@ function homedecor.place_door(itemstack, placer, pointed_thing, name, side)
 				minetest.chat_send_player( placer:get_player_name(), S('Not enough space above that spot to place a door!') )
 			else
 				local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+				local p_tests = {
+					{x=pos1.x-1, y=pos1.y, z=pos1.z},
+					{x=pos1.x, y=pos1.y, z=pos1.z+1},
+					{x=pos1.x+1, y=pos1.y, z=pos1.z},
+					{x=pos1.x, y=pos1.y, z=pos1.z-1},
+				}
+				print("fdir="..fdir)
+				local testnode = minetest.get_node(p_tests[fdir+1])
+				local side = "left"
+
+				if string.find(testnode.name, "homedecor:door_"..name.."_bottom_left") or forceright then
+					side = "right"
+				end
+
                 local def = { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir}
                 addDoorNode(pos1, def, true)
 				minetest.add_node(pos2, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})
