@@ -5,7 +5,7 @@ local S = homedecor.gettext
 -- doors
 
 function isSolid(pos,adj)
-    adj = vector.new(adj[1],adj[2],adj[3])
+    adj = {x=adj[1],y=adj[2],z=adj[3]}
     local node = minetest.get_node(vector.add(pos,adj))
     if node then
         local idef = minetest.registered_nodes[minetest.get_node(vector.add(pos,adj)).name]
@@ -53,7 +53,7 @@ function calculateClosed(pos)
     if isTrap then
         -- the trap door is considered closed when all nodes on its sides are solid
         -- or all nodes in the 3x3 above/below it are solid except the center
-        for levels = 0, 1 do
+        for level = 0, 1 do
             local fail = false
             local solids = countSolids(pos,node,level)
             if solids == 8 then
