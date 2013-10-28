@@ -29,16 +29,34 @@ else
 end
 homedecor.gettext = S
 
+-- debug
+
 local dbg = function(s)
 	if homedecor.debug == 1 then
 		print('[HomeDecor] ' .. s)
 	end
 end
 
+-- infinite stacks
+
 if minetest.get_modpath("unified_inventory") or not minetest.setting_getbool("creative_mode") then
 	homedecor.expect_infinite_stacks = false
 else
 	homedecor.expect_infinite_stacks = true
+end
+
+--table copy
+
+function homedecor.table_copy(t)
+    local nt = { };
+    for k, v in pairs(t) do
+        if type(v) == "table" then
+            nt[k] = homedecor.table_copy(v)
+        else
+            nt[k] = v
+        end
+    end
+    return nt
 end
 
 dofile(homedecor.modpath.."/ownership.lua")

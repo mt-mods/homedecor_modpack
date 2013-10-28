@@ -288,18 +288,6 @@ local function make_line_texture(line, lineno)
 	return table.concat(texture, ""), lineno
 end
 
-local function copy ( t )
-    local nt = { };
-    for k, v in pairs(t) do
-        if type(v) == "table" then
-            nt[k] = copy(v)
-        else
-            nt[k] = v
-        end
-    end
-    return nt
-end
-
 local function make_sign_texture(lines)
 	local texture = { ("[combine:%dx%d"):format(SIGN_WIDTH, LINE_HEIGHT * NUMBER_OF_LINES * LINE_SEP) }
 	local lineno = 0
@@ -594,8 +582,8 @@ function homedecor.register_fence_with_sign(fencename, fencewithsignname)
         minetest.log("warning", "[homedecor] Attempt to register unknown node as fence")
         return
     end
-    def = copy(def)
-    def_sign = copy(def_sign)
+    def = homedecor.table_copy(def)
+    def_sign = homedecor.table_copy(def_sign)
     fences_with_sign[fencename] = fencewithsignname
 
     def.on_place = function(itemstack, placer, pointed_thing, ...)
