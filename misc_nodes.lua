@@ -1,13 +1,6 @@
 -- Various misc. nodes
 
--- Boilerplate to support localized strings if intllib mod is installed.
-local S
-if (minetest.get_modpath("intllib")) then
-    dofile(minetest.get_modpath("intllib").."/intllib.lua")
-    S = intllib.Getter(minetest.get_current_modname())
-else
-    S = function ( s ) return s end
-end
+local S = homedecor.gettext
 
 minetest.register_node('homedecor:ceiling_paint', {
 	description = S("Textured Ceiling Paint"),
@@ -211,7 +204,7 @@ minetest.register_node("homedecor:curtain_"..color, {
 	inventory_image = "homedecor_curtain_"..color..".png",
 	wield_image = "homedecor_curtain_"..color..".png",
 	drawtype = 'signlike',
-	sunlight_propagates = false,
+	sunlight_propagates = true,
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = false,

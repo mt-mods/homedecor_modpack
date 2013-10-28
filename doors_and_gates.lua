@@ -1,13 +1,6 @@
 -- Node definitions for Homedecor doors
 
--- Boilerplate to support localized strings if intllib mod is installed.
-local S
-if (minetest.get_modpath("intllib")) then
-    dofile(minetest.get_modpath("intllib").."/intllib.lua")
-    S = intllib.Getter(minetest.get_current_modname())
-else
-    S = function ( s ) return s end
-end
+local S = homedecor.gettext
 
 -- doors
 
@@ -158,9 +151,9 @@ for i in ipairs(sides) do
 	local side = sides[i]
 	local rside = rsides[i]
 
-	for j in ipairs(homedecor_door_models) do
-		local doorname =		homedecor_door_models[j][1]
-		local doordesc =		homedecor_door_models[j][2]
+	for j in ipairs(homedecor.door_models) do
+		local doorname =		homedecor.door_models[j][1]
+		local doordesc =		homedecor.door_models[j][2]
 		local nodeboxes_top = nil
 		local nodeboxes_bottom = nil
 		local texalpha = false
@@ -169,11 +162,11 @@ for i in ipairs(sides) do
 		end
 
 		if side == "left" then
-			nodeboxes_top =	homedecor_door_models[j][3]
-			nodeboxes_bottomtom =	homedecor_door_models[j][4]
+			nodeboxes_top =	homedecor.door_models[j][3]
+			nodeboxes_bottomtom =	homedecor.door_models[j][4]
 		else
-			nodeboxes_top =	homedecor_door_models[j][5]
-			nodeboxes_bottomtom =	homedecor_door_models[j][6]
+			nodeboxes_top =	homedecor.door_models[j][5]
+			nodeboxes_bottomtom =	homedecor.door_models[j][6]
 		end
 
 		local lower_top_side = "homedecor_door_"..doorname.."_tb.png"
@@ -234,9 +227,8 @@ for i in ipairs(sides) do
 				end
 			end,
 			on_rightclick = function(pos, node, clicker)
-				homedecor_flip_door({x=pos.x, y=pos.y-1, z=pos.z}, node, clicker, doorname, side)
+				homedecor.flip_door({x=pos.x, y=pos.y-1, z=pos.z}, node, clicker, doorname, side)
 			end
-
 		})
 
 		minetest.register_node("homedecor:door_"..doorname.."_bottom_"..side, {
@@ -261,11 +253,11 @@ for i in ipairs(sides) do
 				end
 			end,
 			on_place = function(itemstack, placer, pointed_thing)
-				homedecor_place_door(itemstack, placer, pointed_thing, doorname, side)
+				homedecor.place_door(itemstack, placer, pointed_thing, doorname, side)
 				return itemstack
 			end,
 			on_rightclick = function(pos, node, clicker)
-				homedecor_flip_door(pos, node, clicker, doorname, side)
+				homedecor.flip_door(pos, node, clicker, doorname, side)
 			end,
             -- both left and right doors may be used for open or closed doors
             -- so they have to have both action_on and action_off and just
@@ -279,13 +271,13 @@ for i in ipairs(sides) do
                     action_on = function(pos,node)
                         local isClosed = getClosed(pos)
                         if isClosed then
-                            homedecor_flip_door(pos,node,nil,doorname,side,isClosed)
+                            homedecor.flip_door(pos,node,nil,doorname,side,isClosed)
                         end
                     end,
                     action_off = function(pos,node)
                         local isClosed = getClosed(pos)
                         if not isClosed then
-                            homedecor_flip_door(pos,node,nil,doorname,side,isClosed)
+                            homedecor.flip_door(pos,node,nil,doorname,side,isClosed)
                         end
                     end
                 }
@@ -367,11 +359,11 @@ for i in ipairs(gates_list) do
 			fixed = gate_models_closed[i]
 		},
 		on_rightclick = function(pos, node, clicker)
-			homedecor_flip_gate(pos, node, clicker, gate, "closed")
+			homedecor.flip_gate(pos, node, clicker, gate, "closed")
 		end,
         mesecons = {
             effector = {
-                action_on = function(pos,node) homedecor_flip_gate(pos,node,player,gate, "closed") end
+                action_on = function(pos,node) homedecor.flip_gate(pos,node,player,gate, "closed") end
             }
         }
 	}
@@ -391,7 +383,7 @@ for i in ipairs(gates_list) do
 		"homedecor_gate_"..gate.."_back.png",
 		"homedecor_gate_"..gate.."_left.png",
         "homedecor_gate_"..gate.."_right.png"
-    },
+    }
     def.node_box.fixed = gate_models_open[i]
     def.drop = "homedecor:gate_"..gate.."_closed"
 	def.on_rightclick = function(pos, node, clicker)
@@ -422,7 +414,7 @@ local function get_nodedef_field(nodename, fieldname)
 	return minetest.registered_nodes[nodename][fieldname]
 end
 
-function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
+function homedecor.place_door(itemstack, placer, pointed_thing, name, side)
 
 	local pointed = pointed_thing.under
 	local pnode = minetest.get_node(pointed)
@@ -445,10 +437,10 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
 		local node_bottom = minetest.get_node(pos1)
 		local node_top = minetest.get_node(pos2)
 
-		if not homedecor_node_is_owned(pos1, placer)
-		    and not homedecor_node_is_owned(pos2, placer) then
+		if not homedecor:node_is_owned(pos1, placer) 
+		    and not homedecor:node_is_owned(pos2, placer) then
 
-			if not get_nodedef_field(node_bottom.name, "buildable_to")
+			if not get_nodedef_field(node_bottom.name, "buildable_to") 
 			    or not get_nodedef_field(node_top.name, "buildable_to") then
 				minetest.chat_send_player( placer:get_player_name(), S('Not enough space above that spot to place a door!') )
 			else
@@ -456,7 +448,7 @@ function homedecor_place_door(itemstack, placer, pointed_thing, name, side)
                 local def = { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir}
                 addDoorNode(pos1, def, true)
 				minetest.add_node(pos2, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})
-				if not homedecor_expect_infinite_stacks then
+				if not homedecor.expect_infinite_stacks then
 					itemstack:take_item()
 					return itemstack
 				end
@@ -471,7 +463,7 @@ end
 -- that is to say open "right" doors become left door nodes, and open left doors right door nodes.
 -- also adjusting param2 so the node is at 90 degrees.
 
-function homedecor_flip_door(pos, node, player, name, side, isClosed)
+function homedecor.flip_door(pos, node, player, name, side, isClosed)
     if isClosed == nil then
         isClosed = getClosed(pos)
     end

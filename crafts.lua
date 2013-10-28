@@ -6,14 +6,7 @@
 -- License: GPL
 --
 
--- Boilerplate to support localized strings if intllib mod is installed.
-local S
-if (minetest.get_modpath("intllib")) then
-    dofile(minetest.get_modpath("intllib").."/intllib.lua")
-    S = intllib.Getter(minetest.get_current_modname())
-else
-    S = function ( s ) return s end
-end
+local S = homedecor.gettext
 
 -- misc stuff :D
 
@@ -53,7 +46,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:roof_tile_terracotta 4",
+        output = "homedecor:roof_tile_terracotta 8",
         recipe = {
 			{ "homedecor:shingles_terracotta", "homedecor:shingles_terracotta" }
 		}
@@ -99,14 +92,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-        type = "shapeless",
-        output = "homedecor:plastic_base 4",
-        recipe = { "default:leaves",
-        	   "default:leaves",
-        	   "default:leaves",
-        	   "default:leaves",
-        	   "default:leaves",
-		   "default:leaves"
+    type = "shapeless",
+    output = "homedecor:plastic_base 4",
+    recipe = {
+		"group:leaves",
+		"group:leaves",
+		"group:leaves",
+		"group:leaves",
+		"group:leaves",
+		"group:leaves"
 	}
 })
 
