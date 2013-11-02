@@ -708,7 +708,7 @@ minetest.register_craft( {
 	output = "homedecor:ic 4",
 	recipe = {
 		{ "mesecons_materials:silicon", "mesecons_materials:silicon" },
-		{ "mesecons_materials:silicon", "moreores:copper_ingot" },
+		{ "mesecons_materials:silicon", "default:copper_ingot" },
 	},
 })
 
@@ -721,7 +721,7 @@ minetest.register_craft( {
 	output = "homedecor:television",
 	recipe = {
 		{ "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
-		{ "homedecor:plastic_sheeting", "moreblocks:glowglass", "homedecor:plastic_sheeting" },
+		{ "homedecor:plastic_sheeting", "moreblocks:glow_glass", "homedecor:plastic_sheeting" },
 		{ "homedecor:ic", "homedecor:ic", "homedecor:ic" },
 	},
 })
@@ -790,7 +790,7 @@ minetest.register_craft( {
         output = "homedecor:speaker",
       		recipe = {
 		{ "default:wood", "wool:black", "default:wood" },
-		{ "default:wood", "moreores:copper_ingot", "default:wood" },
+		{ "default:wood", "default:copper_ingot", "default:wood" },
 		{ "default:wood", "wool:black", "default:wood" },
 	},
 })
@@ -799,7 +799,7 @@ minetest.register_craft( {
         output = "homedecor:speaker_small",
       		recipe = {
 		{ "default:wood", "wool:black", "default:wood" },
-		{ "default:wood", "moreores:copper_ingot", "default:wood" },
+		{ "default:wood", "default:copper_ingot", "default:wood" },
 	},
 })
 
@@ -809,7 +809,7 @@ minetest.register_craft( {
         output = "homedecor:speaker",
       		recipe = {
 		{ "default:wood", "cotton:black", "default:wood" },
-		{ "default:wood", "moreores:copper_ingot", "default:wood" },
+		{ "default:wood", "default:copper_ingot", "default:wood" },
 		{ "default:wood", "cotton:black", "default:wood" },
 	},
 })
@@ -818,7 +818,7 @@ minetest.register_craft( {
         output = "homedecor:speaker_small",
       		recipe = {
 		{ "default:wood", "cotton:black", "default:wood" },
-		{ "default:wood", "moreores:copper_ingot", "default:wood" },
+		{ "default:wood", "default:copper_ingot", "default:wood" },
 	},
 })
 
@@ -928,8 +928,8 @@ minetest.register_craft({
         output = "homedecor:oven",
         recipe = {
 		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot", },
-		{"default:steel_ingot", "moreblocks:ironglass", "default:steel_ingot", },
-		{"default:steel_ingot", "moreores:copper_ingot", "default:steel_ingot", },
+		{"default:steel_ingot", "moreblocks:iron_glass", "default:steel_ingot", },
+		{"default:steel_ingot", "default:copper_ingot", "default:steel_ingot", },
 	}
 })
 
@@ -937,15 +937,15 @@ minetest.register_craft({
         output = "homedecor:microwave_oven 2",
         recipe = {
 		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot", },
-		{"default:steel_ingot", "moreblocks:ironglass", "mesecons_materials:silicon", },
-		{"default:steel_ingot", "moreores:copper_ingot", "default:mese_crystal", },
+		{"default:steel_ingot", "moreblocks:iron_glass", "mesecons_materials:silicon", },
+		{"default:steel_ingot", "default:copper_ingot", "default:mese_crystal", },
 	}
 })
 
 minetest.register_craft({
         output = "homedecor:refrigerator",
         recipe = {
-		{"default:steel_ingot", "moreblocks:glowglass", "default:steel_ingot", },
+		{"default:steel_ingot", "moreblocks:glow_glass", "default:steel_ingot", },
 		{"default:steel_ingot", "moreores:tin_ingot", "default:steel_ingot", },
 		{"default:steel_ingot", "default:clay", "default:steel_ingot", },
 	}
@@ -982,7 +982,7 @@ minetest.register_craft({
 minetest.register_craft({
         output = "homedecor:glowlight_half_yellow 6",
         recipe = {
-		{"moreblocks:superglowglass", "moreblocks:glowglass", "moreblocks:superglowglass", },
+		{"moreblocks:super_glow_glass", "moreblocks:glow_glass", "moreblocks:super_glow_glass", },
 	}
 })
 
@@ -996,8 +996,8 @@ minetest.register_craft({
 minetest.register_craft({
         output = "homedecor:glowlight_small_cube_yellow 16",
         recipe = {
-		{"moreblocks:glowglass" },
-		{"moreblocks:superglowglass" },
+		{"moreblocks:glow_glass" },
+		{"moreblocks:super_glow_glass" },
 	}
 })
 
@@ -1022,7 +1022,7 @@ minetest.register_craft({
         output = "homedecor:glowlight_half_white 6",
         recipe = {
 		{ "group:dye,basecolor_white", "group:dye,basecolor_white", "group:dye,basecolor_white" },
-		{"moreblocks:superglowglass", "moreblocks:glowglass", "moreblocks:superglowglass", },
+		{"moreblocks:super_glow_glass", "moreblocks:glow_glass", "moreblocks:super_glow_glass", },
 	}
 })
 
@@ -1047,7 +1047,7 @@ minetest.register_craft({
         output = "homedecor:glowlight_small_cube_white 8",
         recipe = {
 		{"group:dye,basecolor_white" },
-		{"moreblocks:superglowglass" },
+		{"moreblocks:super_glow_glass" },
 	}
 })
 
