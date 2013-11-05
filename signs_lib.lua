@@ -339,6 +339,7 @@ homedecor.update_sign = function(pos, fields)
 		meta:set_string("text", fields.text)
 	end
     local text = meta:get_string("text")
+    if text == nil then return
     local objects = minetest.get_objects_inside_radius(pos, 0.5)
     for _, v in ipairs(objects) do
 		local e = v:get_luaentity()
@@ -556,7 +557,9 @@ if not homedecor.disable_signs then
 	signs_text_on_activate = function(self)
 		local meta = minetest.get_meta(self.object:getpos())
 		local text = meta:get_string("text")
-		set_obj_text(self.object, text)
+		if text then
+			set_obj_text(self.object, text)
+		end
 	end
 else
 	signs_text_on_activate = function(self)
