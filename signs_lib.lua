@@ -339,7 +339,7 @@ homedecor.update_sign = function(pos, fields)
 		meta:set_string("text", fields.text)
 	end
     local text = meta:get_string("text")
-    if text == nil then return
+    if text == nil then return end
     local objects = minetest.get_objects_inside_radius(pos, 0.5)
     for _, v in ipairs(objects) do
 		local e = v:get_luaentity()
