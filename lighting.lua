@@ -87,14 +87,7 @@ minetest.register_node('homedecor:glowlight_half_yellow', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
 	sounds = default.node_sound_wood_defaults(),
-
-	on_place = function(itemstack, placer, pointed_thing)
-		if not homedecor:node_is_owned(pointed_thing.under, placer) 
-		   and not homedecor:node_is_owned(pointed_thing.above, placer) then
-			lib_6d:rotate_and_place(itemstack, placer, pointed_thing, homedecor.expect_infinite_stacks)
-		end
-		return itemstack
-	end
+	on_place = homedecor.protect_and_rotate
 })
 
 minetest.register_node('homedecor:glowlight_quarter_yellow', {
@@ -124,16 +117,8 @@ minetest.register_node('homedecor:glowlight_quarter_yellow', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
-	on_place = function(itemstack, placer, pointed_thing)
-		if not homedecor:node_is_owned(pointed_thing.under, placer) 
-		   and not homedecor:node_is_owned(pointed_thing.above, placer) then
-			lib_6d:rotate_and_place(itemstack, placer, pointed_thing, homedecor.expect_infinite_stacks)
-		end
-		return itemstack
-	end
+	on_place = homedecor.protect_and_rotate
 })
-
-
 
 -- White
 
@@ -164,13 +149,7 @@ minetest.register_node('homedecor:glowlight_half_white', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
 	sounds = default.node_sound_wood_defaults(),
-	on_place = function(itemstack, placer, pointed_thing)
-		if not homedecor:node_is_owned(pointed_thing.under, placer) 
-		   and not homedecor:node_is_owned(pointed_thing.above, placer) then
-			lib_6d:rotate_and_place(itemstack, placer, pointed_thing, homedecor.expect_infinite_stacks)
-		end
-		return itemstack
-	end
+	on_place = homedecor.protect_and_rotate
 })
 
 minetest.register_node('homedecor:glowlight_quarter_white', {
@@ -200,13 +179,7 @@ minetest.register_node('homedecor:glowlight_quarter_white', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
-	on_place = function(itemstack, placer, pointed_thing)
-		if not homedecor:node_is_owned(pointed_thing.under, placer) 
-		   and not homedecor:node_is_owned(pointed_thing.above, placer) then
-			lib_6d:rotate_and_place(itemstack, placer, pointed_thing, homedecor.expect_infinite_stacks)
-		end
-		return itemstack
-	end
+	on_place = homedecor.protect_and_rotate
 })
 
 -- Glowlight "cubes"
@@ -239,13 +212,7 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow', {
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
 
-	on_place = function(itemstack, placer, pointed_thing)
-		if not homedecor:node_is_owned(pointed_thing.under, placer) 
-		   and not homedecor:node_is_owned(pointed_thing.above, placer) then
-			lib_6d:rotate_and_place(itemstack, placer, pointed_thing, homedecor.expect_infinite_stacks)
-		end
-		return itemstack
-	end
+	on_place = homedecor.protect_and_rotate
 })
 
 minetest.register_node('homedecor:glowlight_small_cube_white', {
@@ -275,12 +242,6 @@ minetest.register_node('homedecor:glowlight_small_cube_white', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
-	on_place = function(itemstack, placer, pointed_thing)
-		if not homedecor:node_is_owned(pointed_thing.under, placer) 
-		   and not homedecor:node_is_owned(pointed_thing.above, placer) then
-			lib_6d:rotate_and_place(itemstack, placer, pointed_thing, homedecor.expect_infinite_stacks)
-		end
-		return itemstack
-	end
+	on_place = homedecor.protect_and_rotate
 })
 
