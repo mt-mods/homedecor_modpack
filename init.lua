@@ -59,17 +59,6 @@ function homedecor.table_copy(t)
     return nt
 end
 
--- protection wrapper for 6d stuff
-
-function homedecor.protect_and_rotate(itemstack, placer, pointed_thing)
-	if not homedecor.node_is_owned(pointed_thing.under, placer) 
-	   and not homedecor.node_is_owned(pointed_thing.above, placer) then
-		local keys=placer:get_player_control()
-		minetest.rotate_and_place(itemstack, placer, pointed_thing,
-			homedecor.expect_infinite_stacks, {invert_wall = keys.sneak})
-	end
-	return itemstack
-end
 
 -- load various other components
 
