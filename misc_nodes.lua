@@ -196,26 +196,28 @@ local curtaincolors = {
 }
 
 for c in ipairs(curtaincolors) do
-	local color = S(curtaincolors[c])
+	local color = curtaincolors[c]
+	local color_d = S(curtaincolors[c])
 
-minetest.register_node("homedecor:curtain_"..color, {
-	description = S("Curtains (%s)"):format(color),
-	tiles = { "homedecor_curtain_"..color..".png" },
-	inventory_image = "homedecor_curtain_"..color..".png",
-	wield_image = "homedecor_curtain_"..color..".png",
-	drawtype = 'signlike',
-	sunlight_propagates = true,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = false,
-	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
-	paramtype2 = 'wallmounted',
-	selection_box = {
-		type = "wallmounted",
-		--wall_side = = <default>
-	},
-})
+	minetest.register_node("homedecor:curtain_"..color, {
+		description = S("Curtains (%s)"):format(color_d),
+		tiles = { "homedecor_curtain_"..color..".png" },
+		inventory_image = "homedecor_curtain_"..color..".png",
+		wield_image = "homedecor_curtain_"..color..".png",
+		drawtype = 'signlike',
+		sunlight_propagates = true,
+		paramtype = "light",
+		paramtype2 = "facedir",
+		walkable = false,
+		groups = { snappy = 3 },
+		sounds = default.node_sound_leaves_defaults(),
+		paramtype2 = 'wallmounted',
+		selection_box = {
+			type = "wallmounted",
+			--wall_side = = <default>
+		},
+	})
+	minetest.register_alias("homedecor:curtain_"..color_d, "homedecor:curtain_"..color)
 
 end
 
