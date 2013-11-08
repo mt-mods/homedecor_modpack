@@ -217,8 +217,9 @@ for c in ipairs(curtaincolors) do
 			--wall_side = = <default>
 		},
 	})
-	minetest.register_alias("homedecor:curtain_"..color_d, "homedecor:curtain_"..color)
-
+	if color_d ~= color then
+		minetest.register_alias("homedecor:curtain_"..color_d, "homedecor:curtain_"..color)
+	end
 end
 
 minetest.register_node('homedecor:air_conditioner', {
