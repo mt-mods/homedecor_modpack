@@ -462,7 +462,7 @@ if not homedecor.disable_signs then
 			homedecor.destruct_sign(pos)
 		end,
 		on_receive_fields = function(pos, formname, fields, sender)
-			if fields then
+			if fields and (not fields.quit) and fields.text then
 				print(S("%s wrote \"%s\" to sign at %s"):format(
 					(sender:get_player_name() or ""),
 					fields.text,
@@ -499,7 +499,7 @@ minetest.register_node(":signs:sign_yard", {
         homedecor.destruct_sign(pos)
     end,
     on_receive_fields = function(pos, formname, fields, sender)
-        if fields then
+        if fields and (not fields.quit) and fields.text then
             print(S("%s wrote \"%s\" to sign at %s"):format(
                 (sender:get_player_name() or ""),
                 fields.text,
@@ -622,7 +622,7 @@ function homedecor.register_fence_with_sign(fencename, fencewithsignname)
 		homedecor.destruct_sign(pos)
 	end
 	def_sign.on_receive_fields = function(pos, formname, fields, sender, ...)
-        if fields then
+        if fields and (not fields.quit) and fields.text then
             print(S("%s wrote \"%s\" to sign at %s"):format(
                 (sender:get_player_name() or ""),
                 fields.text,
