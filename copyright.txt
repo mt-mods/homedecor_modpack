@@ -6,5 +6,7 @@ doors) and ironzorg's flowers mod.
 Licenses: 
 * For the lua code, GPL. 
 * For the door open/close sound, CC-By-SA 3.0 by Slanesh on freesound.org
+	http://freesound.org/people/Slanesh/sounds/31768/
 * For the gate open/close sound, CC0, by j1987 on freesound.org
+	http://freesound.org/people/j1987/sounds/106116/
 * For all images and everything else, WTFPL.
