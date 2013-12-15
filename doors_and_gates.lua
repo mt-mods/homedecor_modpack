@@ -238,6 +238,7 @@ for i in ipairs(sides) do
 			drawtype = "nodebox",
 			tiles = tiles_lower,
 			inventory_image = "homedecor_door_"..doorname.."_"..side.."_inv.png",
+			wield_image = "homedecor_door_"..doorname.."_"..side.."_inv.png",
 			paramtype = "light",
 			paramtype2 = "facedir",
 			groups = dgroups,
