@@ -2,7 +2,7 @@
 
 local S = homedecor.gettext
 
-materials = {
+local materials = {
 	{"glass","Glass"},
 	{"wood","Wood"}
 }

@@ -71,8 +71,8 @@ local chaircolors = {
 }
 
 for i in ipairs(chaircolors) do
-	color = chaircolors[i][1]
-	name = chaircolors[i][2]
+	local color = chaircolors[i][1]
+	local name = chaircolors[i][2]
 	minetest.register_node("homedecor:armchair_"..color, {
 	    description = "Armchair ("..name..")",
 	    tiles = {
