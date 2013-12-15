@@ -3,4 +3,8 @@ Most code and all textures by Vanessa Ezekowitz.
 Some code copied and modified from the game's default mods (especially 
 doors) and ironzorg's flowers mod.
 
-Licenses:  For the lua code, GPL.  For all images and everything else, WTFPL.
+Licenses: 
+* For the lua code, GPL. 
+* For the door open/close sound, CC-By-SA 3.0 by Slanesh on freesound.org
+* For the gate open/close sound, CC0, by j1987 on freesound.org
+* For all images and everything else, WTFPL.
