@@ -154,8 +154,8 @@ for i in ipairs(sides) do
 	for j in ipairs(homedecor.door_models) do
 		local doorname =		homedecor.door_models[j][1]
 		local doordesc =		homedecor.door_models[j][2]
-		local nodeboxes_top = nil
-		local nodeboxes_bottom = nil
+		local nodeboxes_top =	homedecor.door_models[j][5]
+		local nodeboxes_bottom =	homedecor.door_models[j][6]
 		local texalpha = false
 		if doorname == "exterior_fancy" then
 			texalpha = true
@@ -163,10 +163,7 @@ for i in ipairs(sides) do
 
 		if side == "left" then
 			nodeboxes_top =	homedecor.door_models[j][3]
-			nodeboxes_bottomtom =	homedecor.door_models[j][4]
-		else
-			nodeboxes_top =	homedecor.door_models[j][5]
-			nodeboxes_bottomtom =	homedecor.door_models[j][6]
+			nodeboxes_bottom =	homedecor.door_models[j][4]
 		end
 
 		local lower_top_side = "homedecor_door_"..doorname.."_tb.png"
@@ -250,7 +247,7 @@ for i in ipairs(sides) do
 			selection_box = selectboxes_bottom,
 			node_box = {
 				type = "fixed",
-				fixed = nodeboxes_bottomtom
+				fixed = nodeboxes_bottom
 			},
 			after_dig_node = function(pos, oldnode, oldmetadata, digger)
 				if minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name == "homedecor:door_"..doorname.."_top_"..side then
