@@ -64,7 +64,7 @@ minetest.register_node("homedecor:toilet_open", {
     on_punch = function (pos, node, puncher)
         node.name = "homedecor:toilet"
         minetest.set_node(pos, node)
-        minetest.sound_play({name="homedecor_toilet_flush", pos=pos, max_hear_distance=5,})
+        minetest.sound_play("homedecor_toilet_flush",{pos=pos, max_hear_distance=5,})
     end,
 })
 
