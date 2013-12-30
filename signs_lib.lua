@@ -211,6 +211,7 @@ local fences_with_sign = { }
 local function split_lines_and_words(text)
 	local lines = { }
 	local line = { }
+	if not text then return end
 	for word in text:gmatch("%S+") do
 		if word == "|" then
 			table.insert(lines, line)
