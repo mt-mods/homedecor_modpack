@@ -324,7 +324,7 @@ homedecor.destruct_sign = function(pos)
 end
 
 local function make_infotext(text)
-	local lines = split_lines_and_words(text)
+	local lines = split_lines_and_words(text) or {}
 	local lines2 = { }
 	for _, line in ipairs(lines) do
 		table.insert(lines2, table.concat(line, " "))
