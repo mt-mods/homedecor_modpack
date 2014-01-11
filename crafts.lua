@@ -125,7 +125,7 @@ minetest.register_craft({
 minetest.register_craft( {
         output = "homedecor:flower_pot_green",
         recipe = {
-                { "", "group:dye,unicolor_dark_green", "" },
+                { "", "dye:dark_green", "" },
                 { "homedecor:plastic_sheeting", "default:dirt", "homedecor:plastic_sheeting" },
                 { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
         },
@@ -134,7 +134,7 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:flower_pot_black",
         recipe = {
-                { "group:dye,basecolor_black", "group:dye,basecolor_black", "group:dye,basecolor_black" },
+                { "dye:black", "dye:black", "dye:black" },
                 { "homedecor:plastic_sheeting", "default:dirt", "homedecor:plastic_sheeting" },
                 { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
         },
@@ -163,8 +163,8 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:ceiling_paint 20",
         recipe = {
-                "group:dye,basecolor_white",
-                "group:dye,basecolor_white",
+                "dye:white",
+                "dye:white",
                 "default:sand",
 		"bucket:bucket_water",
         },
@@ -174,7 +174,7 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:ceiling_tile 10",
         recipe = {
-                { "", "group:dye,basecolor_white", "" },
+                { "", "dye:white", "" },
                 { "default:steel_ingot", "default:stone", "default:steel_ingot" },
 
         },
@@ -261,8 +261,8 @@ minetest.register_craft({
 minetest.register_craft( {
         output = "homedecor:shingles_asphalt 6",
         recipe = {
-                { "default:gravel", "group:dye,basecolor_black", "default:gravel" },
-                { "default:sand", "group:dye,basecolor_black", "default:sand" },
+                { "default:gravel", "dye:black", "default:gravel" },
+                { "default:sand", "dye:black", "default:sand" },
                 { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
         },
 })
@@ -318,9 +318,9 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:shutter_oak 2",
         recipe = {
-                { "default:stick", "default:stick" },
-                { "default:stick", "default:stick" },
-                { "default:stick", "default:stick" },
+		{ "default:stick", "default:stick" },
+		{ "default:stick", "default:stick" },
+		{ "default:stick", "default:stick" },
         },
 })
 
@@ -336,11 +336,11 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:shutter_black 4",
         recipe = {
-                "group:dye,basecolor_black",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
-		"homedecor:shutter_oak"
+		"homedecor:shutter_oak",
+		"dye:black"
         },
 })
 
@@ -356,11 +356,11 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:shutter_dark_grey 4",
         recipe = {
-                "group:dye,excolor_darkgrey",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
-		"homedecor:shutter_oak"
+		"homedecor:shutter_oak",
+		"dye:dark_grey"
         },
 })
 
@@ -376,11 +376,11 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:shutter_grey 4",
         recipe = {
-		"group:dye,excolor_grey",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
-		"homedecor:shutter_oak"
+		"homedecor:shutter_oak",
+		"dye:grey"
         },
 })
 
@@ -396,11 +396,11 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:shutter_white 4",
         recipe = {
-                "homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
-                "group:dye,basecolor_white",
+		"homedecor:shutter_oak",
+		"dye:white"
         },
 })
 
@@ -420,7 +420,7 @@ minetest.register_craft( {
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
-		"group:dye,unicolor_dark_orange",
+		"dye:brown"
 	},
 })
 
@@ -437,7 +437,7 @@ minetest.register_craft( {
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
-		"group:dye,basecolor_red",
+		"dye:red"
 	},
 })
 
@@ -455,7 +455,7 @@ minetest.register_craft( {
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
-		"group:dye,unicolor_yellow",
+		"dye:yellow"
 	},
 })
 
@@ -471,11 +471,11 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:shutter_forest_green 4",
         recipe = {
-                "homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
-                "group:dye,unicolor_dark_green",
+		"homedecor:shutter_oak",
+		"dye:dark_green"
         },
 })
 
@@ -495,7 +495,7 @@ minetest.register_craft( {
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
-		"unifieddyes:light_blue",
+		"unifieddyes:light_blue"
 	},
 })
 
@@ -513,7 +513,7 @@ minetest.register_craft( {
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
-		"group:dye,excolor_violet",
+		"dye:violet"
 	},
 })
 
@@ -590,7 +590,7 @@ minetest.register_craft( {
         output = "homedecor:nightstand_mahogany_one_drawer",
         recipe = {
                 "homedecor:nightstand_oak_one_drawer",
-                "group:dye,unicolor_dark_orange",
+                "dye:brown",
         },
 })
 
@@ -605,7 +605,7 @@ minetest.register_craft( {
         output = "homedecor:nightstand_mahogany_two_drawers",
         recipe = {
                 "homedecor:nightstand_oak_two_drawers",
-                "group:dye,unicolor_dark_orange",
+                "dye:brown",
         },
 })
 
@@ -1021,7 +1021,7 @@ minetest.register_craft({
 minetest.register_craft({
         output = "homedecor:glowlight_half_white 6",
         recipe = {
-		{ "group:dye,basecolor_white", "group:dye,basecolor_white", "group:dye,basecolor_white" },
+		{ "dye:white", "dye:white", "dye:white" },
 		{"moreblocks:super_glow_glass", "moreblocks:glow_glass", "moreblocks:super_glow_glass", },
 	}
 })
@@ -1030,7 +1030,7 @@ minetest.register_craft({
 	type = "shapeless",
         output = "homedecor:glowlight_half_white 2",
         recipe = {
-		"group:dye,basecolor_white",
+		"dye:white",
 		"homedecor:glowlight_half_yellow",
 		"homedecor:glowlight_half_yellow",
 	}
@@ -1046,7 +1046,7 @@ minetest.register_craft({
 minetest.register_craft({
         output = "homedecor:glowlight_small_cube_white 8",
         recipe = {
-		{"group:dye,basecolor_white" },
+		{"dye:white" },
 		{"moreblocks:super_glow_glass" },
 	}
 })
@@ -1121,7 +1121,7 @@ minetest.register_craft( {
         output = "homedecor:fence_picket_white 6",
         recipe = {
                 { "default:stick", "default:stick", "default:stick" },
-                { "default:stick", "group:dye,basecolor_white", "default:stick" },
+                { "default:stick", "dye:white", "default:stick" },
                 { "default:stick", "default:stick", "default:stick" }
         },
 })
@@ -1350,7 +1350,7 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:door_wood_glass_mahogany_bottom_left 2",
         recipe = {
-		"group:dye,unicolor_dark_orange",
+		"dye:brown",
 		"homedecor:door_wood_glass_bottom_left",
 		"homedecor:door_wood_glass_bottom_left"
         },
@@ -1362,7 +1362,7 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:door_wood_glass_white_bottom_left 2",
         recipe = {
-		"group:dye,basecolor_white",
+		"dye:white",
 		"homedecor:door_wood_glass_bottom_left",
 		"homedecor:door_wood_glass_bottom_left"
         },
@@ -1411,7 +1411,7 @@ minetest.register_craft( {
         recipe = {
 		"homedecor:door_closet_oak_bottom_left",
 		"homedecor:door_closet_oak_bottom_left",
-		"group:dye,unicolor_dark_orange"
+		"dye:brown"
         },
 })
 
