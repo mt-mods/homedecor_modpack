@@ -507,7 +507,7 @@ minetest.register_craft({
 
 minetest.register_craft( {
 	type = "shapeless",
-        output = "homedecor:shutter_purple 4",
+        output = "homedecor:shutter_violet 4",
        	recipe = {
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
@@ -519,7 +519,7 @@ minetest.register_craft( {
 
 minetest.register_craft({
        	type = "fuel",
-       	recipe = "homedecor:shutter_purple",
+       	recipe = "homedecor:shutter_violet",
        	burntime = 30,
 })
 
