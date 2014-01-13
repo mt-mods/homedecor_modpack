@@ -326,8 +326,6 @@ function homedecor.register_furnace(name, furnacedef)
 				return
 			end
 
-			print(name..": cooked.item: "..dump(cooked.item:to_table()))
-
 			if not inv:room_for_item("dst", cooked.item) then
 				meta:set_string("infotext", desc..": output bins are full")
 				hacky_swap_node(pos, name)
