@@ -493,13 +493,14 @@ function homedecor.flip_door(pos, node, player, name, side, isClosed)
 
 	local rside = nil
 	local nfdir = nil
+	local ofdir = node.param2 or 0
 	if side == "left" then
 		rside = "right"
-		nfdir=node.param2 - 1
+		nfdir=ofdir - 1
 		if nfdir < 0 then nfdir = 3 end
 	else
 		rside = "left"
-		nfdir=node.param2 + 1
+		nfdir=ofdir + 1
 		if nfdir > 3 then nfdir = 0 end
 	end
     local sound;
@@ -527,7 +528,7 @@ function homedecor.flip_gate(pos, node, player, gate, oc)
 		gain = 2,
 	})
 
-	local fdir = node.param2
+	local fdir = node.param2 or 0
 
     -- since right facing gates use "open" nodes for closed, we need an
     -- isClosed flag to tell if it's "really" closed.
