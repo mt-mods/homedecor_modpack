@@ -115,7 +115,7 @@ for i in ipairs(chaircolors) do
 	    output = "homedecor:armchair_"..color.." 2",
 	    recipe = {
 		{ "wool:"..color,""},
-		{ "default:wood","default:wood" },
+		{ "group:wood","group:wood" },
 		{ "wool:"..color,"wool:"..color },
 	    },
 	})
