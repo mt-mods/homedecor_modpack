@@ -8,8 +8,6 @@ signs_lib = {}
 signs_lib.modpath = minetest.get_modpath("signs_lib")
 signs_lib.intllib_modpath = minetest.get_modpath("intllib")
 
-dofile(signs_lib.modpath.."/ownership.lua")
-
 local S
 if signs_lib.intllib_modpath then
     dofile(signs_lib.intllib_modpath.."/intllib.lua")
@@ -675,6 +673,8 @@ build_char_db()
 minetest.register_alias("homedecor:fence_wood_with_sign", "signs:sign_post")
 
 signs_lib.register_fence_with_sign("default:fence_wood", "signs:sign_post")
+
+dofile(signs_lib.modpath.."/ownership.lua")
 
 if minetest.setting_get("log_mods") then
 	minetest.log("action", S("signs loaded"))
