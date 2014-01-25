@@ -17,6 +17,7 @@ if signs_lib.intllib_modpath then
 else
     S = function ( s ) return s end
 end
+signs_lib.gettext = S
 
 --table copy
 
