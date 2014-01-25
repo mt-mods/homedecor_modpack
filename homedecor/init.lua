@@ -13,7 +13,6 @@
 
 homedecor = {}
 
-homedecor.disable_signs = minetest.setting_getbool("homedecor.disable_signs")
 homedecor.debug = 0
 
 homedecor.modpath = minetest.get_modpath("homedecor")
@@ -73,8 +72,6 @@ dofile(homedecor.modpath.."/slopes.lua")
 
 dofile(homedecor.modpath.."/door_models.lua")
 dofile(homedecor.modpath.."/doors_and_gates.lua")
-
-dofile(homedecor.modpath.."/signs_lib.lua")
 
 dofile(homedecor.modpath.."/fences.lua")
 

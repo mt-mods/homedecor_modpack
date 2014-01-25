@@ -1,6 +1,11 @@
 This is what I consider to be a fairly feature-filled home decor mod.  
-It supplies a bunch of stuff found in most homes, like flower pots, home 
-electronics, brass and wrought-iron tables, and lots more!
+
+It comes in two parts: The actual homedecor mod, which supplies a bunch 
+of stuff found in most homes (like flower pots, home electronics, brass 
+and wrought-iron tables, and a bunch of other things), and a signs 
+library forked from the one that thexyz and PilzAdam first made, which 
+produces visible text on signs (and which has been extended to put signs 
+on fences, including the brass and wrought iron ones here in homedecor).
 
 All items can be accessed either by crafting various other items 
 together, or with the usual /give commands.  To get a list of the actual 

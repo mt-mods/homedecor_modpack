@@ -1,8 +1,40 @@
-local S = homedecor.gettext
+-- This mod provides the visible text on signs library used by Home Decor
+-- and perhaps other mods at some point in the future.  Forked from thexyz's/
+-- PilzAdam's original text-on-signs mod and rewritten by Vanessa Ezekowitz
+-- and Diego Martinez
+
+signs_lib = {}
+
+signs_lib.modpath = minetest.get_modpath("signs_lib")
+signs_lib.intllib_modpath = minetest.get_modpath("intllib")
+
+dofile(signs_lib.modpath.."/ownership.lua")
+
+local S
+if signs_lib.intllib_modpath then
+    dofile(signs_lib.intllib_modpath.."/intllib.lua")
+    S = intllib.Getter(minetest.get_current_modname())
+else
+    S = function ( s ) return s end
+end
+
+--table copy
+
+function signs_lib.table_copy(t)
+    local nt = { };
+    for k, v in pairs(t) do
+        if type(v) == "table" then
+            nt[k] = signs_lib.table_copy(v)
+        else
+            nt[k] = v
+        end
+    end
+    return nt
+end
 
 -- CONSTANTS
 
-local MP = minetest.get_modpath("homedecor")
+local MP = minetest.get_modpath("signs_lib")
 
 -- Used by `build_char_db' to locate the file.
 local FONT_FMT = "%s/hdf_%02x.png"
@@ -59,7 +91,7 @@ local LINE_SEP = 1.2
 local charwidth = { }
 
 -- File to cache the font size to.
-local CHARDB_FILE = minetest.get_worldpath().."/homedecor_chardb"
+local CHARDB_FILE = minetest.get_worldpath().."/signs_lib_chardb"
 
 -- Returns true if any file differs from cached one.
 local function check_random_chars()
@@ -98,7 +130,7 @@ local function build_char_db()
 	local cdbf = io.open(CHARDB_FILE, "rt")
 
 	if cdbf then
-		minetest.log("info", "[homedecor] "..S("Reading cached character database."))
+		minetest.log("info", "[signs_lib] "..S("Reading cached character database."))
 		for line in cdbf:lines() do
 			local ch, w = line:match("(0x[0-9A-Fa-f]+)%s+([0-9][0-9]*)")
 			if ch and w then
@@ -122,12 +154,12 @@ local function build_char_db()
 			-- (font probably was changed).
 			if check_random_chars() then
 				LINE_HEIGHT = nil
-				minetest.log("info", "[homedecor] "
+				minetest.log("info", "[signs_lib] "
 					..S("Font seems to have changed. Rebuilding cache.")
 				)
 			end
 		else
-			minetest.log("warning", "[homedecor] "
+			minetest.log("warning", "[signs_lib] "
 				..S("Could not find font line height in cached DB. Trying brute force.")
 			)
 		end
@@ -166,7 +198,7 @@ local function build_char_db()
 	local e -- Note: `cdbf' is already declared local above.
 	cdbf, e = io.open(CHARDB_FILE, "wt")
 	if not cdbf then
-		minetest.log("warning", "[homedecor] Could not save cached char DB: "..(e or ""))
+		minetest.log("warning", "[signs_lib] Could not save cached char DB: "..(e or ""))
 		return
 	end
 
@@ -307,13 +339,13 @@ local function set_obj_text(obj, text)
 	})
 end
 
-homedecor.construct_sign = function(pos)
+signs_lib.construct_sign = function(pos)
     local meta = minetest.get_meta(pos)
 	meta:set_string("formspec", "field[text;;${text}]")
 	meta:set_string("infotext", "")
 end
 
-homedecor.destruct_sign = function(pos)
+signs_lib.destruct_sign = function(pos)
     local objects = minetest.get_objects_inside_radius(pos, 0.5)
     for _, v in ipairs(objects) do
 		local e = v:get_luaentity()
@@ -332,7 +364,7 @@ local function make_infotext(text)
 	return table.concat(lines2, "\n")
 end
 
-homedecor.update_sign = function(pos, fields)
+signs_lib.update_sign = function(pos, fields)
     local meta = minetest.get_meta(pos)
 	if fields then
 		meta:set_string("infotext", make_infotext(fields.text))
@@ -367,116 +399,114 @@ homedecor.update_sign = function(pos, fields)
 	text:setyaw(sign_info.yaw)
 end
 
-if not homedecor.disable_signs then
-	minetest.register_node(":default:sign_wall", {
-		description = "Sign",
-		inventory_image = "default_sign_wall.png",
-		wield_image = "default_sign_wall.png",
-		node_placement_prediction = "",
-		paramtype = "light",
-		sunlight_propagates = true,
-		paramtype2 = "facedir",
-		drawtype = "nodebox",
-		node_box = {type = "fixed", fixed = {-0.45, -0.15, 0.4, 0.45, 0.45, 0.498}},
-		selection_box = {type = "fixed", fixed = {-0.45, -0.15, 0.4, 0.45, 0.45, 0.498}},
-		tiles = {"signs_top.png", "signs_bottom.png", "signs_side.png", "signs_side.png", "signs_back.png", "signs_front.png"},
-		groups = sign_groups,
+minetest.register_node(":default:sign_wall", {
+	description = "Sign",
+	inventory_image = "default_sign_wall.png",
+	wield_image = "default_sign_wall.png",
+	node_placement_prediction = "",
+	paramtype = "light",
+	sunlight_propagates = true,
+	paramtype2 = "facedir",
+	drawtype = "nodebox",
+	node_box = {type = "fixed", fixed = {-0.45, -0.15, 0.4, 0.45, 0.45, 0.498}},
+	selection_box = {type = "fixed", fixed = {-0.45, -0.15, 0.4, 0.45, 0.45, 0.498}},
+	tiles = {"signs_top.png", "signs_bottom.png", "signs_side.png", "signs_side.png", "signs_back.png", "signs_front.png"},
+	groups = sign_groups,
 
-		on_place = function(itemstack, placer, pointed_thing)
-			local name
-			name = minetest.get_node(pointed_thing.under).name
-			if fences_with_sign[name] then
-				if homedecor.node_is_owned(pointed_thing.under, placer) then
-					return itemstack
-				end
-			else
-				name = minetest.get_node(pointed_thing.above).name
-				local def = minetest.registered_nodes[name]
-				if homedecor.node_is_owned(pointed_thing.above, placer)
-				 or (not def.buildable_to) then
-					return itemstack
-				end
+	on_place = function(itemstack, placer, pointed_thing)
+		local name
+		name = minetest.get_node(pointed_thing.under).name
+		if fences_with_sign[name] then
+			if signs_lib.node_is_owned(pointed_thing.under, placer) then
+				return itemstack
 			end
-
-		local node=minetest.get_node(pointed_thing.under)
-
-		if minetest.registered_nodes[node.name] and minetest.registered_nodes[node.name].on_rightclick then
-			return minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer, itemstack)
 		else
-			local above = pointed_thing.above
-			local under = pointed_thing.under
-			local dir = {x = under.x - above.x,
-						 y = under.y - above.y,
-						 z = under.z - above.z}
-
-			local wdir = minetest.dir_to_wallmounted(dir)
-
-			local placer_pos = placer:getpos()
-			if placer_pos then
-				dir = {
-					x = above.x - placer_pos.x,
-					y = above.y - placer_pos.y,
-					z = above.z - placer_pos.z
-				}
+			name = minetest.get_node(pointed_thing.above).name
+			local def = minetest.registered_nodes[name]
+			if signs_lib.node_is_owned(pointed_thing.above, placer)
+			 or (not def.buildable_to) then
+				return itemstack
 			end
-
-			local fdir = minetest.dir_to_facedir(dir)
-
-			local sign_info
-			local pt_name = minetest.get_node(under).name
-			print(dump(pt_name))
-
-			if fences_with_sign[pt_name] then
-				minetest.add_node(under, {name = fences_with_sign[pt_name], param2 = fdir})
-				sign_info = signs_post[fdir + 1]
-
-			elseif wdir == 0 then
-				--how would you add sign to ceiling?
-				minetest.add_item(above, "default:sign_wall")
-					itemstack:take_item()
-					return itemstack
-			elseif wdir == 1 then
-				minetest.add_node(above, {name = "signs:sign_yard", param2 = fdir})
-				sign_info = signs_yard[fdir + 1]
-			else
-				minetest.add_node(above, {name = "default:sign_wall", param2 = fdir})
-				sign_info = signs[fdir + 1]
-			end
-
-			local text = minetest.add_entity({x = above.x + sign_info.delta.x,
-												  y = above.y + sign_info.delta.y,
-												  z = above.z + sign_info.delta.z}, "signs:text")
-			text:setyaw(sign_info.yaw)
-
-			
-			if not homedecor.expect_infinite_stacks then
-				itemstack:take_item()
-			end
-			return itemstack
 		end
-		end,
-		on_construct = function(pos)
-			homedecor.construct_sign(pos)
-		end,
-		on_destruct = function(pos)
-			homedecor.destruct_sign(pos)
-		end,
-		on_receive_fields = function(pos, formname, fields, sender)
-			if fields and (not fields.quit) and fields.text then
-				print(S("%s wrote \"%s\" to sign at %s"):format(
-					(sender:get_player_name() or ""),
-					fields.text,
-					minetest.pos_to_string(pos)
-				))
-			end
-			if homedecor.node_is_owned(pos, sender) then return end
-			homedecor.update_sign(pos, fields)
-		end,
-		on_punch = function(pos, node, puncher)
-			homedecor.update_sign(pos)
-		end,
-	})
-end
+
+	local node=minetest.get_node(pointed_thing.under)
+
+	if minetest.registered_nodes[node.name] and minetest.registered_nodes[node.name].on_rightclick then
+		return minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, placer, itemstack)
+	else
+		local above = pointed_thing.above
+		local under = pointed_thing.under
+		local dir = {x = under.x - above.x,
+					 y = under.y - above.y,
+					 z = under.z - above.z}
+
+		local wdir = minetest.dir_to_wallmounted(dir)
+
+		local placer_pos = placer:getpos()
+		if placer_pos then
+			dir = {
+				x = above.x - placer_pos.x,
+				y = above.y - placer_pos.y,
+				z = above.z - placer_pos.z
+			}
+		end
+
+		local fdir = minetest.dir_to_facedir(dir)
+
+		local sign_info
+		local pt_name = minetest.get_node(under).name
+		print(dump(pt_name))
+
+		if fences_with_sign[pt_name] then
+			minetest.add_node(under, {name = fences_with_sign[pt_name], param2 = fdir})
+			sign_info = signs_post[fdir + 1]
+
+		elseif wdir == 0 then
+			--how would you add sign to ceiling?
+			minetest.add_item(above, "default:sign_wall")
+				itemstack:take_item()
+				return itemstack
+		elseif wdir == 1 then
+			minetest.add_node(above, {name = "signs:sign_yard", param2 = fdir})
+			sign_info = signs_yard[fdir + 1]
+		else
+			minetest.add_node(above, {name = "default:sign_wall", param2 = fdir})
+			sign_info = signs[fdir + 1]
+		end
+
+		local text = minetest.add_entity({x = above.x + sign_info.delta.x,
+											  y = above.y + sign_info.delta.y,
+											  z = above.z + sign_info.delta.z}, "signs:text")
+		text:setyaw(sign_info.yaw)
+
+		
+		if not signs_lib.expect_infinite_stacks then
+			itemstack:take_item()
+		end
+		return itemstack
+	end
+	end,
+	on_construct = function(pos)
+		signs_lib.construct_sign(pos)
+	end,
+	on_destruct = function(pos)
+		signs_lib.destruct_sign(pos)
+	end,
+	on_receive_fields = function(pos, formname, fields, sender)
+		if fields and (not fields.quit) and fields.text then
+			print(S("%s wrote \"%s\" to sign at %s"):format(
+				(sender:get_player_name() or ""),
+				fields.text,
+				minetest.pos_to_string(pos)
+			))
+		end
+		if signs_lib.node_is_owned(pos, sender) then return end
+		signs_lib.update_sign(pos, fields)
+	end,
+	on_punch = function(pos, node, puncher)
+		signs_lib.update_sign(pos)
+	end,
+})
 
 minetest.register_node(":signs:sign_yard", {
     paramtype = "light",
@@ -493,10 +523,10 @@ minetest.register_node(":signs:sign_yard", {
     drop = "default:sign_wall",
 
     on_construct = function(pos)
-        homedecor.construct_sign(pos)
+        signs_lib.construct_sign(pos)
     end,
     on_destruct = function(pos)
-        homedecor.destruct_sign(pos)
+        signs_lib.destruct_sign(pos)
     end,
     on_receive_fields = function(pos, formname, fields, sender)
         if fields and (not fields.quit) and fields.text then
@@ -506,11 +536,11 @@ minetest.register_node(":signs:sign_yard", {
                 minetest.pos_to_string(pos)
             ))
         end
-		if homedecor.node_is_owned(pos, sender) then return end
-        homedecor.update_sign(pos, fields)
+		if signs_lib.node_is_owned(pos, sender) then return end
+        signs_lib.update_sign(pos, fields)
     end,
 	on_punch = function(pos, node, puncher)
-		homedecor.update_sign(pos)
+		signs_lib.update_sign(pos)
 	end,
 })
 
@@ -553,20 +583,13 @@ minetest.register_node(":signs:sign_post", {
 
 local signs_text_on_activate
 
-if not homedecor.disable_signs then
-	signs_text_on_activate = function(self)
-		local meta = minetest.get_meta(self.object:getpos())
-		local text = meta:get_string("text")
-		if text then
-			set_obj_text(self.object, text)
-		end
-	end
-else
-	signs_text_on_activate = function(self)
-		self.object:remove()
+signs_text_on_activate = function(self)
+	local meta = minetest.get_meta(self.object:getpos())
+	local text = meta:get_string("text")
+	if text then
+		set_obj_text(self.object, text)
 	end
 end
-
 
 minetest.register_entity(":signs:text", {
     collisionbox = { 0, 0, 0, 0, 0, 0 },
@@ -578,15 +601,15 @@ minetest.register_entity(":signs:text", {
 
 -- And the good stuff here! :-)
 
-function homedecor.register_fence_with_sign(fencename, fencewithsignname)
+function signs_lib.register_fence_with_sign(fencename, fencewithsignname)
     local def = minetest.registered_nodes[fencename]
     local def_sign = minetest.registered_nodes[fencewithsignname]
     if not (def and def_sign) then
-        minetest.log("warning", "[homedecor] Attempt to register unknown node as fence")
+        minetest.log("warning", "[signs_lib] Attempt to register unknown node as fence")
         return
     end
-    def = homedecor.table_copy(def)
-    def_sign = homedecor.table_copy(def_sign)
+    def = signs_lib.table_copy(def)
+    def_sign = signs_lib.table_copy(def_sign)
     fences_with_sign[fencename] = fencewithsignname
 
     def.on_place = function(itemstack, placer, pointed_thing, ...)
@@ -597,18 +620,18 @@ function homedecor.register_fence_with_sign(fencename, fencewithsignname)
 		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 		if def_under and def_under.on_rightclick then
 			return def_under.on_rightclick(pointed_thing.under, node_under, placer, itemstack) or itemstack
-		elseif (not homedecor.node_is_owned(pointed_thing.under, placer))
+		elseif (not signs_lib.node_is_owned(pointed_thing.under, placer))
 		 and def_under.buildable_to then
 			minetest.add_node(pointed_thing.under, {name = fencename, param2 = fdir})
-			if not homedecor.expect_infinite_stacks then
+			if not signs_lib.expect_infinite_stacks then
 				itemstack:take_item()
 			end
 			placer:set_wielded_item(itemstack)
 			return itemstack
-		elseif (not homedecor.node_is_owned(pointed_thing.above, placer))
+		elseif (not signs_lib.node_is_owned(pointed_thing.above, placer))
 		 and def_above.buildable_to then
 			minetest.add_node(pointed_thing.above, {name = fencename, param2 = fdir})
-			if not homedecor.expect_infinite_stacks then
+			if not signs_lib.expect_infinite_stacks then
 				itemstack:take_item()
 			end
 			placer:set_wielded_item(itemstack)
@@ -616,10 +639,10 @@ function homedecor.register_fence_with_sign(fencename, fencewithsignname)
 		end
 	end
 	def_sign.on_construct = function(pos, ...)
-		homedecor.construct_sign(pos)
+		signs_lib.construct_sign(pos)
 	end
 	def_sign.on_destruct = function(pos, ...)
-		homedecor.destruct_sign(pos)
+		signs_lib.destruct_sign(pos)
 	end
 	def_sign.on_receive_fields = function(pos, formname, fields, sender, ...)
         if fields and (not fields.quit) and fields.text then
@@ -629,11 +652,11 @@ function homedecor.register_fence_with_sign(fencename, fencewithsignname)
                 minetest.pos_to_string(pos)
             ))
         end
-		if homedecor.node_is_owned(pos, sender) then return end
-		homedecor.update_sign(pos, fields)
+		if signs_lib.node_is_owned(pos, sender) then return end
+		signs_lib.update_sign(pos, fields)
 	end
 	def_sign.on_punch = function(pos, node, puncher, ...)
-		homedecor.update_sign(pos)
+		signs_lib.update_sign(pos)
 	end
 	local fencename = fencename
 	def_sign.after_dig_node = function(pos, node, ...)
@@ -647,6 +670,10 @@ function homedecor.register_fence_with_sign(fencename, fencewithsignname)
 end
 
 build_char_db()
+
+minetest.register_alias("homedecor:fence_wood_with_sign", "signs:sign_post")
+
+signs_lib.register_fence_with_sign("default:fence_wood", "signs:sign_post")
 
 if minetest.setting_get("log_mods") then
 	minetest.log("action", S("signs loaded"))
