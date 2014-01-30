@@ -90,7 +90,7 @@ minetest.register_node('homedecor:glowlight_half_yellow', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
 	sounds = default.node_sound_wood_defaults(),
-	on_place = homedecor.protect_and_rotate
+	on_place = minetest.rotate_node
 })
 
 minetest.register_node('homedecor:glowlight_quarter_yellow', {
@@ -120,7 +120,7 @@ minetest.register_node('homedecor:glowlight_quarter_yellow', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
-	on_place = homedecor.protect_and_rotate
+	on_place = minetest.rotate_node
 })
 
 -- White
@@ -152,7 +152,7 @@ minetest.register_node('homedecor:glowlight_half_white', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
 	sounds = default.node_sound_wood_defaults(),
-	on_place = homedecor.protect_and_rotate
+	on_place = minetest.rotate_node
 })
 
 minetest.register_node('homedecor:glowlight_quarter_white', {
@@ -182,7 +182,7 @@ minetest.register_node('homedecor:glowlight_quarter_white', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
-	on_place = homedecor.protect_and_rotate
+	on_place = minetest.rotate_node
 })
 
 -- Glowlight "cubes"
@@ -214,8 +214,7 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
-
-	on_place = homedecor.protect_and_rotate
+	on_place = minetest.rotate_node
 })
 
 minetest.register_node('homedecor:glowlight_small_cube_white', {
@@ -245,6 +244,6 @@ minetest.register_node('homedecor:glowlight_small_cube_white', {
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
-	on_place = homedecor.protect_and_rotate
+	on_place = minetest.rotate_node
 })
 

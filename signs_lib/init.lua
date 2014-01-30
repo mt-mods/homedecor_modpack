@@ -416,14 +416,20 @@ minetest.register_node(":default:sign_wall", {
 		local name
 		name = minetest.get_node(pointed_thing.under).name
 		if fences_with_sign[name] then
-			if signs_lib.node_is_owned(pointed_thing.under, placer) then
+			if minetest.is_protected(pointed_thing.under, placer:get_player_name()) then
+				minetest.record_protection_violation(pointed_thing.under,
+					placer:get_player_name())
 				return itemstack
 			end
 		else
 			name = minetest.get_node(pointed_thing.above).name
 			local def = minetest.registered_nodes[name]
-			if signs_lib.node_is_owned(pointed_thing.above, placer)
-			 or (not def.buildable_to) then
+			if not def.buildable_to then
+				return itemstack
+			end
+			if minetest.is_protected(pointed_thing.above, placer:get_player_name()) then
+				minetest.record_protection_violation(pointed_thing.above,
+					placer:get_player_name())
 				return itemstack
 			end
 		end
@@ -499,7 +505,11 @@ minetest.register_node(":default:sign_wall", {
 				minetest.pos_to_string(pos)
 			))
 		end
-		if signs_lib.node_is_owned(pos, sender) then return end
+		if minetest.is_protected(pos, sender:get_player_name()) then
+			minetest.record_protection_violation(pos,
+				sender:get_player_name())
+			return
+		end
 		signs_lib.update_sign(pos, fields)
 	end,
 	on_punch = function(pos, node, puncher)
@@ -535,7 +545,11 @@ minetest.register_node(":signs:sign_yard", {
                 minetest.pos_to_string(pos)
             ))
         end
-		if signs_lib.node_is_owned(pos, sender) then return end
+		if minetest.is_protected(pos, sender:get_player_name()) then
+			minetest.record_protection_violation(pos,
+				sender:get_player_name())
+			return
+		end
         signs_lib.update_sign(pos, fields)
     end,
 	on_punch = function(pos, node, puncher)
@@ -617,18 +631,28 @@ function signs_lib.register_fence_with_sign(fencename, fencewithsignname)
 		local def_above = minetest.registered_nodes[node_above.name]
 		local def_under = minetest.registered_nodes[node_under.name]
 		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+		local playername = placer:get_player_name()
+
+		if minetest.is_protected(pointed_thing.under, playername) then
+			minetest.record_protection_violation(pointed_thing.under, playername)
+			return
+		end
+
+		if minetest.is_protected(pointed_thing.above, playername) then 
+			minetest.record_protection_violation(pointed_thing.above, playername)
+			return
+		end
+
 		if def_under and def_under.on_rightclick then
 			return def_under.on_rightclick(pointed_thing.under, node_under, placer, itemstack) or itemstack
-		elseif (not signs_lib.node_is_owned(pointed_thing.under, placer))
-		 and def_under.buildable_to then
+		elseif def_under.buildable_to then
 			minetest.add_node(pointed_thing.under, {name = fencename, param2 = fdir})
 			if not signs_lib.expect_infinite_stacks then
 				itemstack:take_item()
 			end
 			placer:set_wielded_item(itemstack)
 			return itemstack
-		elseif (not signs_lib.node_is_owned(pointed_thing.above, placer))
-		 and def_above.buildable_to then
+		elseif def_above.buildable_to then
 			minetest.add_node(pointed_thing.above, {name = fencename, param2 = fdir})
 			if not signs_lib.expect_infinite_stacks then
 				itemstack:take_item()
@@ -651,7 +675,11 @@ function signs_lib.register_fence_with_sign(fencename, fencewithsignname)
                 minetest.pos_to_string(pos)
             ))
         end
-		if signs_lib.node_is_owned(pos, sender) then return end
+		if minetest.is_protected(pos, sender:get_player_name()) then
+			minetest.record_protection_violation(pos,
+				sender:get_player_name())
+			return
+		end
 		signs_lib.update_sign(pos, fields)
 	end
 	def_sign.on_punch = function(pos, node, puncher, ...)
@@ -673,8 +701,6 @@ build_char_db()
 minetest.register_alias("homedecor:fence_wood_with_sign", "signs:sign_post")
 
 signs_lib.register_fence_with_sign("default:fence_wood", "signs:sign_post")
-
-dofile(signs_lib.modpath.."/ownership.lua")
 
 if minetest.setting_get("log_mods") then
 	minetest.log("action", S("signs loaded"))

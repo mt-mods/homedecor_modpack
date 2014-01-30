@@ -61,8 +61,6 @@ end
 
 -- load various other components
 
-dofile(homedecor.modpath.."/ownership.lua")
-
 dofile(homedecor.modpath.."/misc_nodes.lua")					-- the catch-all for all misc nodes
 dofile(homedecor.modpath.."/tables.lua")
 dofile(homedecor.modpath.."/electronics.lua")

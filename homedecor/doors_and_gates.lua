@@ -424,14 +424,19 @@ function homedecor.place_door(itemstack, placer, pointed_thing, name, forceright
 	local pointed = pointed_thing.under
 	local pnode = minetest.get_node(pointed)
 	local pname = pnode.name
+	local rnodedef = minetest.registered_nodes[pname]
 
-	if not minetest.registered_nodes[pname]
-	    or not minetest.registered_nodes[pname].on_rightclick then
+	if rnodedef then
+
+		if rnodedef.on_rightclick then
+			rnodedef.on_rightclick(pointed_thing.under, pnode, placer, itemstack)
+			return
+		end
 
 		local pos1 = nil
 		local pos2 = nil
 
-		if minetest.registered_nodes[pname]["buildable_to"] then
+		if rnodedef["buildable_to"] then
 			pos1 = pointed
 			pos2 = {x=pointed.x, y=pointed.y+1, z=pointed.z}
 		else
@@ -442,39 +447,45 @@ function homedecor.place_door(itemstack, placer, pointed_thing, name, forceright
 		local node_bottom = minetest.get_node(pos1)
 		local node_top = minetest.get_node(pos2)
 
-		if not homedecor.node_is_owned(pos1, placer) 
-		    and not homedecor.node_is_owned(pos2, placer) then
+		if minetest.is_protected(pos1, placer:get_player_name()) then
+			minetest.record_protection_violation(pos1,
+					placer:get_player_name())
+			return
+		end
 
-			if not get_nodedef_field(node_bottom.name, "buildable_to") 
-			    or not get_nodedef_field(node_top.name, "buildable_to") then
-				minetest.chat_send_player( placer:get_player_name(), S('Not enough space above that spot to place a door!') )
-			else
-				local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-				local p_tests = {
-					{x=pos1.x-1, y=pos1.y, z=pos1.z},
-					{x=pos1.x, y=pos1.y, z=pos1.z+1},
-					{x=pos1.x+1, y=pos1.y, z=pos1.z},
-					{x=pos1.x, y=pos1.y, z=pos1.z-1},
-				}
-				print("fdir="..fdir)
-				local testnode = minetest.get_node(p_tests[fdir+1])
-				local side = "left"
+		if minetest.is_protected(pos2, placer:get_player_name()) then
+			minetest.record_protection_violation(pos2,
+					placer:get_player_name())
+			return
+		end
 
-				if string.find(testnode.name, "homedecor:door_"..name.."_bottom_left") or forceright then
-					side = "right"
-				end
+		if not get_nodedef_field(node_bottom.name, "buildable_to") 
+		    or not get_nodedef_field(node_top.name, "buildable_to") then
+			minetest.chat_send_player( placer:get_player_name(), S('Not enough space above that spot to place a door!') )
+		else
+			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+			local p_tests = {
+				{x=pos1.x-1, y=pos1.y, z=pos1.z},
+				{x=pos1.x, y=pos1.y, z=pos1.z+1},
+				{x=pos1.x+1, y=pos1.y, z=pos1.z},
+				{x=pos1.x, y=pos1.y, z=pos1.z-1},
+			}
+			print("fdir="..fdir)
+			local testnode = minetest.get_node(p_tests[fdir+1])
+			local side = "left"
 
-                local def = { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir}
-                addDoorNode(pos1, def, true)
-				minetest.add_node(pos2, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})
-				if not homedecor.expect_infinite_stacks then
-					itemstack:take_item()
-					return itemstack
-				end
+			if string.find(testnode.name, "homedecor:door_"..name.."_bottom_left") or forceright then
+				side = "right"
+			end
+
+            local def = { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir}
+            addDoorNode(pos1, def, true)
+			minetest.add_node(pos2, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})
+			if not homedecor.expect_infinite_stacks then
+				itemstack:take_item()
+				return itemstack
 			end
 		end
-	else
-		minetest.registered_nodes[pname].on_rightclick(pointed_thing.under, pnode, placer, itemstack)
 	end
 end
 
