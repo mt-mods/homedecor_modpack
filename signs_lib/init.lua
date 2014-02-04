@@ -366,7 +366,7 @@ end
 signs_lib.update_sign = function(pos, fields)
     local meta = minetest.get_meta(pos)
 	if fields then
-		meta:set_string("infotext", make_infotext(fields.text))
+		meta:set_string("infotext", make_infotext(fields.text).." ")
 		meta:set_string("text", fields.text)
 	end
     local text = meta:get_string("text")
