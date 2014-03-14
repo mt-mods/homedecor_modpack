@@ -31,6 +31,14 @@ function signs_lib.table_copy(t)
     return nt
 end
 
+-- infinite stacks
+
+if minetest.get_modpath("unified_inventory") or not minetest.setting_getbool("creative_mode") then
+	signs_lib.expect_infinite_stacks = false
+else
+	signs_lib.expect_infinite_stacks = true
+end
+
 -- CONSTANTS
 
 local MP = minetest.get_modpath("signs_lib")
