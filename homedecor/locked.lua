@@ -120,7 +120,7 @@ end
 
 local items = {
     { "refrigerator",
-      "Cabinet" },
+      "Fridge" },
     { "kitchen_cabinet",
       "Cabinet" },
     { "kitchen_cabinet_half",

@@ -53,7 +53,7 @@ minetest.register_node('homedecor:kitchen_cabinet', {
 
 minetest.register_node('homedecor:kitchen_cabinet_half', {	
 	drawtype="nodebox",
-	description = 'Half-height Kitchen Cabinet (on ceiling)',
+	description = S('Half-height Kitchen Cabinet (on ceiling)'),
 	tiles = { 'homedecor_kitchen_cabinet_sides.png',
 			'homedecor_kitchen_cabinet_bottom.png',
 			'homedecor_kitchen_cabinet_sides.png',

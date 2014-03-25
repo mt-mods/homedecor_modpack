@@ -83,7 +83,7 @@ for i in ipairs(materials) do
 	})
 
 	minetest.register_node('homedecor:'..m..'_table_small_square_t', {
-		description = S(d.."Glass Table (Small, Square)"),
+		description = S(d.." Table (Small, Square)"),
 		drawtype = 'nodebox',
 		tiles = {
 			'homedecor_'..m..'_table_small_square_tb.png',
@@ -281,7 +281,7 @@ for i in ipairs(materials) do
 -- Large square table pieces
 
 	minetest.register_node('homedecor:'..m..'_table_large_b', {
-		description = S(d.."Table Piece (large)"),
+		description = S(d.." Table Piece (large)"),
 		drawtype = 'nodebox',
 		tiles = { 
 			'homedecor_'..m..'_table_large_tb.png',
@@ -338,7 +338,7 @@ for i in ipairs(materials) do
 	})
 
 	minetest.register_node('homedecor:'..m..'_table_large_t', {
-		description = S(d.."Table Piece (large)"),
+		description = S(d.." Table Piece (large)"),
 		drawtype = 'nodebox',
 		tiles = { 
 			'homedecor_'..m..'_table_large_tb.png',
@@ -368,7 +368,7 @@ for i in ipairs(materials) do
 	})
 
 	minetest.register_node('homedecor:'..m..'_table_large_s', {
-		description = S(d.."Table Piece (large)"),
+		description = S(d.." Table Piece (large)"),
 		drawtype = 'nodebox',
 		tiles = { 
 			'homedecor_'..m..'_table_large_edges.png',
@@ -456,7 +456,7 @@ minetest.register_node("homedecor:table_legs_brass", {
 })
 
 minetest.register_node("homedecor:table_legs_wrought_iron", {
-        description = S("Brass Table Legs"),
+        description = S("Wrought Iron Table Legs"),
         drawtype = "plantlike",
         tiles = {"homedecor_table_legs_wrought_iron.png"},
         inventory_image = "homedecor_table_legs_wrought_iron.png",

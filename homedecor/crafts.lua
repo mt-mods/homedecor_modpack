@@ -167,7 +167,7 @@ minetest.register_craft( {
 --  Items/recipes not requiring smelting of anything new
 
 minetest.register_craft( {
-        output = "homedecor:glass_table_small_round 15",
+        output = "homedecor:glass_table_small_round_b 15",
         recipe = {
                 { "", "default:glass", "" },
                 { "default:glass", "default:glass", "default:glass" },
@@ -176,7 +176,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:glass_table_small_square 4",
+        output = "homedecor:glass_table_small_square_b 4",
         recipe = {
 		{"homedecor:glass_table_small_round", "homedecor:glass_table_small_round" },
 		{"homedecor:glass_table_small_round", "homedecor:glass_table_small_round" }
@@ -184,7 +184,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:glass_table_large 4",
+        output = "homedecor:glass_table_large_b 4",
         recipe = { 
 		{ "homedecor:glass_table_small_square", "homedecor:glass_table_small_square" },
 		{ "homedecor:glass_table_small_square", "homedecor:glass_table_small_square" }
@@ -194,7 +194,7 @@ minetest.register_craft( {
 --
 
 minetest.register_craft( {
-        output = "homedecor:wood_table_small_round 15",
+        output = "homedecor:wood_table_small_round_b 15",
         recipe = {
                 { "", "group:wood", "" },
                 { "group:wood", "group:wood", "group:wood" },
@@ -203,7 +203,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:wood_table_small_square 4",
+        output = "homedecor:wood_table_small_square_b 4",
         recipe = { 
 		{ "homedecor:wood_table_small_round","homedecor:wood_table_small_round" },
 		{ "homedecor:wood_table_small_round","homedecor:wood_table_small_round" }
@@ -211,7 +211,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:wood_table_large 4",
+        output = "homedecor:wood_table_large_b 4",
         recipe = { 
 		{ "homedecor:wood_table_small_square", "homedecor:wood_table_small_square" },
 		{ "homedecor:wood_table_small_square", "homedecor:wood_table_small_square" }
@@ -222,19 +222,19 @@ minetest.register_craft( {
 
 minetest.register_craft({
         type = "fuel",
-        recipe = "homedecor:wood_table_small_round",
+        recipe = "homedecor:wood_table_small_round_b",
         burntime = 30,
 })
 
 minetest.register_craft({
         type = "fuel",
-        recipe = "homedecor:wood_table_small_square",
+        recipe = "homedecor:wood_table_small_square_b",
         burntime = 30,
 })
 
 minetest.register_craft({
         type = "fuel",
-        recipe = "homedecor:wood_table_large",
+        recipe = "homedecor:wood_table_large_b",
         burntime = 30,
 })
 
