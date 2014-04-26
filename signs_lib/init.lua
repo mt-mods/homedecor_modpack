@@ -507,7 +507,7 @@ minetest.register_node(":default:sign_wall", {
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
 		if fields and (not fields.quit) and fields.text then
-			print(S("%s wrote \"%s\" to sign at %s"):format(
+			minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
 				(sender:get_player_name() or ""),
 				fields.text,
 				minetest.pos_to_string(pos)
@@ -547,7 +547,7 @@ minetest.register_node(":signs:sign_yard", {
     end,
     on_receive_fields = function(pos, formname, fields, sender)
         if fields and (not fields.quit) and fields.text then
-            print(S("%s wrote \"%s\" to sign at %s"):format(
+            minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
                 (sender:get_player_name() or ""),
                 fields.text,
                 minetest.pos_to_string(pos)
@@ -677,7 +677,7 @@ function signs_lib.register_fence_with_sign(fencename, fencewithsignname)
 	end
 	def_sign.on_receive_fields = function(pos, formname, fields, sender, ...)
         if fields and (not fields.quit) and fields.text then
-            print(S("%s wrote \"%s\" to sign at %s"):format(
+            minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
                 (sender:get_player_name() or ""),
                 fields.text,
                 minetest.pos_to_string(pos)
