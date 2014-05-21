@@ -506,7 +506,7 @@ minetest.register_node(":default:sign_wall", {
 		signs_lib.destruct_sign(pos)
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
-		if fields and (not fields.quit) and fields.text then
+		if fields and fields.text then
 			minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
 				(sender:get_player_name() or ""),
 				fields.text,
@@ -518,7 +518,9 @@ minetest.register_node(":default:sign_wall", {
 				sender:get_player_name())
 			return
 		end
-		signs_lib.update_sign(pos, fields)
+		if fields and fields.text then
+			signs_lib.update_sign(pos, fields)
+		end
 	end,
 	on_punch = function(pos, node, puncher)
 		signs_lib.update_sign(pos)
@@ -546,7 +548,7 @@ minetest.register_node(":signs:sign_yard", {
         signs_lib.destruct_sign(pos)
     end,
     on_receive_fields = function(pos, formname, fields, sender)
-        if fields and (not fields.quit) and fields.text then
+        if fields and fields.text then
             minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
                 (sender:get_player_name() or ""),
                 fields.text,
@@ -558,7 +560,9 @@ minetest.register_node(":signs:sign_yard", {
 				sender:get_player_name())
 			return
 		end
-        signs_lib.update_sign(pos, fields)
+		if fields and fields.text then
+			signs_lib.update_sign(pos, fields)
+		end
     end,
 	on_punch = function(pos, node, puncher)
 		signs_lib.update_sign(pos)
@@ -676,7 +680,7 @@ function signs_lib.register_fence_with_sign(fencename, fencewithsignname)
 		signs_lib.destruct_sign(pos)
 	end
 	def_sign.on_receive_fields = function(pos, formname, fields, sender, ...)
-        if fields and (not fields.quit) and fields.text then
+        if fields and fields.text then
             minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
                 (sender:get_player_name() or ""),
                 fields.text,
@@ -688,7 +692,9 @@ function signs_lib.register_fence_with_sign(fencename, fencewithsignname)
 				sender:get_player_name())
 			return
 		end
-		signs_lib.update_sign(pos, fields)
+        if fields and fields.text then
+			signs_lib.update_sign(pos, fields)
+		end
 	end
 	def_sign.on_punch = function(pos, node, puncher, ...)
 		signs_lib.update_sign(pos)
