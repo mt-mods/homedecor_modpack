@@ -1,11 +1,20 @@
-This is what I consider to be a fairly feature-filled home decor mod.  
+This is what I consider to be a fairly feature-filled home decor 
+modpack.  As such, it comes in multiple parts:
 
-It comes in two parts: The actual homedecor mod, which supplies a bunch 
-of stuff found in most homes (like flower pots, home electronics, brass 
-and wrought-iron tables, and a bunch of other things), and a signs 
-library forked from the one that thexyz and PilzAdam first made, which 
-produces visible text on signs (and which has been extended to put signs 
-on fences, including the brass and wrought iron ones here in homedecor).
+* The actual homedecor mod, which supplies a bunch of stuff found in 
+most homes (like flower pots, home electronics, brass and wrought-iron 
+tables, and a bunch of other things).
+
+* A "3d extras" mod, which supplies things that re-define something in 
+some other mod (or in the default game) so that those objects become 
+fully 3d (instead of a flat cube), as well as things which are directly 
+related.  This mod, for example, provides 3d bookshelves and their empty 
+and half-depth "open frame" counterparts.
+
+* A signs library forked from the one that thexyz and PilzAdam first 
+made, which produces visible text on signs (and which has been extended 
+to put signs on fences, including the brass and wrought iron ones here 
+in homedecor).
 
 All items can be accessed either by crafting various other items 
 together, or with the usual /give commands.  To get a list of the actual 
@@ -37,7 +46,7 @@ with Minetest v0.3 (that version doesn't support mods).
 Much of the code (especially for the doors) plus the bucket were taken 
 from the files which come with Minetest and altered to suit.  Many 
 thanks to Jeija for coming up with an elegant cylinder using nodeboxes; 
-see his 'irregular' mods).  His code is used herein (you can guess where 
+see his 'irregular' mods).  His code is used herein (you can guess where
 :-) ).
 
 Dependencies: none (just the game's default stuff)
