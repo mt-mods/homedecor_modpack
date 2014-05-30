@@ -141,3 +141,15 @@ if minetest.get_modpath("moreblocks") then
 		}
 	})
 end
+
+-- crafting recipes
+
+minetest.register_craft( {
+        output = "homedecor:openframe_bookshelf",
+        recipe = {
+		{"group:wood", "", "group:wood"},
+		{"default:book", "default:book", "default:book"},
+		{"group:wood", "", "group:wood"},
+        },
+})
+
