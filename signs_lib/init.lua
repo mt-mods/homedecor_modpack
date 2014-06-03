@@ -369,9 +369,7 @@ local function make_sign_texture(lines)
 		lineno = ln + 1
 	end
 	table.insert(texture, "^[makealpha:0,0,0")
-	texture = table.concat(texture, "")
-	print(texture)
-	return texture
+	return table.concat(texture, "")
 end
 
 local function set_obj_text(obj, text)
