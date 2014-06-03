@@ -89,10 +89,6 @@ local SIGN_WIDTH
 local CHARS_PER_LINE = 30
 local NUMBER_OF_LINES = 6
 
--- Separation between lines. 1.0 means no separation (ypos offset by text
--- height), 2.0 is one "line" (ypos offset by two times text height), etc.
-local LINE_SEP = 1.2
-
 -- This holds the individual character widths.
 -- Indexed by the actual character (e.g. charwidth["A"])
 local charwidth = { }
@@ -268,6 +264,17 @@ end
 
 local math_max = math.max
 
+local function fill_line(x, y, w, c)
+	local tex = { }
+	for xx = 0, math.max(0, w-16), 16 do
+		table.insert(tex, (":%d,%d=slc_%s.png"):format(x + xx, y, c))
+	end
+	if ((w % 16) > 0) and (w > 16) then
+		table.insert(tex, (":%d,%d=slc_%s.png"):format(x + w - 16, y, c))
+	end
+	return table.concat(tex)
+end
+
 local function make_line_texture(line, lineno)
 
 	local width = 0
@@ -275,26 +282,40 @@ local function make_line_texture(line, lineno)
 
 	local words = { }
 
+	local cur_color = 0
+
 	-- We check which chars are available here.
 	for word_i, word in ipairs(line) do
 		local chars = { }
 		local ch_offs = 0
-		for i = 1, #word do
+		local word_l = #word
+		local i = 1
+		while i <= word_l  do
 			local c = word:sub(i, i)
-			local w = charwidth[c]
-			if w then
-				width = width + w + 1
-				if width >= (SIGN_WIDTH - charwidth[" "]) then
-					width = 0
-				else
-					maxw = math_max(width, maxw)
+			if c == "#" then
+				local cc = tonumber(word:sub(i+1, i+1), 16)
+				if cc then
+					i = i + 1
+					cur_color = cc
 				end
-				table.insert(chars, {
-					off=ch_offs,
-					tex=FONT_FMT_SIMPLE:format(c:byte())
-				})
-				ch_offs = ch_offs + w + 1
+			else
+				local w = charwidth[c]
+				if w then
+					width = width + w + 1
+					if width >= (SIGN_WIDTH - charwidth[" "]) then
+						width = 0
+					else
+						maxw = math_max(width, maxw)
+					end
+					table.insert(chars, {
+						off=ch_offs,
+						tex=FONT_FMT_SIMPLE:format(c:byte()),
+						col=("%X"):format(cur_color),
+					})
+					ch_offs = ch_offs + w
+				end
 			end
+			i = i + 1
 		end
 		width = width + charwidth[" "] + 1
 		maxw = math_max(width, maxw)
@@ -310,25 +331,36 @@ local function make_line_texture(line, lineno)
 	local xpos = start_xpos
 	local ypos = (LINE_HEIGHT * lineno)
 
+	cur_color = nil
+
 	for word_i, word in ipairs(words) do
 		local xoffs = (xpos - start_xpos)
 		if (xoffs > 0) and ((xoffs + word.w) > maxw) then
+			table.insert(texture, fill_line(xpos, ypos, maxw, "n"))
 			xpos = start_xpos
-			ypos = ypos + (LINE_HEIGHT * LINE_SEP)
+			ypos = ypos + LINE_HEIGHT
 			lineno = lineno + 1
 			if lineno >= NUMBER_OF_LINES then break end
 		end
 		for ch_i, ch in ipairs(word.chars) do
+			if ch.col ~= cur_color then
+				cur_color = ch.col
+				table.insert(texture, fill_line(xpos + ch.off, ypos, maxw, cur_color))
+			end
 			table.insert(texture, (":%d,%d=%s"):format(xpos + ch.off, ypos, ch.tex))
 		end
+		table.insert(texture, (":%d,%d=hdf_20.png"):format(xpos + word.w, ypos))
 		xpos = xpos + word.w + charwidth[" "]
 	end
 
-	return table.concat(texture, ""), lineno
+	table.insert(texture, fill_line(xpos, ypos, maxw, "n"))
+	table.insert(texture, fill_line(start_xpos, ypos + LINE_HEIGHT, maxw, "n"))
+
+	return table.concat(texture), lineno
 end
 
 local function make_sign_texture(lines)
-	local texture = { ("[combine:%dx%d"):format(SIGN_WIDTH, LINE_HEIGHT * NUMBER_OF_LINES * LINE_SEP) }
+	local texture = { ("[combine:%dx%d"):format(SIGN_WIDTH, LINE_HEIGHT * NUMBER_OF_LINES) }
 	local lineno = 0
 	for i = 1, #lines do
 		if lineno >= NUMBER_OF_LINES then break end
@@ -336,7 +368,10 @@ local function make_sign_texture(lines)
 		table.insert(texture, linetex)
 		lineno = ln + 1
 	end
-	return table.concat(texture, "")
+	table.insert(texture, "^[makealpha:0,0,0")
+	texture = table.concat(texture, "")
+	print(texture)
+	return texture
 end
 
 local function set_obj_text(obj, text)
@@ -366,7 +401,7 @@ local function make_infotext(text)
 	local lines = split_lines_and_words(text) or {}
 	local lines2 = { }
 	for _, line in ipairs(lines) do
-		table.insert(lines2, table.concat(line, " "))
+		table.insert(lines2, (table.concat(line, " "):gsub("#[0-9a-fA-F]", ""):gsub("##", "#")))
 	end
 	return table.concat(lines2, "\n")
 end
