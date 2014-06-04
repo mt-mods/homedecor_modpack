@@ -341,6 +341,7 @@ local function make_line_texture(line, lineno)
 			ypos = ypos + LINE_HEIGHT
 			lineno = lineno + 1
 			if lineno >= NUMBER_OF_LINES then break end
+			table.insert(texture, fill_line(xpos, ypos, maxw, cur_color))
 		end
 		for ch_i, ch in ipairs(word.chars) do
 			if ch.col ~= cur_color then
