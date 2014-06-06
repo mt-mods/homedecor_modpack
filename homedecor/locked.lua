@@ -1,11 +1,7 @@
 -- Locked Stuff for Home Decor mod, by Kaeza
--- 2013-02-19
 --
 -- The code is mostly copypasta from default:chest_locked, with a few
 -- tidbits to ease creation of new items, should need arise.
---
--- License: LGPL
---
 
 local S = homedecor.gettext
 

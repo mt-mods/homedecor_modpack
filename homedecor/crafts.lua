@@ -1,10 +1,6 @@
 -- Crafting for homedecor mod (includes folding) by Vanessa Ezekowitz
--- 2012-06-12
 --
 -- Mostly my own code; overall template borrowed from game default
---
--- License: GPL
---
 
 local S = homedecor.gettext
 

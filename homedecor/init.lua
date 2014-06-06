@@ -1,5 +1,4 @@
 -- Home Decor mod by VanessaE
--- 2013-03-17
 --
 -- Mostly my own code, with bits and pieces lifted from Minetest's default
 -- lua files and from ironzorg's flowers mod.  Many thanks to GloopMaster
@@ -7,9 +6,6 @@
 --
 -- The code for ovens, nightstands, refrigerators are basically modified 
 -- copies of the code for chests and furnaces.
---
--- License: LGPL 2.0 or higher
---
 
 homedecor = {}
 
