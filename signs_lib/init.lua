@@ -223,6 +223,13 @@ local signs = {
     {delta = {x = -0.399, y = 0.15, z =  0    }, yaw = math.pi / 2},
 }
 
+local signs_hanging = {
+    {delta = {x =  0,     y = 0.032, z = -0.05}, yaw = 0},
+    {delta = {x = -0.05,  y = 0.032, z =  0   }, yaw = math.pi / -2},
+    {delta = {x =  0,     y = 0.032, z =  0.05}, yaw = math.pi},
+    {delta = {x =  0.05,  y = 0.032, z =  0   }, yaw = math.pi / 2},
+}
+
 local signs_yard = {
     {delta = {x =  0,     y = 0.15, z = -0.05}, yaw = 0},
     {delta = {x = -0.05,  y = 0.15, z =  0   }, yaw = math.pi / -2},
@@ -426,6 +433,8 @@ signs_lib.update_sign = function(pos, fields)
 	local sign_info
 	if minetest.get_node(pos).name == "signs:sign_yard" then
 		sign_info = signs_yard[minetest.get_node(pos).param2 + 1]
+	elseif minetest.get_node(pos).name == "signs:sign_hanging" then
+		sign_info = signs_hanging[minetest.get_node(pos).param2 + 1]
 	elseif minetest.get_node(pos).name == "default:sign_wall" then
 		sign_info = signs[minetest.get_node(pos).param2 + 1]
 	else --if minetest.get_node(pos).name == "signs:sign_post" then
@@ -509,10 +518,8 @@ minetest.register_node(":default:sign_wall", {
 			sign_info = signs_post[fdir + 1]
 
 		elseif wdir == 0 then
-			--how would you add sign to ceiling?
-			minetest.add_item(above, "default:sign_wall")
-				itemstack:take_item()
-				return itemstack
+			minetest.add_node(above, {name = "signs:sign_hanging", param2 = fdir})
+			sign_info = signs_hanging[fdir + 1]
 		elseif wdir == 1 then
 			minetest.add_node(above, {name = "signs:sign_yard", param2 = fdir})
 			sign_info = signs_yard[fdir + 1]
@@ -572,6 +579,58 @@ minetest.register_node(":signs:sign_yard", {
     }},
     selection_box = {type = "fixed", fixed = {-0.45, -0.15, -0.049, 0.45, 0.45, 0.049}},
     tiles = {"signs_top.png", "signs_bottom.png", "signs_side.png", "signs_side.png", "signs_back.png", "signs_front.png"},
+    groups = {choppy=2, dig_immediate=2},
+    drop = "default:sign_wall",
+
+    on_construct = function(pos)
+        signs_lib.construct_sign(pos)
+    end,
+    on_destruct = function(pos)
+        signs_lib.destruct_sign(pos)
+    end,
+    on_receive_fields = function(pos, formname, fields, sender)
+        if fields and fields.text then
+            minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
+                (sender:get_player_name() or ""),
+                fields.text,
+                minetest.pos_to_string(pos)
+            ))
+        end
+		if minetest.is_protected(pos, sender:get_player_name()) then
+			minetest.record_protection_violation(pos,
+				sender:get_player_name())
+			return
+		end
+		if fields and fields.text then
+			signs_lib.update_sign(pos, fields)
+		end
+    end,
+	on_punch = function(pos, node, puncher)
+		signs_lib.update_sign(pos)
+	end,
+})
+
+minetest.register_node(":signs:sign_hanging", {
+    paramtype = "light",
+	sunlight_propagates = true,
+    paramtype2 = "facedir",
+    drawtype = "nodebox",
+    node_box = {type = "fixed", fixed = {
+        {-0.45,  0.3124,  0,     0.45, 0.5,   0},
+        {-0.45, -0.2875, -0.049, 0.45, 0.3125, 0.049}
+    }},
+    selection_box = {
+		type = "fixed",
+		fixed = {-0.45, -0.275, -0.049, 0.45, 0.5, 0.049}
+	},
+    tiles = {
+		"signs_hanging_top.png",
+		"signs_hanging_bottom.png",
+		"signs_hanging_side.png",
+		"signs_hanging_side.png",
+		"signs_hanging_back.png",
+		"signs_hanging_front.png"
+	},
     groups = {choppy=2, dig_immediate=2},
     drop = "default:sign_wall",
 
