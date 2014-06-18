@@ -2,11 +2,7 @@ local S = homedecor.gettext
 
 minetest.register_node("homedecor:toilet", {
     description = S("Toilet"),
-    tiles = { 
-        "forniture_marble.png", "forniture_marble.png", 
-        "forniture_marble_s1.png", "forniture_marble_s1.png", 
-        "forniture_marble_s2.png", "forniture_marble_s2.png",
-    },
+    tiles = { "forniture_marble.png" },
     drawtype = "nodebox",
     sunlight_propagates = false,
     paramtype = "light",
@@ -33,9 +29,8 @@ minetest.register_node("homedecor:toilet", {
 
 minetest.register_node("homedecor:toilet_open", {
     tiles = {
-        "forniture_marble_top_toilet.png", "forniture_marble.png",
-        "forniture_marble_sb1.png", "forniture_marble_sb1.png",
-        "forniture_marble_sb2.png", "forniture_marble_sb2.png",
+        "forniture_marble_top_toilet.png",
+		"forniture_marble.png"
     },
     drawtype = "nodebox",
     paramtype = "light",
@@ -76,9 +71,8 @@ minetest.register_node("homedecor:toilet_open", {
 minetest.register_node("homedecor:sink", {
     description = S("Sink"),
     tiles = {
-        "forniture_marble_top_sink.png", "forniture_marble.png",
-        "forniture_marble_sb1.png", "forniture_marble_sb1.png",
-        "forniture_marble_sb2.png", "forniture_marble_sb2.png",
+        "forniture_marble_top_sink.png",
+		"forniture_marble.png"
     },
     inventory_image="3dforniture_inv_sink.png",
     drawtype = "nodebox",
@@ -109,11 +103,7 @@ minetest.register_node("homedecor:sink", {
 --Taps
 minetest.register_node("homedecor:taps", {
     description = S("Taps"),
-    tiles = {
-        "forniture_metal.png", "forniture_metal.png",
-        "forniture_metal_s1.png", "forniture_metal_s1.png",
-        "forniture_metal_s2.png", "forniture_metal_s2.png",
-    },
+    tiles = { "forniture_metal.png" },
     inventory_image="3dforniture_inv_taps.png",
     drawtype = "nodebox",
     sunlight_propagates = true,
@@ -145,12 +135,8 @@ minetest.register_node("homedecor:taps", {
 minetest.register_node("homedecor:shower_tray", {
     description = S("Shower Tray"),
     tiles = {
-        "forniture_marble_base_ducha_top.png",
-        "forniture_marble_base_ducha_top.png",
-        "forniture_marble_sb1.png",
-        "forniture_marble_sb1.png",
-        "forniture_marble_sb2.png",
-        "forniture_marble_sb2.png",
+		"forniture_marble_base_ducha_top.png",
+		"forniture_marble.png"
     },
     drawtype = "nodebox",
     sunlight_propagates = true,
@@ -178,14 +164,7 @@ minetest.register_node("homedecor:shower_tray", {
 --Shower Head
 minetest.register_node("homedecor:shower_head", {
     description = S("Shower Head"),
-    tiles = {
-        "forniture_metal.png",
-        "forniture_metal.png",
-        "forniture_metal_s1.png",
-        "forniture_metal_s1.png",
-        "forniture_metal_s2.png",
-        "forniture_metal_s2.png",
-    },
+    tiles = { "forniture_metal.png" },
     inventory_image="3dforniture_inv_shower_head.png",
     drawtype = "nodebox",
     sunlight_propagates = true,

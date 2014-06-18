@@ -3,14 +3,7 @@ local S = homedecor.gettext
 -- Test
 minetest.register_node("homedecor:table", {
     description = S("Table"),
-    tiles = {
-        "forniture_wood.png",
-        "forniture_wood.png",
-        "forniture_wood_s1.png",
-        "forniture_wood_s1.png",
-        "forniture_wood_s2.png",
-        "forniture_wood_s2.png",
-    },
+    tiles = { "forniture_wood.png" },
     drawtype = "nodebox",
     paramtype = "light",
     paramtype2 = "facedir",
@@ -33,14 +26,7 @@ minetest.register_node("homedecor:table", {
 
 minetest.register_node("homedecor:chair", {
     description = S("Chair"),
-    tiles = {
-        "forniture_wood.png",
-        "forniture_wood.png",
-        "forniture_wood_s1.png",
-        "forniture_wood_s1.png",
-        "forniture_wood_s2.png",
-        "forniture_wood_s2.png",
-    },
+    tiles = { "forniture_wood.png" },
     drawtype = "nodebox",
     paramtype = "light",
     paramtype2 = "facedir",
