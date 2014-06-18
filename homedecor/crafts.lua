@@ -921,9 +921,9 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-        output = "homedecor:refrigerator",
-        recipe = {
-		{"default:steel_ingot", "moreblocks:glow_glass", "default:steel_ingot", },
+	output = "homedecor:refrigerator",
+	recipe = {
+		{"default:steel_ingot", "homedecor:glowlight_small_cube_yellow", "default:steel_ingot", },
 		{"default:steel_ingot", "moreores:tin_ingot", "default:steel_ingot", },
 		{"default:steel_ingot", "default:clay", "default:steel_ingot", },
 	}
