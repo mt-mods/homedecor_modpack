@@ -82,7 +82,33 @@ minetest.register_node('homedecor:rug_large', {
                         },
 	})
 
+local flower_pot_model = {
+	type = "fixed",
+	fixed = {
+		{-0.1875, -0.5, -0.1875, 0.1875, -0.3125, 0.1875},
+		{-0.25, -0.5, -0.0625, 0.25, -0.3125, 0.0625},
+		{-0.0625, -0.5, -0.25, 0.0625, -0.25, 0.25},
+		{-0.25, -0.3125, -0.25, 0.25, -0.125, 0.25},
+		{-0.125, -0.3125, -0.3125, 0.125, -0.125, 0.3125},
+		{-0.3125, -0.3125, -0.125, 0.3125, -0.125, 0.125},
+		{-0.3125, -0.125, -0.25, 0.3125, 0.0625, 0.25},
+		{-0.125, -0.125, -0.375, 0.125, 0.0625, 0.375},
+		{-0.375, -0.125, -0.125, 0.375, 0.0625, 0.125},
+		{-0.25, -0.125, -0.3125, 0.25, 0.0625, 0.3125},
+		{-0.4375, 0.0625, -0.1875, 0.4375, 0.25, 0.1875},
+		{-0.1875, 0.0625, -0.4375, 0.1875, 0.25, 0.4375},
+		{-0.3125, 0.0625, -0.375, 0.3125, 0.25, 0.375},
+		{-0.375, 0.0625, -0.3125, 0.375, 0.25, 0.3125},
+		{-0.1875, 0.25, -0.5, 0.1875, 0.5, 0.5},
+		{-0.5, 0.25, -0.1875, 0.5, 0.5, 0.1875},
+		{-0.4375, 0.25, -0.3125, 0.4375, 0.5, 0.3125},
+		{-0.3125, 0.25, -0.4375, 0.3125, 0.5, 0.4375},
+		{-0.375, 0.25, -0.375, 0.375, 0.5, 0.375},
+	}
+}
+
 minetest.register_node('homedecor:flower_pot_terracotta', {
+	drawtype = "nodebox",
 	description = S("Terracotta Flower Pot"),
 	tiles = { 'homedecor_flower_pot_terracotta_top.png',
 			'homedecor_flower_pot_terracotta_bottom.png',
@@ -95,10 +121,12 @@ minetest.register_node('homedecor:flower_pot_terracotta', {
 	paramtype2 = "facedir",
 	walkable = true,
 	groups = { snappy = 3 },
+	node_box = flower_pot_model,
 	sounds = default.node_sound_leaves_defaults(),
 })
 
 minetest.register_node('homedecor:flower_pot_black', {
+	drawtype = "nodebox",
 	description = S("Black Plastic Flower Pot"),
 	tiles = { 'homedecor_flower_pot_black_top.png',
 			'homedecor_flower_pot_black_bottom.png',
@@ -111,10 +139,12 @@ minetest.register_node('homedecor:flower_pot_black', {
 	paramtype2 = "facedir",
 	walkable = true,
 	groups = { snappy = 3 },
+	node_box = flower_pot_model,
 	sounds = default.node_sound_leaves_defaults(),
 })
 
 minetest.register_node('homedecor:flower_pot_green', {
+	drawtype = "nodebox",
 	description = S("Green Plastic Flower Pot"),
 	tiles = { 'homedecor_flower_pot_green_top.png',
 			'homedecor_flower_pot_green_bottom.png',
@@ -127,6 +157,7 @@ minetest.register_node('homedecor:flower_pot_green', {
 	paramtype2 = "facedir",
 	walkable = true,
 	groups = { snappy = 3 },
+	node_box = flower_pot_model,
 	sounds = default.node_sound_leaves_defaults(),
 })
 
