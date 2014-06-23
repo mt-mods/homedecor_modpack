@@ -449,41 +449,29 @@ signs_lib.update_sign = function(pos, fields)
 	text:setyaw(sign_info.yaw)
 end
 
-minetest.register_node(":default:sign_wall", {
-	description = S("Sign"),
-	inventory_image = "default_sign_wall.png",
-	wield_image = "default_sign_wall.png",
-	node_placement_prediction = "",
-	paramtype = "light",
-	sunlight_propagates = true,
-	paramtype2 = "facedir",
-	drawtype = "nodebox",
-	node_box = {type = "fixed", fixed = {-0.45, -0.15, 0.4, 0.45, 0.45, 0.498}},
-	selection_box = {type = "fixed", fixed = {-0.45, -0.15, 0.4, 0.45, 0.45, 0.498}},
-	tiles = {"signs_top.png", "signs_bottom.png", "signs_side.png", "signs_side.png", "signs_back.png", "signs_front.png"},
-	groups = sign_groups,
+-- What kind of sign do we need to place, anyway?
 
-	on_place = function(itemstack, placer, pointed_thing)
-		local name
-		name = minetest.get_node(pointed_thing.under).name
-		if fences_with_sign[name] then
-			if minetest.is_protected(pointed_thing.under, placer:get_player_name()) then
-				minetest.record_protection_violation(pointed_thing.under,
-					placer:get_player_name())
-				return itemstack
-			end
-		else
-			name = minetest.get_node(pointed_thing.above).name
-			local def = minetest.registered_nodes[name]
-			if not def.buildable_to then
-				return itemstack
-			end
-			if minetest.is_protected(pointed_thing.above, placer:get_player_name()) then
-				minetest.record_protection_violation(pointed_thing.above,
-					placer:get_player_name())
-				return itemstack
-			end
+function signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
+	local name
+	name = minetest.get_node(pointed_thing.under).name
+	if fences_with_sign[name] then
+		if minetest.is_protected(pointed_thing.under, placer:get_player_name()) then
+			minetest.record_protection_violation(pointed_thing.under,
+				placer:get_player_name())
+			return itemstack
 		end
+	else
+		name = minetest.get_node(pointed_thing.above).name
+		local def = minetest.registered_nodes[name]
+		if not def.buildable_to then
+			return itemstack
+		end
+		if minetest.is_protected(pointed_thing.above, placer:get_player_name()) then
+			minetest.record_protection_violation(pointed_thing.above,
+				placer:get_player_name())
+			return itemstack
+		end
+	end
 
 	local node=minetest.get_node(pointed_thing.under)
 
@@ -533,12 +521,47 @@ minetest.register_node(":default:sign_wall", {
 											  z = above.z + sign_info.delta.z}, "signs:text")
 		text:setyaw(sign_info.yaw)
 
-		
 		if not signs_lib.expect_infinite_stacks then
 			itemstack:take_item()
 		end
 		return itemstack
 	end
+end
+
+function signs_lib.receive_fields(pos, formname, fields, sender)
+	if fields and fields.text then
+		minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
+			(sender:get_player_name() or ""),
+			fields.text,
+			minetest.pos_to_string(pos)
+		))
+	end
+	if minetest.is_protected(pos, sender:get_player_name()) then
+		minetest.record_protection_violation(pos,
+			sender:get_player_name())
+		return
+	end
+	if fields and fields.text then
+		signs_lib.update_sign(pos, fields)
+	end
+end
+
+minetest.register_node(":default:sign_wall", {
+	description = S("Sign"),
+	inventory_image = "default_sign_wall.png",
+	wield_image = "default_sign_wall.png",
+	node_placement_prediction = "",
+	paramtype = "light",
+	sunlight_propagates = true,
+	paramtype2 = "facedir",
+	drawtype = "nodebox",
+	node_box = {type = "fixed", fixed = {-0.45, -0.15, 0.4, 0.45, 0.45, 0.498}},
+	selection_box = {type = "fixed", fixed = {-0.45, -0.15, 0.4, 0.45, 0.45, 0.498}},
+	tiles = {"signs_top.png", "signs_bottom.png", "signs_side.png", "signs_side.png", "signs_back.png", "signs_front.png"},
+	groups = sign_groups,
+
+	on_place = function(itemstack, placer, pointed_thing)
+		signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
 	end,
 	on_construct = function(pos)
 		signs_lib.construct_sign(pos)
@@ -547,21 +570,7 @@ minetest.register_node(":default:sign_wall", {
 		signs_lib.destruct_sign(pos)
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
-		if fields and fields.text then
-			minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
-				(sender:get_player_name() or ""),
-				fields.text,
-				minetest.pos_to_string(pos)
-			))
-		end
-		if minetest.is_protected(pos, sender:get_player_name()) then
-			minetest.record_protection_violation(pos,
-				sender:get_player_name())
-			return
-		end
-		if fields and fields.text then
-			signs_lib.update_sign(pos, fields)
-		end
+		signs_lib.receive_fields(pos, formname, fields, sender)
 	end,
 	on_punch = function(pos, node, puncher)
 		signs_lib.update_sign(pos)
@@ -588,23 +597,9 @@ minetest.register_node(":signs:sign_yard", {
     on_destruct = function(pos)
         signs_lib.destruct_sign(pos)
     end,
-    on_receive_fields = function(pos, formname, fields, sender)
-        if fields and fields.text then
-            minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
-                (sender:get_player_name() or ""),
-                fields.text,
-                minetest.pos_to_string(pos)
-            ))
-        end
-		if minetest.is_protected(pos, sender:get_player_name()) then
-			minetest.record_protection_violation(pos,
-				sender:get_player_name())
-			return
-		end
-		if fields and fields.text then
-			signs_lib.update_sign(pos, fields)
-		end
-    end,
+	on_receive_fields = function(pos, formname, fields, sender)
+		signs_lib.receive_fields(pos, formname, fields, sender)
+	end,
 	on_punch = function(pos, node, puncher)
 		signs_lib.update_sign(pos)
 	end,
@@ -640,23 +635,9 @@ minetest.register_node(":signs:sign_hanging", {
     on_destruct = function(pos)
         signs_lib.destruct_sign(pos)
     end,
-    on_receive_fields = function(pos, formname, fields, sender)
-        if fields and fields.text then
-            minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
-                (sender:get_player_name() or ""),
-                fields.text,
-                minetest.pos_to_string(pos)
-            ))
-        end
-		if minetest.is_protected(pos, sender:get_player_name()) then
-			minetest.record_protection_violation(pos,
-				sender:get_player_name())
-			return
-		end
-		if fields and fields.text then
-			signs_lib.update_sign(pos, fields)
-		end
-    end,
+	on_receive_fields = function(pos, formname, fields, sender)
+		signs_lib.receive_fields(pos, formname, fields, sender)
+	end,
 	on_punch = function(pos, node, puncher)
 		signs_lib.update_sign(pos)
 	end,
@@ -772,22 +753,8 @@ function signs_lib.register_fence_with_sign(fencename, fencewithsignname)
 	def_sign.on_destruct = function(pos, ...)
 		signs_lib.destruct_sign(pos)
 	end
-	def_sign.on_receive_fields = function(pos, formname, fields, sender, ...)
-        if fields and fields.text then
-            minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
-                (sender:get_player_name() or ""),
-                fields.text,
-                minetest.pos_to_string(pos)
-            ))
-        end
-		if minetest.is_protected(pos, sender:get_player_name()) then
-			minetest.record_protection_violation(pos,
-				sender:get_player_name())
-			return
-		end
-        if fields and fields.text then
-			signs_lib.update_sign(pos, fields)
-		end
+	def_sign.on_receive_fields = function(pos, formname, fields, sender)
+		signs_lib.receive_fields(pos, formname, fields, sender)
 	end
 	def_sign.on_punch = function(pos, node, puncher, ...)
 		signs_lib.update_sign(pos)
