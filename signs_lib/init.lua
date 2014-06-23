@@ -649,34 +649,34 @@ minetest.register_node(":signs:sign_post", {
     paramtype2 = "facedir",
     drawtype = "nodebox",
     node_box = {
-	type = "fixed",
-	fixed = { 
-		{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
-		{ -0.45, -0.15, -0.225, 0.45, 0.45, -0.125 },
-	}
+		type = "fixed",
+		fixed = { 
+			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
+			{ -0.45, -0.15, -0.225, 0.45, 0.45, -0.125 },
+		}
     },
     selection_box = {
-	type = "fixed",
-	fixed = { 
-		{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
-		{ -0.45, -0.15, -0.225, 0.45, 0.45, -0.125 },
-	}
+		type = "fixed",
+		fixed = { 
+			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
+			{ -0.45, -0.15, -0.225, 0.45, 0.45, -0.125 },
+		}
     },
     tiles = {
-	"signs_post_top.png",
-	"signs_post_bottom.png",
-	"signs_post_side.png",
-	"signs_post_side.png",
-	"signs_post_back.png",
-	"signs_post_front.png",
-    },
+		"signs_post_top.png",
+		"signs_post_bottom.png",
+		"signs_post_side.png",
+		"signs_post_side.png",
+		"signs_post_back.png",
+		"signs_post_front.png",
+	},
     groups = {choppy=2, dig_immediate=2},
     drop = {
-	max_items = 2,
-	items = {
-		{ items = { "default:sign_wall" }},
-		{ items = { "default:fence_wood" }},
-	},
+		max_items = 2,
+		items = {
+			{ items = { "default:sign_wall" }},
+			{ items = { "default:fence_wood" }},
+		},
     },
 })
 
