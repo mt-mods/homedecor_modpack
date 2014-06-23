@@ -5,6 +5,34 @@
 
 signs_lib = {}
 
+signs_lib.wall_sign_text_pos = {
+    {delta = {x =  0,     y = 0.15, z =  0.399}, yaw = 0},
+    {delta = {x =  0.399, y = 0.15, z =  0    }, yaw = math.pi / -2},
+    {delta = {x =  0,     y = 0.15, z = -0.399}, yaw = math.pi},
+    {delta = {x = -0.399, y = 0.15, z =  0    }, yaw = math.pi / 2},
+}
+
+signs_lib.hanging_sign_text_pos = {
+    {delta = {x =  0,     y = 0.032, z = -0.05}, yaw = 0},
+    {delta = {x = -0.05,  y = 0.032, z =  0   }, yaw = math.pi / -2},
+    {delta = {x =  0,     y = 0.032, z =  0.05}, yaw = math.pi},
+    {delta = {x =  0.05,  y = 0.032, z =  0   }, yaw = math.pi / 2},
+}
+
+signs_lib.yard_sign_text_pos = {
+    {delta = {x =  0,     y = 0.15, z = -0.05}, yaw = 0},
+    {delta = {x = -0.05,  y = 0.15, z =  0   }, yaw = math.pi / -2},
+    {delta = {x =  0,     y = 0.15, z =  0.05}, yaw = math.pi},
+    {delta = {x =  0.05,  y = 0.15, z =  0   }, yaw = math.pi / 2},
+}
+
+signs_lib.sign_post_text_pos = {
+    {delta = {x = 0,      y = 0.15, z = -0.226}, yaw = 0},
+    {delta = {x = -0.226, y = 0.15, z = 0     }, yaw = math.pi / -2},
+    {delta = {x = 0,      y = 0.15, z = 0.226 }, yaw = math.pi},
+    {delta = {x = 0.226,  y = 0.15, z = 0     }, yaw = math.pi / 2},
+}
+
 signs_lib.modpath = minetest.get_modpath("signs_lib")
 signs_lib.intllib_modpath = minetest.get_modpath("intllib")
 
@@ -216,34 +244,6 @@ local function build_char_db()
 
 end
 
-local signs = {
-    {delta = {x =  0,     y = 0.15, z =  0.399}, yaw = 0},
-    {delta = {x =  0.399, y = 0.15, z =  0    }, yaw = math.pi / -2},
-    {delta = {x =  0,     y = 0.15, z = -0.399}, yaw = math.pi},
-    {delta = {x = -0.399, y = 0.15, z =  0    }, yaw = math.pi / 2},
-}
-
-local signs_hanging = {
-    {delta = {x =  0,     y = 0.032, z = -0.05}, yaw = 0},
-    {delta = {x = -0.05,  y = 0.032, z =  0   }, yaw = math.pi / -2},
-    {delta = {x =  0,     y = 0.032, z =  0.05}, yaw = math.pi},
-    {delta = {x =  0.05,  y = 0.032, z =  0   }, yaw = math.pi / 2},
-}
-
-local signs_yard = {
-    {delta = {x =  0,     y = 0.15, z = -0.05}, yaw = 0},
-    {delta = {x = -0.05,  y = 0.15, z =  0   }, yaw = math.pi / -2},
-    {delta = {x =  0,     y = 0.15, z =  0.05}, yaw = math.pi},
-    {delta = {x =  0.05,  y = 0.15, z =  0   }, yaw = math.pi / 2},
-}
-
-local signs_post = {
-    {delta = {x = 0,      y = 0.15, z = -0.226}, yaw = 0},
-    {delta = {x = -0.226, y = 0.15, z = 0     }, yaw = math.pi / -2},
-    {delta = {x = 0,      y = 0.15, z = 0.226 }, yaw = math.pi},
-    {delta = {x = 0.226,  y = 0.15, z = 0     }, yaw = math.pi / 2},
-}
-
 local sign_groups = {choppy=2, dig_immediate=2}
 
 local fences_with_sign = { }
@@ -432,13 +432,13 @@ signs_lib.update_sign = function(pos, fields)
 	-- if there is no entity
 	local sign_info
 	if minetest.get_node(pos).name == "signs:sign_yard" then
-		sign_info = signs_yard[minetest.get_node(pos).param2 + 1]
+		sign_info = signs_lib.yard_sign_text_pos[minetest.get_node(pos).param2 + 1]
 	elseif minetest.get_node(pos).name == "signs:sign_hanging" then
-		sign_info = signs_hanging[minetest.get_node(pos).param2 + 1]
+		sign_info = signs_lib.hanging_sign_text_pos[minetest.get_node(pos).param2 + 1]
 	elseif minetest.get_node(pos).name == "default:sign_wall" then
-		sign_info = signs[minetest.get_node(pos).param2 + 1]
+		sign_info = signs_lib.wall_sign_text_pos[minetest.get_node(pos).param2 + 1]
 	else --if minetest.get_node(pos).name == "signs:sign_post" then
-		sign_info = signs_post[minetest.get_node(pos).param2 + 1]
+		sign_info = signs_lib.sign_post_text_pos[minetest.get_node(pos).param2 + 1]
 	end
 	if sign_info == nil then
 		return
@@ -503,17 +503,17 @@ function signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
 
 		if fences_with_sign[pt_name] then
 			minetest.add_node(under, {name = fences_with_sign[pt_name], param2 = fdir})
-			sign_info = signs_post[fdir + 1]
+			sign_info = signs_lib.sign_post_text_pos[fdir + 1]
 
 		elseif wdir == 0 then
 			minetest.add_node(above, {name = "signs:sign_hanging", param2 = fdir})
-			sign_info = signs_hanging[fdir + 1]
+			sign_info = signs_lib.hanging_sign_text_pos[fdir + 1]
 		elseif wdir == 1 then
 			minetest.add_node(above, {name = "signs:sign_yard", param2 = fdir})
-			sign_info = signs_yard[fdir + 1]
+			sign_info = signs_lib.yard_sign_text_pos[fdir + 1]
 		else
 			minetest.add_node(above, {name = "default:sign_wall", param2 = fdir})
-			sign_info = signs[fdir + 1]
+			sign_info = signs_lib.wall_sign_text_pos[fdir + 1]
 		end
 
 		local text = minetest.add_entity({x = above.x + sign_info.delta.x,
