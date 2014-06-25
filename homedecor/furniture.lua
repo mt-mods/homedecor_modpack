@@ -1,28 +1,41 @@
 local S = homedecor.gettext
 
--- Test
-minetest.register_node("homedecor:table", {
-    description = S("Table"),
-    tiles = { "forniture_wood.png" },
-    drawtype = "nodebox",
-    paramtype = "light",
-    paramtype2 = "facedir",
-    node_box = {
-        type = "fixed",
-        fixed = {
-            { -0.4, -0.5, -0.4, -0.3,  0.4, -0.3 },
-            {  0.3, -0.5, -0.4,  0.4,  0.4, -0.3 },
-            { -0.4, -0.5,  0.3, -0.3,  0.4,  0.4 },
-            {  0.3, -0.5,  0.3,  0.4,  0.4,  0.4 },
-            { -0.5,  0.4, -0.5,  0.5,  0.5,  0.5 },
-            { -0.4, -0.2, -0.3, -0.3, -0.1,  0.3 },
-            {  0.3, -0.2, -0.4,  0.4, -0.1,  0.3 },
-            { -0.3, -0.2, -0.4,  0.4, -0.1, -0.3 },
-            { -0.3, -0.2,  0.3,  0.3, -0.1,  0.4 },
-        },
-    },
-    groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
-})  
+-- 3dforniture tables ... well, they used to be :P
+
+local table_colors = { "", "mahogany", "white" }
+
+for _, i in ipairs(table_colors) do
+	local color = "_"..i
+	local desc = S("Table ("..i..")")
+
+	if i == "" then
+		color = ""
+		desc = S("Table")
+	end
+
+	minetest.register_node("homedecor:table"..color, {
+		description = desc,
+		tiles = { "forniture_wood"..color..".png" },
+		drawtype = "nodebox",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		node_box = {
+		    type = "fixed",
+		    fixed = {
+		        { -0.4, -0.5, -0.4, -0.3,  0.4, -0.3 },
+		        {  0.3, -0.5, -0.4,  0.4,  0.4, -0.3 },
+		        { -0.4, -0.5,  0.3, -0.3,  0.4,  0.4 },
+		        {  0.3, -0.5,  0.3,  0.4,  0.4,  0.4 },
+		        { -0.5,  0.4, -0.5,  0.5,  0.5,  0.5 },
+		        { -0.4, -0.2, -0.3, -0.3, -0.1,  0.3 },
+		        {  0.3, -0.2, -0.4,  0.4, -0.1,  0.3 },
+		        { -0.3, -0.2, -0.4,  0.4, -0.1, -0.3 },
+		        { -0.3, -0.2,  0.3,  0.3, -0.1,  0.4 },
+		    },
+		},
+		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+	})  
+end
 
 minetest.register_node("homedecor:chair", {
     description = S("Chair"),
