@@ -388,3 +388,4 @@ minetest.register_node("homedecor:chimney", {
 	sounds = default.node_sound_stone_defaults()
 })
 
+
