@@ -338,3 +338,26 @@ minetest.register_node("homedecor:tiles_4", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+local welcome_mat_colors = { "green", "brown", "grey" }
+
+for _, color in ipairs(welcome_mat_colors) do
+	minetest.register_node("homedecor:welcome_mat_"..color, {
+		description = "Welcome Mat ("..color..")",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		drawtype = "nodebox",
+		tiles = {
+			"homedecor_welcome_mat_"..color..".png",
+			"homedecor_welcome_mat_bottom.png",
+			"homedecor_welcome_mat_"..color..".png",
+		},
+		groups = {crumbly=3},
+		sounds = default.node_sound_dirt_defaults({
+			footstep = {name="default_grass_footstep", gain=0.25},
+		}),
+		node_box = {
+			type = "fixed",
+			fixed = { -0.5, -0.5, -0.375, 0.5, -0.46875, 0.375 }
+		}
+	})
+end
