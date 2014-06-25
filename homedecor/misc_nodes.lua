@@ -361,3 +361,30 @@ for _, color in ipairs(welcome_mat_colors) do
 		}
 	})
 end
+
+minetest.register_node("homedecor:chimney", {
+	drawtype = "nodebox",
+	paramtype = "light",
+	description = "Chimney",
+	tiles = {
+		"homedecor_chimney_top.png",
+		"homedecor_chimney_bottom.png",
+		"homedecor_chimney_sides.png",
+	},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.25, -0.5, -0.25, 0.25, 0.5, -0.1875},
+			{-0.25, -0.5, 0.1875, 0.25, 0.5, 0.25},
+			{-0.25, -0.5, -0.25, -0.1875, 0.5, 0.25},
+			{0.1875, -0.5, -0.25, 0.25, 0.5, 0.25},
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.25, -0.5, -0.25, 0.25, 0.5, 0.25 }
+	},
+	groups = {cracky=3},
+	sounds = default.node_sound_stone_defaults()
+})
+
