@@ -350,6 +350,14 @@ homedecor.register_furnace("homedecor:oven", {
 	cook_speed = 1.25,
 })
 
+homedecor.register_furnace("homedecor:oven_steel", {
+	description = S("Oven (stainless steel)"),
+	tile_format = "homedecor_oven_steel_%s%s.png",
+	output_slots = 4,
+	output_width = 2,
+	cook_speed = 1.25,
+})
+
 homedecor.register_furnace("homedecor:microwave_oven", {
 	description = S("Microwave Oven"),
 	tiles = {
