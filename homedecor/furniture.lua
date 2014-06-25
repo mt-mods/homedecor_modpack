@@ -110,15 +110,18 @@ for i in ipairs(chaircolors) do
 end
 
 local repl = { off="low", low="med", med="hi", hi="max", max="off", }
+local lamp_colors = { "", "blue", "green", "pink", "red", "violet" }
 
-local function reg_lamp(suffix, nxt, desc, tilesuffix, light)
-	minetest.register_node("homedecor:table_lamp_"..suffix, {
+local function reg_lamp(suffix, nxt, desc, tilesuffix, light, color)
+	local lampcolor = "_"..color
+	if color == "" then	lampcolor = "" end
+	minetest.register_node("homedecor:table_lamp"..lampcolor.."_"..suffix, {
 	description = S(desc),
 	drawtype = "nodebox",
 	tiles = {
 		"forniture_table_lamp_s"..tilesuffix..".png",
 		"forniture_table_lamp_s"..tilesuffix..".png",
-		"forniture_table_lamp_l"..tilesuffix..".png",
+		"forniture_table_lamp"..lampcolor.."_l"..tilesuffix..".png",
 	},
 	paramtype = "light",
 	node_box = {
@@ -144,21 +147,25 @@ local function reg_lamp(suffix, nxt, desc, tilesuffix, light)
 	groups = {cracky=2,oddly_breakable_by_hand=1,
 		not_in_creative_inventory=((desc == nil) and 1) or nil,
 	},
-	drop = "homedecor:table_lamp_off",
+	drop = "homedecor:table_lamp"..lampcolor.."_off",
 	on_punch = function(pos, node, puncher)
-		node.name = "homedecor:table_lamp_"..repl[suffix]
+		node.name = "homedecor:table_lamp"..lampcolor.."_"..repl[suffix]
 		minetest.set_node(pos, node)
 		nodeupdate(pos)
 	end,
 	})
-	minetest.register_alias("3dforniture:table_lamp_"..suffix, "homedecor:table_lamp_"..suffix)
+	if lampcolor == "" then 
+		minetest.register_alias("3dforniture:table_lamp_"..suffix, "homedecor:table_lamp_"..suffix)
+	end
 end
 
-reg_lamp("off", "low", "Table Lamp",  "", nil )
-reg_lamp("low", "med", nil,          "l", 3   )
-reg_lamp("med", "hi" , nil,          "m", 7   )
-reg_lamp("hi" , "max", nil,          "h", 11  )
-reg_lamp("max", "off", nil,          "x", 14  )
+for _, color in ipairs(lamp_colors) do
+	reg_lamp("off", "low", "Table Lamp",  "", nil,	color )
+	reg_lamp("low", "med", nil,          "l", 3,	color )
+	reg_lamp("med", "hi" , nil,          "m", 7,	color )
+	reg_lamp("hi" , "max", nil,          "h", 11,	color )
+	reg_lamp("max", "off", nil,          "x", 14,	color )
+end
 
 -- Aliases for 3dforniture mod.
 minetest.register_alias("3dforniture:table", "homedecor:table")
