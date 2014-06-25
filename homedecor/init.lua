@@ -78,6 +78,7 @@ dofile(homedecor.modpath.."/laundry.lua")
 dofile(homedecor.modpath.."/furnaces.lua")
 dofile(homedecor.modpath.."/nightstands.lua")
 dofile(homedecor.modpath.."/clocks.lua")
+dofile(homedecor.modpath.."/paintings.lua")
 
 dofile(homedecor.modpath.."/crafts.lua")
 dofile(homedecor.modpath.."/crafts_nomoreblocks.lua")
