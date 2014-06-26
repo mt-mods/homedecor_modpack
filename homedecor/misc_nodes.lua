@@ -422,4 +422,71 @@ minetest.register_node("homedecor:fishtank", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
+minetest.register_node('homedecor:cardboard_box', {
+	drawtype = "nodebox",
+	description = S("Cardboard box"),
+	tiles = {
+		'homedecor_cardboard_box_tb.png',
+		'homedecor_cardboard_box_tb.png',
+		'homedecor_cardboard_box_sides.png'
+	},
+	sunlight_propagates = false,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	walkable = true,
+    selection_box = {
+            type = "fixed",
+            fixed = { -0.5, -0.5, -0.5, 0.5, 0, 0.5 }
+    },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{0.1875, -0.5,    -0.25,    0.25,   0,       0.25},
+			{-0.25,  -0.5,    -0.25,   -0.1875, 0,       0.25},
+			{-0.25,  -0.5,     0.1875,  0.25,   0,       0.25},
+			{-0.25,  -0.5,    -0.25,    0.25,   0,      -0.1875},
+			{-0.25,  -0.5,    -0.25,    0.25,  -0.4375,  0.25},
+			{0.1875, -0.0625, -0.25,    0.5,    0,       0.25},
+			{-0.5,   -0.0625, -0.25,   -0.1875, 0,       0.25},
+			{-0.25,  -0.0625,  0.1875,  0.25,   0,       0.5},
+			{-0.25,  -0.0625, -0.5,     0.25,   0,      -0.1875},
+		}
+	},
+	groups = { snappy = 3 },
+	sounds = default.node_sound_wood_defaults(),
+
+	on_construct = function(pos)
+		local meta = minetest.get_meta(pos)
+		meta:set_string("formspec",
+				"size[8,6]"..
+				"list[current_name;main;2,0;4,1;]"..
+				"list[current_player;main;0,2;8,4;]")
+		meta:set_string("infotext", S("Cardboard box"))
+		local inv = meta:get_inventory()
+		inv:set_size("main", 8)
+	end,
+	can_dig = function(pos,player)
+		local meta = minetest.get_meta(pos);
+		local inv = meta:get_inventory()
+		return inv:is_empty("main")
+	end,
+	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
+		minetest.log("action", S("%s moves stuff in cardboard box at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
+	end,
+    on_metadata_inventory_put = function(pos, listname, index, stack, player)
+		minetest.log("action", S("%s moves stuff to cardboard box at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
+	end,
+    on_metadata_inventory_take = function(pos, listname, index, stack, player)
+		minetest.log("action", S("%s takes stuff from cardboard box at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
+	end,
+})
 
