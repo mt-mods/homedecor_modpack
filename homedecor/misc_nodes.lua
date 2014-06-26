@@ -616,4 +616,63 @@ minetest.register_node("homedecor:dishwasher", {
 	groups = { snappy = 3 },
 })
 
+minetest.register_node('homedecor:medicine_cabinet', {
+	drawtype = "nodebox",
+	description = S("Medicine Cabinet"),
+	tiles = {
+		'homedecor_medicine_cabinet_tb.png',
+		'homedecor_medicine_cabinet_tb.png',
+		'homedecor_medicine_cabinet_sides.png',
+		'homedecor_medicine_cabinet_sides.png',
+		'homedecor_medicine_cabinet_back.png',
+		'homedecor_medicine_cabinet_front.png'
+	},
+	sunlight_propagates = false,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	walkable = true,
+    selection_box = {
+        type = "fixed",
+		fixed = {-0.3125, -0.1875, 0.3125, 0.3125, 0.5, 0.5}
+    },
+    node_box = {
+		type = "fixed",
+		fixed = {-0.3125, -0.1875, 0.3125, 0.3125, 0.5, 0.5}
+	},
+	groups = { snappy = 3 },
+	sounds = default.node_sound_wood_defaults(),
+	on_construct = function(pos)
+		local meta = minetest.get_meta(pos)
+		meta:set_string("formspec",
+				"size[8,7]"..
+				"list[current_name;main;1,0;6,1;]"..
+				"list[current_player;main;0,3;8,4;]")
+		meta:set_string("infotext", S("Medicine cabinet"))
+		local inv = meta:get_inventory()
+		inv:set_size("main", 16)
+	end,
+	can_dig = function(pos,player)
+		local meta = minetest.get_meta(pos);
+		local inv = meta:get_inventory()
+		return inv:is_empty("main")
+	end,
+	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
+		minetest.log("action", S("%s moves stuff in medicine cabinet at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
+	end,
+    on_metadata_inventory_put = function(pos, listname, index, stack, player)
+		minetest.log("action", S("%s moves stuff to medicine cabinet at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
+	end,
+    on_metadata_inventory_take = function(pos, listname, index, stack, player)
+		minetest.log("action", S("%s takes stuff from medicine cabinet at %s"):format(
+		    player:get_player_name(),
+		    minetest.pos_to_string(pos)
+		))
+	end,
+})
 
