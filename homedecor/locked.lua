@@ -139,6 +139,8 @@ local items = {
       "Nightstand" },
     { "nightstand_mahogany_two_drawers",
       "Nightstand" },
+    { "filing_cabinet",
+      "Filing cabinet" },
     { "oven",
       "Oven" },
     { "oven_active",
