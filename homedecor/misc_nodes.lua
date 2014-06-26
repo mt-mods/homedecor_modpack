@@ -586,3 +586,34 @@ minetest.register_node('homedecor:filing_cabinet', {
 		))
 	end,
 })
+
+minetest.register_node("homedecor:dishwasher", {
+	description = "Dishwasher",
+	drawtype = "nodebox",
+	tiles = {
+		"homedecor_dishwasher_top.png",
+		"homedecor_dishwasher_bottom.png",
+		"homedecor_dishwasher_sides.png",
+		"homedecor_dishwasher_sides.png^[transformFX",
+		"homedecor_dishwasher_back.png",
+		"homedecor_dishwasher_front.png"
+	},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
+			{-0.5, -0.5, -0.5, 0.5, 0.5, -0.4375},
+			{-0.5, -0.5, -0.5, 0.5, 0.1875, 0.1875},
+			{-0.4375, -0.5, -0.5, 0.4375, 0.4375, 0.4375},
+		}
+	},
+    selection_box = {
+            type = "fixed",
+            fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
+    },
+	groups = { snappy = 3 },
+})
+
+
