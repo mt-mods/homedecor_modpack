@@ -490,3 +490,37 @@ minetest.register_node('homedecor:cardboard_box', {
 	end,
 })
 
+minetest.register_node("homedecor:dvd_cd_cabinet", {
+	description = "DVD/CD cabinet",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	tiles = {
+		"homedecor_dvdcd_cabinet_top.png",
+		"homedecor_dvdcd_cabinet_bottom.png",
+		"homedecor_dvdcd_cabinet_sides.png",
+		"homedecor_dvdcd_cabinet_sides.png^[transformFX",
+		"homedecor_dvdcd_cabinet_back.png",
+		"homedecor_dvdcd_cabinet_front.png",
+	},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0, -0.4375, 0.5, 0.5},
+			{0.4375, -0.5, 0, 0.5, 0.5, 0.5},
+			{-0.0625, -0.5, 0, 0.0625, 0.5, 0.5},
+			{-0.5, 0.4375, 0, 0.5, 0.5, 0.5},
+			{-0.5, -0.5, 0, 0.5, -0.4375, 0.5},
+			{-0.5, -0.5, 0.0625, 0.5, 0.5, 0.4375},
+			{-0.375, -0.5, 0.02756, -0.125, 0.5, 0.5},
+			{0.125, -0.5, 0.01217, 0.375, 0.5, 0.5},
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, 0, 0.5, 0.5, 0.5 }
+	},
+	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=3},
+	sounds = default.node_sound_wood_defaults(),
+})
+
