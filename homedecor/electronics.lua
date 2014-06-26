@@ -105,3 +105,27 @@ minetest.register_node('homedecor:television', {
 	sounds = default.node_sound_wood_defaults(),
 })
 
+minetest.register_node("homedecor:dvd_vcr", {
+	description = S("DVD and VCR"),
+	drawtype = "nodebox",
+	tiles = {
+		"homedecor_dvdvcr_top.png",
+		"homedecor_dvdvcr_bottom.png",
+		"homedecor_dvdvcr_sides.png",
+		"homedecor_dvdvcr_sides.png^[transformFX",
+		"homedecor_dvdvcr_back.png",
+		"homedecor_dvdvcr_front.png",
+	},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.3125, -0.5, -0.25, 0.3125, -0.375, 0.1875},
+			{-0.25, -0.5, -0.25, 0.25, -0.1875, 0.125},
+		}
+	},
+	groups = { snappy = 3 },
+	sounds = default.node_sound_wood_defaults(),
+})
+
