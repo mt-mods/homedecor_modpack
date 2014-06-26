@@ -388,4 +388,38 @@ minetest.register_node("homedecor:chimney", {
 	sounds = default.node_sound_stone_defaults()
 })
 
+minetest.register_node("homedecor:fishtank", {
+	drawtype = "nodebox",
+	description = "Fishtank",
+	tiles = {
+		"homedecor_fishtank_top.png",
+		"homedecor_fishtank_bottom.png",
+		"homedecor_fishtank_right.png",
+		"homedecor_fishtank_left.png",
+		"homedecor_fishtank_back.png",
+		"homedecor_fishtank_front.png"
+	},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5,    -0.5,    -0.375,  0.5,    -0.4375, 0.375},
+			{-0.4375, -0.4375, -0.3125, 0.4375,  0.1875, 0.3125},
+			{-0.4375,  0.1875, -0.1875, 0.4375,  0.25,   0.1875},
+			{-0.1875,  0.0625,  0.0625, 0.1875,  0.25,   0.375},
+			{ 0.125,  -0.5,     0.25,   0.1875,  0.1875, 0.375},
+			{-0.375,   0.25,   -0.125,  0.375,   0.3125, 0.125},
+		}
+	},
+	use_texture_alpha = true,
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, -0.375, 0.5, 0.3125, 0.375 }
+	},
+	sunlight_propagates = true,
+	groups = {cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
 
