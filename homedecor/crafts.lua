@@ -1414,3 +1414,13 @@ minetest.register_craft( {
         },
 })
 
+-- more misc stuff here
+
+minetest.register_craft({
+        output = "homedecor:chimney 2",
+        recipe = {
+			{ "default:clay_brick", "", "default:clay_brick" },
+			{ "default:clay_brick", "", "default:clay_brick" },
+			{ "default:clay_brick", "", "default:clay_brick" },
+        },
+})
