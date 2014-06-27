@@ -37,31 +37,8 @@ for _, i in ipairs(table_colors) do
 	})  
 end
 
-minetest.register_node("homedecor:chair", {
-    description = S("Chair"),
-    tiles = { "forniture_wood.png" },
-    drawtype = "nodebox",
-    paramtype = "light",
-    paramtype2 = "facedir",
-    node_box = {
-        type = "fixed",
-        fixed = {
-            { -0.3, -0.5,  0.20, -0.2,  0.5,  0.30 },
-            {  0.2, -0.5,  0.20,  0.3,  0.5,  0.30 },
-            { -0.3, -0.5, -0.30, -0.2, -0.1, -0.20 },
-            {  0.2, -0.5, -0.30,  0.3, -0.1, -0.20 },
-            { -0.3, -0.1, -0.30,  0.3,  0.0,  0.20 },
-            { -0.2,  0.1,  0.25,  0.2,  0.4,  0.26 },
-        },
-    },
-    selection_box = {
-        type = "fixed",
-        fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3},
-    },
-    groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
-})
-
 local chaircolors = {
+	{ "", "plain" },
 	{ "black", "Black" },
 	{ "red", "Red" },
 	{ "pink", "Pink" },
@@ -71,55 +48,87 @@ local chaircolors = {
 }
 
 for i in ipairs(chaircolors) do
-	local color = chaircolors[i][1]
+
+	local color = "_"..chaircolors[i][1]
+	local color2 = chaircolors[i][1]
 	local name = S(chaircolors[i][2])
-	minetest.register_node("homedecor:armchair_"..color, {
-	    description = S("Armchair (%s)"):format(name),
-	    tiles = {
-		"forniture_armchair_top_"..color..".png",
-		"forniture_armchair_top_"..color..".png",
-		"forniture_armchair_lat1_"..color..".png",
-		"forniture_armchair_lat1_"..color..".png",
-		"forniture_armchair_lat2_"..color..".png",
-		"forniture_armchair_lat2_"..color..".png",
-	    },
-	    drawtype = "nodebox",
-	    sunlight_propagates = true,
-	    paramtype = "light",
-	    paramtype2 = "facedir",
-	    node_box = {
-		type = "fixed",
-		fixed = {
-		    { -0.50, -0.50, -0.45, -0.30,  0.05,  0.30 },
-		    { -0.45, -0.50, -0.50, -0.35,  0.05, -0.45 },
-		    { -0.45,  0.05, -0.45, -0.35,  0.10,  0.15 },
-		    {  0.30, -0.50, -0.45,  0.50,  0.05,  0.30 },
-		    {  0.35, -0.50, -0.50,  0.45,  0.05, -0.45 },
-		    {  0.35,  0.05, -0.45,  0.45,  0.10,  0.15 },
-		    { -0.50, -0.50,  0.30,  0.50,  0.45,  0.50 },
-		    { -0.45,  0.45,  0.35,  0.45,  0.50,  0.45 },
-		    { -0.30, -0.45, -0.35,  0.30, -0.10,  0.30 },
-		    { -0.30, -0.45, -0.40,  0.30, -0.15, -0.35 },
-		    { -0.50,  0.05,  0.15, -0.30,  0.45,  0.30 },
-		    { -0.45,  0.10,  0.10, -0.35,  0.45,  0.15 },
-		    { -0.45,  0.45,  0.15, -0.35,  0.50,  0.35 },
-		    {  0.30,  0.05,  0.15,  0.50,  0.45,  0.30 },
-		    {  0.35,  0.10,  0.10,  0.45,  0.45,  0.15 },
-		    {  0.35,  0.45,  0.15,  0.45,  0.50,  0.35 },
+
+	if chaircolors[i][1] == "" then 
+		color = ""
+	end
+
+	minetest.register_node("homedecor:chair"..color, {
+	    description = S("Kitchen chair (%s)"):format(name),
+		tiles = { 
+			"forniture_kitchen_chair_top"..color..".png",
+			"forniture_wood.png",
+			"forniture_kitchen_chair_sides"..color..".png",
+			"forniture_kitchen_chair_sides"..color..".png^[transformFX",
+			"forniture_kitchen_chair_back"..color..".png",
+			"forniture_kitchen_chair_front"..color..".png",
+		 },
+		drawtype = "nodebox",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		node_box = {
+		    type = "fixed",
+		    fixed = {
+				{-0.3125, -0.5, 0.1875, -0.1875, 0.5, 0.3125},
+				{0.1875, -0.5, 0.1875, 0.3125, 0.5, 0.3125},
+				{-0.3125, -0.5, -0.3125, -0.1875, 0, -0.1875},
+				{0.1875, -0.5, -0.3125, 0.3125, 0, -0.1875},
+				{-0.3125, -0.125, -0.3125, 0.3125, 0, 0.3125},
+				{-0.25, 0.0625, 0.25, 0.25, 0.4375, 0.25},
+		    },
 		},
-	    },
-	    groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+		selection_box = {
+		    type = "fixed",
+		    fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3},
+		},
+		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 	})
 
-	minetest.register_craft({
-	    output = "homedecor:armchair_"..color.." 2",
-	    recipe = {
-		{ "wool:"..color,""},
-		{ "group:wood","group:wood" },
-		{ "wool:"..color,"wool:"..color },
-	    },
-	})
+	if color ~= "" then 
+		minetest.register_node("homedecor:armchair"..color, {
+			description = S("Armchair (%s)"):format(name),
+			tiles = { "forniture_armchair_top"..color..".png" },
+			drawtype = "nodebox",
+			sunlight_propagates = true,
+			paramtype = "light",
+			paramtype2 = "facedir",
+			node_box = {
+			type = "fixed",
+			fixed = {
+				{ -0.50, -0.50, -0.45, -0.30,  0.05,  0.30 },
+				{ -0.45, -0.50, -0.50, -0.35,  0.05, -0.45 },
+				{ -0.45,  0.05, -0.45, -0.35,  0.10,  0.15 },
+				{  0.30, -0.50, -0.45,  0.50,  0.05,  0.30 },
+				{  0.35, -0.50, -0.50,  0.45,  0.05, -0.45 },
+				{  0.35,  0.05, -0.45,  0.45,  0.10,  0.15 },
+				{ -0.50, -0.50,  0.30,  0.50,  0.45,  0.50 },
+				{ -0.45,  0.45,  0.35,  0.45,  0.50,  0.45 },
+				{ -0.30, -0.45, -0.35,  0.30, -0.10,  0.30 },
+				{ -0.30, -0.45, -0.40,  0.30, -0.15, -0.35 },
+				{ -0.50,  0.05,  0.15, -0.30,  0.45,  0.30 },
+				{ -0.45,  0.10,  0.10, -0.35,  0.45,  0.15 },
+				{ -0.45,  0.45,  0.15, -0.35,  0.50,  0.35 },
+				{  0.30,  0.05,  0.15,  0.50,  0.45,  0.30 },
+				{  0.35,  0.10,  0.10,  0.45,  0.45,  0.15 },
+				{  0.35,  0.45,  0.15,  0.45,  0.50,  0.35 },
+			},
+			},
+			groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+		})
 
+		minetest.register_craft({
+			output = "homedecor:armchair"..color.." 2",
+			recipe = {
+			{ "wool:"..color2,""},
+			{ "group:wood","group:wood" },
+			{ "wool:"..color2,"wool:"..color2 },
+			},
+		})
+	end
 end
 
 local repl = { off="low", low="med", med="hi", hi="max", max="off", }
