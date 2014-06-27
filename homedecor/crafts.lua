@@ -960,6 +960,46 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+        output = "homedecor:kitchen_cabinet_steel",
+        recipe = {
+			{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
+			{"", "homedecor:kitchen_cabinet", ""},
+	}
+})
+
+minetest.register_craft({
+        output = "homedecor:kitchen_cabinet_steel",
+        recipe = {
+			{"moreblocks:slab_steelblock_1"},
+			{ "homedecor:kitchen_cabinet" },
+	}
+})
+
+minetest.register_craft({
+        output = "homedecor:kitchen_cabinet_marble",
+        recipe = {
+			{"building_blocks:slab_marble"},
+			{"homedecor:kitchen_cabinet"},
+	}
+})
+
+minetest.register_craft({
+        output = "homedecor:kitchen_cabinet_marble",
+        recipe = {
+			{"technic:slab_marble_1"},
+			{"homedecor:kitchen_cabinet"},
+	}
+})
+
+minetest.register_craft({
+        output = "homedecor:kitchen_cabinet_granite",
+        recipe = {
+			{"technic:slab_granite_1"},
+			{"homedecor:kitchen_cabinet"},
+	}
+})
+
+minetest.register_craft({
 	type = "shapeless",
         output = "homedecor:kitchen_cabinet_half 2",
         recipe = { "homedecor:kitchen_cabinet" }
@@ -1424,3 +1464,4 @@ minetest.register_craft({
 			{ "default:clay_brick", "", "default:clay_brick" },
         },
 })
+
