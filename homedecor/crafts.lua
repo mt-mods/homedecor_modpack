@@ -903,11 +903,21 @@ minetest.register_craft({
 -- Kitchen stuff
 
 minetest.register_craft({
-        output = "homedecor:oven",
+        output = "homedecor:oven_steel",
         recipe = {
 		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot", },
 		{"default:steel_ingot", "moreblocks:iron_glass", "default:steel_ingot", },
 		{"default:steel_ingot", "default:copper_ingot", "default:steel_ingot", },
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:oven",
+	recipe = {
+		"homedecor:oven_steel",
+		"dye:white",
+		"dye:white",
 	}
 })
 
@@ -921,11 +931,22 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "homedecor:refrigerator",
+	output = "homedecor:refrigerator_steel",
 	recipe = {
 		{"default:steel_ingot", "homedecor:glowlight_small_cube_yellow", "default:steel_ingot", },
 		{"default:steel_ingot", "moreores:tin_ingot", "default:steel_ingot", },
 		{"default:steel_ingot", "default:clay", "default:steel_ingot", },
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:refrigerator",
+	recipe = {
+		"homedecor:refrigerator_steel",
+		"dye:white",
+		"dye:white",
+		"dye:white",
 	}
 })
 
