@@ -360,6 +360,49 @@ minetest.register_node("homedecor:fishtank", {
 	sunlight_propagates = true,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
 	sounds = default.node_sound_glass_defaults(),
+	on_rightclick = function(pos, node, clicker)
+		fdir = minetest.get_node(pos).param2
+		minetest.add_node(pos, {name = "homedecor:fishtank_lighted", param2 = fdir})
+	end
+})
+
+minetest.register_node("homedecor:fishtank_lighted", {
+	drawtype = "nodebox",
+	description = "Fishtank",
+	tiles = {
+		"homedecor_fishtank_top.png",
+		"homedecor_fishtank_bottom.png",
+		"homedecor_fishtank_right_lighted.png",
+		"homedecor_fishtank_left_lighted.png",
+		"homedecor_fishtank_back_lighted.png",
+		"homedecor_fishtank_front_lighted.png"
+	},
+	paramtype = "light",
+	light_source = LIGHT_MAX-4,
+	paramtype2 = "facedir",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5,    -0.5,    -0.375,  0.5,    -0.4375, 0.375},
+			{-0.4375, -0.4375, -0.3125, 0.4375,  0.1875, 0.3125},
+			{-0.4375,  0.1875, -0.1875, 0.4375,  0.25,   0.1875},
+			{-0.1875,  0.0625,  0.0625, 0.1875,  0.25,   0.375},
+			{ 0.125,  -0.5,     0.25,   0.1875,  0.1875, 0.375},
+			{-0.375,   0.25,   -0.125,  0.375,   0.3125, 0.125},
+		}
+	},
+	use_texture_alpha = true,
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, -0.375, 0.5, 0.3125, 0.375 }
+	},
+	sunlight_propagates = true,
+	groups = {cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
+	on_rightclick = function(pos, node, clicker)
+		fdir = minetest.get_node(pos).param2
+		minetest.add_node(pos, {name = "homedecor:fishtank", param2 = fdir})
+	end
 })
 
 minetest.register_node('homedecor:cardboard_box', {
