@@ -35,22 +35,54 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-    output = "homedecor:table_lamp_off",
-    recipe = {
-        {"default:paper","default:torch" ,"default:paper"},
-        {"","default:stick",""},
-        {"","stairs:slab_wood",""},
-    },
+	output = "homedecor:table_lamp_off",
+	recipe = {
+	    {"default:paper","default:torch" ,"default:paper"},
+	    {"","default:stick",""},
+	    {"","stairs:slab_wood",""},
+	},
 })
 
 minetest.register_craft({
-    output = "homedecor:table_lamp_off",
-    recipe = {
-        {"default:paper","default:torch" ,"default:paper"},
-        {"","default:stick",""},
-        {"","stairsplus:slab_wood",""},
-    },
+	output = "homedecor:table_lamp_off",
+	recipe = {
+	    {"default:paper","default:torch" ,"default:paper"},
+	    {"","default:stick",""},
+	    {"","stairsplus:slab_wood",""},
+	},
 })
+
+local lamp_colors = { "blue", "green", "pink", "red", "violet" }
+
+for _, color in ipairs(lamp_colors) do
+
+	minetest.register_craft({
+		output = "homedecor:table_lamp_"..color.."_off",
+		recipe = {
+		    {"wool:"..color,"default:torch" ,"wool:"..color},
+		    {"","default:stick",""},
+		    {"","stairs:slab_wood",""},
+		},
+	})
+
+	minetest.register_craft({
+		output = "homedecor:table_lamp_"..color.."_off",
+		recipe = {
+		    {"wool:"..color,"default:torch" ,"wool:"..color},
+		    {"","default:stick",""},
+		    {"","stairsplus:slab_wood",""},
+		},
+	})
+
+	minetest.register_craft({
+		type = "shapeless",
+		output = "homedecor:table_lamp_"..color.."_off",
+		recipe = {
+			"dye:"..color,
+			"homedecor:table_lamp_off",
+		},
+	})
+end
 
 minetest.register_craft({
     type = "fuel",
