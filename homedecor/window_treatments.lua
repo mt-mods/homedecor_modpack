@@ -1,5 +1,5 @@
 
-minetest.register_node("homedecor:window", {
+minetest.register_node("homedecor:window_quartered", {
 	description = "Window",
 	tiles = {
 		"homedecor_window_sides.png",
