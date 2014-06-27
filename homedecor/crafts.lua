@@ -1465,3 +1465,13 @@ minetest.register_craft({
         },
 })
 
+minetest.register_craft({
+        output = "homedecor:fishtank",
+        recipe = {
+			{ "homedecor:plastic_sheeting", "homedecor:glowlight_small_cube_white", "homedecor:plastic_sheeting" },
+			{ "default:glass", "bucket:bucket_water", "default:glass" },
+			{ "default:glass", "building_blocks:gravel_spread", "default:glass" },
+        },
+	replacements = { {"bucket:bucket_water", "bucket:bucket_empty"} }
+})
+
