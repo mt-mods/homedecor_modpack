@@ -161,6 +161,7 @@ minetest.register_node("building_blocks:terrycloth_towel", {
 	drawtype = "raillike",
 	description = "Terrycloth towel",
 	tile_images = {"building_blocks_towel.png"},
+	inventory_image = "building_blocks_towel_inv.png",
 	paramtype = "light",
 	walkable = false,
 	selection_box = {
