@@ -139,6 +139,7 @@ minetest.register_node("building_blocks:woodglass", {
 	drawtype = "glasslike",
 	description = "Wood Framed Glass",
 	tile_images = {"building_blocks_wglass.png"},
+	inventory_image = minetest.inventorycube("building_blocks_wglass.png"),
 	paramtype = "light",
 	sunlight_propagates = true,
 	is_ground_content = true,
