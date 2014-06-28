@@ -136,16 +136,23 @@ minetest.register_node("building_blocks:grate", {
 	is_ground_content = true,
 	groups = {cracky=1},
 })
+
 minetest.register_node("building_blocks:Fireplace", {
-	drawtype = "stonelike",
-	description = "fireplace",
-	tiles = {"building_blocks_cast_iron.png","building_blocks_cast_iron.png","building_blocks_cast_iron.png","building_blocks_cast_iron_fireplace.png"},
-	paramtype = "facedir_simple",
+	description = "Fireplace",
+	tiles = {
+		"building_blocks_cast_iron.png",
+		"building_blocks_cast_iron.png",
+		"building_blocks_cast_iron.png",
+		"building_blocks_cast_iron_fireplace.png"
+	},
+	paramtype = "light",
+	paramtype2 = "facedir",
 	light_source = LIGHT_MAX,
 	sunlight_propagates = true,
 	is_ground_content = true,
 	groups = {cracky=2},
 })
+
 minetest.register_node("building_blocks:woodglass", {
 	drawtype = "glasslike",
 	description = "Wood Framed Glass",
