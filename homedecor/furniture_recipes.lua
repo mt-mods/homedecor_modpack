@@ -170,7 +170,7 @@ minetest.register_craft({
     output = "homedecor:toilet",
     recipe = {
         {"","","bucket:bucket_water"},
-        { "default:cobble","default:cobble", "default:cobble" },
+        { "building_blocks:Marble","building_blocks:Marble", "building_blocks:Marble" },
         { "", "bucket:bucket_empty", "" },
     },
 })
@@ -178,7 +178,7 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:sink",
     recipe = {
-        { "default:cobble","bucket:bucket_empty", "default:cobble" },
+        { "building_blocks:Marble","bucket:bucket_empty", "building_blocks:Marble" },
     },
 })
 
@@ -192,7 +192,7 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:shower_tray",
     recipe = {
-        { "default:cobble","bucket:bucket_water", "default:cobble" },
+        { "building_blocks:Marble","bucket:bucket_water", "building_blocks:Marble" },
     },
 })
 
