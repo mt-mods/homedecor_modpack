@@ -1,12 +1,12 @@
 minetest.register_node("building_blocks:Adobe", {
-	tile_images = {"building_blocks_Adobe.png"},
+	tiles = {"building_blocks_Adobe.png"},
 	description = "Adobe",
 	is_ground_content = true,
 	groups = {crumbly=3},
 	sounds = default.node_sound_stone_defaults(),
 })
 minetest.register_node("building_blocks:Roofing", {
-	tile_images = {"building_blocks_Roofing.png"},
+	tiles = {"building_blocks_Roofing.png"},
 	is_ground_content = true,
 	description = "Roof block",
 	groups = {snappy=3},
@@ -118,7 +118,7 @@ minetest.register_craft({
 minetest.register_node("building_blocks:smoothglass", {
 	drawtype = "glasslike",
 	description = "Streak Free Glass",
-	tile_images = {"building_blocks_sglass.png"},
+	tiles = {"building_blocks_sglass.png"},
 	inventory_image = minetest.inventorycube("building_blocks_sglass.png"),
 	paramtype = "light",
 	sunlight_propagates = true,
@@ -129,7 +129,7 @@ minetest.register_node("building_blocks:smoothglass", {
 minetest.register_node("building_blocks:grate", {
 	drawtype = "glasslike",
 	description = "Grate",
-	tile_images = {"building_blocks_grate.png"},
+	tiles = {"building_blocks_grate.png"},
 	inventory_image = minetest.inventorycube("building_blocks_grate.png"),
 	paramtype = "light",
 	sunlight_propagates = true,
@@ -139,7 +139,7 @@ minetest.register_node("building_blocks:grate", {
 minetest.register_node("building_blocks:Fireplace", {
 	drawtype = "stonelike",
 	description = "fireplace",
-	tile_images = {"building_blocks_cast_iron.png","building_blocks_cast_iron.png","building_blocks_cast_iron.png","building_blocks_cast_iron_fireplace.png"},
+	tiles = {"building_blocks_cast_iron.png","building_blocks_cast_iron.png","building_blocks_cast_iron.png","building_blocks_cast_iron_fireplace.png"},
 	paramtype = "facedir_simple",
 	light_source = LIGHT_MAX,
 	sunlight_propagates = true,
@@ -149,7 +149,7 @@ minetest.register_node("building_blocks:Fireplace", {
 minetest.register_node("building_blocks:woodglass", {
 	drawtype = "glasslike",
 	description = "Wood Framed Glass",
-	tile_images = {"building_blocks_wglass.png"},
+	tiles = {"building_blocks_wglass.png"},
 	inventory_image = minetest.inventorycube("building_blocks_wglass.png"),
 	paramtype = "light",
 	sunlight_propagates = true,
@@ -160,7 +160,7 @@ minetest.register_node("building_blocks:woodglass", {
 minetest.register_node("building_blocks:terrycloth_towel", {
 	drawtype = "raillike",
 	description = "Terrycloth towel",
-	tile_images = {"building_blocks_towel.png"},
+	tiles = {"building_blocks_towel.png"},
 	inventory_image = "building_blocks_towel_inv.png",
 	paramtype = "light",
 	walkable = false,
@@ -176,7 +176,7 @@ minetest.register_node("building_blocks:terrycloth_towel", {
 minetest.register_node("building_blocks:Tarmac_spread", {
 	drawtype = "raillike",
 	description = "Tarmac Spread",
-	tile_images = {"building_blocks_tar.png"},
+	tiles = {"building_blocks_tar.png"},
 	inventory_image = "building_blocks_tar_spread_inv.png",
 	paramtype = "light",
 	walkable = false,
@@ -192,7 +192,7 @@ minetest.register_node("building_blocks:Tarmac_spread", {
 minetest.register_node("building_blocks:BWtile", {
 	drawtype = "raillike",
 	description = "Chess board tiling",
-	tile_images = {"building_blocks_BWtile.png"},
+	tiles = {"building_blocks_BWtile.png"},
 	inventory_image = "building_blocks_bwtile_inv.png",
 	paramtype = "light",
 	walkable = false,
@@ -208,7 +208,7 @@ minetest.register_node("building_blocks:BWtile", {
 minetest.register_node("building_blocks:brobble_spread", {
 	drawtype = "raillike",
 	description = "Brobble Spread",
-	tile_images = {"building_blocks_brobble.png"},
+	tiles = {"building_blocks_brobble.png"},
 	inventory_image = "building_blocks_brobble_spread_inv.png",
 	paramtype = "light",
 	walkable = false,
@@ -224,7 +224,7 @@ minetest.register_node("building_blocks:brobble_spread", {
 minetest.register_node("building_blocks:gravel_spread", {
 	drawtype = "raillike",
 	description = "Gravel Spread",
-	tile_images = {"default_gravel.png"},
+	tiles = {"default_gravel.png"},
 	inventory_image = "building_blocks_gravel_spread_inv.png",
 	paramtype = "light",
 	walkable = false,
@@ -238,7 +238,7 @@ minetest.register_node("building_blocks:gravel_spread", {
 	groups = {crumbly=2},
 })
 minetest.register_node("building_blocks:hardwood", {
-	tile_images = {"building_blocks_hardwood.png"},
+	tiles = {"building_blocks_hardwood.png"},
 	is_ground_content = true,
 	description = "Hardwood",
 	groups = {choppy=1,flammable=1},
@@ -350,7 +350,7 @@ minetest.register_craft({
 })
 
 minetest.register_node("building_blocks:fakegrass", {
-	tile_images = {"default_grass.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"},
+	tiles = {"default_grass.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"},
 	description = "Fake Grass",
 	is_ground_content = true,
 	groups = {crumbly=3},
