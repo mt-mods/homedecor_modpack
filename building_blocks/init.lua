@@ -192,6 +192,7 @@ minetest.register_node("building_blocks:BWtile", {
 	drawtype = "raillike",
 	description = "Chess board tiling",
 	tile_images = {"building_blocks_BWtile.png"},
+	inventory_image = "building_blocks_bwtile_inv.png",
 	paramtype = "light",
 	walkable = false,
 	selection_box = {
