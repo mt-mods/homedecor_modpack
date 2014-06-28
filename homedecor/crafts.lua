@@ -1475,3 +1475,11 @@ minetest.register_craft({
 	replacements = { {"bucket:bucket_water", "bucket:bucket_empty"} }
 })
 
+minetest.register_craft({
+    output = "homedecor:towel_rod",
+    recipe = {
+		{ "default:wood", "default:stick", "default:wood" },
+		{ "", "building_blocks:terrycloth_towel", "" },
+    },
+})
+
