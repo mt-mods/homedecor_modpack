@@ -79,12 +79,21 @@ minetest.register_craft({
 	}
 })
 minetest.register_craft({
-	output = 'building_blocks:hardwood 1',
+	output = 'building_blocks:hardwood 2',
 	recipe = {
-		{"default:wood", "default:wood"},
-		{"default:wood", "default:wood"},
+		{"default:wood", "default:junglewood"},
+		{"default:junglewood", "default:wood"},
 	}
 })
+
+minetest.register_craft({
+	output = 'building_blocks:hardwood 2',
+	recipe = {
+		{"default:junglewood", "default:wood"},
+		{"default:wood", "default:junglewood"},
+	}
+})
+
 minetest.register_craft({
 	output = 'building_blocks:sticks',
 	recipe = {
