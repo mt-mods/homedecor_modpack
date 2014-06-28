@@ -176,6 +176,7 @@ minetest.register_node("building_blocks:Tarmac_spread", {
 	drawtype = "raillike",
 	description = "Tarmac Spread",
 	tile_images = {"building_blocks_tar.png"},
+	inventory_image = "building_blocks_tar_spread_inv.png",
 	paramtype = "light",
 	walkable = false,
 	selection_box = {
@@ -206,6 +207,7 @@ minetest.register_node("building_blocks:brobble_spread", {
 	drawtype = "raillike",
 	description = "Brobble Spread",
 	tile_images = {"building_blocks_brobble.png"},
+	inventory_image = "building_blocks_brobble_spread_inv.png",
 	paramtype = "light",
 	walkable = false,
 	selection_box = {
@@ -221,6 +223,7 @@ minetest.register_node("building_blocks:gravel_spread", {
 	drawtype = "raillike",
 	description = "Gravel Spread",
 	tile_images = {"default_gravel.png"},
+	inventory_image = "building_blocks_gravel_spread_inv.png",
 	paramtype = "light",
 	walkable = false,
 	selection_box = {
