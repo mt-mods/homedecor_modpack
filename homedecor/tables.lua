@@ -507,6 +507,7 @@ minetest.register_node("homedecor:desk", {
 		"homedecor_desk_back_l.png",
 		"homedecor_desk_front_l.png"
 	},
+	inventory_image = "homedecor_desk_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	node_box = {
