@@ -1485,6 +1485,26 @@ minetest.register_craft( {
         },
 })
 
+-- washer and dryer
+
+minetest.register_craft( {
+    output = "homedecor:washing_machine",
+    recipe = {
+		{ "default:steel_ingot", "default:steel_ingot", "homedecor:ic" },
+		{ "default:steel_ingot", "bucket:bucket_water", "default:steel_ingot" },
+		{ "default:steel_ingot", "homedecor:motor", "default:steel_ingot" }
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:dryer",
+    recipe = {
+		{ "default:steel_ingot", "default:steel_ingot", "homedecor:ic" },
+		{ "default:steel_ingot", "bucket:bucket_empty", "homedecor:motor" },
+		{ "default:steel_ingot", "homedecor:heating_element", "default:steel_ingot" }
+    },
+})
+
 -- more misc stuff here
 
 minetest.register_craft({
