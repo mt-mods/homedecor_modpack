@@ -304,7 +304,7 @@ minetest.register_craft({
 minetest.register_craft( {
         output = "homedecor:shingles_asphalt 6",
         recipe = {
-                { "default:gravel", "dye:black", "default:gravel" },
+                { "building_blocks:gravel_spread", "dye:black", "building_blocks:gravel_spread" },
                 { "default:sand", "dye:black", "default:sand" },
                 { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
         },
