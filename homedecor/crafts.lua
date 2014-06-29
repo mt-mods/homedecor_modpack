@@ -43,6 +43,16 @@ minetest.register_craftitem("homedecor:ic", {
 	inventory_image = "homedecor_ic.png",
 })
 
+minetest.register_craftitem("homedecor:heating_element", {
+	description = S("Heating element"),
+	inventory_image = "homedecor_heating_element.png",
+})
+
+minetest.register_craftitem("homedecor:motor", {
+	description = S("Motor"),
+	inventory_image = "homedecor_motor.png",
+})
+
 -- alternate craftitem for silicon if mesecons isn't installed.
 
 if ( minetest.get_modpath("mesecons") ) == nil then
@@ -63,6 +73,22 @@ if ( minetest.get_modpath("mesecons") ) == nil then
 end
 
 -- the actual crafts
+
+minetest.register_craft( {
+    output = "homedecor:heating_element 2",
+    recipe = {
+		{ "default:copper_ingot", "default:mese_crystal_fragment", "default:copper_ingot" }
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:motor 2",
+    recipe = {
+		{ "default:mese_crystal_fragment", "default:iron_lump", "homedecor:plastic_sheeting" },
+		{ "default:copper_ingot", "default:steel_ingot", "default:steel_ingot" },
+		{ "default:mese_crystal_fragment", "default:iron_lump", "homedecor:plastic_sheeting" }
+    },
+})
 
 minetest.register_craft( {
 	type = "shapeless",
