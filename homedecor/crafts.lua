@@ -1579,3 +1579,12 @@ minetest.register_craft({
 		{ "default:paper", "default:paper", "default:paper" },
     },
 })
+
+minetest.register_craft({
+    output = "homedecor:desk",
+    recipe = {
+		{ "default:wood", "default:wood", "default:wood" },
+		{ "homedecor:drawer_small", "default:wood", "default:wood" },
+		{ "homedecor:drawer_small", "", "default:wood" },
+    },
+})
