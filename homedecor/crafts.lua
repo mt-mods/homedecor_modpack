@@ -1505,6 +1505,17 @@ minetest.register_craft( {
     },
 })
 
+-- dishwasher
+
+minetest.register_craft( {
+    output = "homedecor:dishwasher",
+    recipe = {
+		{ "homedecor:ic", "homedecor:fence_chainlink", "default:steel_ingot",  },
+		{ "default:steel_ingot", "homedecor:shower_head", "homedecor:motor" },
+		{ "default:steel_ingot", "homedecor:heating_element", "bucket:bucket_water" }
+    },
+})
+
 -- more misc stuff here
 
 minetest.register_craft({
