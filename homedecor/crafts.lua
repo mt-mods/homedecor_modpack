@@ -1497,10 +1497,28 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
+    output = "homedecor:washing_machine",
+    recipe = {
+		{ "default:steel_ingot", "default:steel_ingot", "homedecor:ic" },
+		{ "default:steel_ingot", "bucket:bucket_water", "default:steel_ingot" },
+		{ "default:steel_ingot", "technic:motor", "default:steel_ingot" }
+    },
+})
+
+minetest.register_craft( {
     output = "homedecor:dryer",
     recipe = {
 		{ "default:steel_ingot", "default:steel_ingot", "homedecor:ic" },
 		{ "default:steel_ingot", "bucket:bucket_empty", "homedecor:motor" },
+		{ "default:steel_ingot", "homedecor:heating_element", "default:steel_ingot" }
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:dryer",
+    recipe = {
+		{ "default:steel_ingot", "default:steel_ingot", "homedecor:ic" },
+		{ "default:steel_ingot", "bucket:bucket_empty", "technic:motor" },
 		{ "default:steel_ingot", "homedecor:heating_element", "default:steel_ingot" }
     },
 })
@@ -1512,6 +1530,15 @@ minetest.register_craft( {
     recipe = {
 		{ "homedecor:ic", "homedecor:fence_chainlink", "default:steel_ingot",  },
 		{ "default:steel_ingot", "homedecor:shower_head", "homedecor:motor" },
+		{ "default:steel_ingot", "homedecor:heating_element", "bucket:bucket_water" }
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:dishwasher",
+    recipe = {
+		{ "homedecor:ic", "homedecor:fence_chainlink", "default:steel_ingot",  },
+		{ "default:steel_ingot", "homedecor:shower_head", "technic:motor" },
 		{ "default:steel_ingot", "homedecor:heating_element", "bucket:bucket_water" }
     },
 })
