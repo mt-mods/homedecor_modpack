@@ -4,12 +4,65 @@
 
 local S = homedecor.gettext
 
--- misc stuff :D
+-- misc craftitems
 
 minetest.register_craftitem("homedecor:terracotta_base", {
         description = S("Uncooked Terracotta Base"),
         inventory_image = "homedecor_terracotta_base.png",
 })
+
+minetest.register_craftitem("homedecor:roof_tile_terracotta", {
+        description = S("Terracotta Roof Tile"),
+        inventory_image = "homedecor_roof_tile_terracotta.png",
+})
+
+minetest.register_craftitem("homedecor:plastic_sheeting", {
+        description = S("Plastic sheet"),
+        inventory_image = "homedecor_plastic_sheeting.png",
+})
+
+minetest.register_craftitem("homedecor:plastic_base", {
+        description = S("Unprocessed Plastic base"),
+        wield_image = "homedecor_plastic_base.png",
+        inventory_image = "homedecor_plastic_base_inv.png",
+})
+
+minetest.register_craftitem("homedecor:drawer_small", {
+        description = S("Small Wooden Drawer"),
+        inventory_image = "homedecor_drawer_small.png",
+})
+
+minetest.register_craftitem("homedecor:brass_ingot", {
+        description = S("Brass Ingot"),
+        inventory_image = "homedecor_brass_ingot.png",
+	groups = { brass_ingot=1 }
+})
+
+minetest.register_craftitem("homedecor:ic", {
+	description = S("Simple Integrated Circuit"),
+	inventory_image = "homedecor_ic.png",
+})
+
+-- alternate craftitem for silicon if mesecons isn't installed.
+
+if ( minetest.get_modpath("mesecons") ) == nil then
+
+	minetest.register_craftitem(":mesecons_materials:silicon", {
+		description = S("Silicon lump"),
+		inventory_image = "homedecor_silicon.png",
+	})
+
+	minetest.register_craft( {
+		output = "mesecons_materials:silicon 4",
+		recipe = {
+			{ "default:sand", "default:sand" },
+			{ "default:sand", "default:steel_ingot" },
+		},
+	})
+
+end
+
+-- the actual crafts
 
 minetest.register_craft( {
 	type = "shapeless",
@@ -22,10 +75,7 @@ minetest.register_craft( {
 	replacements = { {"bucket:bucket_water", "bucket:bucket_empty"}, },
 })
 
-minetest.register_craftitem("homedecor:roof_tile_terracotta", {
-        description = S("Terracotta Roof Tile"),
-        inventory_image = "homedecor_roof_tile_terracotta.png",
-})
+
 
 minetest.register_craft({
         type = "cooking",
@@ -57,17 +107,6 @@ minetest.register_craft( {
 })
 
 --
-
-minetest.register_craftitem("homedecor:plastic_sheeting", {
-        description = S("Plastic sheet"),
-        inventory_image = "homedecor_plastic_sheeting.png",
-})
-
-minetest.register_craftitem("homedecor:plastic_base", {
-        description = S("Unprocessed Plastic base"),
-        wield_image = "homedecor_plastic_base.png",
-        inventory_image = "homedecor_plastic_base_inv.png",
-})
 
 minetest.register_craft({
     type = "shapeless",
@@ -503,12 +542,6 @@ minetest.register_craft({
 
 --
 
-minetest.register_craftitem("homedecor:drawer_small", {
-        description = S("Small Wooden Drawer"),
-        inventory_image = "homedecor_drawer_small.png",
-})
-
-
 minetest.register_craft( {
         output = "homedecor:drawer_small",
         recipe = {
@@ -593,12 +626,6 @@ minetest.register_craft({
         burntime = 30,
 })
 
-minetest.register_craftitem("homedecor:brass_ingot", {
-        description = S("Brass Ingot"),
-        inventory_image = "homedecor_brass_ingot.png",
-	groups = { brass_ingot=1 }
-})
-
 minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:brass_ingot 2",
@@ -665,34 +692,12 @@ minetest.register_craft( {
 
 -- Home electronics
 
-if ( minetest.get_modpath("mesecons") ) == nil then
-
-	minetest.register_craftitem(":mesecons_materials:silicon", {
-		description = S("Silicon lump"),
-		inventory_image = "homedecor_silicon.png",
-	})
-
-	minetest.register_craft( {
-		output = "mesecons_materials:silicon 4",
-		recipe = {
-			{ "default:sand", "default:sand" },
-			{ "default:sand", "default:steel_ingot" },
-		},
-	})
-
-end
-
 minetest.register_craft( {
 	output = "homedecor:ic 4",
 	recipe = {
 		{ "mesecons_materials:silicon", "mesecons_materials:silicon" },
 		{ "mesecons_materials:silicon", "default:copper_ingot" },
 	},
-})
-
-minetest.register_craftitem("homedecor:ic", {
-	description = S("Simple Integrated Circuit"),
-	inventory_image = "homedecor_ic.png",
 })
 
 minetest.register_craft( {
