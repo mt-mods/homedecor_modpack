@@ -412,13 +412,6 @@ minetest.register_alias("homedecor:fence_picket_gate_white_closed", "homedecor:g
 
 ----- helper functions
 
-local function get_nodedef_field(nodename, fieldname)
-	if not minetest.registered_nodes[nodename] then
-		return nil
-	end
-	return minetest.registered_nodes[nodename][fieldname]
-end
-
 function homedecor.place_door(itemstack, placer, pointed_thing, name, forceright)
 
 	local pointed = pointed_thing.under
@@ -459,8 +452,8 @@ function homedecor.place_door(itemstack, placer, pointed_thing, name, forceright
 			return
 		end
 
-		if not get_nodedef_field(node_bottom.name, "buildable_to") 
-		    or not get_nodedef_field(node_top.name, "buildable_to") then
+		if not homedecor.get_nodedef_field(node_bottom.name, "buildable_to") 
+		    or not homedecor.get_nodedef_field(node_top.name, "buildable_to") then
 			minetest.chat_send_player( placer:get_player_name(), S('Not enough space above that spot to place a door!') )
 		else
 			local fdir = minetest.dir_to_facedir(placer:get_look_dir())

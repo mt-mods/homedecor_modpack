@@ -54,6 +54,14 @@ function homedecor.table_copy(t)
     return nt
 end
 
+-- 
+
+function homedecor.get_nodedef_field(nodename, fieldname)
+	if not minetest.registered_nodes[nodename] then
+		return nil
+	end
+	return minetest.registered_nodes[nodename][fieldname]
+end
 
 -- load various other components
 

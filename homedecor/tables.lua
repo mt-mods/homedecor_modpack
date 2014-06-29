@@ -489,13 +489,6 @@ minetest.register_node('homedecor:utility_table_legs', {
 	},
 })
 
-local function get_nodedef_field(nodename, fieldname)
-	if not minetest.registered_nodes[nodename] then
-		return nil
-	end
-	return minetest.registered_nodes[nodename][fieldname]
-end
-
 local fdir_to_right = {
 	{  1,  0 },
 	{  0, -1 },
@@ -546,8 +539,8 @@ minetest.register_node("homedecor:desk", {
 		local tnode = minetest.get_node(pos)
 		local tnode2 = minetest.get_node(pos2)
 
-		if get_nodedef_field(tnode.name, "buildable_to")
-		  and get_nodedef_field(tnode2.name, "buildable_to")
+		if homedecor.get_nodedef_field(tnode.name, "buildable_to")
+		  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
 		  and not minetest.is_protected(pos, placer:get_player_name())
 		  and not minetest.is_protected(pos2, placer:get_player_name()) then
 			minetest.add_node(pos, { name = "homedecor:desk", param2 = fdir })
