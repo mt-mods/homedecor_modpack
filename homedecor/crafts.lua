@@ -1592,7 +1592,16 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:desk",
     recipe = {
-		{ "default:wood", "default:wood", "default:wood" },
+		{ "stairs:slab_wood", "stairs:slab_wood", "stairs:slab_wood" },
+		{ "homedecor:drawer_small", "default:wood", "default:wood" },
+		{ "homedecor:drawer_small", "", "default:wood" },
+    },
+})
+
+minetest.register_craft({
+    output = "homedecor:desk",
+    recipe = {
+		{ "moreblocks:slab_wood", "moreblocks:slab_wood", "moreblocks:slab_wood" },
 		{ "homedecor:drawer_small", "default:wood", "default:wood" },
 		{ "homedecor:drawer_small", "", "default:wood" },
     },
