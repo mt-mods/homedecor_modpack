@@ -237,18 +237,16 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:glass_table_small_square_b 4",
+        output = "homedecor:glass_table_small_square_b 2",
         recipe = {
 		{"homedecor:glass_table_small_round", "homedecor:glass_table_small_round" },
-		{"homedecor:glass_table_small_round", "homedecor:glass_table_small_round" }
 	}
 })
 
 minetest.register_craft( {
-        output = "homedecor:glass_table_large_b 4",
+        output = "homedecor:glass_table_large_b 2",
         recipe = { 
 		{ "homedecor:glass_table_small_square", "homedecor:glass_table_small_square" },
-		{ "homedecor:glass_table_small_square", "homedecor:glass_table_small_square" }
 	}
 })
 
@@ -264,18 +262,16 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:wood_table_small_square_b 4",
+        output = "homedecor:wood_table_small_square_b 2",
         recipe = { 
 		{ "homedecor:wood_table_small_round","homedecor:wood_table_small_round" },
-		{ "homedecor:wood_table_small_round","homedecor:wood_table_small_round" }
 	}
 })
 
 minetest.register_craft( {
-        output = "homedecor:wood_table_large_b 4",
+        output = "homedecor:wood_table_large_b 2",
         recipe = { 
 		{ "homedecor:wood_table_small_square", "homedecor:wood_table_small_square" },
-		{ "homedecor:wood_table_small_square", "homedecor:wood_table_small_square" }
 	}
 })
 
