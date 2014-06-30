@@ -333,10 +333,10 @@ minetest.register_craft({
 --
 
 minetest.register_craft( {
-        output = "homedecor:skylight 9",
+        output = "homedecor:skylight 4",
         recipe = { 
-		{ "default:glass", "default:glass" },
-		{ "default:glass", "default:glass" },
+		{ "homedecor:glass_table_large", "homedecor:glass_table_large" },
+		{ "homedecor:glass_table_large", "homedecor:glass_table_large" },
         },
 })
 
