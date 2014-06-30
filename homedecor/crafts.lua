@@ -53,6 +53,11 @@ minetest.register_craftitem("homedecor:motor", {
 	inventory_image = "homedecor_motor.png",
 })
 
+minetest.register_craftitem("homedecor:power_crystal", {
+	description = S("Power Crystal"),
+	inventory_image = "homedecor_power_crystal.png",
+})
+
 -- alternate craftitem for silicon if mesecons isn't installed.
 
 if ( minetest.get_modpath("mesecons") ) == nil then
@@ -90,6 +95,21 @@ minetest.register_craft( {
     },
 })
 
+minetest.register_craft({
+	--type = "shapeless",
+	output = "homedecor:power_crystal 2",
+	recipe = {
+		{ "default:mese_crystal_fragment", "default:torch", "default:mese_crystal_fragment" },
+		{ "default:diamond", "default:gold_ingot", "default:diamond" }
+	},
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "homedecor:power_crystal",
+	burntime = 50,
+})
+
 minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:terracotta_base 8",
@@ -100,8 +120,6 @@ minetest.register_craft( {
         },
 	replacements = { {"bucket:bucket_water", "bucket:bucket_empty"}, },
 })
-
-
 
 minetest.register_craft({
         type = "cooking",
@@ -735,6 +753,15 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
+	output = "homedecor:television",
+	recipe = {
+		{ "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
+		{ "homedecor:plastic_sheeting", "default:glass", "homedecor:plastic_sheeting" },
+		{ "homedecor:ic", "homedecor:power_crystal", "homedecor:ic" },
+	},
+})
+
+minetest.register_craft( {
 	output = "homedecor:stereo",
 	recipe = {
 		{ "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
@@ -942,6 +969,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "homedecor:oven_steel",
+	recipe = {
+		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot", },
+		{"default:steel_ingot", "default:glass", "default:steel_ingot", },
+		{"default:steel_ingot", "default:copper_ingot", "default:steel_ingot", },
+	}
+})
+
+minetest.register_craft({
 	type = "shapeless",
 	output = "homedecor:oven",
 	recipe = {
@@ -956,6 +992,15 @@ minetest.register_craft({
         recipe = {
 		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot", },
 		{"default:steel_ingot", "moreblocks:iron_glass", "homedecor:ic", },
+		{"default:steel_ingot", "default:copper_ingot", "homedecor:power_crystal", },
+	}
+})
+
+minetest.register_craft({
+        output = "homedecor:microwave_oven 2",
+        recipe = {
+		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot", },
+		{"default:steel_ingot", "default:glass", "homedecor:ic", },
 		{"default:steel_ingot", "default:copper_ingot", "homedecor:power_crystal", },
 	}
 })
@@ -1049,8 +1094,15 @@ minetest.register_craft({
 -- yellow
 
 minetest.register_craft({
-        output = "homedecor:glowlight_half_yellow 6",
-        recipe = {
+	output = "homedecor:glowlight_half_yellow 6",
+	recipe = {
+		{"default:glass", "homedecor:power_crystal", "default:glass", },
+	}
+})
+
+minetest.register_craft({
+	output = "homedecor:glowlight_half_yellow 6",
+	recipe = {
 		{"moreblocks:super_glow_glass", "moreblocks:glow_glass", "moreblocks:super_glow_glass", },
 	}
 })
@@ -1059,6 +1111,14 @@ minetest.register_craft({
         output = "homedecor:glowlight_quarter_yellow 6",
         recipe = {
 		{"homedecor:glowlight_half_yellow", "homedecor:glowlight_half_yellow", "homedecor:glowlight_half_yellow", },
+	}
+})
+
+minetest.register_craft({
+	output = "homedecor:glowlight_small_cube_yellow 16",
+	recipe = {
+		{"default:glass" },
+		{"homedecor:power_crystal" },
 	}
 })
 
@@ -1088,6 +1148,14 @@ minetest.register_craft({
 -- white
 
 minetest.register_craft({
+	output = "homedecor:glowlight_half_white 6",
+	recipe = {
+		{ "dye:white", "dye:white", "dye:white" },
+		{ "default:glass", "homedecor:power_crystal", "default:glass", },
+	}
+})
+
+minetest.register_craft({
         output = "homedecor:glowlight_half_white 6",
         recipe = {
 		{ "dye:white", "dye:white", "dye:white" },
@@ -1109,6 +1177,15 @@ minetest.register_craft({
         output = "homedecor:glowlight_quarter_white 6",
         recipe = {
 		{"homedecor:glowlight_half_white", "homedecor:glowlight_half_white", "homedecor:glowlight_half_white", },
+	}
+})
+
+minetest.register_craft({
+	output = "homedecor:glowlight_small_cube_white 8",
+	recipe = {
+		{ "dye:white" },
+		{ "default:glass" },
+		{ "homedecor:power_crystal" },
 	}
 })
 

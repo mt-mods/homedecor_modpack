@@ -94,7 +94,6 @@ dofile(homedecor.modpath.."/paintings.lua")
 dofile(homedecor.modpath.."/window_treatments.lua")
 
 dofile(homedecor.modpath.."/crafts.lua")
-dofile(homedecor.modpath.."/crafts_nomoreblocks.lua")
 
 dofile(homedecor.modpath.."/furniture.lua")
 dofile(homedecor.modpath.."/furniture_medieval.lua")
