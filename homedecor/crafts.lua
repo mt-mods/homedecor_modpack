@@ -969,11 +969,11 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "homedecor:oven_steel",
-	recipe = {
-		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot", },
+        output = "homedecor:oven_steel",
+        recipe = {
+		{"homedecor:heating_element", "default:steel_ingot", "homedecor:heating_element", },
 		{"default:steel_ingot", "default:glass", "default:steel_ingot", },
-		{"default:steel_ingot", "default:copper_ingot", "default:steel_ingot", },
+		{"default:steel_ingot", "homedecor:heating_element", "default:steel_ingot", },
 	}
 })
 
