@@ -955,8 +955,8 @@ minetest.register_craft({
         output = "homedecor:microwave_oven 2",
         recipe = {
 		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot", },
-		{"default:steel_ingot", "moreblocks:iron_glass", "mesecons_materials:silicon", },
-		{"default:steel_ingot", "default:copper_ingot", "default:mese_crystal", },
+		{"default:steel_ingot", "moreblocks:iron_glass", "homedecor:ic", },
+		{"default:steel_ingot", "default:copper_ingot", "homedecor:power_crystal", },
 	}
 })
 
