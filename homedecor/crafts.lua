@@ -342,14 +342,17 @@ minetest.register_craft( {
 
 minetest.register_craft( {
 	type = "shapeless",
-        output = "homedecor:skylight",
-        recipe = { "homedecor:skylight_frosted" },
+        output = "homedecor:skylight_frosted",
+        recipe = {
+			"dye:white",
+			"homedecor:skylight"
+		},
 })
 
-minetest.register_craft( {
-	type = "shapeless",
-        output = "homedecor:skylight_frosted",
-        recipe = { "homedecor:skylight" },
+minetest.register_craft({
+        type = "cooking",
+        output = "homedecor:skylight",
+        recipe = "homedecor:skylight_frosted",
 })
 
 -- Various colors of shutters
