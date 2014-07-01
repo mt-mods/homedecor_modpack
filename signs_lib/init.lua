@@ -561,7 +561,7 @@ minetest.register_node(":default:sign_wall", {
 	groups = sign_groups,
 
 	on_place = function(itemstack, placer, pointed_thing)
-		signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
+		return signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
 	end,
 	on_construct = function(pos)
 		signs_lib.construct_sign(pos)
