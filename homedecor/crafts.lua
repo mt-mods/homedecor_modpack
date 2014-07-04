@@ -58,6 +58,11 @@ minetest.register_craftitem("homedecor:power_crystal", {
 	inventory_image = "homedecor_power_crystal.png",
 })
 
+minetest.register_craftitem("homedecor:blank_canvas", {
+	description = S("Blank Canvas"),
+	inventory_image = "homedecor_blank_canvas.png"
+})
+
 -- alternate craftitem for silicon if mesecons isn't installed.
 
 if ( minetest.get_modpath("mesecons") ) == nil then
@@ -1628,6 +1633,47 @@ minetest.register_craft( {
     },
 })
 
+-- paintings
+
+minetest.register_craft({
+    output = "homedecor:blank_canvas",
+    recipe = {
+		{ "", "default:stick", "" },
+		{ "default:stick", "wool:white", "default:stick" },
+		{ "", "default:stick", "" },
+    }
+})
+
+for b4 = 0,1 do
+for b3 = 0,1 do
+for b2 = 0,1 do
+for b1 = 0,1 do
+for b0 = 0,1 do
+
+	local i = b0 + b1*2 + b2*4 + b3*8 + b4*16
+
+	if i > 0 and i < 21 then
+
+		local dyebits = {
+			[0] = "dye:black",
+			[1] = "dye:white"
+		}
+
+		minetest.register_craft({
+			output = "homedecor:painting_"..i,
+			recipe = {
+				{ dyebits[b2], dyebits[b1], dyebits[b0] },
+				{ "",          dyebits[b4], dyebits[b3] },
+				{"", "homedecor:blank_canvas", "" }
+			}
+		})
+	end
+end
+end
+end
+end
+end
+
 -- more misc stuff here
 
 minetest.register_craft({
@@ -1682,3 +1728,5 @@ minetest.register_craft({
 		{ "homedecor:drawer_small", "", "default:wood" },
     },
 })
+
+

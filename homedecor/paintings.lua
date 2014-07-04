@@ -2,7 +2,7 @@
 
 for i = 1,20 do
 	minetest.register_node("homedecor:painting_"..i, {
-		description = "Decorative painting",
+		description = "Decorative painting #"..i,
 		drawtype = "nodebox",
 		tiles = {
 			"homedecor_painting_edges.png",
