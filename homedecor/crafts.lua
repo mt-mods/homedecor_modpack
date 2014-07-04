@@ -1662,8 +1662,8 @@ for b0 = 0,1 do
 		minetest.register_craft({
 			output = "homedecor:painting_"..i,
 			recipe = {
-				{ dyebits[b2], dyebits[b1], dyebits[b0] },
 				{ "",          dyebits[b4], dyebits[b3] },
+				{ dyebits[b2], dyebits[b1], dyebits[b0] },
 				{"", "homedecor:blank_canvas", "" }
 			}
 		})
