@@ -731,14 +731,14 @@ function signs_lib.register_fence_with_sign(fencename, fencewithsignname)
 
 		if def_under and def_under.on_rightclick then
 			return def_under.on_rightclick(pointed_thing.under, node_under, placer, itemstack) or itemstack
-		elseif def_under.buildable_to then
+		elseif def_under and def_under.buildable_to then
 			minetest.add_node(pointed_thing.under, {name = fencename, param2 = fdir})
 			if not signs_lib.expect_infinite_stacks then
 				itemstack:take_item()
 			end
 			placer:set_wielded_item(itemstack)
 			return itemstack
-		elseif def_above.buildable_to then
+		elseif not def_above or def_above.buildable_to then
 			minetest.add_node(pointed_thing.above, {name = fencename, param2 = fdir})
 			if not signs_lib.expect_infinite_stacks then
 				itemstack:take_item()
