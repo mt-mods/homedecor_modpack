@@ -16,6 +16,10 @@ made, which produces visible text on signs (and which has been extended
 to put signs on fences, including the brass and wrought iron ones here 
 in homedecor).
 
+* Sdzen's building_blocks mod, which is here to supply not only a few 
+blocks to build with, obviously, :-) but also to supply a number of 
+materials to craft other things in Homedecor with.
+
 All items can be accessed either by crafting various other items 
 together, or with the usual /give commands.  To get a list of the actual 
 node names, just go into the homedecor/ folder and run the listnodes.sh 
