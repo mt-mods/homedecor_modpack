@@ -21,6 +21,11 @@ minetest.register_craftitem("homedecor:plastic_sheeting", {
         inventory_image = "homedecor_plastic_sheeting.png",
 })
 
+minetest.register_craftitem("homedecor:plastic_strips", {
+        description = S("Plastic strips"),
+        inventory_image = "homedecor_plastic_strips.png",
+})
+
 minetest.register_craftitem("homedecor:plastic_base", {
         description = S("Unprocessed Plastic base"),
         wield_image = "homedecor_plastic_base.png",
@@ -93,6 +98,13 @@ if ( minetest.get_modpath("mesecons") ) == nil then
 end
 
 -- the actual crafts
+
+minetest.register_craft( {
+    output = "homedecor:plastic_strips 3",
+    recipe = {
+		{ "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" }
+    },
+})
 
 minetest.register_craft( {
     output = "homedecor:heating_element 2",
@@ -1928,3 +1940,20 @@ minetest.register_craft({
     },
 })
 
+minetest.register_craft({
+    output = "homedecor:blinds_thin",
+    recipe = {
+		{ "default:stick", "homedecor:plastic_sheeting", "default:stick" },
+		{ "farming:string", "homedecor:plastic_strips", "" },
+		{ "", "homedecor:plastic_strips", "" },
+    },
+})
+
+minetest.register_craft({
+    output = "homedecor:blinds_thick",
+    recipe = {
+		{ "default:stick", "homedecor:plastic_sheeting", "default:stick" },
+		{ "farming:string", "homedecor:plastic_strips", "homedecor:plastic_strips" },
+		{ "", "homedecor:plastic_strips", "homedecor:plastic_strips" },
+    },
+})
