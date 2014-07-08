@@ -78,6 +78,16 @@ minetest.register_craftitem("homedecor:dvd_player", {
 	inventory_image = "homedecor_dvd_player.png"
 })
 
+minetest.register_craftitem("homedecor:copper_wire", {
+	description = S("Spool of copper wire"),
+	inventory_image = "homedecor_copper_wire.png"
+})
+
+minetest.register_craftitem("homedecor:steel_wire", {
+	description = S("Spool of steel wire"),
+	inventory_image = "homedecor_steel_wire.png"
+})
+
 -- alternate craftitem for silicon if mesecons isn't installed.
 
 if ( minetest.get_modpath("mesecons") ) == nil then
@@ -100,6 +110,24 @@ end
 -- the actual crafts
 
 minetest.register_craft( {
+    output = "homedecor:steel_wire 4",
+    recipe = {
+		{ "", "homedecor:plastic_sheeting", "" },
+		{ "default:steel_ingot", "homedecor:plastic_sheeting", "default:steel_ingot" },
+		{ "", "homedecor:plastic_sheeting", "" }
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:copper_wire 4",
+    recipe = {
+		{ "", "homedecor:plastic_sheeting", "" },
+		{ "default:copper_ingot", "homedecor:plastic_sheeting", "default:copper_ingot" },
+		{ "", "homedecor:plastic_sheeting", "" }
+    },
+})
+
+minetest.register_craft( {
     output = "homedecor:plastic_strips 3",
     recipe = {
 		{ "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" }
@@ -116,9 +144,9 @@ minetest.register_craft( {
 minetest.register_craft( {
     output = "homedecor:motor 2",
     recipe = {
-		{ "default:mese_crystal_fragment", "default:iron_lump", "homedecor:plastic_sheeting" },
+		{ "default:mese_crystal_fragment", "homedecor:copper_wire", "homedecor:plastic_sheeting" },
 		{ "default:copper_ingot", "default:steel_ingot", "default:steel_ingot" },
-		{ "default:mese_crystal_fragment", "default:iron_lump", "homedecor:plastic_sheeting" }
+		{ "default:mese_crystal_fragment", "homedecor:copper_wire", "homedecor:plastic_sheeting" }
     },
 })
 
@@ -852,7 +880,7 @@ minetest.register_craft( {
         output = "homedecor:speaker",
       		recipe = {
 		{ "group:wood", "wool:black", "group:wood" },
-		{ "group:wood", "default:copper_ingot", "group:wood" },
+		{ "group:wood", "homedecor:copper_wire", "group:wood" },
 		{ "group:wood", "wool:black", "group:wood" },
 	},
 })
@@ -861,7 +889,7 @@ minetest.register_craft( {
         output = "homedecor:speaker_small",
       		recipe = {
 		{ "group:wood", "wool:black", "group:wood" },
-		{ "group:wood", "default:copper_ingot", "group:wood" },
+		{ "group:wood", "homedecor:copper_wire", "group:wood" },
 	},
 })
 
@@ -1360,9 +1388,9 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:fence_barbed_wire 6",
         recipe = {
-                { "default:stick", "default:iron_lump", "default:stick" },
+                { "default:stick", "homedecor:steel_wire", "default:stick" },
                 { "default:stick", "", "default:stick" },
-                { "default:stick", "default:iron_lump", "default:stick" }
+                { "default:stick", "homedecor:steel_wire", "default:stick" }
         },
 })
 
@@ -1385,8 +1413,8 @@ minetest.register_craft( {
         output = "homedecor:fence_chainlink 9",
         recipe = {
                 { "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" },
-                { "default:steel_ingot", "default:iron_lump", "default:steel_ingot" },
-                { "default:steel_ingot", "default:iron_lump", "default:steel_ingot" }
+                { "homedecor:steel_wire", "homedecor:steel_wire", "default:steel_ingot" },
+                { "homedecor:steel_wire", "homedecor:steel_wire", "default:steel_ingot" }
         },
 })
 
