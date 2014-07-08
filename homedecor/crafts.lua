@@ -63,6 +63,16 @@ minetest.register_craftitem("homedecor:blank_canvas", {
 	inventory_image = "homedecor_blank_canvas.png"
 })
 
+minetest.register_craftitem("homedecor:vcr", {
+	description = S("VCR"),
+	inventory_image = "homedecor_vcr.png"
+})
+
+minetest.register_craftitem("homedecor:dvd_player", {
+	description = S("DVD Player"),
+	inventory_image = "homedecor_dvd_player.png"
+})
+
 -- alternate craftitem for silicon if mesecons isn't installed.
 
 if ( minetest.get_modpath("mesecons") ) == nil then
@@ -1780,4 +1790,141 @@ minetest.register_craft({
     },
 })
 
+minetest.register_craft({
+    output = "homedecor:analog_clock_plastic 2",
+    recipe = {
+		{ "homedecor:plastic_sheeting", "dye:black", "homedecor:plastic_sheeting" },
+		{ "homedecor:plastic_sheeting", "homedecor:ic", "homedecor:plastic_sheeting" },
+		{ "homedecor:plastic_sheeting", "dye:black", "homedecor:plastic_sheeting" },
+    },
+})
+
+minetest.register_craft({
+    output = "homedecor:analog_clock_wood 2",
+    recipe = {
+		{ "default:stick", "dye:black", "default:stick" },
+		{ "default:stick", "homedecor:ic", "default:stick" },
+		{ "default:stick", "dye:black", "default:stick" },
+    },
+})
+
+minetest.register_craft({
+    output = "homedecor:digital_clock 2",
+    recipe = {
+		{ "homedecor:plastic_sheeting", "default:paper", "homedecor:plastic_sheeting" },
+		{ "homedecor:plastic_sheeting", "homedecor:ic", "homedecor:plastic_sheeting" },
+		{ "homedecor:plastic_sheeting", "homedecor:power_crystal", "homedecor:plastic_sheeting" },
+    },
+})
+
+minetest.register_craft({
+    output = "homedecor:alarm_clock",
+    recipe = {
+		{ "homedecor:plastic_sheeting", "homedecor:speaker_small", "homedecor:plastic_sheeting" },
+		{ "homedecor:plastic_sheeting", "homedecor:digital_clock", "homedecor:plastic_sheeting" },
+		{ "homedecor:plastic_sheeting", "homedecor:power_crystal", "homedecor:plastic_sheeting" },
+    },
+})
+
+minetest.register_craft({
+    output = "homedecor:air_conditioner",
+    recipe = {
+		{ "default:steel_ingot", "building_blocks:grate", "default:steel_ingot" },
+		{ "default:steel_ingot", "homedecor:motor", "default:steel_ingot" },
+		{ "default:steel_ingot", "homedecor:motor", "default:steel_ingot" },
+    },
+})
+
+minetest.register_craft({
+    output = "homedecor:air_conditioner",
+    recipe = {
+		{ "default:steel_ingot", "building_blocks:grate", "default:steel_ingot" },
+		{ "default:steel_ingot", "technic:motor", "default:steel_ingot" },
+		{ "default:steel_ingot", "technic:motor", "default:steel_ingot" },
+    },
+})
+
+
+minetest.register_craft({
+    output = "homedecor:welcome_mat_grey 2",
+    recipe = {
+		{ "", "dye:black", "" },
+		{ "wool:grey", "wool:grey", "wool:grey" },
+    },
+})
+
+minetest.register_craft({
+    output = "homedecor:welcome_mat_brown 2",
+    recipe = {
+		{ "", "dye:black", "" },
+		{ "wool:brown", "wool:brown", "wool:brown" },
+    },
+})
+
+minetest.register_craft({
+    output = "homedecor:welcome_mat_green 2",
+    recipe = {
+		{ "", "dye:white", "" },
+		{ "wool:dark_green", "wool:dark_green", "wool:dark_green" },
+    },
+})
+
+minetest.register_craft({
+	type = "shapeless",
+    output = "homedecor:window_plain 8",
+    recipe = {
+		"dye:white",
+		"dye:white",
+		"dye:white",
+		"dye:white",
+		"building_blocks:woodglass"
+    }
+})
+
+minetest.register_craft({
+	type = "shapeless",
+    output = "homedecor:window_quartered",
+    recipe = {
+		"dye:white",
+		"default:stick",
+		"default:stick",
+		"homedecor:window_plain"
+    }
+})
+
+minetest.register_craft({
+    output = "homedecor:vcr 2",
+    recipe = {
+		{ "homedecor:ic", "default:steel_ingot", "homedecor:plastic_sheeting" },
+		{ "default:iron_lump", "default:iron_lump", "default:iron_lump" },
+		{ "homedecor:plastic_sheeting", "", "homedecor:plastic_sheeting" },
+    },
+})
+
+minetest.register_craft({
+    output = "homedecor:dvd_player 2",
+    recipe = {
+		{ "", "homedecor:plastic_sheeting", "" },
+		{ "default:obsidian_glass", "homedecor:motor", "homedecor:motor" },
+		{ "default:mese_crystal_fragment", "homedecor:ic", "homedecor:power_crystal" },
+    },
+})
+
+minetest.register_craft({
+    output = "homedecor:dvd_player 2",
+    recipe = {
+		{ "", "homedecor:plastic_sheeting", "" },
+		{ "default:obsidian_glass", "technic:motor", "technic:motor" },
+		{ "default:mese_crystal_fragment", "homedecor:ic", "homedecor:power_crystal" },
+    },
+})
+
+minetest.register_craft({
+	type = "shapeless",
+    output = "homedecor:dvd_vcr",
+    recipe = {
+		"homedecor:vcr",
+		"homedecor:dvd_player"
+    },
+})
 
