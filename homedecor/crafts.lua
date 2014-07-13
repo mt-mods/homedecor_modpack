@@ -1663,7 +1663,7 @@ minetest.register_craft( {
     },
 })
 
--- dishwasher
+-- dishwashers
 
 minetest.register_craft( {
     output = "homedecor:dishwasher",
@@ -1680,6 +1680,62 @@ minetest.register_craft( {
 		{ "homedecor:ic", "homedecor:fence_chainlink", "default:steel_ingot",  },
 		{ "default:steel_ingot", "homedecor:shower_head", "technic:motor" },
 		{ "default:steel_ingot", "homedecor:heating_element", "bucket:bucket_water" }
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:dishwasher_wood",
+    recipe = {
+		{ "stairs:slab_wood" },
+		{ "homedecor:dishwasher" },
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:dishwasher_wood",
+    recipe = {
+		{ "moreblocks:slab_wood_1" },
+		{ "homedecor:dishwasher" },
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:dishwasher_steel",
+    recipe = {
+		{ "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" },
+		{ "", "homedecor:dishwasher", "" },
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:dishwasher_steel",
+    recipe = {
+		{ "moreblocks:slab_steelblock_1" },
+		{ "homedecor:dishwasher" },
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:dishwasher_marble",
+    recipe = {
+		{ "building_blocks:slab_marble" },
+		{ "homedecor:dishwasher" },
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:dishwasher_marble",
+    recipe = {
+		{ "technic:slab_marble_1" },
+		{ "homedecor:dishwasher" },
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:dishwasher_granite",
+    recipe = {
+		{ "technic:slab_granite_1" },
+		{ "homedecor:dishwasher" },
     },
 })
 
