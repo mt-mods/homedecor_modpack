@@ -189,6 +189,57 @@ for _, color in ipairs(lamp_colors) do
 	reg_lamp("max", "off", nil,          "x", 14,	color )
 end
 
+minetest.register_node(":homedecor:openframe_bookshelf", {
+	description = "Bookshelf (open-frame)",
+	drawtype = "nodebox",
+	is_ground_content = false,
+	groups = {choppy=3,oddly_breakable_by_hand=2,flammable=3},
+	sounds = default.node_sound_wood_defaults(),
+	tiles = {
+		"3dbookshelf_openframe_top.png",
+		"3dbookshelf_openframe_bottom.png",
+		"3dbookshelf_openframe_right.png",
+		"3dbookshelf_openframe_left.png",
+		"3dbookshelf_openframe_back.png",
+		"3dbookshelf_openframe_front.png"
+
+	},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, 0, 0.5, 0.5, 0.5 }
+	},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.4375, -0.5, 0, -0.375, 0.5, 0.5},
+			{0.375, -0.5, 0, 0.4375, 0.5, 0.5},
+			{-0.5, -0.5, 0, 0.5, -0.4375, 0.5},
+			{-0.5, 0, 0, 0.5, 0.0625, 0.5},
+			{-0.375, 0.0625, 0.176, -0.25, 0.5, 0.5},
+			{-0.25, 0.0625, 0.253, -0.1875, 0.4375, 0.5},
+			{-0.1875, 0.0625, 0.227, -0.125, 0.5, 0.5},
+			{-0.125, 0.0625, 0.176, 0, 0.4375, 0.5},
+			{0, 0.0625, 0.232, 0.0625, 0.375, 0.5},
+			{0.0625, 0.0625, 0.130, 0.1875, 0.5, 0.5},
+			{0.1875, 0.0625, 0.217, 0.25, 0.4375, 0.5},
+			{0.25, 0.0625, 0.166, 0.3125, 0.5, 0.5},
+			{0.3125, 0.0625, 0.242, 0.375, 0.4375, 0.5},
+			{-0.375, -0.4375, 0.191, -0.3125, -0.0625, 0.5},
+			{-0.3125, -0.4375, 0.191, -0.1875, -0.125, 0.5},
+			{-0.1875, -0.4375, 0.227, -0.125, -0.0625, 0.5},
+			{-0.125, -0.4375, 0.0737, 0, -0.0625, 0.5},
+			{0, -0.4375, 0.145, 0.0625, -0.125, 0.5},
+			{0.0625, -0.4375, 0.212, 0.125, -0.1875, 0.5},
+			{0.125, -0.4375, 0.207, 0.1875, -0.125, 0.5},
+			{0.1875, -0.4375, 0.176, 0.25, -0.125, 0.5},
+			{0.25, -0.4375, 0.258, 0.3125, -0.1875, 0.5},
+			{0.3125, -0.4375, 0.130, 0.375, -0.0625, 0.5}
+		}
+	}
+})
+
 -- Aliases for 3dforniture mod.
 minetest.register_alias("3dforniture:table", "homedecor:table")
 minetest.register_alias("3dforniture:chair", "homedecor:chair")

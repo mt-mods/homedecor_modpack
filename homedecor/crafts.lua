@@ -2041,3 +2041,13 @@ minetest.register_craft({
 		{ "", "homedecor:plastic_strips", "homedecor:plastic_strips" },
     },
 })
+
+minetest.register_craft( {
+        output = "homedecor:openframe_bookshelf",
+        recipe = {
+		{"group:wood", "", "group:wood"},
+		{"default:book", "default:book", "default:book"},
+		{"group:wood", "", "group:wood"},
+        },
+})
+
