@@ -88,6 +88,11 @@ minetest.register_craftitem("homedecor:steel_wire", {
 	inventory_image = "homedecor_steel_wire.png"
 })
 
+minetest.register_craftitem("homedecor:speaker_driver", {
+	description = S("Speaker driver"),
+	inventory_image = "homedecor_speaker_driver.png"
+})
+
 -- alternate craftitem for silicon if mesecons isn't installed.
 
 if ( minetest.get_modpath("mesecons") ) == nil then
@@ -873,42 +878,48 @@ minetest.register_craft({
        	burntime = 30,
 })
 
--- =====================================
--- Speakers require copper from moreores
+-- Speakers
 
 minetest.register_craft( {
-        output = "homedecor:speaker",
+        output = "homedecor:speaker_driver 2",
       		recipe = {
-		{ "group:wood", "wool:black", "group:wood" },
-		{ "group:wood", "homedecor:copper_wire", "group:wood" },
-		{ "group:wood", "wool:black", "group:wood" },
+		{ "", "default:steel_ingot", "" },
+		{ "default:paper", "homedecor:copper_wire", "default:iron_lump" },
+		{ "", "default:steel_ingot", "" },
 	},
 })
 
 minetest.register_craft( {
         output = "homedecor:speaker_small",
       		recipe = {
-		{ "group:wood", "wool:black", "group:wood" },
-		{ "group:wood", "homedecor:copper_wire", "group:wood" },
+		{ "wool:black", "homedecor:speaker_driver", "group:wood" },
+	},
+})
+
+minetest.register_craft( {
+        output = "homedecor:speaker",
+      		recipe = {
+		{ "wool:black", "homedecor:speaker_driver", "group:wood" },
+		{ "wool:black", "homedecor:speaker_driver", "group:wood" },
+		{ "wool:black", "group:wood", "group:wood" },
 	},
 })
 
 -- cotton version
 
 minetest.register_craft( {
-        output = "homedecor:speaker",
+        output = "homedecor:speaker_small",
       		recipe = {
-		{ "group:wood", "cotton:black", "group:wood" },
-		{ "group:wood", "default:copper_ingot", "group:wood" },
-		{ "group:wood", "cotton:black", "group:wood" },
+		{ "cotton:black", "homedecor:speaker_driver", "group:wood" },
 	},
 })
 
 minetest.register_craft( {
-        output = "homedecor:speaker_small",
+        output = "homedecor:speaker",
       		recipe = {
-		{ "group:wood", "cotton:black", "group:wood" },
-		{ "group:wood", "default:copper_ingot", "group:wood" },
+		{ "cotton:black", "homedecor:speaker_driver", "group:wood" },
+		{ "cotton:black", "homedecor:speaker_driver", "group:wood" },
+		{ "cotton:black", "group:wood", "group:wood" },
 	},
 })
 
@@ -1916,7 +1927,7 @@ minetest.register_craft({
 minetest.register_craft({
     output = "homedecor:alarm_clock",
     recipe = {
-		{ "homedecor:plastic_sheeting", "homedecor:speaker_small", "homedecor:plastic_sheeting" },
+		{ "homedecor:plastic_sheeting", "homedecor:speaker_driver", "homedecor:plastic_sheeting" },
 		{ "homedecor:plastic_sheeting", "homedecor:digital_clock", "homedecor:plastic_sheeting" },
 		{ "homedecor:plastic_sheeting", "homedecor:power_crystal", "homedecor:plastic_sheeting" },
     },
