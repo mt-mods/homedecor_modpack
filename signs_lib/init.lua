@@ -389,7 +389,11 @@ end
 
 signs_lib.construct_sign = function(pos)
     local meta = minetest.get_meta(pos)
-	meta:set_string("formspec", "field[text;;${text}]")
+	meta:set_string(
+		"formspec",
+		"field[text;;${text}]"..
+		"size[4,2]"..
+		"background[-1.25,-0.5;6.5,3;bg_signs_lib.jpg]")
 	meta:set_string("infotext", "")
 end
 
