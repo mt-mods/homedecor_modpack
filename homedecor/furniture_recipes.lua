@@ -204,15 +204,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-    output = "homedecor:bars 10",
+    output = "homedecor:bars 6",
     recipe = {
         { "default:steel_ingot","default:steel_ingot","default:steel_ingot" },
-        { "default:steel_ingot","default:steel_ingot","default:steel_ingot" },
+        { "homedecor:pole_wrought_iron","homedecor:pole_wrought_iron","homedecor:pole_wrought_iron" },
     },
 })
 
 minetest.register_craft({
-    output = "homedecor:L_binding_bars 4",
+    output = "homedecor:L_binding_bars 3",
     recipe = {
         { "homedecor:bars","" },
         { "homedecor:bars","homedecor:bars" },
