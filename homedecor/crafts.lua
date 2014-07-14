@@ -37,12 +37,6 @@ minetest.register_craftitem("homedecor:drawer_small", {
         inventory_image = "homedecor_drawer_small.png",
 })
 
-minetest.register_craftitem("homedecor:brass_ingot", {
-        description = S("Brass Ingot"),
-        inventory_image = "homedecor_brass_ingot.png",
-	groups = { brass_ingot=1 }
-})
-
 minetest.register_craftitem("homedecor:ic", {
 	description = S("Simple Integrated Circuit"),
 	inventory_image = "homedecor_ic.png",
@@ -93,9 +87,9 @@ minetest.register_craftitem("homedecor:speaker_driver", {
 	inventory_image = "homedecor_speaker_driver.png"
 })
 
--- alternate craftitem for silicon if mesecons isn't installed.
+-- alternate crafting if mesecons is/isn't installed
 
-if ( minetest.get_modpath("mesecons") ) == nil then
+if not minetest.get_modpath("mesecons") then
 
 	minetest.register_craftitem(":mesecons_materials:silicon", {
 		description = S("Silicon lump"),
@@ -111,6 +105,27 @@ if ( minetest.get_modpath("mesecons") ) == nil then
 	})
 
 end
+
+-- alternate crafting if technic is/isn't installed
+
+if not minetest.get_modpath("technic") then
+
+	minetest.register_craftitem(":technic:brass_ingot", {
+		    description = S("Brass Ingot"),
+		    inventory_image = "homedecor_brass_ingot.png",
+	})
+
+	minetest.register_craft( {
+		type = "shapeless",
+		    output = "technic:brass_ingot 2",
+		recipe = {
+			"moreores:silver_ingot",
+			"default:copper_ingot",
+		},
+	})
+end
+
+minetest.register_alias("homedecor:brass_ingot", "technic:brass_ingot")
 
 -- the actual crafts
 
@@ -729,15 +744,6 @@ minetest.register_craft({
         burntime = 30,
 })
 
-minetest.register_craft( {
-	type = "shapeless",
-        output = "homedecor:brass_ingot 2",
-	recipe = {
-		"moreores:silver_ingot",
-		"default:copper_ingot",
-	},
-})
-
 -- Table legs
 
 minetest.register_craft( {
@@ -752,9 +758,9 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:table_legs_brass 3",
 	recipe = {
-		{ "", "group:brass_ingot", "" },
-		{ "", "group:brass_ingot", "" },
-		{ "group:brass_ingot", "group:brass_ingot", "group:brass_ingot" }
+		{ "", "technic:brass_ingot", "" },
+		{ "", "technic:brass_ingot", "" },
+		{ "technic:brass_ingot", "technic:brass_ingot", "technic:brass_ingot" }
 	},
 })
 
@@ -778,9 +784,9 @@ minetest.register_craft({
 minetest.register_craft( {
         output = "homedecor:pole_brass 4",
 	recipe = {
-		{ "", "group:brass_ingot", "" },
-		{ "", "group:brass_ingot", "" },
-		{ "", "group:brass_ingot", "" }
+		{ "", "technic:brass_ingot", "" },
+		{ "", "technic:brass_ingot", "" },
+		{ "", "technic:brass_ingot", "" }
 	},
 })
 
@@ -1293,8 +1299,8 @@ minetest.register_craft({
 minetest.register_craft( {
         output = "homedecor:fence_brass 6",
 	recipe = {
-		{ "group:brass_ingot", "group:brass_ingot", "group:brass_ingot" },
-		{ "group:brass_ingot", "group:brass_ingot", "group:brass_ingot" },
+		{ "technic:brass_ingot", "technic:brass_ingot", "technic:brass_ingot" },
+		{ "technic:brass_ingot", "technic:brass_ingot", "technic:brass_ingot" },
 	},
 })
 
