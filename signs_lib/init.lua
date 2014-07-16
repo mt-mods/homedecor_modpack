@@ -250,7 +250,7 @@ local fences_with_sign = { }
 
 -- some local helper functions
 
-local function split_lines_and_words(text)
+local function split_lines_and_words_old(text)
 	local lines = { }
 	local line = { }
 	if not text then return end
@@ -266,6 +266,15 @@ local function split_lines_and_words(text)
 		end
 	end
 	table.insert(lines, line)
+	return lines
+end
+
+local function split_lines_and_words(text)
+	if not text then return end
+	local lines = { }
+	for _, line in ipairs(text:split("\n")) do
+		table.insert(lines, { line })
+	end
 	return lines
 end
 
@@ -380,9 +389,10 @@ local function make_sign_texture(lines)
 	return table.concat(texture, "")
 end
 
-local function set_obj_text(obj, text)
+local function set_obj_text(obj, text, new)
+	local split = new and split_lines_and_words or split_lines_and_words_old
 	obj:set_properties({
-		textures={make_sign_texture(split_lines_and_words(text))},
+		textures={make_sign_texture(split(text))},
 		visual_size = TEXT_SCALE,
 	})
 end
@@ -391,9 +401,10 @@ signs_lib.construct_sign = function(pos)
     local meta = minetest.get_meta(pos)
 	meta:set_string(
 		"formspec",
-		"field[text;;${text}]"..
-		"size[4,2]"..
-		"background[-1.25,-0.5;6.5,3;bg_signs_lib.jpg]")
+		"size[6,4]"..
+		"textarea[0,0;6.5,3;text;;${text}]"..
+		"button_exit[2,3;2,1;ok;Write]"..
+		"background[-0.5,-0.5;7,5;bg_signs_lib.jpg]")
 	meta:set_string("infotext", "")
 end
 
@@ -418,9 +429,14 @@ end
 
 signs_lib.update_sign = function(pos, fields)
     local meta = minetest.get_meta(pos)
+    local new
 	if fields then
 		meta:set_string("infotext", make_infotext(fields.text).." ")
 		meta:set_string("text", fields.text)
+		meta:set_int("__signslib_new_format", 1)
+		new = true
+	else
+		new = (meta:get_int("__signslib_new_format") ~= 0)
 	end
     local text = meta:get_string("text")
     if text == nil then return end
@@ -428,11 +444,11 @@ signs_lib.update_sign = function(pos, fields)
     for _, v in ipairs(objects) do
 		local e = v:get_luaentity()
 		if e and e.name == "signs:text" then
-			set_obj_text(v, text)
+			set_obj_text(v, text, new)
 			return
         end
     end
-	
+
 	-- if there is no entity
 	local sign_info
 	if minetest.get_node(pos).name == "signs:sign_yard" then
@@ -533,19 +549,17 @@ function signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
 end
 
 function signs_lib.receive_fields(pos, formname, fields, sender)
-	if fields and fields.text then
-		minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
-			(sender:get_player_name() or ""),
-			fields.text,
-			minetest.pos_to_string(pos)
-		))
-	end
 	if minetest.is_protected(pos, sender:get_player_name()) then
 		minetest.record_protection_violation(pos,
 			sender:get_player_name())
 		return
 	end
-	if fields and fields.text then
+	if fields and fields.text and fields.ok then
+		minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
+			(sender:get_player_name() or ""),
+			fields.text,
+			minetest.pos_to_string(pos)
+		))
 		signs_lib.update_sign(pos, fields)
 	end
 end
@@ -654,14 +668,14 @@ minetest.register_node(":signs:sign_post", {
     drawtype = "nodebox",
     node_box = {
 		type = "fixed",
-		fixed = { 
+		fixed = {
 			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
 			{ -0.45, -0.15, -0.225, 0.45, 0.45, -0.125 },
 		}
     },
     selection_box = {
 		type = "fixed",
-		fixed = { 
+		fixed = {
 			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
 			{ -0.45, -0.15, -0.225, 0.45, 0.45, -0.125 },
 		}
@@ -728,7 +742,7 @@ function signs_lib.register_fence_with_sign(fencename, fencewithsignname)
 			return
 		end
 
-		if minetest.is_protected(pointed_thing.above, playername) then 
+		if minetest.is_protected(pointed_thing.above, playername) then
 			minetest.record_protection_violation(pointed_thing.above, playername)
 			return
 		end
