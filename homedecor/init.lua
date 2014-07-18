@@ -99,7 +99,7 @@ dofile(homedecor.modpath.."/furniture.lua")
 dofile(homedecor.modpath.."/furniture_medieval.lua")
 dofile(homedecor.modpath.."/furniture_bathroom.lua")
 dofile(homedecor.modpath.."/furniture_recipes.lua")
-dofile(homedecor.modpath.."/fans.lua")
+dofile(homedecor.modpath.."/climate-control.lua")
 
 dofile(homedecor.modpath.."/locked.lua")
 

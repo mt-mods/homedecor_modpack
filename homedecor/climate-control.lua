@@ -1,3 +1,61 @@
+-- Nodes that would affect the local temperature e.g. fans, heater, A/C
+
+local S = homedecor.gettext
+
+minetest.register_node('homedecor:air_conditioner', {
+	drawtype = "nodebox",
+	description = S("Air Conditioner"),
+	tiles = { 'homedecor_ac_tb.png',
+		  'homedecor_ac_tb.png',
+		  'homedecor_ac_sides.png',
+		  'homedecor_ac_sides.png',
+		  'homedecor_ac_back.png',
+		  'homedecor_ac_front.png'},
+	sunlight_propagates = false,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	walkable = true,
+	groups = { snappy = 3 },
+	sounds = default.node_sound_leaves_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0.124, 0.5 }, -- off by just a tad to force the adjoining faces to be drawn.
+			{-0.5, 0.125, -0.5, 0.5, 0.5, 0.5 },
+		}
+	},
+	selection_box = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
+})
+
+minetest.register_node('homedecor:space_heater', {
+	drawtype = "nodebox",
+	description = S("Space heater"),
+	tiles = { 'homedecor_heater_tb.png',
+		  'homedecor_heater_tb.png',
+		  'homedecor_heater_sides.png',
+		  'homedecor_heater_sides.png',
+		  'homedecor_heater_back.png',
+		  'homedecor_heater_front.png'},
+	sunlight_propagates = true,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	walkable = true,
+	groups = { snappy = 3 },
+	sounds = default.node_sound_leaves_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.1875, -0.5, 0.0625, 0.1875, 0, 0.3125},
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.1875, -0.5, 0.0625, 0.1875, 0, 0.3125}
+	}
+})
+
+-- fans
+
 minetest.register_entity("homedecor:mesh_desk_fan", {
     collisionbox = { 0, 0, 0, 0, 0, 0 },
     visual = "mesh",
@@ -83,3 +141,5 @@ minetest.register_node("homedecor:desk_fan", {
 		entity_remove[1]:remove()
 	end,
 })
+
+

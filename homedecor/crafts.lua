@@ -2090,3 +2090,11 @@ minetest.register_craft( {
         },
 })
 
+minetest.register_craft( {
+        output = "homedecor:space_heater",
+        recipe = {
+			{"homedecor:plastic_sheeting", "homedecor:heating_element", "homedecor:plastic_sheeting"},
+			{"homedecor:plastic_sheeting", "homedecor:fan_blades", "homedecor:motor"},
+			{"homedecor:plastic_sheeting", "homedecor:heating_element", "homedecor:plastic_sheeting"}
+        },
+})
