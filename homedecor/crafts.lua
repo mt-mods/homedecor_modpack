@@ -1957,7 +1957,7 @@ minetest.register_craft({
     output = "homedecor:air_conditioner",
     recipe = {
 		{ "default:steel_ingot", "building_blocks:grate", "default:steel_ingot" },
-		{ "default:steel_ingot", "homedecor:motor", "default:steel_ingot" },
+		{ "default:steel_ingot", "homedecor:fan_blades", "homedecor:motor" },
 		{ "default:steel_ingot", "homedecor:motor", "default:steel_ingot" },
     },
 })
