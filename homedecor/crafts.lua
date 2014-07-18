@@ -87,6 +87,11 @@ minetest.register_craftitem("homedecor:speaker_driver", {
 	inventory_image = "homedecor_speaker_driver.png"
 })
 
+minetest.register_craftitem("homedecor:fan_blades", {
+	description = S("Fan blades"),
+	inventory_image = "homedecor_fan_blades.png"
+})
+
 -- alternate crafting if mesecons is/isn't installed
 
 if not minetest.get_modpath("mesecons") then
@@ -128,6 +133,15 @@ end
 minetest.register_alias("homedecor:brass_ingot", "technic:brass_ingot")
 
 -- the actual crafts
+
+minetest.register_craft( {
+    output = "homedecor:fan_blades 2",
+    recipe = {
+		{ "", "homedecor:plastic_sheeting", "" },
+		{ "", "default:steel_ingot", "" },
+		{ "homedecor:plastic_sheeting", "", "homedecor:plastic_sheeting" }
+    },
+})
 
 minetest.register_craft( {
     output = "homedecor:steel_wire 4",
@@ -2062,9 +2076,17 @@ minetest.register_craft({
 minetest.register_craft( {
         output = "homedecor:openframe_bookshelf",
         recipe = {
-		{"group:wood", "", "group:wood"},
-		{"default:book", "default:book", "default:book"},
-		{"group:wood", "", "group:wood"},
+			{"group:wood", "", "group:wood"},
+			{"default:book", "default:book", "default:book"},
+			{"group:wood", "", "group:wood"},
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:desk_fan",
+        recipe = {
+			{"default:steel_ingot", "homedecor:fan_blades", "homedecor:motor"},
+			{"", "default:steel_ingot", ""}
         },
 })
 
