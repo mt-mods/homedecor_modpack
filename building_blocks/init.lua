@@ -14,7 +14,7 @@ minetest.register_node("building_blocks:Roofing", {
 minetest.register_craft({
 	output = 'building_blocks:terrycloth_towel 2',
 	recipe = {
-		{"flowers:cotton", "flowers:cotton", "flowers:cotton"},
+		{"farming:string", "farming:string", "farming:string"},
 	}
 })
 minetest.register_craft({
