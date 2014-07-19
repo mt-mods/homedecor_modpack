@@ -1892,6 +1892,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+    output = "homedecor:toilet_paper",
+    recipe = {
+		{ "", "default:paper", "default:paper" },
+		{ "group:wood", "group:stick", "default:paper" },
+		{ "", "default:paper", "default:paper" },
+    },
+})
+
+minetest.register_craft({
     output = "homedecor:cardboard_box 2",
     recipe = {
 		{ "default:paper", "", "default:paper" },
