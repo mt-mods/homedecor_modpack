@@ -100,12 +100,17 @@ minetest.register_node("beds:bed_bottom", {
 			minetest.chat_send_all("You can only sleep at night")
 			return
 		else			
-			clicker:set_physics_override(0,0,0)
-			old_yaw = clicker:get_look_yaw()
-			guy = clicker
-			clicker:set_look_yaw(get_dir(pos))
-			minetest.chat_send_all("Good night")
-			plock(0,2,0.1,clicker, get_dir(pos))
+			local dir = get_dir(pos)
+			if dir then
+				clicker:set_physics_override(0,0,0)
+				old_yaw = clicker:get_look_yaw()
+				guy = clicker
+				clicker:set_look_yaw(dir)
+				minetest.chat_send_all("Good night")
+				plock(0,2,0.1,clicker, dir)
+			else
+				minetest.chat_send_all("The bed is uncomfortable - can't sleep.")
+			end
 		end
 
 		if not clicker:get_player_control().sneak then
