@@ -703,8 +703,9 @@ local signs_text_on_activate
 signs_text_on_activate = function(self)
 	local meta = minetest.get_meta(self.object:getpos())
 	local text = meta:get_string("text")
+	local new = (meta:get_int("__signslib_new_format") ~= 0)
 	if text then
-		set_obj_text(self.object, text)
+		set_obj_text(self.object, text, new)
 	end
 end
 
