@@ -1195,6 +1195,25 @@ minetest.register_craft({
 
 -- Lighting
 
+-- candles
+
+minetest.register_craft({
+	output = "homedecor:candle 4",
+	recipe = {
+		{"farming:string" },
+		{"homedecor:paraffin" }
+	}
+})
+
+minetest.register_craft({
+	output = "homedecor:oil_lamp 4",
+	recipe = {
+		{ "", "vessels:glass_bottle", "" },
+		{ "", "farming:string", "" },
+		{ "default:steel_ingot", "homedecor:oil_extract", "default:steel_ingot" }
+	}
+})
+
 -- yellow
 
 minetest.register_craft({

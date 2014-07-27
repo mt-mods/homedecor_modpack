@@ -268,3 +268,54 @@ minetest.register_node("homedecor:plasma_lamp", {
 	end
 })
 
+minetest.register_node('homedecor:candle', {
+	description = S("Candle"),
+	drawtype = "nodebox",
+	tiles = {
+		'homedecor_candle_top.png',
+		'homedecor_candle_bottom.png',
+		{name="homedecor_candle_sides.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
+	},
+    node_box = {
+            type = "fixed",
+            fixed = { 
+				{ -0.125, -0.5, -0.125, 0.125, 0, 0.125 },
+				{ -0.125, 0, 0, 0.125, 0.5, 0 },
+				{ 0, 0, -0.125, 0, 0.5, 0.125 }
+			}	
+    },
+    selection_box = {
+            type = "fixed",
+            fixed = { 
+				{ -0.1875, -0.5, -0.1875, 0.1875, 0.5, 0.1875 },
+			}	
+    },
+	sunlight_propagates = true,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	walkable = true,
+	groups = { snappy = 3 },
+	light_source = LIGHT_MAX-4,
+	sounds = default.node_sound_wood_defaults(),
+})
+
+minetest.register_node('homedecor:oil_lamp', {
+	description = S("Oil lamp"),
+	drawtype = "plantlike",
+	tiles = { 'homedecor_oil_lamp.png' },
+	inventory_image = 'homedecor_oil_lamp.png',
+	sunlight_propagates = true,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	walkable = true,
+    selection_box = {
+            type = "fixed",
+            fixed = { 
+				{ -0.3, -0.5, -0.3, 0.3, 0.5, 0.3 },
+			}	
+    },
+	groups = { snappy = 3 },
+	light_source = LIGHT_MAX-4,
+	sounds = default.node_sound_wood_defaults(),
+})
+
