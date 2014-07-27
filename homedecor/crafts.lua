@@ -2132,7 +2132,12 @@ local color_pairings = {
 	{ "grey",		"white",		"1" },
 	{ "dark_grey",	"white",		"2" },
 	{ "black",		"white",		"3" },
-	{ "black",		"dark_grey",	"4" }
+	{ "black",		"dark_grey",	"4" },
+	{ "red",		"white",		"red" },
+	{ "green",		"white",		"green" },
+	{ "blue",		"white",		"blue" },
+	{ "yellow",		"white",		"yellow" },
+	{ "brown",		"white",		"tan" }
 }
 
 for i in ipairs(color_pairings) do

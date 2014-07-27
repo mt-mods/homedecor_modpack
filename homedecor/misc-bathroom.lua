@@ -5,6 +5,11 @@ local bathroom_tile_colors = {
 	{ "2", "white/dark grey" },
 	{ "3", "white/black" },
 	{ "4", "black/dark grey" },
+	{ "red", "white/red" },
+	{ "green", "white/green" },
+	{ "blue", "white/blue" },
+	{ "yellow", "white/yellow" },
+	{ "tan", "white/tan" },
 }
 
 for i in ipairs(bathroom_tile_colors) do
