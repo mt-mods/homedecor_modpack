@@ -1193,7 +1193,7 @@ minetest.register_craft({
 	}
 })
 
--- Lighting
+------- Lighting
 
 -- candles
 
@@ -1214,7 +1214,25 @@ minetest.register_craft({
 	}
 })
 
--- yellow
+-- wood-lattice lamps
+
+minetest.register_craft( {
+        output = "homedecor:lattice_lantern_large 2",
+        recipe = {
+			{ "dye:black", "dye:yellow", "dye:black" },
+			{ "group:stick", "building_blocks:woodglass", "group:stick" },
+			{ "group:stick", "homedecor:power_crystal", "group:stick" }
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:lattice_lantern_small 8",
+        recipe = {
+			{ "homedecor:lattice_lantern_large" },
+        },
+})
+
+-- yellow glowlights
 
 minetest.register_craft({
 	output = "homedecor:glowlight_half_yellow 6",
