@@ -1,64 +1,30 @@
 local S = homedecor.gettext
 
-minetest.register_node("homedecor:tiles_1", {
-	description = "Bathroom/kitchen tiles (shade #1)",
-	tiles = {
-		"homedecor_tiles1.png",
-		"homedecor_tiles1.png",
-		"homedecor_tiles1.png",
-		"homedecor_tiles1.png",
-		"homedecor_tiles1.png^[transformR90",
-		"homedecor_tiles1.png^[transformR90"
-	},
-	is_ground_content = true,
-	groups = {cracky=3},
-	sounds = default.node_sound_stone_defaults(),
-})
+local bathroom_tile_colors = {
+	{ "1", "white/grey" },
+	{ "2", "white/dark grey" },
+	{ "3", "white/black" },
+	{ "4", "black/dark grey" },
+}
 
-minetest.register_node("homedecor:tiles_2", {
-	description = "Bathroom/kitchen tiles (shade #2)",
-	tiles = {
-		"homedecor_tiles2.png",
-		"homedecor_tiles2.png",
-		"homedecor_tiles2.png",
-		"homedecor_tiles2.png",
-		"homedecor_tiles2.png^[transformR90",
-		"homedecor_tiles2.png^[transformR90"
-	},
-	is_ground_content = true,
-	groups = {cracky=3},
-	sounds = default.node_sound_stone_defaults(),
-})
-
-minetest.register_node("homedecor:tiles_3", {
-	description = "Bathroom/kitchen tiles (shade #3)",
-	tiles = {
-		"homedecor_tiles3.png",
-		"homedecor_tiles3.png",
-		"homedecor_tiles3.png",
-		"homedecor_tiles3.png",
-		"homedecor_tiles3.png^[transformR90",
-		"homedecor_tiles3.png^[transformR90"
-	},
-	is_ground_content = true,
-	groups = {cracky=3},
-	sounds = default.node_sound_stone_defaults(),
-})
-
-minetest.register_node("homedecor:tiles_4", {
-	description = "Bathroom/kitchen tiles (shade #4)",
-	tiles = {
-		"homedecor_tiles4.png",
-		"homedecor_tiles4.png",
-		"homedecor_tiles4.png",
-		"homedecor_tiles4.png",
-		"homedecor_tiles4.png^[transformR90",
-		"homedecor_tiles4.png^[transformR90"
-	},
-	is_ground_content = true,
-	groups = {cracky=3},
-	sounds = default.node_sound_stone_defaults(),
-})
+for i in ipairs(bathroom_tile_colors) do
+	local color = bathroom_tile_colors[i][1]
+	local shade = bathroom_tile_colors[i][2]
+	minetest.register_node("homedecor:tiles_"..color, {
+		description = "Bathroom/kitchen tiles ("..shade..")",
+		tiles = {
+			"homedecor_bathroom_tiles_"..color..".png",
+			"homedecor_bathroom_tiles_"..color..".png",
+			"homedecor_bathroom_tiles_"..color..".png",
+			"homedecor_bathroom_tiles_"..color..".png",
+			"homedecor_bathroom_tiles_"..color..".png^[transformR90",
+			"homedecor_bathroom_tiles_"..color..".png^[transformR90"
+		},
+		is_ground_content = true,
+		groups = {cracky=3},
+		sounds = default.node_sound_stone_defaults(),
+	})
+end
 
 minetest.register_node("homedecor:towel_rod", {
 	description = "Towel rod with towel",
