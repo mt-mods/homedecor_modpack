@@ -32,7 +32,6 @@ minetest.register_abm({
 		end
 	end
 })
---]]
 	
 	
 	
@@ -45,6 +44,8 @@ minetest.register_abm({
     -- you should decrease the particles amount or increase the smoke column lenght.
     -- Or conversely...
     -- ~ JP
+    
+    --]]
 
 minetest.register_abm({
 	nodenames = {
@@ -57,14 +58,14 @@ minetest.register_abm({
 	chance = 2,
 	action = function(pos, node)
 		minetest.add_particlespawner(
-			10, --particles amount
-			5, --time
-			{x=pos.x-0.3, y=pos.y-0, z=pos.z-0.3}, --smoke column starting
-			{x=pos.x+0.3, y=pos.y+8, z=pos.z+0.3}, --smoke column ending
-			{x=-0.2, y=0.1, z=-0.2}, --min. particle course
-			{x=0.2, y=2, z=0.2}, --max. particle course
-			{x=0,y=0,z=0}, --min. particle deviation
-			{x=0,y=0,z=0}, --max. particle deviation
+			8, --particles amount
+			1, --time
+			{x=pos.x-0.3, y=pos.y+0.4, z=pos.z-0.3}, --min. smoke position
+			{x=pos.x+0.3, y=pos.y+8, z=pos.z+0.3}, --max. smoke position
+			{x=-0.2, y=0.2, z=-0.2}, --min. particle velocity
+			{x=0.2, y=2, z=0.2}, --max. particle velocity
+			{x=0,y=0,z=0}, --min. particle acceleration
+			{x=0,y=0,z=0}, --max. particle acceleration
 			0.5, --min. time particle expiration
 			3, --max. time particle expiration
 			8, --min. particle size
