@@ -57,6 +57,7 @@ minetest.register_abm({
 	interval = 1,
 	chance = 2,
 	action = function(pos, node)
+		local image_number = math.random(4)
 		minetest.add_particlespawner(
 			8, --particles amount
 			1, --time
@@ -68,10 +69,10 @@ minetest.register_abm({
 			{x=0,y=0,z=0}, --max. particle acceleration
 			0.5, --min. time particle expiration
 			3, --max. time particle expiration
-			8, --min. particle size
+			2, --min. particle size
 			10, --max. particle size
 			false, --collision detection
-			"smoke_particle.png" --textures
+			"smoke_particle_"..image_number..".png" --textures
 		)
 		end,
 })
