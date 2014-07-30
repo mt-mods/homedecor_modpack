@@ -249,6 +249,8 @@ minetest.register_tool("fake_fire:flint_and_steel", {
 				string.find(minetest.get_node(pointed_thing.under).name, "ice")
 				and
 				minetest.get_node(pointed_thing.above).name == "air"
+				and not 
+				minetest.is_protected(pointed_thing.above, user:get_player_name())
 				then
 				minetest.set_node(pointed_thing.above,
 				{name="fake_fire:smokeless_fire"})
@@ -266,6 +268,8 @@ minetest.register_tool("fake_fire:flint_and_steel", {
 						)
 				and 
 				minetest.get_node(pointed_thing.above).name == "air"
+				and not 
+				minetest.is_protected(pointed_thing.above, user:get_player_name())
 				then
 				minetest.set_node(pointed_thing.above,
 				{name="fake_fire:smokeless_ice_fire"})						
