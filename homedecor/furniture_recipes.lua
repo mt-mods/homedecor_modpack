@@ -3,7 +3,7 @@ minetest.register_craft({
     output = "homedecor:table", "homedecor:chair 2",
     recipe = {
         { "group:wood","group:wood", "group:wood" },
-        { "default:stick", "", "default:stick" },
+        { "group:stick", "", "group:stick" },
     },
 })
 
@@ -55,9 +55,9 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "homedecor:chair 2",
 	recipe = {
-	    { "default:stick",""},
+	    { "group:stick",""},
 	    { "group:wood","group:wood" },
-	    { "default:stick","default:stick" },
+	    { "group:stick","group:stick" },
 	},
 })
 
@@ -107,7 +107,7 @@ minetest.register_craft({
 	output = "homedecor:table_lamp_off",
 	recipe = {
 	    {"default:paper","default:torch" ,"default:paper"},
-	    {"","default:stick",""},
+	    {"","group:stick",""},
 	    {"","stairs:slab_wood",""},
 	},
 })
@@ -116,7 +116,7 @@ minetest.register_craft({
 	output = "homedecor:table_lamp_off",
 	recipe = {
 	    {"default:paper","default:torch" ,"default:paper"},
-	    {"","default:stick",""},
+	    {"","group:stick",""},
 	    {"","stairsplus:slab_wood",""},
 	},
 })
@@ -135,7 +135,7 @@ for _, color in ipairs(lamp_colors) do
 		output = "homedecor:table_lamp_"..color.."_off",
 		recipe = {
 		    {"wool:"..color,"default:torch" ,"wool:"..color},
-		    {"","default:stick",""},
+		    {"","group:stick",""},
 		    {"","stairs:slab_wood",""},
 		},
 	})
@@ -144,7 +144,7 @@ for _, color in ipairs(lamp_colors) do
 		output = "homedecor:table_lamp_"..color.."_off",
 		recipe = {
 		    {"wool:"..color,"default:torch" ,"wool:"..color},
-		    {"","default:stick",""},
+		    {"","group:stick",""},
 		    {"","stairsplus:slab_wood",""},
 		},
 	})

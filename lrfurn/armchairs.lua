@@ -65,7 +65,7 @@ for i in ipairs(armchairs_list) do
 		recipe = {
 			{"wool:"..colour, "", "", },
 			{"stairs:slab_wood", "", "", },
-			{"default:stick", "", "", }
+			{"group:stick", "", "", }
 		}
 	})
 	
@@ -74,7 +74,7 @@ for i in ipairs(armchairs_list) do
 		recipe = {
 			{"wool:"..colour, "", "", },
 			{"moreblocks:slab_wood", "", "", },
-			{"default:stick", "", "", }
+			{"group:stick", "", "", }
 		}
 	})
 
@@ -83,7 +83,7 @@ for i in ipairs(armchairs_list) do
 		recipe = {
 			{"wool:"..colour, "", "", },
 			{"group:wood_slab", "", "", },
-			{"default:stick", "", "", }
+			{"group:stick", "", "", }
 		}
 	})
 

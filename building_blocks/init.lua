@@ -46,7 +46,7 @@ minetest.register_craft({
 	recipe = {
 		{"default:sand"},
 		{"default:clay"},
-		{"default:stick"},
+		{"group:stick"},
 	}
 })
 
@@ -97,8 +97,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'building_blocks:sticks',
 	recipe = {
-		{'default:stick', 'default:stick'},
-		{'default:stick', 'default:stick'},
+		{'group:stick', 'group:stick'},
+		{'group:stick', 'group:stick'},
 	}
 })
 
@@ -377,7 +377,7 @@ minetest.register_craft({
 	output = 'building_blocks:knife 1',
 	recipe = {
 		{"building_blocks:Tar"},
-		{"default:stick"},
+		{"group:stick"},
 	}
 })
 
