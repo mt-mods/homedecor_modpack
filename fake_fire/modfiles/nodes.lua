@@ -249,12 +249,12 @@ minetest.register_tool("fake_fire:flint_and_steel", {
 				string.find(minetest.get_node(pointed_thing.under).name, "ice")
 				and
 				minetest.get_node(pointed_thing.above).name == "air"
-				and not 
-				minetest.is_protected(pointed_thing.above, user:get_player_name())
 				then
-				minetest.set_node(pointed_thing.above,
-				{name="fake_fire:smokeless_fire"})
-	
+					if not minetest.is_protected(pointed_thing.above, user:get_player_name()) then
+						minetest.set_node(pointed_thing.above, {name="fake_fire:smokeless_fire"})						
+					else
+						minetest.chat_send_player(user:get_player_name(), "You can't set a fire in someone else's area!")
+					end
 			elseif
 
 				pointed_thing.type == "node"
@@ -268,11 +268,12 @@ minetest.register_tool("fake_fire:flint_and_steel", {
 						)
 				and 
 				minetest.get_node(pointed_thing.above).name == "air"
-				and not 
-				minetest.is_protected(pointed_thing.above, user:get_player_name())
 				then
-				minetest.set_node(pointed_thing.above,
-				{name="fake_fire:smokeless_ice_fire"})						
+					if not minetest.is_protected(pointed_thing.above, user:get_player_name()) then
+						minetest.set_node(pointed_thing.above, {name="fake_fire:smokeless_ice_fire"})						
+					else
+						minetest.chat_send_player(user:get_player_name(), "You can't set a fire in someone else's area!")
+					end
 			end -- Line 210, if
 		end -- Line 207, for/do	
 		
