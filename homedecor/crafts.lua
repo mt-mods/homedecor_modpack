@@ -1982,6 +1982,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+    output = "homedecor:filing_cabinet",
+    recipe = {
+		{ "", "default:wood", "" },
+		{ "default:wood", "homedecor:drawer_small", "default:wood" },
+		{ "", "default:wood", "" },
+    },
+})
+
+minetest.register_craft({
     output = "homedecor:analog_clock_plastic 2",
     recipe = {
 		{ "homedecor:plastic_sheeting", "dye:black", "homedecor:plastic_sheeting" },
