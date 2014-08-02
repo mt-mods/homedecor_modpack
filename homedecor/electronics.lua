@@ -116,6 +116,7 @@ minetest.register_node("homedecor:dvd_vcr", {
 		"homedecor_dvdvcr_back.png",
 		"homedecor_dvdvcr_front.png",
 	},
+	inventory_image = "homedecor_dvdvcr_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	node_box = {
