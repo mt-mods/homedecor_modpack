@@ -15,7 +15,13 @@ minetest.register_node("homedecor:power_outlet", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.125, -0.5, 0.4375, 0.125, -0.1875, 0.5},
+			{ -0.125, -0.3125, 0.4375, 0.125, 0, 0.5},
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{ -0.1875, -0.375, 0.375, 0.1875, 0.0625, 0.5},
 		}
 	},
 	groups = {cracky=3,dig_immediate=2},
@@ -39,9 +45,15 @@ minetest.register_node("homedecor:light_switch", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.125,  0.1875, 0.4375,  0.125,   0.5,    0.5},
-			{-.03125, 0.375,  0.40625, 0.03125, 0.4375, 0.5},
+			{ -0.125,   -0.5,    0.4375,  0.125,   -0.1875, 0.5 },
+			{ -0.03125, -0.3125, 0.40625, 0.03125, -0.25,   0.5 },
 
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{ -0.1875,   -0.5625,    0.375,  0.1875,   -0.1250, 0.5 },
 		}
 	},
 	groups = {cracky=3,dig_immediate=2},
