@@ -35,7 +35,9 @@ minetest.register_node('homedecor:space_heater', {
 		  'homedecor_heater_sides.png',
 		  'homedecor_heater_sides.png',
 		  'homedecor_heater_back.png',
-		  'homedecor_heater_front.png'},
+		  'homedecor_heater_front.png'
+	},
+	inventory_image = "homedecor_heater_inv.png",
 	sunlight_propagates = true,
 	paramtype = "light",
 	paramtype2 = "facedir",
