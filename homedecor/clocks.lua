@@ -9,6 +9,7 @@ minetest.register_node("homedecor:analog_clock_plastic", {
 		"homedecor_analog_clock_plastic_back.png",
 		"homedecor_analog_clock_plastic_front.png"
 	},
+	inventory_image = "homedecor_analog_clock_plastic_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	node_box = {
@@ -39,6 +40,7 @@ minetest.register_node("homedecor:analog_clock_wood", {
 		"homedecor_analog_clock_wood_back.png",
 		"homedecor_analog_clock_wood_front.png"
 	},
+	inventory_image = "homedecor_analog_clock_wood_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	node_box = {
@@ -69,6 +71,7 @@ minetest.register_node("homedecor:digital_clock", {
 		"homedecor_digital_clock_back.png",
 		"homedecor_digital_clock_front.png"
 	},
+	inventory_image = "homedecor_digital_clock_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	node_box = {
@@ -91,6 +94,7 @@ minetest.register_node("homedecor:alarm_clock", {
 		"homedecor_alarm_clock_back.png",
 		"homedecor_alarm_clock_front.png"
 	},
+	inventory_image = "homedecor_alarm_clock_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	node_box = {
