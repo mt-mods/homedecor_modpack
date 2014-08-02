@@ -98,6 +98,11 @@ minetest.register_craftitem("homedecor:fan_blades", {
 	inventory_image = "homedecor_fan_blades.png"
 })
 
+minetest.register_craftitem("homedecor:copper_strip", {
+	description = S("Copper Strip"),
+	inventory_image = "homedecor_copper_strip.png"
+})
+
 -- alternate crafting if mesecons is/isn't installed
 
 if not minetest.get_modpath("mesecons") then
@@ -139,6 +144,13 @@ end
 minetest.register_alias("homedecor:brass_ingot", "technic:brass_ingot")
 
 -- the actual crafts
+
+minetest.register_craft( {
+    output = "homedecor:copper_strip 6",
+    recipe = {
+		{ "default:copper_ingot", "default:copper_ingot" }
+    },
+})
 
 minetest.register_craft( {
     output = "homedecor:fan_blades 2",
@@ -2199,3 +2211,22 @@ for i in ipairs(color_pairings) do
 	})
 end
 
+-- misc electrical
+
+minetest.register_craft( {
+        output = "homedecor:power_outlet",
+        recipe = {
+			{"homedecor:plastic_sheeting", "homedecor:copper_strip"},
+			{"homedecor:plastic_sheeting", ""},
+			{"homedecor:plastic_sheeting", "homedecor:copper_strip"}
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:light_switch",
+        recipe = {
+			{"", "homedecor:plastic_sheeting", "homedecor:copper_strip"},
+			{"homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:copper_strip"},
+			{"", "homedecor:plastic_sheeting", "homedecor:copper_strip"}
+        },
+})

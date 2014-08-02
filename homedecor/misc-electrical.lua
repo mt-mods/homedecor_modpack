@@ -11,13 +11,14 @@ minetest.register_node("homedecor:power_outlet", {
 		"homedecor_outlet_back.png",
 		"homedecor_outlet_front.png"
 	},
+	inventory_image = "homedecor_outlet_inv.png",
 	node_box = {
 		type = "fixed",
 		fixed = {
 			{-0.125, -0.5, 0.4375, 0.125, -0.1875, 0.5},
 		}
 	},
-	groups = {cracky=3},
+	groups = {cracky=3,dig_immediate=2},
 	sounds = default.node_sound_stone_defaults()
 })
 
@@ -34,6 +35,7 @@ minetest.register_node("homedecor:light_switch", {
 		"homedecor_light_switch_back.png",
 		"homedecor_light_switch_front.png"
 	},
+	inventory_image = "homedecor_light_switch_inv.png",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -42,7 +44,7 @@ minetest.register_node("homedecor:light_switch", {
 
 		}
 	},
-	groups = {cracky=3},
+	groups = {cracky=3,dig_immediate=2},
 	sounds = default.node_sound_stone_defaults()
 })
 
