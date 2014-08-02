@@ -146,7 +146,7 @@ minetest.register_alias("homedecor:brass_ingot", "technic:brass_ingot")
 -- the actual crafts
 
 minetest.register_craft( {
-    output = "homedecor:copper_strip 6",
+    output = "homedecor:copper_strip 12",
     recipe = {
 		{ "default:copper_ingot", "default:copper_ingot" }
     },
