@@ -2239,3 +2239,14 @@ minetest.register_craft( {
 			{"", "homedecor:plastic_sheeting", "homedecor:copper_strip"}
         },
 })
+
+-- doghouse
+
+minetest.register_craft( {
+        output = "homedecor:doghouse_base",
+        recipe = {
+			{"homedecor:shingles_terracotta", "homedecor:shingles_terracotta", "homedecor:shingles_terracotta"},
+			{"group:wood", "", "group:wood"},
+			{"group:wood", "building_blocks:terrycloth_towel", "group:wood"}
+        },
+})

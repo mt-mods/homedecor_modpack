@@ -633,3 +633,122 @@ minetest.register_node("homedecor:dishwasher_granite", {
 	paramtype2 = "facedir",
 	groups = { snappy = 3 },
 })
+
+-- doghouse, model contributed by jp
+
+minetest.register_node("homedecor:doghouse_base", {
+	tiles = {
+		"homedecor_doghouse_base_top.png",
+		"homedecor_doghouse_base_bottom.png",
+		"homedecor_doghouse_base_side.png",
+		"homedecor_doghouse_base_side.png",
+		"homedecor_doghouse_base_back.png",
+		"homedecor_doghouse_base_front.png"
+	},
+	description = "Doghouse",
+	inventory_image = "homedecor_doghouse_inv.png",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{0.3125, -0.5, -0.4375, 0.4375, -0.3125, -0.3125}, -- NodeBox1
+			{0.3125, -0.5, 0.3125, 0.4375, -0.3125, 0.4375}, -- NodeBox2
+			{-0.4375, -0.5, 0.3125, -0.3125, -0.3125, 0.4375}, -- NodeBox3
+			{-0.4375, -0.5, -0.4375, -0.3125, -0.3125, -0.3125}, -- NodeBox4
+			{-0.4375, -0.3125, -0.4375, -0.375, 0.5, 0.4375}, -- NodeBox5
+			{-0.4375, 0.3125, -0.375, 0.4375, 0.5, -0.3125}, -- NodeBox6
+			{-0.4375, -0.3125, -0.4375, 0.4375, -0.25, 0.4375}, -- NodeBox7
+			{-0.375, -0.3125, -0.375, -0.1875, 0.4375, -0.3125}, -- NodeBox8
+			{0.1875, -0.3125, -0.375, 0.4375, 0.5, -0.3125}, -- NodeBox9
+			{0.375, -0.25, -0.4375, 0.4375, 0.5, 0.4375}, -- NodeBox10
+			{-0.4375, -0.3125, 0.375, 0.4375, 0.5, 0.4375}, -- NodeBox11
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, -0.5, 0.5, 1.0, 0.5 }
+	},
+	groups = {snappy=3},
+	on_place = function(itemstack, placer, pointed_thing)
+		local pos = pointed_thing.under
+		local pnode = minetest.get_node(pointed_thing.under)
+		local rnodedef = minetest.registered_nodes[pnode.name]
+
+		if not rnodedef["buildable_to"] then
+			pos = pointed_thing.above
+		end
+
+		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
+
+		local tnode = minetest.get_node(pos)
+		local tnode2 = minetest.get_node(pos2)
+
+		if homedecor.get_nodedef_field(tnode.name, "buildable_to")
+		  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
+		  and not minetest.is_protected(pos, placer:get_player_name())
+		  and not minetest.is_protected(pos2, placer:get_player_name()) then
+			minetest.add_node(pos, { name = "homedecor:doghouse_base", param2 = fdir })
+			minetest.add_node(pos2, { name = "homedecor:doghouse_roof", param2 = fdir })
+			if not homedecor.expect_infinite_stacks then
+				itemstack:take_item()
+				return itemstack
+			end
+		end
+	end,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
+		if minetest.get_node(pos2).name == "homedecor:doghouse_roof" then
+			minetest.remove_node(pos2)
+		end
+	end
+})
+
+minetest.register_node("homedecor:doghouse_roof", {
+	tiles = {
+		"homedecor_doghouse_roof_top.png",
+		"homedecor_doghouse_roof_bottom.png",
+		"homedecor_doghouse_roof_side.png",
+		"homedecor_doghouse_roof_side.png",
+		"homedecor_doghouse_roof_back.png",
+		"homedecor_doghouse_roof_front.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, -0.4375, -0.4375, 0.5}, -- NodeBox17
+			{-0.4375, -0.4375, -0.5, -0.375, -0.375, 0.5}, -- NodeBox18
+			{-0.375, -0.375, -0.5, -0.3125, -0.3125, 0.5}, -- NodeBox19
+			{-0.3125, -0.3125, -0.5, -0.25, -0.25, 0.5}, -- NodeBox20
+			{-0.25, -0.25, -0.5, -0.1875, -0.1875, 0.5}, -- NodeBox21
+			{-0.1875, -0.1875, -0.5, -0.125, -0.125, 0.5}, -- NodeBox22
+			{-0.125, -0.125, -0.5, -0.0625, -0.0625, 0.5}, -- NodeBox23
+			{-0.0625, -0.0625, -0.5, 0.0625, 0, 0.5}, -- NodeBox24
+			{0.0625, -0.125, -0.5, 0.125, -0.0625, 0.5}, -- NodeBox25
+			{0.125, -0.1875, -0.5, 0.1875, -0.125, 0.5}, -- NodeBox26
+			{0.1875, -0.25, -0.5, 0.25, -0.1875, 0.5}, -- NodeBox27
+			{0.25, -0.3125, -0.5, 0.3125, -0.25, 0.5}, -- NodeBox28
+			{0.3125, -0.375, -0.5, 0.375, -0.3125, 0.5}, -- NodeBox29
+			{0.375, -0.4375, -0.5, 0.4375, -0.375, 0.5}, -- NodeBox30
+			{0.4375, -0.5, -0.5, 0.5, -0.4375, 0.5}, -- NodeBox31
+			{-0.4375, -0.5, -0.375, 0.4375, -0.4375, 0.4375}, -- NodeBox32
+			{-0.375, -0.4375, -0.375, 0.375, -0.375, 0.4375}, -- NodeBox33
+			{-0.3125, -0.375, -0.375, 0.3125, -0.3125, 0.4375}, -- NodeBox34
+			{-0.25, -0.3125, -0.375, 0.25, -0.25, 0.4375}, -- NodeBox35
+			{-0.1875, -0.25, -0.375, 0.1875, -0.1875, 0.4375}, -- NodeBox36
+			{-0.125, -0.1875, -0.375, 0.125, -0.125, 0.4375}, -- NodeBox37
+			{0.0625, -0.125, -0.375, -0.0625, -0.0625, 0.4375}, -- NodeBox38
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 0, 0, 0, 0, 0, 0 }
+	},
+	groups = {snappy=3, not_in_creative_inventory=1},
+})
+
