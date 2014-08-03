@@ -5,36 +5,65 @@
 
 signs_lib = {}
 
+signs_lib.modpath = minetest.get_modpath("signs_lib")
+signs_lib.intllib_modpath = minetest.get_modpath("intllib")
+
 signs_lib.wall_sign_text_pos = {
-    {delta = {x =  0,     y = 0.15, z =  0.399}, yaw = 0},
-    {delta = {x =  0.399, y = 0.15, z =  0    }, yaw = math.pi / -2},
-    {delta = {x =  0,     y = 0.15, z = -0.399}, yaw = math.pi},
-    {delta = {x = -0.399, y = 0.15, z =  0    }, yaw = math.pi / 2},
+    {delta = {x =  0,     y = 0.07, z =  0.436}, yaw = 0},
+    {delta = {x =  0.436, y = 0.07, z =  0    }, yaw = math.pi / -2},
+    {delta = {x =  0,     y = 0.07, z = -0.436}, yaw = math.pi},
+    {delta = {x = -0.436, y = 0.07, z =  0    }, yaw = math.pi / 2},
 }
 
 signs_lib.hanging_sign_text_pos = {
-    {delta = {x =  0,     y = 0.032, z = -0.05}, yaw = 0},
-    {delta = {x = -0.05,  y = 0.032, z =  0   }, yaw = math.pi / -2},
-    {delta = {x =  0,     y = 0.032, z =  0.05}, yaw = math.pi},
-    {delta = {x =  0.05,  y = 0.032, z =  0   }, yaw = math.pi / 2},
+    {delta = {x =  0,      y = -0.02, z = -0.063}, yaw = 0},
+    {delta = {x = -0.063,  y = -0.02, z =  0    }, yaw = math.pi / -2},
+    {delta = {x =  0,      y = -0.02, z =  0.063}, yaw = math.pi},
+    {delta = {x =  0.063,  y = -0.02, z =  0    }, yaw = math.pi / 2},
 }
 
 signs_lib.yard_sign_text_pos = {
-    {delta = {x =  0,     y = 0.15, z = -0.05}, yaw = 0},
-    {delta = {x = -0.05,  y = 0.15, z =  0   }, yaw = math.pi / -2},
-    {delta = {x =  0,     y = 0.15, z =  0.05}, yaw = math.pi},
-    {delta = {x =  0.05,  y = 0.15, z =  0   }, yaw = math.pi / 2},
+    {delta = {x =  0,      y = 0.07, z = -0.063}, yaw = 0},
+    {delta = {x = -0.063,  y = 0.07, z =  0    }, yaw = math.pi / -2},
+    {delta = {x =  0,      y = 0.07, z =  0.063}, yaw = math.pi},
+    {delta = {x =  0.063,  y = 0.07, z =  0    }, yaw = math.pi / 2},
 }
 
 signs_lib.sign_post_text_pos = {
-    {delta = {x = 0,      y = 0.15, z = -0.226}, yaw = 0},
-    {delta = {x = -0.226, y = 0.15, z = 0     }, yaw = math.pi / -2},
-    {delta = {x = 0,      y = 0.15, z = 0.226 }, yaw = math.pi},
-    {delta = {x = 0.226,  y = 0.15, z = 0     }, yaw = math.pi / 2},
+    {delta = {x = 0,      y = 0.07, z = -0.188}, yaw = 0},
+    {delta = {x = -0.188, y = 0.07, z = 0     }, yaw = math.pi / -2},
+    {delta = {x = 0,      y = 0.07, z = 0.188 }, yaw = math.pi},
+    {delta = {x = 0.188,  y = 0.07, z = 0     }, yaw = math.pi / 2},
 }
 
-signs_lib.modpath = minetest.get_modpath("signs_lib")
-signs_lib.intllib_modpath = minetest.get_modpath("intllib")
+signs_lib.wall_sign_model = {
+	type = "fixed",
+	fixed = {-0.4375, -0.25, 0.4375, 0.4375, 0.375, 0.5}
+}
+
+signs_lib.yard_sign_model = {
+	type = "fixed",
+	fixed = {
+			{-0.4375, -0.25, -0.0625, 0.4375, 0.375, 0},
+			{-0.0625, -0.5, -0.0625, 0.0625, -0.1875, 0},
+    }
+}
+
+signs_lib.hanging_sign_model = {
+	type = "fixed",
+	fixed = {
+			{-0.4375, -0.3125, -0.0625, 0.4375, 0.3125, 0},
+			{-0.4375, 0.25, -0.03125, 0.4375, 0.5, -0.03125},
+    }
+}
+
+signs_lib.sign_post_model = {
+	type = "fixed",
+	fixed = {
+			{-0.4375, -0.25, -0.1875, 0.4375, 0.375, -0.125},
+			{-0.125, -0.5, -0.125, 0.125, 0.5, 0.125},
+	}
+}
 
 local S
 if signs_lib.intllib_modpath then
@@ -573,8 +602,7 @@ minetest.register_node(":default:sign_wall", {
 	sunlight_propagates = true,
 	paramtype2 = "facedir",
 	drawtype = "nodebox",
-	node_box = {type = "fixed", fixed = {-0.45, -0.15, 0.4, 0.45, 0.45, 0.498}},
-	selection_box = {type = "fixed", fixed = {-0.45, -0.15, 0.4, 0.45, 0.45, 0.498}},
+	node_box = signs_lib.wall_sign_model,
 	tiles = {"signs_top.png", "signs_bottom.png", "signs_side.png", "signs_side.png", "signs_back.png", "signs_front.png"},
 	groups = sign_groups,
 
@@ -600,11 +628,11 @@ minetest.register_node(":signs:sign_yard", {
 	sunlight_propagates = true,
     paramtype2 = "facedir",
     drawtype = "nodebox",
-    node_box = {type = "fixed", fixed = {
-        {-0.45, -0.15, -0.049, 0.45, 0.45, 0.049},
-        {-0.05, -0.5, -0.049, 0.05, -0.15, 0.049}
-    }},
-    selection_box = {type = "fixed", fixed = {-0.45, -0.15, -0.049, 0.45, 0.45, 0.049}},
+    node_box = signs_lib.yard_sign_model,
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.4375, -0.5, -0.0625, 0.4375, 0.375, 0}
+	},
     tiles = {"signs_top.png", "signs_bottom.png", "signs_side.png", "signs_side.png", "signs_back.png", "signs_front.png"},
     groups = {choppy=2, dig_immediate=2},
     drop = "default:sign_wall",
@@ -628,10 +656,7 @@ minetest.register_node(":signs:sign_hanging", {
 	sunlight_propagates = true,
     paramtype2 = "facedir",
     drawtype = "nodebox",
-    node_box = {type = "fixed", fixed = {
-        {-0.45,  0.3124,  0,     0.45, 0.5,   0},
-        {-0.45, -0.2875, -0.049, 0.45, 0.3125, 0.049}
-    }},
+    node_box = signs_lib.hanging_sign_model,
     selection_box = {
 		type = "fixed",
 		fixed = {-0.45, -0.275, -0.049, 0.45, 0.5, 0.049}
@@ -666,20 +691,7 @@ minetest.register_node(":signs:sign_post", {
 	sunlight_propagates = true,
     paramtype2 = "facedir",
     drawtype = "nodebox",
-    node_box = {
-		type = "fixed",
-		fixed = {
-			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
-			{ -0.45, -0.15, -0.225, 0.45, 0.45, -0.125 },
-		}
-    },
-    selection_box = {
-		type = "fixed",
-		fixed = {
-			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
-			{ -0.45, -0.15, -0.225, 0.45, 0.45, -0.125 },
-		}
-    },
+    node_box = signs_lib.sign_post_model,
     tiles = {
 		"signs_post_top.png",
 		"signs_post_bottom.png",

@@ -50,23 +50,11 @@ minetest.register_node("homedecor:fence_brass_with_sign", {
 	wield_image = "homedecor_sign_brass_post.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	node_box = {
-		type = "fixed",
-		fixed = { 
-			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
-			{ -0.45, -0.1875, -0.225, 0.45, 0.4375, -0.125 },
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 
-			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
-			{ -0.45, -0.1875, -0.225, 0.45, 0.4375, -0.125 },
-		}
-	},
+	node_box = signs_lib.sign_post_model,
 	groups = {snappy=3,not_in_creative_inventory=1},
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
+	sunlight_propagates = true,
 	drop = {
 		max_items = 2,
 		items = {
@@ -90,23 +78,11 @@ minetest.register_node("homedecor:fence_wrought_iron_with_sign", {
 	wield_image = "homedecor_sign_wrought_iron_post.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	node_box = {
-		type = "fixed",
-		fixed = { 
-			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
-			{ -0.45, -0.1875, -0.225, 0.45, 0.4375, -0.125 },
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 
-			{ -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
-			{ -0.45, -0.1875, -0.225, 0.45, 0.4375, -0.125 },
-		}
-	},
+	node_box = signs_lib.sign_post_model,
 	groups = {snappy=3,not_in_creative_inventory=1},
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
+	sunlight_propagates = true,
 	drop = {
 		max_items = 2,
 		items = {
