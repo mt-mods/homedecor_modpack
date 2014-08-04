@@ -484,13 +484,16 @@ signs_lib.update_sign = function(pos, fields)
 
 	-- if there is no entity
 	local sign_info
-	if minetest.get_node(pos).name == "signs:sign_yard" then
+	local signnode = minetest.get_node(pos)
+	if signnode.name == "signs:sign_yard" then
 		sign_info = signs_lib.yard_sign_model.textpos[minetest.get_node(pos).param2 + 1]
-	elseif minetest.get_node(pos).name == "signs:sign_hanging" then
+	elseif signnode.name == "signs:sign_hanging" then
 		sign_info = signs_lib.hanging_sign_model.textpos[minetest.get_node(pos).param2 + 1]
-	elseif minetest.get_node(pos).name == "default:sign_wall" then
+	elseif signnode.name == "default:sign_wall" 
+		or signnode.name == "signs:sign_wall_green"
+		or signnode.name == "signs:sign_wall_yellow" then
 		sign_info = signs_lib.wall_sign_model.textpos[minetest.get_node(pos).param2 + 1]
-	else --if minetest.get_node(pos).name == "signs:sign_post" then
+	else -- ...it must be a sign on a fence post.
 		sign_info = signs_lib.sign_post_model.textpos[minetest.get_node(pos).param2 + 1]
 	end
 	if sign_info == nil then
@@ -553,19 +556,22 @@ function signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
 		local sign_info
 		local pt_name = minetest.get_node(under).name
 		print(dump(pt_name))
+		local signname = itemstack:get_name()
 
-		if fences_with_sign[pt_name] then
+		if fences_with_sign[pt_name] and signname == "default:sign_wall" then
 			minetest.add_node(under, {name = fences_with_sign[pt_name], param2 = fdir})
 			sign_info = signs_lib.sign_post_model.textpos[fdir + 1]
 
-		elseif wdir == 0 then
+		elseif wdir == 0 and signname == "default:sign_wall" then
 			minetest.add_node(above, {name = "signs:sign_hanging", param2 = fdir})
 			sign_info = signs_lib.hanging_sign_model.textpos[fdir + 1]
-		elseif wdir == 1 then
+
+		elseif wdir == 1 and signname == "default:sign_wall" then
 			minetest.add_node(above, {name = "signs:sign_yard", param2 = fdir})
 			sign_info = signs_lib.yard_sign_model.textpos[fdir + 1]
+
 		else
-			minetest.add_node(above, {name = "default:sign_wall", param2 = fdir})
+			minetest.add_node(above, {name = signname, param2 = fdir})
 			sign_info = signs_lib.wall_sign_model.textpos[fdir + 1]
 		end
 
@@ -714,6 +720,78 @@ minetest.register_node(":signs:sign_post", {
     },
 })
 
+minetest.register_node(":signs:sign_wall_green", {
+	description = S("Sign (green, metal)"),
+	inventory_image = "signs_green_inv.png",
+	wield_image = "signs_green_inv.png",
+	node_placement_prediction = "",
+	paramtype = "light",
+	sunlight_propagates = true,
+	paramtype2 = "facedir",
+	drawtype = "nodebox",
+	node_box = signs_lib.wall_sign_model.nodebox,
+	tiles = {
+		"signs_green_top.png",
+		"signs_green_bottom.png",
+		"signs_green_sides.png",
+		"signs_green_sides.png",
+		"signs_back_metal.png",
+		"signs_green_front.png"
+	},
+	groups = sign_groups,
+	on_place = function(itemstack, placer, pointed_thing)
+		return signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
+	end,
+	on_construct = function(pos)
+		signs_lib.construct_sign(pos)
+	end,
+	on_destruct = function(pos)
+		signs_lib.destruct_sign(pos)
+	end,
+	on_receive_fields = function(pos, formname, fields, sender)
+		signs_lib.receive_fields(pos, formname, fields, sender)
+	end,
+	on_punch = function(pos, node, puncher)
+		signs_lib.update_sign(pos)
+	end,
+})
+
+minetest.register_node(":signs:sign_wall_yellow", {
+	description = S("Sign (yellow, metal)"),
+	inventory_image = "signs_yellow_inv.png",
+	wield_image = "signs_yellow_inv.png",
+	node_placement_prediction = "",
+	paramtype = "light",
+	sunlight_propagates = true,
+	paramtype2 = "facedir",
+	drawtype = "nodebox",
+	node_box = signs_lib.wall_sign_model.nodebox,
+	tiles = {
+		"signs_yellow_top.png",
+		"signs_yellow_bottom.png",
+		"signs_yellow_sides.png",
+		"signs_yellow_sides.png",
+		"signs_back_metal.png",
+		"signs_yellow_front.png"
+	},
+	groups = sign_groups,
+	on_place = function(itemstack, placer, pointed_thing)
+		return signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
+	end,
+	on_construct = function(pos)
+		signs_lib.construct_sign(pos)
+	end,
+	on_destruct = function(pos)
+		signs_lib.destruct_sign(pos)
+	end,
+	on_receive_fields = function(pos, formname, fields, sender)
+		signs_lib.receive_fields(pos, formname, fields, sender)
+	end,
+	on_punch = function(pos, node, puncher)
+		signs_lib.update_sign(pos)
+	end,
+})
+
 local signs_text_on_activate
 
 signs_text_on_activate = function(self)
@@ -810,6 +888,40 @@ build_char_db()
 minetest.register_alias("homedecor:fence_wood_with_sign", "signs:sign_post")
 
 signs_lib.register_fence_with_sign("default:fence_wood", "signs:sign_post")
+
+-- craft recipes for the green and yellow signs
+
+minetest.register_craft( {
+        output = "signs:sign_wall_green 4",
+        recipe = {
+			{ "dye:dark_green", "dye:white", "dye:dark_green" },
+			{ "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" }
+        },
+})
+
+minetest.register_craft( {
+        output = "signs:sign_wall_green 2",
+        recipe = {
+			{ "dye:dark_green", "dye:white", "dye:dark_green" },
+			{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
+        },
+})
+
+minetest.register_craft( {
+        output = "signs:sign_wall_yellow 4",
+        recipe = {
+			{ "dye:yellow", "dye:black", "dye:yellow" },
+			{ "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" }
+        },
+})
+
+minetest.register_craft( {
+        output = "signs:sign_wall_yellow 2",
+        recipe = {
+			{ "dye:yellow", "dye:black", "dye:yellow" },
+			{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
+        },
+})
 
 if minetest.setting_get("log_mods") then
 	minetest.log("action", S("signs loaded"))
