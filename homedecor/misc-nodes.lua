@@ -372,7 +372,7 @@ minetest.register_node("homedecor:fishtank_lighted", {
 		fixed = { -0.5, -0.5, -0.375, 0.5, 0.3125, 0.375 }
 	},
 	sunlight_propagates = true,
-	groups = {cracky=3,oddly_breakable_by_hand=3},
+	groups = {cracky=3,oddly_breakable_by_hand=3,not_in_creative_inventory=1},
 	sounds = default.node_sound_glass_defaults(),
 	on_rightclick = function(pos, node, clicker)
 		fdir = minetest.get_node(pos).param2
