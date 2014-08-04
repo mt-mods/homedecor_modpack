@@ -2250,3 +2250,51 @@ minetest.register_craft( {
 			{"group:wood", "building_blocks:terrycloth_towel", "group:wood"}
         },
 })
+
+-- japanese walls and mat
+
+minetest.register_craft( {
+        output = "homedecor:japanese_wall_top",
+        recipe = {
+			{"group:stick", "default:paper"},
+			{"default:paper", "group:stick"},
+			{"group:stick", "default:paper"}
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:japanese_wall_top",
+        recipe = {
+			{"default:paper", "group:stick"},
+			{"group:stick", "default:paper"},
+			{"default:paper", "group:stick"}
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:japanese_wall_middle",
+        recipe = {
+			{"homedecor:japanese_wall_top"}
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:japanese_wall_bottom",
+        recipe = {
+			{"homedecor:japanese_wall_middle"}
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:japanese_wall_top",
+        recipe = {
+			{"homedecor:japanese_wall_bottom"}
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:tatami_mat",
+        recipe = {
+			{"farming:wheat", "farming:wheat", "farming:wheat"}
+        },
+})

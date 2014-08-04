@@ -565,3 +565,95 @@ function homedecor.flip_gate(pos, node, player, gate, oc)
 	end
 end
 
+-- Japanese "paper" door/wall
+
+minetest.register_node("homedecor:japanese_wall_top", {
+	tiles = {
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_top.png",
+		"homedecor_japanese_wall_top.png"
+	},
+	description = "Japanese wall (top)",
+	drawtype = "nodebox",
+	paramtype = "light",
+    paramtype2 = "facedir",
+	use_texture_alpha = true,
+    groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0, 0.5, 0.5, 0.0625}, -- NodeBox1
+		}
+	}
+})
+
+minetest.register_node("homedecor:japanese_wall_middle", {
+	tiles = {
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_middle.png",
+		"homedecor_japanese_wall_middle.png"
+	},
+	description = "Japanese wall",
+	drawtype = "nodebox",
+	paramtype = "light",
+    paramtype2 = "facedir",
+	use_texture_alpha = true,
+    groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0, 0.5, 0.5, 0.0625}, -- NodeBox1
+		}
+	}
+})
+
+minetest.register_node("homedecor:japanese_wall_bottom", {
+	tiles = {
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_bottom.png",
+		"homedecor_japanese_wall_bottom.png"
+	},
+	description = "Japanese wall (bottom)",
+	drawtype = "nodebox",
+	paramtype = "light",
+    paramtype2 = "facedir",
+	use_texture_alpha = true,
+    groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0, 0.5, 0.5, 0.0625}, -- NodeBox1
+		}
+	}
+})
+
+minetest.register_node("homedecor:tatami_mat", {
+	tiles = {
+		"homedecor_tatami.png",
+		"homedecor_tatami.png",
+		"homedecor_tatami.png",
+		"homedecor_tatami.png",
+		"homedecor_tatami.png",
+		"homedecor_tatami.png"
+	},
+	description = "Japanese tatami",
+	drawtype = "nodebox",
+	paramtype = "light",
+    groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
+		}
+	}
+})
+
