@@ -78,6 +78,16 @@ else
 end
 signs_lib.gettext = S
 
+-- the list of standard sign nodes
+
+signs_lib.sign_node_list = {
+		"default:sign_wall",
+		"signs:sign_yard",
+		"signs:sign_hanging",
+		"signs:sign_wall_green",
+		"signs:sign_wall_yellow"
+}
+
 --table copy
 
 function signs_lib.table_copy(t)
@@ -880,6 +890,7 @@ function signs_lib.register_fence_with_sign(fencename, fencewithsignname)
     def_sign.drop = "default:sign_wall"
 	minetest.register_node(":"..fencename, def)
 	minetest.register_node(":"..fencewithsignname, def_sign)
+	table.insert(signs_lib.sign_node_list, fencewithsignname)
 	print(S("Registered %s and %s"):format(fencename, fencewithsignname))
 end
 
@@ -888,6 +899,17 @@ build_char_db()
 minetest.register_alias("homedecor:fence_wood_with_sign", "signs:sign_post")
 
 signs_lib.register_fence_with_sign("default:fence_wood", "signs:sign_post")
+
+-- restore signs' text after /clearobjects and the like
+
+minetest.register_abm({
+	nodenames = signs_lib.sign_node_list,
+	interval = 15,
+	chance = 1,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		signs_lib.update_sign(pos)
+	end
+})
 
 -- craft recipes for the green and yellow signs
 
