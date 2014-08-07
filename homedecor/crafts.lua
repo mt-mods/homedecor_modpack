@@ -2298,3 +2298,30 @@ minetest.register_craft( {
 			{"farming:wheat", "farming:wheat", "farming:wheat"}
         },
 })
+
+minetest.register_craft( {
+        output = "homedecor:wardrobe_bottom",
+        recipe = {
+			{ "homedecor:drawer_small", "homedecor:kitchen_cabinet" },
+			{ "homedecor:drawer_small", "default:wood" },
+			{ "homedecor:drawer_small", "default:wood" }
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:bed_blue_foot",
+        recipe = {
+			{ "group:stick", "", "group:stick" },
+			{ "wool:white", "wool:blue", "wool:blue" },
+			{ "group:wood", "", "group:wood" },
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:pool_table",
+        recipe = {
+			{ "wool:dark_green", "wool:dark_green", "wool:dark_green" },
+			{ "group:wood", "group:wood", "group:wood" },
+			{ "group:stick", "", "group:stick" }
+        },
+})
