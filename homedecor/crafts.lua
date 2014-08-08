@@ -2193,6 +2193,15 @@ minetest.register_craft( {
         },
 })
 
+minetest.register_craft( {
+        output = "homedecor:radiator",
+        recipe = {
+			{ "default:steel_ingot", "homedecor:heating_element", "default:steel_ingot" },
+			{ "homedecor:ic", "homedecor:heating_element", "" },
+			{ "default:steel_ingot", "homedecor:heating_element", "default:steel_ingot" }
+        },
+})
+
 -- bathroom/kitchen tiles
 
 local color_pairings = { 
@@ -2325,3 +2334,22 @@ minetest.register_craft( {
 			{ "group:stick", "", "group:stick" }
         },
 })
+
+minetest.register_craft( {
+        output = "homedecor:trash_can 2",
+        recipe = {
+			{ "homedecor:steel_wire", "", "homedecor:steel_wire" },
+			{ "homedecor:steel_wire", "", "homedecor:steel_wire" },
+			{ "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" }
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:telephone",
+        recipe = {
+			{ "homedecor:speaker_driver", "homedecor:copper_wire", "homedecor:speaker_driver" },
+			{ "homedecor:plastic_sheeting", "default:steel_ingot", "homedecor:plastic_sheeting" },
+			{ "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" }
+        },
+})
+

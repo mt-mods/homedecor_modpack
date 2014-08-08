@@ -27,35 +27,6 @@ minetest.register_node('homedecor:air_conditioner', {
 	selection_box = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
 })
 
-minetest.register_node('homedecor:space_heater', {
-	drawtype = "nodebox",
-	description = S("Space heater"),
-	tiles = { 'homedecor_heater_tb.png',
-		  'homedecor_heater_tb.png',
-		  'homedecor_heater_sides.png',
-		  'homedecor_heater_sides.png',
-		  'homedecor_heater_back.png',
-		  'homedecor_heater_front.png'
-	},
-	inventory_image = "homedecor_heater_inv.png",
-	sunlight_propagates = true,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
-	groups = { snappy = 3 },
-	sounds = default.node_sound_leaves_defaults(),
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.1875, -0.5, 0.0625, 0.1875, 0, 0.3125},
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = {-0.1875, -0.5, 0.0625, 0.1875, 0, 0.3125}
-	}
-})
-
 -- fans
 
 minetest.register_entity("homedecor:mesh_desk_fan", {
@@ -144,4 +115,86 @@ minetest.register_node("homedecor:desk_fan", {
 	end,
 })
 
+-- heating devices
+
+minetest.register_node('homedecor:space_heater', {
+	drawtype = "nodebox",
+	description = S("Space heater"),
+	tiles = { 'homedecor_heater_tb.png',
+		  'homedecor_heater_tb.png',
+		  'homedecor_heater_sides.png',
+		  'homedecor_heater_sides.png',
+		  'homedecor_heater_back.png',
+		  'homedecor_heater_front.png'
+	},
+	inventory_image = "homedecor_heater_inv.png",
+	sunlight_propagates = true,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	walkable = true,
+	groups = { snappy = 3 },
+	sounds = default.node_sound_leaves_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.1875, -0.5, 0.0625, 0.1875, 0, 0.3125},
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.1875, -0.5, 0.0625, 0.1875, 0, 0.3125}
+	}
+})
+
+minetest.register_node("homedecor:radiator", {
+	tiles = { "homedecor_white_metal.png" },
+	inventory_image = "homedecor_radiator_inv.png",
+	description = "Radiator heater",
+	drawtype = "nodebox",
+	paramtype = "light",
+        paramtype2 = "facedir",
+        groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.4375,  0.3125,   0.3125,  0.5,      0.4375,   0.4375},  --  NodeBox1
+			{0.375,    0.25,     0.25,    0.4375,   0.5,      0.5},     --  NodeBox2
+			{0.25,     0.25,     0.25,    0.3125,   0.5,      0.5},     --  NodeBox3
+			{0.125,    0.25,     0.25,    0.1875,   0.5,      0.5},     --  NodeBox4
+			{0,        0.25,     0.25,    0.0625,   0.5,      0.5},     --  NodeBox5
+			{-0.125,   0.25,     0.25,    -0.0625,  0.5,      0.5},     --  NodeBox6
+			{-0.25,    0.25,     0.25,    -0.1875,  0.5,      0.5},     --  NodeBox7
+			{-0.375,   0.25,     0.25,    -0.3125,  0.5,      0.5},     --  NodeBox8
+			{0.375,    -0.375,   0.4375,  0.4375,   0.5,      0.5},     --  NodeBox10
+			{0.375,    -0.375,   0.25,    0.4375,   0.5,      0.3125},  --  NodeBox11
+			{0.25,     -0.375,   0.4375,  0.3125,   0.5,      0.5},     --  NodeBox12
+			{0.25,     -0.375,   0.25,    0.3125,   0.5,      0.3125},  --  NodeBox13
+			{0.125,    -0.375,   0.4375,  0.1875,   0.5,      0.5},     --  NodeBox14
+			{0.125,    -0.375,   0.25,    0.1875,   0.5,      0.3125},  --  NodeBox15
+			{0,        -0.375,   0.4375,  0.0625,   0.5,      0.5},     --  NodeBox16
+			{0,        -0.375,   0.25,    0.0625,   0.5,      0.3125},  --  NodeBox17
+			{0,        -0.375,   0.4375,  0.0625,   0.5,      0.5},     --  NodeBox18
+			{0,        -0.375,   0.25,    0.0625,   0.5,      0.3125},  --  NodeBox19
+			{-0.125,   -0.375,   0.4375,  -0.0625,  0.5,      0.5},     --  NodeBox20
+			{-0.125,   -0.375,   0.25,    -0.0625,  0.5,      0.3125},  --  NodeBox21
+			{-0.25,    -0.375,   0.4375,  -0.1875,  0.5,      0.5},     --  NodeBox22
+			{-0.25,    -0.375,   0.25,    -0.1875,  0.5,      0.3125},  --  NodeBox23
+			{-0.375,   -0.375,   0.4375,  -0.3125,  0.5,      0.5},     --  NodeBox24
+			{-0.375,   -0.375,   0.25,    -0.3125,  0.5,      0.3125},  --  NodeBox25
+			{-0.4375,  -0.3125,  0.3125,  0.5,      -0.1875,  0.4375},  --  NodeBox26
+			{0.375,    -0.375,   0.3125,  0.4375,   -0.125,   0.4375},  --  NodeBox27
+			{0.25,     -0.375,   0.3125,  0.3125,   -0.125,   0.4375},  --  NodeBox28
+			{0.125,    -0.375,   0.3125,  0.1875,   -0.125,   0.4375},  --  NodeBox29
+			{0,        -0.375,   0.3125,  0.0625,   -0.125,   0.4375},  --  NodeBox30
+			{-0.125,   -0.375,   0.3125,  -0.0625,  -0.125,   0.4375},  --  NodeBox31
+			{-0.125,   -0.375,   0.3125,  -0.0625,  -0.125,   0.4375},  --  NodeBox32
+			{-0.25,    -0.375,   0.3125,  -0.1875,  -0.125,   0.4375},  --  NodeBox33
+			{-0.375,   -0.375,   0.3125,  -0.3125,  -0.125,   0.4375},  --  NodeBox34
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.4375, -0.375, 0.25, 0.5, 0.5, 0.5 }
+	}
+})
 
