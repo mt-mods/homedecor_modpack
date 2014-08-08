@@ -2074,6 +2074,7 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
     output = "homedecor:ceiling_fan",
     recipe = {
 		{ "technic:motor" },
