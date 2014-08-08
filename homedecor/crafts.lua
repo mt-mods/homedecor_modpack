@@ -2074,6 +2074,14 @@ minetest.register_craft({
 	}
 })
 
+    output = "homedecor:ceiling_fan",
+    recipe = {
+		{ "technic:motor" },
+		{ "homedecor:fan_blades" },
+		{ "homedecor:glowlight_small_cube_white" }
+	}
+})
+
 minetest.register_craft({
     output = "homedecor:welcome_mat_grey 2",
     recipe = {
