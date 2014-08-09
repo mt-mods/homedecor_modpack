@@ -167,6 +167,14 @@ local charwidth = { }
 -- File to cache the font size to.
 local CHARDB_FILE = minetest.get_worldpath().."/signs_lib_chardb"
 
+-- helper functions to trim sign text input/output
+
+local function trim_input(text)
+	local txt_len = string.len(text)
+	text_trimmed = string.sub(text, 1, math.min(480, txt_len)) -- 6 rows, max 80 chars per
+	return text_trimmed
+end
+
 -- Returns true if any file differs from cached one.
 local function check_random_chars()
 	for i = 1, 5 do
@@ -363,6 +371,7 @@ local function make_line_texture(line, lineno)
 					width = width + w + 1
 					if width >= (SIGN_WIDTH - charwidth[" "]) then
 						width = 0
+						break
 					else
 						maxw = math_max(width, maxw)
 					end
@@ -462,6 +471,7 @@ signs_lib.destruct_sign = function(pos)
 end
 
 local function make_infotext(text)
+	text = trim_input(text)
 	local lines = split_lines_and_words(text) or {}
 	local lines2 = { }
 	for _, line in ipairs(lines) do
@@ -474,6 +484,9 @@ signs_lib.update_sign = function(pos, fields)
     local meta = minetest.get_meta(pos)
     local new
 	if fields then
+
+		fields.text = trim_input(fields.text)
+
 		meta:set_string("infotext", make_infotext(fields.text).." ")
 		meta:set_string("text", fields.text)
 		meta:set_int("__signslib_new_format", 1)
@@ -809,6 +822,7 @@ signs_text_on_activate = function(self)
 	local text = meta:get_string("text")
 	local new = (meta:get_int("__signslib_new_format") ~= 0)
 	if text then
+		text = trim_input(text)
 		set_obj_text(self.object, text, new)
 	end
 end
