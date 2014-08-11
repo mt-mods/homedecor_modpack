@@ -994,22 +994,8 @@ for c in ipairs(curtaincolors) do
 			{ "wool:"..color, "", ""},
 		},
 	})
-
-	minetest.register_craft( {
-		output = "homedecor:curtain_open_"..color,
-	      		recipe = {
-			{ "homedecor:curtain_"..color },
-		},
-	})
-
-	minetest.register_craft( {
-		output = "homedecor:curtain_"..color,
-	      		recipe = {
-			{ "homedecor:curtain_open_"..color },
-		},
-	})
-
 end
+
 local mats = {
 	{ "brass", "homedecor:pole_brass" },
 	{ "wrought_iron", "homedecor:pole_wrought_iron" },
