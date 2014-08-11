@@ -135,6 +135,7 @@ minetest.register_node("building_blocks:grate", {
 	sunlight_propagates = true,
 	is_ground_content = true,
 	groups = {cracky=1},
+	sounds = default.node_sound_stone_defaults(),
 })
 
 minetest.register_node("building_blocks:Fireplace", {
@@ -252,104 +253,173 @@ minetest.register_node("building_blocks:hardwood", {
 	sounds = default.node_sound_wood_defaults(),
 })
 
-bb_stairs = {}
+if moreblocks then
 
--- Node will be called stairs:stair_<subname>
-function bb_stairs.register_stair(subname, recipeitem, groups, images, description)
-	minetest.register_node("building_blocks:stair_" .. subname, {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-				{-0.5, 0, 0, 0.5, 0.5, 0.5},
+	stairsplus:register_all(
+		"building_blocks", 
+		"marble",
+		"building_blocks:Marble",
+		{
+			description = "Marble",
+			tiles = {"building_blocks_marble.png"},
+			groups = {cracky=3},
+			sounds = default.node_sound_stone_defaults(),
+		}
+	)
+	stairsplus:register_all(
+		"building_blocks",
+		"hardwood",
+		"building_blocks:hardwood",
+		{
+			description = "Hardwood",
+			tiles = {"building_blocks_hardwood.png"},
+			groups = {choppy=1,flammable=1},
+			sounds = default.node_sound_wood_defaults(),
+		}
+	)
+	stairsplus:register_all(
+		"building_blocks",
+		"fakegrass",
+		"building_blocks:fakegrass",
+		{
+			description = "Grass",
+			tiles = {"default_grass.png"},
+			groups = {crumbly=3},
+			sounds = default.node_sound_dirt_defaults({
+				footstep = {name="default_grass_footstep", gain=0.4},
+			}),
+		}
+	)
+	stairsplus:register_all(
+		"building_blocks",
+		"tar",
+		"building_blocks:Tar",
+		{
+			description = "Tar",
+			tiles = {"building_blocks_tar.png"},
+			groups = {crumbly=1},
+			sounds = default.node_sound_stone_defaults(),
+		}
+	)
+	stairsplus:register_all(
+		"building_blocks",
+		"grate",
+		"building_blocks:grate",
+		{
+			description = "Grate",
+			tiles = {"building_blocks_grate.png"},
+			groups = {cracky=1},
+			sounds = default.node_sound_stone_defaults(),
+		}
+	)
+	
+else
+	bb_stairs = {}
+
+	-- Node will be called stairs:stair_<subname>
+	function bb_stairs.register_stair(subname, recipeitem, groups, images, description)
+		minetest.register_node("building_blocks:stair_" .. subname, {
+			description = description,
+			drawtype = "nodebox",
+			tiles = images,
+			paramtype = "light",
+			paramtype2 = "facedir",
+			is_ground_content = true,
+			groups = groups,
+			node_box = {
+				type = "fixed",
+				fixed = {
+					{-0.5, -0.5, -0.5, 0.5, 0, 0.5},
+					{-0.5, 0, 0, 0.5, 0.5, 0.5},
+				},
 			},
-		},
-	})
+		})
 
-	minetest.register_craft({
-		output = 'building_blocks:stair_' .. subname .. ' 4',
-		recipe = {
-			{recipeitem, "", ""},
-			{recipeitem, recipeitem, ""},
-			{recipeitem, recipeitem, recipeitem},
-		},
-	})
+		minetest.register_craft({
+			output = 'building_blocks:stair_' .. subname .. ' 4',
+			recipe = {
+				{recipeitem, "", ""},
+				{recipeitem, recipeitem, ""},
+				{recipeitem, recipeitem, recipeitem},
+			},
+		})
 
-	-- Flipped recipe for the silly minecrafters
-	minetest.register_craft({
-		output = 'building_blocks:stair_' .. subname .. ' 4',
-		recipe = {
-			{"", "", recipeitem},
-			{"", recipeitem, recipeitem},
-			{recipeitem, recipeitem, recipeitem},
-		},
-	})
-end
+		-- Flipped recipe for the silly minecrafters
+		minetest.register_craft({
+			output = 'building_blocks:stair_' .. subname .. ' 4',
+			recipe = {
+				{"", "", recipeitem},
+				{"", recipeitem, recipeitem},
+				{recipeitem, recipeitem, recipeitem},
+			},
+		})
+	end
 
--- Node will be called stairs:slab_<subname>
-function bb_stairs.register_slab(subname, recipeitem, groups, images, description)
-	minetest.register_node("building_blocks:slab_" .. subname, {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		paramtype = "light",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-		},
-	})
+	-- Node will be called stairs:slab_<subname>
+	function bb_stairs.register_slab(subname, recipeitem, groups, images, description)
+		minetest.register_node("building_blocks:slab_" .. subname, {
+			description = description,
+			drawtype = "nodebox",
+			tiles = images,
+			paramtype = "light",
+			is_ground_content = true,
+			groups = groups,
+			node_box = {
+				type = "fixed",
+				fixed = {-0.5, -0.5, -0.5, 0.5, 0, 0.5},
+			},
+			selection_box = {
+				type = "fixed",
+				fixed = {-0.5, -0.5, -0.5, 0.5, 0, 0.5},
+			},
+		})
 
-	minetest.register_craft({
-		output = 'building_blocks:slab_' .. subname .. ' 3',
-		recipe = {
-			{recipeitem, recipeitem, recipeitem},
-		},
-	})
-end
+		minetest.register_craft({
+			output = 'building_blocks:slab_' .. subname .. ' 3',
+			recipe = {
+				{recipeitem, recipeitem, recipeitem},
+			},
+		})
+	end
 
--- Nodes will be called stairs:{stair,slab}_<subname>
-function bb_stairs.register_stair_and_slab(subname, recipeitem, groups, images, desc_stair, desc_slab)
-	bb_stairs.register_stair(subname, recipeitem, groups, images, desc_stair)
-	bb_stairs.register_slab(subname, recipeitem, groups, images, desc_slab)
-end
-bb_stairs.register_stair_and_slab("marble","building_blocks:Marble",
-	{cracky=3},
-	{"building_blocks_marble.png"},
-	"Marble stair",
-	"Marble slab")
-bb_stairs.register_stair_and_slab("hardwood","building_blocks:hardwood",
-		{snappy=1,choppy=1,flammable=1},
+	-- Nodes will be called stairs:{stair,slab}_<subname>
+	function bb_stairs.register_stair_and_slab(subname, recipeitem, groups, images, desc_stair, desc_slab)
+		bb_stairs.register_stair(subname, recipeitem, groups, images, desc_stair)
+		bb_stairs.register_slab(subname, recipeitem, groups, images, desc_slab)
+	end
+	bb_stairs.register_stair_and_slab("marble","building_blocks:Marble",
+		{cracky=3},
+		{"building_blocks_marble.png"},
+		"Marble stair",
+		"Marble slab"
+	)
+	bb_stairs.register_stair_and_slab("hardwood","building_blocks:hardwood",
+		{choppy=1,flammable=1},
 		{"building_blocks_hardwood.png"},
 		"Hardwood stair",
-		"Hardwood slab")
-bb_stairs.register_stair_and_slab("fakegrass","building_blocks:fakegrass",
+		"Hardwood slab"
+	)
+	bb_stairs.register_stair_and_slab("fakegrass","building_blocks:fakegrass",
 		{crumbly=3},
 		{"default_grass.png"},
 		"Grass stair",
-		"Grass slab")
-bb_stairs.register_stair_and_slab("tar","building_blocks:Tar",
+		"Grass slab"
+	)
+	bb_stairs.register_stair_and_slab("tar","building_blocks:Tar",
 		{crumbly=1},
 		{"building_blocks_tar.png"},
 		"Tar stair",
-		"Tar slab")
-bb_stairs.register_stair_and_slab("grate","building_blocks:grate",
-		{crumbly=1},
+		"Tar slab"
+	)
+	bb_stairs.register_stair_and_slab("grate","building_blocks:grate",
+		{cracky=1},
 		{"building_blocks_grate.png"},
 		"Grate Stair",
-		"Grate Slab")
+		"Grate Slab"
+	)
+end
+
+
 minetest.register_craft({
 	type = "fuel",
 	recipe = "building_blocks:hardwood",
