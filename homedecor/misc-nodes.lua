@@ -929,7 +929,8 @@ minetest.register_node("homedecor:cobweb", {
 	inventory_image = "homedecor_cobweb_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	walkable = true,
+	sunlight_propagates = true,
+	walkable = false,
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5}
