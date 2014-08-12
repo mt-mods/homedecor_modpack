@@ -922,3 +922,22 @@ minetest.register_node("homedecor:trash_can", {
 	}
 })
 
+minetest.register_node("homedecor:cobweb", {
+	description = "Cobweb",
+	drawtype = "plantlike",
+	tiles = { "homedecor_cobweb.png" },
+	inventory_image = "homedecor_cobweb_inv.png",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	walkable = true,
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5}
+	},
+	visual_scale = 1.189,
+	groups = { snappy = 3 },
+    after_place_node = function(pos, placer, itemstack, pointed_thing)
+		minetest.add_node(pos, { name = "homedecor:cobweb", param2 = 0 })
+	end
+})
+

@@ -2386,3 +2386,11 @@ minetest.register_craft( {
         },
 })
 
+minetest.register_craft( {
+        output = "homedecor:cobweb 5",
+        recipe = {
+			{ "farming:string", "", "farming:string" },
+			{ "", "farming:string", "" },
+			{ "farming:string", "", "farming:string" }
+        },
+})

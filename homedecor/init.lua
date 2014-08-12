@@ -11,6 +11,10 @@ homedecor = {}
 
 homedecor.debug = 0
 
+-- detail level for roofing slopes and also cobwebs
+
+homedecor.detail_level = 16
+
 homedecor.modpath = minetest.get_modpath("homedecor")
 homedecor.intllib_modpath = minetest.get_modpath("intllib")
 
