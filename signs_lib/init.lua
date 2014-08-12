@@ -160,6 +160,11 @@ local SIGN_WIDTH
 local CHARS_PER_LINE = 30
 local NUMBER_OF_LINES = 6
 
+-- 6 rows, max 80 chars per, plus a bit of fudge to
+-- avoid excess trimming (e.g. due to color codes)
+
+local MAX_INPUT_CHARS = 600
+
 -- This holds the individual character widths.
 -- Indexed by the actual character (e.g. charwidth["A"])
 local charwidth = { }
@@ -171,7 +176,7 @@ local CHARDB_FILE = minetest.get_worldpath().."/signs_lib_chardb"
 
 local function trim_input(text)
 	local txt_len = string.len(text)
-	text_trimmed = string.sub(text, 1, math.min(480, txt_len)) -- 6 rows, max 80 chars per
+	text_trimmed = string.sub(text, 1, math.min(MAX_INPUT_CHARS, txt_len))
 	return text_trimmed
 end
 
@@ -371,15 +376,16 @@ local function make_line_texture(line, lineno)
 					width = width + w + 1
 					if width >= (SIGN_WIDTH - charwidth[" "]) then
 						width = 0
-						break
 					else
 						maxw = math_max(width, maxw)
 					end
-					table.insert(chars, {
-						off=ch_offs,
-						tex=FONT_FMT_SIMPLE:format(c:byte()),
-						col=("%X"):format(cur_color),
-					})
+					if #chars < MAX_INPUT_CHARS then 
+						table.insert(chars, {
+							off=ch_offs,
+							tex=FONT_FMT_SIMPLE:format(c:byte()),
+							col=("%X"):format(cur_color),
+						})
+					end
 					ch_offs = ch_offs + w
 				end
 			end
@@ -420,6 +426,7 @@ local function make_line_texture(line, lineno)
 		end
 		table.insert(texture, (":%d,%d=hdf_20.png"):format(xpos + word.w, ypos))
 		xpos = xpos + word.w + charwidth[" "]
+		if xpos >= (SIGN_WIDTH + charwidth[" "]) then break end
 	end
 
 	table.insert(texture, fill_line(xpos, ypos, maxw, "n"))
