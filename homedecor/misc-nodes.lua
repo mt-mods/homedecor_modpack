@@ -944,3 +944,130 @@ minetest.register_node("homedecor:cobweb", {
 	end
 })
 
+minetest.register_node("homedecor:well_base", {
+	tiles = { "default_cobble.png" },
+	inventory_image = "homedecor_well_inv.png",
+	description = "Water well",
+	drawtype = "nodebox",
+	paramtype = "light",
+    paramtype2 = "facedir",
+    groups = { snappy = 3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.3125, -0.5, -0.4375, 0.3125, 0.5, -0.3125}, -- NodeBox1
+			{0.3125, -0.5, -0.3125, 0.4375, 0.5, 0.3125}, -- NodeBox2
+			{-0.4375, -0.5, -0.3125, -0.3125, 0.5, 0.3125}, -- NodeBox3
+			{-0.3125, -0.5, 0.3125, 0.3125, 0.5, 0.4375}, -- NodeBox4
+			{0.25, -0.5, -0.375, 0.375, 0.5, -0.25}, -- NodeBox5
+			{0.25, -0.5, 0.25, 0.375, 0.5, 0.375}, -- NodeBox6
+			{-0.375, -0.5, -0.375, -0.25, 0.5, -0.25}, -- NodeBox7
+			{-0.375, -0.5, 0.25, -0.25, 0.5, 0.375}, -- NodeBox8
+			{-0.3125, -0.5, -0.5, 0.3125, -0.3125, -0.4375}, -- NodeBox9
+			{0.4375, -0.5, -0.3125, 0.5, -0.3125, 0.3125}, -- NodeBox10
+			{-0.3125, -0.5, 0.4375, 0.3125, -0.3125, 0.5}, -- NodeBox11
+			{-0.5, -0.5, -0.3125, -0.4375, -0.3125, 0.3125}, -- NodeBox12
+			{0.3125, -0.5, -0.4375, 0.4375, -0.3125, -0.3125}, -- NodeBox13
+			{0.3125, -0.5, 0.3125, 0.4375, -0.3125, 0.4375}, -- NodeBox14
+			{-0.4375, -0.5, 0.3125, -0.3125, -0.3125, 0.4375}, -- NodeBox15
+			{-0.4375, -0.5, -0.4375, -0.3125, -0.3125, -0.3125}, -- NodeBox16
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
+	},
+	on_place = function(itemstack, placer, pointed_thing)
+		local pos = pointed_thing.under
+		local pnode = minetest.get_node(pointed_thing.under)
+		local rnodedef = minetest.registered_nodes[pnode.name]
+
+		if not rnodedef["buildable_to"] then
+			pos = pointed_thing.above
+		end
+
+		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
+
+		local tnode = minetest.get_node(pos)
+		local tnode2 = minetest.get_node(pos2)
+
+		if homedecor.get_nodedef_field(tnode.name, "buildable_to")
+		  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
+		  and not minetest.is_protected(pos, placer:get_player_name())
+		  and not minetest.is_protected(pos2, placer:get_player_name()) then
+			minetest.add_node(pos, { name = "homedecor:well_base", param2 = fdir })
+			minetest.add_node(pos2, { name = "homedecor:well_top", param2 = fdir })
+			if not homedecor.expect_infinite_stacks then
+				itemstack:take_item()
+				return itemstack
+			end
+		end
+	end,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
+		if minetest.get_node(pos2).name == "homedecor:well_top" then
+			minetest.remove_node(pos2)
+		end
+	end
+})
+
+minetest.register_node("homedecor:well_top", {
+	tiles = {
+		"homedecor_well_roof_top.png",
+		"homedecor_well_roof_wood.png",
+		"homedecor_well_roof_side3.png",
+		"homedecor_well_roof_side3.png",
+		"homedecor_well_roof_side2.png",
+		"homedecor_well_roof_side1.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy = 3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.0625, -0.5, 0.375, 0.0625, 0.4375, 0.4375}, -- NodeBox1
+			{-0.0625, -0.5, -0.4375, 0.0625, 0.4375, -0.375}, -- NodeBox2
+			{-0.125, 0.375, -0.5, 0.125, 0.4375, 0.5}, -- NodeBox3
+			{0.125, 0.3125, -0.5, 0.1875, 0.375, 0.5}, -- NodeBox4
+			{-0.1875, 0.3125, -0.5, -0.125, 0.375, 0.5}, -- NodeBox5
+			{0.1875, 0.25, -0.5, 0.25, 0.3125, 0.5}, -- NodeBox6
+			{-0.25, 0.25, -0.5, -0.1875, 0.3125, 0.5}, -- NodeBox7
+			{0.25, 0.1875, -0.5, 0.3125, 0.25, 0.5}, -- NodeBox8
+			{-0.3125, 0.1875, -0.5, -0.25, 0.25, 0.5}, -- NodeBox9
+			{0.3125, 0.125, -0.5, 0.375, 0.1875, 0.5}, -- NodeBox10
+			{-0.375, 0.125, -0.5, -0.3125, 0.1875, 0.5}, -- NodeBox11
+			{0.375, 0.0625, -0.5, 0.4375, 0.125, 0.5}, -- NodeBox12
+			{-0.375, 0.0625, -0.5, -0.4375, 0.125, 0.5}, -- NodeBox13
+			{0.4375, 0, -0.5, 0.5, 0.0625, 0.5}, -- NodeBox14
+			{-0.5, 0, -0.5, -0.4375, 0.0625, 0.5}, -- NodeBox15
+			{-0.0625, 0.4375, -0.5, 0.0625, 0.5, 0.5}, -- NodeBox16
+			{-0.125, 0.125, -0.4375, 0.125, 0.1875, -0.375}, -- NodeBox17
+			{0.125, 0.1875, -0.4375, 0.1875, 0.25, -0.375}, -- NodeBox18
+			{-0.1875, 0.1875, -0.4375, -0.125, 0.25, -0.375}, -- NodeBox19
+			{-0.125, 0.125, 0.375, 0.125, 0.1875, 0.4375}, -- NodeBox20
+			{0.125, 0.1875, 0.375, 0.1875, 0.25, 0.4375}, -- NodeBox21
+			{-0.1875, 0.1875, 0.375, -0.125, 0.25, 0.4375}, -- NodeBox22
+			{-0.0165975, -0.159751, -0.375, 0.0165974, -0.125, 0.375}, -- NodeBox23
+			{-0.00414942, -0.5, -0.00414942, 0.00829884, -0.159751, 0.0124482}, -- NodeBox24
+			{-0.0625, -0.0625, -0.5, 0.0625, 0, -0.4646}, -- NodeBox25
+			{0.0625, -0.125, -0.5, 0.125, -0.0625, -0.4646}, -- NodeBox26
+			{0.125, -0.25, -0.5, 0.1875, -0.125, -0.4646}, -- NodeBox27
+			{0.0625, -0.3125, -0.5, 0.125, -0.25, -0.4646}, -- NodeBox28
+			{-0.0625, -0.375, -0.5, 0.0625, -0.3125, -0.4646}, -- NodeBox29
+			{-0.0625, -0.3125, -0.5, -0.125, -0.25, -0.4646}, -- NodeBox30
+			{-0.1875, -0.25, -0.5, -0.125, -0.125, -0.4646}, -- NodeBox31
+			{-0.125, -0.125, -0.5, -0.0625, -0.0625, -0.4646}, -- NodeBox32
+			{-0.016598, -0.3125, -0.48, 0.020747, -0.0625, -0.49}, -- NodeBox33
+			{-0.125, -0.209544, -0.48, 0.125, -0.172199, -0.49}, -- NodeBox34
+                        {-0.0165975, -0.200, -0.477178, 0.020747, -0.175349, -0.435685}, -- NodeBox35
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 0, 0, 0, 0, 0, 0 }
+	},
+})
+

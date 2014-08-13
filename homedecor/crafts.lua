@@ -2394,3 +2394,12 @@ minetest.register_craft( {
 			{ "farming:string", "", "farming:string" }
         },
 })
+
+minetest.register_craft( {
+        output = "homedecor:well_base",
+        recipe = {
+			{ "homedecor:shingles_wood", "homedecor:shingles_wood", "homedecor:shingles_wood" },
+			{ "group:wood", "group:stick", "group:wood" },
+			{ "default:cobble", "", "default:cobble" }
+        },
+})
