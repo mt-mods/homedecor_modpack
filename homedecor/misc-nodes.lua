@@ -945,7 +945,10 @@ minetest.register_node("homedecor:cobweb", {
 })
 
 minetest.register_node("homedecor:well_base", {
-	tiles = { "default_cobble.png" },
+	tiles = {
+		"homedecor_well_base_top.png",
+		"default_cobble.png"
+	},
 	inventory_image = "homedecor_well_inv.png",
 	description = "Water well",
 	drawtype = "nodebox",
@@ -971,6 +974,7 @@ minetest.register_node("homedecor:well_base", {
 			{0.3125, -0.5, 0.3125, 0.4375, -0.3125, 0.4375}, -- NodeBox14
 			{-0.4375, -0.5, 0.3125, -0.3125, -0.3125, 0.4375}, -- NodeBox15
 			{-0.4375, -0.5, -0.4375, -0.3125, -0.3125, -0.3125}, -- NodeBox16
+			{-0.3125, -0.5, -0.3125, 0.3125, 0, 0.3125}, -- NodeBox17
 		}
 	},
 	selection_box = {
