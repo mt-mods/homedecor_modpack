@@ -2403,3 +2403,26 @@ minetest.register_craft( {
 			{ "default:cobble", "", "default:cobble" }
         },
 })
+
+minetest.register_craft( {
+        output = "homedecor:coat_tree",
+        recipe = {
+			{ "group:stick", "group:stick", "group:stick" },
+			{ "", "group:stick", "" },
+			{ "", "group:wood", "" }
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:coatrack_wallmount",
+        recipe = {
+			{ "group:stick", "homedecor:curtainrod_wood", "group:stick" },
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:doorbell",
+        recipe = {
+			{ "homedecor:light_switch", "homedecor:power_crystal", "homedecor:speaker_driver" }
+        },
+})

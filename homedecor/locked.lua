@@ -115,10 +115,10 @@ local function create_locked ( name, infotext )
 end
 
 local items = {
-    { "refrigerator",
-      "Fridge" },
-    { "refrigerator_steel",
-      "Fridge (stainless steel)" },
+    { "refrigerator_white_bottom",
+      "Refrigerator" },
+    { "refrigerator_steel_bottom",
+      "Refrigerator (stainless steel)" },
     { "kitchen_cabinet",
       "Cabinet" },
     { "kitchen_cabinet_steel",
