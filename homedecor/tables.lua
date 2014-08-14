@@ -473,6 +473,7 @@ minetest.register_node("homedecor:desk", {
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		local fdir = oldnode.param2
+		if not fdir or fdir > 3 then return end
 		local pos2 = { x = pos.x + fdir_to_right[fdir+1][1], y=pos.y, z = pos.z + fdir_to_right[fdir+1][2] }
 		if minetest.get_node(pos2).name == "homedecor:desk_r" then
 			minetest.remove_node(pos2)

@@ -803,6 +803,7 @@ minetest.register_node("homedecor:pool_table", {
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		local fdir = oldnode.param2
+		if not fdir or fdir > 3 then return end
 		local pos2 = { x = pos.x + fdir_to_fwd[fdir+1][1], y=pos.y, z = pos.z + fdir_to_fwd[fdir+1][2] }
 		if minetest.get_node(pos2).name == "homedecor:pool_table2" then
 			minetest.remove_node(pos2)
