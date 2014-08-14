@@ -1138,7 +1138,7 @@ minetest.register_node("homedecor:doorbell", {
 	drawtype = "nodebox",
 	paramtype = "light",
     paramtype2 = "facedir",
-    groups = {snappy=1},
+    groups = {snappy=3},
 	node_box = {
 		type = "fixed",
 		fixed = {
