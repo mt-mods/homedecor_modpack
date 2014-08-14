@@ -1138,19 +1138,19 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "homedecor:refrigerator_steel",
+	output = "homedecor:refrigerator_steel_bottom",
 	recipe = {
-		{"default:steel_ingot", "homedecor:glowlight_small_cube_yellow", "default:steel_ingot", },
-		{"default:steel_ingot", "moreores:tin_ingot", "default:steel_ingot", },
+		{"default:steel_ingot", "homedecor:glowlight_small_cube_white", "default:steel_ingot", },
+		{"default:steel_ingot", "default:copperblock", "default:steel_ingot", },
 		{"default:steel_ingot", "default:clay", "default:steel_ingot", },
 	}
 })
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "homedecor:refrigerator",
+	output = "homedecor:refrigerator_white_bottom",
 	recipe = {
-		"homedecor:refrigerator_steel",
+		"homedecor:refrigerator_steel_bottom",
 		"dye:white",
 		"dye:white",
 		"dye:white",
