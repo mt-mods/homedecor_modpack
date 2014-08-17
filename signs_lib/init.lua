@@ -456,7 +456,7 @@ local function set_obj_text(obj, text, new)
 	})
 end
 
-signs_lib.construct_sign = function(pos)
+signs_lib.construct_sign = function(pos, locked)
     local meta = minetest.get_meta(pos)
 	meta:set_string(
 		"formspec",
@@ -487,14 +487,18 @@ local function make_infotext(text)
 	return table.concat(lines2, "\n")
 end
 
-signs_lib.update_sign = function(pos, fields)
+signs_lib.update_sign = function(pos, fields, owner)
     local meta = minetest.get_meta(pos)
+
     local new
 	if fields then
 
 		fields.text = trim_input(fields.text)
 
-		meta:set_string("infotext", make_infotext(fields.text).." ")
+		local ownstr = ""
+		if owner then ownstr = "Locked sign, owned by "..owner.."\n" end
+		
+		meta:set_string("infotext", ownstr..make_infotext(fields.text).." ")
 		meta:set_string("text", fields.text)
 		meta:set_int("__signslib_new_format", 1)
 		new = true
@@ -615,19 +619,25 @@ function signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
 	end
 end
 
-function signs_lib.receive_fields(pos, formname, fields, sender)
+function signs_lib.receive_fields(pos, formname, fields, sender, lock)
 	if minetest.is_protected(pos, sender:get_player_name()) then
 		minetest.record_protection_violation(pos,
 			sender:get_player_name())
 		return
 	end
+	lockstr = ""
+	if lock then lockstr = "locked " end
 	if fields and fields.text and fields.ok then
-		minetest.log("action", S("%s wrote \"%s\" to sign at %s"):format(
+		minetest.log("action", S("%s wrote \"%s\" to "..lockstr.."sign at %s"):format(
 			(sender:get_player_name() or ""),
 			fields.text,
 			minetest.pos_to_string(pos)
 		))
-		signs_lib.update_sign(pos, fields)
+		if lock then
+			signs_lib.update_sign(pos, fields, sender:get_player_name())
+		else
+			signs_lib.update_sign(pos, fields)
+		end
 	end
 end
 
@@ -746,6 +756,60 @@ minetest.register_node(":signs:sign_post", {
 			{ items = { "default:fence_wood" }},
 		},
     },
+})
+
+-- Locked wall sign
+
+minetest.register_privilege("sign_editor", "Can edit all locked signs")
+
+minetest.register_node(":locked_sign:sign_wall_locked", {
+	description = S("Sign"),
+	inventory_image = "signs_locked_inv.png",
+	wield_image = "signs_locked_inv.png",
+	node_placement_prediction = "",
+	paramtype = "light",
+	sunlight_propagates = true,
+	paramtype2 = "facedir",
+	drawtype = "nodebox",
+	node_box = signs_lib.wall_sign_model.nodebox,
+	tiles = {
+		"signs_top_locked.png",
+		"signs_bottom_locked.png",
+		"signs_side_locked.png",
+		"signs_side.png",
+		"signs_back.png",
+		"signs_front_locked.png"
+	},
+	groups = sign_groups,
+	on_place = function(itemstack, placer, pointed_thing)
+		return signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
+	end,
+	on_construct = function(pos)
+		signs_lib.construct_sign(pos, true)
+	end,
+	on_destruct = function(pos)
+		signs_lib.destruct_sign(pos)
+	end,
+	on_receive_fields = function(pos, formname, fields, sender)
+		local meta = minetest.get_meta(pos)
+		local owner = meta:get_string("owner")
+		local pname = sender:get_player_name() or ""
+		if pname ~= owner and pname ~= minetest.setting_get("name")
+		  and not minetest.check_player_privs(pname, {sign_editor=true}) then
+			return
+		end
+		signs_lib.receive_fields(pos, formname, fields, sender, true)
+	end,
+	on_punch = function(pos, node, puncher)
+		signs_lib.update_sign(pos)
+	end,
+	can_dig = function(pos, player)
+		local meta = minetest.get_meta(pos)
+		local owner = meta:get_string("owner")
+		local pname = player:get_player_name()
+		return pname == owner or pname == minetest.setting_get("name")
+			or minetest.check_player_privs(pname, {sign_editor=true})
+	end,
 })
 
 -- metal, colored signs
@@ -886,6 +950,7 @@ end
 build_char_db()
 
 minetest.register_alias("homedecor:fence_wood_with_sign", "signs:sign_post")
+minetest.register_alias("sign_wall_locked", "locked_sign:sign_wall_locked")
 
 signs_lib.register_fence_with_sign("default:fence_wood", "signs:sign_post")
 
@@ -898,6 +963,27 @@ minetest.register_abm({
 	action = function(pos, node, active_object_count, active_object_count_wider)
 		signs_lib.update_sign(pos)
 	end
+})
+
+-- locked sign
+
+minetest.register_craft({
+	output = "locked_sign:sign_wall_locked",
+	recipe = {
+		{"group:wood", "group:wood", "group:wood"},
+		{"group:wood", "group:wood", "default:steel_ingot"},
+		{"", "group:stick", ""},
+	}
+})
+
+--Alternate recipe.
+
+minetest.register_craft({
+    	output = "locked_sign:sign_wall_locked",
+    	recipe = {
+        	{"default:sign_wall"},
+        	{"default:steel_ingot"},
+    },
 })
 
 -- craft recipes for the metal signs
