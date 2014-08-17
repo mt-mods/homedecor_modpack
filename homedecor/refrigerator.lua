@@ -76,7 +76,8 @@ minetest.register_node("homedecor:refrigerator_steel_bottom", {
 		  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
 		  and not minetest.is_protected(pos, placer:get_player_name())
 		  and not minetest.is_protected(pos2, placer:get_player_name()) then
-			minetest.add_node(pos, { name = "homedecor:refrigerator_steel_bottom", param2 = fdir })
+			local nodename = itemstack:get_name()
+			minetest.add_node(pos, { name = nodename, param2 = fdir })
 			minetest.add_node(pos2, { name = "homedecor:refrigerator_steel_top", param2 = fdir })
 			if not homedecor.expect_infinite_stacks then
 				itemstack:take_item()
@@ -186,7 +187,8 @@ minetest.register_node("homedecor:refrigerator_white_bottom", {
 		  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
 		  and not minetest.is_protected(pos, placer:get_player_name())
 		  and not minetest.is_protected(pos2, placer:get_player_name()) then
-			minetest.add_node(pos, { name = "homedecor:refrigerator_white_bottom", param2 = fdir })
+			local nodename = itemstack:get_name()
+			minetest.add_node(pos, { name = nodename, param2 = fdir })
 			minetest.add_node(pos2, { name = "homedecor:refrigerator_white_top", param2 = fdir })
 			if not homedecor.expect_infinite_stacks then
 				itemstack:take_item()
