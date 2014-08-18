@@ -483,6 +483,233 @@ minetest.register_node("homedecor:wardrobe_bottom", {
 	end,
 })
 
+-- BENCH 1
+
+local fdir_to_right = {
+	{  1,  0 },
+	{  0, -1 },
+	{ -1,  0 },
+	{  0,  1 },
+}
+
+minetest.register_node("homedecor:bench_large_1_left", {
+	description = "Garden Bench (style 1)",
+	tiles = {
+		"homedecor_bench_large_1_left_top.png",
+		"homedecor_bench_large_1_left_bottom.png",
+		"homedecor_bench_large_1_ends.png^[transformFX",
+		"homedecor_bench_large_1_ends.png",
+		"homedecor_bench_large_1_left_back.png",
+		"homedecor_bench_large_1_left_front.png"
+	},
+	inventory_image = "homedecor_bench_large_1_inv.png",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, 0.25, 0.375, 0.5, 0.4375, 0.4375}, -- NodeBox1
+			{-0.5, 0, 0.375, 0.5, 0.1875, 0.4375}, -- NodeBox2
+			{-0.5, -0.125, 0.115, 0.5, -0.0625, 0.35}, -- NodeBox3
+			{-0.5, -0.125, -0.0872, 0.5, -0.0625, 0.079}, -- NodeBox4
+			{-0.3125, -0.5, 0.4375, -0.25, 0.375, 0.5}, -- NodeBox5
+			{-0.3125, -0.3125, -0.0625, -0.25, -0.125, 0.4375}, -- NodeBox6
+			{-0.3125, -0.5, -0.0625, -0.25, -0.3125, 0}, -- NodeBox7
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, -0.09375, 1.5, 0.5, 0.5 }
+	},
+	on_place = function(itemstack, placer, pointed_thing)
+		local pos = pointed_thing.under
+		local pnode = minetest.get_node(pointed_thing.under)
+		local rnodedef = minetest.registered_nodes[pnode.name]
+
+		if not rnodedef["buildable_to"] then
+			pos = pointed_thing.above
+		end
+
+		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+		local pos2 = { x = pos.x + fdir_to_right[fdir+1][1], y=pos.y, z = pos.z + fdir_to_right[fdir+1][2] }
+
+		local tnode = minetest.get_node(pos)
+		local tnode2 = minetest.get_node(pos2)
+
+		if homedecor.get_nodedef_field(tnode.name, "buildable_to")
+		  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
+		  and not minetest.is_protected(pos, placer:get_player_name())
+		  and not minetest.is_protected(pos2, placer:get_player_name()) then
+			minetest.add_node(pos, { name = "homedecor:bench_large_1_left", param2 = fdir })
+			minetest.add_node(pos2, { name = "homedecor:bench_large_1_right", param2 = fdir })
+			if not homedecor.expect_infinite_stacks then
+				itemstack:take_item()
+				return itemstack
+			end
+		end
+	end,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		local fdir = oldnode.param2
+		if not fdir or fdir > 3 then return end
+		local pos2 = { x = pos.x + fdir_to_right[fdir+1][1], y=pos.y, z = pos.z + fdir_to_right[fdir+1][2] }
+		if minetest.get_node(pos2).name == "homedecor:bench_large_1_right" then
+			minetest.remove_node(pos2)
+		end
+	end
+})
+
+minetest.register_node("homedecor:bench_large_1_right", {
+	tiles = {
+		"homedecor_bench_large_1_right_top.png",
+		"homedecor_bench_large_1_right_bottom.png",
+		"homedecor_bench_large_1_ends.png^[transformFX",
+		"homedecor_bench_large_1_ends.png",
+		"homedecor_bench_large_1_right_back.png",
+		"homedecor_bench_large_1_right_front.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, 0.25, 0.375, 0.5, 0.4375, 0.4375}, -- NodeBox1
+			{-0.5, 0, 0.375, 0.5, 0.1875, 0.4375}, -- NodeBox2
+			{-0.5, -0.125, 0.115, 0.5, -0.0625, 0.35}, -- NodeBox3
+			{-0.5, -0.125, -0.0872, 0.5, -0.0625, 0.079}, -- NodeBox4
+			{0.25, -0.5, 0.4375, 0.3125, 0.375, 0.5}, -- NodeBox5
+			{0.25, -0.3125, -0.0625, 0.3125, -0.125, 0.5}, -- NodeBox6
+			{0.25, -0.5, -0.0625, 0.3125, -0.3125, 0}, -- NodeBox7
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 0, 0, 0, 0, 0, 0 }
+	},
+})
+
+-- BENCH 2
+
+minetest.register_node("homedecor:bench_large_2_left", {
+	description = "Garden Bench (style 2)",
+	tiles = {
+		"homedecor_generic_wood.png",
+		"homedecor_generic_wood.png",
+		"homedecor_generic_wood.png",
+		"homedecor_generic_wood.png",
+		"homedecor_bench_large_2_left_back.png",
+		"homedecor_bench_large_2_left_front.png"
+	},
+	inventory_image = "homedecor_bench_large_2_inv.png",
+	drawtype = "nodebox",
+	paramtype = "light",
+        paramtype2 = "facedir",
+	groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0.375, -0.375, 0.5, 0.5}, -- NodeBox1
+			{-0.375, 0.3125, 0.4375, 0.5, 0.4375, 0.5}, -- NodeBox2
+			{-0.375, -0.0625, 0.4375, 0.5, 0.0625, 0.5}, -- NodeBox3
+			{-0.3125, 0.0625, 0.45, -0.25, 0.3125, 0.48}, -- NodeBox4
+			{-0.1875, 0.0625, 0.45, -0.125, 0.3125, 0.48}, -- NodeBox5
+			{-0.0625, 0.0625, 0.45, 0, 0.3125, 0.48}, -- NodeBox6
+			{0.0625, 0.0625, 0.45, 0.125, 0.3125, 0.48}, -- NodeBox7
+			{0.1875, 0.0625, 0.45, 0.25, 0.3125, 0.48}, -- NodeBox8
+			{0.3125, 0.0625, 0.45, 0.375, 0.3125, 0.48}, -- NodeBox9
+			{0.4375, 0.0625, 0.45, 0.5, 0.3125, 0.48}, -- NodeBox10
+			{-0.5, 0.0625, -0.145362, -0.375, 0.125, 0.375}, -- NodeBox11
+			{-0.5, -0.5, -0.0625, -0.375, 0.0625, 0.0625}, -- NodeBox12
+			{-0.4375, -0.125, -0.0625, 0.5, -0.0911603, 0.4375}, -- NodeBox13
+			{-0.4375, -0.4375, 0.0625, -0.375, -0.3125, 0.375}, -- NodeBox14
+			{-0.375, -0.342324, 0.25, 0.5, -0.4375, 0.1875}, -- NodeBox15
+			{-0.5, -0.25, -0.0290173, 0.5, -0.125, 0.0125346}, -- NodeBox16
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, -0.15625, 1.5, 0.5, 0.5 }
+	},
+	on_place = function(itemstack, placer, pointed_thing)
+		local pos = pointed_thing.under
+		local pnode = minetest.get_node(pointed_thing.under)
+		local rnodedef = minetest.registered_nodes[pnode.name]
+
+		if not rnodedef["buildable_to"] then
+			pos = pointed_thing.above
+		end
+
+		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+		local pos2 = { x = pos.x + fdir_to_right[fdir+1][1], y=pos.y, z = pos.z + fdir_to_right[fdir+1][2] }
+
+		local tnode = minetest.get_node(pos)
+		local tnode2 = minetest.get_node(pos2)
+
+		if homedecor.get_nodedef_field(tnode.name, "buildable_to")
+		  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
+		  and not minetest.is_protected(pos, placer:get_player_name())
+		  and not minetest.is_protected(pos2, placer:get_player_name()) then
+			minetest.add_node(pos, { name = "homedecor:bench_large_2_left", param2 = fdir })
+			minetest.add_node(pos2, { name = "homedecor:bench_large_2_right", param2 = fdir })
+			if not homedecor.expect_infinite_stacks then
+				itemstack:take_item()
+				return itemstack
+			end
+		end
+	end,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		local fdir = oldnode.param2
+		if not fdir or fdir > 3 then return end
+		local pos2 = { x = pos.x + fdir_to_right[fdir+1][1], y=pos.y, z = pos.z + fdir_to_right[fdir+1][2] }
+		if minetest.get_node(pos2).name == "homedecor:bench_large_2_right" then
+			minetest.remove_node(pos2)
+		end
+	end
+})
+
+minetest.register_node("homedecor:bench_large_2_right", {
+	tiles = {
+		"homedecor_generic_wood.png",
+		"homedecor_generic_wood.png",
+		"homedecor_generic_wood.png",
+		"homedecor_generic_wood.png",
+		"homedecor_bench_large_2_right_back.png",
+		"homedecor_bench_large_2_right_front.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+        paramtype2 = "facedir",
+	groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{0.375, -0.5, 0.375, 0.5, 0.5, 0.5}, -- NodeBox1
+			{-0.5, 0.3125, 0.4375, 0.375, 0.4375, 0.5}, -- NodeBox2
+			{-0.5, -0.0625, 0.4375, 0.375, 0.0625, 0.5}, -- NodeBox3
+			{-0.5, 0.0625, 0.45, -0.4375, 0.3125, 0.48}, -- NodeBox4
+			{-0.375, 0.0625, 0.45, -0.3125, 0.3125, 0.48}, -- NodeBox5
+			{-0.25, 0.0625, 0.45, -0.1875, 0.3125, 0.48}, -- NodeBox6
+			{-0.125, 0.0625, 0.45, -0.0625, 0.3125, 0.48}, -- NodeBox7
+			{0, 0.0625, 0.45, 0.0625, 0.3125, 0.48}, -- NodeBox8
+			{0.125, 0.0625, 0.45, 0.1875, 0.3125, 0.48}, -- NodeBox9
+			{0.25, 0.0625, 0.45, 0.3125, 0.3125, 0.48}, -- NodeBox10
+			{0.375, 0.0625, -0.145362, 0.5, 0.125, 0.375}, -- NodeBox11
+			{0.375, -0.5, -0.0625, 0.5, 0.125, 0.0625}, -- NodeBox12
+			{0.375, -0.4375, 0.0625, 0.4375, -0.3125, 0.375}, -- NodeBox13
+			{-0.5, -0.4375, 0.1875, 0.375, -0.342324, 0.25}, -- NodeBox14
+			{-0.5, -0.125, -0.0625, 0.4375, -0.0911603, 0.4375}, -- NodeBox15
+			{-0.5, -0.25, -0.0290173, 0.5, -0.125, 0.0125346}, -- NodeBox16
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 0, 0, 0, 0, 0, 0 }
+	},
+})
+
 -- Aliases for 3dforniture mod.
 
 minetest.register_alias("3dforniture:table", "homedecor:table")

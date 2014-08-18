@@ -2426,3 +2426,23 @@ minetest.register_craft( {
 			{ "homedecor:light_switch", "homedecor:power_crystal", "homedecor:speaker_driver" }
         },
 })
+
+
+minetest.register_craft( {
+        output = "homedecor:bench_large_1_left",
+        recipe = {
+			{ "group:wood", "group:wood", "group:wood" },
+			{ "group:wood", "group:wood", "group:wood" },
+			{ "homedecor:pole_wrought_iron", "", "homedecor:pole_wrought_iron" }
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:bench_large_2_left",
+        recipe = {
+			{ "homedecor:shutter_oak", "homedecor:shutter_oak", "homedecor:shutter_oak" },
+			{ "group:wood", "group:wood", "group:wood" },
+			{ "group:stick", "", "group:stick" }
+        },
+})
+
