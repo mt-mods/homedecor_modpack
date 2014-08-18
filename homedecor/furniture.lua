@@ -483,7 +483,6 @@ minetest.register_node("homedecor:wardrobe_bottom", {
 	end,
 })
 
--- BENCH 1
 
 local fdir_to_right = {
 	{  1,  0 },
@@ -515,8 +514,8 @@ minetest.register_node("homedecor:bench_large_1_left", {
 			{-0.5, -0.125, 0.115, 0.5, -0.0625, 0.35}, -- NodeBox3
 			{-0.5, -0.125, -0.0872, 0.5, -0.0625, 0.079}, -- NodeBox4
 			{-0.3125, -0.5, 0.4375, -0.25, 0.375, 0.5}, -- NodeBox5
-			{-0.3125, -0.3125, -0.0625, -0.25, -0.125, 0.4375}, -- NodeBox6
-			{-0.3125, -0.5, -0.0625, -0.25, -0.3125, 0}, -- NodeBox7
+			{-0.3125, -0.25, -0.0625, -0.25, -0.125, 0.4375}, -- NodeBox6
+			{-0.3125, -0.5, -0.0625, -0.25, -0.25, 0}, -- NodeBox7
 		}
 	},
 	selection_box = {
@@ -581,8 +580,8 @@ minetest.register_node("homedecor:bench_large_1_right", {
 			{-0.5, -0.125, 0.115, 0.5, -0.0625, 0.35}, -- NodeBox3
 			{-0.5, -0.125, -0.0872, 0.5, -0.0625, 0.079}, -- NodeBox4
 			{0.25, -0.5, 0.4375, 0.3125, 0.375, 0.5}, -- NodeBox5
-			{0.25, -0.3125, -0.0625, 0.3125, -0.125, 0.5}, -- NodeBox6
-			{0.25, -0.5, -0.0625, 0.3125, -0.3125, 0}, -- NodeBox7
+			{0.25, -0.25, -0.0625, 0.3125, -0.125, 0.5}, -- NodeBox6
+			{0.25, -0.5, -0.0625, 0.3125, -0.25, 0}, -- NodeBox7
 		}
 	},
 	selection_box = {
@@ -591,7 +590,6 @@ minetest.register_node("homedecor:bench_large_1_right", {
 	},
 })
 
--- BENCH 2
 
 minetest.register_node("homedecor:bench_large_2_left", {
 	description = "Garden Bench (style 2)",
