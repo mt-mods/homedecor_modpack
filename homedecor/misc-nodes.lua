@@ -1155,3 +1155,29 @@ minetest.register_node("homedecor:doorbell", {
 	end
 })
 
+minetest.register_node("homedecor:kitchen_faucet", {
+	tiles = { "homedecor_bright_metal.png" },
+	inventory_image = "homedecor_kitchen_faucet_inv.png",
+	description = "Kitchen Faucet",
+	drawtype = "nodebox",
+	paramtype = "light",
+        paramtype2 = "facedir",
+        groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{0, -0.5, 0.375, 0.0625, -0.1875, 0.4375}, -- NodeBox1
+			{0, -0.1875, 0.352697, 0.0625, -0.147303, 0.4375}, -- NodeBox2
+			{0, -0.109959, 0.319502, 0.0625, -0.147303, 0.406639}, -- NodeBox3
+			{0.0070, -0.119556, 0.17, 0.0550,-0.109959, 0.1285}, -- NodeBox4
+			{0, -0.109959, 0.125, 0.0625, -0.0726142, 0.352697}, -- NodeBox5
+			{-0.06, -0.479253, 0.385892, 0.125, -0.454357, 0.427386}, -- NodeBox6
+			{-0.06, -0.490701, 0.394191, 0.125, -0.444357, 0.419087}, -- NodeBox7
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.0625, -0.5, 0.125, 0.125, -0.0625, 0.4375 }
+	},
+})
+

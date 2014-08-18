@@ -2446,3 +2446,11 @@ minetest.register_craft( {
         },
 })
 
+minetest.register_craft( {
+        output = "homedecor:kitchen_faucet",
+        recipe = {
+			{ "", "default:steel_ingot" },
+			{ "default:steel_ingot", "" },
+			{ "homedecor:taps", "" }
+        },
+})
