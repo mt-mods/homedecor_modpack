@@ -58,6 +58,7 @@ minetest.register_node("homedecor:refrigerator_steel_bottom", {
 		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
 	},
 	on_place = function(itemstack, placer, pointed_thing)
+		print("started on_place")
 		local pos = pointed_thing.under
 		local pnode = minetest.get_node(pointed_thing.under)
 		local rnodedef = minetest.registered_nodes[pnode.name]
@@ -79,6 +80,13 @@ minetest.register_node("homedecor:refrigerator_steel_bottom", {
 			local nodename = itemstack:get_name()
 			minetest.add_node(pos, { name = nodename, param2 = fdir })
 			minetest.add_node(pos2, { name = "homedecor:refrigerator_steel_top", param2 = fdir })
+
+			if string.find(nodename, "_locked") then
+		        local meta = minetest.get_meta(pos)
+				meta:set_string("owner", placer:get_player_name() or "")
+				meta:set_string("infotext", S("Locked Refrigerator (owned by %s)"):format(meta:get_string("owner")))
+			end
+
 			if not homedecor.expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
@@ -169,6 +177,7 @@ minetest.register_node("homedecor:refrigerator_white_bottom", {
 		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
 	},
 	on_place = function(itemstack, placer, pointed_thing)
+		print("started on_place")
 		local pos = pointed_thing.under
 		local pnode = minetest.get_node(pointed_thing.under)
 		local rnodedef = minetest.registered_nodes[pnode.name]
@@ -190,6 +199,13 @@ minetest.register_node("homedecor:refrigerator_white_bottom", {
 			local nodename = itemstack:get_name()
 			minetest.add_node(pos, { name = nodename, param2 = fdir })
 			minetest.add_node(pos2, { name = "homedecor:refrigerator_white_top", param2 = fdir })
+
+			if string.find(nodename, "_locked") then
+		        local meta = minetest.get_meta(pos)
+				meta:set_string("owner", placer:get_player_name() or "")
+				meta:set_string("infotext", S("Locked Refrigerator (owned by %s)"):format(meta:get_string("owner")))
+			end
+
 			if not homedecor.expect_infinite_stacks then
 				itemstack:take_item()
 				return itemstack
