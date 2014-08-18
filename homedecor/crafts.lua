@@ -2477,3 +2477,11 @@ minetest.register_craft( {
         },
 })
 
+minetest.register_craft( {
+        output = "homedecor:cutlery_set",
+        recipe = {
+			{ "", "vessels:drinking_glass", "" },
+			{ "homedecor:steel_strip", "building_blocks:micro_marble_1", "homedecor:steel_strip" },
+        },
+})
+
