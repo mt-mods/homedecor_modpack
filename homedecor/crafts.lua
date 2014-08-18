@@ -103,6 +103,11 @@ minetest.register_craftitem("homedecor:copper_strip", {
 	inventory_image = "homedecor_copper_strip.png"
 })
 
+minetest.register_craftitem("homedecor:steel_strip", {
+	description = S("Steel Strip"),
+	inventory_image = "homedecor_steel_strip.png"
+})
+
 -- alternate crafting if mesecons is/isn't installed
 
 if not minetest.get_modpath("mesecons") then
@@ -148,7 +153,16 @@ minetest.register_alias("homedecor:brass_ingot", "technic:brass_ingot")
 minetest.register_craft( {
     output = "homedecor:copper_strip 12",
     recipe = {
-		{ "default:copper_ingot", "default:copper_ingot" }
+		{ "", "default:copper_ingot", "" },
+		{ "default:copper_ingot", "", "" },
+    },
+})
+
+minetest.register_craft( {
+    output = "homedecor:steel_strip 12",
+    recipe = {
+		{ "", "default:steel_ingot", "" },
+		{ "default:steel_ingot", "", "" },
     },
 })
 
@@ -2454,3 +2468,12 @@ minetest.register_craft( {
 			{ "homedecor:taps", "" }
         },
 })
+
+minetest.register_craft( {
+        output = "homedecor:cutlery_set",
+        recipe = {
+			{ "", "vessels:drinking_glass", "" },
+			{ "homedecor:steel_strip", "building_blocks:slab_marble", "homedecor:steel_strip" },
+        },
+})
+
