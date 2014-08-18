@@ -18,7 +18,6 @@ minetest.register_node("homedecor:toilet", {
             { -0.05,  0.40,  0.35,  0.05,  0.45,  0.45, },
         },
     },
-    drop = "3dforniture:toilet",
     groups = {cracky=3,},
     sounds = default.node_sound_stone_defaults(),
     on_punch = function (pos, node, puncher)
@@ -52,7 +51,7 @@ minetest.register_node("homedecor:toilet_open", {
             { -0.30,  0.00,  0.30,  0.30,  0.40,  0.50, },
         },
     },
-    drop = "3dforniture:toilet",
+    drop = "homedecor:toilet",
     groups = {cracky = 3,},
     --sounds = {dig = "3dforniture_dig_toilet",  gain=0.5},
     sounds = default.node_sound_stone_defaults(),
