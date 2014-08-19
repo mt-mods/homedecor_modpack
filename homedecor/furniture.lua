@@ -491,6 +491,32 @@ local fdir_to_right = {
 	{  0,  1 },
 }
 
+
+minetest.register_node("homedecor:simple_bench", {
+	tiles = {
+		"homedecor_generic_wood.png",
+		"homedecor_generic_wood.png",
+		"homedecor_generic_wood.png",
+		"homedecor_generic_wood.png",
+		"homedecor_bench_large_2_left_back.png",
+		"homedecor_bench_large_2_left_front.png"
+	},
+	description = "Simple Bench",
+	drawtype = "nodebox",
+	paramtype = "light",
+        paramtype2 = "facedir",
+        groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+                    {-0.5, -0.15, -0.2,  0.5,  -0.05, 0.2},
+                    {-0.4, -0.5,  -0.1, -0.3, -0.15, 0.1},
+                    { 0.3, -0.5,  -0.1,  0.4, -0.15, 0.1},
+	}
+	},
+})
+
+
 minetest.register_node("homedecor:bench_large_1_left", {
 	description = "Garden Bench (style 1)",
 	tiles = {

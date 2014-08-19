@@ -2485,3 +2485,18 @@ minetest.register_craft( {
         },
 })
 
+minetest.register_craft( {
+        output = "homedecor:simple_bench",
+        recipe = {
+			{ "stairs:slab_wood", "stairs:slab_wood", "stairs:slab_wood" },
+			{ "stairs:slab_wood", "", "stairs:slab_wood" }
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:simple_bench",
+        recipe = {
+			{ "moreblocks:slab_wood", "moreblocks:slab_wood", "moreblocks:slab_wood" },
+			{ "moreblocks:slab_wood", "", "moreblocks:slab_wood" }
+        },
+})
