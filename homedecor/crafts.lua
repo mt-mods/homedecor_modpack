@@ -2464,7 +2464,16 @@ minetest.register_craft( {
         recipe = {
 			{ "homedecor:shutter_oak", "homedecor:shutter_oak", "homedecor:shutter_oak" },
 			{ "group:wood", "group:wood", "group:wood" },
-			{ "group:stick", "", "group:stick" }
+			{ "stairs:slab_wood", "", "stairs:slab_wood" }
+        },
+})
+
+minetest.register_craft( {
+        output = "homedecor:bench_large_2_left",
+        recipe = {
+			{ "homedecor:shutter_oak", "homedecor:shutter_oak", "homedecor:shutter_oak" },
+			{ "group:wood", "group:wood", "group:wood" },
+			{ "moreblocks:slab_wood", "", "moreblocks:slab_wood" }
         },
 })
 
