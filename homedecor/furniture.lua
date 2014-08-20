@@ -240,45 +240,12 @@ minetest.register_node(":homedecor:openframe_bookshelf", {
 	}
 })
 
--- decorative bed and wardrobe, models by jp
-
-minetest.register_node("homedecor:bed_blue_head", {
-	tiles = {
-		"homedecor_bed_blue_top1.png",
-		"homedecor_bed_bottom1.png",
-		"homedecor_bed_blue_side1.png",
-		"homedecor_bed_blue_side1.png^[transformFX",
-		"homedecor_bed_blue_head1.png",
-		"homedecor_bed_blue_head2.png"
-	},
-	drawtype = "nodebox",
-	paramtype = "light",
-        paramtype2 = "facedir",
-        groups = {snappy=3, not_in_creative_inventory=1},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5,     -0.5,     0.4375,   -0.375,  0.5,      0.5},      --  NodeBox1
-			{0.375,    -0.5,     0.4375,   0.5,     0.5,      0.5},      --  NodeBox2
-			{-0.5,     0.25,     0.4375,   0.5,     0.4375,   0.5},      --  NodeBox3
-			{-0.5,     0,        0.4375,   0.5,     0.1875,   0.5},      --  NodeBox4
-			{-0.5,     -0.375,   0.4375,   0.5,     -0.125,   0.5},      --  NodeBox5
-			{-0.4375,  -0.375,   -0.5,     -0.375,  -0.125,   0.5},      --  NodeBox6
-			{0.375,    -0.375,   -0.5,     0.4375,  -0.125,   0.5},      --  NodeBox7
-			{-0.375,   -0.375,   0.25,     0.375,   -0.3125,  0.375},    --  NodeBox8
-			{-0.375,   -0.375,   0.0625,   0.375,   -0.3125,  0.1875},   --  NodeBox9
-			{-0.375,   -0.375,   -0.125,   0.375,   -0.3125,  0},        --  NodeBox10
-			{-0.375,   -0.375,   -0.3125,  0.375,   -0.3125,  -0.1875},  --  NodeBox11
-			{-0.375,   -0.375,   -0.5,     0.375,   -0.3125,  -0.375},   --  NodeBox12
-			{-0.375,   -0.3125,  -0.5,     0.375,   -0.0625,  0.4375},   --  NodeBox13
-			{-0.3125,  -0.125,   0.0625,   0.3125,  0.0625,   0.4375},   --  NodeBox14
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	}
-})
+local bedcolors = {
+	"red",
+	"green",
+	"blue",
+	"violet",
+}
 
 local fdir_to_fwd = {
 	{  0,  1 },
@@ -287,78 +254,120 @@ local fdir_to_fwd = {
 	{ -1,  0 },
 }
 
-minetest.register_node("homedecor:bed_blue_foot", {
-	tiles = {
-		"homedecor_bed_blue_top2.png",
-		"homedecor_bed_bottom2.png",
-		"homedecor_bed_blue_side2.png",
-		"homedecor_bed_blue_side2.png^[transformFX",
-		"homedecor_bed_blue_foot2.png",
-		"homedecor_bed_blue_foot1.png"
-	},
-	inventory_image = "homedecor_bed_blue_inv.png",
-	description = "Bed",
-	drawtype = "nodebox",
-	paramtype = "light",
-        paramtype2 = "facedir",
-        groups = {snappy=3},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5,     -0.5,     -0.5,     -0.375,  0.1875,   -0.4375},  --  NodeBox1
-			{0.375,    -0.5,     -0.5,     0.5,     0.1875,   -0.4375},  --  NodeBox2
-			{-0.5,     0,        -0.5,     0.5,     0.125,    -0.4375},  --  NodeBox3
-			{-0.5,     -0.375,   -0.5,     0.5,     -0.125,   -0.4375},  --  NodeBox4
-			{-0.4375,  -0.375,   -0.5,     -0.375,  -0.125,   0.5},      --  NodeBox5
-			{0.375,    -0.375,   -0.5,     0.4375,  -0.125,   0.5},      --  NodeBox6
-			{-0.375,   -0.375,   0.3125,   0.375,   -0.3125,  0.4375},   --  NodeBox7
-			{-0.375,   -0.375,   0.125,    0.375,   -0.3125,  0.25},     --  NodeBox8
-			{-0.375,   -0.375,   -0.0625,  0.375,   -0.3125,  0.0625},   --  NodeBox9
-			{-0.375,   -0.375,   -0.25,    0.375,   -0.3125,  -0.125},   --  NodeBox10
-			{-0.375,   -0.375,   -0.4375,  0.375,   -0.3125,  -0.3125},  --  NodeBox11
-			{-0.375,   -0.3125,  -0.4375,  0.375,   -0.0625,  0.5},      --  NodeBox12
+for _, color in ipairs(bedcolors) do
+
+	minetest.register_node("homedecor:bed_"..color.."_head", {
+		tiles = {
+			"homedecor_bed_"..color.."_top1.png",
+			"homedecor_bed_bottom1.png",
+			"homedecor_bed_"..color.."_side1.png",
+			"homedecor_bed_"..color.."_side1.png^[transformFX",
+			"homedecor_bed_"..color.."_head1.png",
+			"homedecor_bed_"..color.."_head2.png"
+		},
+		drawtype = "nodebox",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {snappy=3, not_in_creative_inventory=1},
+		node_box = {
+			type = "fixed",
+			fixed = {
+				{-0.5,     -0.5,     0.4375,   -0.375,  0.5,      0.5},      --  NodeBox1
+				{0.375,    -0.5,     0.4375,   0.5,     0.5,      0.5},      --  NodeBox2
+				{-0.5,     0.25,     0.4375,   0.5,     0.4375,   0.5},      --  NodeBox3
+				{-0.5,     0,        0.4375,   0.5,     0.1875,   0.5},      --  NodeBox4
+				{-0.5,     -0.375,   0.4375,   0.5,     -0.125,   0.5},      --  NodeBox5
+				{-0.4375,  -0.375,   -0.5,     -0.375,  -0.125,   0.5},      --  NodeBox6
+				{0.375,    -0.375,   -0.5,     0.4375,  -0.125,   0.5},      --  NodeBox7
+				{-0.375,   -0.375,   0.25,     0.375,   -0.3125,  0.375},    --  NodeBox8
+				{-0.375,   -0.375,   0.0625,   0.375,   -0.3125,  0.1875},   --  NodeBox9
+				{-0.375,   -0.375,   -0.125,   0.375,   -0.3125,  0},        --  NodeBox10
+				{-0.375,   -0.375,   -0.3125,  0.375,   -0.3125,  -0.1875},  --  NodeBox11
+				{-0.375,   -0.375,   -0.5,     0.375,   -0.3125,  -0.375},   --  NodeBox12
+				{-0.375,   -0.3125,  -0.5,     0.375,   -0.0625,  0.4375},   --  NodeBox13
+				{-0.3125,  -0.125,   0.0625,   0.3125,  0.0625,   0.4375},   --  NodeBox14
+			}
+		},
+		selection_box = {
+			type = "fixed",
+			fixed = { 0, 0, 0, 0, 0, 0 }
 		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 1.5 }
-	},
-	on_place = function(itemstack, placer, pointed_thing)
-		local pos = pointed_thing.under
-		local pnode = minetest.get_node(pointed_thing.under)
-		local rnodedef = minetest.registered_nodes[pnode.name]
+	})
 
-		if not rnodedef["buildable_to"] then
-			pos = pointed_thing.above
-		end
+	minetest.register_node("homedecor:bed_"..color.."_foot", {
+		tiles = {
+			"homedecor_bed_"..color.."_top2.png",
+			"homedecor_bed_bottom2.png",
+			"homedecor_bed_"..color.."_side2.png",
+			"homedecor_bed_"..color.."_side2.png^[transformFX",
+			"homedecor_bed_"..color.."_foot2.png",
+			"homedecor_bed_"..color.."_foot1.png"
+		},
+		inventory_image = "homedecor_bed_"..color.."_inv.png",
+		description = S("Bed (%s)"):format(color),
+		drawtype = "nodebox",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		groups = {snappy=3},
+		node_box = {
+			type = "fixed",
+			fixed = {
+				{-0.5,     -0.5,     -0.5,     -0.375,  0.1875,   -0.4375},  --  NodeBox1
+				{0.375,    -0.5,     -0.5,     0.5,     0.1875,   -0.4375},  --  NodeBox2
+				{-0.5,     0,        -0.5,     0.5,     0.125,    -0.4375},  --  NodeBox3
+				{-0.5,     -0.375,   -0.5,     0.5,     -0.125,   -0.4375},  --  NodeBox4
+				{-0.4375,  -0.375,   -0.5,     -0.375,  -0.125,   0.5},      --  NodeBox5
+				{0.375,    -0.375,   -0.5,     0.4375,  -0.125,   0.5},      --  NodeBox6
+				{-0.375,   -0.375,   0.3125,   0.375,   -0.3125,  0.4375},   --  NodeBox7
+				{-0.375,   -0.375,   0.125,    0.375,   -0.3125,  0.25},     --  NodeBox8
+				{-0.375,   -0.375,   -0.0625,  0.375,   -0.3125,  0.0625},   --  NodeBox9
+				{-0.375,   -0.375,   -0.25,    0.375,   -0.3125,  -0.125},   --  NodeBox10
+				{-0.375,   -0.375,   -0.4375,  0.375,   -0.3125,  -0.3125},  --  NodeBox11
+				{-0.375,   -0.3125,  -0.4375,  0.375,   -0.0625,  0.5},      --  NodeBox12
+			}
+		},
+		selection_box = {
+			type = "fixed",
+			fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 1.5 }
+		},
+		on_place = function(itemstack, placer, pointed_thing)
+			local pos = pointed_thing.under
+			local pnode = minetest.get_node(pointed_thing.under)
+			local rnodedef = minetest.registered_nodes[pnode.name]
 
-		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-		local pos2 = { x = pos.x + fdir_to_fwd[fdir+1][1], y=pos.y, z = pos.z + fdir_to_fwd[fdir+1][2] }
+			if not rnodedef["buildable_to"] then
+				pos = pointed_thing.above
+			end
 
-		local tnode = minetest.get_node(pos)
-		local tnode2 = minetest.get_node(pos2)
+			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+			local pos2 = { x = pos.x + fdir_to_fwd[fdir+1][1], y=pos.y, z = pos.z + fdir_to_fwd[fdir+1][2] }
 
-		if homedecor.get_nodedef_field(tnode.name, "buildable_to")
-		  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
-		  and not minetest.is_protected(pos, placer:get_player_name())
-		  and not minetest.is_protected(pos2, placer:get_player_name()) then
-			minetest.add_node(pos, { name = "homedecor:bed_blue_foot", param2 = fdir })
-			minetest.add_node(pos2, { name = "homedecor:bed_blue_head", param2 = fdir })
-			if not homedecor.expect_infinite_stacks then
-				itemstack:take_item()
-				return itemstack
+			local tnode = minetest.get_node(pos)
+			local tnode2 = minetest.get_node(pos2)
+
+			if homedecor.get_nodedef_field(tnode.name, "buildable_to")
+			  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
+			  and not minetest.is_protected(pos, placer:get_player_name())
+			  and not minetest.is_protected(pos2, placer:get_player_name()) then
+				minetest.add_node(pos, { name = "homedecor:bed_"..color.."_foot", param2 = fdir })
+				minetest.add_node(pos2, { name = "homedecor:bed_"..color.."_head", param2 = fdir })
+				if not homedecor.expect_infinite_stacks then
+					itemstack:take_item()
+					return itemstack
+				end
+			end
+		end,
+		after_dig_node = function(pos, oldnode, oldmetadata, digger)
+			local fdir = oldnode.param2
+			if not fdir or fdir > 3 then return end
+			local pos2 = { x = pos.x + fdir_to_fwd[fdir+1][1], y=pos.y, z = pos.z + fdir_to_fwd[fdir+1][2] }
+			if minetest.get_node(pos2).name == "homedecor:bed_"..color.."_head" then
+				minetest.remove_node(pos2)
 			end
 		end
-	end,
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		local fdir = oldnode.param2
-		if not fdir or fdir > 3 then return end
-		local pos2 = { x = pos.x + fdir_to_fwd[fdir+1][1], y=pos.y, z = pos.z + fdir_to_fwd[fdir+1][2] }
-		if minetest.get_node(pos2).name == "homedecor:bed_blue_head" then
-			minetest.remove_node(pos2)
-		end
-	end
-})
+	})
+
+end
 
 minetest.register_node("homedecor:wardrobe_top", {
 	tiles = {
@@ -371,8 +380,8 @@ minetest.register_node("homedecor:wardrobe_top", {
 	},
 	drawtype = "nodebox",
 	paramtype = "light",
-        paramtype2 = "facedir",
-        groups = {snappy=3, not_in_creative_inventory=1},
+	paramtype2 = "facedir",
+	groups = {snappy=3, not_in_creative_inventory=1},
 	node_box = {
 		type = "fixed",
 		fixed = {

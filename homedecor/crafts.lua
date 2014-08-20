@@ -2373,15 +2373,6 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:bed_blue_foot",
-        recipe = {
-			{ "group:stick", "", "group:stick" },
-			{ "wool:white", "wool:blue", "wool:blue" },
-			{ "group:wood", "", "group:wood" },
-        },
-})
-
-minetest.register_craft( {
         output = "homedecor:pool_table",
         recipe = {
 			{ "wool:dark_green", "wool:dark_green", "wool:dark_green" },
@@ -2517,3 +2508,25 @@ minetest.register_craft( {
 			{ "moreblocks:slab_wood", "", "moreblocks:slab_wood" }
         },
 })
+
+local bedcolors = {
+	{ "red", "red"},
+	{ "green", "dark_green"},
+	{ "blue", "blue"},
+	{ "violet", "violet"}
+}
+
+for c in ipairs(bedcolors) do
+	local color = bedcolors[c][1]
+	local woolcolor = bedcolors[c][2]
+
+	minetest.register_craft( {
+		    output = "homedecor:bed_"..color.."_foot",
+		    recipe = {
+				{ "group:stick", "", "group:stick" },
+				{ "wool:white", "wool:"..woolcolor, "wool:"..woolcolor },
+				{ "group:wood", "", "group:wood" },
+		    },
+	})
+
+end
