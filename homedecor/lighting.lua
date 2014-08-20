@@ -356,29 +356,3 @@ minetest.register_node('homedecor:lattice_lantern_small', {
 	on_place = minetest.rotate_node
 })
 
-minetest.register_node('homedecor:ceiling_fan', {
-	description = S("Ceiling Fan"),
-	drawtype = "nodebox",
-	tiles = {
-		{	name="homedecor_ceiling_fan_top.png",
-			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=0.5} },
-		{	name="homedecor_ceiling_fan_bottom.png",
-			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=0.5} },
-		'homedecor_ceiling_fan_sides.png',
-	},
-	inventory_image = "homedecor_ceiling_fan_inv.png",
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{ -0.5, 0.5, -0.5, 0.5, 0.5, 0.5 },
-			{ -0.0625, 0.375, -0.0625, 0.0625, 0.5, 0.0625 }
-		}
-	},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
-	groups = { snappy = 3 },
-	light_source = LIGHT_MAX-1,
-	sounds = default.node_sound_wood_defaults(),
-})
