@@ -245,6 +245,11 @@ local bedcolors = {
 	"green",
 	"blue",
 	"violet",
+	"brown",
+        "darkgrey",
+        "orange",
+        "yellow",
+        "pink",
 }
 
 local fdir_to_fwd = {

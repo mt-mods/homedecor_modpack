@@ -2511,9 +2511,14 @@ minetest.register_craft( {
 
 local bedcolors = {
 	{ "red", "red"},
+	{ "orange", "orange" },
+	{ "yellow", "yellow"},
 	{ "green", "dark_green"},
 	{ "blue", "blue"},
-	{ "violet", "violet"}
+	{ "violet", "violet"},
+	{ "pink", "pink"},
+	{ "darkgrey", "dark_grey"},
+	{ "brown", "brown" },
 }
 
 for c in ipairs(bedcolors) do
