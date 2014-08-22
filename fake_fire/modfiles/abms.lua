@@ -57,14 +57,18 @@ minetest.register_abm({
 	interval = 1,
 	chance = 2,
 	action = function(pos, node)
+	     if
+                minetest.get_node({x=pos.x, y=pos.y+1.0, z=pos.z}).name == "air" and
+                minetest.get_node({x=pos.x, y=pos.y+2.0, z=pos.z}).name == "air"
+             then
 		local image_number = math.random(4)
 		minetest.add_particlespawner(
 			8, --particles amount
 			1, --time
-			{x=pos.x-0.3, y=pos.y+0.4, z=pos.z-0.3}, --min. smoke position
-			{x=pos.x+0.3, y=pos.y+8, z=pos.z+0.3}, --max. smoke position
-			{x=-0.2, y=0.2, z=-0.2}, --min. particle velocity
-			{x=0.2, y=2, z=0.2}, --max. particle velocity
+			{x=pos.x-0.25, y=pos.y+0.4, z=pos.z-0.25}, --min. smoke position
+			{x=pos.x+0.25, y=pos.y+8, z=pos.z+0.25}, --max. smoke position
+			{x=-0.2, y=0.3, z=-0.2}, --min. particle velocity
+			{x=0.2, y=1, z=0.2}, --max. particle velocity
 			{x=0,y=0,z=0}, --min. particle acceleration
 			{x=0,y=0,z=0}, --max. particle acceleration
 			0.5, --min. time particle expiration
@@ -74,6 +78,7 @@ minetest.register_abm({
 			false, --collision detection
 			"smoke_particle_"..image_number..".png" --textures
 		)
-		end,
+	     end
+	end
 })
 
