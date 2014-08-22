@@ -1195,3 +1195,44 @@ minetest.register_node("homedecor:cutlery_set", {
 	}
 })
 
+minetest.register_node("homedecor:bottle_brown", {
+	tiles = {
+		"homedecor_bottle_brown_top.png",
+		"homedecor_bottle_brown_sides.png"
+	},
+	inventory_image = "homedecor_bottle_brown_inv.png",
+	description = "Brown bottle",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+        use_texture_alpha = true,
+	groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+                         {-0.032, -0.50, -0.11, 0.032, -0.3, -0.046}, -- NodeBox1
+                         {-0.016, -0.30, -0.094, 0.016, -0.2, -0.062}, -- NodeBox2
+		}
+}
+})
+
+minetest.register_node("homedecor:bottle_green", {
+	tiles = {
+		"homedecor_bottle_green_top.png",
+		"homedecor_bottle_green_sides.png"
+	},
+	inventory_image = "homedecor_bottle_green_inv.png",
+	description = "Green bottle",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+        use_texture_alpha = true,
+	groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+                         {-0.032, -0.50, -0.11, 0.032, -0.3, -0.046}, -- NodeBox1
+                         {-0.016, -0.30, -0.094, 0.016, -0.2, -0.062}, -- NodeBox2
+		}
+}
+})
