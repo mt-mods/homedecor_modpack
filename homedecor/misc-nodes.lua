@@ -1117,6 +1117,7 @@ minetest.register_node("homedecor:doorbell", {
 	},
 	on_punch = function(pos, node, puncher, pointed_thing)
 		minetest.sound_play("homedecor_doorbell", {
+			pos = pos,
 			gain = 1.0,
 			max_hear_distance = 15
 		}) 
