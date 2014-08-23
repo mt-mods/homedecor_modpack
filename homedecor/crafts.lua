@@ -2593,3 +2593,12 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:coffee_maker",
+	recipe = {
+	    {"homedecor:plastic_sheeting", "bucket:bucket_water", "homedecor:plastic_sheeting"},
+	    {"homedecor:plastic_sheeting", "default:glass", "homedecor:plastic_sheeting"},
+	    {"homedecor:plastic_sheeting", "homedecor:heating_element", "homedecor:plastic_sheeting"}
+	},
+})
+
