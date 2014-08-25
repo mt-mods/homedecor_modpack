@@ -108,6 +108,16 @@ minetest.register_craftitem("homedecor:steel_strip", {
 	inventory_image = "homedecor_steel_strip.png"
 })
 
+minetest.register_craftitem("homedecor:chainlink_steel", {
+	description = "Steel chainlink",
+	inventory_image = "homedecor_chainlink_steel.png"
+})
+
+minetest.register_craftitem("homedecor:chainlink_brass", {
+	description = "Brass chainlink",
+	inventory_image = "homedecor_chainlink_brass.png"
+})
+
 -- alternate crafting if mesecons is/isn't installed
 
 if not minetest.get_modpath("mesecons") then
@@ -2549,3 +2559,37 @@ minetest.register_craft( {
 			{ "vessels:glass_bottle", "dye:brown" }
         },
 })
+
+if not minetest.get_modpath("glooptest") then
+
+	minetest.register_alias("glooptest:chainlink", "homedecor:chainlink_steel")
+
+	minetest.register_craft({
+		output = "glooptest:chainlink 12",
+		recipe = {
+		    {"", "default:steel_ingot", "default:steel_ingot"},
+		    { "default:steel_ingot", "", "default:steel_ingot" },
+		    { "default:steel_ingot", "default:steel_ingot", "" },
+		},
+	})
+
+end
+
+minetest.register_craft({
+	output = "homedecor:chains 4",
+	recipe = {
+	    { "default:steel_ingot", "", "default:steel_ingot"},
+	    { "homedecor:chainlink_steel", "", "homedecor:chainlink_steel" },
+	    { "homedecor:chainlink_steel", "", "homedecor:chainlink_steel" },
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:chainlink_brass 12",
+	recipe = {
+	    {"", "technic:brass_ingot", "technic:brass_ingot"},
+	    { "technic:brass_ingot", "", "technic:brass_ingot" },
+	    { "technic:brass_ingot", "technic:brass_ingot", "" },
+	},
+})
+
