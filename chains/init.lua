@@ -1,4 +1,4 @@
-print("[Chains] v1.1")
+print("[Chains] v1.2")
 
 -- wrought iron items
 
