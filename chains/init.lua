@@ -1,43 +1,49 @@
 print("[Chains] v1.1")
 
 minetest.register_node("chains:chain", {
-    description = "Chain",
-    walkable = false,
-    climbable = true,
-    sunlight_propagates = true,
-    paramtype = "light",
-    drops = "",
-    tile_images = { "Chain.png" },
-    drawtype = "plantlike",
-    groups = {cracky=3},
-    sounds =  default.node_sound_stone_defaults(),
-    })
+	description = "Hanging chain",
+	walkable = false,
+	climbable = true,
+	sunlight_propagates = true,
+	paramtype = "light",
+	drops = "",
+	tiles = { "Chain.png" },
+	inventory_image = "Chain.png",
+	drawtype = "plantlike",
+	groups = {cracky=3},
+	sounds =  default.node_sound_stone_defaults(),
+})
+
 minetest.register_node("chains:chain_top", {
-    description = "Chain Top",
-    walkable = false,
-    climbable = true,
-    sunlight_propagates = true,
-    paramtype = "light",
-    drops = "",
-    tile_images = { "Chain_top.png" },
-    drawtype = "plantlike",
-    groups = {cracky=3},
-    sounds =  default.node_sound_stone_defaults(),
-    })
+	description = "Hanging chain (ceiling mount)",
+	walkable = false,
+	climbable = true,
+	sunlight_propagates = true,
+	paramtype = "light",
+	drops = "",
+	tiles = { "Chain_top.png" },
+	inventory_image = "Chain_top_inv.png",
+	drawtype = "plantlike",
+	groups = {cracky=3},
+	sounds =  default.node_sound_stone_defaults(),
+})
+
 minetest.register_node("chains:chandelier", {
-    description = "Chandelier",
-    paramtype = "light",
-    walkable = false,
-    light_source = LIGHT_MAX-2,
-    climbable = true,
-    sunlight_propagates = true,
-    paramtype = "light",
-    drops = "",
-    tile_images = { {name="Chandelier.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}}},
-    drawtype = "plantlike",
-    groups = {cracky=3},
-    sounds =  default.node_sound_stone_defaults(),
-    })
+	description = "Chandelier",
+	paramtype = "light",
+	walkable = false,
+	light_source = LIGHT_MAX-2,
+	climbable = true,
+	sunlight_propagates = true,
+	paramtype = "light",
+	drops = "",
+	tiles = { {name="Chandelier.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}}},
+	inventory_image = "Chandelier_inv.png",
+	drawtype = "plantlike",
+	groups = {cracky=3},
+	sounds =  default.node_sound_stone_defaults(),
+})
+
 minetest.register_craft({
 	output = 'chains:chain 2',
 	recipe = {
@@ -46,6 +52,7 @@ minetest.register_craft({
 		{'homedecor:chainlink_steel'},
 	}
 })
+
 minetest.register_craft({
 	output = 'chains:chain_top',
 	recipe = {
@@ -53,6 +60,7 @@ minetest.register_craft({
 		{'homedecor:chainlink_steel'},	
 	},
 })
+
 minetest.register_craft({
 	output = 'chains:chandelier',
 	recipe = {
