@@ -2602,3 +2602,12 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:dartboard",
+	recipe = {
+	    {"dye:black", "homedecor:plastic_sheeting", "dye:white"},
+	    {"homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting"},
+	    {"dye:dark_green", "homedecor:plastic_sheeting", "dye:red"}
+	},
+})
+
