@@ -1385,7 +1385,7 @@ minetest.register_node("homedecor:piano_right", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-        groups = { snappy = 3 },
+        groups = { snappy = 3, not_in_creative_inventory=1 },
 	node_box = {
 		type = "fixed",
 		fixed = {
