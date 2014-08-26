@@ -1297,3 +1297,110 @@ minetest.register_node("homedecor:dartboard", {
 	sounds = default.node_sound_defaults(),
 })
 
+local fdir_to_right = {
+	{  1,  0 },
+	{  0, -1 },
+	{ -1,  0 },
+	{  0,  1 },
+}
+
+minetest.register_node("homedecor:piano_left", {
+	tiles = {
+		"homedecor_piano_top_left.png",
+		"homedecor_piano_sides.png",
+		"homedecor_piano_sides.png",
+		"homedecor_piano_sides.png",
+		"homedecor_piano_sides.png",
+		"homedecor_piano_front_left.png",
+	},
+	inventory_image = "homedecor_piano_inv.png",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+        groups = { snappy = 3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0.1875, 0.5, 0.5, 0.5}, -- NodeBox1
+			{-0.5, 0.0625, -0.125, -0.4375, 0.25, 0.1875}, -- NodeBox2
+			{-0.5, -0.5, -0.125, -0.4375, -0.375, 0.1875}, -- NodeBox3
+			{-0.5, -0.375, -0.0625, -0.4375, 0.0625, 0}, -- NodeBox4
+			{-0.5, 0.0625, -0.0625, 0.5, 0.1875, 0.1875}, -- NodeBox5
+			{-0.4375, 0.1875, 0.15, 0.5, 0.4375, 0.1875}, -- NodeBox6
+			{0.3594, -0.5, 0, 0.4062, -0.46875, 0.25}, -- left-most pedal
+			{0.4844, -0.5, 0, 0.5, -0.46875, 0.25}, -- half of center pedal
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, -0.125, 1.5, 0.5, 0.5 }
+	},
+	on_place = function(itemstack, placer, pointed_thing)
+		local pos = pointed_thing.under
+		local pnode = minetest.get_node(pointed_thing.under)
+		local rnodedef = minetest.registered_nodes[pnode.name]
+
+		if not rnodedef["buildable_to"] then
+			pos = pointed_thing.above
+		end
+
+		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+		local pos2 = { x = pos.x + fdir_to_right[fdir+1][1], y=pos.y, z = pos.z + fdir_to_right[fdir+1][2] }
+
+		local tnode = minetest.get_node(pos)
+		local tnode2 = minetest.get_node(pos2)
+
+		if homedecor.get_nodedef_field(tnode.name, "buildable_to")
+		  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
+		  and not minetest.is_protected(pos, placer:get_player_name())
+		  and not minetest.is_protected(pos2, placer:get_player_name()) then
+			minetest.add_node(pos, { name = "homedecor:piano_left", param2 = fdir })
+			minetest.add_node(pos2, { name = "homedecor:piano_right", param2 = fdir })
+			if not homedecor.expect_infinite_stacks then
+				itemstack:take_item()
+				return itemstack
+			end
+		end
+	end,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		local fdir = oldnode.param2
+		if not fdir or fdir > 3 then return end
+		local pos2 = { x = pos.x + fdir_to_right[fdir+1][1], y=pos.y, z = pos.z + fdir_to_right[fdir+1][2] }
+		if minetest.get_node(pos2).name == "homedecor:piano_right" then
+			minetest.remove_node(pos2)
+		end
+	end
+})
+
+minetest.register_node("homedecor:piano_right", {
+	tiles = {
+		"homedecor_piano_top_right.png",
+		"homedecor_piano_sides.png",
+		"homedecor_piano_sides.png",
+		"homedecor_piano_sides.png",
+		"homedecor_piano_sides.png",
+		"homedecor_piano_front_right.png",
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+        groups = { snappy = 3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0.1875, 0.5, 0.5, 0.5}, -- NodeBox1
+			{0.4375, -0.5, -0.125, 0.5, -0.375, 0.1875}, -- NodeBox2
+			{0.4375, 0.0625, -0.125, 0.5, 0.25, 0.1875}, -- NodeBox3
+			{0.4375, -0.375, -0.0625, 0.5, 0.0625, 0}, -- NodeBox4
+			{-0.5, 0.0625, -0.0625, 0.4375, 0.1875, 0.1875}, -- NodeBox5
+			{-0.5, 0.1875, 0.15, 0.4375, 0.4375, 0.1875}, -- NodeBox6
+			{-0.5, -0.5, 0, -0.4688, -0.46875, 0.25}, -- half of center pedal
+			{-0.3905, -0.5, 0, -0.3438, -0.46875, 0.25}, -- right-most pedal
+
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 0, 0, 0, 0, 0, 0 }
+	}
+})
