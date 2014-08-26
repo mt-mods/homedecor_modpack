@@ -1314,6 +1314,7 @@ minetest.register_node("homedecor:piano_left", {
 		"homedecor_piano_front_left.png",
 	},
 	inventory_image = "homedecor_piano_inv.png",
+	description = "Piano",
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
