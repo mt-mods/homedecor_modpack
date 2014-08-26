@@ -1272,6 +1272,10 @@ minetest.register_node("homedecor:coffee_maker", {
 			{-0.1, -0.4, -0.2838, -0.06, -0.39, -0.2638}, -- NodeBox14
 			{-0.075, -0.485, -0.2838, -0.06, -0.39, -0.2638}, -- NodeBox15
 		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.22, -0.5, -0.35, 0.4, 0.21, 0.5 }
 	}
 })
 
