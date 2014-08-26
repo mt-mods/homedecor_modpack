@@ -2392,9 +2392,8 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:trash_can 2",
+        output = "homedecor:trash_can 3",
         recipe = {
-			{ "homedecor:steel_wire", "", "homedecor:steel_wire" },
 			{ "homedecor:steel_wire", "", "homedecor:steel_wire" },
 			{ "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" }
         },
