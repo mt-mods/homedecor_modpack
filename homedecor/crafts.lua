@@ -2614,9 +2614,9 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "homedecor:piano_left",
 	recipe = {
-		{ "", "default:steel_ingot", "building_blocks:hardwood" },
+		{ "", "homedecor:steel_wire", "building_blocks:hardwood" },
 		{ "homedecor:plastic_strips", "homedecor:steel_wire", "building_blocks:hardwood" },
-		{ "building_blocks:hardwood", "default:steel_ingot", "building_blocks:hardwood" }
+		{ "building_blocks:hardwood", "default:steelblock", "building_blocks:hardwood" }
 	},
 })
 
