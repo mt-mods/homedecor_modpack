@@ -2627,4 +2627,14 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:deckchair_foot",
+	recipe = {
+		{ "group:stick", "building_blocks:terrycloth_towel", "group:stick" },
+		{ "group:stick", "building_blocks:terrycloth_towel", "group:stick" },
+		{ "group:stick", "building_blocks:terrycloth_towel", "group:stick" }
+	},
+})
+
+
 
