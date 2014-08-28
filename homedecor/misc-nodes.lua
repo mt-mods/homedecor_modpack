@@ -1405,3 +1405,63 @@ minetest.register_node("homedecor:piano_right", {
 		fixed = { 0, 0, 0, 0, 0, 0 }
 	}
 })
+
+minetest.register_node("homedecor:toaster", {
+        description = "Toaster",
+	tiles = {
+		"homedecor_toaster_top.png",
+		"homedecor_toaster_sides.png",
+		"homedecor_toaster_sides.png",
+		"homedecor_toaster_sides.png",
+		"homedecor_toaster_sides.png",
+		"homedecor_toaster_sides.png"
+	},
+	inventory_image = "homedecor_toaster_inv.png",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.0625, -0.5, -0.125, 0.125, -0.3125, 0.125}, -- NodeBox1
+		},
+	},
+	on_rightclick = function(pos, node, clicker)
+		local fdir = node.param2
+		minetest.set_node(pos, { name = "homedecor:toaster_loaf", param2 = fdir })
+		minetest.sound_play("toaster", {
+			pos = pos,
+			gain = 1.0,
+			max_hear_distance = 5
+		})
+	end
+})
+
+minetest.register_node("homedecor:toaster_loaf", {
+	tiles = {
+		"homedecor_toaster_toploaf.png",
+		"homedecor_toaster_sides.png",
+		"homedecor_toaster_sides.png",
+		"homedecor_toaster_sides.png",
+		"homedecor_toaster_sides.png",
+		"homedecor_toaster_sides.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3, not_in_creative_inventory=1 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.0625, -0.5, -0.125, 0.125, -0.3125, 0.125}, -- NodeBox1
+			{-0.03125, -0.3125, -0.0935, 0, -0.25, 0.0935}, -- NodeBox2
+			{0.0625, -0.3125, -0.0935, 0.0935, -0.25, 0.0935}, -- NodeBox3
+		},
+	},
+	on_rightclick = function(pos, node, clicker)
+		local fdir = node.param2
+		minetest.set_node(pos, { name = "homedecor:toaster", param2 = fdir })
+	end
+})
+

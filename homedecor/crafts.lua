@@ -2619,3 +2619,12 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:toaster",
+	recipe = {
+		{ "default:steel_ingot", "homedecor:heating_element", "default:steel_ingot" },
+		{ "default:steel_ingot", "homedecor:heating_element", "default:steel_ingot" }
+	},
+})
+
+
