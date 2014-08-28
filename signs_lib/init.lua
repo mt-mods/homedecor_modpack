@@ -539,7 +539,7 @@ end
 
 -- What kind of sign do we need to place, anyway?
 
-function signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
+function signs_lib.determine_sign_type(itemstack, placer, pointed_thing, locked)
 	local name
 	name = minetest.get_node(pointed_thing.under).name
 	if fences_with_sign[name] then
@@ -593,18 +593,20 @@ function signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
 		if fences_with_sign[pt_name] and signname == "default:sign_wall" then
 			minetest.add_node(under, {name = fences_with_sign[pt_name], param2 = fdir})
 			sign_info = signs_lib.sign_post_model.textpos[fdir + 1]
-
 		elseif wdir == 0 and signname == "default:sign_wall" then
 			minetest.add_node(above, {name = "signs:sign_hanging", param2 = fdir})
 			sign_info = signs_lib.hanging_sign_model.textpos[fdir + 1]
-
 		elseif wdir == 1 and signname == "default:sign_wall" then
 			minetest.add_node(above, {name = "signs:sign_yard", param2 = fdir})
 			sign_info = signs_lib.yard_sign_model.textpos[fdir + 1]
-
 		else -- it must be a wooden or metal wall sign.
 			minetest.add_node(above, {name = signname, param2 = fdir})
 			sign_info = signs_lib.wall_sign_model.textpos[fdir + 1]
+			if locked then
+				local meta = minetest.get_meta(above)
+				local owner = placer:get_player_name()
+				meta:set_string("owner", owner)
+			end
 		end
 
 		local text = minetest.add_entity({x = above.x + sign_info.delta.x,
@@ -782,7 +784,7 @@ minetest.register_node(":locked_sign:sign_wall_locked", {
 	},
 	groups = sign_groups,
 	on_place = function(itemstack, placer, pointed_thing)
-		return signs_lib.determine_sign_type(itemstack, placer, pointed_thing)
+		return signs_lib.determine_sign_type(itemstack, placer, pointed_thing, true)
 	end,
 	on_construct = function(pos)
 		signs_lib.construct_sign(pos, true)
