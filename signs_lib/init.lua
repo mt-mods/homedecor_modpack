@@ -85,7 +85,11 @@ signs_lib.sign_node_list = {
 		"signs:sign_yard",
 		"signs:sign_hanging",
 		"signs:sign_wall_green",
-		"signs:sign_wall_yellow"
+		"signs:sign_wall_yellow",
+		"signs:sign_wall_red",
+		"signs:sign_wall_white_red",
+		"signs:sign_wall_white_black",
+		"locked_sign:sign_wall_locked"
 }
 
 --table copy
