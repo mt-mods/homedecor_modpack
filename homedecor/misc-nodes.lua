@@ -1206,7 +1206,8 @@ minetest.register_node("homedecor:bottle_brown", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-        use_texture_alpha = true,
+	sunlight_propagates = true,
+	use_texture_alpha = true,
 	groups = {snappy=3},
 	node_box = {
 		type = "fixed",
@@ -1227,7 +1228,8 @@ minetest.register_node("homedecor:bottle_green", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-        use_texture_alpha = true,
+	sunlight_propagates = true,
+	use_texture_alpha = true,
 	groups = {snappy=3},
 	node_box = {
 		type = "fixed",
@@ -1252,6 +1254,7 @@ minetest.register_node("homedecor:coffee_maker", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
+	sunlight_propagates = true,
 	groups = {snappy=3},
 	node_box = {
 		type = "fixed",
