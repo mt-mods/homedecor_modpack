@@ -1420,6 +1420,7 @@ minetest.register_node("homedecor:toaster", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
+	sunlight_propagates = true,
 	groups = { snappy=3 },
 	node_box = {
 		type = "fixed",
@@ -1450,6 +1451,7 @@ minetest.register_node("homedecor:toaster_loaf", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
+	sunlight_propagates = true,
 	groups = { snappy=3, not_in_creative_inventory=1 },
 	node_box = {
 		type = "fixed",
