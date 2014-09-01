@@ -1462,6 +1462,7 @@ minetest.register_node("homedecor:toaster_loaf", {
 	on_rightclick = function(pos, node, clicker)
 		local fdir = node.param2
 		minetest.set_node(pos, { name = "homedecor:toaster", param2 = fdir })
-	end
+	end,
+	drop = "homedecor:toaster"
 })
 
