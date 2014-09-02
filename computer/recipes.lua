@@ -61,6 +61,22 @@ minetest.register_craft({
     };
 });
 
+minetest.register_craft({
+    output = "computer:wee";
+    recipe = {
+        { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", },
+        { "homedecor:plastic_sheeting", "default:copper_ingot", "homedecor:plastic_sheeting", },
+    };
+});
+
+minetest.register_craft({
+    output = "computer:piepad";
+    recipe = {
+        { "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", },
+        { "homedecor:plastic_sheeting", "default:glass", "homedecor:plastic_sheeting", },
+    };
+});
+
 --new stuff
 
 minetest.register_craft({
