@@ -117,7 +117,7 @@ minetest.register_craft({
 	recipe = {
 	    {"default:paper","default:torch" ,"default:paper"},
 	    {"","group:stick",""},
-	    {"","stairsplus:slab_wood",""},
+	    {"","moreblocks:slab_wood",""},
 	},
 })
 
@@ -145,7 +145,7 @@ for _, color in ipairs(lamp_colors) do
 		recipe = {
 		    {"wool:"..color,"default:torch" ,"wool:"..color},
 		    {"","group:stick",""},
-		    {"","stairsplus:slab_wood",""},
+		    {"","moreblocks:slab_wood",""},
 		},
 	})
 
