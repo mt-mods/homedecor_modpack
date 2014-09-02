@@ -801,6 +801,7 @@ minetest.register_node("homedecor:deckchair_foot", {
 		"homedecor_deckchair_sides.png^[transformFX",
 		"homedecor_deckchair_front.png"
 	},
+	description = "Deck chair",
 	inventory_image = "homedecor_deckchair_inv.png",
 	drawtype = "nodebox",
 	paramtype = "light",
