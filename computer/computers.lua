@@ -91,9 +91,21 @@ computer.register("computer:wee", {
 });
 
 -- Apple iPad lookalike.
-computer.register_handheld("computer:piepad", {
-    description = "Snapple Piepad";
-});
+minetest.register_node("computer:piepad", {
+    description = "Snapple Piepad",
+    drawtype = "signlike",
+    tiles = {"computer_piepad_inv.png"},
+    inventory_image = "computer_piepad_inv.png",
+    wield_image = "computer_piepad_inv.png",
+    sunlight_propagates = false,
+    paramtype = "light",
+    paramtype2 = "wallmounted",
+    light_source = 10,
+    walkable = false,
+    groups = { snappy=3, cracky=3, choppy=3, oddly_breakable_by_hand=3},
+    selection_box = {type = "wallmounted"},
+    sounds = default.node_sound_wood_defaults()
+})
 
 -- Commodore 64 lookalike
 computer.register("computer:admiral64", {
