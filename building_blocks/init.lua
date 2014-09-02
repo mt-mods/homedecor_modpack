@@ -111,6 +111,22 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'building_blocks:tar_base 2',
+	recipe = {
+		{"default:coal_lump", "default:gravel"},
+		{"default:gravel", "default:coal_lump"}
+	}
+})
+
+minetest.register_craft({
+	output = 'building_blocks:tar_base 2',
+	recipe = {
+		{"default:gravel", "default:coal_lump"},
+		{"default:coal_lump", "default:gravel"}
+	}
+})
+
+minetest.register_craft({
 	type = "cooking",
 	output = "building_blocks:smoothglass",
 	recipe = "default:glass"
@@ -442,6 +458,11 @@ minetest.register_craftitem("building_blocks:sticks", {
 	on_place_on_ground = minetest.craftitem_place_item,
 })
 
+minetest.register_craftitem("building_blocks:tar_base", {
+	description = "Tar base",
+	image = "building_blocks_tar_base.png",
+})
+
 --Tar
 minetest.register_craft({
 	output = 'building_blocks:knife 1',
@@ -485,11 +506,13 @@ minetest.register_craft({
 	recipe = "building_blocks:Tar",
 	burntime = 40,
 })
+
 minetest.register_craft({
 	type = "cooking",
 	output = "building_blocks:Tar",
-	recipe = "default:gravel",
+	recipe = "building_blocks:tar_base",
 })
+
 minetest.register_tool("building_blocks:knife", {
 	description = "Tar Knife",
 	inventory_image = "building_blocks_knife.png",
