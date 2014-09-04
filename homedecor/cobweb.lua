@@ -92,11 +92,6 @@ function homedecor.rotate_cobweb(pos)
 	local iswall_zm = (wall_zm ~= "air")
 	local iswall_zp = (wall_zp ~= "air")
 
-	print("wall_xm: "..dump(wall_xm))
-	print("wall_xp: "..dump(wall_xp))
-	print("wall_zm: "..dump(wall_zm))
-	print("wall_zp: "..dump(wall_zp))
-
 	-- only xm+zp, or only xp+zm means on-floor torchlike
 
 	if (iswall_xm and iswall_zp and not iswall_xp and not iswall_zm)
