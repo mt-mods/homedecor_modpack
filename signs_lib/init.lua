@@ -333,7 +333,7 @@ local function split_lines_and_words(text)
 	if not text then return end
 	local lines = { }
 	for _, line in ipairs(text:split("\n")) do
-		table.insert(lines, { line })
+		table.insert(lines, line:split(" "))
 	end
 	return lines
 end
@@ -501,7 +501,7 @@ signs_lib.update_sign = function(pos, fields, owner)
 
 		local ownstr = ""
 		if owner then ownstr = "Locked sign, owned by "..owner.."\n" end
-		
+
 		meta:set_string("infotext", ownstr..make_infotext(fields.text).." ")
 		meta:set_string("text", fields.text)
 		meta:set_int("__signslib_new_format", 1)
