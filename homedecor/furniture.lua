@@ -722,6 +722,24 @@ minetest.register_node("homedecor:deckchair_foot", {
 	end
 })
 
+minetest.register_node("homedecor:wall_shelf", {
+	description = "Wall Shelf",
+	tiles = {
+		"homedecor_wood_table_large_edges.png",
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+        groups = { snappy = 3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, 0.4, 0.47, 0.5, 0.47, 0.5},
+			{-0.5, 0.47, -0.1875, 0.5, 0.5, 0.5}
+		}
+	}
+})
+
 -- Aliases for 3dforniture mod.
 
 minetest.register_alias("3dforniture:table", "homedecor:table")

@@ -2636,5 +2636,11 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:wall_shelf 2",
+	recipe = {
+		{ "homedecor:wood_table_small_square", "homedecor:curtainrod_wood", "homedecor:curtainrod_wood" },
+	},
+})
 
 
