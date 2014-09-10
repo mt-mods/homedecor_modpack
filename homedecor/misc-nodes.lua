@@ -1359,6 +1359,7 @@ minetest.register_node("homedecor:trophy", {
 	tiles = {
 		"default_gold_block.png"
 	},
+	inventory_image = "homedecor_trophy_inv.png",
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
