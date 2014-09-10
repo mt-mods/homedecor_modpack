@@ -2643,4 +2643,12 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:trophy 3",
+	recipe = {
+		{ "default:gold_ingot","","default:gold_ingot" },
+		{ "","default:gold_ingot","" },
+		{ "default:gold_ingot","default:gold_ingot","default:gold_ingot" }
+	},
+})
 
