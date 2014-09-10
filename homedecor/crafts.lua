@@ -2670,4 +2670,12 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:skateboard",
+	recipe = {
+		{ "dye:yellow","dye:green","dye:blue" },
+		{ "homedecor:wood_table_small_square","homedecor:wood_table_small_square","homedecor:wood_table_small_square" },
+		{ "default:steel_ingot","","default:steel_ingot" }
+	},
+})
 

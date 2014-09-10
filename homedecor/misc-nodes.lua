@@ -1425,3 +1425,34 @@ minetest.register_node("homedecor:sportbench", {
 	}
 })
 
+minetest.register_node("homedecor:skateboard", {
+        description = "Skateboard",
+	tiles = {
+		"homedecor_skateboard_top.png",
+		"homedecor_skateboard_bottom.png",
+		"homedecor_skateboard_sides.png"
+	},
+	inventory_image = "homedecor_skateboard_inv.png",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.4375, -0.4375, -0.1875, 0.4375, -0.415, 0.125}, -- NodeBox1
+			{-0.375, -0.5, 0.0625, -0.3125, -0.4375, 0.125}, -- NodeBox2
+			{-0.375, -0.5, -0.1875, -0.3125, -0.4375, -0.125}, -- NodeBox3
+			{0.3125, -0.5, 0.0625, 0.375, -0.4375, 0.125}, -- NodeBox4
+			{0.3125, -0.5, -0.1875, 0.375, -0.4375, -0.125}, -- NodeBox5
+			{-0.5, -0.4375, -0.16, -0.4375, -0.415, 0.0975}, -- NodeBox6
+			{0.4375, -0.4375, -0.16, 0.5, -0.415, 0.0975}, -- NodeBox7
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, -0.2, 0.5, -0.40, 0.125 }
+	},
+	on_place = minetest.rotate_node
+})
+
