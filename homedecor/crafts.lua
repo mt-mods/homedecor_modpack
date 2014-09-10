@@ -2652,3 +2652,13 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:grandfather_clock_bottom",
+	recipe = {
+		{ "building_blocks:slab_hardwood","homedecor:analog_clock_wood","building_blocks:slab_hardwood" },
+		{ "building_blocks:slab_hardwood","technic:brass_ingot","building_blocks:slab_hardwood" },
+		{ "building_blocks:slab_hardwood","technic:brass_ingot","building_blocks:slab_hardwood" }
+	},
+})
+
+

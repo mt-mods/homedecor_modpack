@@ -730,7 +730,7 @@ minetest.register_node("homedecor:wall_shelf", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-        groups = { snappy = 3 },
+	groups = { snappy = 3 },
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -738,6 +738,74 @@ minetest.register_node("homedecor:wall_shelf", {
 			{-0.5, 0.47, -0.1875, 0.5, 0.5, 0.5}
 		}
 	}
+})
+
+minetest.register_node("homedecor:grandfather_clock_bottom", {
+	description = "Grandfather Clock",
+	tiles = {
+		"homedecor_grandfather_clock_sides.png",
+		"homedecor_grandfather_clock_sides.png",
+		"homedecor_grandfather_clock_sides.png",
+		"homedecor_grandfather_clock_sides.png",
+		"homedecor_grandfather_clock_sides.png",
+		"homedecor_grandfather_clock_bottom.png"
+	},
+	inventory_image = "homedecor_grandfather_clock_inv.png",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy = 3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.4, -0.5, -0.4, -0.3125, 0.5, 0.4}, -- NodeBox1
+			{-0.3125, -0.4375, -0.3125, 0.3125, 0.5, 0.4}, -- NodeBox2
+			{0.3125, -0.5, -0.4, 0.4, 0.5, 0.4}, -- NodeBox3
+			{-0.3125, -0.5, -0.4, 0.3125, -0.405, 0.4}, -- NodeBox4
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.4, -0.5, -0.4, 0.4, 1.5, 0.4 }
+	},
+	on_place = function(itemstack, placer, pointed_thing)
+		return homedecor.stack_vertically(itemstack, placer, pointed_thing,
+			"homedecor:grandfather_clock_bottom", "homedecor:grandfather_clock_top")
+	end,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
+		if minetest.get_node(pos2).name == "homedecor:grandfather_clock_top" then
+			minetest.remove_node(pos2)
+		end
+	end,
+})
+
+minetest.register_node("homedecor:grandfather_clock_top", {
+	tiles = {
+		"homedecor_grandfather_clock_sides.png",
+		"homedecor_grandfather_clock_sides.png",
+		"homedecor_grandfather_clock_sides.png",
+		"homedecor_grandfather_clock_sides.png",
+		"homedecor_grandfather_clock_sides.png",
+		"homedecor_grandfather_clock_top.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy = 3, not_in_creative_inventory=1 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.4, -0.5, -0.4, -0.3125, 0.5, 0.4}, -- NodeBox1
+			{-0.3125, -0.1875, -0.4, 0.3125, 0.5, 0.4}, -- NodeBox2
+			{0.3125, -0.5, -0.4, 0.4, 0.5, 0.4}, -- NodeBox3
+			{-0.3125, -0.5, -0.3125, 0.3125, 0.5, 0.4}, -- NodeBox4
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 0, 0, 0, 0, 0, 0 }
+	},
 })
 
 -- Aliases for 3dforniture mod.
