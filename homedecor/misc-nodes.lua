@@ -1388,3 +1388,40 @@ minetest.register_node("homedecor:trophy", {
 		fixed = { -0.21, -0.5, -0.125, 0.2725, 0.125, 0.1875 }
 	}
 })
+
+minetest.register_node("homedecor:sportbench", {
+	description = "Sport bench",
+	tiles = {
+		"homedecor_sportbench_top.png",
+		"wool_black.png",
+		"homedecor_sportbench_right.png", 
+		"homedecor_sportbench_left.png",
+		"homedecor_sportbench_bottom.png",
+		"homedecor_sportbench_front.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.1875, -0.3125, -0.5, 0.1875, -0.25, 0.5}, -- NodeBox1
+			{-0.1875, -0.5, -0.5, -0.125, -0.3125, -0.4375}, -- NodeBox2
+			{0.125, -0.5, -0.5, 0.1875, -0.3125, -0.4375}, -- NodeBox3
+			{0.1875, -0.5, 0.375, 0.25, 0.375, 0.4375}, -- NodeBox4
+			{-0.25, -0.5, 0.375, -0.1875, 0.375, 0.4375}, -- NodeBox5
+			{-0.5, 0.125, 0.36, 0.5, 0.14, 0.375}, -- NodeBox6
+			{0.3125, 0, 0.225, 0.35, 0.285, 0.5}, -- NodeBox7
+			{-0.35, 0, 0.225, -0.3125, 0.285, 0.5}, -- NodeBox8
+			{-0.1875, -0.375, 0.375, 0.1875, -0.3125, 0.4375}, -- NodeBox9
+			{-0.23, 0.11, 0.33, -0.2075, 0.125, 0.375}, -- NodeBox10
+			{0.2075, 0.11, 0.33, 0.23, 0.125, 0.375}, -- NodeBox11
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.4, -0.5, -0.5, 0.4, 0.375, 0.5 }
+	}
+})
+
