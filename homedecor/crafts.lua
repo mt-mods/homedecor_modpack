@@ -2688,3 +2688,11 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft( {
+        output = "homedecor:window_flowerbox",
+        recipe = {
+                { "homedecor:roof_tile_terracotta", "default:dirt", "homedecor:roof_tile_terracotta" },
+                { "", "homedecor:roof_tile_terracotta", "" },
+        },
+})
+
