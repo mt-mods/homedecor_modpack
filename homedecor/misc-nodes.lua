@@ -1491,3 +1491,31 @@ minetest.register_node("homedecor:copper_pans", {
 	on_place = minetest.rotate_node
 })
 
+minetest.register_node("homedecor:paper_towel", {
+	tiles = {
+		"homedecor_paper_towel_sides.png",
+		"homedecor_paper_towel_sides.png",
+		"homedecor_paper_towel_ends.png",
+		"homedecor_paper_towel_ends.png",
+		"homedecor_paper_towel_sides.png",
+		"homedecor_paper_towel_sides.png"
+	},
+	inventory_image = "homedecor_paper_towel_inv.png",
+	description = "Paper towels",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.4375, 0.1875, 0.4375, -0.375, 0.375, 0.5}, -- NodeBox1
+			{0.375, 0.1875, 0.4375, 0.4375, 0.375, 0.5}, -- NodeBox2
+			{-0.4375, 0.25, 0.1875, -0.375, 0.3125, 0.5}, -- NodeBox3
+			{0.375, 0.25, 0.1875, 0.4375, 0.3125, 0.5}, -- NodeBox4
+			{-0.375, 0.125, 0.125, 0.375, 0.4375, 0.3125}, -- NodeBox5
+			{-0.375, 0.1875, 0.0625, 0.375, 0.375, 0.375}, -- NodeBox6
+		}
+	},
+	groups = { snappy=3 }
+})
+

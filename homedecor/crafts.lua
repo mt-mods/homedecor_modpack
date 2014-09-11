@@ -2696,3 +2696,10 @@ minetest.register_craft( {
         },
 })
 
+minetest.register_craft({
+    output = "homedecor:paper_towel",
+    recipe = {
+		{ "homedecor:toilet_paper", "homedecor:toilet_paper" }
+    },
+})
+
