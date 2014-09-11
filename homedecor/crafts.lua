@@ -2679,3 +2679,12 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:copper_pans",
+	recipe = {
+		{ "homedecor:copper_strip","","homedecor:copper_strip" },
+		{ "default:copper_ingot","","default:copper_ingot" },
+		{ "default:copper_ingot","","default:copper_ingot" }
+	},
+})
+

@@ -1457,3 +1457,37 @@ minetest.register_node("homedecor:skateboard", {
 	on_place = minetest.rotate_node
 })
 
+minetest.register_node("homedecor:copper_pans", {
+	description = "Copper pans",
+	tiles = {
+		"homedecor_polished_copper.png"
+	},
+	inventory_image = "homedecor_copper_pans_inv.png",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, -0.1875, -0.0625, -0.48, 0.125}, -- NodeBox1
+			{-0.375, -0.48, -0.1875, -0.36, -0.3125, 0.125}, -- NodeBox2
+			{-0.0775, -0.48, -0.1875, -0.0625, -0.3125, 0.125}, -- NodeBox3
+			{-0.375, -0.48, 0.11, -0.0625, -0.3125, 0.125}, -- NodeBox4
+			{-0.375, -0.48, -0.1875, -0.0625, -0.3125, -0.1725}, -- NodeBox5
+			{-0.25, -0.36, -0.5, -0.1875, -0.33, -0.1875}, -- NodeBox6
+			{0.0625, -0.5, 0, 0.375, -0.48, 0.3125}, -- NodeBox7
+			{0.0625, -0.48, 0, 0.0775, -0.3125, 0.3125}, -- NodeBox8
+			{0.36, -0.48, 0, 0.375, -0.3125, 0.3125}, -- NodeBox9
+			{0.0625, -0.48, 0, 0.375, -0.3125, 0.0175}, -- NodeBox10
+			{0.0625, -0.48, 0.295, 0.375, -0.3125, 0.3125}, -- NodeBox11
+			{0.1875, -0.36, -0.3125, 0.25, -0.33, 0}, -- NodeBox12
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.375, -0.5, -0.5, 0.375, -0.3125, 0.3125 }
+	},
+	on_place = minetest.rotate_node
+})
+
