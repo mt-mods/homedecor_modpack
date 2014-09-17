@@ -2703,3 +2703,30 @@ minetest.register_craft({
     },
 })
 
+minetest.register_craft({
+	output = "homedecor:stonepath 16",
+	recipe = {
+		{ "stairs:slab_stone","","stairs:slab_stone" },
+		{ "","stairs:slab_stone","" },
+		{ "stairs:slab_stone","","stairs:slab_stone" }
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:stonepath 16",
+	recipe = {
+		{ "moreblocks:slab_stone","","moreblocks:slab_stone" },
+		{ "","moreblocks:slab_stone","" },
+		{ "moreblocks:slab_stone","","moreblocks:slab_stone" }
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:stonepath 3",
+	recipe = {
+		{ "moreblocks:micro_stone_1","","moreblocks:micro_stone_1" },
+		{ "","moreblocks:micro_stone_1","" },
+		{ "moreblocks:micro_stone_1","","moreblocks:micro_stone_1" }
+	},
+})
+

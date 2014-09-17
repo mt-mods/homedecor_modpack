@@ -1519,3 +1519,31 @@ minetest.register_node("homedecor:paper_towel", {
 	groups = { snappy=3 }
 })
 
+minetest.register_node("homedecor:stonepath", {
+	description = "Garden stone path",
+	tiles = {
+		"default_stone.png"
+	},
+	inventory_image = "homedecor_stonepath_inv.png",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.4375, -0.5, 0.3125, -0.3125, -0.48, 0.4375}, -- NodeBox1
+			{-0.25, -0.5, 0.125, 0, -0.48, 0.375}, -- NodeBox2
+			{0.125, -0.5, 0.125, 0.4375, -0.48, 0.4375}, -- NodeBox3
+			{-0.4375, -0.5, -0.125, -0.25, -0.48, 0.0625}, -- NodeBox4
+			{-0.0625, -0.5, -0.25, 0.25, -0.48, 0.0625}, -- NodeBox5
+			{0.3125, -0.5, -0.25, 0.4375, -0.48, -0.125}, -- NodeBox6
+			{-0.3125, -0.5, -0.375, -0.125, -0.48, -0.1875}, -- NodeBox7
+			{0.125, -0.5, -0.4375, 0.25, -0.48, -0.3125}, -- NodeBox8
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.4375, -0.5, -0.4375, 0.4375, -0.4, 0.4375 }
+	}
+})
