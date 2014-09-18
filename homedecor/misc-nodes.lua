@@ -1781,3 +1781,50 @@ minetest.register_node("homedecor:tool_cabinet_top", {
 	}
 })
 
+minetest.register_node("homedecor:swing", {
+	description = "Tree's swing",
+	tiles = {
+		"homedecor_swing_top.png",
+		"homedecor_swing_bottom.png",
+		"homedecor_swing_sides.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3, oddly_breakable_by_hand=3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.3125, 0.33, -0.125, 0.3125, 0.376, 0.1875}, -- NodeBox1
+			{-0.3125, 0.376, 0.025, -0.3, 0.5, 0.0375}, -- NodeBox2
+			{0.3, 0.376, 0.025, 0.3125, 0.5, 0.0375}, -- NodeBox3
+		}
+	},
+	on_place = function(itemstack, placer, pointed_thing)
+		return homedecor.stack_vertically(itemstack, placer, pointed_thing,
+			"homedecor:swing", "homedecor:swing_rope")
+	end,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
+		if minetest.get_node(pos2).name == "homedecor:swing_rope" then
+			minetest.remove_node(pos2)
+		end
+	end
+})
+
+minetest.register_node("homedecor:swing_rope", {
+	tiles = {
+		"homedecor_swingrope_sides.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3, not_in_creative_inventory=1 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.3125, -0.5, 0.025, -0.3, 0.5, 0.0375}, -- NodeBox1
+			{0.3, -0.5, 0.025, 0.3125, 0.5, 0.0375}, -- NodeBox2
+		}
+	}
+})
