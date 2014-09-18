@@ -408,7 +408,8 @@ for _, color in ipairs(bedcolors) do
 			then
 				minetest.set_node({x=pos.x, y=pos.y-1.0, z=pos.z}, { name = "homedecor:bed_"..color.."_foot", param2 = fdir})
 			end
-		end
+		end,
+		drop = "homedecor:bed_"..color.."_foot"
 	})
  
 end
