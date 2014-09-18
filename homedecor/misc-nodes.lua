@@ -1650,6 +1650,54 @@ minetest.register_node("homedecor:beer_tap", {
 	selection_box = {
 		type = "fixed",
 		fixed = { -0.25, -0.5, -0.4375, 0.25, 0.235, 0 }
+	},
+	on_punch = function(pos, node, puncher, pointed_thing)
+		local wielditem = puncher:get_wielded_item()
+		local inv = puncher:get_inventory()
+
+		local wieldname = wielditem:get_name()
+		if wieldname == "vessels:drinking_glass" then 
+			if inv:room_for_item("main", "homedecor:beer_mug 1") then
+				wielditem:take_item()
+				puncher:set_wielded_item(wielditem)
+				inv:add_item("main", "homedecor:beer_mug 1")
+				minetest.chat_send_player(puncher:get_player_name(), "Ahh, a frosty cold beer - look in your inventory for it!")
+			else
+				minetest.chat_send_player(puncher:get_player_name(), "No room in your inventory to add a beer mug!")
+			end
+		end
+	end
+})
+
+minetest.register_node("homedecor:beer_mug", {
+	description = "Beer mug",
+	tiles = {
+		"homedecor_beer_top.png",
+		"homedecor_beer_bottom.png",
+		"homedecor_beer_right.png",
+		"homedecor_beer_left.png",
+		"homedecor_beer_back.png",
+		"homedecor_beer_front.png"
+	},
+	inventory_image = "homedecor_beer_inv.png",
+	use_texture_alpha = true,
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3, oddly_breakable_by_hand=3 },
+	sounds = default.node_sound_glass_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {
+                	{-0.125, -0.5, -0.25, 0.0625, -0.25, -0.0625}, -- NodeBox1
+			{0.0625, -0.3125, -0.18, 0.135, -0.285, -0.14}, -- NodeBox2
+			{0.1, -0.465, -0.18, 0.135, -0.285, -0.14}, -- NodeBox3
+			{0.0625, -0.465, -0.18, 0.135, -0.4375, -0.14}, -- NodeBox4
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.125, -0.5, -0.25, 0.135, -0.25, -0.0625 }
 	}
 })
 
