@@ -2748,4 +2748,29 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:swing",
+	recipe = {
+		{ "farming:string","","farming:string" },
+		{ "farming:string","","farming:string" },
+		{ "farming:string","stairs:slab_wood","farming:string" }
+	},
+})
 
+minetest.register_craft({
+	output = "homedecor:swing",
+	recipe = {
+		{ "farming:string","","farming:string" },
+		{ "farming:string","","farming:string" },
+		{ "farming:string","moreblocks:slab_wood","farming:string" }
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:swing",
+	recipe = {
+		{ "farming:string","","farming:string" },
+		{ "farming:string","","farming:string" },
+		{ "farming:string","moreblocks:panel_wood_1","farming:string" }
+	},
+})

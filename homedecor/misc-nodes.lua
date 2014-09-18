@@ -1788,6 +1788,7 @@ minetest.register_node("homedecor:swing", {
 		"homedecor_swing_bottom.png",
 		"homedecor_swing_sides.png"
 	},
+	inventory_image = "homedecor_swing_inv.png",
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -1795,19 +1796,62 @@ minetest.register_node("homedecor:swing", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.3125, 0.33, -0.125, 0.3125, 0.376, 0.1875}, -- NodeBox1
-			{-0.3125, 0.376, 0.025, -0.3, 0.5, 0.0375}, -- NodeBox2
-			{0.3, 0.376, 0.025, 0.3125, 0.5, 0.0375}, -- NodeBox3
+			{-0.3125, 0.33, -0.125,  0.3125, 0.376, 0.1875}, -- NodeBox1
+			{-0.3125, 0.376, 0.025, -0.3,    0.5,   0.0375}, -- NodeBox2
+			{ 0.3,    0.376, 0.025,  0.3125, 0.5,   0.0375}, -- NodeBox3
 		}
 	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.3125, 0.33, -0.125, 0.3125, 0.5, 0.1875 }
+	},
 	on_place = function(itemstack, placer, pointed_thing)
-		return homedecor.stack_vertically(itemstack, placer, pointed_thing,
-			"homedecor:swing", "homedecor:swing_rope")
+		isceiling, pos = homedecor.find_ceiling(itemstack, placer, pointed_thing)
+		if isceiling then
+			local height = 0
+
+			for i = 0, 4 do	-- search up to 5 spaces downward from the ceiling for the first non-buildable-to node...
+				height = i
+				local testpos = { x=pos.x, y=pos.y-i-1, z=pos.z }
+				local testnode = minetest.get_node(testpos)
+				local testreg = core.registered_nodes[testnode.name]
+
+				if not testreg.buildable_to then
+					if i < 1 then
+						minetest.chat_send_player(placer:get_player_name(), "No room under there to hang a swing.")
+						return
+					else
+						break
+					end
+				end
+			end
+
+			for j = 0, height do -- then fill that space with ropes...
+				local testpos = { x=pos.x, y=pos.y-j, z=pos.z }
+				local testnode = minetest.get_node(testpos)
+				local testreg = core.registered_nodes[testnode.name]
+				minetest.set_node(testpos, { name = "homedecor:swing_rope", param2 = fdir })
+			end
+
+			minetest.set_node({ x=pos.x, y=pos.y-height, z=pos.z }, { name = "homedecor:swing", param2 = fdir })
+
+			if not homedecor.expect_infinite_stacks then
+				itemstack:take_item()
+				return itemstack
+			end
+
+		else
+			minetest.chat_send_player(placer:get_player_name(), "You have to point at the bottom side of an overhanging object to place a swing.")
+		end
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
-		if minetest.get_node(pos2).name == "homedecor:swing_rope" then
-			minetest.remove_node(pos2)
+		for i = 0, 4 do
+			local testpos = { x=pos.x, y=pos.y+i+1, z=pos.z }
+			if minetest.get_node(testpos).name == "homedecor:swing_rope" then
+				minetest.remove_node(testpos)
+			else
+				return
+			end
 		end
 	end
 })
@@ -1819,12 +1863,16 @@ minetest.register_node("homedecor:swing_rope", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = { snappy=3, not_in_creative_inventory=1 },
+	groups = { not_in_creative_inventory=1 },
 	node_box = {
 		type = "fixed",
 		fixed = {
 			{-0.3125, -0.5, 0.025, -0.3, 0.5, 0.0375}, -- NodeBox1
 			{0.3, -0.5, 0.025, 0.3125, 0.5, 0.0375}, -- NodeBox2
 		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 0, 0, 0, 0, 0, 0 }
 	}
 })
