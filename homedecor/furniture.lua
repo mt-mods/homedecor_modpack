@@ -251,7 +251,39 @@ local bedcolors = {
 	"yellow",
 	"pink",
 }
- 
+
+local function bed_extension(pos, color)
+
+	local topnode = minetest.get_node({x=pos.x, y=pos.y+1.0, z=pos.z})
+	local thisnode = minetest.get_node(pos)
+	local bottomnode = minetest.get_node({x=pos.x, y=pos.y-1.0, z=pos.z})
+
+	local fdir = thisnode.param2
+
+	if string.find(topnode.name, "homedecor:bed_.*_foot$") then
+		if fdir == topnode.param2 then
+			local newnode = string.gsub(thisnode.name, "_foot", "_footext")
+			minetest.set_node(pos, { name = newnode, param2 = fdir})
+		end
+	end
+
+    if string.find(bottomnode.name, "homedecor:bed_.*_foot$") then
+		if fdir == bottomnode.param2 then
+			local newnode = string.gsub(bottomnode.name, "_foot", "_footext")
+		    minetest.set_node({x=pos.x, y=pos.y-1.0, z=pos.z}, { name = newnode, param2 = fdir})
+		end
+    end
+end
+
+local function unextend_bed(pos, color)
+	local bottomnode = minetest.get_node({x=pos.x, y=pos.y-1.0, z=pos.z})
+	local fdir = bottomnode.param2
+	if  string.find(bottomnode.name, "homedecor:bed_.*_footext$") then
+		local newnode = string.gsub(bottomnode.name, "_footext", "_foot")
+		minetest.set_node({x=pos.x, y=pos.y-1.0, z=pos.z}, { name = newnode, param2 = fdir})
+	end
+end
+
 for _, color in ipairs(bedcolors) do
  
 	minetest.register_node("homedecor:bed_"..color.."_head", {
@@ -291,7 +323,7 @@ for _, color in ipairs(bedcolors) do
 			fixed = { 0, 0, 0, 0, 0, 0 }
 		}
 	})
- 
+
 	minetest.register_node("homedecor:bed_"..color.."_foot", {
 		tiles = {
 			"homedecor_bed_"..color.."_top2.png",
@@ -329,19 +361,7 @@ for _, color in ipairs(bedcolors) do
 			fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 1.5 }
 		},
 		on_construct = function(pos)
-		local function bed_extension(pos)
-		fdir = minetest.get_node(pos).param2
-		    if minetest.get_node({x=pos.x, y=pos.y-1.0, z=pos.z}).name == "homedecor:bed_"..color.."_foot"  then
-		    minetest.set_node({x=pos.x, y=pos.y-1.0, z=pos.z}, { name = "homedecor:bed_"..color.."_footext", param2 = fdir})
-		    end
-		    if minetest.get_node({x=pos.x, y=pos.y+1.0, z=pos.z}).name == "homedecor:bed_"..color.."_foot"  then
-		    minetest.set_node({x=pos.x, y=pos.y, z=pos.z}, { name = "homedecor:bed_"..color.."_footext", param2 = fdir})
-		    end
-		    if minetest.get_node({x=pos.x, y=pos.y+1.0, z=pos.z}).name == "homedecor:bed_"..color.."_footext"  then
-		    minetest.set_node({x=pos.x, y=pos.y, z=pos.z}, { name = "homedecor:bed_"..color.."_footext", param2 = fdir})
-		    end
-		end
-		bed_extension(pos)
+			bed_extension(pos, color)
 		end,
  
 		on_place = function(itemstack, placer, pointed_thing)
@@ -356,10 +376,7 @@ for _, color in ipairs(bedcolors) do
 			if minetest.get_node(pos2).name == "homedecor:bed_"..color.."_head" then
 				minetest.remove_node(pos2)
 			end
-			if  minetest.get_node({x=pos.x, y=pos.y-1.0, z=pos.z}).name == "homedecor:bed_"..color.."_footext"
-			then
-				minetest.set_node({x=pos.x, y=pos.y-1.0, z=pos.z}, { name = "homedecor:bed_"..color.."_foot", param2 = fdir})
-			end
+			unextend_bed(pos, color)
 		 end
 	})
  
@@ -404,10 +421,7 @@ for _, color in ipairs(bedcolors) do
 			if minetest.get_node(pos2).name == "homedecor:bed_"..color.."_head" then
 				minetest.remove_node(pos2)
 			end
-			if  minetest.get_node({x=pos.x, y=pos.y-1.0, z=pos.z}).name == "homedecor:bed_"..color.."_footext"
-			then
-				minetest.set_node({x=pos.x, y=pos.y-1.0, z=pos.z}, { name = "homedecor:bed_"..color.."_foot", param2 = fdir})
-			end
+			unextend_bed(pos, color)
 		end,
 		drop = "homedecor:bed_"..color.."_foot"
 	})
