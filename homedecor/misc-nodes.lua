@@ -1701,3 +1701,83 @@ minetest.register_node("homedecor:beer_mug", {
 	}
 })
 
+minetest.register_node("homedecor:tool_cabinet_bottom", {
+	description = "Metal tool cabinet and work table",
+	tiles = {
+		"homedecor_tool_cabinet_bottom_top.png",
+		"homedecor_tool_cabinet_bottom_sides.png",
+		"homedecor_tool_cabinet_bottom_sides.png",
+		"homedecor_tool_cabinet_bottom_sides.png",
+		"homedecor_tool_cabinet_bottom_sides.png", 
+		"homedecor_tool_cabinet_bottom_front.png"
+	},
+	inventory_image = "homedecor_tool_cabinet_inv.png",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0.4375, -0.4375, -0.375, 0.5}, -- NodeBox1
+			{-0.5, -0.5, -0.5, -0.4375, -0.375, -0.4375}, -- NodeBox2
+			{0.4375, -0.5, 0.4375, 0.5, -0.375, 0.5}, -- NodeBox3
+			{0.4375, -0.5, -0.5, 0.5, -0.375, -0.4375}, -- NodeBox4
+			{-0.5, -0.375, -0.5, 0.5, 0.5, 0.5}, -- NodeBox5
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
+	},
+	on_place = function(itemstack, placer, pointed_thing)
+		return homedecor.stack_vertically(itemstack, placer, pointed_thing,
+			"homedecor:tool_cabinet_bottom", "homedecor:tool_cabinet_top")
+	end,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
+		if minetest.get_node(pos2).name == "homedecor:tool_cabinet_top" then
+			minetest.remove_node(pos2)
+		end
+	end
+})
+
+minetest.register_node("homedecor:tool_cabinet_top", {
+	tiles = {
+		"homedecor_tool_cabinet_top_top.png",
+		"homedecor_tool_cabinet_top_bottom.png",
+		"homedecor_tool_cabinet_top_right.png",
+		"homedecor_tool_cabinet_top_left.png",
+		"homedecor_tool_cabinet_top_back.png",
+		"homedecor_tool_cabinet_top_front.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3, not_in_creative_inventory=1 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.1875, -0.5, 0.4375, 0.5, 0.5, 0.5}, -- NodeBox1
+			{-0.5, -0.5, -0.4375, -0.1875, -0.4375, 0.125}, -- NodeBox2
+			{-0.375, -0.4375, 0, -0.3125, 0.1875, 0.0625}, -- NodeBox3
+			{-0.4375, -0.1875, -0.375, -0.25, 0.125, 0.125}, -- NodeBox4
+			{-0.25, -0.0625, -0.3125, -0.22, 0.3125, -0.2825}, -- NodeBox5
+			{-0.375, -0.1875, -0.25, -0.3125, -0.218, -0.3125}, -- NodeBox6
+			{-0.35, -0.32, -0.285, -0.3375, -0.218, -0.2725}, -- NodeBox7
+			{0, -0.3125, 0.375, 0.0625, 0.1875, 0.4375}, -- NodeBox8
+			{0.125, 0.1875, 0.375, 0.1875, 0.25, 0.4375}, -- NodeBox9
+			{-0.0625, 0.1875, 0.375, 0.125, 0.3125, 0.4375}, -- NodeBox10
+			{0.343, -0.125, 0.42, 0.375, 0.125, 0.4375}, -- NodeBox11
+			{0.3125, 0.095, 0.42, 0.343, 0.1575, 0.4375}, -- NodeBox12
+			{0.375, 0.095, 0.42, 0.405, 0.1575, 0.4375}, -- NodeBox13
+			{0.3125, -0.155, 0.42, 0.343, -0.093, 0.4375}, -- NodeBox14
+			{0.375, -0.155, 0.42, 0.405, -0.093, 0.4375}, -- NodeBox15
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 0, 0, 0, 0, 0, 0 }
+	}
+})
+

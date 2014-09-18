@@ -2748,3 +2748,4 @@ minetest.register_craft({
 	},
 })
 
+
