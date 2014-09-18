@@ -2730,3 +2730,12 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:barbecue",
+	recipe = {
+		{ "","homedecor:fence_chainlink","" },
+		{ "default:steel_ingot","fake_fire:embers","default:steel_ingot" },
+		{ "homedecor:pole_wrought_iron","default:steel_ingot","homedecor:pole_wrought_iron" }
+	},
+})
+

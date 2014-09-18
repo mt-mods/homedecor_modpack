@@ -1547,3 +1547,74 @@ minetest.register_node("homedecor:stonepath", {
 		fixed = { -0.4375, -0.5, -0.4375, 0.4375, -0.4, 0.4375 }
 	}
 })
+
+minetest.register_node("homedecor:barbecue", {
+	description = "Barbecue",
+	tiles = {
+		{name="homedecor_barbecue_top.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=2}},
+		"forniture_black_metal.png",
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3 },
+	light_source = 9,
+	node_box = {
+		type = "fixed",
+		fixed = {
+                        {-0.5, -0.5, 0.25, -0.4375, 0.0625, 0.3125}, -- NodeBox1
+			{0.4375, -0.5, 0.25, 0.5, 0.0625, 0.3125}, -- NodeBox2
+			{-0.5, -0.5, -0.3125, -0.4375, 0.0625, -0.25}, -- NodeBox3
+			{0.4375, -0.5, -0.3125, 0.5, 0.0625, -0.25}, -- NodeBox4
+			{-0.5, 0.0625, -0.3125, 0.5, 0.375, 0.3125}, -- NodeBox5
+			{-0.375, 0.5, -0.25, -0.3125, 0.5, 0.25}, -- NodeBox6
+			{-0.25, 0.5, -0.25, -0.1875, 0.5, 0.25}, -- NodeBox7
+			{-0.125, 0.5, -0.25, -0.0625, 0.5, 0.25}, -- NodeBox8
+			{0, 0.5, -0.25, 0.0625, 0.5, 0.25}, -- NodeBox9
+			{0.125, 0.5, -0.25, 0.1875, 0.5, 0.25}, -- NodeBox10
+			{0.25, 0.5, -0.25, 0.3125, 0.5, 0.25}, -- NodeBox11
+			{0.375, 0.5, -0.25, 0.4375, 0.5, 0.25}, -- NodeBox12
+			{-0.5, 0.375, 0.25, 0.5, 0.5, 0.3125}, -- NodeBox13
+			{-0.5, 0.0625, -0.3125, 0.5, 0.5, -0.25}, -- NodeBox14
+			{-0.5, 0.0625, -0.3125, -0.4375, 0.5, 0.3125}, -- NodeBox15
+			{0.4375, 0.0625, -0.3125, 0.5, 0.5, 0.3125}, -- NodeBox16
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, -0.3125, 0.5, 0.625, 0.3125 }
+        },
+	on_place = function(itemstack, placer, pointed_thing)
+		return homedecor.stack_vertically(itemstack, placer, pointed_thing,
+			"homedecor:barbecue", "homedecor:barbecue_meat")
+	end,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
+		if minetest.get_node(pos2).name == "homedecor:barbecue_meat" then
+			minetest.remove_node(pos2)
+		end
+	end
+})
+
+minetest.register_node("homedecor:barbecue_meat", {
+	tiles = {
+		"homedecor_barbecue_meat.png",
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3, not_in_creative_inventory=1 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.25, -0.5, -0.125, -0.0625, -0.4375, 0.125}, -- NodeBox1
+			{0.125, -0.5, -0.125, 0.3125, -0.4375, 0.125}, -- NodeBox2
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 0, 0, 0, 0, 0, 0 }
+       }
+})
+
