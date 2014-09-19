@@ -341,6 +341,7 @@ end
 local math_max = math.max
 
 local function fill_line(x, y, w, c)
+	c = c or "0"
 	local tex = { }
 	for xx = 0, math.max(0, w-16), 16 do
 		table.insert(tex, (":%d,%d=slc_%s.png"):format(x + xx, y, c))
