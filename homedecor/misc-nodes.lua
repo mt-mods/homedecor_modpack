@@ -1876,3 +1876,67 @@ minetest.register_node("homedecor:swing_rope", {
 		fixed = { 0, 0, 0, 0, 0, 0 }
 	}
 })
+
+local bookcolors = {
+	"red",
+	"green",
+	"blue"
+}
+
+for c in ipairs(bookcolors) do
+	local color = bookcolors[c]
+	local color_d = S(bookcolors[c])
+
+minetest.register_node("homedecor:book_"..color, {
+	description = S("Book (%s)"):format(color_d),
+	tiles = {
+		"homedecor_book_"..color.."_top.png",
+		"homedecor_book_"..color.."_bottom.png",
+		"homedecor_book_right.png",
+		"homedecor_book_"..color.."_left.png",
+		"homedecor_book_back.png",
+		"homedecor_book_front.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3, oddly_breakable_by_hand=3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{0, -0.5, -0.375, 0.3125, -0.4375, 0.0625}, -- NodeBox1
+		}
+	},
+	on_punch = function(pos, node, puncher, pointed_thing)
+		local fdir = node.param2
+		minetest.set_node(pos, { name = "homedecor:book_open_"..color, param2 = fdir })
+	end,
+})
+
+minetest.register_node("homedecor:book_open_"..color, {
+	tiles = {
+		"homedecor_book_open_top.png",
+		"homedecor_book_open_"..color.."_bottom.png",
+		"homedecor_book_open_sides.png",
+		"homedecor_book_open_sides.png",
+		"homedecor_book_open_sides.png",
+		"homedecor_book_open_sides.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3, oddly_breakable_by_hand=3, not_in_creative_inventory=1 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.3125, -0.5, -0.375, 0.3125, -0.47, 0.0625}, -- NodeBox1
+		}
+	},
+	drop = "homedecor:book_"..color,
+	on_punch = function(pos, node, puncher, pointed_thing)
+		local fdir = node.param2
+		minetest.set_node(pos, { name = "homedecor:book_"..color, param2 = fdir })
+	end,
+})
+
+end
