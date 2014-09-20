@@ -46,6 +46,7 @@ minetest.register_node("plasmascreen:screen1", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "",
+        light_source = 10,
 	drawtype = "nodebox",
 	node_box = {
 				type = "fixed",
@@ -82,6 +83,7 @@ minetest.register_node("plasmascreen:screen2", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "",
+        light_source = 10,
 	drawtype = "nodebox",
 	node_box = {
 				type = "fixed",
@@ -117,6 +119,7 @@ minetest.register_node("plasmascreen:screen3", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "",
+        light_source = 10,
 	drawtype = "nodebox",
 	node_box = {
 				type = "fixed",
@@ -153,6 +156,7 @@ minetest.register_node("plasmascreen:screen4", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "",
+        light_source = 10,
 	drawtype = "nodebox",
 	node_box = {
 				type = "fixed",
@@ -191,6 +195,7 @@ minetest.register_node("plasmascreen:screen5", {
 	wield_image = "plasmascreen_tv_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
+        light_source = 10,
 	drawtype = "nodebox",
 	node_box = {
 				type = "fixed",
@@ -425,6 +430,7 @@ minetest.register_node("plasmascreen:screen6", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	drop = "",
+        light_source = 10,
 	drawtype = "nodebox",
 	node_box = {
 				type = "fixed",
