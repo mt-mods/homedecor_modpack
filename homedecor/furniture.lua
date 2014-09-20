@@ -179,7 +179,6 @@ local function reg_lamp(suffix, nxt, desc, tilesuffix, light, color)
 	if lampcolor == "" then 
 		minetest.register_alias("3dforniture:table_lamp_"..suffix, "homedecor:table_lamp_"..suffix)
 	end
-end
 
 	minetest.register_node("homedecor:standing_lamp_bottom"..lampcolor.."_"..suffix, {
 	description = S(desc),
@@ -249,6 +248,7 @@ end
 	end,
 	drop = "homedecor:standing_lamp_bottom"..lampcolor.."_off"
 	})
+end
 
 for _, color in ipairs(lamp_colors) do
 	reg_lamp("off", "low", "Table Lamp",  "", nil,	color )
