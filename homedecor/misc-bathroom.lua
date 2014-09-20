@@ -88,6 +88,10 @@ minetest.register_node('homedecor:medicine_cabinet', {
 	},
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
+	on_punch = function(pos, node, puncher, pointed_thing)
+		local fdir = node.param2
+		minetest.set_node(pos, { name = "homedecor:medicine_cabinet_open", param2 = fdir })
+	end,
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec",
@@ -120,6 +124,33 @@ minetest.register_node('homedecor:medicine_cabinet', {
 		    player:get_player_name(),
 		    minetest.pos_to_string(pos)
 		))
+	end,
+})
+
+minetest.register_node("homedecor:medicine_cabinet_open", {
+	tiles = {
+		'homedecor_medicine_cabinet_tb.png',
+		'homedecor_medicine_cabinet_tb.png',
+		"homedecor_medicine_cabinet_open_right.png",
+		'homedecor_medicine_cabinet_sides.png',
+		'homedecor_medicine_cabinet_back.png',
+		"homedecor_medicine_cabinet_open_front.png"
+	},
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy = 3, not_in_creative_inventory=1 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.3125, -0.1875, 0.375, 0.3125, 0.5, 0.5}, -- NodeBox1
+			{0.28, -0.1875, -0.1875, 0.3125, 0.5, 0.375}, -- NodeBox2
+		}
+	},
+	drop = "homedecor:medicine_cabinet",
+	on_punch = function(pos, node, puncher, pointed_thing)
+		local fdir = node.param2
+		minetest.set_node(pos, { name = "homedecor:medicine_cabinet", param2 = fdir })
 	end,
 })
 
