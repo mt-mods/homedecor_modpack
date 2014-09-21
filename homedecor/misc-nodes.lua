@@ -1940,3 +1940,21 @@ minetest.register_node("homedecor:book_open_"..color, {
 })
 
 end
+
+minetest.register_node("homedecor:calendar", {
+	description = "Calendar",
+	drawtype = "signlike",
+	tiles = {"homedecor_calendar.png"},
+	inventory_image = "homedecor_calendar.png",
+	wield_image = "homedecor_calendar.png",
+	paramtype = "light",
+	paramtype2 = "wallmounted",
+	sunlight_propagates = true,
+	walkable = false,
+	selection_box = {
+		type = "wallmounted",
+	},
+	groups = {choppy=2,dig_immediate=2,attached_node=1},
+	legacy_wallmounted = true,
+	sounds = default.node_sound_defaults(),
+})
