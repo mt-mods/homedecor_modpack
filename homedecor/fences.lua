@@ -415,5 +415,28 @@ minetest.register_node("homedecor:fence_chainlink_corner", {
 	},
 })
 
+minetest.register_node("homedecor:fence_wrought_iron_2", {
+	drawtype = "nodebox",
+    description = S("Wrought Iron fence (type 2)"),
+    tiles = {
+		"homedecor_fence_wrought_iron_2_tb.png",
+		"homedecor_fence_wrought_iron_2_tb.png",
+		"homedecor_fence_wrought_iron_2_sides.png",
+		"homedecor_fence_wrought_iron_2_sides.png",
+		"homedecor_fence_wrought_iron_2_fb.png",
+		"homedecor_fence_wrought_iron_2_fb.png"
+	},
+    paramtype = "light",
+    is_ground_content = true,
+    groups = {snappy=3},
+    sounds = default.node_sound_wood_defaults(),
+	walkable = true,
+	paramtype2 = "facedir",
+    node_box = {
+		type = "fixed",
+		fixed = { -8/16, -8/16, 6/16, 8/16, 8/16, 8/16 },
+    },
+})
+
 signs_lib.register_fence_with_sign("homedecor:fence_brass", "homedecor:fence_brass_with_sign")
 signs_lib.register_fence_with_sign("homedecor:fence_wrought_iron", "homedecor:fence_wrought_iron_with_sign")
