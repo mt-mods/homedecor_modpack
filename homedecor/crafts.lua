@@ -1250,9 +1250,18 @@ minetest.register_craft({
 -- candles
 
 minetest.register_craft({
-	output = "homedecor:candle 4",
+	output = "homedecor:candle_thin 4",
 	recipe = {
 		{"farming:string" },
+		{"homedecor:paraffin" }
+	}
+})
+
+minetest.register_craft({
+	output = "homedecor:candle 2",
+	recipe = {
+		{"farming:string" },
+		{"homedecor:paraffin" },
 		{"homedecor:paraffin" }
 	}
 })
