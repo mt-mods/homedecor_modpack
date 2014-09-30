@@ -122,6 +122,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "homedecor:standing_lamp_bottom_off",
+	recipe = {
+		{"homedecor:table_lamp_off"},
+		{"group:stick"},
+		{"group:stick"},
+	},
+})
+
+minetest.register_craft({
     type = "fuel",
     recipe = "homedecor:table_lamp_off",
     burntime = 10,
@@ -150,15 +159,6 @@ for _, color in ipairs(lamp_colors) do
 	})
 
 	minetest.register_craft({
-		output = "homedecor:standing_lamp_bottom_"..color.."_off",
-		recipe = {
-		    {"homedecor:table_lamp_"..color.."_off"},
-		    {"group:stick"},
-		    {"group:stick"},
-		},
-	})
-
-	minetest.register_craft({
 		type = "shapeless",
 		output = "homedecor:table_lamp_"..color.."_off",
 		recipe = {
@@ -171,6 +171,15 @@ for _, color in ipairs(lamp_colors) do
 		type = "fuel",
 		recipe = "homedecor:table_lamp_"..color.."_off",
 		burntime = 10,
+	})
+
+	minetest.register_craft({
+		output = "homedecor:standing_lamp_bottom_"..color.."_off",
+		recipe = {
+		    {"homedecor:table_lamp_"..color.."_off"},
+		    {"group:stick"},
+		    {"group:stick"},
+		},
 	})
 
 end
