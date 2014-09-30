@@ -392,9 +392,11 @@ local lamp_colors = { "", "blue", "green", "pink", "red", "violet" }
 
 local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 	local lampcolor = "_"..color
+	local standingcolor = "_"..color
 	local colordesc = " ("..color..")"
 	if color == "" then
 		lampcolor = ""
+		standingcolor = "_white"
 		colordesc  = " (white)"
 	end
 	minetest.register_node("homedecor:table_lamp"..lampcolor.."_"..suffix, {
@@ -449,6 +451,7 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 		"forniture_table_lamp_s"..tilesuffix..".png",
 		"homedecor_standing_lamp_bottom_sides.png",
 	},
+	inventory_image = "homedecor_standing_lamp"..standingcolor.."_inv.png",
 	paramtype = "light",
 	node_box = {
 		type = "fixed",
