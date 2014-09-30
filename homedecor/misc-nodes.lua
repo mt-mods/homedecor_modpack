@@ -1897,6 +1897,7 @@ minetest.register_node("homedecor:book_"..color, {
 		"homedecor_book_back.png",
 		"homedecor_book_front.png"
 	},
+	inventory_image = "homedecor_book_"..color.."_inv.png",
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
