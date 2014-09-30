@@ -150,6 +150,15 @@ for _, color in ipairs(lamp_colors) do
 	})
 
 	minetest.register_craft({
+		output = "homedecor:standing_lamp_bottom_"..color.."_off",
+		recipe = {
+		    {"homedecor:table_lamp_"..color.."_off"},
+		    {"group:stick"},
+		    {"group:stick"},
+		},
+	})
+
+	minetest.register_craft({
 		type = "shapeless",
 		output = "homedecor:table_lamp_"..color.."_off",
 		recipe = {
