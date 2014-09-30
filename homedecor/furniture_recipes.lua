@@ -182,6 +182,15 @@ for _, color in ipairs(lamp_colors) do
 		},
 	})
 
+	minetest.register_craft({
+		type = "shapeless",
+		output = "homedecor:standing_lamp_bottom_"..color.."_off",
+		recipe = {
+			"homedecor:standing_lamp_bottom_off",
+			"dye:"..color
+		},
+	})
+
 end
 
 minetest.register_craft({
