@@ -2783,3 +2783,21 @@ minetest.register_craft({
 		{ "farming:string","moreblocks:panel_wood_1","farming:string" }
 	},
 })
+
+local bookcolors = {
+	"red",
+	"green",
+	"blue"
+}
+
+for _, color in ipairs(bookcolors) do
+	minetest.register_craft({
+		type = "shapeless",
+		output = "homedecor:book_"..color,
+		recipe = {
+			"dye:"..color,
+			"default:book"
+		},
+	})
+end
+
