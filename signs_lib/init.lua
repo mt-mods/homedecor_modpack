@@ -513,12 +513,20 @@ signs_lib.update_sign = function(pos, fields, owner)
     local text = meta:get_string("text")
     if text == nil then return end
     local objects = minetest.get_objects_inside_radius(pos, 0.5)
+    local found
     for _, v in ipairs(objects) do
 		local e = v:get_luaentity()
 		if e and e.name == "signs:text" then
-			set_obj_text(v, text, new)
-			return
+			if found then
+				v:remove()
+			else
+				set_obj_text(v, text, new)
+				found = true
+			end
         end
+    end
+    if found then
+		return
     end
 
 	-- if there is no entity
@@ -590,34 +598,24 @@ function signs_lib.determine_sign_type(itemstack, placer, pointed_thing, locked)
 
 		local fdir = minetest.dir_to_facedir(dir)
 
-		local sign_info
 		local pt_name = minetest.get_node(under).name
 		print(dump(pt_name))
 		local signname = itemstack:get_name()
 
 		if fences_with_sign[pt_name] and signname == "default:sign_wall" then
 			minetest.add_node(under, {name = fences_with_sign[pt_name], param2 = fdir})
-			sign_info = signs_lib.sign_post_model.textpos[fdir + 1]
 		elseif wdir == 0 and signname == "default:sign_wall" then
 			minetest.add_node(above, {name = "signs:sign_hanging", param2 = fdir})
-			sign_info = signs_lib.hanging_sign_model.textpos[fdir + 1]
 		elseif wdir == 1 and signname == "default:sign_wall" then
 			minetest.add_node(above, {name = "signs:sign_yard", param2 = fdir})
-			sign_info = signs_lib.yard_sign_model.textpos[fdir + 1]
 		else -- it must be a wooden or metal wall sign.
 			minetest.add_node(above, {name = signname, param2 = fdir})
-			sign_info = signs_lib.wall_sign_model.textpos[fdir + 1]
 			if locked then
 				local meta = minetest.get_meta(above)
 				local owner = placer:get_player_name()
 				meta:set_string("owner", owner)
 			end
 		end
-
-		local text = minetest.add_entity({x = above.x + sign_info.delta.x,
-											  y = above.y + sign_info.delta.y,
-											  z = above.z + sign_info.delta.z}, "signs:text")
-		text:setyaw(sign_info.yaw)
 
 		if not signs_lib.expect_infinite_stacks then
 			itemstack:take_item()
