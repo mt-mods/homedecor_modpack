@@ -1073,11 +1073,14 @@ minetest.register_craft({
 
 minetest.register_craft({
         type = "shapeless",
-        output = "vessels:glass_fragments",
+        output = "vessels:glass_fragments 2",
         recipe = {
 		"homedecor:skylight",
 		"homedecor:skylight",
 		"homedecor:skylight",
+		"homedecor:skylight",
+		"homedecor:skylight",
+		"homedecor:skylight"
 	}
 })
 
@@ -1435,23 +1438,30 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:fence_wrought_iron 6",
-        recipe = {
-                { "default:iron_lump","default:iron_lump","default:iron_lump" },
-                { "default:iron_lump","default:iron_lump","default:iron_lump" },
-        },
+	output = "homedecor:fence_wrought_iron 6",
+	recipe = {
+		{ "default:iron_lump","default:iron_lump","default:iron_lump" },
+		{ "default:iron_lump","default:iron_lump","default:iron_lump" },
+	},
 })
 
 -- other types of fences
 
+minetest.register_craft( {
+	output = "homedecor:fence_wrought_iron_2 2",
+	recipe = {
+		{ "homedecor:pole_wrought_iron", "default:iron_lump" },
+		{ "homedecor:pole_wrought_iron", "default:iron_lump" },
+	},
+})
 
 minetest.register_craft( {
-        output = "homedecor:fence_picket 6",
-        recipe = {
-                { "group:stick", "group:stick", "group:stick" },
-                { "group:stick", "", "group:stick" },
-                { "group:stick", "group:stick", "group:stick" }
-        },
+	output = "homedecor:fence_picket 6",
+	recipe = {
+		{ "group:stick", "group:stick", "group:stick" },
+		{ "group:stick", "", "group:stick" },
+		{ "group:stick", "group:stick", "group:stick" }
+	},
 })
 
 minetest.register_craft( {
@@ -1475,12 +1485,12 @@ minetest.register_craft( {
 
 
 minetest.register_craft( {
-        output = "homedecor:fence_picket_white 6",
-        recipe = {
-                { "group:stick", "group:stick", "group:stick" },
-                { "group:stick", "dye:white", "group:stick" },
-                { "group:stick", "group:stick", "group:stick" }
-        },
+	output = "homedecor:fence_picket_white 6",
+	recipe = {
+		{ "group:stick", "group:stick", "group:stick" },
+		{ "group:stick", "dye:white", "group:stick" },
+		{ "group:stick", "group:stick", "group:stick" }
+	},
 })
 
 minetest.register_craft( {
@@ -1504,12 +1514,12 @@ minetest.register_craft( {
 
 
 minetest.register_craft( {
-        output = "homedecor:fence_privacy 6",
-        recipe = {
-                { "group:wood", "group:stick", "group:wood" },
-                { "group:wood", "", "group:wood" },
-                { "group:wood", "group:stick", "group:wood" }
-        },
+	output = "homedecor:fence_privacy 6",
+	recipe = {
+		{ "group:wood", "group:stick", "group:wood" },
+		{ "group:wood", "", "group:wood" },
+		{ "group:wood", "group:stick", "group:wood" }
+	},
 })
 
 minetest.register_craft( {
@@ -1533,12 +1543,12 @@ minetest.register_craft( {
 
 
 minetest.register_craft( {
-        output = "homedecor:fence_barbed_wire 6",
-        recipe = {
-                { "group:stick", "homedecor:steel_wire", "group:stick" },
-                { "group:stick", "", "group:stick" },
-                { "group:stick", "homedecor:steel_wire", "group:stick" }
-        },
+	output = "homedecor:fence_barbed_wire 6",
+	recipe = {
+		{ "group:stick", "homedecor:steel_wire", "group:stick" },
+		{ "group:stick", "", "group:stick" },
+		{ "group:stick", "homedecor:steel_wire", "group:stick" }
+	},
 })
 
 minetest.register_craft( {
@@ -1557,12 +1567,12 @@ minetest.register_craft( {
 
 
 minetest.register_craft( {
-        output = "homedecor:fence_chainlink 9",
-        recipe = {
-                { "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" },
-                { "homedecor:steel_wire", "homedecor:steel_wire", "default:steel_ingot" },
-                { "homedecor:steel_wire", "homedecor:steel_wire", "default:steel_ingot" }
-        },
+	output = "homedecor:fence_chainlink 9",
+	recipe = {
+		{ "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" },
+		{ "homedecor:steel_wire", "homedecor:steel_wire", "default:steel_ingot" },
+		{ "homedecor:steel_wire", "homedecor:steel_wire", "default:steel_ingot" }
+	},
 })
 
 minetest.register_craft( {
@@ -1584,7 +1594,7 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:gate_picket_white_closed",
         recipe = {
-		"homedecor:fence_picket_white"
+			"homedecor:fence_picket_white"
         },
 })
 
@@ -1592,7 +1602,7 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:fence_picket_white",
         recipe = {
-		"homedecor:gate_picket_white_closed"
+			"homedecor:gate_picket_white_closed"
         },
 })
 
@@ -1600,7 +1610,7 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:gate_picket_closed",
         recipe = {
-		"homedecor:fence_picket"
+			"homedecor:fence_picket"
         },
 })
 
@@ -1608,7 +1618,7 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:fence_picket",
         recipe = {
-		"homedecor:gate_picket_closed"
+			"homedecor:gate_picket_closed"
         },
 })
 
@@ -1616,7 +1626,7 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:gate_barbed_wire_closed",
         recipe = {
-		"homedecor:fence_barbed_wire"
+			"homedecor:fence_barbed_wire"
         },
 })
 
@@ -1624,7 +1634,7 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:fence_barbed_wire",
         recipe = {
-		"homedecor:gate_barbed_wire_closed"
+			"homedecor:gate_barbed_wire_closed"
         },
 })
 
@@ -1632,7 +1642,7 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:gate_chainlink_closed",
         recipe = {
-		"homedecor:fence_chainlink"
+			"homedecor:fence_chainlink"
         },
 })
 
@@ -1640,7 +1650,7 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:fence_chainlink",
         recipe = {
-		"homedecor:gate_chainlink_closed"
+			"homedecor:gate_chainlink_closed"
         },
 })
 
@@ -1651,9 +1661,9 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:door_wood_plain_bottom_left 2",
         recipe = {
-		{ "group:wood", "group:wood", "" },
-		{ "group:wood", "group:wood", "default:steel_ingot" },
-		{ "group:wood", "group:wood", "" },
+			{ "group:wood", "group:wood", "" },
+			{ "group:wood", "group:wood", "default:steel_ingot" },
+			{ "group:wood", "group:wood", "" },
         },
 })
 
@@ -1662,9 +1672,9 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:door_exterior_fancy_bottom_left 2",
         recipe = {
-		{ "group:wood", "default:glass" },
-		{ "group:wood", "group:wood" },
-		{ "group:wood", "group:wood" },
+			{ "group:wood", "default:glass" },
+			{ "group:wood", "group:wood" },
+			{ "group:wood", "group:wood" },
         },
 })
 
@@ -1675,18 +1685,18 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:door_wood_glass_bottom_left 2",
         recipe = {
-		{ "default:glass", "group:wood" },
-		{ "group:wood", "default:glass" },
-		{ "default:glass", "group:wood" },
+			{ "default:glass", "group:wood" },
+			{ "group:wood", "default:glass" },
+			{ "default:glass", "group:wood" },
         },
 })
 
 minetest.register_craft( {
         output = "homedecor:door_wood_glass_bottom_left 2",
         recipe = {
-		{ "group:wood", "default:glass" },
-		{ "default:glass", "group:wood" },
-		{ "group:wood", "default:glass" },
+			{ "group:wood", "default:glass" },
+			{ "default:glass", "group:wood" },
+			{ "group:wood", "default:glass" },
         },
 })
 
@@ -1696,10 +1706,10 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:door_wood_glass_mahogany_bottom_left 2",
         recipe = {
-		"default:dirt",
-		"default:coal_lump",
-		"homedecor:door_wood_glass_bottom_left",
-		"homedecor:door_wood_glass_bottom_left"
+			"default:dirt",
+			"default:coal_lump",
+			"homedecor:door_wood_glass_bottom_left",
+			"homedecor:door_wood_glass_bottom_left"
         },
 })
 
@@ -1707,9 +1717,9 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:door_wood_glass_mahogany_bottom_left 2",
         recipe = {
-		"dye:brown",
-		"homedecor:door_wood_glass_bottom_left",
-		"homedecor:door_wood_glass_bottom_left"
+			"dye:brown",
+			"homedecor:door_wood_glass_bottom_left",
+			"homedecor:door_wood_glass_bottom_left"
         },
 })
 
@@ -1719,9 +1729,9 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:door_wood_glass_white_bottom_left 2",
         recipe = {
-		"dye:white",
-		"homedecor:door_wood_glass_bottom_left",
-		"homedecor:door_wood_glass_bottom_left"
+			"dye:white",
+			"homedecor:door_wood_glass_bottom_left",
+			"homedecor:door_wood_glass_bottom_left"
         },
 })
 
@@ -1730,9 +1740,9 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:door_glass_bottom_left 2",
         recipe = {
-		{ "default:glass", "default:glass" },
-		{ "default:glass", "default:steel_ingot" },
-		{ "default:glass", "default:glass" },
+			{ "default:glass", "default:glass" },
+			{ "default:glass", "default:steel_ingot" },
+			{ "default:glass", "default:glass" },
         },
 })
 
@@ -1743,9 +1753,9 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:door_closet_oak_bottom_left 2",
         recipe = {
-		{ "", "group:stick", "group:stick" },
-		{ "default:steel_ingot", "group:stick", "group:stick" },
-		{ "", "group:stick", "group:stick" },
+			{ "", "group:stick", "group:stick" },
+			{ "default:steel_ingot", "group:stick", "group:stick" },
+			{ "", "group:stick", "group:stick" },
         },
 })
 
@@ -1755,10 +1765,10 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:door_closet_mahogany_bottom_left 2",
         recipe = {
-		"homedecor:door_closet_oak_bottom_left",
-		"homedecor:door_closet_oak_bottom_left",
-		"default:dirt",
-		"default:coal_lump",
+			"homedecor:door_closet_oak_bottom_left",
+			"homedecor:door_closet_oak_bottom_left",
+			"default:dirt",
+			"default:coal_lump",
         },
 })
 
@@ -1766,10 +1776,32 @@ minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:door_closet_mahogany_bottom_left 2",
         recipe = {
-		"homedecor:door_closet_oak_bottom_left",
-		"homedecor:door_closet_oak_bottom_left",
-		"dye:brown"
+			"homedecor:door_closet_oak_bottom_left",
+			"homedecor:door_closet_oak_bottom_left",
+			"dye:brown"
         },
+})
+
+-- wrought fence-like door
+
+minetest.register_craft( {
+        output = "homedecor:door_wrought_iron_bottom_left 2",
+        recipe = {
+			{ "homedecor:pole_wrought_iron", "default:iron_lump" },
+			{ "homedecor:pole_wrought_iron", "default:iron_lump" },
+			{ "homedecor:pole_wrought_iron", "default:iron_lump" }
+        },
+})
+
+-- bedroom door
+
+minetest.register_craft( {
+	output = "homedecor:door_bedroom_bottom_left",
+	recipe = {
+		{ "dye:white", "dye:white", "" },
+		{ "homedecor:door_wood_plain_bottom_left", "technic:brass_ingot", "" },
+		{ "", "", "" },
+	},
 })
 
 -- washer and dryer
