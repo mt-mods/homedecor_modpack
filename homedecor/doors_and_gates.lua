@@ -565,7 +565,7 @@ function homedecor.flip_gate(pos, node, player, gate, oc)
 	end
 end
 
--- Japanese "paper" door/wall
+-- "paper" door/wall
 
 minetest.register_node("homedecor:japanese_wall_top", {
 	tiles = {
@@ -656,4 +656,154 @@ minetest.register_node("homedecor:tatami_mat", {
 		}
 	}
 })
+
+minetest.register_node("homedecor:jpn_door_bottom", {
+	description = "Japanese-style door",
+	inventory_image = "homedecor_jpn_door_inv.png",
+	tiles = {
+                "homedecor_japanese_wall_edges.png",
+                "homedecor_japanese_wall_edges.png",
+                "homedecor_japanese_wall_edges.png",
+                "homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_door_bottom.png"
+	},
+	drawtype = "nodebox",
+        use_texture_alpha = true,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy = 3 },
+	node_box = {
+		type = "fixed",
+		fixed = {			
+			{-0.5, -0.5, 0, 0.5, 0.5, 0.0625}, -- NodeBox1
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, 0, 0.5, 1.5, 0.0625}, 
+	},
+	on_place = function(itemstack, placer, pointed_thing)
+
+		local pointed = pointed_thing.under
+		local pnode = minetest.get_node(pointed)
+		local pname = pnode.name
+		local rnodedef = minetest.registered_nodes[pname]
+
+		if rnodedef.on_rightclick then
+			rnodedef.on_rightclick(pointed, pnode, placer)
+			return
+		end
+
+		return homedecor.stack_vertically(itemstack, placer, pointed_thing,
+			"homedecor:jpn_door_bottom", "homedecor:jpn_door_top")
+	end,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
+		if minetest.get_node(pos2).name == "homedecor:jpn_door_top" then
+			minetest.remove_node(pos2)
+		end
+	end,
+	on_rightclick = function(pos, node, clicker)
+		fdir = minetest.get_node(pos).param2
+		minetest.set_node(pos, {name = "homedecor:jpn_door_bottom_open", param2 = fdir})
+		minetest.set_node({x = pos.x, y=pos.y + 1, z = pos.z}, {name = "homedecor:jpn_door_top_open", param2 = fdir})
+	end
+})
+
+minetest.register_node("homedecor:jpn_door_top", {
+	tiles = {
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_door_top.png"
+	},
+	drawtype = "nodebox",
+	use_texture_alpha = true,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy = 3, not_in_creative_inventory = 1 },
+	node_box = {
+		type = "fixed",
+		fixed = {			
+			{-0.5, -0.5, 0, 0.5, 0.5, 0.0625}, -- NodeBox1
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 0, 0, 0, 0, 0, 0 },
+	},
+---	on_rightclick = function(pos, node, clicker)
+--		fdir = minetest.get_node(pos).param2
+--		minetest.set_node(pos, {name = "homedecor:jpn_door_bottom_top_open", param2 = fdir})
+--	end
+})
+
+minetest.register_node("homedecor:jpn_door_bottom_open", {
+	tiles = {
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_door_bottom.png"
+	},
+	drawtype = "nodebox",
+	use_texture_alpha = true,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy = 3, not_in_creative_inventory = 1 },
+	node_box = {
+		type = "fixed",
+		fixed = {			
+			{-1.5, -0.5, -0.0625, -0.5, 0.5, 0}, -- NodeBox1
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {-1.5, -0.5, -0.0625, 0.5, 1.5, 0},
+	},
+	on_rightclick = function(pos, node, clicker)
+		fdir = minetest.get_node(pos).param2
+		minetest.set_node(pos, {name = "homedecor:jpn_door_bottom", param2 = fdir})
+		minetest.set_node({x = pos.x, y=pos.y + 1, z = pos.z}, {name = "homedecor:jpn_door_top", param2 = fdir})
+	end,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
+		if minetest.get_node(pos2).name == "homedecor:jpn_door_top_open" then
+			minetest.remove_node(pos2)
+		end
+	end,
+	drop = "homedecor:jpn_door_bottom",
+})
+
+minetest.register_node("homedecor:jpn_door_top_open", {
+	tiles = {
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_wall_edges.png",
+		"homedecor_japanese_door_top.png"
+	},
+	drawtype = "nodebox",
+        use_texture_alpha = true,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy = 3, not_in_creative_inventory = 1 },
+	node_box = {
+		type = "fixed",
+		fixed = {			
+			{-1.5, -0.5, -0.0625, -0.5, 0.5, 0}, -- NodeBox1
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { 0, 0, 0, 0, 0, 0 },
+	},
+--	on_rightclick = function(pos, node, clicker)
+--		fdir = minetest.get_node(pos).param2
+--		minetest.set_node(pos, {name = "homedecor:jpn_door_top", param2 = fdir})
+--		minetest.set_node({x = pos.x, y=pos.y - 1, z = pos.z}, {name = "homedecor:jpn_door_bottom", param2 = fdir})
+--	end,
+})
+
 
