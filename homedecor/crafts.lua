@@ -2833,3 +2833,11 @@ for _, color in ipairs(bookcolors) do
 	})
 end
 
+minetest.register_craft({
+	output = "homedecor:jpn_door_bottom",
+	recipe = {
+		{ "homedecor:japanese_wall_top" },
+		{ "homedecor:japanese_wall_bottom" }
+	},
+})
+
