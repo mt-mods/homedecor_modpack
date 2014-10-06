@@ -1456,6 +1456,33 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
+	output = "homedecor:fence_wrought_iron_2 2",
+	recipe = {
+		{ "homedecor:pole_wrought_iron", "default:iron_lump" },
+		{ "homedecor:pole_wrought_iron", "default:iron_lump" },
+	},
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:fence_wrought_iron_2_corner",
+	recipe = {
+		"homedecor:fence_wrought_iron_2",
+		"homedecor:fence_wrought_iron_2"
+	},
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:fence_wrought_iron_2 2",
+	recipe = {
+		"homedecor:fence_wrought_iron_2_corner",
+	},
+})
+
+--
+
+minetest.register_craft( {
 	output = "homedecor:fence_picket 6",
 	recipe = {
 		{ "group:stick", "group:stick", "group:stick" },
