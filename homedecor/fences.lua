@@ -475,7 +475,7 @@ minetest.register_node("homedecor:fence_wrought_iron_2_corner", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{ -0.5, -0.5, 0.46875, -0.46875, 0.5, 0.5 }, -- corner edge
+			{ -0.5, -0.5, 0.453125, -0.453125, 0.5, 0.5 }, -- corner edge
 			{ -7.5/16,  7.75/16, 14/32,  8/16,  8/16, 16/32 },	-- top piece
 			{ -7.5/16, -8/16, 14/32,  8/16, -7.75/16, 16/32 },	-- bottom piece
 			{ -16/32,  7.75/16, -8/16, -14/32,  8/16,  8/16 },	-- top piece, side
