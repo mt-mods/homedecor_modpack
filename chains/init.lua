@@ -97,9 +97,9 @@ minetest.register_node("chains:chandelier_brass", {
 minetest.register_craft({
 	output = 'chains:chain 2',
 	recipe = {
-		{'homedecor:chainlink_steel'},
-		{'homedecor:chainlink_steel'},
-		{'homedecor:chainlink_steel'},
+		{'glooptest:chainlink'},
+		{'glooptest:chainlink'},
+		{'glooptest:chainlink'},
 	}
 })
 
@@ -107,15 +107,15 @@ minetest.register_craft({
 	output = 'chains:chain_top',
 	recipe = {
 		{'default:steel_ingot'},
-		{'homedecor:chainlink_steel'},	
+		{'glooptest:chainlink'},	
 	},
 })
 
 minetest.register_craft({
 	output = 'chains:chandelier',
 	recipe = {
-		{'', 'homedecor:chainlink_steel', ''},
-		{'default:torch', 'homedecor:chainlink_steel', 'default:torch'},
+		{'', 'glooptest:chainlink', ''},
+		{'default:torch', 'glooptest:chainlink', 'default:torch'},
 		{'default:steel_ingot', 'default:steel_ingot', 'default:steel_ingot'},
 	}
 })
