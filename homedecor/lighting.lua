@@ -480,7 +480,8 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 	drawtype = "nodebox",
 	tiles = {
 		"forniture_table_lamp_s"..tilesuffix..".png",
-		"forniture_standing_lamp"..lampcolor.."_l"..tilesuffix..".png",
+		"forniture_table_lamp_s"..tilesuffix..".png",
+		"forniture_standing_lamp"..lampcolor.."_l"..tilesuffix..".png"
 	},
 	paramtype = "light",
 	node_box = {
