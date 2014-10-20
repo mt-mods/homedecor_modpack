@@ -350,6 +350,26 @@ minetest.register_node('homedecor:oil_lamp', {
 	sounds = default.node_sound_wood_defaults(),
 })
 
+minetest.register_node('homedecor:wall_lantern', {
+	description = S("Wall lantern"),
+	drawtype = "plantlike",
+	tiles = { 'homedecor_wall_lantern.png' },
+	inventory_image = 'homedecor_wall_lantern.png',
+	sunlight_propagates = true,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	walkable = true,
+    selection_box = {
+            type = "fixed",
+            fixed = { 
+				{ -0.3, -0.5, -0.3, 0.3, 0.5, 0.3 },
+			}	
+    },
+	groups = { snappy = 3 },
+	light_source = LIGHT_MAX-4,
+	sounds = default.node_sound_wood_defaults(),
+})
+
 minetest.register_node('homedecor:lattice_lantern_large', {
 	description = S("Lattice lantern (large)"),
 	tiles = { 'homedecor_lattice_lantern_large.png' },
