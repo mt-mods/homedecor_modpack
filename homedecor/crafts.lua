@@ -1278,6 +1278,17 @@ minetest.register_craft({
 	}
 })
 
+-- Wrought-iron wall latern
+
+minetest.register_craft({
+	output = "homedecor:wall_lantern 4",
+	recipe = {
+		{ "default:iron_lump", "default:iron_lump", "default:iron_lump" },
+		{ "default:iron_lump", "default:torch", "default:iron_lump" },
+		{ "", "default:iron_lump", "" }
+	}
+})
+
 -- wood-lattice lamps
 
 minetest.register_craft( {
@@ -1828,6 +1839,17 @@ minetest.register_craft( {
 		{ "dye:white", "dye:white", "" },
 		{ "homedecor:door_wood_plain_bottom_left", "technic:brass_ingot", "" },
 		{ "", "", "" },
+	},
+})
+
+-- woodglass door 
+
+minetest.register_craft( {
+	output = "homedecor:door_woodglass_bottom_left",
+	recipe = {
+		{ "default:wood", "default:glass", "" },
+		{ "default:wood", "default:glass", "technic:brass_ingot" },
+		{ "default:wood", "default:wood", "" },
 	},
 })
 
@@ -2868,3 +2890,11 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:calendar",
+	recipe = {
+		{ "","dye:red","" },
+		{ "","dye:black","" },
+		{ "","default:paper","" }
+	},
+})
