@@ -1182,6 +1182,30 @@ minetest.register_node("homedecor:coffee_maker", {
 	}
 })
 
+minetest.register_abm({
+	nodenames = "homedecor:coffee_maker",
+	interval = 1,
+	chance = 1,
+	action = function(pos, node)
+                        minetest.add_particlespawner({
+			amount = 1,
+			time = 1,
+			minpos = {x=pos.x-0.15, y=pos.y-0.35, z=pos.z-0.275},
+			maxpos = {x=pos.x-0.15, y=pos.y-0.35, z=pos.z-0.275},
+			minvel = {x=-0.003, y=0.01, z=-0.003},
+			maxvel = {x=0.003, y=0.01, z=-0.003},
+			minacc = {x=0.0,y=-0.0,z=-0.0},
+			maxacc = {x=0.0,y=0.003,z=-0.0},
+			minexptime = 2,
+			maxexptime = 5,
+			minsize = 1,
+			maxsize = 1.2,
+			collisiondetection = false,
+			texture = "homedecor_steam.png",
+			})
+		end
+})
+
 minetest.register_node("homedecor:dartboard", {
 	description = "Dartboard",
 	drawtype = "signlike",
