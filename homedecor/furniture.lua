@@ -64,8 +64,8 @@ for i in ipairs(chaircolors) do
 			"forniture_wood.png",
 			"forniture_kitchen_chair_sides"..color..".png",
 			"forniture_kitchen_chair_sides"..color..".png^[transformFX",
-			"forniture_kitchen_chair_back"..color..".png",
-			"forniture_kitchen_chair_front"..color..".png",
+			"forniture_kitchen_chair_sides"..color..".png",
+			"forniture_kitchen_chair_sides"..color..".png^[transformFX",
 		 },
 		drawtype = "nodebox",
 		paramtype = "light",
@@ -141,7 +141,7 @@ minetest.register_node(":homedecor:openframe_bookshelf", {
 		"3dbookshelf_openframe_top.png",
 		"3dbookshelf_openframe_bottom.png",
 		"3dbookshelf_openframe_right.png",
-		"3dbookshelf_openframe_left.png",
+		"3dbookshelf_openframe_right.png^[transformFX",
 		"3dbookshelf_openframe_back.png",
 		"3dbookshelf_openframe_front.png"
 
@@ -352,11 +352,11 @@ end
 
 minetest.register_node("homedecor:wardrobe_top", {
 	tiles = {
-		"homedecor_wardrobe_top.png",
-		"homedecor_wardrobe_bottom.png",
-		"homedecor_wardrobe_sides1.png",
-		"homedecor_wardrobe_sides1.png^[transformFX",
-		"homedecor_wardrobe_back1.png",
+		"forniture_wood.png",
+		"forniture_wood.png",
+		"forniture_wood.png^[transformR90",
+		"forniture_wood.png^[transformR270",
+		"forniture_wood.png^[transformR90",
 		"homedecor_wardrobe_frontt.png"
 	},
 	drawtype = "nodebox",
@@ -379,11 +379,11 @@ minetest.register_node("homedecor:wardrobe_top", {
 
 minetest.register_node("homedecor:wardrobe_bottom", {
 	tiles = {
-		"homedecor_wardrobe_top.png",
-		"homedecor_wardrobe_bottom.png",
-		"homedecor_wardrobe_sides2.png",
-		"homedecor_wardrobe_sides2.png^[transformFX",
-		"homedecor_wardrobe_back2.png",
+		"forniture_wood.png",
+		"forniture_wood.png^[transformR180",
+		"forniture_wood.png^[transformR90",
+		"forniture_wood.png^[transformR270",
+		"forniture_wood.png^[transformR90",
 		"homedecor_wardrobe_frontb.png"
 	},
 	inventory_image = "homedecor_wardrobe_inv.png",
@@ -457,7 +457,7 @@ minetest.register_node("homedecor:simple_bench", {
 		"homedecor_generic_wood.png",
 		"homedecor_generic_wood.png",
 		"homedecor_bench_large_2_left_back.png",
-		"homedecor_bench_large_2_left_front.png"
+		"homedecor_bench_large_2_left_back.png^[transformFX"
 	},
 	description = "Simple Bench",
 	drawtype = "nodebox",
@@ -522,12 +522,12 @@ minetest.register_node("homedecor:bench_large_1_left", {
 
 minetest.register_node("homedecor:bench_large_1_right", {
 	tiles = {
-		"homedecor_bench_large_1_right_top.png",
-		"homedecor_bench_large_1_right_bottom.png",
+		"homedecor_bench_large_1_left_top.png^[transformFX",
+		"homedecor_bench_large_1_left_bottom.png^[transformFX",
 		"homedecor_bench_large_1_ends.png^[transformFX",
 		"homedecor_bench_large_1_ends.png",
-		"homedecor_bench_large_1_right_back.png",
-		"homedecor_bench_large_1_right_front.png"
+		"homedecor_bench_large_1_left_back.png^[transformFX",
+		"homedecor_bench_large_1_left_front.png^[transformFX"
 	},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -560,7 +560,7 @@ minetest.register_node("homedecor:bench_large_2_left", {
 		"homedecor_generic_wood.png",
 		"homedecor_generic_wood.png",
 		"homedecor_bench_large_2_left_back.png",
-		"homedecor_bench_large_2_left_front.png"
+		"homedecor_bench_large_2_left_back.png^[transformFX"
 	},
 	inventory_image = "homedecor_bench_large_2_inv.png",
 	drawtype = "nodebox",
@@ -613,7 +613,7 @@ minetest.register_node("homedecor:bench_large_2_right", {
 		"homedecor_generic_wood.png",
 		"homedecor_generic_wood.png",
 		"homedecor_bench_large_2_right_back.png",
-		"homedecor_bench_large_2_right_front.png"
+		"homedecor_bench_large_2_right_back.png^[transformFX"
 	},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -649,10 +649,10 @@ minetest.register_node("homedecor:bench_large_2_right", {
 minetest.register_node("homedecor:deckchair_head", {
 	tiles = {
 		"homedecor_deckchair_top_c1.png",
-		"homedecor_deckchair_bottom.png",
+		"homedecor_deckchair_sides.png",
 		"homedecor_deckchair_sides.png",
 		"homedecor_deckchair_sides.png^[transformFX",
-		"homedecor_deckchair_back.png",
+		"homedecor_deckchair_sides.png",
 		"homedecor_deckchair_front.png"
 	},
 	drawtype = "nodebox",
@@ -687,7 +687,7 @@ minetest.register_node("homedecor:deckchair_head", {
 minetest.register_node("homedecor:deckchair_foot", {
 	tiles = {
 		"homedecor_deckchair_top_c2.png",
-		"homedecor_deckchair_bottom.png",
+		"homedecor_deckchair_sides.png",
 		"homedecor_deckchair_sides.png",
 		"homedecor_deckchair_sides.png^[transformFX",
 		"homedecor_deckchair_front.png"
