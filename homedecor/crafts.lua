@@ -1853,6 +1853,17 @@ minetest.register_craft( {
 	},
 })
 
+-- woodglass door type 2
+
+minetest.register_craft( {
+	output = "homedecor:door_woodglass2_bottom_left",
+	recipe = {
+		{ "default:glass", "default:glass", "" },
+		{ "default:wood", "default:wood", "default:iron_lump" },
+		{ "default:wood", "default:wood", "" },
+	},
+})
+
 -- washer and dryer
 
 minetest.register_craft( {

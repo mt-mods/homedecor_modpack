@@ -157,7 +157,7 @@ for i in ipairs(sides) do
 		local nodeboxes_top =	homedecor.door_models[j][5]
 		local nodeboxes_bottom =	homedecor.door_models[j][6]
 		local texalpha = false
-		if doorname == "exterior_fancy" then
+		if doorname == "exterior_fancy" or "woodglass" or "woodglass2" then
 			texalpha = true
 		end
 
