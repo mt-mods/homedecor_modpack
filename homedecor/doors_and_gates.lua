@@ -583,6 +583,7 @@ minetest.register_node("homedecor:japanese_wall_top", {
         groups = {snappy=3},
 	node_box = {
 		type = "fixed",
+		fixed = {
 			{-0.5, -0.5, 0.03125, 0.5, 0.5, 0.03125}, -- NodeBox1
 			{-0.5, -0.5, 0, -0.469, 0.5, 0.0625}, -- NodeBox2
 			{0.469, -0.5, 0, 0.5, 0.5, 0.0625}, -- NodeBox3
