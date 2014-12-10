@@ -52,21 +52,22 @@ for i in ipairs(chaircolors) do
 	local color = "_"..chaircolors[i][1]
 	local color2 = chaircolors[i][1]
 	local name = S(chaircolors[i][2])
-
-	if chaircolors[i][1] == "" then 
-		color = ""
-	end
-
-	minetest.register_node("homedecor:chair"..color, {
-	    description = S("Kitchen chair (%s)"):format(name),
-		tiles = { 
+	local chairtiles = { 
 			"forniture_kitchen_chair_top"..color..".png",
 			"forniture_wood.png",
 			"forniture_kitchen_chair_sides"..color..".png",
 			"forniture_kitchen_chair_sides"..color..".png^[transformFX",
-			"forniture_kitchen_chair_sides"..color..".png",
-			"forniture_kitchen_chair_sides"..color..".png^[transformFX",
-		 },
+			"forniture_kitchen_chair_back"..color..".png",
+			"forniture_kitchen_chair_front"..color..".png",
+	}
+	if chaircolors[i][1] == "" then 
+		color = ""
+		chairtiles = { "forniture_wood.png" }
+	end
+
+	minetest.register_node("homedecor:chair"..color, {
+	    description = S("Kitchen chair (%s)"):format(name),
+		tiles = chairtiles,
 		drawtype = "nodebox",
 		paramtype = "light",
 		paramtype2 = "facedir",
