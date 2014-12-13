@@ -4,16 +4,12 @@ local S = homedecor.gettext
 
 -- Corner shingle nodes, courtesy Bas080
 
-homedecor.register_outer_corner = function(modname, subname, groups, images, description)
-	local slopeboxedge = {}
-	local detail = homedecor.detail_level
-	for i = 0, detail-1 do
-		slopeboxedge[i+1]={-0.5, -0.5, (i/detail)-0.5, 0.5-(i/detail), (i/detail)-0.5+(1.25/detail), 0.5}
-	end
+homedecor.register_outer_corner = function(modname, subname, groups, slope_image, description)
 	minetest.register_node(modname..":shingle_outer_corner_" .. subname, {
 		description = S(description.. " (outer corner)"),
-		drawtype = "nodebox",
-		tiles = images,
+		drawtype = "mesh",
+		mesh = "homedecor_slope_outer_corner.obj",
+		tiles = { "homedecor_slope_outer_corner_"..slope_image..".png" },
 		paramtype = "light",
 		paramtype2 = "facedir",
 		walkable = true,
@@ -34,17 +30,12 @@ homedecor.register_outer_corner = function(modname, subname, groups, images, des
 	})
 end
 
-homedecor.register_inner_corner = function(modname, subname, groups, images, description)
-	local slopeboxedge = {}
-	local detail = homedecor.detail_level
-	for i = 0, detail-1 do
-		slopeboxedge[i+1]={-0.5, -0.5, -0.5, 0.5-(i/detail), (i/detail)-0.5+(1.25/detail), 0.5}
-		slopeboxedge[i+detail+1]={-0.5, -0.5, (i/detail)-0.5, 0.5, (i/detail)-0.5+(1.25/detail), 0.5}
-	end
+homedecor.register_inner_corner = function(modname, subname, groups, slope_image, description)
 	minetest.register_node(modname..":shingle_inner_corner_" .. subname, {
 		description = S(description.. " (inner corner)"),
-		drawtype = "nodebox",
-		tiles = images,
+		drawtype = "mesh",
+		mesh = "homedecor_slope_inner_corner.obj",
+		tiles = { "homedecor_slope_inner_corner_"..slope_image..".png" },
 		paramtype = "light",
 		paramtype2 = "facedir",
 		walkable = true,
@@ -52,24 +43,16 @@ homedecor.register_inner_corner = function(modname, subname, groups, images, des
 			type = "fixed",
 			fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5}
 		},
-		node_box = {
-			type = "fixed",
-			fixed = slopeboxedge
-		},
 		groups = groups,
 	})
 end
 
-homedecor.register_slope = function(modname, subname, recipeitem, groups, images, description)
-	local slopeboxedge = {}
-	local detail = homedecor.detail_level
-	for i = 0, detail-1 do
-		slopeboxedge[i+1]={-0.5, -0.5, (i/detail)-0.5, 0.5, (i/detail)-0.5+(1.25/detail), 0.5}
-	end
+homedecor.register_slope = function(modname, subname, recipeitem, groups, slope_image, description)
 	minetest.register_node(modname..":shingle_side_" .. subname, {
 		description = S(description),
-		drawtype = "nodebox",
-		tiles = images,
+		drawtype = "mesh",
+		mesh = "homedecor_slope.obj",
+		tiles = { "homedecor_slope_"..slope_image..".png" },
 		paramtype = "light",
 		paramtype2 = "facedir",
 		walkable = true,
@@ -201,49 +184,28 @@ minetest.register_craft({
 	burntime = 30,
 })
 
-homedecor.register_roof = function(modname, subname, groups, images , description)
-	homedecor.register_outer_corner(modname, subname, groups, images, description)
-	homedecor.register_inner_corner(modname, subname, groups, images, description)
+homedecor.register_roof = function(modname, subname, groups, slope_image , description)
+	homedecor.register_outer_corner(modname, subname, groups, slope_image, description)
+	homedecor.register_inner_corner(modname, subname, groups, slope_image, description)
 end
 
 -- corners
 
 homedecor.register_roof("homedecor", "wood",
 	{ snappy = 3 },
-	{
-		"homedecor_shingles_wood_c_t.png",
-		"homedecor_shingles_wood_c_x.png",
-		"homedecor_shingles_wood_c_x.png",
-		"homedecor_shingles_wood_c_x.png",
-		"homedecor_shingles_wood_c_z.png",
-		"homedecor_shingles_wood_c_z.png",
-	},
+	"wood",
 	"Wood Shingles"
 )
 
 homedecor.register_roof("homedecor", "asphalt",
 	{ snappy = 3 },
-	{
-		"homedecor_shingles_asphalt_c_t.png",
-		"homedecor_shingles_asphalt_c_x.png",
-		"homedecor_shingles_asphalt_c_x.png",
-		"homedecor_shingles_asphalt_c_x.png",
-		"homedecor_shingles_asphalt_c_z.png",
-		"homedecor_shingles_asphalt_c_z.png",
-	},
+	"asphalt",
 	"Asphalt Shingles"
 )
 
 homedecor.register_roof("homedecor", "terracotta",
 	{ snappy = 3 },
-	{
-		"homedecor_shingles_terracotta_c_t.png",
-		"homedecor_shingles_terracotta_c_x.png",
-		"homedecor_shingles_terracotta_c_x.png",
-		"homedecor_shingles_terracotta_c_x.png",
-		"homedecor_shingles_terracotta_c_z.png",
-		"homedecor_shingles_terracotta_c_z.png",
-	},
+	"terracotta",
 	"Terracotta Shingles"
 )
 
@@ -252,52 +214,28 @@ homedecor.register_roof("homedecor", "terracotta",
 homedecor.register_slope("homedecor", "wood",
 	"homedecor:shingles_wood",
 	{ snappy = 3 },
-	{
-		"homedecor_shingles_wood_s_t.png",
-		"homedecor_shingles_wood_s_z.png",
-		"homedecor_shingles_wood_s_z.png",
-		"homedecor_shingles_wood_s_z.png",
-		"homedecor_shingles_wood_s_z.png",
-		"homedecor_shingles_wood_s_z.png",
-	},
+	"wood",
 	"Wood Shingles"
 )
 
 homedecor.register_slope("homedecor", "asphalt",
 	"homedecor:shingles_asphalt",
 	{ snappy = 3 },
-	{
-		"homedecor_shingles_asphalt_s_t.png",
-		"homedecor_shingles_asphalt_s_z.png",
-		"homedecor_shingles_asphalt_s_z.png",
-		"homedecor_shingles_asphalt_s_z.png",
-		"homedecor_shingles_asphalt_s_z.png",
-		"homedecor_shingles_asphalt_s_z.png",
-	},
+	"asphalt",
 	"Asphalt Shingles"
 )
 
 homedecor.register_slope("homedecor", "terracotta",
 	"homedecor:shingles_terracotta",
 	{ snappy = 3 },
-	{
-		"homedecor_shingles_terracotta_s_t.png",
-		"homedecor_shingles_terracotta_s_z.png",
-		"homedecor_shingles_terracotta_s_z.png",
-		"homedecor_shingles_terracotta_s_z.png",
-		"homedecor_shingles_terracotta_s_z.png",
-		"homedecor_shingles_terracotta_s_z.png",
-	},
+	"terracotta",
 	"Terracotta Shingles"
 )
 
 homedecor.register_slope("homedecor", "glass",
 	"homedecor:shingles_glass",
 	{ snappy = 3 },
-	{
-		"homedecor_shingles_glass_top.png",
-		"homedecor_shingles_glass.png"
-	},
+	"glass",
 	"Glass Shingles"
 )
 
