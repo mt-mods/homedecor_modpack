@@ -161,21 +161,10 @@ minetest.register_node('homedecor:flower_pot_green', {
 	sounds = default.node_sound_leaves_defaults(),
 })
 
--- cylinder-shaped objects courtesy Jeija
-
-local cylbox = {}
-local detail = 50
-local sehne
-local size = 0.2
-
-for i = 1, detail-1 do
-        sehne = math.sqrt(0.25 - (((i/detail)-0.5)^2))
-        cylbox[i]={((i/detail)-0.5)*size, -0.5, -sehne*size, ((i/detail)+(1/detail)-0.5)*size, 0.5, sehne*size}
-end
-
 minetest.register_node("homedecor:pole_brass", {
     description = S("Brass Pole"),
-    drawtype = "nodebox",
+    drawtype = "mesh",
+	mesh = "homedecor_round_pole.obj",
     tiles = {"homedecor_tile_brass2.png"},
     inventory_image = "homedecor_pole_brass2.png",
     wield_image = "homedecor_pole_brass2.png",
@@ -184,15 +173,15 @@ minetest.register_node("homedecor:pole_brass", {
     is_ground_content = true,
     selection_box = {
             type = "fixed",
-            fixed = {-size/2, -0.5, -size/2, size/2, 0.5, size/2},
+            fixed = { -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
+    },
+    collision_box = {
+            type = "fixed",
+            fixed = { -0.125, -0.5, -0.125, 0.125, 0.5, 0.125 },
     },
     groups = {snappy=3},
     sounds = default.node_sound_wood_defaults(),
 	walkable = true,
-	node_box = {
-		type = "fixed",
-		fixed = cylbox,
-	}
 })
 	
 minetest.register_node("homedecor:pole_wrought_iron", {
