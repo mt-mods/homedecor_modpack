@@ -22,10 +22,6 @@ homedecor.register_outer_corner = function(modname, subname, groups, slope_image
 				{-0.5,  0.25,  0.25, -0.25,   0.5, 0.5}
 			}
 		},
-		node_box = {
-			type = "fixed",
-			fixed = slopeboxedge
-		},
 		groups = groups,
 	})
 end
@@ -64,10 +60,6 @@ homedecor.register_slope = function(modname, subname, recipeitem, groups, slope_
 				{-0.5,     0,     0, 0.5,  0.25, 0.5},
 				{-0.5,  0.25,  0.25, 0.5,   0.5, 0.5}
 			}
-		},
-		node_box = {
-			type = "fixed",
-			fixed = slopeboxedge,
 		},
 		groups = groups,
 	})
