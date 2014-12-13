@@ -2,7 +2,38 @@
 
 local S = homedecor.gettext
 
--- Corner shingle nodes, courtesy Bas080
+local slope_cbox = {
+	type = "fixed",
+	fixed = {
+		{-0.5,  -0.5,  -0.5, 0.5, -0.25, 0.5},
+		{-0.5, -0.25, -0.25, 0.5,     0, 0.5},
+		{-0.5,     0,     0, 0.5,  0.25, 0.5},
+		{-0.5,  0.25,  0.25, 0.5,   0.5, 0.5}
+	}
+}
+
+local ocorner_cbox = {
+	type = "fixed",
+	fixed = {
+		{-0.5,  -0.5,  -0.5,   0.5, -0.25, 0.5},
+		{-0.5, -0.25, -0.25,  0.25,     0, 0.5},
+		{-0.5,     0,     0,     0,  0.25, 0.5},
+		{-0.5,  0.25,  0.25, -0.25,   0.5, 0.5}
+	}
+}
+
+local icorner_cbox = {
+	type = "fixed",
+	fixed = {
+		{-0.5, -0.5, -0.5, 0.5, -0.25, 0.5}, -- NodeBox5
+		{-0.5, -0.5, -0.25, 0.5, 0, 0.5}, -- NodeBox6
+		{-0.5, -0.5, -0.5, 0.25, 0, 0.5}, -- NodeBox7
+		{-0.5, 0, -0.5, 0, 0.25, 0.5}, -- NodeBox8
+		{-0.5, 0, 0, 0.5, 0.25, 0.5}, -- NodeBox9
+		{-0.5, 0.25, 0.25, 0.5, 0.5, 0.5}, -- NodeBox10
+		{-0.5, 0.25, -0.5, -0.25, 0.5, 0.5}, -- NodeBox11
+	}
+}
 
 homedecor.register_outer_corner = function(modname, subname, groups, slope_image, description)
 	minetest.register_node(modname..":shingle_outer_corner_" .. subname, {
@@ -13,15 +44,8 @@ homedecor.register_outer_corner = function(modname, subname, groups, slope_image
 		paramtype = "light",
 		paramtype2 = "facedir",
 		walkable = true,
-		selection_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5,  -0.5,  -0.5,   0.5, -0.25, 0.5},
-				{-0.5, -0.25, -0.25,  0.25,     0, 0.5},
-				{-0.5,     0,     0,     0,  0.25, 0.5},
-				{-0.5,  0.25,  0.25, -0.25,   0.5, 0.5}
-			}
-		},
+		selection_box = ocorner_cbox,
+		collision_box = ocorner_cbox,
 		groups = groups,
 	})
 end
@@ -39,6 +63,7 @@ homedecor.register_inner_corner = function(modname, subname, groups, slope_image
 			type = "fixed",
 			fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5}
 		},
+		collision_box = icorner_cbox,
 		groups = groups,
 	})
 end
@@ -52,15 +77,8 @@ homedecor.register_slope = function(modname, subname, recipeitem, groups, slope_
 		paramtype = "light",
 		paramtype2 = "facedir",
 		walkable = true,
-		selection_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5,  -0.5,  -0.5, 0.5, -0.25, 0.5},
-				{-0.5, -0.25, -0.25, 0.5,     0, 0.5},
-				{-0.5,     0,     0, 0.5,  0.25, 0.5},
-				{-0.5,  0.25,  0.25, 0.5,   0.5, 0.5}
-			}
-		},
+		selection_box = slope_cbox,
+		collision_box = slope_cbox,
 		groups = groups,
 	})
 
