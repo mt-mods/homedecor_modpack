@@ -54,6 +54,7 @@ for i in ipairs(materials) do
 		on_place = minetest.rotate_node
 	})
 
+--[[
 	minetest.register_node('homedecor:'..m..'_table_small_square_t', {
 		description = S(d.." Table (Small, Square)"),
 		drawtype = 'nodebox',
@@ -117,38 +118,23 @@ for i in ipairs(materials) do
 		},
 		drop = 'homedecor:'..m..'_table_small_square_b'
 	})
+]]--
 
 -- small round tables
 
 	minetest.register_node('homedecor:'..m..'_table_small_round_b', {
 		description = S(d.." Table (Small, Round)"),
-		drawtype = 'nodebox',
-		tiles = {
-			'homedecor_'..m..'_table_small_round_tb.png',
-			'homedecor_'..m..'_table_small_round_tb.png',
-			'homedecor_'..m..'_table_small_round_edges.png',
-			'homedecor_'..m..'_table_small_round_edges.png',
-			'homedecor_'..m..'_table_small_round_edges.png',
-			'homedecor_'..m..'_table_small_round_edges.png'
-		},
-		wield_image = 'homedecor_'..m..'_table_small_round_tb.png',
-		inventory_image = 'homedecor_'..m..'_table_small_round_tb.png',
+		drawtype = "mesh",
+		mesh = "homedecor_table_small_round.obj",
+		tiles = { "homedecor_"..m.."_table_small_round.png" },
+		wield_image = 'homedecor_'..m..'_table_small_round_inv.png',
+		inventory_image = 'homedecor_'..m..'_table_small_round_inv.png',
 		sunlight_propagates = true,
 		paramtype = 'light',
 		walkable = true,
 		groups = { snappy = 3 },
 		sounds = s,
 		paramtype2 = "facedir",
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{ -0.25,   -0.5, -0.5,    0.25,   -0.4375, 0.5    },
-				{ -0.375,  -0.5, -0.4375, 0.375,  -0.4375, 0.4375 },
-				{ -0.5,    -0.5, -0.25,   0.5,    -0.4375, 0.25   },
-				{ -0.4375, -0.5, -0.375,  0.4375, -0.4375, 0.375  },
-				{ -0.25,   -0.5, -0.5,    0.25,   -0.4375, 0.5    },
-			}
-		},
 		selection_box = {
 			type = "fixed",
 			fixed = { -0.5, -0.5, -0.5, 0.5, -0.4375, 0.5 },
@@ -156,6 +142,8 @@ for i in ipairs(materials) do
 		on_place = minetest.rotate_node
 	})
 
+
+--[[
 	minetest.register_node('homedecor:'..m..'_table_small_round_t', {
 		description = S(d.." Table (Small, Round)"),
 		drawtype = 'nodebox',
@@ -223,6 +211,8 @@ for i in ipairs(materials) do
 		},
 		drop = 'homedecor:'..m..'_table_small_round_b'
 	})
+]]--
+
 
 -- Large square table pieces
 
@@ -256,6 +246,7 @@ for i in ipairs(materials) do
 		on_place = minetest.rotate_node
 	})
 
+--[[
 	minetest.register_node('homedecor:'..m..'_table_large_t', {
 		description = S(d.." Table Piece (large)"),
 		drawtype = 'nodebox',
@@ -315,6 +306,8 @@ for i in ipairs(materials) do
 		},
 		drop = 'homedecor:'..m..'_table_large_b'
 	})
+
+]]--
 
 	minetest.register_alias('homedecor:'..m..'_table_large', 'homedecor:'..m..'_table_large_b')
 	minetest.register_alias('homedecor:'..m..'_table_small_square', 'homedecor:'..m..'_table_small_square_b')
