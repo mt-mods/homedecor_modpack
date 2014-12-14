@@ -22,15 +22,9 @@ for i in ipairs(materials) do
 
 	minetest.register_node("homedecor:"..m.."_table_small_square", {
 		description = S(d.." Table (Small, Square)"),
-		drawtype = 'nodebox',
-		tiles = {
-			'homedecor_'..m..'_table_small_square_tb.png',
-			'homedecor_'..m..'_table_small_square_tb.png',
-			'homedecor_'..m..'_table_small_square_edges.png',
-			'homedecor_'..m..'_table_small_square_edges.png',
-			'homedecor_'..m..'_table_small_square_edges.png',
-			'homedecor_'..m..'_table_small_square_edges.png'
-		},
+		drawtype = 'mesh',
+		mesh = "homedecor_table_small_square.obj",
+		tiles = { 'homedecor_'..m..'_table_small_square.png' },
 		wield_image = 'homedecor_'..m..'_table_small_square_tb.png',
 		inventory_image = 'homedecor_'..m..'_table_small_square_tb.png',
 		sunlight_propagates = true,
@@ -39,14 +33,6 @@ for i in ipairs(materials) do
 		groups = { snappy = 3 },
 		sounds = s,
 		paramtype2 = "facedir",
-
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{ -0.4375, -0.5, -0.5,     0.4375, -0.4375, 0.5    },
-				{ -0.5,    -0.5, -0.4375,  0.5,    -0.4375, 0.4375 }
-			},
-		},
 		selection_box = {
 			type = "fixed",
 			fixed = { -0.5, -0.5,    -0.5,  0.5,    -0.4375, 0.5 },
