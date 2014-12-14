@@ -1207,10 +1207,11 @@ minetest.register_abm({
 
 minetest.register_node("homedecor:dartboard", {
 	description = "Dartboard",
-	drawtype = "signlike",
-	tiles = {"homedecor_dartboard.png"},
-	inventory_image = "homedecor_dartboard.png",
-	wield_image = "homedecor_dartboard.png",
+	drawtype = "mesh",
+	mesh = "homedecor_dartboard.obj",
+	tiles = { "homedecor_dartboard.png" },
+	inventory_image = "homedecor_dartboard_inv.png",
+	wield_image = "homedecor_dartboard_inv.png",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	sunlight_propagates = true,
