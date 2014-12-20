@@ -21,7 +21,6 @@ minetest.register_node("homedecor:fence_brass", {
 	drawtype = "fencelike",
 	tiles = {"homedecor_tile_brass.png"},
 	inventory_image = "homedecor_fence_brass.png",
-	wield_image = "homedecor_pole_brass.png",
 	paramtype = "light",
 	selection_box = {
 	        type = "fixed",
@@ -37,7 +36,6 @@ minetest.register_node("homedecor:fence_wrought_iron", {
 	drawtype = "fencelike",
 	tiles = {"homedecor_tile_wrought_iron.png"},
 	inventory_image = "homedecor_fence_wrought_iron.png",
-	wield_image = "homedecor_pole_wrought_iron.png",
 	paramtype = "light",
 	selection_box = {
 	        type = "fixed",
