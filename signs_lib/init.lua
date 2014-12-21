@@ -179,9 +179,7 @@ local CHARDB_FILE = minetest.get_worldpath().."/signs_lib_chardb"
 -- helper functions to trim sign text input/output
 
 local function trim_input(text)
-	local txt_len = string.len(text)
-	text_trimmed = string.sub(text, 1, math.min(MAX_INPUT_CHARS, txt_len))
-	return text_trimmed
+	return text:sub(1, math.min(MAX_INPUT_CHARS, text:len()))
 end
 
 -- Returns true if any file differs from cached one.
@@ -630,8 +628,7 @@ function signs_lib.receive_fields(pos, formname, fields, sender, lock)
 			sender:get_player_name())
 		return
 	end
-	lockstr = ""
-	if lock then lockstr = "locked " end
+	local lockstr = lock and "locked " or ""
 	if fields and fields.text and fields.ok then
 		minetest.log("action", S("%s wrote \"%s\" to "..lockstr.."sign at %s"):format(
 			(sender:get_player_name() or ""),
