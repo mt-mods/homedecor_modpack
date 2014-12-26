@@ -7,6 +7,11 @@ local materials = {
 	{"wood","Wood"}
 }
 
+local tables_cbox = {
+	type = "fixed",
+	fixed = { -0.5, -0.5,    -0.5,  0.5,    -0.4375, 0.5 },
+}
+
 for i in ipairs(materials) do
 	local m = materials[i][1]
 	local d = materials[i][2]
@@ -33,10 +38,8 @@ for i in ipairs(materials) do
 		groups = { snappy = 3 },
 		sounds = s,
 		paramtype2 = "facedir",
-		selection_box = {
-			type = "fixed",
-			fixed = { -0.5, -0.5,    -0.5,  0.5,    -0.4375, 0.5 },
-		},
+		selection_box = tables_cbox,
+		collision_box = tables_cbox,
 		on_place = minetest.rotate_node
 	})
 
@@ -55,10 +58,8 @@ for i in ipairs(materials) do
 		groups = { snappy = 3 },
 		sounds = s,
 		paramtype2 = "facedir",
-		selection_box = {
-			type = "fixed",
-			fixed = { -0.5, -0.5, -0.5, 0.5, -0.4375, 0.5 },
-		},
+		selection_box = tables_cbox,
+		collision_box = tables_cbox,
 		on_place = minetest.rotate_node
 	})
 
@@ -87,10 +88,7 @@ for i in ipairs(materials) do
 			type = "fixed",
 			fixed = { -0.5, -0.5, -0.5, 0.5, -0.4375, 0.5 },
 		},
-		selection_box = {
-			type = "fixed",
-			fixed = { -0.5, -0.5, -0.5, 0.5, -0.4375, 0.5 },
-		},
+		selection_box = tables_cbox,
 		on_place = minetest.rotate_node
 	})
 
