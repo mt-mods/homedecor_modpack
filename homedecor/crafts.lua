@@ -2909,3 +2909,7 @@ minetest.register_craft({
 		{ "","default:paper","" }
 	},
 })
+
+if (minetest.get_modpath("technic") and minetest.get_modpath("dye") and minetest.get_modpath("bees")) then
+	technic.register_separating_recipe({ input = {"bees:wax 1"}, output = {"homedecor:oil_extract 2","dye:yellow 1"} })
+end
