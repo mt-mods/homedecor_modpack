@@ -1934,3 +1934,24 @@ minetest.register_node("homedecor:calendar", {
 	legacy_wallmounted = true,
 	sounds = default.node_sound_defaults(),
 })
+
+minetest.register_node("homedecor:desk_globe", {
+	description = "Desk globe",
+	drawtype = "mesh",
+	mesh = "homedecor_desk_globe.obj",
+	tiles = {"homedecor_desk_globe.png"},
+	inventory_image = "homedecor_desk_globe_inv.png",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.4, -0.5, -0.3, 0.3, 0.3, 0.3 }
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = { -0.4, -0.5, -0.3, 0.3, 0.3, 0.3 }
+	},
+	groups = {choppy=2,dig_immediate=2,attached_node=1},
+	sounds = default.node_sound_defaults(),
+})
+
