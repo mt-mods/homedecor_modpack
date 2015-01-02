@@ -1955,3 +1955,15 @@ minetest.register_node("homedecor:desk_globe", {
 	sounds = default.node_sound_defaults(),
 })
 
+minetest.register_node("homedecor:wine_rack", {
+	description = "Wine Rack",
+	drawtype = "mesh",
+	mesh = "homedecor_wine_rack.obj",
+	tiles = {"homedecor_wine_rack.png"},
+	inventory_image = "homedecor_wine_rack_inv.png",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = {choppy=2,dig_immediate=2,attached_node=1},
+	sounds = default.node_sound_defaults(),
+})
+
