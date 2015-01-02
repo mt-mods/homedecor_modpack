@@ -1951,7 +1951,7 @@ minetest.register_node("homedecor:desk_globe", {
 		type = "fixed",
 		fixed = { -0.4, -0.5, -0.3, 0.3, 0.3, 0.3 }
 	},
-	groups = {choppy=2,dig_immediate=2,attached_node=1},
+	groups = {choppy=2},
 	sounds = default.node_sound_defaults(),
 })
 
@@ -1963,7 +1963,7 @@ minetest.register_node("homedecor:wine_rack", {
 	inventory_image = "homedecor_wine_rack_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {choppy=2,dig_immediate=2,attached_node=1},
+	groups = {choppy=2},
 	sounds = default.node_sound_defaults(),
 })
 
