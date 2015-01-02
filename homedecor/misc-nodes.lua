@@ -1946,6 +1946,11 @@ minetest.register_node("homedecor:desk_globe", {
 	sounds = default.node_sound_defaults(),
 })
 
+local wine_cbox = {
+	type = "fixed",
+	fixed = { -0.5, -0.5, -0.25, 0.5, 0.5, 0.5 }
+}
+
 minetest.register_node("homedecor:wine_rack", {
 	description = "Wine Rack",
 	drawtype = "mesh",
@@ -1955,6 +1960,8 @@ minetest.register_node("homedecor:wine_rack", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {choppy=2},
+	selection_box = wine_cbox,
+	collision_box = wine_cbox,
 	sounds = default.node_sound_defaults(),
 })
 
