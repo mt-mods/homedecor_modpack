@@ -1080,6 +1080,13 @@ minetest.register_node("homedecor:bottle_green", {
 
 -- 4-bottle sets
 
+local fbottle_cbox = {
+	type = "fixed",
+	fixed = {
+		{ -0.375, -0.5, -0.3125, 0.375, 0, 0.3125 }
+	}
+}
+
 minetest.register_node("homedecor:4_bottles_brown", {
 	tiles = { "homedecor_bottle_brown.png" },
 	inventory_image = "homedecor_4_bottles_brown_inv.png",
@@ -1090,8 +1097,8 @@ minetest.register_node("homedecor:4_bottles_brown", {
 	paramtype2 = "facedir",
 	sunlight_propagates = true,
 	groups = {snappy=3},
-	collision_box = bottle_cbox,
-	selection_box = bottle_cbox
+	collision_box = fbottle_cbox,
+	selection_box = fbottle_cbox
 })
 
 minetest.register_node("homedecor:4_bottles_green", {
@@ -1104,8 +1111,8 @@ minetest.register_node("homedecor:4_bottles_green", {
 	paramtype2 = "facedir",
 	sunlight_propagates = true,
 	groups = {snappy=3},
-	collision_box = bottle_cbox,
-	selection_box = bottle_cbox
+	collision_box = fbottle_cbox,
+	selection_box = fbottle_cbox
 })
 
 minetest.register_node("homedecor:4_bottles_multi", {
@@ -1118,8 +1125,8 @@ minetest.register_node("homedecor:4_bottles_multi", {
 	paramtype2 = "facedir",
 	sunlight_propagates = true,
 	groups = {snappy=3},
-	collision_box = bottle_cbox,
-	selection_box = bottle_cbox
+	collision_box = fbottle_cbox,
+	selection_box = fbottle_cbox
 })
 
 minetest.register_node("homedecor:coffee_maker", {
