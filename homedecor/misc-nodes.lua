@@ -1078,6 +1078,50 @@ minetest.register_node("homedecor:bottle_green", {
 	selection_box = bottle_cbox
 })
 
+-- 4-bottle sets
+
+minetest.register_node("homedecor:4_bottles_brown", {
+	tiles = { "homedecor_bottle_brown.png" },
+	inventory_image = "homedecor_4_bottles_brown_inv.png",
+	description = "Four brown bottles",
+	drawtype = "mesh",
+	mesh = "homedecor_4_bottles.obj",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sunlight_propagates = true,
+	groups = {snappy=3},
+	collision_box = bottle_cbox,
+	selection_box = bottle_cbox
+})
+
+minetest.register_node("homedecor:4_bottles_green", {
+	tiles = { "homedecor_bottle_green.png" },
+	inventory_image = "homedecor_4_bottles_green_inv.png",
+	description = "Four green bottles",
+	drawtype = "mesh",
+	mesh = "homedecor_4_bottles.obj",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sunlight_propagates = true,
+	groups = {snappy=3},
+	collision_box = bottle_cbox,
+	selection_box = bottle_cbox
+})
+
+minetest.register_node("homedecor:4_bottles_multi", {
+	tiles = { "homedecor_4_bottles_multi.png" },
+	inventory_image = "homedecor_4_bottles_multi_inv.png",
+	description = "Four misc brown/green bottles",
+	drawtype = "mesh",
+	mesh = "homedecor_4_bottles_multi.obj",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	sunlight_propagates = true,
+	groups = {snappy=3},
+	collision_box = bottle_cbox,
+	selection_box = bottle_cbox
+})
+
 minetest.register_node("homedecor:coffee_maker", {
 	tiles = {
 		"homedecor_coffeemaker_top.png",

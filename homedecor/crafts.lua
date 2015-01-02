@@ -2910,6 +2910,48 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:4_bottles_brown",
+	recipe = {
+		"homedecor:bottle_brown",
+		"homedecor:bottle_brown",
+		"homedecor:bottle_brown",
+		"homedecor:bottle_brown" 
+	},
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:4_bottles_green",
+	recipe = {
+		"homedecor:bottle_green",
+		"homedecor:bottle_green",
+		"homedecor:bottle_green",
+		"homedecor:bottle_green" 
+	},
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:4_bottles_multi",
+	recipe = {
+		"homedecor:bottle_brown",
+		"homedecor:bottle_brown",
+		"homedecor:bottle_green",
+		"homedecor:bottle_green",
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:wine_rack",
+	recipe = {
+		{ "homedecor:4_bottles_brown", "group:wood", "homedecor:4_bottles_brown" },
+		{ "homedecor:4_bottles_brown", "group:wood", "homedecor:4_bottles_brown" },
+		{ "homedecor:4_bottles_brown", "group:wood", "homedecor:4_bottles_brown" },
+	},
+})
+
 if (minetest.get_modpath("technic") and minetest.get_modpath("dye") and minetest.get_modpath("bees")) then
 	technic.register_separating_recipe({ input = {"bees:wax 1"}, output = {"homedecor:oil_extract 2","dye:yellow 1"} })
 end
