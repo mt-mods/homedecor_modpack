@@ -1926,6 +1926,11 @@ minetest.register_node("homedecor:calendar", {
 	sounds = default.node_sound_defaults(),
 })
 
+local globe_cbox = {
+	type = "fixed",
+	fixed = { -0.4, -0.5, -0.3, 0.3, 0.3, 0.3 }
+}
+
 minetest.register_node("homedecor:desk_globe", {
 	description = "Desk globe",
 	drawtype = "mesh",
@@ -1934,14 +1939,8 @@ minetest.register_node("homedecor:desk_globe", {
 	inventory_image = "homedecor_desk_globe_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.4, -0.5, -0.3, 0.3, 0.3, 0.3 }
-	},
-	collision_box = {
-		type = "fixed",
-		fixed = { -0.4, -0.5, -0.3, 0.3, 0.3, 0.3 }
-	},
+	selection_box = globe_cbox,
+	collision_box = globe_cbox,
 	groups = {choppy=2},
 	sounds = default.node_sound_defaults(),
 })
