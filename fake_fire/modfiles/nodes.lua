@@ -34,6 +34,7 @@ minetest.register_node("fake_fire:fake_fire", {
 			},
 	paramtype = "light",
 	walkable = false,
+	buildable_to = true,
 	drop = "",  -- So fire won't return to the inventory. ~ LazyJ
 	sounds = minetest.sound_play("fire_small", {pos=cp, loop=true}),
 	on_punch = function (pos,node,puncher)
@@ -80,6 +81,7 @@ minetest.register_node("fake_fire:smokeless_fire", {
 			},
 	paramtype = "light",
 	walkable = false,
+	buildable_to = true,
 	drop = "",  -- So fire won't return to the inventory. ~ LazyJ
 	sounds = minetest.sound_play("fire_small", {pos=cp, loop=true}),
 	on_punch = function (pos,node,puncher)
@@ -126,6 +128,7 @@ minetest.register_node("fake_fire:ice_fire", {
 			},
 	paramtype = "light",
 	walkable = false,
+	buildable_to = true,
 	drop = "",  -- So fire won't return to the inventory. ~ LazyJ
 	sounds = minetest.sound_play("fire_small", {pos=cp, loop=true}),
 	on_punch = function (pos,node,puncher)
@@ -172,6 +175,7 @@ minetest.register_node("fake_fire:smokeless_ice_fire", {
 			},
 	paramtype = "light",
 	walkable = false,
+	buildable_to = true,
 	drop = "",  -- So fire won't return to the inventory. ~ LazyJ
 	sounds = minetest.sound_play("fire_small", {pos=cp, loop=true}),
 	on_punch = function (pos,node,puncher)
