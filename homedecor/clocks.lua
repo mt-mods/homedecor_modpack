@@ -6,7 +6,7 @@ minetest.register_node("homedecor:analog_clock_plastic", {
 	inventory_image = "homedecor_analog_clock_plastic_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	node_box = {
+	collision_box = {
 		type = "fixed",
 		fixed = {
 			{ -8/32, -3/32, 15/32, 8/32, 3/32, 16/32 },
@@ -31,7 +31,7 @@ minetest.register_node("homedecor:analog_clock_wood", {
 	inventory_image = "homedecor_analog_clock_wood_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	node_box = {
+	collision_box = {
 		type = "fixed",
 		fixed = {
 			{ -8/32, -3/32, 15/32, 8/32, 3/32, 16/32 },
