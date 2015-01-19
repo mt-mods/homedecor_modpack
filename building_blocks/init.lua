@@ -328,6 +328,28 @@ if minetest.get_modpath("moreblocks") then
 			sounds = default.node_sound_stone_defaults(),
 		}
 	)
+	stairsplus:register_all(
+		"building_blocks",
+		"Adobe",
+		"building_blocks:Adobe",
+		{
+			description = "Adobe",
+			tiles = {"building_blocks_Adobe.png"},
+			groups = {crumbly=3},
+			sounds = default.node_sound_stone_defaults(),
+		}
+	)
+	stairsplus:register_all(
+		"building_blocks",
+		"Roofing",
+		"building_blocks:Roofing",
+		{
+			description = "Roofing",
+			tiles = {"building_blocks_Roofing.png"},
+			groups = {snappy=3},
+			sounds = default.node_sound_stone_defaults(),
+		}
+	)
 else
 	bb_stairs = {}
 
@@ -431,6 +453,18 @@ else
 		{"building_blocks_grate.png"},
 		"Grate Stair",
 		"Grate Slab"
+	)
+	bb_stairs.register_stair_and_slab("Adobe", "building_blocks:Adobe",
+		{crumbly=3},
+		{"building_blocks_Adobe.png"},
+		"Adobe stair",
+		"Adobe slab"
+	)
+	bb_stairs.register_stair_and_slab("Roofing", "building_blocks:Roofing",
+		{snappy=3},
+		{"building_blocks_Roofing.png"},
+		"Roofing stair",
+		"Roofing slab"
 	)
 end
 
