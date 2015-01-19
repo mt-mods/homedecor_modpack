@@ -272,7 +272,7 @@ minetest.register_node("building_blocks:hardwood", {
 if minetest.get_modpath("moreblocks") then
 
 	stairsplus:register_all(
-		"building_blocks", 
+		"building_blocks",
 		"marble",
 		"building_blocks:Marble",
 		{
@@ -328,7 +328,6 @@ if minetest.get_modpath("moreblocks") then
 			sounds = default.node_sound_stone_defaults(),
 		}
 	)
-	
 else
 	bb_stairs = {}
 
