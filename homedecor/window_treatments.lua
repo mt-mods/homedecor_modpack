@@ -78,7 +78,7 @@ minetest.register_node("homedecor:blinds_thick", {
 	paramtype2 = "facedir",
 	walkable = false,
 	groups = {snappy=3},
-	sounds = default.node_sound_glass_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
@@ -118,7 +118,7 @@ minetest.register_node("homedecor:blinds_thin", {
 	paramtype2 = "facedir",
 	walkable = false,
 	groups = {snappy=3},
-	sounds = default.node_sound_glass_defaults(),
+	sounds = default.node_sound_wood_defaults(),
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
