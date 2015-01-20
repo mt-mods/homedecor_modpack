@@ -2,7 +2,7 @@
 local S = homedecor.gettext
 
 minetest.register_node("homedecor:window_quartered", {
-	description = "Window",
+	description = "Window (quartered)",
 	tiles = {
 		"homedecor_window_sides.png",
 		"homedecor_window_sides.png",
@@ -14,8 +14,8 @@ minetest.register_node("homedecor:window_quartered", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	use_texture_alpha = true,
-	is_ground_content = true,
-	groups = {crumbly=3},
+	groups = {snappy=3},
+	sounds = default.node_sound_glass_defaults(),
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
@@ -23,26 +23,22 @@ minetest.register_node("homedecor:window_quartered", {
 			{-0.5, -0.5, 0.025, 0.5, 0.5, 0}, -- NodeBox1
 			{-0.5, 0.4375, -0.0625, 0.5, 0.5, 0.0625}, -- NodeBox2
 			{-0.5, -0.5, -0.0625, 0.5, -0.4375, 0.0625}, -- NodeBox3
-			{-0.5, 0, -0.0625, 0.5, 0.0625, 0.0625}, -- NodeBox4
+			{-0.5, -0.0625, -0.025, 0.5, 0.0625, 0.025}, -- NodeBox4
 			{0.4375, -0.5, -0.0625, 0.5, 0.5, 0.0625}, -- NodeBox5
 			{-0.5, -0.5, -0.0625, -0.4375, 0.5, 0.0625}, -- NodeBox6
-			{0, -0.5, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox7
+			{-0.0625, -0.5, -0.025, 0.0625, 0.5, 0.025}, -- NodeBox7
 			},
 		},
 	selection_box = {
 		type = "fixed",
 		fixed = {
-			{-0.5, -0.5, 0.025, 0.5, 0.5, 0}, -- NodeBox1
-			{-0.5, 0.4375, -0.0625, 0.5, 0.5, 0.0625}, -- NodeBox2
-			{-0.5, -0.5, -0.0625, 0.5, -0.4375, 0.0625}, -- NodeBox3
-			{0.4375, -0.5, -0.0625, 0.5, 0.5, 0.0625}, -- NodeBox5
-			{-0.5, -0.5, -0.0625, -0.4375, 0.5, 0.0625}, -- NodeBox6
-			},
+			{-0.5, -0.5, -0.0625, 0.5, 0.5, 0.0625}
 		},
+	},
 })
 
 minetest.register_node("homedecor:window_plain", {
-	description = "Window",
+	description = "Window (plain)",
 	tiles = {
 		"homedecor_window_sides.png",
 		"homedecor_window_sides.png",
@@ -54,8 +50,8 @@ minetest.register_node("homedecor:window_plain", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	use_texture_alpha = true,
-	is_ground_content = true,
-	groups = {crumbly=3},
+	groups = {snappy=3},
+	sounds = default.node_sound_glass_defaults(),
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
@@ -63,18 +59,14 @@ minetest.register_node("homedecor:window_plain", {
 			{-0.5, -0.5, 0.025, 0.5, 0.5, 0}, -- NodeBox1
 			{-0.5, 0.4375, -0.0625, 0.5, 0.5, 0.0625}, -- NodeBox2
 			{-0.5, -0.5, -0.0625, 0.5, -0.4375, 0.0625}, -- NodeBox3
-			{0.4375, -0.5, -0.0625, 0.5, 0.5, 0.0625}, -- NodeBox5
-			{-0.5, -0.5, -0.0625, -0.4375, 0.5, 0.0625}, -- NodeBox6
+			{0.4375, -0.5, -0.0625, 0.5, 0.5, 0.0625}, -- NodeBox4
+			{-0.5, -0.5, -0.0625, -0.4375, 0.5, 0.0625}, -- NodeBox5
 			},
 		},
 	selection_box = {
 		type = "fixed",
 		fixed = {
-			{-0.5, -0.5, 0.025, 0.5, 0.5, 0}, -- NodeBox1
-			{-0.5, 0.4375, -0.0625, 0.5, 0.5, 0.0625}, -- NodeBox2
-			{-0.5, -0.5, -0.0625, 0.5, -0.4375, 0.0625}, -- NodeBox3
-			{0.4375, -0.5, -0.0625, 0.5, 0.5, 0.0625}, -- NodeBox5
-			{-0.5, -0.5, -0.0625, -0.4375, 0.5, 0.0625}, -- NodeBox6
+			{-0.5, -0.5, -0.0625, 0.5, 0.5, 0.0625}
 			},
 		},
 })
@@ -84,10 +76,9 @@ minetest.register_node("homedecor:blinds_thick", {
 	tiles = { "homedecor_windowblinds.png" },
 	paramtype = "light",
 	paramtype2 = "facedir",
-	--use_texture_alpha = true,
 	walkable = false,
-	is_ground_content = true,
-	groups = {crumbly=3},
+	groups = {snappy=3},
+	sounds = default.node_sound_glass_defaults(),
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
@@ -115,22 +106,7 @@ minetest.register_node("homedecor:blinds_thick", {
 	selection_box = {
 		type = "fixed",
 		fixed = {
-			{-0.527123, 0.375, 0.3125, 0.523585, 0.5, 0.5}, -- NodeBox1
-			{-0.5, 0.304245, 0.3125, 0.5, 0.3125, 0.5}, -- NodeBox2
-			{-0.5, 0.244104, 0.3125, 0.5, 0.25, 0.5}, -- NodeBox3
-			{-0.5, 0.180424, 0.3125, 0.5, 0.1875, 0.5}, -- NodeBox4
-			{-0.5, 0.116745, 0.3125, 0.5, 0.125, 0.5}, -- NodeBox5
-			{-0.5, 0.0566037, 0.3125, 0.5, 0.0625, 0.5}, -- NodeBox6
-			{-0.5, -0.00707551, 0.3125, 0.5, 0, 0.5}, -- NodeBox7
-			{-0.5, -0.0707547, 0.3125, 0.5, -0.0625, 0.5}, -- NodeBox8
-			{-0.5, -0.130896, 0.3125, 0.5, -0.125, 0.5}, -- NodeBox9
-			{-0.5, -0.194576, 0.3125, 0.5, -0.1875, 0.5}, -- NodeBox10
-			{-0.5, -0.258255, 0.3125, 0.5, -0.25, 0.5}, -- NodeBox11
-			{-0.5, -0.318396, 0.3125, 0.5, -0.3125, 0.5}, -- NodeBox12
-			{-0.5, -0.5, 0.3125, 0.5, -0.4375, 0.5}, -- NodeBox13
-			{-0.5, -0.378538, 0.3125, 0.5, -0.375, 0.5}, -- NodeBox14
-			{-0.375, -0.5, 0.367925, -0.367925, 0.4375, 0.445755}, -- NodeBox15
-			{0.367924, -0.5, 0.367925, 0.375, 0.5, 0.445755}, -- NodeBox16
+			{-0.527123, -0.5, 0.25, 0.523585, 0.5, 0.5}
 			},
 		},
 })
@@ -140,10 +116,9 @@ minetest.register_node("homedecor:blinds_thin", {
 	tiles = { "homedecor_windowblinds.png" },
 	paramtype = "light",
 	paramtype2 = "facedir",
-	--use_texture_alpha = true,
 	walkable = false,
-	is_ground_content = true,
-	groups = {crumbly=3},
+	groups = {snappy=3},
+	sounds = default.node_sound_glass_defaults(),
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
@@ -171,22 +146,7 @@ minetest.register_node("homedecor:blinds_thin", {
 	selection_box = {
 		type = "fixed",
 		fixed = {
-			{-0.52, 0.375, 0.4375, 0.52, 0.5, 0.5}, -- NodeBox1
-			{-0.5, 0.304245, 0.4375, 0.5, 0.3125, 0.5}, -- NodeBox2
-			{-0.5, 0.244104, 0.4375, 0.5, 0.25, 0.5}, -- NodeBox3
-			{-0.5, 0.180424, 0.43755, 0.5, 0.1875, 0.5}, -- NodeBox4
-			{-0.5, 0.116745, 0.4375, 0.5, 0.125, 0.5}, -- NodeBox5
-			{-0.5, 0.0566037, 0.4375, 0.5, 0.0625, 0.5}, -- NodeBox6
-			{-0.5, -0.00707551, 0.4375, 0.5, 0, 0.5}, -- NodeBox7
-			{-0.5, -0.0707547, 0.4375, 0.5, -0.0625, 0.5}, -- NodeBox8
-			{-0.5, -0.130896, 0.4375, 0.5, -0.125, 0.5}, -- NodeBox9
-			{-0.5, -0.194576, 0.4375, 0.5, -0.1875, 0.5}, -- NodeBox10
-			{-0.5, -0.258255, 0.4375, 0.5, -0.25, 0.5}, -- NodeBox11
-			{-0.5, -0.318396, 0.4375, 0.5, -0.3125, 0.5}, -- NodeBox12
-			{-0.5, -0.5, 0.4375, 0.5, -0.4375, 0.5}, -- NodeBox13
-			{-0.5, -0.378538, 0.4375, 0.5, -0.375, 0.5}, -- NodeBox14
-			{-0.375, -0.49, 0.4575, -0.367925, 0.4375, 0.48}, -- NodeBox15
-			{0.367924, -0.49, 0.4575, 0.375, 0.49, 0.48}, -- NodeBox16
+			{-0.52, -0.5, 0.375, 0.52, 0.5, 0.5}
 			},
 		},
 })
@@ -311,4 +271,3 @@ minetest.register_node("homedecor:window_flowerbox", {
 		}
 	}
 })
-
