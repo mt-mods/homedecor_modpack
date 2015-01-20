@@ -119,23 +119,23 @@ function homedecor.rotate_cobweb(pos)
 	-- only xm+zp, or only xp+zm means on-floor torchlike
 
 	if (iswall_xm and iswall_zp and not iswall_xp and not iswall_zm)
-	or (iswall_xp and iswall_zm and not iswall_xm and not iswall_zp) then 
+	or (iswall_xp and iswall_zm and not iswall_xm and not iswall_zp) then
 		minetest.set_node(pos, {name = "homedecor:cobweb_corner", param2 = 1})
-	
+
 	-- only xm+zm, or only xp+zp means on-ceiling torchlike
 
-	elseif (iswall_xm and iswall_zm and not iswall_xp and not iswall_zp) 
-	or (iswall_xp and iswall_zp and not iswall_xm and not iswall_zm) then 
+	elseif (iswall_xm and iswall_zm and not iswall_xp and not iswall_zp)
+	or (iswall_xp and iswall_zp and not iswall_xm and not iswall_zm) then
 		minetest.set_node(pos, {name = "homedecor:cobweb_corner", param2 = 0})
-	
+
 	-- only xm+xp means nodebox (not rotated, 0 degrees)
 
-	elseif iswall_xm and iswall_xp and not iswall_zm and not iswall_zp then 
+	elseif iswall_xm and iswall_xp and not iswall_zm and not iswall_zp then
 		minetest.set_node(pos, {name = "homedecor:cobweb_centered", param2 = 0})
-	
+
 	-- only zm+zp means nodebox rotated to 90 degrees
 
-	elseif iswall_zm and iswall_zp and not iswall_xm and not iswall_xp then 
+	elseif iswall_zm and iswall_zp and not iswall_xm and not iswall_xp then
 		minetest.set_node(pos, {name = "homedecor:cobweb_centered", param2 = 1})
 
 	-- ok, there aren't any simple two-wall corners or opposing walls.
@@ -152,7 +152,7 @@ function homedecor.rotate_cobweb(pos)
 
 	elseif iswall_zp and not iswall_xm and not iswall_xp and not iswall_zm then
 		minetest.set_node(pos, {name = "homedecor:cobweb_flat", param2 = 0})
-	
+
 	-- if all else fails, place the plantlike version as a fallback.
 
 	else

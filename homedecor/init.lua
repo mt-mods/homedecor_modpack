@@ -4,7 +4,7 @@
 -- lua files and from ironzorg's flowers mod.  Many thanks to GloopMaster
 -- for helping me figure out the inventories used in the nightstands/dressers.
 --
--- The code for ovens, nightstands, refrigerators are basically modified 
+-- The code for ovens, nightstands, refrigerators are basically modified
 -- copies of the code for chests and furnaces.
 
 homedecor = {}
@@ -57,7 +57,7 @@ function homedecor.table_copy(t)
     return nt
 end
 
--- 
+--
 
 function homedecor.get_nodedef_field(nodename, fieldname)
 	if not minetest.registered_nodes[nodename] then

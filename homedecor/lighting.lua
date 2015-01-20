@@ -278,17 +278,17 @@ minetest.register_node('homedecor:candle', {
 	},
     node_box = {
             type = "fixed",
-            fixed = { 
+            fixed = {
 				{ -0.125, -0.5, -0.125, 0.125, 0, 0.125 },
 				{ -0.125, 0, 0, 0.125, 0.5, 0 },
 				{ 0, 0, -0.125, 0, 0.5, 0.125 }
-			}	
+			}
     },
     selection_box = {
             type = "fixed",
-            fixed = { 
+            fixed = {
 				{ -0.1875, -0.5, -0.1875, 0.1875, 0.5, 0.1875 },
-			}	
+			}
     },
 	sunlight_propagates = true,
 	paramtype = "light",
@@ -308,9 +308,9 @@ minetest.register_node('homedecor:candle_thin', {
 	},
     selection_box = {
             type = "fixed",
-            fixed = { 
+            fixed = {
 				{ -0.1, -0.5, -0.1, 0.125, 0.05, 0.125 },
-			}	
+			}
     },
 	sunlight_propagates = true,
 	paramtype = "light",
@@ -331,9 +331,9 @@ minetest.register_node('homedecor:oil_lamp', {
 	walkable = true,
     selection_box = {
             type = "fixed",
-            fixed = { 
+            fixed = {
 				{ -0.3, -0.5, -0.3, 0.3, 0.5, 0.3 },
-			}	
+			}
     },
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-4,
@@ -351,9 +351,9 @@ minetest.register_node('homedecor:wall_lantern', {
 	walkable = true,
     selection_box = {
             type = "fixed",
-            fixed = { 
+            fixed = {
 				{ -0.3, -0.5, -0.3, 0.3, 0.5, 0.3 },
-			}	
+			}
     },
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-4,
@@ -471,7 +471,7 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 	minetest.register_alias("homedecor:standing_lamp_top"..lampcolor.."_"..suffix, "air")
 
 	-- for old maps that had 3dfornit`ure
-	if lampcolor == "" then 
+	if lampcolor == "" then
 		minetest.register_alias("3dforniture:table_lamp_"..suffix, "homedecor:table_lamp_"..suffix)
 	end
 end

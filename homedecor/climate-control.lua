@@ -88,7 +88,7 @@ minetest.register_node("homedecor:desk_fan", {
 			speedy_meta:set_string("active", "no")
 			print (speedy_meta:get_string("active"))
 		end
-		
+
 		if entity_anim[1] == nil then
 			minetest.add_entity({x=pos.x, y=pos.y, z=pos.z}, "homedecor:mesh_desk_fan") --+(0.0625*10)
 			local entity_remove = minetest.get_objects_inside_radius(pos, 0.1)

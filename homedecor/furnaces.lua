@@ -263,13 +263,13 @@ function homedecor.register_furnace(name, furnacedef)
 			local srclist = inv:get_list("src")
 			local cooked = nil
 			local aftercooked
-			
+
 			if srclist then
 				cooked, aftercooked = minetest.get_craft_result({method = "cooking", width = 1, items = srclist})
 			end
-			
+
 			local was_active = false
-			
+
 			if meta:get_float("fuel_time") < meta:get_float("fuel_totaltime") then
 				was_active = true
 				meta:set_float("fuel_time", meta:get_float("fuel_time") + 1)
@@ -306,7 +306,7 @@ function homedecor.register_furnace(name, furnacedef)
 			local cooked = nil
 			local fuellist = inv:get_list("fuel")
 			local srclist = inv:get_list("src")
-			
+
 			if srclist then
 				cooked = minetest.get_craft_result({method = "cooking", width = 1, items = srclist})
 			end

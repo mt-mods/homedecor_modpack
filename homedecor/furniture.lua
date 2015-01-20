@@ -34,7 +34,7 @@ for _, i in ipairs(table_colors) do
 		    },
 		},
 		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
-	})  
+	})
 end
 
 local chaircolors = {
@@ -52,7 +52,7 @@ for i in ipairs(chaircolors) do
 	local color = "_"..chaircolors[i][1]
 	local color2 = chaircolors[i][1]
 	local name = S(chaircolors[i][2])
-	local chairtiles = { 
+	local chairtiles = {
 			"forniture_kitchen_chair_top"..color..".png",
 			"forniture_wood.png",
 			"forniture_kitchen_chair_sides"..color..".png",
@@ -60,7 +60,7 @@ for i in ipairs(chaircolors) do
 			"forniture_kitchen_chair_back"..color..".png",
 			"forniture_kitchen_chair_front"..color..".png",
 	}
-	if chaircolors[i][1] == "" then 
+	if chaircolors[i][1] == "" then
 		color = ""
 		chairtiles = { "forniture_wood.png" }
 	end
@@ -89,7 +89,7 @@ for i in ipairs(chaircolors) do
 		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 	})
 
-	if color ~= "" then 
+	if color ~= "" then
 		minetest.register_node("homedecor:armchair"..color, {
 			description = S("Armchair (%s)"):format(name),
 			tiles = { "forniture_armchair_top"..color..".png" },
@@ -197,7 +197,7 @@ local function unextend_bed(pos, color)
 end
 
 for _, color in ipairs(bedcolors) do
- 
+
 	minetest.register_node("homedecor:bed_"..color.."_head", {
 		tiles = {
 			"homedecor_bed_"..color.."_top1.png",
@@ -262,12 +262,12 @@ for _, color in ipairs(bedcolors) do
 		on_construct = function(pos)
 			bed_extension(pos, color)
 		end,
- 
+
 		on_place = function(itemstack, placer, pointed_thing)
 			return homedecor.stack_sideways(itemstack, placer, pointed_thing,
 				"homedecor:bed_"..color.."_foot", "homedecor:bed_"..color.."_head", false)
 		end,
- 
+
 		after_dig_node = function(pos, oldnode, oldmetadata, digger)
 			local fdir = oldnode.param2
 			if not fdir or fdir > 3 then return end
@@ -278,7 +278,7 @@ for _, color in ipairs(bedcolors) do
 			unextend_bed(pos, color)
 		 end
 	})
- 
+
 	minetest.register_node("homedecor:bed_"..color.."_footext", {
 		tiles = {
 			"homedecor_bed_"..color.."_top2.png",
@@ -317,7 +317,7 @@ for _, color in ipairs(bedcolors) do
 		end,
 		drop = "homedecor:bed_"..color.."_foot"
 	})
- 
+
 end
 
 minetest.register_node("homedecor:wardrobe_top", {

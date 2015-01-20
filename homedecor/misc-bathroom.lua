@@ -162,7 +162,7 @@ minetest.register_node("homedecor:toilet_paper", {
 	inventory_image = "homedecor_toilet_paper_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	selection_box = { 
+	selection_box = {
 		type = "fixed",
 		fixed = { -0.1875, 0.125, 0.0625, 0.25, 0.4375, 0.5 }
 	},

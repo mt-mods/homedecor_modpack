@@ -68,7 +68,7 @@ for i in ipairs(materials) do
 	minetest.register_node('homedecor:'..m..'_table_large', {
 		description = S(d.." Table Piece (large)"),
 		drawtype = 'nodebox',
-		tiles = { 
+		tiles = {
 			'homedecor_'..m..'_table_large_tb.png',
 			'homedecor_'..m..'_table_large_tb.png',
 			'homedecor_'..m..'_table_large_edges.png',

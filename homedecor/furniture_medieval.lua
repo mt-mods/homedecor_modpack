@@ -114,7 +114,7 @@ minetest.register_node("homedecor:chains", {
         fixed = {-1/2, -1/2, 1/4, 1/2, 1/2, 1/2},
     },
     groups = {cracky=1},
-})  
+})
 
 minetest.register_node("homedecor:torch_wall", {
     description = S("Wall Torch"),

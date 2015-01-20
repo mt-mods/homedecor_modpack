@@ -280,7 +280,7 @@ minetest.register_node("homedecor:fence_privacy_corner", {
                 fixed = {
 			{ -0.5, -0.5, 5/16,   0.5, 0.5,  0.5 },
 			{ -0.5, -0.5, -0.5, -5/16, 0.5, 5/16 },
-		}			
+		}
         },
         node_box = {
                 type = "fixed",
@@ -318,7 +318,7 @@ minetest.register_node("homedecor:fence_barbed_wire", {
 			{ -8/16, -8/16, 6/16, -6/16, 8/16, 8/16 },	-- left post
 			{  6/16, -8/16, 6/16,  8/16, 8/16, 8/16 }, 	-- right post
 			{ -6/16, -8/16, 7/16,  6/16, 8/16, 7/16 }	-- the wire
-		}		
+		}
         },
 })
 
@@ -350,7 +350,7 @@ minetest.register_node("homedecor:fence_barbed_wire_corner", {
 
 			{  -8/16, -8/16, -8/16, -6/16, 8/16, -6/16 },	-- front post
 			{  -7/16, -8/16, -6/16, -7/16, 8/16,  6/16 }	-- more wire
-		}		
+		}
         },
 })
 
@@ -383,7 +383,7 @@ minetest.register_node("homedecor:fence_chainlink", {
 			{ -8/16,  7/16, 13/32,  8/16,  8/16, 15/32 },	-- top piece
 			{ -8/16, -8/16, 13/32,  8/16, -7/16, 15/32 },	-- bottom piece
 			{ -8/16, -8/16,  7/16,  8/16,  8/16,  7/16 }	-- the chainlink itself
-		}		
+		}
         },
 })
 
@@ -458,7 +458,7 @@ minetest.register_node("homedecor:fence_wrought_iron_2", {
 			{ -0.015625, -8/16,  14.75/32,  0.015625,  8/16,  15.25/32 }, -- cross piece
 			{ -8/16, -8/16, 14/32,  8/16, -7.75/16, 16/32 }, -- bottom piece
 			{ -8/16, -8/16,  15/32,  8/16,  8/16,  15/32 }	-- the grid itself
-		}		
+		}
         },
 })
 

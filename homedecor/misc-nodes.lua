@@ -143,7 +143,7 @@ minetest.register_node("homedecor:pole_brass", {
     sounds = default.node_sound_wood_defaults(),
 	walkable = true,
 })
-	
+
 minetest.register_node("homedecor:pole_wrought_iron", {
     description = S("Wrought Iron Pole"),
     drawtype = "nodebox",
@@ -967,7 +967,7 @@ minetest.register_node("homedecor:doorbell", {
 			pos = pos,
 			gain = 1.0,
 			max_hear_distance = 15
-		}) 
+		})
 	end
 })
 
@@ -1421,7 +1421,7 @@ minetest.register_node("homedecor:sportbench", {
 	tiles = {
 		"homedecor_sportbench_top.png",
 		"wool_black.png",
-		"homedecor_sportbench_left.png^[transformFX", 
+		"homedecor_sportbench_left.png^[transformFX",
 		"homedecor_sportbench_left.png",
 		"homedecor_sportbench_bottom.png",
 		"homedecor_sportbench_front.png"
@@ -1526,7 +1526,7 @@ minetest.register_node("homedecor:paper_towel", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = { snappy=3 },
-	selection_box = { 
+	selection_box = {
 		type = "fixed",
 		fixed = { -0.4375, 0.125, 0.0625, 0.4375, 0.4375, 0.5 }
 	},
@@ -1673,7 +1673,7 @@ minetest.register_node("homedecor:beer_tap", {
 		local inv = puncher:get_inventory()
 
 		local wieldname = wielditem:get_name()
-		if wieldname == "vessels:drinking_glass" then 
+		if wieldname == "vessels:drinking_glass" then
 			if inv:room_for_item("main", "homedecor:beer_mug 1") then
 				wielditem:take_item()
 				puncher:set_wielded_item(wielditem)
@@ -1725,7 +1725,7 @@ minetest.register_node("homedecor:tool_cabinet_bottom", {
 		"homedecor_tool_cabinet_bottom_sides.png",
 		"homedecor_tool_cabinet_bottom_sides.png",
 		"homedecor_tool_cabinet_bottom_sides.png",
-		"homedecor_tool_cabinet_bottom_sides.png", 
+		"homedecor_tool_cabinet_bottom_sides.png",
 		"homedecor_tool_cabinet_bottom_front.png"
 	},
 	inventory_image = "homedecor_tool_cabinet_inv.png",

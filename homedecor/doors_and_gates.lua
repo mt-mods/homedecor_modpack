@@ -21,8 +21,8 @@ local function countSolids(pos,node,level)
     for x = -1, 1 do
         for z = -1, 1 do
             local y = 0
-            if node.param2 == 5 then 
-                y = -level 
+            if node.param2 == 5 then
+                y = -level
             else
                 y =  level
             end
@@ -89,9 +89,9 @@ local function calculateClosed(pos)
                     return true
                 end
             end
-            return false            
+            return false
         else
-            -- direction == 3 or 4                
+            -- direction == 3 or 4
             if isSolid(pos,{-1,0,0}) and isSolid(pos,{1,0,0}) then
                 if string.find(node.name,'_bottom_') then
                     return calculateClosed({x=pos.x,y=pos.y+1,z=pos.z})
@@ -229,7 +229,7 @@ for i in ipairs(sides) do
 		})
 
 		local dgroups = {snappy=3, not_in_creative_inventory=1}
-		if side == "left" then 
+		if side == "left" then
 			dgroups = {snappy=3}
 		end
 
@@ -319,7 +319,7 @@ local gate_models_open = {
 	{{ 0.498, -0.5, -0.5, 0.498, 0.5, 0.5 }},
 
 	{{ 0.498, -0.5, -0.5, 0.498, 0.5, 0.5 }},
-	
+
 	{{  6/16, -8/16, -8/16,  8/16,  8/16, -6/16 },	-- left post
 	 {  6/16, -8/16,  6/16,  8/16,  8/16,  8/16 }, 	-- right post
 	 { 13/32,  7/16, -8/16, 15/32,  8/16,  8/16 },	-- top piece
@@ -452,7 +452,7 @@ function homedecor.place_door(itemstack, placer, pointed_thing, name, forceright
 			return
 		end
 
-		if not homedecor.get_nodedef_field(node_bottom.name, "buildable_to") 
+		if not homedecor.get_nodedef_field(node_bottom.name, "buildable_to")
 		    or not homedecor.get_nodedef_field(node_top.name, "buildable_to") then
 			minetest.chat_send_player( placer:get_player_name(), S('Not enough space above that spot to place a door!') )
 		else
@@ -598,7 +598,7 @@ minetest.register_node("homedecor:japanese_wall_top", {
 	},
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, 0, 0.5, 0.5, 0.0625}, 
+		fixed = {-0.5, -0.5, 0, 0.5, 0.5, 0.0625},
 	}
 })
 
@@ -634,7 +634,7 @@ minetest.register_node("homedecor:japanese_wall_middle", {
 	},
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, 0, 0.5, 0.5, 0.0625}, 
+		fixed = {-0.5, -0.5, 0, 0.5, 0.5, 0.0625},
 	}
 })
 
@@ -669,7 +669,7 @@ minetest.register_node("homedecor:japanese_wall_bottom", {
 	},
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, 0, 0.5, 0.5, 0.0625}, 
+		fixed = {-0.5, -0.5, 0, 0.5, 0.5, 0.0625},
 	}
 })
 
@@ -710,7 +710,7 @@ minetest.register_node("homedecor:jpn_door_bottom", {
 	groups = { snappy = 3 },
 	node_box = {
 		type = "fixed",
-		fixed = {			
+		fixed = {
 			{-0.5, -0.5, 0.03125, 0.5, 0.5, 0.03125}, -- NodeBox1
 			{-0.5, -0.5, 0, -0.44, 0.5, 0.0625}, -- NodeBox2
 			{0.44, -0.5, 0, 0.5, 0.5, 0.0625}, -- NodeBox3
@@ -724,7 +724,7 @@ minetest.register_node("homedecor:jpn_door_bottom", {
 	},
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, 0, 0.5, 1.5, 0.0625}, 
+		fixed = {-0.5, -0.5, 0, 0.5, 1.5, 0.0625},
 	},
 	on_place = function(itemstack, placer, pointed_thing)
 
@@ -768,7 +768,7 @@ minetest.register_node("homedecor:jpn_door_top", {
 	groups = { snappy = 3, not_in_creative_inventory = 1 },
 	node_box = {
 		type = "fixed",
-		fixed = {			
+		fixed = {
 			{-0.5, -0.5, 0.03125, 0.5, 0.5, 0.03125}, -- NodeBox1
 			{-0.5, -0.5, 0, -0.44, 0.5, 0.0625}, -- NodeBox2
 			{0.44, -0.5, 0, 0.5, 0.5, 0.0625}, -- NodeBox3
@@ -800,7 +800,7 @@ minetest.register_node("homedecor:jpn_door_bottom_open", {
 	groups = { snappy = 3, not_in_creative_inventory = 1 },
 	node_box = {
 		type = "fixed",
-		fixed = {			
+		fixed = {
 			{-1.5, -0.5, -0.03125, -0.5, 0.5, -0.03125}, -- NodeBox1
 			{-1.5, -0.5, -0.0625, -1.44, 0.5, 0}, -- NodeBox2
 			{-0.5625, -0.5, -0.0625, -0.5, 0.5, 0}, -- NodeBox3
@@ -844,7 +844,7 @@ minetest.register_node("homedecor:jpn_door_top_open", {
 	groups = { snappy = 3, not_in_creative_inventory = 1 },
 	node_box = {
 		type = "fixed",
-		fixed = {			
+		fixed = {
 			{-1.5, -0.5, -0.03125, -0.5, 0.5, -0.03125}, -- NodeBox1
 			{-1.5, -0.5, -0.0625, -1.44, 0.5, 0}, -- NodeBox2
 			{-0.5625, -0.5, -0.0625, -0.5, 0.5, 0}, -- NodeBox3
