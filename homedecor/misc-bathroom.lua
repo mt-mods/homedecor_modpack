@@ -89,8 +89,8 @@ minetest.register_node('homedecor:medicine_cabinet', {
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	on_punch = function(pos, node, puncher, pointed_thing)
-		local fdir = node.param2
-		minetest.set_node(pos, { name = "homedecor:medicine_cabinet_open", param2 = fdir })
+		node.name = "homedecor:medicine_cabinet_open"
+		minetest.swap_node(pos, node)
 	end,
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -149,8 +149,8 @@ minetest.register_node("homedecor:medicine_cabinet_open", {
 	},
 	drop = "homedecor:medicine_cabinet",
 	on_punch = function(pos, node, puncher, pointed_thing)
-		local fdir = node.param2
-		minetest.set_node(pos, { name = "homedecor:medicine_cabinet", param2 = fdir })
+		node.name = "homedecor:medicine_cabinet"
+		minetest.swap_node(pos, node)
 	end,
 })
 
