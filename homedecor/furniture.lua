@@ -347,7 +347,7 @@ minetest.register_node("homedecor:wardrobe_top", {
 	},
 })
 
-minetest.register_node("homedecor:wardrobe_bottom", {
+homedecor.register("wardrobe_bottom", {
 	tiles = {
 		"forniture_wood.png",
 		"forniture_wood.png^[transformR180",
@@ -358,9 +358,6 @@ minetest.register_node("homedecor:wardrobe_bottom", {
 	},
 	inventory_image = "homedecor_wardrobe_inv.png",
 	description = "Wardrobe",
-	drawtype = "nodebox",
-	paramtype = "light",
-        paramtype2 = "facedir",
         groups = {snappy=3},
 	node_box = {
 		type = "fixed",
@@ -385,39 +382,13 @@ minetest.register_node("homedecor:wardrobe_bottom", {
 			minetest.remove_node(pos2)
 		end
 	end,
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec",
-				"size[8,8]"..
-				"list[current_name;main;0,0;8,3;]"..
-				"list[current_player;main;0,4;8,4;]")
-		meta:set_string("infotext", S("Wardrobe cabinet"))
-		local inv = meta:get_inventory()
-		inv:set_size("main", 24)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
-	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", S("%s moves stuff in wardrobe at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-	end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", S("%s moves stuff to wardrobe at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-	end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", S("%s takes stuff from wardrobe at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-	end,
+	infotext=S("Wardrobe cabinet"),
+	inventory = {
+		size=24,
+		formspec="size[8,8]"..
+			"list[context;main;0,0;8,3;]"..
+			"list[current_player;main;0,4;8,4;]",
+	},
 })
 
 minetest.register_node("homedecor:simple_bench", {

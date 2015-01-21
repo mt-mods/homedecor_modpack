@@ -293,7 +293,7 @@ minetest.register_node("homedecor:fishtank_lighted", {
 	end
 })
 
-minetest.register_node('homedecor:cardboard_box', {
+homedecor.register("cardboard_box", {
 	drawtype = "nodebox",
 	description = S("Cardboard box"),
 	tiles = {
@@ -305,10 +305,10 @@ minetest.register_node('homedecor:cardboard_box', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-    selection_box = {
-            type = "fixed",
-            fixed = { -0.5, -0.5, -0.5, 0.5, 0, 0.5 }
-    },
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.5, -0.5, -0.5, 0.5, 0, 0.5 }
+	},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -325,40 +325,13 @@ minetest.register_node('homedecor:cardboard_box', {
 	},
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
-
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec",
-				"size[8,6]"..
-				"list[current_name;main;2,0;4,1;]"..
-				"list[current_player;main;0,2;8,4;]")
-		meta:set_string("infotext", S("Cardboard box"))
-		local inv = meta:get_inventory()
-		inv:set_size("main", 8)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
-	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", S("%s moves stuff in cardboard box at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-	end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", S("%s moves stuff to cardboard box at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-	end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", S("%s takes stuff from cardboard box at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-	end,
+	infotext=S("Cardboard box"),
+	inventory = {
+		size=8,
+		formspec="size[8,6]"..
+			"list[current_name;main;2,0;4,1;]"..
+			"list[current_player;main;0,2;8,4;]",
+	},
 })
 
 minetest.register_node("homedecor:dvd_cd_cabinet", {
@@ -395,8 +368,7 @@ minetest.register_node("homedecor:dvd_cd_cabinet", {
 	sounds = default.node_sound_wood_defaults(),
 })
 
-minetest.register_node('homedecor:filing_cabinet', {
-	drawtype = "nodebox",
+homedecor.register("filing_cabinet", {
 	description = S("Filing Cabinet"),
 	tiles = {
 		'forniture_wood.png',
@@ -407,8 +379,6 @@ minetest.register_node('homedecor:filing_cabinet', {
 		'homedecor_filing_cabinet_front.png'
 	},
 	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
 	walkable = true,
         selection_box = {
                 type = "fixed",
@@ -423,39 +393,13 @@ minetest.register_node('homedecor:filing_cabinet', {
         },
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec",
-				"size[8,7]"..
-				"list[current_name;main;0,0;8,2;]"..
-				"list[current_player;main;0,3;8,4;]")
-		meta:set_string("infotext", S("Filing cabinet"))
-		local inv = meta:get_inventory()
-		inv:set_size("main", 16)
-	end,
-	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
-		local inv = meta:get_inventory()
-		return inv:is_empty("main")
-	end,
-	on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", S("%s moves stuff in filing cabinet at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-	end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", S("%s moves stuff to filing cabinet at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-	end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", S("%s takes stuff from filing cabinet at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-	end,
+	infotext=S("Filing cabinet"),
+	inventory = {
+		size=16,
+		formspec="size[8,7]"..
+			"list[context;main;0,0;8,2;]"..
+			"list[current_player;main;0,3;8,4;]",
+	},
 })
 
 minetest.register_node("homedecor:dishwasher", {

@@ -36,8 +36,7 @@ local fridge_model_top = {
 }
 
 -- steel-textured fridge
-
-minetest.register_node("homedecor:refrigerator_steel_bottom", {
+homedecor.register("refrigerator_steel_bottom", {
 	tiles = {
 		"default_steel_block.png",
 		"homedecor_refrigerator_steel_bottom.png",
@@ -47,11 +46,8 @@ minetest.register_node("homedecor:refrigerator_steel_bottom", {
 		"homedecor_refrigerator_steel_front2.png"
 	},
 	inventory_image = "homedecor_refrigerator_steel_inv.png",
-    description = S("Refrigerator (stainless steel)"),
-	drawtype = "nodebox",
-	paramtype = "light",
-    paramtype2 = "facedir",
-    groups = {snappy=3},
+	description = S("Refrigerator (stainless steel)"),
+	groups = {snappy=3},
 	node_box = fridge_model_bottom,
 	selection_box = {
 		type = "fixed",
@@ -98,42 +94,16 @@ minetest.register_node("homedecor:refrigerator_steel_bottom", {
 			minetest.remove_node(pos2)
 		end
 	end,
-    on_construct = function(pos)
-        local meta = minetest.get_meta(pos)
-        meta:set_string("formspec",
-                "size[10,10]"..
-                "list[current_name;main;0,0;10,5;]"..
-                "list[current_player;main;1,6;8,4;]")
-        meta:set_string("infotext", S("Refrigerator"))
-        local inv = meta:get_inventory()
-        inv:set_size("main",50)
-    end,
-    can_dig = function(pos,player)
-        local meta = minetest.get_meta(pos);
-        local inv = meta:get_inventory()
-        return inv:is_empty("main")
-    end,
-    on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", S("%s moves stuff in refrigerator at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-    end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", S("%s moves stuff to refrigerator at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-    end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", S("%s takes stuff from refrigerator at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-    end,
+	infotext=S("Refrigerator"),
+	inventory = {
+		size=50,
+		formspec="size[10,10]"..
+			"list[context;main;0,0;10,5;]"..
+			"list[current_player;main;1,6;8,4;]",
+	},
 })
 
-minetest.register_node("homedecor:refrigerator_steel_top", {
+homedecor.register("refrigerator_steel_top", {
 	tiles = {
 		"homedecor_refrigerator_steel_top.png",
 		"default_steel_block.png",
@@ -142,10 +112,7 @@ minetest.register_node("homedecor:refrigerator_steel_top", {
 		"homedecor_refrigerator_steel_back1.png",
 		"homedecor_refrigerator_steel_front1.png"
 	},
-	drawtype = "nodebox",
-	paramtype = "light",
-    paramtype2 = "facedir",
-    groups = {snappy=3},
+	groups = {snappy=3},
 	node_box = fridge_model_top,
 	selection_box = {
 		type = "fixed",
@@ -155,7 +122,7 @@ minetest.register_node("homedecor:refrigerator_steel_top", {
 
 -- white, enameled fridge
 
-minetest.register_node("homedecor:refrigerator_white_bottom", {
+homedecor.register("refrigerator_white_bottom", {
 	tiles = {
 		"default_steel_block.png",
 		"homedecor_refrigerator_white_bottom.png",
@@ -165,11 +132,8 @@ minetest.register_node("homedecor:refrigerator_white_bottom", {
 		"homedecor_refrigerator_white_front2.png"
 	},
 	inventory_image = "homedecor_refrigerator_white_inv.png",
-    description = S("Refrigerator"),
-	drawtype = "nodebox",
-	paramtype = "light",
-    paramtype2 = "facedir",
-    groups = {snappy=3},
+	description = S("Refrigerator"),
+	groups = {snappy=3},
 	node_box = fridge_model_bottom,
 	selection_box = {
 		type = "fixed",
@@ -216,42 +180,16 @@ minetest.register_node("homedecor:refrigerator_white_bottom", {
 			minetest.remove_node(pos2)
 		end
 	end,
-    on_construct = function(pos)
-        local meta = minetest.get_meta(pos)
-        meta:set_string("formspec",
-                "size[10,10]"..
-                "list[current_name;main;0,0;10,5;]"..
-                "list[current_player;main;1,6;8,4;]")
-        meta:set_string("infotext", S("Refrigerator"))
-        local inv = meta:get_inventory()
-        inv:set_size("main",50)
-    end,
-    can_dig = function(pos,player)
-        local meta = minetest.get_meta(pos);
-        local inv = meta:get_inventory()
-        return inv:is_empty("main")
-    end,
-    on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		minetest.log("action", S("%s moves stuff in refrigerator at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-    end,
-    on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		minetest.log("action", S("%s moves stuff to refrigerator at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-    end,
-    on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		minetest.log("action", S("%s takes stuff from refrigerator at %s"):format(
-		    player:get_player_name(),
-		    minetest.pos_to_string(pos)
-		))
-    end,
+	infotext=S("Refrigerator"),
+	inventory = {
+		size=50,
+		formspec="size[10,10]"..
+			"list[context;main;0,0;10,5;]"..
+			"list[current_player;main;1,6;8,4;]",
+	},
 })
 
-minetest.register_node("homedecor:refrigerator_white_top", {
+homedecor.register("refrigerator_white_top", {
 	tiles = {
 		"homedecor_refrigerator_white_top.png",
 		"default_steel_block.png",
@@ -260,10 +198,7 @@ minetest.register_node("homedecor:refrigerator_white_top", {
 		"homedecor_refrigerator_white_back1.png",
 		"homedecor_refrigerator_white_front1.png"
 	},
-	drawtype = "nodebox",
-	paramtype = "light",
-    paramtype2 = "facedir",
-    groups = {snappy=3},
+	groups = {snappy=3},
 	node_box = fridge_model_top,
 	selection_box = {
 		type = "fixed",
