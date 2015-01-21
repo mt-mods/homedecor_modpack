@@ -91,7 +91,7 @@ minetest.register_node('homedecor:flower_pot_terracotta', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, potting_soil=1},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -104,7 +104,7 @@ minetest.register_node('homedecor:flower_pot_black', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, potting_soil=1 },
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -117,7 +117,7 @@ minetest.register_node('homedecor:flower_pot_green', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	groups = { snappy = 3 },
+	groups = { snappy = 3, potting_soil=1 },
 	sounds = default.node_sound_leaves_defaults(),
 })
 
