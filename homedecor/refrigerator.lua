@@ -54,7 +54,7 @@ homedecor.register("refrigerator_steel_bottom", {
 		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
 	},
 	on_place = function(itemstack, placer, pointed_thing)
-		homedecor.stack_vertically(itemstack, placer, pointed_thing, "homedecor:refrigerator_steel_bottom", "homedecor:refrigerator_steel_top")
+		homedecor.stack_vertically(itemstack, placer, pointed_thing, itemstack:get_name(), "homedecor:refrigerator_steel_top")
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
@@ -109,7 +109,7 @@ homedecor.register("refrigerator_white_bottom", {
 		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
 	},
 	on_place = function(itemstack, placer, pointed_thing)
-		homedecor.stack_vertically(itemstack, placer, pointed_thing, "homedecor:refrigerator_white_bottom", "homedecor:refrigerator_white_top")
+		homedecor.stack_vertically(itemstack, placer, pointed_thing, itemstack:get_name(), "homedecor:refrigerator_white_top")
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }

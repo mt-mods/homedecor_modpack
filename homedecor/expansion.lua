@@ -33,7 +33,7 @@ local function stack(itemstack, placer, fdir, pos, def, pos2, node1, node2)
 		if string.find(nodename, "_locked") then
 			local meta = minetest.get_meta(pos)
 			meta:set_string("owner", placer_name)
-			meta:set_string("infotext", S("Locked Refrigerator (owned by %s)"):format(placer_name))
+			meta:set_string("infotext", S("Locked %s (owned by %s)"):format(minetest.registered_nodes[nodename].infotext, placer_name))
 		end
 
 		if not homedecor.expect_infinite_stacks then

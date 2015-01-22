@@ -26,7 +26,7 @@ function homedecor.register(name, def)
 			or (def.node_box and "nodebox")
 
 	local infotext = def.infotext
-	def.infotext = nil -- no need to register this into the global node table
+	--def.infotext = nil -- currently used to set locked refrigerator infotexts
 
 	-- handle inventory setting
 	-- inventory = {
