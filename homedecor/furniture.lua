@@ -198,7 +198,7 @@ end
 
 for _, color in ipairs(bedcolors) do
 
-	minetest.register_node("homedecor:bed_"..color.."_head", {
+	homedecor.register("bed_"..color.."_head", {
 		tiles = {
 			"homedecor_bed_"..color.."_top1.png",
 			"homedecor_bed_bottom1.png",
@@ -207,9 +207,6 @@ for _, color in ipairs(bedcolors) do
 			"homedecor_bed_head1.png",
 			"homedecor_bed_"..color.."_head2.png"
 		},
-		drawtype = "nodebox",
-		paramtype = "light",
-		paramtype2 = "facedir",
 		groups = {snappy=3, not_in_creative_inventory=1},
 		node_box = {
 			type = "fixed",
@@ -230,7 +227,7 @@ for _, color in ipairs(bedcolors) do
 		}
 	})
 
-	minetest.register_node("homedecor:bed_"..color.."_foot", {
+	homedecor.register("bed_"..color.."_foot", {
 		tiles = {
 			"homedecor_bed_"..color.."_top2.png",
 			"homedecor_bed_bottom2.png",
@@ -241,9 +238,6 @@ for _, color in ipairs(bedcolors) do
 		},
 		inventory_image = "homedecor_bed_"..color.."_inv.png",
 		description = S("Bed (%s)"):format(color),
-		drawtype = "nodebox",
-		paramtype = "light",
-		paramtype2 = "facedir",
 		groups = {snappy=3},
 		node_box = {
 			type = "fixed",
@@ -262,24 +256,13 @@ for _, color in ipairs(bedcolors) do
 		on_construct = function(pos)
 			bed_extension(pos, color)
 		end,
-
-		on_place = function(itemstack, placer, pointed_thing)
-			return homedecor.stack_sideways(itemstack, placer, pointed_thing,
-				"homedecor:bed_"..color.."_foot", "homedecor:bed_"..color.."_head", false)
-		end,
-
-		after_dig_node = function(pos, oldnode, oldmetadata, digger)
-			local fdir = oldnode.param2
-			if not fdir or fdir > 3 then return end
-			local pos2 = { x = pos.x + homedecor.fdir_to_fwd[fdir+1][1], y=pos.y, z = pos.z + homedecor.fdir_to_fwd[fdir+1][2] }
-			if minetest.get_node(pos2).name == "homedecor:bed_"..color.."_head" then
-				minetest.remove_node(pos2)
-			end
+		expand = { forward = "homedecor:bed_"..color.."_head" },
+		after_unexpand = function(pos)
 			unextend_bed(pos, color)
-		 end
+		end,
 	})
 
-	minetest.register_node("homedecor:bed_"..color.."_footext", {
+	homedecor.register("bed_"..color.."_footext", {
 		tiles = {
 			"homedecor_bed_"..color.."_top2.png",
 			"homedecor_bed_bottom2.png",
@@ -288,9 +271,6 @@ for _, color in ipairs(bedcolors) do
 			"homedecor_bed_foot2ext.png",
 			"homedecor_bed_"..color.."_foot1ext.png"
 		},
-		drawtype = "nodebox",
-		paramtype = "light",
-		paramtype2 = "facedir",
 		groups = {snappy=3, not_in_creative_inventory=1},
 		node_box = {
 			type = "fixed",
@@ -306,13 +286,8 @@ for _, color in ipairs(bedcolors) do
 			type = "fixed",
 			fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 1.5 }
 		},
-		after_dig_node = function(pos, oldnode, oldmetadata, digger)
-			local fdir = oldnode.param2
-			if not fdir or fdir > 3 then return end
-			local pos2 = { x = pos.x + homedecor.fdir_to_fwd[fdir+1][1], y=pos.y, z = pos.z + homedecor.fdir_to_fwd[fdir+1][2] }
-			if minetest.get_node(pos2).name == "homedecor:bed_"..color.."_head" then
-				minetest.remove_node(pos2)
-			end
+		expand = { forward = "homedecor:bed_"..color.."_head" },
+		after_unexpand = function(pos)
 			unextend_bed(pos, color)
 		end,
 		drop = "homedecor:bed_"..color.."_foot"

@@ -77,8 +77,10 @@ function homedecor.register(name, def)
 		end
 	end
 
-	local expand = def.expand
+	local expand  = def.expand
 	def.expand = nil
+	local after_unexpand = def.after_unexpand
+	def.after_unexpand = nil
 
 	if expand then
 		def.on_place = def.on_place or function(itemstack, placer, pointed_thing)
@@ -114,6 +116,10 @@ function homedecor.register(name, def)
 				if minetest.get_node(forward_pos).name == expand.forward then
 					minetest.remove_node(forward_pos)
 				end
+			end
+
+			if after_unexpand then
+				after_unexpand(pos)
 			end
 		end
 	end
