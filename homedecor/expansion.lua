@@ -1,9 +1,9 @@
--- returns the correct buildable_to node
-local function get_buildable_to(pointed_thing)
+-- selects which node was pointed at based on it being known, and either clickable or buildable_to
+local function select_node(pointed_thing)
 	local pos = pointed_thing.under
 	local def = minetest.registered_nodes[minetest.get_node(pos).name]
 
-	if not def or not def.buildable_to then
+	if not def or (not def.on_rightclick and not def.buildable_to) then
 		pos = pointed_thing.above
 		def = minetest.registered_nodes[minetest.get_node(pos).name]
 	end
@@ -49,7 +49,11 @@ end
 -- Stack one node above another
 -- leave the last argument nil if it's one 2m high node
 function homedecor.stack_vertically(itemstack, placer, pointed_thing, node1, node2)
-	local pos, def = get_buildable_to(pointed_thing)
+	local pos, def = select_node(pointed_thing)
+	if def.on_rightclick then
+		return def.on_rightclick(pointed_thing.under, minetest.get_node(pos), placer, itemstack)
+	end
+
 	local top_pos = { x=pos.x, y=pos.y+1, z=pos.z }
 
 	return stack(itemstack, placer, nil, pos, def, top_pos, node1, node2)
@@ -71,10 +75,14 @@ homedecor.fdir_to_fwd = {
 }
 
 function homedecor.stack_sideways(itemstack, placer, pointed_thing, node1, node2, dir)
+	local pos, def = select_node(pointed_thing)
+	if def.on_rightclick then
+		return def.on_rightclick(pointed_thing.under, minetest.get_node(pos), placer, itemstack)
+	end
+
 	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 	local fdir_transform = dir and homedecor.fdir_to_right or homedecor.fdir_to_fwd
 
-	local pos, def = get_buildable_to(pointed_thing)
 	local pos2 = { x = pos.x + fdir_transform[fdir+1][1], y=pos.y, z = pos.z + fdir_transform[fdir+1][2] }
 
 	return stack(itemstack, placer, fdir, pos, def, pos2, node1, node2)
