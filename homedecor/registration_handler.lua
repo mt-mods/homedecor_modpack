@@ -93,7 +93,7 @@ function homedecor.register(name, def)
 			end
 		end
 		def.after_dig_node = def.after_dig_node or function(pos, oldnode, oldmetadata, digger)
-			if expand.top then
+			if expand.top and expand.forward ~= "air" then
 				local top_pos = { x=pos.x, y=pos.y+1, z=pos.z }
 				if minetest.get_node(top_pos).name == expand.top then
 					minetest.remove_node(top_pos)
@@ -103,13 +103,13 @@ function homedecor.register(name, def)
 			local fdir = oldnode.param2
 			if not fdir or fdir > 3 then return end
 
-			if expand.right then
+			if expand.right and expand.forward ~= "air" then
 				local right_pos = { x=pos.x+homedecor.fdir_to_right[fdir+1][1], y=pos.y, z=pos.z+homedecor.fdir_to_right[fdir+1][2] }
 				if minetest.get_node(right_pos).name == expand.right then
 					minetest.remove_node(right_pos)
 				end
 			end
-			if expand.forward then
+			if expand.forward and expand.forward ~= "air" then
 				local forward_pos = { x=pos.x+homedecor.fdir_to_fwd[fdir+1][1], y=pos.y, z=pos.z+homedecor.fdir_to_fwd[fdir+1][2] }
 				if minetest.get_node(forward_pos).name == expand.forward then
 					minetest.remove_node(forward_pos)

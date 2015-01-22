@@ -26,7 +26,8 @@ local function stack(itemstack, placer, fdir, pos, def, pos2, node1, node2)
 	if is_buildable_to(placer_name, pos, def, pos2) then
 		local fdir = fdir or minetest.dir_to_facedir(placer:get_look_dir())
 		minetest.set_node(pos, { name = node1, param2 = fdir })
-		minetest.set_node(pos2, { name = node2 or "air", param2 = node2 and fdir or nil })
+		node2 = node2 or "air" -- this can be used to clear buildable_to nodes even though we are using a multinode mesh
+		minetest.set_node(pos2, { name = node2, param2 = (node2 ~= "air" and fdir) or nil })
 
 		-- temporary check if this is a locked node to set its infotext
 		local nodename = itemstack:get_name()
