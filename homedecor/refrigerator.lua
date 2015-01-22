@@ -54,39 +54,7 @@ homedecor.register("refrigerator_steel_bottom", {
 		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
 	},
 	on_place = function(itemstack, placer, pointed_thing)
-		local pos = pointed_thing.under
-		local pnode = minetest.get_node(pointed_thing.under)
-		local rnodedef = minetest.registered_nodes[pnode.name]
-
-		if not rnodedef["buildable_to"] then
-			pos = pointed_thing.above
-		end
-
-		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
-
-		local tnode = minetest.get_node(pos)
-		local tnode2 = minetest.get_node(pos2)
-
-		if homedecor.get_nodedef_field(tnode.name, "buildable_to")
-		  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
-		  and not minetest.is_protected(pos, placer:get_player_name())
-		  and not minetest.is_protected(pos2, placer:get_player_name()) then
-			local nodename = itemstack:get_name()
-			minetest.add_node(pos, { name = nodename, param2 = fdir })
-			minetest.add_node(pos2, { name = "homedecor:refrigerator_steel_top", param2 = fdir })
-
-			if string.find(nodename, "_locked") then
-		        local meta = minetest.get_meta(pos)
-				meta:set_string("owner", placer:get_player_name() or "")
-				meta:set_string("infotext", S("Locked Refrigerator (owned by %s)"):format(meta:get_string("owner")))
-			end
-
-			if not homedecor.expect_infinite_stacks then
-				itemstack:take_item()
-				return itemstack
-			end
-		end
+		homedecor.stack_vertically(itemstack, placer, pointed_thing, "homedecor:refrigerator_steel_bottom", "homedecor:refrigerator_steel_top")
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
@@ -97,6 +65,7 @@ homedecor.register("refrigerator_steel_bottom", {
 	infotext=S("Refrigerator"),
 	inventory = {
 		size=50,
+		lockable=true,
 		formspec="size[10,10]"..
 			"list[context;main;0,0;10,5;]"..
 			"list[current_player;main;1,6;8,4;]",
@@ -140,39 +109,7 @@ homedecor.register("refrigerator_white_bottom", {
 		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
 	},
 	on_place = function(itemstack, placer, pointed_thing)
-		local pos = pointed_thing.under
-		local pnode = minetest.get_node(pointed_thing.under)
-		local rnodedef = minetest.registered_nodes[pnode.name]
-
-		if not rnodedef["buildable_to"] then
-			pos = pointed_thing.above
-		end
-
-		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
-
-		local tnode = minetest.get_node(pos)
-		local tnode2 = minetest.get_node(pos2)
-
-		if homedecor.get_nodedef_field(tnode.name, "buildable_to")
-		  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
-		  and not minetest.is_protected(pos, placer:get_player_name())
-		  and not minetest.is_protected(pos2, placer:get_player_name()) then
-			local nodename = itemstack:get_name()
-			minetest.add_node(pos, { name = nodename, param2 = fdir })
-			minetest.add_node(pos2, { name = "homedecor:refrigerator_white_top", param2 = fdir })
-
-			if string.find(nodename, "_locked") then
-		        local meta = minetest.get_meta(pos)
-				meta:set_string("owner", placer:get_player_name() or "")
-				meta:set_string("infotext", S("Locked Refrigerator (owned by %s)"):format(meta:get_string("owner")))
-			end
-
-			if not homedecor.expect_infinite_stacks then
-				itemstack:take_item()
-				return itemstack
-			end
-		end
+		homedecor.stack_vertically(itemstack, placer, pointed_thing, "homedecor:refrigerator_white_bottom", "homedecor:refrigerator_white_top")
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }

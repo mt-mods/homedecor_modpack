@@ -57,121 +57,11 @@ function homedecor.table_copy(t)
     return nt
 end
 
---
-
 function homedecor.get_nodedef_field(nodename, fieldname)
 	if not minetest.registered_nodes[nodename] then
 		return nil
 	end
 	return minetest.registered_nodes[nodename][fieldname]
-end
-
--- Place a two-node-tall single object (e.g. a floor lamp)
-
-function homedecor.place_twonode_vertical(itemstack, placer, pointed_thing, node)
-	local pos = pointed_thing.under
-	local pnode = minetest.get_node(pointed_thing.under)
-	local rnodedef = minetest.registered_nodes[pnode.name]
-
-	if not rnodedef["buildable_to"] then
-		pos = pointed_thing.above
-	end
-
-	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-	local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
-
-	local tnode = minetest.get_node(pos)
-	local tnode2 = minetest.get_node(pos2)
-
-	if homedecor.get_nodedef_field(tnode.name, "buildable_to")
-	  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
-	  and not minetest.is_protected(pos, placer:get_player_name())
-	  and not minetest.is_protected(pos2, placer:get_player_name()) then
-		minetest.add_node(pos, { name = node, param2 = fdir })
-		if not homedecor.expect_infinite_stacks then
-			itemstack:take_item()
-			return itemstack
-		end
-	end
-end
-
--- Stack one node above another
-
-function homedecor.stack_vertically(itemstack, placer, pointed_thing, node1, node2)
-	local pos = pointed_thing.under
-	local pnode = minetest.get_node(pointed_thing.under)
-	local rnodedef = minetest.registered_nodes[pnode.name]
-
-	if not rnodedef["buildable_to"] then
-		pos = pointed_thing.above
-	end
-
-	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-	local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
-
-	local tnode = minetest.get_node(pos)
-	local tnode2 = minetest.get_node(pos2)
-
-	if homedecor.get_nodedef_field(tnode.name, "buildable_to")
-	  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
-	  and not minetest.is_protected(pos, placer:get_player_name())
-	  and not minetest.is_protected(pos2, placer:get_player_name()) then
-		minetest.add_node(pos, { name = node1, param2 = fdir })
-		minetest.add_node(pos2, { name = node2, param2 = fdir })
-		if not homedecor.expect_infinite_stacks then
-			itemstack:take_item()
-			return itemstack
-		end
-	end
-end
-
--- Place one node right of or behind another
-
-homedecor.fdir_to_right = {
-	{  1,  0 },
-	{  0, -1 },
-	{ -1,  0 },
-	{  0,  1 },
-}
-
-homedecor.fdir_to_fwd = {
-	{  0,  1 },
-	{  1,  0 },
-	{  0, -1 },
-	{ -1,  0 },
-}
-
-function homedecor.stack_sideways(itemstack, placer, pointed_thing, node1, node2, dir)
-	local pos = pointed_thing.under
-	local pnode = minetest.get_node(pointed_thing.under)
-	local rnodedef = minetest.registered_nodes[pnode.name]
-
-	if not rnodedef["buildable_to"] then
-		pos = pointed_thing.above
-	end
-
-	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-	local pos2
-	if dir then
-		pos2 = { x = pos.x + homedecor.fdir_to_right[fdir+1][1], y=pos.y, z = pos.z + homedecor.fdir_to_right[fdir+1][2] }
-	else
-		pos2 = { x = pos.x + homedecor.fdir_to_fwd[fdir+1][1], y=pos.y, z = pos.z + homedecor.fdir_to_fwd[fdir+1][2] }
-	end
-
-	local tnode = minetest.get_node(pos)
-	local tnode2 = minetest.get_node(pos2)
-
-	if homedecor.get_nodedef_field(tnode.name, "buildable_to")
-	  and homedecor.get_nodedef_field(tnode2.name, "buildable_to")
-	  and not minetest.is_protected(pos, placer:get_player_name())
-	  and not minetest.is_protected(pos2, placer:get_player_name()) then
-		minetest.add_node(pos, { name = node1, param2 = fdir })
-		minetest.add_node(pos2, { name = node2, param2 = fdir })
-		if not homedecor.expect_infinite_stacks then
-			itemstack:take_item()
-			return itemstack
-		end
-	end
 end
 
 -- Determine if the item being pointed at is the underside of a node (e.g a ceiling)
@@ -222,6 +112,9 @@ function homedecor.find_ceiling(itemstack, placer, pointed_thing)
 	return isceiling, pos
 end
 
+-- expand and unexpand decor
+dofile(homedecor.modpath.."/expansion.lua")
+-- glue it all together into a registration function
 dofile(homedecor.modpath.."/registration_handler.lua")
 
 -- load various other components

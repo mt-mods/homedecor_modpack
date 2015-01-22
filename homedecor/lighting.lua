@@ -456,7 +456,7 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 		selection_box = slamp_cbox,
 		collision_box = slamp_cbox,
 		on_place = function(itemstack, placer, pointed_thing)
-			return homedecor.place_twonode_vertical(itemstack, placer, pointed_thing,
+			return homedecor.place_vertically(itemstack, placer, pointed_thing,
 				"homedecor:standing_lamp"..lampcolor.."_"..suffix)
 		end,
 		on_punch = function(pos, node, puncher)
