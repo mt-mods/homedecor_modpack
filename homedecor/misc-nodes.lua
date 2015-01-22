@@ -491,7 +491,7 @@ minetest.register_node("homedecor:dishwasher_granite", {
 	groups = { snappy = 3 },
 })
 
-minetest.register_node("homedecor:doghouse_base", {
+homedecor.register("doghouse_base", {
 	tiles = {
 		"homedecor_doghouse_base_top.png",
 		"homedecor_doghouse_base_bottom.png",
@@ -502,9 +502,6 @@ minetest.register_node("homedecor:doghouse_base", {
 	},
 	description = "Doghouse",
 	inventory_image = "homedecor_doghouse_inv.png",
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -526,19 +523,10 @@ minetest.register_node("homedecor:doghouse_base", {
 		fixed = { -0.5, -0.5, -0.5, 0.5, 1.0, 0.5 }
 	},
 	groups = {snappy=3},
-	on_place = function(itemstack, placer, pointed_thing)
-		return homedecor.stack_vertically(itemstack, placer, pointed_thing,
-				"homedecor:doghouse_base", "homedecor:doghouse_roof")
-	end,
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
-		if minetest.get_node(pos2).name == "homedecor:doghouse_roof" then
-			minetest.remove_node(pos2)
-		end
-	end
+	expand = { top="homedecor:doghouse_roof" },
 })
 
-minetest.register_node("homedecor:doghouse_roof", {
+homedecor.register("doghouse_roof", {
 	tiles = {
 		"homedecor_doghouse_roof_top.png",
 		"homedecor_doghouse_roof_bottom.png",
@@ -547,9 +535,6 @@ minetest.register_node("homedecor:doghouse_roof", {
 		"homedecor_doghouse_roof_front.png",
 		"homedecor_doghouse_roof_front.png"
 	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -584,7 +569,7 @@ minetest.register_node("homedecor:doghouse_roof", {
 	groups = {snappy=3, not_in_creative_inventory=1},
 })
 
-minetest.register_node("homedecor:pool_table", {
+homedecor.register("pool_table", {
 	tiles = {
 		"homedecor_pool_table_top1.png",
 		"homedecor_pool_table_bottom1.png",
@@ -595,9 +580,6 @@ minetest.register_node("homedecor:pool_table", {
 	},
 	description = "Pool Table",
 	inventory_image = "homedecor_pool_table_inv.png",
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = {snappy=3},
 	node_box = {
 		type = "fixed",
@@ -631,21 +613,10 @@ minetest.register_node("homedecor:pool_table", {
 		type = "fixed",
 		fixed = { -0.5, -0.5, -0.5, 0.5, 0.3125, 1.5 }
 	},
-	on_place = function(itemstack, placer, pointed_thing)
-		return homedecor.stack_sideways(itemstack, placer, pointed_thing,
-			"homedecor:pool_table", "homedecor:pool_table_2", false)
-	end,
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		local fdir = oldnode.param2
-		if not fdir or fdir > 3 then return end
-		local pos2 = { x = pos.x + homedecor.fdir_to_fwd[fdir+1][1], y=pos.y, z = pos.z + homedecor.fdir_to_fwd[fdir+1][2] }
-		if minetest.get_node(pos2).name == "homedecor:pool_table_2" then
-			minetest.remove_node(pos2)
-		end
-	end
+	expand = { forward="homedecor:pool_table_2" },
 })
 
-minetest.register_node("homedecor:pool_table_2", {
+homedecor.register("pool_table_2", {
 	tiles = {
 		"homedecor_pool_table_top1.png^[transformR180",
 		"homedecor_pool_table_bottom1.png",
@@ -654,9 +625,6 @@ minetest.register_node("homedecor:pool_table_2", {
 		"homedecor_pool_table_end1.png",
 		"homedecor_pool_table_end1.png"
 	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = {snappy=3, not_in_creative_inventory=1},
 	node_box = {
 		type = "fixed",
@@ -727,17 +695,14 @@ minetest.register_node("homedecor:trash_can", {
 	}
 })
 
-minetest.register_node("homedecor:well_base", {
+homedecor.register("well_base", {
 	tiles = {
 		"homedecor_well_base_top.png",
 		"default_cobble.png"
 	},
 	inventory_image = "homedecor_well_inv.png",
 	description = "Water well",
-	drawtype = "nodebox",
-	paramtype = "light",
-    paramtype2 = "facedir",
-    groups = { snappy = 3 },
+	groups = { snappy = 3 },
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -764,19 +729,10 @@ minetest.register_node("homedecor:well_base", {
 		type = "fixed",
 		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
 	},
-	on_place = function(itemstack, placer, pointed_thing)
-		return homedecor.stack_vertically(itemstack, placer, pointed_thing,
-			"homedecor:well_base", "homedecor:well_top")
-	end,
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
-		if minetest.get_node(pos2).name == "homedecor:well_top" then
-			minetest.remove_node(pos2)
-		end
-	end
+	expand = { top="homedecor:well_top" },
 })
 
-minetest.register_node("homedecor:well_top", {
+homedecor.register("well_top", {
 	tiles = {
 		"homedecor_well_roof_top.png",
 		"homedecor_well_roof_wood.png",
@@ -785,9 +741,6 @@ minetest.register_node("homedecor:well_top", {
 		"homedecor_well_roof_side2.png",
 		"homedecor_well_roof_side1.png"
 	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy = 3 },
 	node_box = {
 		type = "fixed",
@@ -1170,7 +1123,7 @@ minetest.register_node("homedecor:dartboard", {
 	sounds = default.node_sound_defaults(),
 })
 
-minetest.register_node("homedecor:piano_left", {
+homedecor.register("piano_left", {
 	tiles = {
 		"homedecor_piano_top_left.png",
 		"homedecor_piano_sides.png",
@@ -1181,9 +1134,6 @@ minetest.register_node("homedecor:piano_left", {
 	},
 	inventory_image = "homedecor_piano_inv.png",
 	description = "Piano",
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
         groups = { snappy = 3 },
 	node_box = {
 		type = "fixed",
@@ -1202,21 +1152,10 @@ minetest.register_node("homedecor:piano_left", {
 		type = "fixed",
 		fixed = { -0.5, -0.5, -0.125, 1.5, 0.5, 0.5 }
 	},
-	on_place = function(itemstack, placer, pointed_thing)
-		return homedecor.stack_sideways(itemstack, placer, pointed_thing,
-			"homedecor:piano_left", "homedecor:piano_right", true)
-	end,
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		local fdir = oldnode.param2
-		if not fdir or fdir > 3 then return end
-		local pos2 = { x = pos.x + homedecor.fdir_to_right[fdir+1][1], y=pos.y, z = pos.z + homedecor.fdir_to_right[fdir+1][2] }
-		if minetest.get_node(pos2).name == "homedecor:piano_right" then
-			minetest.remove_node(pos2)
-		end
-	end
+	expand = { right="homedecor:piano_right" },
 })
 
-minetest.register_node("homedecor:piano_right", {
+homedecor.register("piano_right", {
 	tiles = {
 		"homedecor_piano_top_right.png",
 		"homedecor_piano_sides.png",
@@ -1225,9 +1164,6 @@ minetest.register_node("homedecor:piano_right", {
 		"homedecor_piano_sides.png",
 		"homedecor_piano_front_right.png",
 	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
         groups = { snappy = 3, not_in_creative_inventory=1 },
 	node_box = {
 		type = "fixed",
@@ -1509,16 +1445,13 @@ minetest.register_node("homedecor:stonepath", {
 	}
 })
 
-minetest.register_node("homedecor:barbecue", {
+homedecor.register("barbecue", {
 	description = "Barbecue",
 	tiles = {
 		{name="homedecor_barbecue_top.png", animation={type="vertical_frames",
 		aspect_w=16, aspect_h=16, length=2}},
 		"forniture_black_metal.png",
 	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy=3 },
 	light_source = 9,
 	node_box = {
@@ -1546,25 +1479,13 @@ minetest.register_node("homedecor:barbecue", {
 		type = "fixed",
 		fixed = { -0.5, -0.5, -0.3125, 0.5, 0.625, 0.3125 }
         },
-	on_place = function(itemstack, placer, pointed_thing)
-		return homedecor.stack_vertically(itemstack, placer, pointed_thing,
-			"homedecor:barbecue", "homedecor:barbecue_meat")
-	end,
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
-		if minetest.get_node(pos2).name == "homedecor:barbecue_meat" then
-			minetest.remove_node(pos2)
-		end
-	end
+	expand = { top="homedecor:barbecue_meat" },
 })
 
-minetest.register_node("homedecor:barbecue_meat", {
+homedecor.register("barbecue_meat", {
 	tiles = {
 		"homedecor_barbecue_meat.png",
 	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy=3, not_in_creative_inventory=1 },
 	node_box = {
 		type = "fixed",
@@ -1576,7 +1497,7 @@ minetest.register_node("homedecor:barbecue_meat", {
 	selection_box = {
 		type = "fixed",
 		fixed = { 0, 0, 0, 0, 0, 0 }
-       }
+	}
 })
 
 minetest.register_node("homedecor:beer_tap", {
@@ -1662,7 +1583,7 @@ minetest.register_node("homedecor:beer_mug", {
 	}
 })
 
-minetest.register_node("homedecor:tool_cabinet_bottom", {
+homedecor.register("tool_cabinet_bottom", {
 	description = "Metal tool cabinet and work table",
 	tiles = {
 		"homedecor_tool_cabinet_bottom_top.png",
@@ -1673,9 +1594,6 @@ minetest.register_node("homedecor:tool_cabinet_bottom", {
 		"homedecor_tool_cabinet_bottom_front.png"
 	},
 	inventory_image = "homedecor_tool_cabinet_inv.png",
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy=3 },
 	node_box = {
 		type = "fixed",
@@ -1691,19 +1609,10 @@ minetest.register_node("homedecor:tool_cabinet_bottom", {
 		type = "fixed",
 		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
 	},
-	on_place = function(itemstack, placer, pointed_thing)
-		return homedecor.stack_vertically(itemstack, placer, pointed_thing,
-			"homedecor:tool_cabinet_bottom", "homedecor:tool_cabinet_top")
-	end,
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
-		if minetest.get_node(pos2).name == "homedecor:tool_cabinet_top" then
-			minetest.remove_node(pos2)
-		end
-	end
+	expand = { top="homedecor:tool_cabinet_top" },
 })
 
-minetest.register_node("homedecor:tool_cabinet_top", {
+homedecor.register("tool_cabinet_top", {
 	tiles = {
 		"homedecor_tool_cabinet_top_top.png",
 		"homedecor_tool_cabinet_top_bottom.png",
@@ -1712,9 +1621,6 @@ minetest.register_node("homedecor:tool_cabinet_top", {
 		"homedecor_tool_cabinet_top_back.png",
 		"homedecor_tool_cabinet_top_front.png"
 	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy=3, not_in_creative_inventory=1 },
 	node_box = {
 		type = "fixed",

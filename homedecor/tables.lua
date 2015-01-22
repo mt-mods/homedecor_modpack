@@ -224,8 +224,7 @@ minetest.register_node('homedecor:utility_table_legs', {
 	},
 })
 
-minetest.register_node("homedecor:desk", {
-	drawtype = "nodebox",
+homedecor.register("desk", {
 	description = "Desk",
 	tiles = {
 		"forniture_wood.png",
@@ -236,8 +235,6 @@ minetest.register_node("homedecor:desk", {
 		"homedecor_desk_front_l.png"
 	},
 	inventory_image = "homedecor_desk_inv.png",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -253,22 +250,12 @@ minetest.register_node("homedecor:desk", {
 		fixed = { -0.5, -0.5, -0.5, 1.5, 0.5, 0.5 }
 	},
 	groups = { snappy = 3 },
-	on_place = function(itemstack, placer, pointed_thing)
-		return homedecor.stack_sideways(itemstack, placer, pointed_thing,
-			"homedecor:desk", "homedecor:desk_r", true)
-	end,
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		local fdir = oldnode.param2
-		if not fdir or fdir > 3 then return end
-		local pos2 = { x = pos.x + homedecor.fdir_to_right[fdir+1][1], y=pos.y, z = pos.z + homedecor.fdir_to_right[fdir+1][2] }
-		if minetest.get_node(pos2).name == "homedecor:desk_r" then
-			minetest.remove_node(pos2)
-		end
-	end
+	expand = {
+		right="homedecor:desk_r"
+	},
 })
 
-minetest.register_node("homedecor:desk_r", {
-	drawtype = "nodebox",
+homedecor.register("desk_r", {
 	tiles = {
 		"forniture_wood.png",
 		"forniture_wood.png",
@@ -277,8 +264,6 @@ minetest.register_node("homedecor:desk_r", {
 		"homedecor_desk_back_r.png",
 		"homedecor_desk_front_r.png"
 	},
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {

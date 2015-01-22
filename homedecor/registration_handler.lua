@@ -16,6 +16,10 @@ local default_inventory_formspec = "size[8,9]"..
 	"list[current_player;main;0,6.08;8,3;8]"..
 	default.get_hotbar_bg(0,4.85)
 
+local function remove_node_if()
+end
+
+
 --wrapper around minetest.register_node that sets sane defaults and interprets some specialized settings
 function homedecor.register(name, def)
 	def.paramtype = def.paramtype or "light"
@@ -70,6 +74,47 @@ function homedecor.register(name, def)
 		def.on_construct = function(pos)
 			local meta = minetest.get_meta(pos)
 			meta:set_string("infotext", infotext)
+		end
+	end
+
+	local expand = def.expand
+	def.expand = nil
+
+	if expand then
+		def.on_place = def.on_place or function(itemstack, placer, pointed_thing)
+			if expand.top then
+				homedecor.stack_vertically(itemstack, placer, pointed_thing, itemstack:get_name(), expand.top)
+			end
+			if expand.right then
+				homedecor.stack_sideways(itemstack, placer, pointed_thing, itemstack:get_name(), expand.right, true)
+			end
+			if expand.forward then
+				homedecor.stack_sideways(itemstack, placer, pointed_thing, itemstack:get_name(), expand.forward, false)
+			end
+		end
+		def.after_dig_node = def.after_dig_node or function(pos, oldnode, oldmetadata, digger)
+			if expand.top then
+				local top_pos = { x=pos.x, y=pos.y+1, z=pos.z }
+				if minetest.get_node(top_pos).name == expand.top then
+					minetest.remove_node(top_pos)
+				end
+			end
+
+			local fdir = oldnode.param2
+			if not fdir or fdir > 3 then return end
+
+			if expand.right then
+				local right_pos = { x=pos.x+homedecor.fdir_to_right[fdir+1][1], y=pos.y, z=pos.z+homedecor.fdir_to_right[fdir+1][2] }
+				if minetest.get_node(right_pos).name == expand.right then
+					minetest.remove_node(right_pos)
+				end
+			end
+			if expand.forward then
+				local forward_pos = { x=pos.x+homedecor.fdir_to_fwd[fdir+1][1], y=pos.y, z=pos.z+homedecor.fdir_to_fwd[fdir+1][2] }
+				if minetest.get_node(forward_pos).name == expand.forward then
+					minetest.remove_node(forward_pos)
+				end
+			end
 		end
 	end
 
