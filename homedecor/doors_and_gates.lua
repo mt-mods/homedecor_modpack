@@ -256,9 +256,12 @@ for i in ipairs(sides) do
 				end
 			end,
 			on_place = function(itemstack, placer, pointed_thing)
-				local keys=placer:get_player_control()
-				homedecor.place_door(itemstack, placer, pointed_thing, doorname, keys["sneak"])
-				return itemstack
+				return homedecor.stack_wing(itemstack, placer, pointed_thing,
+					"homedecor:door_"..doorname.."_bottom_left", "homedecor:door_"..doorname.."_top_left",
+					"homedecor:door_"..doorname.."_bottom_right", "homedecor:door_"..doorname.."_top_right")
+			end,
+			on_construct = function(pos)
+				minetest.get_meta(pos):set_int("closed", 1)
 			end,
 			on_rightclick = function(pos, node, clicker)
 				homedecor.flip_door(pos, node, clicker, doorname, side)
@@ -409,78 +412,6 @@ minetest.register_alias("homedecor:fence_picket_gate_open",         "homedecor:g
 minetest.register_alias("homedecor:fence_picket_gate_closed",       "homedecor:gate_picket_closed")
 minetest.register_alias("homedecor:fence_picket_gate_white_open",   "homedecor:gate_picket_white_open")
 minetest.register_alias("homedecor:fence_picket_gate_white_closed", "homedecor:gate_picket_white_closed")
-
------ helper functions
-
-function homedecor.place_door(itemstack, placer, pointed_thing, name, forceright)
-
-	local pointed = pointed_thing.under
-	local pnode = minetest.get_node(pointed)
-	local pname = pnode.name
-	local rnodedef = minetest.registered_nodes[pname]
-
-	if rnodedef then
-
-		if rnodedef.on_rightclick then
-			rnodedef.on_rightclick(pointed_thing.under, pnode, placer, itemstack)
-			return
-		end
-
-		local pos1 = nil
-		local pos2 = nil
-
-		if rnodedef["buildable_to"] then
-			pos1 = pointed
-			pos2 = {x=pointed.x, y=pointed.y+1, z=pointed.z}
-		else
-			pos1 = pointed_thing.above
-			pos2 = {x=pointed_thing.above.x, y=pointed_thing.above.y+1, z=pointed_thing.above.z}
-		end
-
-		local node_bottom = minetest.get_node(pos1)
-		local node_top = minetest.get_node(pos2)
-
-		if minetest.is_protected(pos1, placer:get_player_name()) then
-			minetest.record_protection_violation(pos1,
-					placer:get_player_name())
-			return
-		end
-
-		if minetest.is_protected(pos2, placer:get_player_name()) then
-			minetest.record_protection_violation(pos2,
-					placer:get_player_name())
-			return
-		end
-
-		if not homedecor.get_nodedef_field(node_bottom.name, "buildable_to")
-		    or not homedecor.get_nodedef_field(node_top.name, "buildable_to") then
-			minetest.chat_send_player( placer:get_player_name(), S('Not enough space above that spot to place a door!') )
-		else
-			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-			local p_tests = {
-				{x=pos1.x-1, y=pos1.y, z=pos1.z},
-				{x=pos1.x, y=pos1.y, z=pos1.z+1},
-				{x=pos1.x+1, y=pos1.y, z=pos1.z},
-				{x=pos1.x, y=pos1.y, z=pos1.z-1},
-			}
-			print("fdir="..fdir)
-			local testnode = minetest.get_node(p_tests[fdir+1])
-			local side = "left"
-
-			if string.find(testnode.name, "homedecor:door_"..name.."_bottom_left") or forceright then
-				side = "right"
-			end
-
-            local def = { name = "homedecor:door_"..name.."_bottom_"..side, param2=fdir}
-            addDoorNode(pos1, def, true)
-			minetest.add_node(pos2, { name = "homedecor:door_"..name.."_top_"..side, param2=fdir})
-			if not homedecor.expect_infinite_stacks then
-				itemstack:take_item()
-				return itemstack
-			end
-		end
-	end
-end
 
 -- to open a door, you switch left for right and subtract from param2, or vice versa right for left
 -- that is to say open "right" doors become left door nodes, and open left doors right door nodes.
