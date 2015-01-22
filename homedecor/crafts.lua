@@ -2879,7 +2879,10 @@ minetest.register_craft({
 local bookcolors = {
 	"red",
 	"green",
-	"blue"
+	"blue",
+	"violet",
+	"grey",
+	"brown"
 }
 
 for _, color in ipairs(bookcolors) do

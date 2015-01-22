@@ -1897,7 +1897,10 @@ minetest.register_node("homedecor:swing_rope", {
 local bookcolors = {
 	"red",
 	"green",
-	"blue"
+	"blue",
+	"violet",
+	"grey",
+	"brown"
 }
 
 for c in ipairs(bookcolors) do
@@ -1909,25 +1912,50 @@ minetest.register_node("homedecor:book_"..color, {
 	tiles = {
 		"homedecor_book_"..color.."_top.png",
 		"homedecor_book_"..color.."_bottom.png",
-		"homedecor_book_right.png",
+		"homedecor_book_open_sides.png",
 		"homedecor_book_"..color.."_bottom.png",
-		"homedecor_book_back.png",
-		"homedecor_book_back.png^[transformFX"
+		"homedecor_book_open_sides.png",
+		"homedecor_book_open_sides.png"
 	},
 	inventory_image = "homedecor_book_"..color.."_inv.png",
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = { snappy=3, oddly_breakable_by_hand=3 },
+	groups = { snappy=3, oddly_breakable_by_hand=3, book=1 },
+	stack_max = 1,
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{0, -0.5, -0.375, 0.3125, -0.4375, 0.0625}, -- NodeBox1
+			{0, -0.5, -0.375, 0.3125, -0.4375, 0.0625},
 		}
 	},
-	on_punch = function(pos, node, puncher, pointed_thing)
+	on_rightclick = function(pos, node, clicker)
 		local fdir = node.param2
 		minetest.set_node(pos, { name = "homedecor:book_open_"..color, param2 = fdir })
+	end,
+	on_use = function(itemstack, user, pointed_thing)
+		local player_name = user:get_player_name()
+		local data = minetest.deserialize(itemstack:get_metadata())
+		local title, text, owner = "", "", player_name
+		if data then
+			title, text, owner = data.title, data.text, data.owner
+		end
+		local formspec
+		if owner == player_name then
+			formspec = "size[8,8]"..default.gui_bg..default.gui_bg_img..
+				"field[0.5,1;7.5,0;title;Book title :;"..
+					minetest.formspec_escape(title).."]"..
+				"textarea[0.5,1.5;7.5,7;text;Book content :;"..
+					minetest.formspec_escape(text).."]"..
+				"button_exit[2.5,7.5;3,1;save;Save]"
+		else
+			formspec = "size[8,8]"..default.gui_bg..
+			"button_exit[7,0.25;1,0.5;close;x]"..
+			default.gui_bg_img..
+				"label[1,0.5;"..minetest.formspec_escape(title).."]"..
+				"label[0.5,1.5;"..minetest.formspec_escape(text).."]"
+		end
+		minetest.show_formspec(user:get_player_name(), "homedecor:book_"..color, formspec)
 	end,
 })
 
@@ -1951,11 +1979,27 @@ minetest.register_node("homedecor:book_open_"..color, {
 		}
 	},
 	drop = "homedecor:book_"..color,
-	on_punch = function(pos, node, puncher, pointed_thing)
+	on_rightclick = function(pos, node, clicker)
 		local fdir = node.param2
 		minetest.set_node(pos, { name = "homedecor:book_"..color, param2 = fdir })
 	end,
 })
+
+minetest.register_on_player_receive_fields(function(player, form_name, fields)
+	if form_name ~= "homedecor:book_"..color or not fields.save then
+		return
+	end
+	local stack = player:get_wielded_item()
+	if minetest.get_item_group(stack:get_name(), "book") == 0 then
+		return
+	end
+	local data = minetest.deserialize(stack:get_metadata())
+	if not data then data = {} end
+	data.title, data.text, data.owner =
+		fields.title, fields.text, player:get_player_name()
+	stack:set_metadata(minetest.serialize(data))
+	player:set_wielded_item(stack)
+end)
 
 end
 
