@@ -1907,6 +1907,20 @@ for c in ipairs(bookcolors) do
 	local color = bookcolors[c]
 	local color_d = S(bookcolors[c])
 
+	local function book_dig(pos, node, digger)
+		if minetest.is_protected(pos, digger:get_player_name()) then return end
+		local meta = minetest.get_meta(pos)
+		local stack = ItemStack({
+			name = "homedecor:book_"..color,
+			metadata = meta:get_string("text"),
+		})
+		stack = digger:get_inventory():add_item("main", stack)
+		if not stack:is_empty() then
+			minetest.item_drop(stack, digger, pos)
+		end
+		minetest.remove_node(pos)
+	end
+
 minetest.register_node("homedecor:book_"..color, {
 	description = S("Book (%s)"):format(color_d),
 	tiles = {
@@ -1933,6 +1947,32 @@ minetest.register_node("homedecor:book_"..color, {
 		local fdir = node.param2
 		minetest.set_node(pos, { name = "homedecor:book_open_"..color, param2 = fdir })
 	end,
+	on_place = function(itemstack, placer, pointed_thing)
+		local plname = placer:get_player_name()
+		local pos = pointed_thing.under
+		local node = minetest.get_node(pos)
+		local n = minetest.registered_nodes[node.name]
+		if not n.buildable_to then
+			pos = pointed_thing.above
+			node = minetest.get_node(pos)
+			n = minetest.registered_nodes[node.name]
+			if not n.buildable_to then return end
+		end
+		if minetest.is_protected(pos, plname) then return end
+		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+		minetest.set_node(pos, {
+			name = "homedecor:book_"..color,
+			param2 = fdir,
+		})
+		local text = itemstack:get_metadata() or ""
+		local meta = minetest.get_meta(pos)
+		meta:set_string("text", text)
+		if not minetest.setting_getbool("creative_mode") then
+			itemstack:take_item()
+		end
+		return itemstack
+	end,
+	on_dig = book_dig,
 	on_use = function(itemstack, user, pointed_thing)
 		local player_name = user:get_player_name()
 		local data = minetest.deserialize(itemstack:get_metadata())
@@ -1979,6 +2019,7 @@ minetest.register_node("homedecor:book_open_"..color, {
 		}
 	},
 	drop = "homedecor:book_"..color,
+	on_dig = book_dig,
 	on_rightclick = function(pos, node, clicker)
 		local fdir = node.param2
 		minetest.set_node(pos, { name = "homedecor:book_"..color, param2 = fdir })
