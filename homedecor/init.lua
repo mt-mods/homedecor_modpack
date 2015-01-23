@@ -127,10 +127,12 @@ dofile(homedecor.modpath.."/doors_and_gates.lua")
 dofile(homedecor.modpath.."/fences.lua")
 
 dofile(homedecor.modpath.."/lighting.lua")
-dofile(homedecor.modpath.."/kitchen_cabinet.lua")
-dofile(homedecor.modpath.."/refrigerator.lua")
 
-dofile(homedecor.modpath.."/misc-bathroom.lua")
+dofile(homedecor.modpath.."/kitchen_appliances.lua")
+dofile(homedecor.modpath.."/kitchen_furniture.lua")
+
+dofile(homedecor.modpath.."/bathroom_furniture.lua")
+dofile(homedecor.modpath.."/bathroom_sanitation.lua")
 
 dofile(homedecor.modpath.."/laundry.lua")
 
@@ -146,7 +148,6 @@ dofile(homedecor.modpath.."/crafts.lua")
 
 dofile(homedecor.modpath.."/furniture.lua")
 dofile(homedecor.modpath.."/furniture_medieval.lua")
-dofile(homedecor.modpath.."/furniture_bathroom.lua")
 dofile(homedecor.modpath.."/furniture_recipes.lua")
 dofile(homedecor.modpath.."/climate-control.lua")
 
