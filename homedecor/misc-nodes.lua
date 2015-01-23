@@ -1947,7 +1947,7 @@ minetest.register_node("homedecor:book_"..color, {
 	},
 	on_rightclick = function(pos, node, clicker)
 		local fdir = node.param2
-		minetest.set_node(pos, { name = "homedecor:book_open_"..color, param2 = fdir })
+		minetest.swap_node(pos, { name = "homedecor:book_open_"..color, param2 = fdir })
 	end,
 	on_place = function(itemstack, placer, pointed_thing)
 		local plname = placer:get_player_name()
@@ -1969,6 +1969,10 @@ minetest.register_node("homedecor:book_"..color, {
 		local text = itemstack:get_metadata() or ""
 		local meta = minetest.get_meta(pos)
 		meta:set_string("text", text)
+		local data = minetest.deserialize(text) or {}
+		if data.title and data.title ~= "" then
+			meta:set_string("infotext", data.title)
+		end
 		if not minetest.setting_getbool("creative_mode") then
 			itemstack:take_item()
 		end
@@ -2024,7 +2028,7 @@ minetest.register_node("homedecor:book_open_"..color, {
 	on_dig = book_dig,
 	on_rightclick = function(pos, node, clicker)
 		local fdir = node.param2
-		minetest.set_node(pos, { name = "homedecor:book_"..color, param2 = fdir })
+		minetest.swap_node(pos, { name = "homedecor:book_"..color, param2 = fdir })
 	end,
 })
 
