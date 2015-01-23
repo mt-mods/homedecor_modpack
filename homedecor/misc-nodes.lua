@@ -290,38 +290,47 @@ minetest.register_node("homedecor:fishtank_lighted", {
 	end
 })
 
-homedecor.register("cardboard_box", {
-	drawtype = "nodebox",
-	description = S("Cardboard box"),
+homedecor.register("cardboard_box_big", {
+	drawtype = "normal",
+	description = S("Cardboard box (big)"),
 	tiles = {
-		'homedecor_cardboard_box_tb.png',
-		'homedecor_cardboard_box_tb.png',
-		'homedecor_cardboard_box_sides.png'
+		'homedecor_cardbox_big_tb.png',
+		'homedecor_cardbox_big_tb.png',
+		'homedecor_cardbox_big_sides.png',
 	},
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
-	walkable = true,
-	selection_box = homedecor.nodebox.slab_y(0.5),
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{0.1875, -0.5,    -0.25,    0.25,   0,       0.25},
-			{-0.25,  -0.5,    -0.25,   -0.1875, 0,       0.25},
-			{-0.25,  -0.5,     0.1875,  0.25,   0,       0.25},
-			{-0.25,  -0.5,    -0.25,    0.25,   0,      -0.1875},
-			{-0.25,  -0.5,    -0.25,    0.25,  -0.4375,  0.25},
-			{0.1875, -0.0625, -0.25,    0.5,    0,       0.25},
-			{-0.5,   -0.0625, -0.25,   -0.1875, 0,       0.25},
-			{-0.25,  -0.0625,  0.1875,  0.25,   0,       0.5},
-			{-0.25,  -0.0625, -0.5,     0.25,   0,      -0.1875},
-		}
-	},
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	infotext=S("Cardboard box"),
 	inventory = {
-		size=4,
+		size=24,
+	},
+})
+
+homedecor.register("cardboard_box", {
+	drawtype = "nodebox",
+	description = S("Cardboard box"),
+	tiles = {
+		'homedecor_cardbox_tb.png',
+		'homedecor_cardbox_tb.png',
+		'homedecor_cardbox_sides.png',
+	},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.3125, -0.5, -0.3125, 0.3125, 0, 0.3125},
+		}
+	},
+	sunlight_propagates = false,
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy = 3 },
+	sounds = default.node_sound_wood_defaults(),
+	infotext=S("Cardboard box"),
+	inventory = {
+		size=8,
 	},
 })
 

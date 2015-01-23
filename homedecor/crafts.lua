@@ -2134,6 +2134,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+    output = "homedecor:cardboard_box_big 2",
+    recipe = {
+		{ "default:paper", "", "default:paper" },
+		{ "default:paper", "", "default:paper" },
+		{ "default:paper", "default:paper", "default:paper" },
+    },
+})
+
+minetest.register_craft({
     output = "homedecor:desk",
     recipe = {
 		{ "stairs:slab_wood", "stairs:slab_wood", "stairs:slab_wood" },
