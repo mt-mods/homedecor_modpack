@@ -1,3 +1,5 @@
+local S = homedecor.gettext
+
 -- selects which node was pointed at based on it being known, and either clickable or buildable_to
 local function select_node(pointed_thing)
 	local pos = pointed_thing.under
