@@ -61,6 +61,15 @@ for i in ipairs(colors) do
 	})
 end
 
+local glowlight_nodebox = {
+	half = homedecor.nodebox.slab_y(1/2),
+	quarter = homedecor.nodebox.slab_y(1/4),
+	small_cube = {
+                type = "fixed",
+                fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
+        },
+}
+
 -- Yellow
 
 minetest.register_node('homedecor:glowlight_half_yellow', {
@@ -74,15 +83,8 @@ minetest.register_node('homedecor:glowlight_half_yellow', {
 		'homedecor_glowlight_thick_yellow_sides.png',
 		'homedecor_glowlight_thick_yellow_sides.png'
 	},
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, 0, 0.5 }
-        },
-        node_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, 0, 0.5 }
-        },
-
+        selection_box = glowlight_nodebox.half,
+        node_box = glowlight_nodebox.half,
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -104,15 +106,8 @@ minetest.register_node('homedecor:glowlight_quarter_yellow', {
 		'homedecor_glowlight_thin_yellow_sides.png',
 		'homedecor_glowlight_thin_yellow_sides.png'
 	},
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, -0.25, 0.5 }
-        },
-        node_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, -0.25, 0.5 }
-        },
-
+        selection_box = glowlight_nodebox.quarter,
+        node_box = glowlight_nodebox.quarter,
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -136,15 +131,8 @@ minetest.register_node('homedecor:glowlight_half_white', {
 		'homedecor_glowlight_thick_white_sides.png',
 		'homedecor_glowlight_thick_white_sides.png'
 	},
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, 0, 0.5 }
-        },
-        node_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, 0, 0.5 }
-        },
-
+        selection_box = glowlight_nodebox.half,
+        node_box = glowlight_nodebox.half,
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -166,15 +154,8 @@ minetest.register_node('homedecor:glowlight_quarter_white', {
 		'homedecor_glowlight_thin_white_sides.png',
 		'homedecor_glowlight_thin_white_sides.png'
 	},
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, -0.25, 0.5 }
-        },
-        node_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, -0.25, 0.5 }
-        },
-
+        selection_box = glowlight_nodebox.quarter,
+        node_box = glowlight_nodebox.quarter,
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -198,15 +179,8 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow', {
 		'homedecor_glowlight_cube_yellow_sides.png',
 		'homedecor_glowlight_cube_yellow_sides.png'
 	},
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-        },
-        node_box = {
-                type = "fixed",
-                fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-        },
-
+        selection_box = glowlight_nodebox.small_cube,
+        node_box = glowlight_nodebox.small_cube,
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -228,15 +202,8 @@ minetest.register_node('homedecor:glowlight_small_cube_white', {
 		'homedecor_glowlight_cube_white_sides.png',
 		'homedecor_glowlight_cube_white_sides.png'
 	},
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-        },
-        node_box = {
-                type = "fixed",
-                fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-        },
-
+        selection_box = glowlight_nodebox.small_cube,
+        node_box = glowlight_nodebox.small_cube,
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",

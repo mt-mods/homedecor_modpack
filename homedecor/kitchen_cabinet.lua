@@ -33,6 +33,7 @@ for _, mat in ipairs(counter_materials) do
 	})
 end
 
+local kitchen_cabinet_half_box = homedecor.nodebox.slab_y(0.5, 0.5)
 homedecor.register("kitchen_cabinet_half", {
 	description = S('Half-height Kitchen Cabinet (on ceiling)'),
 	tiles = { 'homedecor_kitchen_cabinet_sides.png',
@@ -43,14 +44,8 @@ homedecor.register("kitchen_cabinet_half", {
 			'homedecor_kitchen_cabinet_front_half.png'},
 	sunlight_propagates = false,
 	walkable = true,
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.5, 0, -0.5, 0.5, 0.5, 0.5 }
-        },
-        node_box = {
-                type = "fixed",
-                fixed = { -0.5, 0, -0.5, 0.5, 0.5, 0.5 }
-        },
+        selection_box = kitchen_cabinet_half_box,
+        node_box = kitchen_cabinet_half_box,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	infotext=S("Kitchen Cabinet"),

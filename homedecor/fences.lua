@@ -22,10 +22,7 @@ minetest.register_node("homedecor:fence_brass", {
 	tiles = {"homedecor_tile_brass.png"},
 	inventory_image = "homedecor_fence_brass.png",
 	paramtype = "light",
-	selection_box = {
-	        type = "fixed",
-	        fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
-	},
+	selection_box = homedecor.nodebox.bar_y(1/7),
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
@@ -37,10 +34,7 @@ minetest.register_node("homedecor:fence_wrought_iron", {
 	tiles = {"homedecor_tile_wrought_iron.png"},
 	inventory_image = "homedecor_fence_wrought_iron.png",
 	paramtype = "light",
-	selection_box = {
-	        type = "fixed",
-	        fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
-	},
+	selection_box = homedecor.nodebox.bar_y(1/7),
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,

@@ -274,10 +274,7 @@ homedecor.register("desk_r", {
 			{-0.5, -0.375, 0.4375, 0.4375, 0.25, 0.5},
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0,0,0,0,0,0 }
-	},
+	selection_box = homedecor.nodebox.null,
 	groups = { snappy = 3, not_in_creative_inventory=1 }
 })
 

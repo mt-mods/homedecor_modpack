@@ -24,16 +24,16 @@ minetest.register_node('homedecor:air_conditioner', {
 			{-0.5, 0.125, -0.5, 0.5, 0.5, 0.5 },
 		}
 	},
-	selection_box = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
+	selection_box = { type="regular" },
 })
 
 -- fans
 
 minetest.register_entity("homedecor:mesh_desk_fan", {
-    collisionbox = { 0, 0, 0, 0, 0, 0 },
-    visual = "mesh",
+	collisionbox = homedecor.nodebox.null,
+	visual = "mesh",
 	mesh = "homedecor_desk_fan.b3d",
-    textures = {"homedecor_desk_fan_uv.png"},
+	textures = {"homedecor_desk_fan_uv.png"},
 	visual_size = {x=10, y=10},
 })
 
@@ -53,12 +53,7 @@ minetest.register_node("homedecor:desk_fan", {
 	tiles = {"homedecor_desk_fan_body.png"},
 	inventory_image = "homedecor_desk_fan_inv.png",
 	wield_image = "homedecor_desk_fan_inv.png",
-	selection_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-		}
-	},
+	selection_box = { type = "regular" },
 	on_construct = function(pos)
 		local entity_remove = minetest.get_objects_inside_radius(pos, 0.1)
 		local meta = minetest.get_meta(pos)

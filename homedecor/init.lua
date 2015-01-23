@@ -105,6 +105,9 @@ function homedecor.find_ceiling(itemstack, placer, pointed_thing)
 	return isceiling, pos
 end
 
+-- nodebox arithmetics and helpers
+-- (please keep non-generic nodeboxes with their node definition)
+dofile(homedecor.modpath.."/nodeboxes.lua")
 -- expand and unexpand decor
 dofile(homedecor.modpath.."/expansion.lua")
 -- glue it all together into a registration function

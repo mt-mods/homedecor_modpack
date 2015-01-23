@@ -688,10 +688,7 @@ minetest.register_node("homedecor:jpn_door_top", {
 			{0.1565, -0.5, 0, 0.2185, 0.5, 0.0625}, -- NodeBox9
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 },
-	},
+	selection_box = homedecor.nodebox.null,
 })
 
 minetest.register_node("homedecor:jpn_door_bottom_open", {
@@ -764,10 +761,7 @@ minetest.register_node("homedecor:jpn_door_top_open", {
 			{-0.84375, -0.5, -0.0625, -0.7815, 0.5, 0}, -- NodeBox9
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 },
-	},
+	selection_box = homedecor.nodebox.null,
 })
 
 

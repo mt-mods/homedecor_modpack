@@ -20,10 +20,7 @@ minetest.register_node("homedecor:washing_machine", {
 			{-0.5, -0.5, 0.3125, 0.5, 0.5, 0.5},
 		}
 	},
-    selection_box = {
-            type = "fixed",
-            fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
-    },
+	selection_box = { type = "regular" },
 	groups = { snappy = 3 },
 })
 
@@ -47,10 +44,7 @@ minetest.register_node("homedecor:dryer", {
 			{-0.5, -0.5, 0.3125, 0.5, 0.5, 0.5},
 		}
 	},
-    selection_box = {
-            type = "fixed",
-            fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
-    },
+	selection_box = { type = "regular" },
 	groups = { snappy = 3 },
 })
 

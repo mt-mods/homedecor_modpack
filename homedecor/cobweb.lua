@@ -14,10 +14,7 @@ minetest.register_node("homedecor:cobweb_corner", {
         liquid_renewable = false,
         liquid_range = 0,
 	walkable = false,
-	selection_box = {
-		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5}
-	},
+	selection_box = { type = "regular" },
 	visual_scale = 1.4,
 	groups = { snappy = 3, liquid=3 },
         after_place_node = function(pos, placer, itemstack, pointed_thing)
@@ -94,10 +91,7 @@ minetest.register_node("homedecor:cobweb_plantlike", {
         liquid_renewable = false,
         liquid_range = 0,
 	walkable = false,
-	selection_box = {
-		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5}
-	},
+	selection_box = { type = "regular" },
 	visual_scale = 1.189,
 	groups = { snappy = 3, liquid=3, not_in_creative_inventory = 1 },
 	drop = "homedecor:cobweb_corner"

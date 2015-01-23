@@ -12,10 +12,7 @@ homedecor.register("nightstand_oak_one_drawer", {
 			'homedecor_nightstand_oak_1_drawer_front.png'},
 	sunlight_propagates = false,
 	walkable = true,
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
-        },
+        selection_box = { type = "regular" },
         node_box = {
                 type = "fixed",
 		fixed = {
@@ -48,10 +45,7 @@ homedecor.register("nightstand_oak_two_drawers", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
-        },
+        selection_box = { type = "regular" },
         node_box = {
                 type = "fixed",
 		fixed = {
@@ -79,10 +73,7 @@ homedecor.register("nightstand_mahogany_one_drawer", {
 			'homedecor_nightstand_mahogany_1_drawer_front.png'},
 	sunlight_propagates = false,
 	walkable = true,
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
-        },
+        selection_box = { type = "regular" },
         node_box = {
                 type = "fixed",
 		fixed = {
@@ -112,10 +103,7 @@ homedecor.register("nightstand_mahogany_two_drawers", {
 			'homedecor_nightstand_mahogany_2_drawer_front.png'},
 	sunlight_propagates = false,
 	walkable = true,
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
-        },
+        selection_box = { type = "regular" },
         node_box = {
                 type = "fixed",
 		fixed = {

@@ -208,10 +208,7 @@ minetest.register_node("homedecor:chimney", {
 			{0.1875, -0.5, -0.25, 0.25, 0.5, 0.25},
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.25, 0.25, 0.5, 0.25 }
-	},
+	selection_box = homedecor.nodebox.bar_y(0.25),
 	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults()
 })
@@ -305,10 +302,7 @@ homedecor.register("cardboard_box", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, 0, 0.5 }
-	},
+	selection_box = homedecor.nodebox.slab_y(0.5),
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -357,10 +351,7 @@ minetest.register_node("homedecor:dvd_cd_cabinet", {
 			{0.125, -0.5, 0.01217, 0.375, 0.5, 0.5},
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, 0, 0.5, 0.5, 0.5 }
-	},
+	selection_box = homedecor.nodebox.slab_z(0.5),
 	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=3},
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -377,10 +368,7 @@ homedecor.register("filing_cabinet", {
 	},
 	sunlight_propagates = false,
 	walkable = true,
-        selection_box = {
-                type = "fixed",
-                fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
-        },
+        selection_box = { type = "regular" },
         node_box = {
                 type = "fixed",
 		fixed = {
@@ -418,10 +406,7 @@ minetest.register_node("homedecor:dishwasher", {
 			{-0.4375, -0.5, -0.5, 0.4375, 0.4375, 0.4375},
 		}
 	},
-    selection_box = {
-            type = "fixed",
-            fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
-    },
+	selection_box = { type = "regular" },
 	groups = { snappy = 3 },
 })
 
@@ -512,10 +497,7 @@ homedecor.register("doghouse_base", {
 			{-0.4375, -0.3125, 0.375, 0.4375, 0.5, 0.4375}, -- NodeBox11
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, 1.0, 0.5 }
-	},
+	selection_box = homedecor.nodebox.slab_y(1.5),
 	groups = {snappy=3},
 	expand = { top="homedecor:doghouse_roof" },
 })
@@ -556,10 +538,7 @@ homedecor.register("doghouse_roof", {
 			{0.0625, -0.125, -0.375, -0.0625, -0.0625, 0.4375}, -- NodeBox38
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	},
+	selection_box = homedecor.nodebox.null,
 	groups = {snappy=3, not_in_creative_inventory=1},
 })
 
@@ -648,10 +627,7 @@ homedecor.register("pool_table_2", {
 			{0.375,    0.25,     -0.4375,  0.4375,   0.3125,   0.3125},  --  NodeBox25
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	},
+	selection_box = homedecor.nodebox.null,
 })
 
 minetest.register_node("homedecor:trash_can", {
@@ -719,10 +695,7 @@ homedecor.register("well_base", {
 			{-0.3125, -0.5, -0.3125, 0.3125, 0, 0.3125}, -- NodeBox17
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
-	},
+	selection_box = homedecor.nodebox.slab_y(2),
 	expand = { top="homedecor:well_top" },
 })
 
@@ -784,10 +757,7 @@ homedecor.register("well_top", {
 			{-0.0165975, -0.51, -0.125, 0.0165974, -0.46, -0.112033}, -- NodeBox43
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	},
+	selection_box = homedecor.nodebox.null,
 })
 
 minetest.register_node("homedecor:coatrack_wallmount", {
@@ -1173,10 +1143,7 @@ homedecor.register("piano_right", {
 
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	}
+	selection_box = homedecor.nodebox.null
 })
 
 minetest.register_node("homedecor:toaster", {
@@ -1488,10 +1455,7 @@ homedecor.register("barbecue_meat", {
 			{0.125, -0.5, -0.125, 0.3125, -0.4375, 0.125}, -- NodeBox2
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	}
+	selection_box = homedecor.nodebox.null
 })
 
 minetest.register_node("homedecor:beer_tap", {
@@ -1599,10 +1563,7 @@ homedecor.register("tool_cabinet_bottom", {
 			{-0.5, -0.375, -0.5, 0.5, 0.5, 0.5}, -- NodeBox5
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
-	},
+	selection_box = homedecor.nodebox.slab_y(2),
 	expand = { top="homedecor:tool_cabinet_top" },
 })
 
@@ -1636,10 +1597,7 @@ homedecor.register("tool_cabinet_top", {
 			{0.375, -0.155, 0.42, 0.405, -0.093, 0.4375}, -- NodeBox15
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	}
+	selection_box = homedecor.nodebox.null
 })
 
 minetest.register_node("homedecor:swing", {
@@ -1732,10 +1690,7 @@ minetest.register_node("homedecor:swing_rope", {
 			{0.3, -0.5, 0.025, 0.3125, 0.5, 0.0375}, -- NodeBox2
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	}
+	selection_box = homedecor.nodebox.null
 })
 
 local bookcolors = {
@@ -1930,11 +1885,7 @@ minetest.register_node("homedecor:desk_globe", {
 	sounds = default.node_sound_defaults(),
 })
 
-local wine_cbox = {
-	type = "fixed",
-	fixed = { -0.5, -0.5, -0.25, 0.5, 0.5, 0.5 }
-}
-
+local wine_cbox = homedecor.nodebox.slab_z(0.25)
 minetest.register_node("homedecor:wine_rack", {
 	description = "Wine Rack",
 	drawtype = "mesh",

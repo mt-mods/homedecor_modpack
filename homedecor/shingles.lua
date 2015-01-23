@@ -13,10 +13,7 @@ minetest.register_node("homedecor:skylight", {
 	walkable = true,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, -0.4, 0.5 }
-	}
+	selection_box = homedecor.nodebox.slab_y(0.1),
 })
 
 minetest.register_node("homedecor:skylight_frosted", {
@@ -31,10 +28,7 @@ minetest.register_node("homedecor:skylight_frosted", {
 	walkable = true,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, -0.4, 0.5 }
-	}
+	selection_box = homedecor.nodebox.slab_y(0.1),
 })
 
 minetest.register_node("homedecor:shingles_wood", {
@@ -48,10 +42,7 @@ minetest.register_node("homedecor:shingles_wood", {
 	walkable = false,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, -0.4, 0.5 }
-	}
+	selection_box = homedecor.nodebox.slab_y(0.1),
 })
 
 minetest.register_node("homedecor:shingles_asphalt", {
@@ -65,10 +56,7 @@ minetest.register_node("homedecor:shingles_asphalt", {
 	walkable = false,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, -0.4, 0.5 }
-	}
+	selection_box = homedecor.nodebox.slab_y(0.1),
 })
 
 minetest.register_node("homedecor:shingles_terracotta", {
@@ -82,9 +70,6 @@ minetest.register_node("homedecor:shingles_terracotta", {
 	walkable = false,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, -0.4, 0.5 }
-	}
+	selection_box = homedecor.nodebox.slab_y(0.1),
 })
 

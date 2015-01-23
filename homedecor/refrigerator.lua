@@ -49,10 +49,7 @@ homedecor.register("refrigerator_steel_bottom", {
 	description = S("Refrigerator (stainless steel)"),
 	groups = {snappy=3},
 	node_box = fridge_model_bottom,
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
-	},
+	selection_box = homedecor.nodebox.slab_y(2),
 	expand = {
 		top="homedecor:refrigerator_steel_top"
 	},
@@ -74,10 +71,7 @@ homedecor.register("refrigerator_steel_top", {
 	},
 	groups = {snappy=3},
 	node_box = fridge_model_top,
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	},
+	selection_box = homedecor.nodebox.null,
 })
 
 -- white, enameled fridge
@@ -95,10 +89,7 @@ homedecor.register("refrigerator_white_bottom", {
 	description = S("Refrigerator"),
 	groups = {snappy=3},
 	node_box = fridge_model_bottom,
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
-	},
+	selection_box = homedecor.nodebox.slab_y(2),
 	expand = {
 		top="homedecor:refrigerator_white_top"
 	},
@@ -120,10 +111,7 @@ homedecor.register("refrigerator_white_top", {
 	},
 	groups = {snappy=3},
 	node_box = fridge_model_top,
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	},
+	selection_box = homedecor.nodebox.null,
 })
 
 -- convert the old single-node fridges to the new two-node models

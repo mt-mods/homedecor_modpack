@@ -221,10 +221,7 @@ for _, color in ipairs(bedcolors) do
 				{-0.3125,  -0.125,   0.0625,   0.3125,  0.0625,   0.4375},   --  NodeBox8
 			}
 		},
-		selection_box = {
-			type = "fixed",
-			fixed = { 0, 0, 0, 0, 0, 0 }
-		}
+		selection_box = homedecor.nodebox.null
 	})
 
 	homedecor.register("bed_"..color.."_foot", {
@@ -313,10 +310,7 @@ homedecor.register("wardrobe_top", {
 			{-0.4375,  -0.4375,  -0.5,     -0.0625,  0.4375,   -0.4375},  --  NodeBox3
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	},
+	selection_box = homedecor.nodebox.null,
 })
 
 homedecor.register("wardrobe_bottom", {
@@ -425,10 +419,7 @@ homedecor.register("bench_large_1_right", {
 			{0.25, -0.5, -0.0625, 0.3125, -0.25, 0}, -- NodeBox7
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	},
+	selection_box = homedecor.nodebox.null,
 })
 
 
@@ -503,10 +494,7 @@ homedecor.register("bench_large_2_right", {
 			{-0.5, -0.25, -0.0290173, 0.5, -0.125, 0.0125346}, -- NodeBox16
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	},
+	selection_box = homedecor.nodebox.null,
 })
 
 homedecor.register("deckchair_head", {
@@ -538,10 +526,7 @@ homedecor.register("deckchair_head", {
 			{-0.375, -0.5, 0, -0.3125, -0.25, 0.0625}, -- NodeBox14
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	}
+	selection_box = homedecor.nodebox.null
 })
 
 homedecor.register("deckchair_foot", {
@@ -642,10 +627,7 @@ homedecor.register("grandfather_clock_top", {
 			{-0.3125, -0.5, -0.3125, 0.3125, 0.5, 0.4}, -- NodeBox4
 		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { 0, 0, 0, 0, 0, 0 }
-	},
+	selection_box = homedecor.nodebox.null,
 })
 
 -- Aliases for 3dforniture mod.
