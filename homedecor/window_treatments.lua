@@ -1,7 +1,7 @@
 
 local S = homedecor.gettext
 
-minetest.register_node("homedecor:window_quartered", {
+homedecor.register("window_quartered", {
 	description = "Window (quartered)",
 	tiles = {
 		"homedecor_window_sides.png",
@@ -11,12 +11,9 @@ minetest.register_node("homedecor:window_quartered", {
 		"homedecor_window_quartered.png",
 		"homedecor_window_quartered.png"
 	},
-	paramtype = "light",
-	paramtype2 = "facedir",
 	use_texture_alpha = true,
 	groups = {snappy=3},
 	sounds = default.node_sound_glass_defaults(),
-	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -37,7 +34,7 @@ minetest.register_node("homedecor:window_quartered", {
 	},
 })
 
-minetest.register_node("homedecor:window_plain", {
+homedecor.register("window_plain", {
 	description = "Window (plain)",
 	tiles = {
 		"homedecor_window_sides.png",
@@ -47,12 +44,9 @@ minetest.register_node("homedecor:window_plain", {
 		"homedecor_window_frame.png",
 		"homedecor_window_frame.png"
 	},
-	paramtype = "light",
-	paramtype2 = "facedir",
 	use_texture_alpha = true,
 	groups = {snappy=3},
 	sounds = default.node_sound_glass_defaults(),
-	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -71,15 +65,12 @@ minetest.register_node("homedecor:window_plain", {
 		},
 })
 
-minetest.register_node("homedecor:blinds_thick", {
+homedecor.register("blinds_thick", {
 	description = "Window Blinds (thick)",
 	tiles = { "homedecor_windowblinds.png" },
-	paramtype = "light",
-	paramtype2 = "facedir",
 	walkable = false,
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
-	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -111,15 +102,12 @@ minetest.register_node("homedecor:blinds_thick", {
 		},
 })
 
-minetest.register_node("homedecor:blinds_thin", {
+homedecor.register("blinds_thin", {
 	description = "Window Blinds (thin)",
 	tiles = { "homedecor_windowblinds.png" },
-	paramtype = "light",
-	paramtype2 = "facedir",
 	walkable = false,
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
-	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -164,7 +152,7 @@ for c in ipairs(curtaincolors) do
 	local color = curtaincolors[c]
 	local color_d = S(curtaincolors[c])
 
-	minetest.register_node("homedecor:curtain_"..color, {
+	homedecor.register("curtain_"..color, {
 		description = S("Curtains (%s)"):format(color_d),
 		tiles = { "homedecor_curtain_"..color..".png" },
 		inventory_image = "homedecor_curtain_"..color..".png",
@@ -172,8 +160,6 @@ for c in ipairs(curtaincolors) do
 		drawtype = 'signlike',
 		sunlight_propagates = true,
 		use_texture_alpha = true,
-		paramtype = "light",
-		paramtype2 = "facedir",
 		walkable = false,
 		groups = { snappy = 3 },
 		sounds = default.node_sound_leaves_defaults(),
@@ -191,7 +177,7 @@ for c in ipairs(curtaincolors) do
 		end
 	})
 
-	minetest.register_node("homedecor:curtain_open_"..color, {
+	homedecor.register("curtain_open_"..color, {
 		description = S("Curtains (%s)"):format(color_d),
 		tiles = { "homedecor_curtain_open_"..color..".png" },
 		inventory_image = "homedecor_curtain_open_"..color..".png",
@@ -199,8 +185,6 @@ for c in ipairs(curtaincolors) do
 		drawtype = 'signlike',
 		sunlight_propagates = true,
 		use_texture_alpha = true,
-		paramtype = "light",
-		paramtype2 = "facedir",
 		walkable = false,
 		groups = { snappy = 3 },
 		sounds = default.node_sound_leaves_defaults(),
@@ -230,13 +214,10 @@ for i in ipairs(mats) do
 	local material = mats[i][1]
 	local mat_name = mats[i][2]
 	local texture = mats[i][3]
-	minetest.register_node("homedecor:curtainrod_"..material, {
+	homedecor.register("curtainrod_"..material, {
 		tiles = { texture },
 		inventory_image  = "homedecor_curtainrod_"..material.."_inv.png",
 		description = "Curtain Rod ("..mat_name..")",
-		drawtype = "nodebox",
-		paramtype = "light",
-		paramtype2 = "facedir",
 		sunlight_propagates = true,
 		groups = { snappy = 3 },
 		node_box = {
@@ -250,7 +231,7 @@ for i in ipairs(mats) do
 	})
 end
 
-minetest.register_node("homedecor:window_flowerbox", {
+homedecor.register("window_flowerbox", {
 	description = "Window flowerbow",
 	tiles = {
 		"homedecor_flowerbox_top.png",
@@ -258,9 +239,6 @@ minetest.register_node("homedecor:window_flowerbox", {
 		"homedecor_flowerbox_sides.png"
 	},
 	inventory_image = "homedecor_flowerbox_inv.png",
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy = 3 },
 	node_box = {
 		type = "fixed",

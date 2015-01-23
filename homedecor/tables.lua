@@ -25,19 +25,15 @@ for i in ipairs(materials) do
 
 -- small square tables
 
-	minetest.register_node("homedecor:"..m.."_table_small_square", {
+	homedecor.register(m.."_table_small_square", {
 		description = S(d.." Table (Small, Square)"),
-		drawtype = 'mesh',
 		mesh = "homedecor_table_small_square.obj",
 		tiles = { 'homedecor_'..m..'_table_small_square.png' },
 		wield_image = 'homedecor_'..m..'_table_small_square_inv.png',
 		inventory_image = 'homedecor_'..m..'_table_small_square_inv.png',
 		sunlight_propagates = true,
-		paramtype = 'light',
-		walkable = true,
 		groups = { snappy = 3 },
 		sounds = s,
-		paramtype2 = "facedir",
 		selection_box = tables_cbox,
 		collision_box = tables_cbox,
 		on_place = minetest.rotate_node
@@ -45,19 +41,15 @@ for i in ipairs(materials) do
 
 -- small round tables
 
-	minetest.register_node('homedecor:'..m..'_table_small_round', {
+	homedecor.register(m..'_table_small_round', {
 		description = S(d.." Table (Small, Round)"),
-		drawtype = "mesh",
 		mesh = "homedecor_table_small_round.obj",
 		tiles = { "homedecor_"..m.."_table_small_round.png" },
 		wield_image = 'homedecor_'..m..'_table_small_round_inv.png',
 		inventory_image = 'homedecor_'..m..'_table_small_round_inv.png',
 		sunlight_propagates = true,
-		paramtype = 'light',
-		walkable = true,
 		groups = { snappy = 3 },
 		sounds = s,
-		paramtype2 = "facedir",
 		selection_box = tables_cbox,
 		collision_box = tables_cbox,
 		on_place = minetest.rotate_node
@@ -65,9 +57,8 @@ for i in ipairs(materials) do
 
 -- Large square table pieces
 
-	minetest.register_node('homedecor:'..m..'_table_large', {
+	homedecor.register(m..'_table_large', {
 		description = S(d.." Table Piece (large)"),
-		drawtype = 'nodebox',
 		tiles = {
 			'homedecor_'..m..'_table_large_tb.png',
 			'homedecor_'..m..'_table_large_tb.png',
@@ -79,11 +70,8 @@ for i in ipairs(materials) do
 		wield_image = 'homedecor_'..m..'_table_large_inv.png',
 		inventory_image = 'homedecor_'..m..'_table_large_inv.png',
 		sunlight_propagates = true,
-		paramtype = 'light',
-		walkable = true,
 		groups = { snappy = 3 },
 		sounds = s,
-		paramtype2 = "facedir",
 		node_box = {
 			type = "fixed",
 			fixed = { -0.5, -0.5, -0.5, 0.5, -0.4375, 0.5 },
@@ -138,7 +126,7 @@ minetest.register_abm({
 
 -- other tables
 
-minetest.register_node('homedecor:utility_table_top', {
+homedecor.register("utility_table_top", {
 	description = S("Utility Table"),
 	tiles = {
 		'homedecor_utility_table_tb.png',
@@ -150,10 +138,6 @@ minetest.register_node('homedecor:utility_table_top', {
 	},
 	wield_image = 'homedecor_utility_table_tb.png',
 	inventory_image = 'homedecor_utility_table_tb.png',
-	drawtype = "nodebox",
-	sunlight_propagates = false,
-	paramtype = "light",
-	walkable = true,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "wallmounted",
@@ -173,48 +157,43 @@ minetest.register_node('homedecor:utility_table_top', {
 
 -- Various kinds of table legs
 
-minetest.register_node("homedecor:table_legs_brass", {
+homedecor.register("table_legs_brass", {
 	description = S("Brass Table Legs"),
 	drawtype = "plantlike",
 	tiles = {"homedecor_table_legs_brass.png"},
 	inventory_image = "homedecor_table_legs_brass.png",
 	wield_image = "homedecor_table_legs_brass.png",
-	paramtype = "light",
 	walkable = false,
 	groups = {snappy=3},
 	sounds = default.node_sound_leaves_defaults(),
-	walkable = true,
 	selection_box = {
 		type = "fixed",
 		fixed = { -0.37, -0.5, -0.37, 0.37, 0.5, 0.37 }
 	},
 })
 
-minetest.register_node("homedecor:table_legs_wrought_iron", {
+homedecor.register("table_legs_wrought_iron", {
 	description = S("Wrought Iron Table Legs"),
 	drawtype = "plantlike",
 	tiles = {"homedecor_table_legs_wrought_iron.png"},
 	inventory_image = "homedecor_table_legs_wrought_iron.png",
 	wield_image = "homedecor_table_legs_wrought_iron.png",
-	paramtype = "light",
 	walkable = false,
 	groups = {snappy=3},
 	sounds = default.node_sound_leaves_defaults(),
-	walkable = true,
 	selection_box = {
 		type = "fixed",
 		fixed = { -0.37, -0.5, -0.37, 0.37, 0.5, 0.37 }
 	},
 })
 
-minetest.register_node('homedecor:utility_table_legs', {
+homedecor.register("utility_table_legs", {
 	description = S("Legs for Utility Table"),
 	drawtype = "plantlike",
 	tiles = { 'homedecor_utility_table_legs.png' },
 	inventory_image = 'homedecor_utility_table_legs_inv.png',
 	wield_image = 'homedecor_utility_table_legs.png',
 	sunlight_propagates = true,
-	paramtype = "light",
 	walkable = false,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),

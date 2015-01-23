@@ -72,9 +72,8 @@ local glowlight_nodebox = {
 
 -- Yellow
 
-minetest.register_node('homedecor:glowlight_half_yellow', {
+homedecor.register("glowlight_half_yellow", {
 	description = S("Yellow Glowlight (thick)"),
-	drawtype = "nodebox",
 	tiles = {
 		'homedecor_glowlight_yellow_top.png',
 		'homedecor_glowlight_yellow_bottom.png',
@@ -85,19 +84,14 @@ minetest.register_node('homedecor:glowlight_half_yellow', {
 	},
 	selection_box = glowlight_nodebox.half,
 	node_box = glowlight_nodebox.half,
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node
 })
 
-minetest.register_node('homedecor:glowlight_quarter_yellow', {
+homedecor.register("glowlight_quarter_yellow", {
 	description = S("Yellow Glowlight (thin)"),
-	drawtype = "nodebox",
 	tiles = {
 		'homedecor_glowlight_yellow_top.png',
 		'homedecor_glowlight_yellow_bottom.png',
@@ -108,10 +102,6 @@ minetest.register_node('homedecor:glowlight_quarter_yellow', {
 	},
 	selection_box = glowlight_nodebox.quarter,
 	node_box = glowlight_nodebox.quarter,
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
@@ -120,9 +110,8 @@ minetest.register_node('homedecor:glowlight_quarter_yellow', {
 
 -- White
 
-minetest.register_node('homedecor:glowlight_half_white', {
+homedecor.register("glowlight_half_white", {
 	description = S("White Glowlight (thick)"),
-	drawtype = "nodebox",
 	tiles = {
 		'homedecor_glowlight_white_top.png',
 		'homedecor_glowlight_white_bottom.png',
@@ -133,19 +122,14 @@ minetest.register_node('homedecor:glowlight_half_white', {
 	},
 	selection_box = glowlight_nodebox.half,
 	node_box = glowlight_nodebox.half,
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node
 })
 
-minetest.register_node('homedecor:glowlight_quarter_white', {
+homedecor.register("glowlight_quarter_white", {
 	description = S("White Glowlight (thin)"),
-	drawtype = "nodebox",
 	tiles = {
 		'homedecor_glowlight_white_top.png',
 		'homedecor_glowlight_white_bottom.png',
@@ -156,10 +140,6 @@ minetest.register_node('homedecor:glowlight_quarter_white', {
 	},
 	selection_box = glowlight_nodebox.quarter,
 	node_box = glowlight_nodebox.quarter,
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
@@ -168,9 +148,8 @@ minetest.register_node('homedecor:glowlight_quarter_white', {
 
 -- Glowlight "cubes"
 
-minetest.register_node('homedecor:glowlight_small_cube_yellow', {
+homedecor.register("glowlight_small_cube_yellow", {
 	description = S("Yellow Glowlight (small cube)"),
-	drawtype = "nodebox",
 	tiles = {
 		'homedecor_glowlight_cube_yellow_tb.png',
 		'homedecor_glowlight_cube_yellow_tb.png',
@@ -181,19 +160,14 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow', {
 	},
 	selection_box = glowlight_nodebox.small_cube,
 	node_box = glowlight_nodebox.small_cube,
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node
 })
 
-minetest.register_node('homedecor:glowlight_small_cube_white', {
+homedecor.register("glowlight_small_cube_white", {
 	description = S("White Glowlight (small cube)"),
-	drawtype = "nodebox",
 	tiles = {
 		'homedecor_glowlight_cube_white_tb.png',
 		'homedecor_glowlight_cube_white_tb.png',
@@ -204,17 +178,13 @@ minetest.register_node('homedecor:glowlight_small_cube_white', {
 	},
 	selection_box = glowlight_nodebox.small_cube,
 	node_box = glowlight_nodebox.small_cube,
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node
 })
 
-minetest.register_node("homedecor:plasma_lamp", {
+homedecor.register("plasma_lamp", {
 	description = "Plasma Lamp",
 	drawtype = "glasslike_framed",
 	tiles = {"homedecor_gold_block.png","homedecor_glass_face_clean.png"},
@@ -225,7 +195,6 @@ minetest.register_node("homedecor:plasma_lamp", {
 		}
 	},
 --	use_texture_alpha = true,
-	paramtype = "light",
 	light_source = LIGHT_MAX - 1,
 	sunlight_propagates = true,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
@@ -235,9 +204,8 @@ minetest.register_node("homedecor:plasma_lamp", {
 	end
 })
 
-minetest.register_node('homedecor:candle', {
+homedecor.register("candle", {
 	description = S("Thick Candle"),
-	drawtype = "nodebox",
 	tiles = {
 		'homedecor_candle_top.png',
 		'homedecor_candle_top.png',
@@ -258,15 +226,12 @@ minetest.register_node('homedecor:candle', {
 		}
 	},
 	sunlight_propagates = true,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-4,
 	sounds = default.node_sound_wood_defaults(),
 })
 
-minetest.register_node('homedecor:candle_thin', {
+homedecor.register("candle_thin", {
 	description = S("Little Candle"),
 	inventory_image = 'homedecor_candle_inv.png',
 	drawtype = "plantlike",
@@ -280,22 +245,17 @@ minetest.register_node('homedecor:candle_thin', {
 		}
 	},
 	sunlight_propagates = true,
-	paramtype = "light",
-	paramtype2 = "facedir",
 	walkable = false,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-4,
 })
 
-minetest.register_node('homedecor:oil_lamp', {
+homedecor.register("oil_lamp", {
 	description = S("Oil lamp"),
 	drawtype = "plantlike",
 	tiles = { 'homedecor_oil_lamp.png' },
 	inventory_image = 'homedecor_oil_lamp.png',
 	sunlight_propagates = true,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	selection_box = {
 		type = "fixed",
 		fixed = {
@@ -307,15 +267,12 @@ minetest.register_node('homedecor:oil_lamp', {
 	sounds = default.node_sound_wood_defaults(),
 })
 
-minetest.register_node('homedecor:wall_lantern', {
+homedecor.register("wall_lantern", {
 	description = S("Wall lantern"),
 	drawtype = "plantlike",
 	tiles = { 'homedecor_wall_lantern.png' },
 	inventory_image = 'homedecor_wall_lantern.png',
 	sunlight_propagates = true,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	selection_box = {
 		type = "fixed",
 		fixed = {
@@ -327,20 +284,16 @@ minetest.register_node('homedecor:wall_lantern', {
 	sounds = default.node_sound_wood_defaults(),
 })
 
-minetest.register_node('homedecor:lattice_lantern_large', {
+homedecor.register("lattice_lantern_large", {
 	description = S("Lattice lantern (large)"),
 	tiles = { 'homedecor_lattice_lantern_large.png' },
-	sunlight_propagates = false,
-	paramtype = "light",
-	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX,
 	sounds = default.node_sound_wood_defaults(),
 })
 
-minetest.register_node('homedecor:lattice_lantern_small', {
+homedecor.register("lattice_lantern_small", {
 	description = S("Lattice lantern (small)"),
-	drawtype = "nodebox",
 	tiles = {
 		'homedecor_lattice_lantern_small_tb.png',
 		'homedecor_lattice_lantern_small_tb.png',
@@ -354,10 +307,6 @@ minetest.register_node('homedecor:lattice_lantern_small', {
 		type = "fixed",
 		fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
 	},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-1,
 	sounds = default.node_sound_wood_defaults(),
@@ -385,12 +334,10 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 		colordesc  = " (white)"
 	end
 
-	minetest.register_node("homedecor:table_lamp"..lampcolor.."_"..suffix, {
+	homedecor.register("table_lamp"..lampcolor.."_"..suffix, {
 		description = S("Table Lamp "..colordesc),
-		drawtype = "mesh",
 		mesh = "homedecor_table_lamp.obj",
 		tiles = { "homedecor_table_standing_lamp"..lampcolor.."_"..suffix..".png" },
-		paramtype = "light",
 		walkable = false,
 		light_source = light,
 		selection_box = tlamp_cbox,
@@ -408,13 +355,11 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 
 	-- standing lamps
 
-	minetest.register_node("homedecor:standing_lamp"..lampcolor.."_"..suffix, {
+	homedecor.register("standing_lamp"..lampcolor.."_"..suffix, {
 		description = S("Standing Lamp"..colordesc),
-		drawtype = "mesh",
 		mesh = "homedecor_standing_lamp.obj",
 		tiles = { "homedecor_table_standing_lamp"..lampcolor.."_"..suffix..".png" },
 		inventory_image = "homedecor_standing_lamp"..lampcolor.."_inv.png",
-		paramtype = "light",
 		walkable = false,
 		light_source = light,
 		groups = {cracky=2,oddly_breakable_by_hand=1,

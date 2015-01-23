@@ -1,13 +1,10 @@
 
 local S = homedecor.gettext
 
-minetest.register_node("homedecor:bars", {
+homedecor.register("bars", {
 	description = S("Bars"),
 	tiles = { "forniture_black_metal.png" },
-	drawtype = "nodebox",
 	sunlight_propagates = true,
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -26,13 +23,10 @@ minetest.register_node("homedecor:bars", {
 })
 
 --L Binding Bars
-minetest.register_node("homedecor:L_binding_bars", {
+homedecor.register("L_binding_bars", {
 	description = S("Binding Bars"),
 	tiles = { "forniture_black_metal.png" },
-	drawtype = "nodebox",
 	sunlight_propagates = true,
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -48,14 +42,11 @@ minetest.register_node("homedecor:L_binding_bars", {
 	groups = {cracky=1,}
 })
 
-minetest.register_node("homedecor:chains", {
+homedecor.register("chains", {
 	description = S("Chains"),
 	tiles = { "forniture_black_metal.png" },
 	inventory_image="3dforniture_inv_chains.png",
-	drawtype = "nodebox",
 	sunlight_propagates = true,
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -116,9 +107,8 @@ minetest.register_node("homedecor:chains", {
 	groups = {cracky=1},
 })
 
-minetest.register_node("homedecor:torch_wall", {
+homedecor.register("torch_wall", {
 	description = S("Wall Torch"),
-	drawtype = "nodebox",
 	tiles = {
 		"forniture_torch_wall_s.png",
 		"forniture_torch_wall_i.png",
@@ -133,8 +123,6 @@ minetest.register_node("homedecor:torch_wall", {
 		},
 	},
 	inventory_image="3dforniture_inv_torch_wall.png",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {

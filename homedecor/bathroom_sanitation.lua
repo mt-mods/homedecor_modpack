@@ -1,12 +1,8 @@
 local S = homedecor.gettext
 
-minetest.register_node("homedecor:toilet", {
+homedecor.register("toilet", {
 	description = S("Toilet"),
 	tiles = { "forniture_marble.png" },
-	drawtype = "nodebox",
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -26,14 +22,11 @@ minetest.register_node("homedecor:toilet", {
 	end,
 })
 
-minetest.register_node("homedecor:toilet_open", {
+homedecor.register("toilet_open", {
 	tiles = {
 		"forniture_marble_top_toilet.png",
 		"forniture_marble.png"
 	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -67,16 +60,13 @@ minetest.register_node("homedecor:toilet_open", {
 })
 
 --Sink
-minetest.register_node("homedecor:sink", {
+homedecor.register("sink", {
 	description = S("Sink"),
 	tiles = {
 		"forniture_marble_top_sink.png",
 		"forniture_marble.png"
 	},
 	inventory_image="3dforniture_inv_sink.png",
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -101,14 +91,11 @@ minetest.register_node("homedecor:sink", {
 })
 
 --Taps
-minetest.register_node("homedecor:taps", {
+homedecor.register("taps", {
 	description = S("Taps"),
 	tiles = { "forniture_metal.png" },
 	inventory_image="3dforniture_inv_taps.png",
-	drawtype = "nodebox",
 	sunlight_propagates = true,
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -132,16 +119,13 @@ minetest.register_node("homedecor:taps", {
 })
 
 --Shower Tray
-minetest.register_node("homedecor:shower_tray", {
+homedecor.register("shower_tray", {
 	description = S("Shower Tray"),
 	tiles = {
 		"forniture_marble_base_ducha_top.png",
 		"forniture_marble.png"
 	},
-	drawtype = "nodebox",
 	sunlight_propagates = true,
-	paramtype = "light",
-	paramtype2 = "facedir",
 	legacy_facedir_simple = true,
 	node_box = {
 		type = "fixed",
@@ -162,14 +146,11 @@ minetest.register_node("homedecor:shower_tray", {
 })
 
 --Shower Head
-minetest.register_node("homedecor:shower_head", {
+homedecor.register("shower_head", {
 	description = S("Shower Head"),
 	tiles = { "forniture_metal.png" },
 	inventory_image="3dforniture_inv_shower_head.png",
-	drawtype = "nodebox",
 	sunlight_propagates = true,
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {

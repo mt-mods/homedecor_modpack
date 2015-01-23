@@ -186,7 +186,6 @@ for i in ipairs(sides) do
 			paramtype2 = "facedir",
 			groups = {snappy=3, not_in_creative_inventory=1},
 			sounds = default.node_sound_wood_defaults(),
-			walkable = true,
 			use_texture_alpha = texalpha,
 			selection_box = selectboxes_top,
 			node_box = {
@@ -219,7 +218,6 @@ for i in ipairs(sides) do
 			paramtype2 = "facedir",
 			groups = dgroups,
 			sounds = default.node_sound_wood_defaults(),
-			walkable = true,
 			use_texture_alpha = texalpha,
 			selection_box = selectboxes_bottom,
 			node_box = {
@@ -329,10 +327,8 @@ for i in ipairs(gates_list) do
 			"homedecor_gate_"..gate.."_front.png"
 		},
 		paramtype = "light",
-		is_ground_content = true,
 		groups = {snappy=3},
 		sounds = default.node_sound_wood_defaults(),
-		walkable = true,
 		paramtype2 = "facedir",
 		selection_box = {
 			type = "fixed",

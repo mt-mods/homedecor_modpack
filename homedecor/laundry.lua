@@ -1,8 +1,7 @@
 -- laundry devices
 
-minetest.register_node("homedecor:washing_machine", {
+homedecor.register("washing_machine", {
 	description = "Washing Machine",
-	drawtype = "nodebox",
 	tiles = {
 		"homedecor_washing_machine_top.png",
 		"homedecor_washing_machine_bottom.png",
@@ -11,8 +10,6 @@ minetest.register_node("homedecor:washing_machine", {
 		"homedecor_washing_machine_back.png",
 		"homedecor_washing_machine_front.png"
 	},
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -24,9 +21,8 @@ minetest.register_node("homedecor:washing_machine", {
 	groups = { snappy = 3 },
 })
 
-minetest.register_node("homedecor:dryer", {
+homedecor.register("dryer", {
 	description = "Tumble dryer",
-	drawtype = "nodebox",
 	tiles = {
 		"homedecor_dryer_top.png",
 		"homedecor_dryer_bottom.png",
@@ -35,8 +31,6 @@ minetest.register_node("homedecor:dryer", {
 		"homedecor_dryer_back.png",
 		"homedecor_dryer_front.png"
 	},
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {

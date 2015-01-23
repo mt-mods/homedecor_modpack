@@ -1,7 +1,4 @@
-minetest.register_node("homedecor:power_outlet", {
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
+homedecor.register("power_outlet", {
 	description = "Power Outlet",
 	tiles = {
 		"homedecor_outlet_edges.png",
@@ -28,10 +25,7 @@ minetest.register_node("homedecor:power_outlet", {
 	sounds = default.node_sound_stone_defaults()
 })
 
-minetest.register_node("homedecor:light_switch", {
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
+homedecor.register("light_switch", {
 	description = "Light switch",
 	tiles = {
 		"homedecor_light_switch_edges.png",
@@ -61,13 +55,10 @@ minetest.register_node("homedecor:light_switch", {
 })
 
 
-minetest.register_node("homedecor:doorbell", {
+homedecor.register("doorbell", {
 	tiles = { "homedecor_doorbell.png" },
 	inventory_image = "homedecor_doorbell_inv.png",
 	description = "Doorbell",
-	drawtype = "nodebox",
-	paramtype = "light",
-    paramtype2 = "facedir",
     groups = {snappy=3},
 	node_box = {
 		type = "fixed",

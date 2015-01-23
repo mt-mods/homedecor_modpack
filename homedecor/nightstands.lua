@@ -10,8 +10,6 @@ homedecor.register("nightstand_oak_one_drawer", {
 			'homedecor_nightstand_oak_left.png',
 			'homedecor_nightstand_oak_back.png',
 			'homedecor_nightstand_oak_1_drawer_front.png'},
-	sunlight_propagates = false,
-	walkable = true,
 	selection_box = { type = "regular" },
 	node_box = {
 		type = "fixed",
@@ -33,7 +31,6 @@ homedecor.register("nightstand_oak_one_drawer", {
 })
 
 homedecor.register("nightstand_oak_two_drawers", {
-	drawtype = "nodebox",
 	description = S("Oak Nightstand with Two Drawers"),
 	tiles = { 'homedecor_nightstand_oak_top.png',
 			'homedecor_nightstand_oak_bottom.png',
@@ -41,10 +38,6 @@ homedecor.register("nightstand_oak_two_drawers", {
 			'homedecor_nightstand_oak_left.png',
 			'homedecor_nightstand_oak_back.png',
 			'homedecor_nightstand_oak_2_drawer_front.png'},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	selection_box = { type = "regular" },
 	node_box = {
 		type = "fixed",
@@ -71,8 +64,6 @@ homedecor.register("nightstand_mahogany_one_drawer", {
 			'homedecor_nightstand_mahogany_left.png',
 			'homedecor_nightstand_mahogany_back.png',
 			'homedecor_nightstand_mahogany_1_drawer_front.png'},
-	sunlight_propagates = false,
-	walkable = true,
 	selection_box = { type = "regular" },
 	node_box = {
 		type = "fixed",
@@ -101,8 +92,6 @@ homedecor.register("nightstand_mahogany_two_drawers", {
 			'homedecor_nightstand_mahogany_left.png',
 			'homedecor_nightstand_mahogany_back.png',
 			'homedecor_nightstand_mahogany_2_drawer_front.png'},
-	sunlight_propagates = false,
-	walkable = true,
 	selection_box = { type = "regular" },
 	node_box = {
 		type = "fixed",

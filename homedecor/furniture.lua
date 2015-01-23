@@ -13,12 +13,9 @@ for _, i in ipairs(table_colors) do
 		desc = S("Table")
 	end
 
-	minetest.register_node("homedecor:table"..color, {
+	homedecor.register("table"..color, {
 		description = desc,
 		tiles = { "forniture_wood"..color..".png" },
-		drawtype = "nodebox",
-		paramtype = "light",
-		paramtype2 = "facedir",
 		node_box = {
 			type = "fixed",
 			fixed = {
@@ -65,12 +62,9 @@ for i in ipairs(chaircolors) do
 		chairtiles = { "forniture_wood.png" }
 	end
 
-	minetest.register_node("homedecor:chair"..color, {
+	homedecor.register("chair"..color, {
 		description = S("Kitchen chair (%s)"):format(name),
 		tiles = chairtiles,
-		drawtype = "nodebox",
-		paramtype = "light",
-		paramtype2 = "facedir",
 		node_box = {
 			type = "fixed",
 			fixed = {
@@ -90,13 +84,10 @@ for i in ipairs(chaircolors) do
 	})
 
 	if color ~= "" then
-		minetest.register_node("homedecor:armchair"..color, {
+		homedecor.register("armchair"..color, {
 			description = S("Armchair (%s)"):format(name),
 			tiles = { "forniture_armchair_top"..color..".png" },
-			drawtype = "nodebox",
 			sunlight_propagates = true,
-			paramtype = "light",
-			paramtype2 = "facedir",
 			node_box = {
 			type = "fixed",
 			fixed = {
@@ -134,14 +125,11 @@ end
 
 minetest.register_node(":homedecor:openframe_bookshelf", {
 	description = "Bookshelf (open-frame)",
-	drawtype = "mesh",
 	mesh = "homedecor_openframe_bookshelf.obj",
 	tiles = { "homedecor_openframe_bookshelf.png" },
 	is_ground_content = false,
 	groups = {choppy=3,oddly_breakable_by_hand=2,flammable=3},
 	sounds = default.node_sound_wood_defaults(),
-	paramtype = "light",
-	paramtype2 = "facedir",
 	selection_box = {
 		type = "fixed",
 		fixed = { -0.5, -0.5, 0, 0.5, 0.5, 0.5 }
@@ -539,9 +527,6 @@ homedecor.register("deckchair_foot", {
 	},
 	description = "Deck chair",
 	inventory_image = "homedecor_deckchair_inv.png",
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 		groups = { snappy = 3 },
 	node_box = {
 		type = "fixed",
@@ -562,14 +547,11 @@ homedecor.register("deckchair_foot", {
 	expand = { forward="homedecor:deckchair_head" },
 })
 
-minetest.register_node("homedecor:wall_shelf", {
+homedecor.register("wall_shelf", {
 	description = "Wall Shelf",
 	tiles = {
 		"homedecor_wood_table_large_edges.png",
 	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy = 3 },
 	node_box = {
 		type = "fixed",

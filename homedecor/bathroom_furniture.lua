@@ -25,7 +25,6 @@ for i in ipairs(bathroom_tile_colors) do
 			"homedecor_bathroom_tiles_"..color..".png^[transformR90",
 			"homedecor_bathroom_tiles_"..color..".png^[transformR90"
 		},
-		is_ground_content = true,
 		groups = {cracky=3},
 		sounds = default.node_sound_stone_defaults(),
 	})
@@ -60,7 +59,6 @@ homedecor.register("towel_rod", {
 })
 
 homedecor.register("medicine_cabinet", {
-	drawtype = "nodebox",
 	description = S("Medicine Cabinet"),
 	tiles = {
 		'homedecor_medicine_cabinet_tb.png',
@@ -71,8 +69,6 @@ homedecor.register("medicine_cabinet", {
 		'homedecor_medicine_cabinet_front.png'
 	},
 	inventory_image = "homedecor_medicine_cabinet_inv.png",
-	sunlight_propagates = false,
-	walkable = true,
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3125, -0.1875, 0.3125, 0.3125, 0.5, 0.5}

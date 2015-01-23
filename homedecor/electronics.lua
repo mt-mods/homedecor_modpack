@@ -2,7 +2,7 @@
 
 local S = homedecor.gettext
 
-minetest.register_node('homedecor:speaker', {
+homedecor.register("speaker", {
 	description = S("Large Stereo Speaker"),
 	tiles = { 'homedecor_speaker_top.png',
 			'homedecor_speaker_bottom.png',
@@ -10,17 +10,12 @@ minetest.register_node('homedecor:speaker', {
 			'homedecor_speaker_left.png',
 			'homedecor_speaker_back.png',
 			'homedecor_speaker_front.png'},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
 })
 
-minetest.register_node('homedecor:speaker_small', {
+homedecor.register("speaker_small", {
 	description = S("Small Surround Speaker"),
-	drawtype = "nodebox",
 	tiles = {
 		'homedecor_speaker_top.png',
 		'homedecor_speaker_bottom.png',
@@ -37,16 +32,11 @@ minetest.register_node('homedecor:speaker_small', {
 		type = "fixed",
 		fixed = { -0.2, -0.5, 0, 0.2, 0, 0.4 }
 	},
-
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
 })
 
-minetest.register_node('homedecor:stereo', {
+homedecor.register("stereo", {
 	description = S("Stereo Receiver"),
 	tiles = { 'homedecor_stereo_top.png',
 			'homedecor_stereo_bottom.png',
@@ -54,22 +44,16 @@ minetest.register_node('homedecor:stereo', {
 			'homedecor_stereo_left.png',
 			'homedecor_stereo_back.png',
 			'homedecor_stereo_front.png'},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
 })
 
-minetest.register_node('homedecor:projection_screen', {
+homedecor.register("projection_screen", {
 	description = S("Projection Screen Material"),
 	drawtype = 'signlike',
 	tiles = { 'homedecor_projection_screen.png' },
 	wield_image = 'homedecor_projection_screen_inv.png',
 	inventory_image = 'homedecor_projection_screen_inv.png',
-	sunlight_propagates = false,
-	paramtype = 'light',
 	walkable = false,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
@@ -80,7 +64,7 @@ minetest.register_node('homedecor:projection_screen', {
 	},
 })
 
-minetest.register_node('homedecor:television', {
+homedecor.register("television", {
 	description = S("Small CRT Television"),
 	tiles = { 'homedecor_television_top.png',
 		  'homedecor_television_bottom.png',
@@ -96,18 +80,13 @@ minetest.register_node('homedecor:television', {
 			  }
 		   }
 	},
-	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
 	light_source = LIGHT_MAX - 1,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 })
 
-minetest.register_node("homedecor:dvd_vcr", {
+homedecor.register("dvd_vcr", {
 	description = S("DVD and VCR"),
-	drawtype = "nodebox",
 	tiles = {
 		"homedecor_dvdvcr_top.png",
 		"homedecor_dvdvcr_bottom.png",
@@ -117,8 +96,6 @@ minetest.register_node("homedecor:dvd_vcr", {
 		"homedecor_dvdvcr_front.png",
 	},
 	inventory_image = "homedecor_dvdvcr_inv.png",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -130,7 +107,7 @@ minetest.register_node("homedecor:dvd_vcr", {
 	sounds = default.node_sound_wood_defaults(),
 })
 
-minetest.register_node("homedecor:telephone", {
+homedecor.register("telephone", {
 	tiles = {
 		"homedecor_telephone_sides.png^[transformR180",
 		"homedecor_telephone_sides.png",
@@ -141,9 +118,6 @@ minetest.register_node("homedecor:telephone", {
 	},
 	inventory_image = "homedecor_telephone_inv.png",
 	description = "Telephone",
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = {snappy=3},
 	node_box = {
 		type = "fixed",

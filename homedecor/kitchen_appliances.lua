@@ -210,7 +210,7 @@ homedecor.register_furnace("homedecor:microwave_oven", {
 -- coffee!
 -- coffee!
 -- coffee!
-minetest.register_node("homedecor:coffee_maker", {
+homedecor.register("coffee_maker", {
 	tiles = {
 		"homedecor_coffeemaker_top.png",
 		"homedecor_coffeemaker_bottom.png",
@@ -288,7 +288,7 @@ minetest.register_abm({
 	end
 })
 
-minetest.register_node("homedecor:toaster", {
+homedecor.register("toaster", {
         description = "Toaster",
 	tiles = {
 		"homedecor_toaster_sides.png",
@@ -321,7 +321,7 @@ minetest.register_node("homedecor:toaster", {
 	end
 })
 
-minetest.register_node("homedecor:toaster_loaf", {
+homedecor.register("toaster_loaf", {
 	tiles = {
 		"homedecor_toaster_toploaf.png",
 		"homedecor_toaster_sides.png",
@@ -351,7 +351,7 @@ minetest.register_node("homedecor:toaster_loaf", {
 })
 
 
-minetest.register_node("homedecor:dishwasher", {
+homedecor.register("dishwasher", {
 	description = "Dishwasher",
 	drawtype = "nodebox",
 	tiles = {
@@ -377,7 +377,7 @@ minetest.register_node("homedecor:dishwasher", {
 	groups = { snappy = 3 },
 })
 
-minetest.register_node("homedecor:dishwasher_wood", {
+homedecor.register("dishwasher_wood", {
 	description = "Dishwasher",
 	tiles = {
 		"homedecor_kitchen_cabinet_top.png",
@@ -392,7 +392,7 @@ minetest.register_node("homedecor:dishwasher_wood", {
 	groups = { snappy = 3 },
 })
 
-minetest.register_node("homedecor:dishwasher_steel", {
+homedecor.register("dishwasher_steel", {
 	description = "Dishwasher",
 	tiles = {
 		"homedecor_kitchen_cabinet_top_steel.png",
@@ -407,7 +407,7 @@ minetest.register_node("homedecor:dishwasher_steel", {
 	groups = { snappy = 3 },
 })
 
-minetest.register_node("homedecor:dishwasher_marble", {
+homedecor.register("dishwasher_marble", {
 	description = "Dishwasher",
 	tiles = {
 		"homedecor_kitchen_cabinet_top_marble.png",
@@ -422,7 +422,7 @@ minetest.register_node("homedecor:dishwasher_marble", {
 	groups = { snappy = 3 },
 })
 
-minetest.register_node("homedecor:dishwasher_granite", {
+homedecor.register("dishwasher_granite", {
 	description = "Dishwasher",
 	tiles = {
 		"homedecor_kitchen_cabinet_top_granite.png",

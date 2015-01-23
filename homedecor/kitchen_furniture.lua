@@ -22,8 +22,6 @@ for _, mat in ipairs(counter_materials) do
 				'homedecor_kitchen_cabinet_sides.png',
 				'homedecor_kitchen_cabinet_sides.png',
 				'homedecor_kitchen_cabinet_front.png'},
-		sunlight_propagates = false,
-		walkable = true,
 		groups = { snappy = 3 },
 		sounds = default.node_sound_wood_defaults(),
 		infotext=S("Kitchen Cabinet"),
@@ -42,8 +40,6 @@ homedecor.register("kitchen_cabinet_half", {
 			'homedecor_kitchen_cabinet_sides.png',
 			'homedecor_kitchen_cabinet_sides.png',
 			'homedecor_kitchen_cabinet_front_half.png'},
-	sunlight_propagates = false,
-	walkable = true,
 	selection_box = kitchen_cabinet_half_box,
 	node_box = kitchen_cabinet_half_box,
 	groups = { snappy = 3 },
@@ -58,8 +54,6 @@ homedecor.register("kitchen_cabinet_with_sink", {
 	description = S("Kitchen Cabinet with sink"),
 	mesh = "homedecor_kitchen_sink.obj",
 	tiles = { "homedecor_kitchen_sink.png" },
-	sunlight_propagates = false,
-	walkable = true,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	infotext=S("Under-sink cabinet"),
@@ -68,15 +62,12 @@ homedecor.register("kitchen_cabinet_with_sink", {
 	},
 })
 
-minetest.register_node("homedecor:copper_pans", {
+homedecor.register("copper_pans", {
 	description = "Copper pans",
 	tiles = {
 		"homedecor_polished_copper.png"
 	},
 	inventory_image = "homedecor_copper_pans_inv.png",
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy=3 },
 	node_box = {
 		type = "fixed",
@@ -102,13 +93,10 @@ minetest.register_node("homedecor:copper_pans", {
 	on_place = minetest.rotate_node
 })
 
-minetest.register_node("homedecor:kitchen_faucet", {
+homedecor.register("kitchen_faucet", {
 	tiles = { "homedecor_bright_metal.png" },
 	inventory_image = "homedecor_kitchen_faucet_inv.png",
 	description = "Kitchen Faucet",
-	drawtype = "nodebox",
-	paramtype = "light",
-        paramtype2 = "facedir",
         groups = {snappy=3},
 	node_box = {
 		type = "fixed",
@@ -128,14 +116,11 @@ minetest.register_node("homedecor:kitchen_faucet", {
 	},
 })
 
-minetest.register_node("homedecor:paper_towel", {
-	drawtype = "mesh",
+homedecor.register("paper_towel", {
 	mesh = "homedecor_paper_towel.obj",
 	tiles = { "homedecor_paper_towel.png" },
 	inventory_image = "homedecor_paper_towel_inv.png",
 	description = "Paper towels",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy=3 },
 	selection_box = {
 		type = "fixed",
