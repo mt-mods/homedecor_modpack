@@ -299,8 +299,6 @@ homedecor.register("cardboard_box_big", {
 		'homedecor_cardbox_big_sides.png',
 	},
 	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	infotext=S("Cardboard box"),
@@ -324,8 +322,6 @@ homedecor.register("cardboard_box", {
 		}
 	},
 	sunlight_propagates = false,
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	infotext=S("Cardboard box"),
