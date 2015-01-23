@@ -21,14 +21,17 @@ homedecor.nodebox = {
 local mt = {}
 mt.__index = function(table, key)
 	local ref = homedecor.box[key]
-	if type(ref) == "function" then
+	local ref_type = type(ref)
+	if ref_type == "function" then
 		return function(...)
 			return { type = "fixed", fixed = ref(...) }
 		end
-	elseif type(ref) == "table" then
+	elseif ref_type == "table" then
 		return { type = "fixed", fixed = ref }
+	elseif ref_type == "nil" then
+		error(key .. "could not be found among nodebox presets and functions")
 	end
-	error("unexpected datatype " .. tostring(type(ref)))
+	error("unexpected datatype " .. tostring(type(ref)) .. " while looking for " .. key)
 end
 setmetatable(homedecor.nodebox, mt)
 
