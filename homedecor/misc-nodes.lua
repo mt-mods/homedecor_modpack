@@ -1903,6 +1903,8 @@ local bookcolors = {
 	"brown"
 }
 
+local BOOK_FORMNAME = "homedecor:book_form"
+
 for c in ipairs(bookcolors) do
 	local color = bookcolors[c]
 	local color_d = S(bookcolors[c])
@@ -1995,7 +1997,7 @@ minetest.register_node("homedecor:book_"..color, {
 				"label[1,0.5;"..minetest.formspec_escape(title).."]"..
 				"label[0.5,1.5;"..minetest.formspec_escape(text).."]"
 		end
-		minetest.show_formspec(user:get_player_name(), "homedecor:book_"..color, formspec)
+		minetest.show_formspec(user:get_player_name(), BOOK_FORMNAME, formspec)
 	end,
 })
 
@@ -2026,23 +2028,22 @@ minetest.register_node("homedecor:book_open_"..color, {
 	end,
 })
 
+end
+
 minetest.register_on_player_receive_fields(function(player, form_name, fields)
-	if form_name ~= "homedecor:book_"..color or not fields.save then
+	if form_name ~= BOOK_FORMNAME or not fields.save then
 		return
 	end
 	local stack = player:get_wielded_item()
 	if minetest.get_item_group(stack:get_name(), "book") == 0 then
 		return
 	end
-	local data = minetest.deserialize(stack:get_metadata())
-	if not data then data = {} end
+	local data = minetest.deserialize(stack:get_metadata()) or {}
 	data.title, data.text, data.owner =
 		fields.title, fields.text, player:get_player_name()
 	stack:set_metadata(minetest.serialize(data))
 	player:set_wielded_item(stack)
 end)
-
-end
 
 minetest.register_node("homedecor:calendar", {
 	description = "Calendar",
