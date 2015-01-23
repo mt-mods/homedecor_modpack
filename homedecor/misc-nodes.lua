@@ -1733,6 +1733,7 @@ minetest.register_node("homedecor:book_"..color, {
 		"homedecor_book_open_sides.png"
 	},
 	inventory_image = "homedecor_book_"..color.."_inv.png",
+	wield_image = "homedecor_book_"..color.."_inv.png",
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
