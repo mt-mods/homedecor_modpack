@@ -23,7 +23,7 @@ mt.__index = function(table, key)
 	local ref = homedecor.box[key]
 	if type(ref) == "function" then
 		return function(...)
-			return { type = "fixed", fixed = ref(unpack(arg)) }
+			return { type = "fixed", fixed = ref(...) }
 		end
 	elseif type(ref) == "table" then
 		return { type = "fixed", fixed = ref }
