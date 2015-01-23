@@ -265,7 +265,7 @@ minetest.register_node("homedecor:window_flowerbox", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-	        	{-0.375, 0.25, -0.125, 0.375, 0.5, 0.375}, -- NodeBox1
+			{-0.375, 0.25, -0.125, 0.375, 0.5, 0.375}, -- NodeBox1
 			{-0.3125, 0.4375, 0.375, -0.25, 0.4875, 0.5}, -- NodeBox2
 			{0.25, 0.4375, 0.375, 0.3125, 0.4875, 0.5}, -- NodeBox3
 		}

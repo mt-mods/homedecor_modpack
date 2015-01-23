@@ -65,9 +65,9 @@ local glowlight_nodebox = {
 	half = homedecor.nodebox.slab_y(1/2),
 	quarter = homedecor.nodebox.slab_y(1/4),
 	small_cube = {
-                type = "fixed",
-                fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-        },
+			type = "fixed",
+			fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
+	},
 }
 
 -- Yellow
@@ -83,8 +83,8 @@ minetest.register_node('homedecor:glowlight_half_yellow', {
 		'homedecor_glowlight_thick_yellow_sides.png',
 		'homedecor_glowlight_thick_yellow_sides.png'
 	},
-        selection_box = glowlight_nodebox.half,
-        node_box = glowlight_nodebox.half,
+	selection_box = glowlight_nodebox.half,
+	node_box = glowlight_nodebox.half,
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -106,8 +106,8 @@ minetest.register_node('homedecor:glowlight_quarter_yellow', {
 		'homedecor_glowlight_thin_yellow_sides.png',
 		'homedecor_glowlight_thin_yellow_sides.png'
 	},
-        selection_box = glowlight_nodebox.quarter,
-        node_box = glowlight_nodebox.quarter,
+	selection_box = glowlight_nodebox.quarter,
+	node_box = glowlight_nodebox.quarter,
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -131,8 +131,8 @@ minetest.register_node('homedecor:glowlight_half_white', {
 		'homedecor_glowlight_thick_white_sides.png',
 		'homedecor_glowlight_thick_white_sides.png'
 	},
-        selection_box = glowlight_nodebox.half,
-        node_box = glowlight_nodebox.half,
+	selection_box = glowlight_nodebox.half,
+	node_box = glowlight_nodebox.half,
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -154,8 +154,8 @@ minetest.register_node('homedecor:glowlight_quarter_white', {
 		'homedecor_glowlight_thin_white_sides.png',
 		'homedecor_glowlight_thin_white_sides.png'
 	},
-        selection_box = glowlight_nodebox.quarter,
-        node_box = glowlight_nodebox.quarter,
+	selection_box = glowlight_nodebox.quarter,
+	node_box = glowlight_nodebox.quarter,
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -179,8 +179,8 @@ minetest.register_node('homedecor:glowlight_small_cube_yellow', {
 		'homedecor_glowlight_cube_yellow_sides.png',
 		'homedecor_glowlight_cube_yellow_sides.png'
 	},
-        selection_box = glowlight_nodebox.small_cube,
-        node_box = glowlight_nodebox.small_cube,
+	selection_box = glowlight_nodebox.small_cube,
+	node_box = glowlight_nodebox.small_cube,
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -202,8 +202,8 @@ minetest.register_node('homedecor:glowlight_small_cube_white', {
 		'homedecor_glowlight_cube_white_sides.png',
 		'homedecor_glowlight_cube_white_sides.png'
 	},
-        selection_box = glowlight_nodebox.small_cube,
-        node_box = glowlight_nodebox.small_cube,
+	selection_box = glowlight_nodebox.small_cube,
+	node_box = glowlight_nodebox.small_cube,
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -243,20 +243,20 @@ minetest.register_node('homedecor:candle', {
 		'homedecor_candle_top.png',
 		{name="homedecor_candle_sides.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
 	},
-    node_box = {
-            type = "fixed",
-            fixed = {
-				{ -0.125, -0.5, -0.125, 0.125, 0, 0.125 },
-				{ -0.125, 0, 0, 0.125, 0.5, 0 },
-				{ 0, 0, -0.125, 0, 0.5, 0.125 }
-			}
-    },
-    selection_box = {
-            type = "fixed",
-            fixed = {
-				{ -0.1875, -0.5, -0.1875, 0.1875, 0.5, 0.1875 },
-			}
-    },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{ -0.125, -0.5, -0.125, 0.125, 0, 0.125 },
+			{ -0.125, 0, 0, 0.125, 0.5, 0 },
+			{ 0, 0, -0.125, 0, 0.5, 0.125 }
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{ -0.1875, -0.5, -0.1875, 0.1875, 0.5, 0.1875 },
+		}
+	},
 	sunlight_propagates = true,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -273,12 +273,12 @@ minetest.register_node('homedecor:candle_thin', {
 	tiles = {
 		{name="homedecor_candle.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.0}},
 	},
-    selection_box = {
-            type = "fixed",
-            fixed = {
-				{ -0.1, -0.5, -0.1, 0.125, 0.05, 0.125 },
-			}
-    },
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{ -0.1, -0.5, -0.1, 0.125, 0.05, 0.125 },
+		}
+	},
 	sunlight_propagates = true,
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -296,12 +296,12 @@ minetest.register_node('homedecor:oil_lamp', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-    selection_box = {
-            type = "fixed",
-            fixed = {
-				{ -0.3, -0.5, -0.3, 0.3, 0.5, 0.3 },
-			}
-    },
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{ -0.3, -0.5, -0.3, 0.3, 0.5, 0.3 },
+		}
+	},
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-4,
 	sounds = default.node_sound_wood_defaults(),
@@ -316,12 +316,12 @@ minetest.register_node('homedecor:wall_lantern', {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
-    selection_box = {
-            type = "fixed",
-            fixed = {
-				{ -0.3, -0.5, -0.3, 0.3, 0.5, 0.3 },
-			}
-    },
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{ -0.3, -0.5, -0.3, 0.3, 0.5, 0.3 },
+		}
+	},
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-4,
 	sounds = default.node_sound_wood_defaults(),
@@ -346,14 +346,14 @@ minetest.register_node('homedecor:lattice_lantern_small', {
 		'homedecor_lattice_lantern_small_tb.png',
 		'homedecor_lattice_lantern_small_sides.png'
 	},
-    selection_box = {
-            type = "fixed",
-            fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-    },
-    node_box = {
-            type = "fixed",
-            fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-    },
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
+	},
+	node_box = {
+		type = "fixed",
+		fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
+	},
 	sunlight_propagates = false,
 	paramtype = "light",
 	paramtype2 = "facedir",

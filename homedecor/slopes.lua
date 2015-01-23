@@ -177,20 +177,20 @@ minetest.register_craft( {
 })
 
 minetest.register_craft({
-    type = "fuel",
-    recipe = "homedecor:shingle_inner_corner_wood",
-    burntime = 30,
+	type = "fuel",
+	recipe = "homedecor:shingle_inner_corner_wood",
+	burntime = 30,
 })
 
 minetest.register_craft({
-    type = "fuel",
-    recipe = "homedecor:shingle_outer_corner_wood",
-    burntime = 30,
+	type = "fuel",
+	recipe = "homedecor:shingle_outer_corner_wood",
+	burntime = 30,
 })
 
 minetest.register_craft({
-    type = "fuel",
-    recipe = "homedecor:shingle_side_wood",
+	type = "fuel",
+	recipe = "homedecor:shingle_side_wood",
 	burntime = 30,
 })
 

@@ -20,18 +20,18 @@ for _, i in ipairs(table_colors) do
 		paramtype = "light",
 		paramtype2 = "facedir",
 		node_box = {
-		    type = "fixed",
-		    fixed = {
-		        { -0.4, -0.5, -0.4, -0.3,  0.4, -0.3 },
-		        {  0.3, -0.5, -0.4,  0.4,  0.4, -0.3 },
-		        { -0.4, -0.5,  0.3, -0.3,  0.4,  0.4 },
-		        {  0.3, -0.5,  0.3,  0.4,  0.4,  0.4 },
-		        { -0.5,  0.4, -0.5,  0.5,  0.5,  0.5 },
-		        { -0.4, -0.2, -0.3, -0.3, -0.1,  0.3 },
-		        {  0.3, -0.2, -0.4,  0.4, -0.1,  0.3 },
-		        { -0.3, -0.2, -0.4,  0.4, -0.1, -0.3 },
-		        { -0.3, -0.2,  0.3,  0.3, -0.1,  0.4 },
-		    },
+			type = "fixed",
+			fixed = {
+				{ -0.4, -0.5, -0.4, -0.3,  0.4, -0.3 },
+				{  0.3, -0.5, -0.4,  0.4,  0.4, -0.3 },
+				{ -0.4, -0.5,  0.3, -0.3,  0.4,  0.4 },
+				{  0.3, -0.5,  0.3,  0.4,  0.4,  0.4 },
+				{ -0.5,  0.4, -0.5,  0.5,  0.5,  0.5 },
+				{ -0.4, -0.2, -0.3, -0.3, -0.1,  0.3 },
+				{  0.3, -0.2, -0.4,  0.4, -0.1,  0.3 },
+				{ -0.3, -0.2, -0.4,  0.4, -0.1, -0.3 },
+				{ -0.3, -0.2,  0.3,  0.3, -0.1,  0.4 },
+			},
 		},
 		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 	})
@@ -66,25 +66,25 @@ for i in ipairs(chaircolors) do
 	end
 
 	minetest.register_node("homedecor:chair"..color, {
-	    description = S("Kitchen chair (%s)"):format(name),
+		description = S("Kitchen chair (%s)"):format(name),
 		tiles = chairtiles,
 		drawtype = "nodebox",
 		paramtype = "light",
 		paramtype2 = "facedir",
 		node_box = {
-		    type = "fixed",
-		    fixed = {
+			type = "fixed",
+			fixed = {
 				{-0.3125, -0.5, 0.1875, -0.1875, 0.5, 0.3125},
 				{0.1875, -0.5, 0.1875, 0.3125, 0.5, 0.3125},
 				{-0.3125, -0.5, -0.3125, -0.1875, 0, -0.1875},
 				{0.1875, -0.5, -0.3125, 0.3125, 0, -0.1875},
 				{-0.3125, -0.125, -0.3125, 0.3125, 0, 0.3125},
 				{-0.25, 0.0625, 0.25, 0.25, 0.4375, 0.25},
-		    },
+			},
 		},
 		selection_box = {
-		    type = "fixed",
-		    fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3},
+			type = "fixed",
+			fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3},
 		},
 		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 	})
@@ -179,12 +179,12 @@ local function bed_extension(pos, color)
 		end
 	end
 
-    if string.find(bottomnode.name, "homedecor:bed_.*_foot$") then
+	if string.find(bottomnode.name, "homedecor:bed_.*_foot$") then
 		if fdir == bottomnode.param2 then
 			local newnode = string.gsub(bottomnode.name, "_foot", "_footext")
-		    minetest.set_node({x=pos.x, y=pos.y-1.0, z=pos.z}, { name = newnode, param2 = fdir})
+			minetest.set_node({x=pos.x, y=pos.y-1.0, z=pos.z}, { name = newnode, param2 = fdir})
 		end
-    end
+	end
 end
 
 local function unextend_bed(pos, color)
@@ -324,7 +324,7 @@ homedecor.register("wardrobe_bottom", {
 	},
 	inventory_image = "homedecor_wardrobe_inv.png",
 	description = "Wardrobe",
-        groups = {snappy=3},
+		groups = {snappy=3},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -355,13 +355,13 @@ homedecor.register("simple_bench", {
 		"homedecor_bench_large_2_left_back.png^[transformFX"
 	},
 	description = "Simple Bench",
-        groups = {snappy=3},
+		groups = {snappy=3},
 	node_box = {
 		type = "fixed",
 		fixed = {
-                    {-0.5, -0.15, 0,  0.5,  -0.05, 0.4},
-                    {-0.4, -0.5,  0.1, -0.3, -0.15, 0.3},
-                    { 0.3, -0.5,  0.1,  0.4, -0.15, 0.3},
+					{-0.5, -0.15, 0,  0.5,  -0.05, 0.4},
+					{-0.4, -0.5,  0.1, -0.3, -0.15, 0.3},
+					{ 0.3, -0.5,  0.1,  0.4, -0.15, 0.3},
 		}
 	},
 })
@@ -506,7 +506,7 @@ homedecor.register("deckchair_head", {
 		"homedecor_deckchair_sides.png",
 		"homedecor_deckchair_front.png"
 	},
-        groups = { snappy = 3, not_in_creative_inventory = 1 },
+		groups = { snappy = 3, not_in_creative_inventory = 1 },
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -542,7 +542,7 @@ homedecor.register("deckchair_foot", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-        groups = { snappy = 3 },
+		groups = { snappy = 3 },
 	node_box = {
 		type = "fixed",
 		fixed = {

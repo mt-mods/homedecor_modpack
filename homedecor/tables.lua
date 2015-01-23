@@ -163,7 +163,7 @@ minetest.register_node('homedecor:utility_table_top', {
 		wall_top =    { -0.5,  0.4375, -0.5,  0.5,    0.5,    0.5 },
 		wall_side =   { -0.5, -0.5,    -0.5, -0.4375, 0.5,    0.5 },
 	},
-        selection_box = {
+	selection_box = {
 		type = "wallmounted",
 		wall_bottom = { -0.5, -0.5,    -0.5,  0.5,   -0.4375, 0.5 },
 		wall_top =    { -0.5,  0.4375, -0.5,  0.5,    0.5,    0.5 },
@@ -174,34 +174,34 @@ minetest.register_node('homedecor:utility_table_top', {
 -- Various kinds of table legs
 
 minetest.register_node("homedecor:table_legs_brass", {
-        description = S("Brass Table Legs"),
-        drawtype = "plantlike",
-        tiles = {"homedecor_table_legs_brass.png"},
-        inventory_image = "homedecor_table_legs_brass.png",
-        wield_image = "homedecor_table_legs_brass.png",
-        paramtype = "light",
-        walkable = false,
-        groups = {snappy=3},
-        sounds = default.node_sound_leaves_defaults(),
+	description = S("Brass Table Legs"),
+	drawtype = "plantlike",
+	tiles = {"homedecor_table_legs_brass.png"},
+	inventory_image = "homedecor_table_legs_brass.png",
+	wield_image = "homedecor_table_legs_brass.png",
+	paramtype = "light",
+	walkable = false,
+	groups = {snappy=3},
+	sounds = default.node_sound_leaves_defaults(),
 	walkable = true,
-        selection_box = {
+	selection_box = {
 		type = "fixed",
 		fixed = { -0.37, -0.5, -0.37, 0.37, 0.5, 0.37 }
 	},
 })
 
 minetest.register_node("homedecor:table_legs_wrought_iron", {
-        description = S("Wrought Iron Table Legs"),
-        drawtype = "plantlike",
-        tiles = {"homedecor_table_legs_wrought_iron.png"},
-        inventory_image = "homedecor_table_legs_wrought_iron.png",
-        wield_image = "homedecor_table_legs_wrought_iron.png",
-        paramtype = "light",
-        walkable = false,
-        groups = {snappy=3},
-        sounds = default.node_sound_leaves_defaults(),
+	description = S("Wrought Iron Table Legs"),
+	drawtype = "plantlike",
+	tiles = {"homedecor_table_legs_wrought_iron.png"},
+	inventory_image = "homedecor_table_legs_wrought_iron.png",
+	wield_image = "homedecor_table_legs_wrought_iron.png",
+	paramtype = "light",
+	walkable = false,
+	groups = {snappy=3},
+	sounds = default.node_sound_leaves_defaults(),
 	walkable = true,
-        selection_box = {
+	selection_box = {
 		type = "fixed",
 		fixed = { -0.37, -0.5, -0.37, 0.37, 0.5, 0.37 }
 	},
@@ -218,7 +218,7 @@ minetest.register_node('homedecor:utility_table_legs', {
 	walkable = false,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
-        selection_box = {
+	selection_box = {
 		type = "fixed",
 		fixed = { -0.37, -0.5, -0.37, 0.37, 0.5, 0.37 }
 	},

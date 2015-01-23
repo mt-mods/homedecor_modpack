@@ -176,8 +176,8 @@ minetest.register_node("homedecor:radiator", {
 	description = "Radiator heater",
 	drawtype = "nodebox",
 	paramtype = "light",
-        paramtype2 = "facedir",
-        groups = {snappy=3},
+	paramtype2 = "facedir",
+	groups = {snappy=3},
 	node_box = {
 		type = "fixed",
 		fixed = {

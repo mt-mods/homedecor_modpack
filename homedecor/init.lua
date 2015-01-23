@@ -46,15 +46,15 @@ end
 --table copy
 
 function homedecor.table_copy(t)
-    local nt = { };
-    for k, v in pairs(t) do
-        if type(v) == "table" then
-            nt[k] = homedecor.table_copy(v)
-        else
-            nt[k] = v
-        end
-    end
-    return nt
+	local nt = { };
+	for k, v in pairs(t) do
+		if type(v) == "table" then
+			nt[k] = homedecor.table_copy(v)
+		else
+			nt[k] = v
+		end
+	end
+	return nt
 end
 
 -- Determine if the item being pointed at is the underside of a node (e.g a ceiling)
@@ -153,7 +153,5 @@ dofile(homedecor.modpath.."/climate-control.lua")
 dofile(homedecor.modpath.."/cobweb.lua")
 
 dofile(homedecor.modpath.."/locked.lua")
-
-
 
 print("[HomeDecor] "..S("Loaded!"))
