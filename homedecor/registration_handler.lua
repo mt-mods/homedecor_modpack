@@ -8,12 +8,20 @@ end
 
 local default_inventory_size = 32
 local default_inventory_formspecs = {
+	["4"]="size[8,6]"..
+	"list[context;main;2,0;4,1;]"..
+	"list[current_player;main;0,2;8,4;]",
+
+	["6"]="size[8,6]"..
+	"list[context;main;1,0;6,1;]"..
+	"list[current_player;main;0,2;8,4;]",
+
 	["8"]="size[8,6]"..
 	"list[context;main;0,0;8,1;]"..
 	"list[current_player;main;0,2;8,4;]",
 
 	["12"]="size[8,7]"..
-	"list[context;main;0,0;8,2;]"..
+	"list[context;main;1,0;6,2;]"..
 	"list[current_player;main;0,3;8,4;]",
 
 	["16"]="size[8,7]"..

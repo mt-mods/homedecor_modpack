@@ -89,7 +89,7 @@ homedecor.register("medicine_cabinet", {
 	end,
 	infotext=S("Medicine cabinet"),
 	inventory = {
-		size=16,
+		size=6,
 	},
 })
 

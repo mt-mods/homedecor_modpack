@@ -327,7 +327,7 @@ homedecor.register("cardboard_box", {
 	sounds = default.node_sound_wood_defaults(),
 	infotext=S("Cardboard box"),
 	inventory = {
-		size=8,
+		size=4,
 	},
 })
 
