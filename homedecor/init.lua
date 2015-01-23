@@ -57,13 +57,6 @@ function homedecor.table_copy(t)
     return nt
 end
 
-function homedecor.get_nodedef_field(nodename, fieldname)
-	if not minetest.registered_nodes[nodename] then
-		return nil
-	end
-	return minetest.registered_nodes[nodename][fieldname]
-end
-
 -- Determine if the item being pointed at is the underside of a node (e.g a ceiling)
 
 function homedecor.find_ceiling(itemstack, placer, pointed_thing)
