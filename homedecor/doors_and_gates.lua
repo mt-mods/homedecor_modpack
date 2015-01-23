@@ -625,7 +625,7 @@ minetest.register_node("homedecor:tatami_mat", {
 	}
 })
 
-minetest.register_node("homedecor:jpn_door_bottom", {
+homedecor.register("jpn_door_bottom", {
 	description = "Japanese-style door",
 	inventory_image = "homedecor_jpn_door_inv.png",
 	tiles = {
@@ -635,9 +635,6 @@ minetest.register_node("homedecor:jpn_door_bottom", {
                 "homedecor_japanese_wall_edges.png",
 		"homedecor_japanese_door_bottom.png"
 	},
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy = 3 },
 	node_box = {
 		type = "fixed",
@@ -657,27 +654,7 @@ minetest.register_node("homedecor:jpn_door_bottom", {
 		type = "fixed",
 		fixed = {-0.5, -0.5, 0, 0.5, 1.5, 0.0625},
 	},
-	on_place = function(itemstack, placer, pointed_thing)
-
-		local pointed = pointed_thing.under
-		local pnode = minetest.get_node(pointed)
-		local pname = pnode.name
-		local rnodedef = minetest.registered_nodes[pname]
-
-		if rnodedef.on_rightclick then
-			rnodedef.on_rightclick(pointed, pnode, placer)
-			return
-		end
-
-		return homedecor.stack_vertically(itemstack, placer, pointed_thing,
-			"homedecor:jpn_door_bottom", "homedecor:jpn_door_top")
-	end,
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
-		if minetest.get_node(pos2).name == "homedecor:jpn_door_top" then
-			minetest.remove_node(pos2)
-		end
-	end,
+	expand = { top = "homedecor:jpn_door_top" },
 	on_rightclick = function(pos, node, clicker)
 		fdir = minetest.get_node(pos).param2
 		minetest.set_node(pos, {name = "homedecor:jpn_door_bottom_open", param2 = fdir})
