@@ -90,9 +90,6 @@ homedecor.register("medicine_cabinet", {
 	infotext=S("Medicine cabinet"),
 	inventory = {
 		size=16,
-		formspec="size[8,7]"..
-			"list[context;main;1,0;6,1;]"..
-			"list[current_player;main;0,3;8,4;]",
 	},
 })
 

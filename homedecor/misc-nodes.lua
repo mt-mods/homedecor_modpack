@@ -328,9 +328,6 @@ homedecor.register("cardboard_box", {
 	infotext=S("Cardboard box"),
 	inventory = {
 		size=8,
-		formspec="size[8,6]"..
-			"list[current_name;main;2,0;4,1;]"..
-			"list[current_player;main;0,2;8,4;]",
 	},
 })
 
@@ -396,9 +393,6 @@ homedecor.register("filing_cabinet", {
 	infotext=S("Filing cabinet"),
 	inventory = {
 		size=16,
-		formspec="size[8,7]"..
-			"list[context;main;0,0;8,2;]"..
-			"list[current_player;main;0,3;8,4;]",
 	},
 })
 

@@ -32,9 +32,6 @@ homedecor.register("nightstand_oak_one_drawer", {
 	infotext=S("One-drawer Nightstand"),
 	inventory = {
 		size=8,
-		formspec="size[8,6]"..
-			"list[context;main;0,0;8,1;]"..
-			"list[current_player;main;0,2;8,4;]",
 	},
 })
 
@@ -69,9 +66,6 @@ homedecor.register("nightstand_oak_two_drawers", {
 	infotext=S("Two-drawer Nightstand"),
 	inventory = {
 		size=16,
-		formspec="size[8,7]"..
-			"list[context;main;0,0;8,2;]"..
-			"list[current_player;main;0,3;8,4;]",
 	},
 })
 
@@ -105,9 +99,6 @@ homedecor.register("nightstand_mahogany_one_drawer", {
 	infotext=S("One-drawer Nightstand"),
 	inventory = {
 		size=8,
-		formspec="size[8,6]"..
-			"list[context;main;0,0;8,1;]"..
-			"list[current_player;main;0,2;8,4;]",
 	},
 })
 
@@ -139,8 +130,5 @@ homedecor.register("nightstand_mahogany_two_drawers", {
 	infotext=S("Two-drawer Nightstand"),
 	inventory = {
 		size=16,
-		formspec="size[8,7]"..
-			"list[context;main;0,0;8,2;]"..
-			"list[current_player;main;0,3;8,4;]",
 	},
 })

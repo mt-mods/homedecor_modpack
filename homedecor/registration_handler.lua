@@ -7,14 +7,39 @@ local default_can_dig = function(pos,player)
 end
 
 local default_inventory_size = 32
-local default_inventory_formspec = "size[8,9]"..
-	default.gui_bg..
-	default.gui_bg_img..
-	default.gui_slots..
-	"list[current_name;main;0,0.3;8,4;]"..
+local default_inventory_formspecs = {
+	["8"]="size[8,6]"..
+	"list[context;main;0,0;8,1;]"..
+	"list[current_player;main;0,2;8,4;]",
+
+	["12"]="size[8,7]"..
+	"list[context;main;0,0;8,2;]"..
+	"list[current_player;main;0,3;8,4;]",
+
+	["16"]="size[8,7]"..
+	"list[context;main;0,0;8,2;]"..
+	"list[current_player;main;0,3;8,4;]",
+
+	["24"]="size[8,8]"..
+	"list[context;main;0,0;8,3;]"..
+	"list[current_player;main;0,4;8,4;]",
+
+	["32"]="size[8,9]".. default.gui_bg .. default.gui_bg_img .. default.gui_slots ..
+	"list[context;main;0,0.3;8,4;]"..
 	"list[current_player;main;0,4.85;8,1;]"..
 	"list[current_player;main;0,6.08;8,3;8]"..
-	default.get_hotbar_bg(0,4.85)
+	default.get_hotbar_bg(0,4.85),
+
+	["50"]="size[10,10]"..
+	"list[context;main;0,0;10,5;]"..
+	"list[current_player;main;1,6;8,4;]",
+}
+
+local function get_formspec_by_size(size)
+	--TODO heuristic to use the "next best size"
+	local formspec = default_inventory_formspecs[tostring(size)]
+	return formspec or default_inventory_formspecs
+end
 
 --wrapper around minetest.register_node that sets sane defaults and interprets some specialized settings
 function homedecor.register(name, def)
@@ -37,17 +62,14 @@ function homedecor.register(name, def)
 	def.inventory = nil
 
 	if inventory then
-		assert((inventory.formspec == nil) == (inventory.size == nil),
-			"inventory.formspec and inventory.size either have both to be set or both be left nil" )
-
 		def.on_construct = def.on_construct or function(pos)
 			local meta = minetest.get_meta(pos)
 			if infotext then
 				meta:set_string("infotext", infotext)
 			end
-
-			meta:set_string("formspec", inventory.formspec or default_inventory_formspec)
-			meta:get_inventory():set_size("main", inventory.size or default_inventory_size)
+			local size = inventory.size or default_inventory_size
+			meta:get_inventory():set_size("main", size)
+			meta:set_string("formspec", inventory.formspec or get_formspec_by_size(size))
 		end
 
 		def.can_dig = def.can_dig or default_can_dig

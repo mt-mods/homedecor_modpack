@@ -348,9 +348,6 @@ homedecor.register("wardrobe_bottom", {
 	infotext = S("Wardrobe cabinet"),
 	inventory = {
 		size=24,
-		formspec="size[8,8]"..
-			"list[context;main;0,0;8,3;]"..
-			"list[current_player;main;0,4;8,4;]",
 	},
 })
 

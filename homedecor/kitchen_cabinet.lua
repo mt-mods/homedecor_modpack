@@ -29,9 +29,6 @@ for _, mat in ipairs(counter_materials) do
 		infotext=S("Kitchen Cabinet"),
 		inventory = {
 			size=24,
-			formspec="size[8,8]"..
-				"list[context;main;0,0;8,3;]"..
-				"list[current_player;main;0,4;8,4;]",
 		},
 	})
 end
@@ -59,9 +56,6 @@ homedecor.register("kitchen_cabinet_half", {
 	infotext=S("Kitchen Cabinet"),
 	inventory = {
 		size=12,
-		formspec="size[8,7]"..
-			"list[context;main;1,0;6,2;]"..
-			"list[current_player;main;0,3;8,4;]",
 	},
 })
 
@@ -77,8 +71,5 @@ homedecor.register("kitchen_cabinet_with_sink", {
 	infotext=S("Under-sink cabinet"),
 	inventory = {
 		size=16,
-		formspec="size[8,7]"..
-			"list[context;main;0,0;8,2;]"..
-			"list[current_player;main;0,3;8,4;]",
 	},
 })

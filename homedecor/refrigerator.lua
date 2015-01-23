@@ -60,9 +60,6 @@ homedecor.register("refrigerator_steel_bottom", {
 	inventory = {
 		size=50,
 		lockable=true,
-		formspec="size[10,10]"..
-			"list[context;main;0,0;10,5;]"..
-			"list[current_player;main;1,6;8,4;]",
 	},
 })
 
@@ -108,9 +105,7 @@ homedecor.register("refrigerator_white_bottom", {
 	infotext=S("Refrigerator"),
 	inventory = {
 		size=50,
-		formspec="size[10,10]"..
-			"list[context;main;0,0;10,5;]"..
-			"list[current_player;main;1,6;8,4;]",
+		lockable=true
 	},
 })
 
