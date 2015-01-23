@@ -16,10 +16,6 @@ local default_inventory_formspec = "size[8,9]"..
 	"list[current_player;main;0,6.08;8,3;8]"..
 	default.get_hotbar_bg(0,4.85)
 
-local function remove_node_if()
-end
-
-
 --wrapper around minetest.register_node that sets sane defaults and interprets some specialized settings
 function homedecor.register(name, def)
 	def.paramtype = def.paramtype or "light"
