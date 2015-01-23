@@ -54,7 +54,6 @@ homedecor.register("kitchen_cabinet_half", {
 	},
 })
 
-
 homedecor.register("kitchen_cabinet_with_sink", {
 	description = S("Kitchen Cabinet with sink"),
 	mesh = "homedecor_kitchen_sink.obj",
@@ -68,3 +67,83 @@ homedecor.register("kitchen_cabinet_with_sink", {
 		size=16,
 	},
 })
+
+minetest.register_node("homedecor:copper_pans", {
+	description = "Copper pans",
+	tiles = {
+		"homedecor_polished_copper.png"
+	},
+	inventory_image = "homedecor_copper_pans_inv.png",
+	drawtype = "nodebox",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, -0.1875, -0.0625, -0.48, 0.125}, -- NodeBox1
+			{-0.375, -0.48, -0.1875, -0.36, -0.3125, 0.125}, -- NodeBox2
+			{-0.0775, -0.48, -0.1875, -0.0625, -0.3125, 0.125}, -- NodeBox3
+			{-0.375, -0.48, 0.11, -0.0625, -0.3125, 0.125}, -- NodeBox4
+			{-0.375, -0.48, -0.1875, -0.0625, -0.3125, -0.1725}, -- NodeBox5
+			{-0.25, -0.36, -0.5, -0.1875, -0.33, -0.1875}, -- NodeBox6
+			{0.0625, -0.5, 0, 0.375, -0.48, 0.3125}, -- NodeBox7
+			{0.0625, -0.48, 0, 0.0775, -0.3125, 0.3125}, -- NodeBox8
+			{0.36, -0.48, 0, 0.375, -0.3125, 0.3125}, -- NodeBox9
+			{0.0625, -0.48, 0, 0.375, -0.3125, 0.0175}, -- NodeBox10
+			{0.0625, -0.48, 0.295, 0.375, -0.3125, 0.3125}, -- NodeBox11
+			{0.1875, -0.36, -0.3125, 0.25, -0.33, 0}, -- NodeBox12
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.375, -0.5, -0.5, 0.375, -0.3125, 0.3125 }
+	},
+	on_place = minetest.rotate_node
+})
+
+minetest.register_node("homedecor:kitchen_faucet", {
+	tiles = { "homedecor_bright_metal.png" },
+	inventory_image = "homedecor_kitchen_faucet_inv.png",
+	description = "Kitchen Faucet",
+	drawtype = "nodebox",
+	paramtype = "light",
+        paramtype2 = "facedir",
+        groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{0, -0.5, 0.375, 0.0625, -0.1875, 0.4375}, -- NodeBox1
+			{0, -0.1875, 0.35, 0.0625, -0.15, 0.4375}, -- NodeBox2
+			{0, -0.15, 0.32, 0.0625, -0.11, 0.41}, -- NodeBox3
+			{0.007, -0.12, 0.17, 0.055, -0.11, 0.1285}, -- NodeBox4
+			{0, -0.11, 0.125, 0.0625, -0.07, 0.37}, -- NodeBox5
+			{-0.05, -0.48, 0.385, 0.115, -0.455, 0.43}, -- NodeBox6
+			{-0.05, -0.49, 0.395, 0.115, -0.445, 0.42}, -- NodeBox7
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.055, -0.5, 0.125, 0.12, -0.065, 0.4375 }
+	},
+})
+
+minetest.register_node("homedecor:paper_towel", {
+	drawtype = "mesh",
+	mesh = "homedecor_paper_towel.obj",
+	tiles = { "homedecor_paper_towel.png" },
+	inventory_image = "homedecor_paper_towel_inv.png",
+	description = "Paper towels",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy=3 },
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.4375, 0.125, 0.0625, 0.4375, 0.4375, 0.5 }
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = { -0.4375, 0.125, 0.0625, 0.4375, 0.4375, 0.5 }
+	}
+})
+

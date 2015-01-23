@@ -110,6 +110,8 @@ end
 dofile(homedecor.modpath.."/nodeboxes.lua")
 -- expand and unexpand decor
 dofile(homedecor.modpath.."/expansion.lua")
+-- register nodes that cook stuff
+dofile(homedecor.modpath.."/furnaces.lua")
 -- glue it all together into a registration function
 dofile(homedecor.modpath.."/registration_handler.lua")
 
@@ -136,7 +138,6 @@ dofile(homedecor.modpath.."/bathroom_sanitation.lua")
 
 dofile(homedecor.modpath.."/laundry.lua")
 
-dofile(homedecor.modpath.."/furnaces.lua")
 dofile(homedecor.modpath.."/nightstands.lua")
 dofile(homedecor.modpath.."/clocks.lua")
 dofile(homedecor.modpath.."/misc-electrical.lua")

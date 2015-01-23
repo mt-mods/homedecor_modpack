@@ -60,3 +60,28 @@ minetest.register_node("homedecor:light_switch", {
 	sounds = default.node_sound_stone_defaults()
 })
 
+
+minetest.register_node("homedecor:doorbell", {
+	tiles = { "homedecor_doorbell.png" },
+	inventory_image = "homedecor_doorbell_inv.png",
+	description = "Doorbell",
+	drawtype = "nodebox",
+	paramtype = "light",
+    paramtype2 = "facedir",
+    groups = {snappy=3},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.0625, 0, 0.46875, 0.0625, 0.1875, 0.5}, -- NodeBox1
+			{-0.03125, 0.0625, 0.45, 0.03125, 0.125, 0.4675}, -- NodeBox2
+		}
+	},
+	on_punch = function(pos, node, puncher, pointed_thing)
+		minetest.sound_play("homedecor_doorbell", {
+			pos = pos,
+			gain = 1.0,
+			max_hear_distance = 15
+		})
+	end
+})
+
