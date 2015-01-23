@@ -107,13 +107,13 @@ end
 
 -- nodebox arithmetics and helpers
 -- (please keep non-generic nodeboxes with their node definition)
-dofile(homedecor.modpath.."/nodeboxes.lua")
+dofile(homedecor.modpath.."/handlers/nodeboxes.lua")
 -- expand and unexpand decor
-dofile(homedecor.modpath.."/expansion.lua")
+dofile(homedecor.modpath.."/handlers/expansion.lua")
 -- register nodes that cook stuff
-dofile(homedecor.modpath.."/furnaces.lua")
+dofile(homedecor.modpath.."/handlers/furnaces.lua")
 -- glue it all together into a registration function
-dofile(homedecor.modpath.."/registration_handler.lua")
+dofile(homedecor.modpath.."/handlers/registration.lua")
 
 -- load various other components
 dofile(homedecor.modpath.."/misc-nodes.lua")					-- the catch-all for all misc nodes
@@ -154,6 +154,6 @@ dofile(homedecor.modpath.."/climate-control.lua")
 
 dofile(homedecor.modpath.."/cobweb.lua")
 
-dofile(homedecor.modpath.."/locked.lua")
+dofile(homedecor.modpath.."/handlers/locked.lua")
 
 print("[HomeDecor] "..S("Loaded!"))
