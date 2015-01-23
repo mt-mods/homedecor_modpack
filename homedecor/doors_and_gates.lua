@@ -20,12 +20,7 @@ local function countSolids(pos,node,level)
     local solids = 0
     for x = -1, 1 do
         for z = -1, 1 do
-            local y = 0
-            if node.param2 == 5 then
-                y = -level
-            else
-                y =  level
-            end
+            local y = (node.param2 == 5) and -level or level
             -- special cases when x == z == 0
             if x == 0 and z == 0 then
                 if level == 1 then
@@ -76,12 +71,7 @@ local function calculateClosed(pos)
                     return true
                 end
             end
-            local x
-            if direction == 1 then
-                x = 1
-            else
-                x = -1
-            end
+            local x = (direction == 1) and 1 or -1
             if isSolid(pos,{x,0,-1}) and not isSolid(pos,{x,0,0}) and isSolid(pos,{x,0,1}) then
                 if string.find(node.name,'_bottom_') then
                     return calculateClosed({x=pos.x,y=pos.y+1,z=pos.z})
@@ -99,12 +89,7 @@ local function calculateClosed(pos)
                     return true
                 end
             end
-            local z
-            if direction == 3 then
-                z = 1
-            else
-                z = -1
-            end
+            local z = (direction == 3) and 1 or -1
             if isSolid(pos,{-1,0,z}) and not isSolid(pos,{0,0,z}) and isSolid(pos,{1,0,z}) then
                 if string.find(node.name,'_bottom_') then
                     return calculateClosed({x=pos.x,y=pos.y+1,z=pos.z})
@@ -122,11 +107,7 @@ end
 local function getClosed(pos)
     local isClosed = minetest.get_meta(pos):get_string('closed')
     if isClosed=='' then
-        if calculateClosed(pos) then
-            return true
-        else
-            return false
-        end
+	return calculateClosed(pos)
     else
         isClosed = tonumber(isClosed)
         -- may be closed or open (1 or 0)
@@ -135,13 +116,8 @@ local function getClosed(pos)
 end
 
 local function addDoorNode(pos,def,isClosed)
-    if isClosed then
-        isClosed = 1
-    else
-        isClosed = 0
-    end
-    minetest.add_node(pos, def)
-    minetest.get_meta(pos):set_int('closed',isClosed)
+    minetest.set_node(pos, def)
+    minetest.get_meta(pos):set_int('closed', isClosed and 1 or 0)
 end
 
 local sides = {"left", "right"}
@@ -438,12 +414,7 @@ function homedecor.flip_door(pos, node, player, name, side, isClosed)
 		nfdir=ofdir + 1
 		if nfdir > 3 then nfdir = 0 end
 	end
-    local sound;
-    if isClosed then
-        sound = 'close'
-    else
-        sound = 'open'
-    end
+	local sound = isClosed and 'close' or 'open'
 	minetest.sound_play("homedecor_door_"..sound, {
 		pos=pos,
         max_hear_distance = 5,
