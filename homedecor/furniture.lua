@@ -38,11 +38,6 @@ local function sit(pos, node, clicker)
 	local name = clicker:get_player_name()
 	local meta = minetest:get_meta(pos)
 	local param2 = node.param2
-	if not clicker or not clicker:is_player()
-		or clicker:get_player_control().up == true or clicker:get_player_control().down == true
-		or clicker:get_player_control().left == true or clicker:get_player_control().right == true
-		or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
-	return end
 	if clicker:get_player_name() == meta:get_string("player") then
 		meta:set_string("player", "")
 		pos.y = pos.y-0.5
@@ -116,6 +111,11 @@ for i in ipairs(chaircolors) do
 		},
 		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 		on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
+			if not clicker or not clicker:is_player()
+				or clicker:get_player_control().up == true or clicker:get_player_control().down == true
+				or clicker:get_player_control().left == true or clicker:get_player_control().right == true
+				or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
+			return end
 			sit(pos, node, clicker)
 			pos.y = pos.y-0 -- player's sit position.
 			clicker:setpos(pos)
@@ -151,6 +151,11 @@ for i in ipairs(chaircolors) do
 			},
 			groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 			on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
+				if not clicker or not clicker:is_player()
+					or clicker:get_player_control().up == true or clicker:get_player_control().down == true
+					or clicker:get_player_control().left == true or clicker:get_player_control().right == true
+					or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
+				return end
 				sit(pos, node, clicker)
 				pos.y = pos.y-0.1 -- player's sit position.
 				clicker:setpos(pos)
@@ -403,6 +408,11 @@ homedecor.register("simple_bench", {
 			}
 	},
 	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
+		if not clicker or not clicker:is_player()
+			or clicker:get_player_control().up == true or clicker:get_player_control().down == true
+			or clicker:get_player_control().left == true or clicker:get_player_control().right == true
+			or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
+		return end
 		sit(pos, node, clicker)
 		pos.y = pos.y-0 -- player's sit position.
 		clicker:setpos(pos)
@@ -440,6 +450,11 @@ homedecor.register("bench_large_1_left", {
 	},
 	expand = { right="homedecor:bench_large_1_right" },
 	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
+		if not clicker or not clicker:is_player()
+			or clicker:get_player_control().up == true or clicker:get_player_control().down == true
+			or clicker:get_player_control().left == true or clicker:get_player_control().right == true
+			or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
+		return end
 		sit(pos, node, clicker)
 		pos.y = pos.y-0 -- player's sit position.
 		clicker:setpos(pos)
@@ -512,6 +527,11 @@ homedecor.register("bench_large_2_left", {
 	},
 	expand = { right="homedecor:bench_large_2_right" },
 	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
+		if not clicker or not clicker:is_player()
+			or clicker:get_player_control().up == true or clicker:get_player_control().down == true
+			or clicker:get_player_control().left == true or clicker:get_player_control().right == true
+			or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
+		return end
 		sit(pos, node, clicker)
 		pos.y = pos.y-0 -- player's sit position.
 		clicker:setpos(pos)
