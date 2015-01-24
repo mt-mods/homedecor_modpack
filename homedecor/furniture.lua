@@ -125,8 +125,11 @@ end
 
 minetest.register_node(":homedecor:openframe_bookshelf", {
 	description = "Bookshelf (open-frame)",
+	drawtype = "mesh",
 	mesh = "homedecor_openframe_bookshelf.obj",
 	tiles = { "homedecor_openframe_bookshelf.png" },
+	paramtype = "light",
+	paramtype2 = "facedir",
 	is_ground_content = false,
 	groups = {choppy=3,oddly_breakable_by_hand=2,flammable=3},
 	sounds = default.node_sound_wood_defaults(),
