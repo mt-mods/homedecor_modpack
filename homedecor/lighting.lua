@@ -367,15 +367,12 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 		},
 		selection_box = slamp_cbox,
 		collision_box = slamp_cbox,
-		on_place = function(itemstack, placer, pointed_thing)
-			return homedecor.place_vertically(itemstack, placer, pointed_thing,
-				"homedecor:standing_lamp"..lampcolor.."_"..suffix)
-		end,
 		on_punch = function(pos, node, puncher)
 			node.name = "homedecor:standing_lamp"..lampcolor.."_"..repl[suffix]
 			minetest.set_node(pos, node)
 			nodeupdate(pos)
 		end,
+		expand = { top="air" },
 	})
 
 	-- "bottom" in the node name is obsolete now, as "top" node doesn't exist anymore.
