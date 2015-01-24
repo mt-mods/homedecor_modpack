@@ -116,7 +116,7 @@ for i in ipairs(chaircolors) do
 		},
 		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 		on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
-			sit(pos, node, clicker, pos)
+			sit(pos, node, clicker)
 			pos.y = pos.y-0 -- player's sit position.
 			clicker:setpos(pos)
 			default.player_set_animation(clicker, "sit", 30)
@@ -151,7 +151,7 @@ for i in ipairs(chaircolors) do
 			},
 			groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 			on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
-				sit(pos, node, clicker, pos)
+				sit(pos, node, clicker)
 				pos.y = pos.y-0.1 -- player's sit position.
 				clicker:setpos(pos)
 				default.player_set_animation(clicker, "sit", 30)
@@ -403,7 +403,7 @@ homedecor.register("simple_bench", {
 			}
 	},
 	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
-		sit(pos, node, clicker, pos)
+		sit(pos, node, clicker)
 		pos.y = pos.y-0 -- player's sit position.
 		clicker:setpos(pos)
 		default.player_set_animation(clicker, "sit", 30)
@@ -440,7 +440,7 @@ homedecor.register("bench_large_1_left", {
 	},
 	expand = { right="homedecor:bench_large_1_right" },
 	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
-		sit(pos, node, clicker, pos)
+		sit(pos, node, clicker)
 		pos.y = pos.y-0 -- player's sit position.
 		clicker:setpos(pos)
 		default.player_set_animation(clicker, "sit", 30)
@@ -512,7 +512,7 @@ homedecor.register("bench_large_2_left", {
 	},
 	expand = { right="homedecor:bench_large_2_right" },
 	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
-		sit(pos, node, clicker, pos)
+		sit(pos, node, clicker)
 		pos.y = pos.y-0 -- player's sit position.
 		clicker:setpos(pos)
 		default.player_set_animation(clicker, "sit", 30)
