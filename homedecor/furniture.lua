@@ -705,8 +705,6 @@ homedecor.register("office_chair_upscale", {
 	drawtype = "mesh",
 	tiles = { "homedecor_office_chair_upscale.png" },
 	mesh = "homedecor_office_chair_upscale.obj",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	selection_box = {
@@ -724,7 +722,18 @@ homedecor.register("office_chair_upscale", {
 			{ -8/16,  -8/16, -8/16,  8/16, -11/32,  8/16 }  -- legs/wheels
 		}
 	},
-	expand = { top = "air" }
+	expand = { top = "air" },
+	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
+		if not clicker or not clicker:is_player()
+			or clicker:get_player_control().up == true or clicker:get_player_control().down == true
+			or clicker:get_player_control().left == true or clicker:get_player_control().right == true
+			or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
+		return end
+		sit(pos, node, clicker)
+		pos.y = pos.y+0.14 -- player's sit position.
+		clicker:setpos(pos)
+		default.player_set_animation(clicker, "sit", 30)
+	end,
 })
 
 homedecor.register("office_chair_basic", {
@@ -732,8 +741,6 @@ homedecor.register("office_chair_basic", {
 	drawtype = "mesh",
 	tiles = { "homedecor_office_chair_basic.png" },
 	mesh = "homedecor_office_chair_basic.obj",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	selection_box = {
@@ -749,7 +756,18 @@ homedecor.register("office_chair_basic", {
 			{ -8/16,  -8/16, -8/16,  8/16, -11/32,  8/16 }  -- legs/wheels
 		}
 	},
-	expand = { top = "air" }
+	expand = { top = "air" },
+	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
+		if not clicker or not clicker:is_player()
+			or clicker:get_player_control().up == true or clicker:get_player_control().down == true
+			or clicker:get_player_control().left == true or clicker:get_player_control().right == true
+			or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
+		return end
+		sit(pos, node, clicker)
+		pos.y = pos.y+0.14 -- player's sit position.
+		clicker:setpos(pos)
+		default.player_set_animation(clicker, "sit", 30)
+	end,
 })
 
 -- Aliases for 3dforniture mod.
