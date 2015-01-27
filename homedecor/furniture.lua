@@ -700,6 +700,58 @@ homedecor.register("grandfather_clock_top", {
 	selection_box = homedecor.nodebox.null,
 })
 
+homedecor.register("office_chair_upscale", {
+	description = "Office chair (upscale)",
+	drawtype = "mesh",
+	tiles = { "homedecor_office_chair_upscale.png" },
+	mesh = "homedecor_office_chair_upscale.obj",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy = 3 },
+	sounds = default.node_sound_wood_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = { -8/16, -8/16, -8/16, 8/16, 29/32, 8/16 }
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{ -5/16,   1/16, -7/16,  5/16,   4/16,  7/16 }, -- seat
+			{ -5/16,   4/16,  4/16,  5/16,  29/32, 15/32 }, -- seatback
+			{ -7/16,   1/16, -9/32, -5/16,   7/16,  6/16 }, -- right arm
+			{  5/16,   1/16, -9/32,  7/16,   7/16,  6/16 }, -- left arm
+			{ -1/16, -11/32, -1/16,  1/16,   1/16,  1/16 }, -- cylinder
+			{ -8/16,  -8/16, -8/16,  8/16, -11/32,  8/16 }  -- legs/wheels
+		}
+	},
+	expand = { top = "air" }
+})
+
+homedecor.register("office_chair_basic", {
+	description = "Office chair (basic)",
+	drawtype = "mesh",
+	tiles = { "homedecor_office_chair_basic.png" },
+	mesh = "homedecor_office_chair_basic.obj",
+	paramtype = "light",
+	paramtype2 = "facedir",
+	groups = { snappy = 3 },
+	sounds = default.node_sound_wood_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = { -8/16, -8/16, -8/16, 8/16, 29/32, 8/16 }
+	},
+	collision_box = {
+		type = "fixed",
+		fixed = {
+			{ -5/16,   1/16, -7/16,  5/16,   4/16,  7/16 }, -- seat
+			{ -5/16,   4/16,  4/16,  5/16,  29/32, 15/32 }, -- seatback
+			{ -1/16, -11/32, -1/16,  1/16,   1/16,  1/16 }, -- cylinder
+			{ -8/16,  -8/16, -8/16,  8/16, -11/32,  8/16 }  -- legs/wheels
+		}
+	},
+	expand = { top = "air" }
+})
+
 -- Aliases for 3dforniture mod.
 
 minetest.register_alias("3dforniture:table", "homedecor:table")
