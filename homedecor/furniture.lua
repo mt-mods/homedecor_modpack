@@ -63,6 +63,17 @@ local function sit(pos, node, clicker)
 	end
 end
 
+local function sit_exec(pos, node, clicker) -- don't move these functions inside sit()
+	if not clicker or not clicker:is_player()
+		or clicker:get_player_control().up == true or clicker:get_player_control().down == true
+		or clicker:get_player_control().left == true or clicker:get_player_control().right == true
+		or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
+	return end
+	sit(pos, node, clicker)
+	clicker:setpos(pos)
+	default.player_set_animation(clicker, "sit", 30)
+end
+
 local chaircolors = {
 	{ "", "plain" },
 	{ "black", "Black" },
@@ -110,16 +121,9 @@ for i in ipairs(chaircolors) do
 			fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3},
 		},
 		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
-		on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
-			if not clicker or not clicker:is_player()
-				or clicker:get_player_control().up == true or clicker:get_player_control().down == true
-				or clicker:get_player_control().left == true or clicker:get_player_control().right == true
-				or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
-			return end
-			sit(pos, node, clicker)
+		on_rightclick = function(pos, node, clicker)
 			pos.y = pos.y-0 -- player's sit position.
-			clicker:setpos(pos)
-			default.player_set_animation(clicker, "sit", 30)
+			sit_exec(pos, node, clicker)
 		end,
 	})
 
@@ -150,16 +154,9 @@ for i in ipairs(chaircolors) do
 			},
 			},
 			groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
-			on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
-				if not clicker or not clicker:is_player()
-					or clicker:get_player_control().up == true or clicker:get_player_control().down == true
-					or clicker:get_player_control().left == true or clicker:get_player_control().right == true
-					or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
-				return end
-				sit(pos, node, clicker)
+			on_rightclick = function(pos, node, clicker)
 				pos.y = pos.y-0.1 -- player's sit position.
-				clicker:setpos(pos)
-				default.player_set_animation(clicker, "sit", 30)
+				sit_exec(pos, node, clicker)
 				clicker:set_hp(20)
 			end,
 		})
@@ -285,8 +282,8 @@ for _, color in ipairs(bedcolors) do
 				{-0.5,     -0.5,     -0.5,     -0.375,  0.1875,   -0.4375},  --  NodeBox1
 				{0.375,    -0.5,     -0.5,     0.5,     0.1875,   -0.4375},  --  NodeBox2
 				{-0.5,     0,        -0.5,     0.5,     0.125,    -0.4375},  --  NodeBox3
-				{-0.5,  -0.375,   -0.5,     0.5,  -0.125,   0.5},      --  NodeBox5
-				{-0.4375,   -0.3125,  -0.4375,  0.4375,   -0.0625,  0.5},      --  NodeBox6
+				{-0.5,  -0.375,   -0.5,     0.5,  -0.125,   0.5},      --  NodeBox4
+				{-0.4375,   -0.3125,  -0.4375,  0.4375,   -0.0625,  0.5},      --  NodeBox5
 			}
 		},
 		selection_box = {
@@ -407,16 +404,9 @@ homedecor.register("simple_bench", {
 			{ 0.3, -0.5,  0.1,  0.4, -0.15, 0.3},
 			}
 	},
-	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
-		if not clicker or not clicker:is_player()
-			or clicker:get_player_control().up == true or clicker:get_player_control().down == true
-			or clicker:get_player_control().left == true or clicker:get_player_control().right == true
-			or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
-		return end
-		sit(pos, node, clicker)
+	on_rightclick = function(pos, node, clicker)
 		pos.y = pos.y-0 -- player's sit position.
-		clicker:setpos(pos)
-		default.player_set_animation(clicker, "sit", 30)
+		sit_exec(pos, node, clicker)
 	end,
 })
 
@@ -449,16 +439,9 @@ homedecor.register("bench_large_1_left", {
 		fixed = { -0.5, -0.5, -0.09375, 1.5, 0.5, 0.5 }
 	},
 	expand = { right="homedecor:bench_large_1_right" },
-	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
-		if not clicker or not clicker:is_player()
-			or clicker:get_player_control().up == true or clicker:get_player_control().down == true
-			or clicker:get_player_control().left == true or clicker:get_player_control().right == true
-			or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
-		return end
-		sit(pos, node, clicker)
+	on_rightclick = function(pos, node, clicker)
 		pos.y = pos.y-0 -- player's sit position.
-		clicker:setpos(pos)
-		default.player_set_animation(clicker, "sit", 30)
+		sit_exec(pos, node, clicker)
 	end,
 })
 
@@ -526,16 +509,9 @@ homedecor.register("bench_large_2_left", {
 		fixed = { -0.5, -0.5, -0.15625, 1.5, 0.5, 0.5 }
 	},
 	expand = { right="homedecor:bench_large_2_right" },
-	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
-		if not clicker or not clicker:is_player()
-			or clicker:get_player_control().up == true or clicker:get_player_control().down == true
-			or clicker:get_player_control().left == true or clicker:get_player_control().right == true
-			or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
-		return end
-		sit(pos, node, clicker)
+	on_rightclick = function(pos, node, clicker)
 		pos.y = pos.y-0 -- player's sit position.
-		clicker:setpos(pos)
-		default.player_set_animation(clicker, "sit", 30)
+		sit_exec(pos, node, clicker)
 	end,
 })
 
@@ -582,7 +558,7 @@ homedecor.register("deckchair_head", {
 		"homedecor_deckchair_sides.png",
 		"homedecor_deckchair_front.png"
 	},
-		groups = { snappy = 3, not_in_creative_inventory = 1 },
+	groups = { snappy = 3, not_in_creative_inventory = 1 },
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -615,7 +591,7 @@ homedecor.register("deckchair_foot", {
 	},
 	description = "Deck chair",
 	inventory_image = "homedecor_deckchair_inv.png",
-		groups = { snappy = 3 },
+	groups = { snappy = 3 },
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -723,16 +699,9 @@ homedecor.register("office_chair_upscale", {
 		}
 	},
 	expand = { top = "air" },
-	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
-		if not clicker or not clicker:is_player()
-			or clicker:get_player_control().up == true or clicker:get_player_control().down == true
-			or clicker:get_player_control().left == true or clicker:get_player_control().right == true
-			or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
-		return end
-		sit(pos, node, clicker)
+	on_rightclick = function(pos, node, clicker)
 		pos.y = pos.y+0.14 -- player's sit position.
-		clicker:setpos(pos)
-		default.player_set_animation(clicker, "sit", 30)
+		sit_exec(pos, node, clicker)
 	end,
 })
 
@@ -757,16 +726,9 @@ homedecor.register("office_chair_basic", {
 		}
 	},
 	expand = { top = "air" },
-	on_rightclick = function(pos, node, clicker) -- don't move these functions inside sit()
-		if not clicker or not clicker:is_player()
-			or clicker:get_player_control().up == true or clicker:get_player_control().down == true
-			or clicker:get_player_control().left == true or clicker:get_player_control().right == true
-			or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
-		return end
-		sit(pos, node, clicker)
+	on_rightclick = function(pos, node, clicker)
 		pos.y = pos.y+0.14 -- player's sit position.
-		clicker:setpos(pos)
-		default.player_set_animation(clicker, "sit", 30)
+		sit_exec(pos, node, clicker)
 	end,
 })
 
