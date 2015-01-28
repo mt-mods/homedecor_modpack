@@ -1066,33 +1066,21 @@ homedecor.register("beer_tap", {
 	end
 })
 
+local beer_cbox = {
+	type = "fixed",
+	fixed = { -5/32, -8/16, -9/32 , 7/32, -2/16, 1/32 }
+}
+
 homedecor.register("beer_mug", {
 	description = "Beer mug",
-	tiles = {
-		"homedecor_beer_top.png",
-		"homedecor_beer_bottom.png",
-		"homedecor_beer_right.png",
-		"homedecor_beer_right.png^[transformFX",
-		"homedecor_beer_front.png^[transformFX",
-		"homedecor_beer_front.png"
-	},
-	inventory_image = "homedecor_beer_inv.png",
-	use_texture_alpha = true,
+	drawtype = "mesh",
+	mesh = "homedecor_beer_mug.obj",
+	tiles = { "homedecor_beer_mug.png" },
+	inventory_image = "homedecor_beer_mug_inv.png",
 	groups = { snappy=3, oddly_breakable_by_hand=3 },
 	sounds = default.node_sound_glass_defaults(),
-	node_box = {
-		type = "fixed",
-		fixed = {
-                	{-0.125, -0.5, -0.25, 0.0625, -0.25, -0.0625}, -- NodeBox1
-			{0.0625, -0.3125, -0.18, 0.135, -0.285, -0.14}, -- NodeBox2
-			{0.1, -0.465, -0.18, 0.135, -0.285, -0.14}, -- NodeBox3
-			{0.0625, -0.465, -0.18, 0.135, -0.4375, -0.14}, -- NodeBox4
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.125, -0.5, -0.25, 0.135, -0.25, -0.0625 }
-	}
+	selection_box = beer_cbox,
+	collision_box = beer_cbox
 })
 
 homedecor.register("tool_cabinet_bottom", {
