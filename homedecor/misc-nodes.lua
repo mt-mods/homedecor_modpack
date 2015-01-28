@@ -498,36 +498,20 @@ homedecor.register("pool_table_2", {
 	selection_box = homedecor.nodebox.null,
 })
 
+local trash_cbox = {
+	type = "fixed",
+	fixed = { -0.25, -0.5, -0.25, 0.25, 0.125, 0.25 }
+}
+
 homedecor.register("trash_can", {
-	tiles = {
-		"homedecor_trashcan_tb.png",
-		"homedecor_trashcan_tb.png",
-		"homedecor_trashcan_sides.png",
-		"homedecor_trashcan_sides.png",
-		"homedecor_trashcan_sides.png",
-		"homedecor_trashcan_sides.png"
-	},
-	inventory_image = "homedecor_trashcan_inv.png",
+	drawtype = "mesh",
+	mesh = "homedecor_trash_can.obj",
+	tiles = { "homedecor_trash_can.png" },
+	inventory_image = "homedecor_trash_can_inv.png",
 	description = "Trash Can",
         groups = {snappy=3},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.25, -0.5, -0.125, -0.1875, 0.125, 0.125}, -- NodeBox1
-			{0.1875, -0.5, -0.125, 0.25, 0.125, 0.125}, -- NodeBox2
-			{-0.125, -0.5, -0.25, 0.125, 0.125, -0.1875}, -- NodeBox3
-			{-0.125, -0.5, 0.1875, 0.125, 0.125, 0.25}, -- NodeBox4
-			{-0.1875, -0.5, 0.125, -0.125, 0.125, 0.1875}, -- NodeBox5
-			{-0.1875, -0.5, -0.1875, -0.125, 0.125, -0.125}, -- NodeBox6
-			{0.125, -0.5, -0.1875, 0.1875, 0.125, -0.125}, -- NodeBox7
-			{0.125, -0.5, 0.125, 0.1875, 0.125, 0.1875}, -- NodeBox8
-			{-0.1875, -0.5, -0.1875, 0.1875, -0.4375, 0.1875}, -- NodeBox9
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.25, 0.25, 0.125, 0.25 }
-	}
+	selection_box = trash_cbox,
+	collision_box = trash_cbox,
 })
 
 homedecor.register("well_base", {
