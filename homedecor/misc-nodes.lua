@@ -667,47 +667,23 @@ homedecor.register("coat_tree", {
 	},
 })
 
+local cutlery_cbox = {
+	type = "fixed",
+	fixed = {
+		{ -5/16, -8/16, -6/16, 5/16, -7/16, 2/16 },
+		{ -2/16, -8/16,  2/16, 2/16, -4/16, 6/16 }
+	}
+}
+
 homedecor.register("cutlery_set", {
-	tiles = {
-		"homedecor_cutlery_set_top.png",
-		"homedecor_cutlery_set_sides.png",
-		"homedecor_cutlery_set_sides.png"
-	},
+	drawtype = "mesh",
+	mesh = "homedecor_cutlery_set.obj",
+	tiles = { "homedecor_cutlery_set.png"	},
 	inventory_image = "homedecor_cutlery_set_inv.png",
 	description = "Cutlery set",
 	groups = {snappy=3},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.125, -0.5, -0.4375, 0.125, -0.49, -0.1875}, -- NodeBox1
-			{0.035, -0.5, -0.12, 0.042, -0.375, -0.036}, -- NodeBox2
-			{-0.042, -0.5, -0.12, -0.035, -0.375, -0.036}, -- NodeBox3
-			{-0.042, -0.5, -0.12, 0.042, -0.375, -0.112}, -- NodeBox4
-			{-0.042, -0.5, -0.044, 0.042, -0.375, -0.036}, -- NodeBox5
-			{-0.042, -0.40, -0.12, 0.042, -0.5, -0.036}, -- NodeBox6
-			{-0.22, -0.5, -0.45, -0.205, -0.49, -0.245}, -- NodeBox7
-			{-0.23, -0.5, -0.245, -0.195, -0.49, -0.24}, -- NodeBox8
-			{-0.23, -0.5, -0.24, -0.225, -0.49, -0.1875}, -- NodeBox9
-			{-0.22, -0.5, -0.24, -0.215, -0.49, -0.1875}, -- NodeBox10
-			{-0.21, -0.5, -0.24, -0.205, -0.49, -0.1875}, -- NodeBox11
-			{-0.2, -0.5, -0.24, -0.195, -0.49, -0.1875}, -- NodeBox12
-			{0.205, -0.5, -0.45, 0.22, -0.49, -0.3125}, -- NodeBox13
-			{0.193, -0.5, -0.3125, 0.22, -0.49, -0.185839}, -- NodeBox14
-			{0.2, -0.5, -0.322, 0.22, -0.49, -0.175}, -- NodeBox15
-			{-0.1095, -0.5, -0.1875, 0.1095, -0.48, -0.172}, -- NodeBox16
-			{-0.1095, -0.5, -0.453, 0.1095, -0.48, -0.4375}, -- NodeBox17
-			{-0.14, -0.5, -0.422, -0.125, -0.48, -0.203}, -- NodeBox18
-			{0.125, -0.5, -0.422, 0.14, -0.48, -0.203}, -- NodeBox19
-			{-0.125, -0.5, -0.203, -0.1095, -0.48, -0.1875}, -- NodeBox20
-			{0.1095, -0.5, -0.203, 0.125, -0.48, -0.1875}, -- NodeBox21
-			{-0.125, -0.5, -0.4375, -0.1095, -0.48, -0.422}, -- NodeBox22
-			{0.1095, -0.5, -0.4375, 0.125, -0.48, -0.422}, -- NodeBox23
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.5, 0.25, -0.375, 0 }
-	}
+	selection_box = cutlery_cbox,
+	collision_box = cutlery_cbox
 })
 
 local bottle_cbox = {
