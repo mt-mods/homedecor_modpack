@@ -56,7 +56,14 @@ function homedecor.register(name, def)
 			or (def.node_box and "nodebox")
 
 	def.paramtype = def.paramtype or "light"
-	if not def.drawtype == "glasslike_framed" then
+
+	-- avoid facedir for some drawtypes as they might be used internally for something else
+	-- even if undocumented
+	if not (def.drawtype == "glasslike_framed"
+		or def.drawtype == "raillike"
+		or def.drawtype == "plantlike"
+		or def.drawtype == "firelike") then
+
 		def.paramtype2 = def.paramtype2 or "facedir"
 	end
 
