@@ -13,7 +13,6 @@
 signs_lib = {}
 
 signs_lib.modpath = minetest.get_modpath("signs_lib")
-signs_lib.intllib_modpath = minetest.get_modpath("intllib")
 
 signs_lib.wall_sign_model = {
 	nodebox = {
@@ -77,12 +76,7 @@ signs_lib.sign_post_model = {
 }
 
 -- Boilerplate to support localized strings if intllib mod is installed.
-local S
-if minetest.get_modpath("intllib") then
-	S = intllib.Getter()
-else
-	S = function(s) return s end
-end
+local S = rawget(_G, "intllib") and intllib.Getter() or function(s) return s end
 signs_lib.gettext = S
 
 -- the list of standard sign nodes
