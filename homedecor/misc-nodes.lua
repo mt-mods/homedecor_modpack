@@ -1409,3 +1409,21 @@ homedecor.register("wine_rack", {
 	sounds = default.node_sound_defaults(),
 })
 
+local pframe_cbox = {
+	type = "fixed",
+	fixed = { -0.18, -0.5, -0.08, 0.18, -0.08, 0.18 }
+}
+local n = { 1, 2 }
+
+for _, i in ipairs(n) do
+	homedecor.register("picture_frame"..i, {
+		description = S("Picture Frame"),
+		mesh = "homedecor_picture_frame.obj",
+		tiles = { "homedecor_picture_frame"..i..".png" },
+		inventory_image = "homedecor_picture_frame"..i.."_inv.png",
+		wield_image = "homedecor_picture_frame"..i.."_inv.png",
+		groups = {snappy = 3},
+		selection_box = pframe_cbox,
+		collision_box = pframe_cbox,
+	})
+end

@@ -2982,6 +2982,21 @@ minetest.register_craft({
 	},
 })
 
+local picture_dyes = {
+	{"dye:brown", "dye:green"}, -- the figure sitting by the tree, wielding a pick
+	{"dye:green", "dye:blue"}	-- the "family photo"
+}
+
+for i in ipairs(picture_dyes) do
+	minetest.register_craft({
+		output = "homedecor:picture_frame"..i,
+		recipe = {
+			{ picture_dyes[i][1], picture_dyes[i][2] },
+			{ "homedecor:blank_canvas", "group:stick" },
+		},
+	})
+end
+
 if (minetest.get_modpath("technic") and minetest.get_modpath("dye") and minetest.get_modpath("bees")) then
 	technic.register_separating_recipe({ input = {"bees:wax 1"}, output = {"homedecor:oil_extract 2","dye:yellow 1"} })
 end
