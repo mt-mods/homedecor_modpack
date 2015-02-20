@@ -1359,6 +1359,8 @@ minetest.register_on_player_receive_fields(function(player, form_name, fields)
 		fields.title, fields.text, player:get_player_name()
 	stack:set_metadata(minetest.serialize(data))
 	player:set_wielded_item(stack)
+	minetest.log("action", player:get_player_name().." has written in a book (title: \""..fields.title.."\"): \""..fields.text..
+		"\" at location: "..minetest.pos_to_string(player:getpos()))
 end)
 
 homedecor.register("calendar", {
