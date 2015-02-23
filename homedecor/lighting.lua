@@ -411,3 +411,20 @@ for _, color in ipairs(dlamp_colors) do
 		groups = {snappy=3},
 	})
 end
+
+local hl_cbox = {
+	type = "fixed",
+	fixed = { -0.25, -0.4, -0.2, 0.25, 0.5, 0.5 },
+}
+
+homedecor.register("hanging_lantern", {
+	description = S("Hanging Lantern"),
+	mesh = "homedecor_hanging_lantern.obj",
+	tiles = {"homedecor_hanging_lantern.png"},
+	inventory_image = "homedecor_hanging_lantern_inv.png",
+	wield_image = "homedecor_hanging_lantern_inv.png",
+	groups = {snappy=3},
+	light_source = 11,
+	selection_box = hl_cbox,
+	collision_box = hl_cbox,
+})

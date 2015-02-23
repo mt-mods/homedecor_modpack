@@ -3010,6 +3010,15 @@ for _, color in ipairs(dlamp_colors) do
 	})
 end
 
+minetest.register_craft({
+	output = "homedecor:hanging_lantern 2",
+	recipe = {
+		{ "default:iron_lump", "default:iron_lump", "" },
+		{ "default:iron_lump", "homedecor:lattice_lantern_large", "" },
+		{ "default:iron_lump", "", "" },
+	},
+})
+
 if (minetest.get_modpath("technic") and minetest.get_modpath("dye") and minetest.get_modpath("bees")) then
 	technic.register_separating_recipe({ input = {"bees:wax 1"}, output = {"homedecor:oil_extract 2","dye:yellow 1"} })
 end
