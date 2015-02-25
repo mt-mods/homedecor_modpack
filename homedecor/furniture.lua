@@ -1,6 +1,6 @@
 local S = homedecor.gettext
 
-function sit(pos, node, clicker)
+function homedecor.sit(pos, node, clicker)
 	local name = clicker:get_player_name()
 	local meta = minetest:get_meta(pos)
 	local param2 = node.param2
@@ -29,13 +29,13 @@ function sit(pos, node, clicker)
 	end
 end
 
-function sit_exec(pos, node, clicker) -- don't move these functions inside sit()
+function homedecor.sit_exec(pos, node, clicker) -- don't move these functions inside sit()
 	if not clicker or not clicker:is_player()
 		or clicker:get_player_control().up == true or clicker:get_player_control().down == true
 		or clicker:get_player_control().left == true or clicker:get_player_control().right == true
 		or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
 	return end
-	sit(pos, node, clicker)
+	homedecor.sit(pos, node, clicker)
 	clicker:setpos(pos)
 	default.player_set_animation(clicker, "sit", 30)
 end
@@ -121,7 +121,7 @@ for i in ipairs(chaircolors) do
 		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 		on_rightclick = function(pos, node, clicker)
 			pos.y = pos.y-0 -- player's sit position.
-			sit_exec(pos, node, clicker)
+			homedecor.sit_exec(pos, node, clicker)
 		end,
 	})
 
@@ -154,7 +154,7 @@ for i in ipairs(chaircolors) do
 			groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 			on_rightclick = function(pos, node, clicker)
 				pos.y = pos.y-0.1 -- player's sit position.
-				sit_exec(pos, node, clicker)
+				homedecor.sit_exec(pos, node, clicker)
 				clicker:set_hp(20)
 			end,
 		})
@@ -362,7 +362,7 @@ homedecor.register("wardrobe_bottom", {
 	},
 	inventory_image = "homedecor_wardrobe_inv.png",
 	description = "Wardrobe",
-		groups = {snappy=3},
+	groups = {snappy=3},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -473,7 +473,7 @@ homedecor.register("office_chair_upscale", {
 	expand = { top = "air" },
 	on_rightclick = function(pos, node, clicker)
 		pos.y = pos.y+0.14 -- player's sit position.
-		sit_exec(pos, node, clicker)
+		homedecor.sit_exec(pos, node, clicker)
 	end,
 })
 
@@ -500,7 +500,7 @@ homedecor.register("office_chair_basic", {
 	expand = { top = "air" },
 	on_rightclick = function(pos, node, clicker)
 		pos.y = pos.y+0.14 -- player's sit position.
-		sit_exec(pos, node, clicker)
+		homedecor.sit_exec(pos, node, clicker)
 	end,
 })
 

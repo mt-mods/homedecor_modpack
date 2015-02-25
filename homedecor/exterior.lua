@@ -84,7 +84,7 @@ homedecor.register("bench_large_1_left", {
 	expand = { right="homedecor:bench_large_1_right" },
 	on_rightclick = function(pos, node, clicker)
 		pos.y = pos.y-0 -- player's sit position.
-		sit_exec(pos, node, clicker)
+		homedecor.sit_exec(pos, node, clicker)
 	end,
 })
 
@@ -154,7 +154,7 @@ homedecor.register("bench_large_2_left", {
 	expand = { right="homedecor:bench_large_2_right" },
 	on_rightclick = function(pos, node, clicker)
 		pos.y = pos.y-0 -- player's sit position.
-		sit_exec(pos, node, clicker)
+		homedecor.sit_exec(pos, node, clicker)
 	end,
 })
 
@@ -347,7 +347,7 @@ homedecor.register("simple_bench", {
 	},
 	on_rightclick = function(pos, node, clicker)
 		pos.y = pos.y-0 -- player's sit position.
-		sit_exec(pos, node, clicker)
+		homedecor.sit_exec(pos, node, clicker)
 	end,
 })
 
