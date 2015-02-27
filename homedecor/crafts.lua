@@ -1361,6 +1361,15 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+		output = "homedecor:glowlight_half_yellow",
+		type = "shapeless",
+		recipe = {
+		"homedecor:glowlight_quarter_yellow",
+		"homedecor:glowlight_quarter_yellow"
+	}
+})
+
 -- white
 
 minetest.register_craft({
@@ -1427,6 +1436,17 @@ minetest.register_craft({
 		{"homedecor:glowlight_small_cube_white","homedecor:glowlight_small_cube_white"}
 	}
 })
+
+minetest.register_craft({
+		output = "homedecor:glowlight_half_white",
+		type = "shapeless",
+		recipe = {
+		"homedecor:glowlight_quarter_white",
+		"homedecor:glowlight_quarter_white"
+	}
+})
+
+----
 
 minetest.register_craft({
     output = "homedecor:plasma_lamp",
