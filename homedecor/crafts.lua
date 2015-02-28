@@ -1281,7 +1281,7 @@ minetest.register_craft({
 -- Wrought-iron wall latern
 
 minetest.register_craft({
-	output = "homedecor:wall_lantern 4",
+	output = "homedecor:ground_lantern",
 	recipe = {
 		{ "default:iron_lump", "default:iron_lump", "default:iron_lump" },
 		{ "default:iron_lump", "default:torch", "default:iron_lump" },
