@@ -164,7 +164,7 @@ homedecor.register("fishtank", {
 	sounds = default.node_sound_glass_defaults(),
 	on_rightclick = function(pos, node, clicker)
 		fdir = minetest.get_node(pos).param2
-		minetest.add_node(pos, {name = "homedecor:fishtank_lighted", param2 = fdir})
+		minetest.set_node(pos, {name = "homedecor:fishtank_lighted", param2 = fdir})
 	end
 })
 
@@ -200,7 +200,7 @@ homedecor.register("fishtank_lighted", {
 	sounds = default.node_sound_glass_defaults(),
 	on_rightclick = function(pos, node, clicker)
 		fdir = minetest.get_node(pos).param2
-		minetest.add_node(pos, {name = "homedecor:fishtank", param2 = fdir})
+		minetest.set_node(pos, {name = "homedecor:fishtank", param2 = fdir})
 	end
 })
 

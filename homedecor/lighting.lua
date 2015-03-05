@@ -16,7 +16,7 @@ for i in ipairs(colors) do
 		interval = 1,
 		chance = 1,
 		action = function(pos, node, active_object_count, active_object_count_wider)
-			minetest.add_node(pos, {name = "homedecor:glowlight_quarter_"..color, param2 = 20})
+			minetest.set_node(pos, {name = "homedecor:glowlight_quarter_"..color, param2 = 20})
 		end,
 	})
 
@@ -25,7 +25,7 @@ for i in ipairs(colors) do
 		interval = 1,
 		chance = 1,
 		action = function(pos, node, active_object_count, active_object_count_wider)
-			minetest.add_node(pos, {name = "homedecor:glowlight_half_"..color, param2 = 20})
+			minetest.set_node(pos, {name = "homedecor:glowlight_half_"..color, param2 = 20})
 		end,
 	})
 
@@ -36,7 +36,7 @@ for i in ipairs(colors) do
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			local fdir = node.param2 or 0
 			local nfdir = dirs2[fdir+1]
-			minetest.add_node(pos, {name = "homedecor:glowlight_quarter_"..color, param2 = nfdir})
+			minetest.set_node(pos, {name = "homedecor:glowlight_quarter_"..color, param2 = nfdir})
 		end,
 	})
 
@@ -47,7 +47,7 @@ for i in ipairs(colors) do
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			local fdir = node.param2 or 0
 			local nfdir = dirs2[fdir+1]
-			minetest.add_node(pos, {name = "homedecor:glowlight_half_"..color, param2 = nfdir})
+			minetest.set_node(pos, {name = "homedecor:glowlight_half_"..color, param2 = nfdir})
 		end,
 	})
 
@@ -56,7 +56,7 @@ for i in ipairs(colors) do
 		interval = 1,
 		chance = 1,
 		action = function(pos, node, active_object_count, active_object_count_wider)
-			minetest.add_node(pos, {name = "homedecor:glowlight_small_cube_"..color, param2 = 20})
+			minetest.set_node(pos, {name = "homedecor:glowlight_small_cube_"..color, param2 = 20})
 		end,
 	})
 
