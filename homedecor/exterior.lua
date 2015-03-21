@@ -254,77 +254,23 @@ homedecor.register("deckchair_foot", {
 	expand = { forward="homedecor:deckchair_head" },
 })
 
-homedecor.register("doghouse_base", {
+homedecor.register("doghouse", {
+	mesh = "homedecor_doghouse.obj",
 	tiles = {
-		"homedecor_doghouse_base_top.png",
-		"homedecor_doghouse_base_bottom.png",
-		"homedecor_doghouse_base_side.png",
-		"homedecor_doghouse_base_side.png",
-		"homedecor_doghouse_base_side.png",
-		"homedecor_doghouse_base_front.png"
+		"homedecor_shingles_terracotta.png",
+		"default_wood.png",
+		"building_blocks_towel.png"
 	},
 	description = "Doghouse",
 	inventory_image = "homedecor_doghouse_inv.png",
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{0.3125, -0.5, -0.4375, 0.4375, -0.3125, -0.3125}, -- NodeBox1
-			{0.3125, -0.5, 0.3125, 0.4375, -0.3125, 0.4375}, -- NodeBox2
-			{-0.4375, -0.5, 0.3125, -0.3125, -0.3125, 0.4375}, -- NodeBox3
-			{-0.4375, -0.5, -0.4375, -0.3125, -0.3125, -0.3125}, -- NodeBox4
-			{-0.4375, -0.3125, -0.4375, -0.375, 0.5, 0.4375}, -- NodeBox5
-			{-0.4375, 0.3125, -0.375, 0.4375, 0.5, -0.3125}, -- NodeBox6
-			{-0.4375, -0.3125, -0.4375, 0.4375, -0.25, 0.4375}, -- NodeBox7
-			{-0.375, -0.3125, -0.375, -0.1875, 0.4375, -0.3125}, -- NodeBox8
-			{0.1875, -0.3125, -0.375, 0.4375, 0.5, -0.3125}, -- NodeBox9
-			{0.375, -0.25, -0.4375, 0.4375, 0.5, 0.4375}, -- NodeBox10
-			{-0.4375, -0.3125, 0.375, 0.4375, 0.5, 0.4375}, -- NodeBox11
-		}
-	},
 	selection_box = homedecor.nodebox.slab_y(1.5),
+	collision_box = homedecor.nodebox.slab_y(1.5),
 	groups = {snappy=3},
-	expand = { top="homedecor:doghouse_roof" },
+	expand = { top="air" },
 })
 
-homedecor.register("doghouse_roof", {
-	tiles = {
-		"homedecor_doghouse_roof_top.png",
-		"homedecor_doghouse_roof_bottom.png",
-		"homedecor_doghouse_roof_side.png",
-		"homedecor_doghouse_roof_side.png",
-		"homedecor_doghouse_roof_front.png",
-		"homedecor_doghouse_roof_front.png"
-	},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.5, -0.4375, -0.4375, 0.5}, -- NodeBox17
-			{-0.4375, -0.4375, -0.5, -0.375, -0.375, 0.5}, -- NodeBox18
-			{-0.375, -0.375, -0.5, -0.3125, -0.3125, 0.5}, -- NodeBox19
-			{-0.3125, -0.3125, -0.5, -0.25, -0.25, 0.5}, -- NodeBox20
-			{-0.25, -0.25, -0.5, -0.1875, -0.1875, 0.5}, -- NodeBox21
-			{-0.1875, -0.1875, -0.5, -0.125, -0.125, 0.5}, -- NodeBox22
-			{-0.125, -0.125, -0.5, -0.0625, -0.0625, 0.5}, -- NodeBox23
-			{-0.0625, -0.0625, -0.5, 0.0625, 0, 0.5}, -- NodeBox24
-			{0.0625, -0.125, -0.5, 0.125, -0.0625, 0.5}, -- NodeBox25
-			{0.125, -0.1875, -0.5, 0.1875, -0.125, 0.5}, -- NodeBox26
-			{0.1875, -0.25, -0.5, 0.25, -0.1875, 0.5}, -- NodeBox27
-			{0.25, -0.3125, -0.5, 0.3125, -0.25, 0.5}, -- NodeBox28
-			{0.3125, -0.375, -0.5, 0.375, -0.3125, 0.5}, -- NodeBox29
-			{0.375, -0.4375, -0.5, 0.4375, -0.375, 0.5}, -- NodeBox30
-			{0.4375, -0.5, -0.5, 0.5, -0.4375, 0.5}, -- NodeBox31
-			{-0.4375, -0.5, -0.375, 0.4375, -0.4375, 0.4375}, -- NodeBox32
-			{-0.375, -0.4375, -0.375, 0.375, -0.375, 0.4375}, -- NodeBox33
-			{-0.3125, -0.375, -0.375, 0.3125, -0.3125, 0.4375}, -- NodeBox34
-			{-0.25, -0.3125, -0.375, 0.25, -0.25, 0.4375}, -- NodeBox35
-			{-0.1875, -0.25, -0.375, 0.1875, -0.1875, 0.4375}, -- NodeBox36
-			{-0.125, -0.1875, -0.375, 0.125, -0.125, 0.4375}, -- NodeBox37
-			{0.0625, -0.125, -0.375, -0.0625, -0.0625, 0.4375}, -- NodeBox38
-		}
-	},
-	selection_box = homedecor.nodebox.null,
-	groups = {snappy=3, not_in_creative_inventory=1},
-})
+minetest.register_alias("homedecor:doghouse_roof", "air")
+minetest.register_alias("homedecor:doghouse_base", "homedecor:doghouse")
 
 homedecor.register("simple_bench", {
 	tiles = {
