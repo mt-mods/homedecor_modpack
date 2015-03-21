@@ -114,57 +114,8 @@ homedecor.register("refrigerator_white_top", {
 	selection_box = homedecor.nodebox.null,
 })
 
--- convert the old single-node fridges to the new two-node models
-
-minetest.register_abm({
-	nodenames = { "homedecor:refrigerator" },
-	interval = 1,
-	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		local fdir = node.param2
-		local p_top = { x=pos.x, y=pos.y+1, z=pos.z }
-		minetest.swap_node(pos, { name = "homedecor:refrigerator_white_bottom", param2 = fdir })
-		minetest.set_node(p_top, { name = "homedecor:refrigerator_white_top", param2 = fdir })
-	end
-})
-
-minetest.register_abm({
-	nodenames = { "homedecor:refrigerator_locked" },
-	interval = 1,
-	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		local fdir = node.param2
-		local p_top = { x=pos.x, y=pos.y+1, z=pos.z }
-		minetest.swap_node(pos, { name = "homedecor:refrigerator_white_bottom_locked", param2 = fdir })
-		minetest.set_node(p_top, { name = "homedecor:refrigerator_white_top", param2 = fdir })
-	end
-})
-
-minetest.register_abm({
-	nodenames = { "homedecor:refrigerator_steel" },
-	interval = 1,
-	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		local fdir = node.param2
-		local p_top = { x=pos.x, y=pos.y+1, z=pos.z }
-		minetest.swap_node(pos, { name = "homedecor:refrigerator_steel_bottom", param2 = fdir })
-		minetest.set_node(p_top, { name = "homedecor:refrigerator_steel_top", param2 = fdir })
-	end
-})
-
-minetest.register_abm({
-	nodenames = { "homedecor:refrigerator_steel_locked" },
-	interval = 1,
-	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		local fdir = node.param2
-		local p_top = { x=pos.x, y=pos.y+1, z=pos.z }
-		minetest.swap_node(pos, { name = "homedecor:refrigerator_steel_bottom_locked", param2 = fdir })
-		minetest.set_node(p_top, { name = "homedecor:refrigerator_steel_top", param2 = fdir })
-	end
-})
-
 -- kitchen "furnaces"
+
 homedecor.register_furnace("homedecor:oven", {
 	description = S("Oven"),
 	tile_format = "homedecor_oven_%s%s.png",
