@@ -531,64 +531,27 @@ homedecor.register("dartboard", {
 	sounds = default.node_sound_defaults(),
 })
 
+local piano_cbox = {
+	type = "fixed",
+	fixed = { -0.5, -0.5, -0.125, 1.5, 0.5, 0.5 }
+}
+
 homedecor.register("piano_left", {
+	mesh = "homedecor_piano.obj",
 	tiles = {
-		"homedecor_piano_top_left.png",
-		"homedecor_piano_sides.png",
-		"homedecor_piano_sides.png",
-		"homedecor_piano_sides.png",
-		"homedecor_piano_sides.png",
-		"homedecor_piano_front_left.png",
+		"homedecor_piano_keys.png",
+		"homedecor_tile_brass2.png",
+		"homedecor_piano_wood.png"
 	},
 	inventory_image = "homedecor_piano_inv.png",
 	description = "Piano",
-        groups = { snappy = 3 },
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, 0.1875, 0.5, 0.5, 0.5}, -- NodeBox1
-			{-0.5, 0.0625, -0.125, -0.4375, 0.25, 0.1875}, -- NodeBox2
-			{-0.5, -0.5, -0.125, -0.4375, -0.375, 0.1875}, -- NodeBox3
-			{-0.5, -0.375, -0.0625, -0.4375, 0.0625, 0}, -- NodeBox4
-			{-0.5, 0.0625, -0.0625, 0.5, 0.1875, 0.1875}, -- NodeBox5
-			{-0.4375, 0.1875, 0.15, 0.5, 0.4375, 0.1875}, -- NodeBox6
-			{0.3594, -0.5, 0, 0.4062, -0.46875, 0.25}, -- left-most pedal
-			{0.4844, -0.5, 0, 0.5, -0.46875, 0.25}, -- half of center pedal
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.125, 1.5, 0.5, 0.5 }
-	},
-	expand = { right="homedecor:piano_right" },
+	groups = { snappy = 3 },
+	selection_box = piano_cbox,
+	collision_box = piano_cbox,
+	expand = { right="air" },
 })
 
-homedecor.register("piano_right", {
-	tiles = {
-		"homedecor_piano_top_right.png",
-		"homedecor_piano_sides.png",
-		"homedecor_piano_sides.png",
-		"homedecor_piano_sides.png",
-		"homedecor_piano_sides.png",
-		"homedecor_piano_front_right.png",
-	},
-        groups = { snappy = 3, not_in_creative_inventory=1 },
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, 0.1875, 0.5, 0.5, 0.5}, -- NodeBox1
-			{0.4375, -0.5, -0.125, 0.5, -0.375, 0.1875}, -- NodeBox2
-			{0.4375, 0.0625, -0.125, 0.5, 0.25, 0.1875}, -- NodeBox3
-			{0.4375, -0.375, -0.0625, 0.5, 0.0625, 0}, -- NodeBox4
-			{-0.5, 0.0625, -0.0625, 0.4375, 0.1875, 0.1875}, -- NodeBox5
-			{-0.5, 0.1875, 0.15, 0.4375, 0.4375, 0.1875}, -- NodeBox6
-			{-0.5, -0.5, 0, -0.4688, -0.46875, 0.25}, -- half of center pedal
-			{-0.3905, -0.5, 0, -0.3438, -0.46875, 0.25}, -- right-most pedal
-
-		}
-	},
-	selection_box = homedecor.nodebox.null
-})
+minetest.register_alias("homedecor:piano_right", "air")
 
 -- convert old pool tables into newer model
 
