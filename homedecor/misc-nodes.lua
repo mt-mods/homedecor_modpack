@@ -536,7 +536,7 @@ local piano_cbox = {
 	fixed = { -0.5, -0.5, -0.125, 1.5, 0.5, 0.5 }
 }
 
-homedecor.register("piano_left", {
+homedecor.register("piano", {
 	mesh = "homedecor_piano.obj",
 	tiles = {
 		"homedecor_piano_keys.png",
@@ -551,6 +551,7 @@ homedecor.register("piano_left", {
 	expand = { right="air" },
 })
 
+minetest.register_alias("homedecor:piano_left", "homedecor:piano")
 minetest.register_alias("homedecor:piano_right", "air")
 
 -- convert old pool tables into newer model
