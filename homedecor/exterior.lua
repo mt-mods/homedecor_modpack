@@ -429,5 +429,5 @@ homedecor.register("well", {
 })
 
 minetest.register_alias("homedecor:well_top", "air")
-minetest.register_alias("homedecor:well_bottom", "homedecor:well")
+minetest.register_alias("homedecor:well_base", "homedecor:well")
 
