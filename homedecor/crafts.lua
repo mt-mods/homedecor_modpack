@@ -2516,8 +2516,8 @@ minetest.register_craft( {
         output = "homedecor:pool_table",
         recipe = {
 			{ "wool:dark_green", "wool:dark_green", "wool:dark_green" },
-			{ "group:wood", "group:wood", "group:wood" },
-			{ "group:stick", "", "group:stick" }
+			{ "building_blocks:hardwood", "building_blocks:hardwood", "building_blocks:hardwood" },
+			{ "building_blocks:slab_hardwood", "", "building_blocks:slab_hardwood" }
         },
 })
 
