@@ -3057,6 +3057,15 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:tool_cabinet_bottom",
+	recipe = {
+		{ "homedecor:motor", "default:axe_steel", "default:pick_steel" },
+		{ "default:steel_ingot", "homedecor:drawer_small", "default:steel_ingot" },
+		{ "default:steel_ingot", "homedecor:drawer_small", "default:steel_ingot" }
+	},
+})
+
 if (minetest.get_modpath("technic") and minetest.get_modpath("dye") and minetest.get_modpath("bees")) then
 	technic.register_separating_recipe({ input = {"bees:wax 1"}, output = {"homedecor:oil_extract 2","dye:yellow 1"} })
 end
