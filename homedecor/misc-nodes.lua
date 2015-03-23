@@ -294,93 +294,29 @@ homedecor.register("filing_cabinet", {
 	},
 })
 
+local pooltable_cbox = {
+	type = "fixed",
+	fixed = { -0.5, -0.5, -0.5, 0.5, 0.3125, 1.5 }
+}
+
 homedecor.register("pool_table", {
+	mesh = "homedecor_pool_table.obj",
 	tiles = {
-		"homedecor_pool_table_top1.png",
-		"homedecor_pool_table_bottom1.png",
-		"homedecor_pool_table_sides1.png",
-		"homedecor_pool_table_sides1.png^[transformFX",
-		"homedecor_pool_table_end1.png",
-		"homedecor_pool_table_end1.png"
+		"homedecor_pool_table_cue.png",
+		"homedecor_pool_table_baize.png",
+		"homedecor_pool_table_pockets.png",
+		"homedecor_pool_table_balls.png",
+		"homedecor_pool_table_wood.png"
 	},
 	description = "Pool Table",
 	inventory_image = "homedecor_pool_table_inv.png",
 	groups = {snappy=3},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.375,   -0.5,     -0.375,   -0.25,    0.1875,   -0.25},    --  NodeBox1
-			{0.25,     -0.5,     -0.375,   0.375,    0.1875,   -0.25},    --  NodeBox2
-			{-0.25,    -0.125,   -0.3125,  0.25,     -0.0625,  0},        --  NodeBox3
-			{-0.3125,  -0.0625,  -0.3125,  -0.25,    0.1875,   0},        --  NodeBox4
-			{0.25,     -0.0625,  -0.3125,  0.3125,   0.1875,   0},        --  NodeBox5
-			{-0.3125,  -0.125,   0,        0.3125,   0.1875,   0.0625},   --  NodeBox6
-			{0.25,     -0.125,   -0.25,    0.3125,   0.1875,   0.5},      --  NodeBox7
-			{-0.3125,  -0.125,   -0.25,    -0.25,    0.1875,   0.5},      --  NodeBox8
-			{-0.5,     0.1875,   -0.5,     -0.4375,  0.25,     0.5},      --  NodeBox9
-			{-0.5,     0.1875,   -0.5,     0.5,      0.25,     -0.4375},  --  NodeBox10
-			{0.4375,   0.1875,   -0.5,     0.5,      0.25,     0.5},      --  NodeBox11
-			{-0.3125,  0.1875,   -0.3125,  0.3125,   0.25,     0.5},      --  NodeBox12
-			{-0.4375,  0.1875,   -0.3125,  0.4375,   0.25,     0.4375},   --  NodeBox13
-			{-0.3125,  0.1875,   -0.5,     0.3125,   0.25,     -0.3125},  --  NodeBox14
-			{-0.25,    -0.125,   -0.325,   0.25,     0,        -0.3125},  --  NodeBox15
-			{0.25,     0.125,    -0.4375,  0.4375,   0.1875,   0.5},      --  NodeBox16
-			{-0.4375,  0.125,    -0.4375,  -0.25,    0.1875,   0.5},      --  NodeBox17
-			{-0.5,     0.25,     -0.5,     -0.4375,  0.3125,   0.5},      --  NodeBox18
-			{-0.5,     0.25,     -0.5,     0.5,      0.3125,   -0.4375},  --  NodeBox19
-			{0.4375,   0.25,     -0.5,     0.5,      0.3125,   0.5},      --  NodeBox20
-			{-0.4375,  0.25,     -0.3125,  -0.375,   0.3125,   0.4375},   --  NodeBox23
-			{-0.3125,  0.25,     -0.4375,  0.3125,   0.3125,   -0.375},   --  NodeBox24
-			{0.375,    0.25,     -0.3125,  0.4375,   0.3125,   0.4375},   --  NodeBox25
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, 0.3125, 1.5 }
-	},
-	expand = { forward="homedecor:pool_table_2" },
+	selection_box = pooltable_cbox,
+	collision_box = pooltable_cbox,
+	expand = { forward="air" },
 })
 
-homedecor.register("pool_table_2", {
-	tiles = {
-		"homedecor_pool_table_top1.png^[transformR180",
-		"homedecor_pool_table_bottom1.png",
-		"homedecor_pool_table_sides1.png^[transformFX",
-		"homedecor_pool_table_sides1.png",
-		"homedecor_pool_table_end1.png",
-		"homedecor_pool_table_end1.png"
-	},
-	groups = {snappy=3, not_in_creative_inventory=1},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.375,   -0.5,     0.25,     -0.25,    0.1875,   0.375},   --  NodeBox1
-			{0.25,     -0.5,     0.25,     0.375,    0.1875,   0.375},   --  NodeBox2
-			{-0.25,    -0.125,   0,        0.25,     -0.0625,  0.3125},  --  NodeBox3
-			{-0.3125,  -0.0625,  0,        -0.25,    0.1875,   0.3125},  --  NodeBox4
-			{0.25,     -0.0625,  0,        0.3125,   0.1875,   0.3125},  --  NodeBox5
-			{-0.3125,  -0.125,   -0.0625,  0.3125,   0.1875,   0},       --  NodeBox6
-			{0.25,     -0.125,   -0.5,     0.3125,   0.1875,   0.25},    --  NodeBox7
-			{-0.3125,  -0.125,   -0.5,     -0.25,    0.1875,   0.25},    --  NodeBox8
-			{-0.5,     0.1875,   -0.5,     -0.4375,  0.25,     0.5},     --  NodeBox9
-			{-0.5,     0.1875,   0.4375,   0.5,      0.25,     0.5},     --  NodeBox10
-			{0.4375,   0.1875,   -0.5,     0.5,      0.25,     0.5},     --  NodeBox11
-			{-0.3125,  0.1875,   -0.5,     0.3125,   0.25,     0.3125},  --  NodeBox12
-			{-0.4375,  0.1875,   -0.4375,  0.4375,   0.25,     0.3125},  --  NodeBox13
-			{-0.3125,  0.1875,   0.3125,   0.3125,   0.25,     0.5},     --  NodeBox14
-			{-0.25,    -0.125,   0.3125,   0.25,     0,        0.325},   --  NodeBox15
-			{0.25,     0.125,    -0.5,     0.4375,   0.1875,   0.4375},  --  NodeBox16
-			{-0.4375,  0.125,    -0.5,     -0.25,    0.1875,   0.4375},  --  NodeBox17
-			{-0.5,     0.25,     -0.5,     -0.4375,  0.3125,   0.5},     --  NodeBox18
-			{-0.5,     0.25,     0.4375,   0.5,      0.3125,   0.5},     --  NodeBox19
-			{0.4375,   0.25,     -0.5,     0.5,      0.3125,   0.5},     --  NodeBox20
-			{-0.4375,  0.25,     -0.4375,  -0.375,   0.3125,   0.3125},  --  NodeBox23
-			{-0.3125,  0.25,     0.375,    0.3125,   0.3125,   0.4375},  --  NodeBox24
-			{0.375,    0.25,     -0.4375,  0.4375,   0.3125,   0.3125},  --  NodeBox25
-		}
-	},
-	selection_box = homedecor.nodebox.null,
-})
+minetest.register_alias("homedecor:pool_table_2", "air")
 
 local trash_cbox = {
 	type = "fixed",
@@ -553,19 +489,6 @@ homedecor.register("piano", {
 
 minetest.register_alias("homedecor:piano_left", "homedecor:piano")
 minetest.register_alias("homedecor:piano_right", "air")
-
--- convert old pool tables into newer model
-
-minetest.register_abm({
-	nodenames = { "homedecor:pool_table2" },
-	interval = 1,
-	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		local swap_fdir = { 2, 3, 0, 1 }
-		local fdir = swap_fdir[node.param2+1]
-		minetest.set_node(pos, {name = "homedecor:pool_table_2", param2 = fdir})
-	end
-})
 
 homedecor.register("trophy", {
         description = "Trophy",
