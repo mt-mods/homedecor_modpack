@@ -210,6 +210,9 @@ homedecor.register("desk", {
 	collision_box = desk_cbox,
 	groups = { snappy = 3 },
 	expand = { right="air" },
+	inventory = {
+		size=24,
+	},
 })
 
 minetest.register_alias("homedecor:desk_r", "air")
