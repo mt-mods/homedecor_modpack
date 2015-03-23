@@ -673,6 +673,9 @@ homedecor.register("tool_cabinet_bottom", {
 	},
 	selection_box = homedecor.nodebox.slab_y(2),
 	expand = { top="homedecor:tool_cabinet_top" },
+	inventory = {
+		size=24,
+	}
 })
 
 homedecor.register("tool_cabinet_top", {
