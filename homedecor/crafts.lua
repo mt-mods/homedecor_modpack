@@ -2745,7 +2745,7 @@ minetest.register_craft({
 	recipe = {
 		{ "", "homedecor:steel_wire", "building_blocks:hardwood" },
 		{ "homedecor:plastic_strips", "homedecor:steel_wire", "building_blocks:hardwood" },
-		{ "building_blocks:hardwood", "default:steelblock", "building_blocks:hardwood" }
+		{ "technic:brass_ingot", "default:steelblock", "building_blocks:hardwood" }
 	},
 })
 
