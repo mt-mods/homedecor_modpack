@@ -27,7 +27,7 @@ homedecor.register("speaker_open", {
 
 local spk_cbox = {
 	type = "fixed",
-	fixed = { -3/16, -8/16, 1/16, 3/16, -2/16,  }
+	fixed = { -3/16, -8/16, 1/16, 3/16, -2/16, 7/16 }
 }
 
 homedecor.register("speaker_small", {
