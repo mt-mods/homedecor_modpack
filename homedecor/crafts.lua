@@ -90,7 +90,7 @@ minetest.register_craftitem("homedecor:steel_wire", {
 
 minetest.register_craftitem("homedecor:speaker_driver", {
 	description = S("Speaker driver"),
-	inventory_image = "homedecor_speaker_driver.png"
+	inventory_image = "homedecor_speaker_driver_inv.png"
 })
 
 minetest.register_craftitem("homedecor:fan_blades", {

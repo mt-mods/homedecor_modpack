@@ -13,9 +13,21 @@ homedecor.register("speaker", {
 	sounds = default.node_sound_leaves_defaults(),
 })
 
+homedecor.register("speaker_open", {
+	description = S("Large Stereo Speaker, open front"),
+	mesh="homedecor_speaker_large_open.obj",
+	tiles = {
+		"homedecor_speaker_sides.png",
+		"homedecor_speaker_driver.png",
+		"homedecor_speaker_open_front.png",
+	},
+	groups = { snappy = 3 },
+	sounds = default.node_sound_leaves_defaults(),
+})
+
 local spk_cbox = {
 	type = "fixed",
-	fixed = { -3/16, -8/16, 1/16, 3/16, -2/16, 7/16 }
+	fixed = { -3/16, -8/16, 1/16, 3/16, -2/16,  }
 }
 
 homedecor.register("speaker_small", {
