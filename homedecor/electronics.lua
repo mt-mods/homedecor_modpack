@@ -11,6 +11,9 @@ homedecor.register("speaker", {
 	},
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
+	on_punch = function(pos, node, puncher, pointed_thing)
+		minetest.set_node(pos, {name = "homedecor:speaker_open", param2 = node.param2})
+	end
 })
 
 homedecor.register("speaker_open", {
@@ -23,6 +26,9 @@ homedecor.register("speaker_open", {
 	},
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
+	on_punch = function(pos, node, puncher, pointed_thing)
+		minetest.set_node(pos, {name = "homedecor:speaker", param2 = node.param2})
+	end
 })
 
 local spk_cbox = {
