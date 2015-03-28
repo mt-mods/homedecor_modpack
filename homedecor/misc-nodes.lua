@@ -556,31 +556,21 @@ homedecor.register("sportbench", {
 	}
 })
 
+local skate_cbox = {
+	type = "fixed",
+	fixed = { -0.5, -0.5, -0.15, 0.5, -0.3, 0.15 }
+}
+
 homedecor.register("skateboard", {
-        description = "Skateboard",
-	tiles = {
-		"homedecor_skateboard_top.png",
-		"homedecor_skateboard_bottom.png",
-		"homedecor_skateboard_sides.png"
-	},
+	drawtype = "mesh",
+	mesh = "homedecor_skateboard.obj",
+	tiles = { "homedecor_skateboard.png" },
 	inventory_image = "homedecor_skateboard_inv.png",
-	groups = { snappy=3 },
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.4375, -0.4375, -0.1875, 0.4375, -0.415, 0.125}, -- NodeBox1
-			{-0.375, -0.5, 0.0625, -0.3125, -0.4375, 0.125}, -- NodeBox2
-			{-0.375, -0.5, -0.1875, -0.3125, -0.4375, -0.125}, -- NodeBox3
-			{0.3125, -0.5, 0.0625, 0.375, -0.4375, 0.125}, -- NodeBox4
-			{0.3125, -0.5, -0.1875, 0.375, -0.4375, -0.125}, -- NodeBox5
-			{-0.5, -0.4375, -0.16, -0.4375, -0.415, 0.0975}, -- NodeBox6
-			{0.4375, -0.4375, -0.16, 0.5, -0.415, 0.0975}, -- NodeBox7
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.2, 0.5, -0.40, 0.125 }
-	},
+	description = "Skateboard",
+	groups = {snappy=3},
+	selection_box = skate_cbox,
+	collision_box = skate_cbox,
+	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node
 })
 
