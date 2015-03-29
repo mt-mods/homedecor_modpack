@@ -3066,6 +3066,15 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:bathroom_set",
+	recipe = {
+		{ "", "homedecor:glass_table_small_round", "" },
+		{ "homedecor:plastic_sheeting", "homedecor:glass_table_small_round", "homedecor:plastic_sheeting" },
+		{ "group:stick", "homedecor:plastic_sheeting", "group:stick" }
+	},
+})
+
 if (minetest.get_modpath("technic") and minetest.get_modpath("dye") and minetest.get_modpath("bees")) then
 	technic.register_separating_recipe({ input = {"bees:wax 1"}, output = {"homedecor:oil_extract 2","dye:yellow 1"} })
 end
