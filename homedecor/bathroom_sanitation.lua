@@ -162,6 +162,27 @@ homedecor.register("shower_head", {
 	collision_box = sh_cbox,
 })
 
+local bs_cbox = {
+	type = "fixed",
+	fixed = { -8/16, -8/16, 1/16, 8/16, 8/16, 8/16 }
+}
+
+homedecor.register("bathroom_set", {
+	drawtype = "mesh",
+	mesh = "homedecor_bathroom_set.obj",
+	tiles = {
+		"homedecor_bathroom_set_mirror.png",
+		"homedecor_bathroom_set_tray.png",
+		"homedecor_bathroom_set_toothbrush.png",
+		"homedecor_bathroom_set_cup.png",
+		"homedecor_bathroom_set_toothpaste.png",
+	},
+	description = "Bathroom sundries set",
+	groups = {snappy=3},
+	selection_box = bs_cbox,
+	collision_box = bs_cbox,
+})
+
 minetest.register_alias("3dforniture:toilet", "homedecor:toilet")
 minetest.register_alias("3dforniture:toilet_open", "homedecor:toilet_open")
 minetest.register_alias("3dforniture:sink", "homedecor:sink")
