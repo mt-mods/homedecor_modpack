@@ -1,57 +1,34 @@
 local S = homedecor.gettext
 dofile(homedecor.modpath.."/furniture.lua")
 
+local bbq_cbox = {
+	type = "fixed",
+	fixed = { -0.5, -0.5, -0.3125, 0.5, 0.53125, 0.3125 }
+}
+
 homedecor.register("barbecue", {
 	description = "Barbecue",
+	mesh = "homedecor_barbecue.obj",
 	tiles = {
-		{name="homedecor_barbecue_top.png", animation={type="vertical_frames",
-		aspect_w=16, aspect_h=16, length=2}},
 		"forniture_black_metal.png",
+		{	name="homedecor_embers.png",
+			animation={
+				type="vertical_frames",
+				aspect_w=16,
+				aspect_h=16,
+				length=2
+			}
+		},
+		"homedecor_barbecue_meat.png",
 	},
 	groups = { snappy=3 },
 	light_source = 9,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, 0.25, -0.4375, 0.0625, 0.3125}, -- NodeBox1
-			{0.4375, -0.5, 0.25, 0.5, 0.0625, 0.3125}, -- NodeBox2
-			{-0.5, -0.5, -0.3125, -0.4375, 0.0625, -0.25}, -- NodeBox3
-			{0.4375, -0.5, -0.3125, 0.5, 0.0625, -0.25}, -- NodeBox4
-			{-0.5, 0.0625, -0.3125, 0.5, 0.375, 0.3125}, -- NodeBox5
-			{-0.375, 0.5, -0.25, -0.313, 0.5, 0.251}, -- NodeBox6
-			{-0.25, 0.5, -0.25, -0.188, 0.5, 0.251}, -- NodeBox7
-			{-0.125, 0.5, -0.25, -0.063, 0.5, 0.251}, -- NodeBox8
-			{0, 0.5, -0.25, 0.062, 0.5, 0.251}, -- NodeBox9
-			{0.125, 0.5, -0.25, 0.187, 0.5, 0.251}, -- NodeBox10
-			{0.25, 0.5, -0.25, 0.312, 0.5, 0.251}, -- NodeBox11
-			{0.375, 0.5, -0.25, 0.437, 0.5, 0.251}, -- NodeBox12
-			{-0.5, 0.375, 0.251, 0.5, 0.5, 0.3125}, -- NodeBox13
-			{-0.5, 0.0625, -0.3125, 0.5, 0.5, -0.25}, -- NodeBox14
-			{-0.5, 0.0625, -0.3125, -0.438, 0.5, 0.3125}, -- NodeBox15
-			{0.4375, 0.0625, -0.3125, 0.5, 0.5, 0.3125}, -- NodeBox16
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.3125, 0.5, 0.625, 0.3125 }
-        },
-	expand = { top="homedecor:barbecue_meat" },
+	selection_box = bbq_cbox,
+	collision_box = bbq_cbox,
+	expand = { top="air" },
 })
 
-homedecor.register("barbecue_meat", {
-	tiles = {
-		"homedecor_barbecue_meat.png",
-	},
-	groups = { snappy=3, not_in_creative_inventory=1 },
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.25, -0.5, -0.125, -0.0625, -0.4375, 0.125}, -- NodeBox1
-			{0.125, -0.5, -0.125, 0.3125, -0.4375, 0.125}, -- NodeBox2
-		}
-	},
-	selection_box = homedecor.nodebox.null
-})
+minetest.register_alias("homedecor:barbecue_meat", "air")
 
 homedecor.register("bench_large_1_left", {
 	description = "Garden Bench (style 1)",
