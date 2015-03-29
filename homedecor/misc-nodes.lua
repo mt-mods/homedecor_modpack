@@ -318,22 +318,6 @@ homedecor.register("pool_table", {
 
 minetest.register_alias("homedecor:pool_table_2", "air")
 
-local trash_cbox = {
-	type = "fixed",
-	fixed = { -0.25, -0.5, -0.25, 0.25, 0.125, 0.25 }
-}
-
-homedecor.register("trash_can", {
-	drawtype = "mesh",
-	mesh = "homedecor_trash_can.obj",
-	tiles = { "homedecor_trash_can.png" },
-	inventory_image = "homedecor_trash_can_inv.png",
-	description = "Trash Can",
-        groups = {snappy=3},
-	selection_box = trash_cbox,
-	collision_box = trash_cbox,
-})
-
 homedecor.register("coatrack_wallmount", {
 	tiles = { "forniture_wood.png" },
 	inventory_image = "homedecor_coatrack_wallmount_inv.png",
