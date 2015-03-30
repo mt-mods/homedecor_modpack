@@ -330,58 +330,32 @@ for _, color in ipairs(bedcolors) do
 
 end
 
-homedecor.register("wardrobe_top", {
-	tiles = {
-		"forniture_wood.png",
-		"forniture_wood.png",
-		"forniture_wood.png^[transformR90",
-		"forniture_wood.png^[transformR270",
-		"forniture_wood.png^[transformR90",
-		"homedecor_wardrobe_frontt.png"
-	},
-	groups = {snappy=3, not_in_creative_inventory=1},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5,     -0.5,   -0.4375,  0.5,      0.5,      0.5},      --  NodeBox1
-			{0.0625,   -0.4375,  -0.5,     0.4375,   0.4375,   -0.4375},  --  NodeBox2
-			{-0.4375,  -0.4375,  -0.5,     -0.0625,  0.4375,   -0.4375},  --  NodeBox3
-		}
-	},
-	selection_box = homedecor.nodebox.null,
-})
+local wd_cbox = {
+	type = "fixed",
+	fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
+}
 
 homedecor.register("wardrobe_bottom", {
+	mesh = "homedecor_bedroom_wardrobe.obj",
 	tiles = {
 		"forniture_wood.png",
-		"forniture_wood.png^[transformR180",
-		"forniture_wood.png^[transformR90",
-		"forniture_wood.png^[transformR270",
-		"forniture_wood.png^[transformR90",
-		"homedecor_wardrobe_frontb.png"
+		"homedecor_wardrobe_drawers.png",
+		"homedecor_wardrobe_doors.png"
 	},
 	inventory_image = "homedecor_wardrobe_inv.png",
 	description = "Wardrobe",
 	groups = {snappy=3},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5,     -0.5,     -0.4375,  0.5,  0.5,      0.5},      --  NodeBox1
-			{-0.4375,  -0.375,   -0.5,     0.4375,   -0.125,   -0.4375},  --  NodeBox2
-			{-0.4375,  -0.0625,  -0.5,     0.4375,   0.1875,   -0.4375},  --  NodeBox3
-			{-0.4375,  0.25,     -0.5,     0.4375,   0.5,      -0.4375},  --  NodeBox4
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
-	},
-	expand = { top="homedecor:wardrobe_top" },
+	selection_box = wd_cbox,
+	collision_box = wd_cbox,
+	expand = { top="air" },
 	infotext = S("Wardrobe cabinet"),
 	inventory = {
 		size=24,
 	},
 })
+
+minetest.register_alias("homedecor:wardrobe_bottom", "homedecor:wardrobe")
+minetest.register_alias("homedecor:wardrobe_top", "air")
 
 homedecor.register("wall_shelf", {
 	description = "Wall Shelf",
