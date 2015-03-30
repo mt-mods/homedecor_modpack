@@ -1,0 +1,42 @@
+# Blender MTL File: 'phone.blend'
+# Material Count: 4
+
+newmtl body
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /home/vanessa/Minetest-related/mods/my_mods/homedecor_modpack/homedecor/textures/homedecor_telephone_base.png
+
+newmtl cord
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /home/vanessa/Minetest-related/mods/my_mods/homedecor_modpack/homedecor/textures/homedecor_telephone_cord.png
+
+newmtl dial
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /home/vanessa/Minetest-related/mods/my_mods/homedecor_modpack/homedecor/textures/homedecor_telephone_dial.png
+
+newmtl handset
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /home/vanessa/Minetest-related/mods/my_mods/homedecor_modpack/homedecor/textures/homedecor_telephone_handset.png
