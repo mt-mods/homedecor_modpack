@@ -51,7 +51,7 @@ homedecor.register("chains", {
 	description = S("Chains"),
 	mesh = "forniture_chains.obj",
 	tiles = { "forniture_black_metal.png" },
-	inventory_image="3dforniture_inv_chains.png",
+	inventory_image="forniture_chains_inv.png",
 	sunlight_propagates = true,
 	selection_box = chain_cbox,
 	collision_box = chain_cbox,
