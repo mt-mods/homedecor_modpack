@@ -42,6 +42,7 @@ homedecor.register("towel_rod", {
 		"homedecor_generic_terrycloth.png",
 		"default_wood.png",
 	},
+	inventory_image = "homedecor_towel_rod_inv.png",
 	selection_box = tr_cbox,
 	collision_box = tr_cbox,
 	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=3,flammable=3},
