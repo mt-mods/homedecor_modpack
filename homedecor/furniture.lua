@@ -1,5 +1,8 @@
 local S = homedecor.gettext
 
+-- Sitting functions disabled for now because of buggyness.
+
+--[[
 function homedecor.sit(pos, node, clicker)
 	local name = clicker:get_player_name()
 	local meta = minetest:get_meta(pos)
@@ -39,6 +42,7 @@ function homedecor.sit_exec(pos, node, clicker) -- don't move these functions in
 	clicker:setpos(pos)
 	default.player_set_animation(clicker, "sit", 30)
 end
+--]]
 
 local table_colors = { "", "mahogany", "white" }
 
@@ -119,10 +123,12 @@ for i in ipairs(chaircolors) do
 			fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3},
 		},
 		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+		--[[
 		on_rightclick = function(pos, node, clicker)
 			pos.y = pos.y-0 -- player's sit position.
 			homedecor.sit_exec(pos, node, clicker)
 		end,
+		--]]
 	})
 
 	if color ~= "" then
@@ -136,11 +142,13 @@ for i in ipairs(chaircolors) do
 			},
 			sunlight_propagates = true,
 			groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+			--[[
 			on_rightclick = function(pos, node, clicker)
 				pos.y = pos.y-0.1 -- player's sit position.
 				homedecor.sit_exec(pos, node, clicker)
 				clicker:set_hp(20)
 			end,
+			--]]
 		})
 
 		minetest.register_craft({
@@ -349,10 +357,12 @@ homedecor.register("office_chair_"..c, {
 	selection_box = ofchairs_sbox,
 	collision_box = ofchairs_cbox,
 	expand = { top = "air" },
+	--[[
 	on_rightclick = function(pos, node, clicker)
 		pos.y = pos.y+0.14 -- player's sit position.
 		homedecor.sit_exec(pos, node, clicker)
 	end,
+	--]]
 })
 
 end
