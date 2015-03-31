@@ -1,0 +1,32 @@
+# Blender MTL File: 'grandfather-clock.blend'
+# Material Count: 3
+
+newmtl brass
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.722818 0.530407 0.147719
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /home/vanessa/Minetest-related/mods/my_mods/homedecor_modpack/homedecor/textures/homedecor_tile_brass2.png
+
+newmtl face
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /home/vanessa/Minetest-related/mods/my_mods/homedecor_modpack/homedecor/textures/homedecor_grandfather_clock_face.png
+
+newmtl wood
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.087778 0.033537 0.010796
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /home/vanessa/Minetest-related/mods/my_mods/homedecor_modpack/homedecor/textures/homedecor_grandfather_clock_wood.png

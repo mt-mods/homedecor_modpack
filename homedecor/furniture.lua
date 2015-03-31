@@ -336,56 +336,6 @@ homedecor.register("wall_shelf", {
 	}
 })
 
-homedecor.register("grandfather_clock_bottom", {
-	description = "Grandfather Clock",
-	tiles = {
-		"homedecor_grandfather_clock_sides.png",
-		"homedecor_grandfather_clock_sides.png",
-		"homedecor_grandfather_clock_sides.png",
-		"homedecor_grandfather_clock_sides.png",
-		"homedecor_grandfather_clock_sides.png",
-		"homedecor_grandfather_clock_bottom.png"
-	},
-	inventory_image = "homedecor_grandfather_clock_inv.png",
-	groups = { snappy = 3 },
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.4, -0.5, -0.4, -0.3125, 0.5, 0.4}, -- NodeBox1
-			{-0.3125, -0.4375, -0.3125, 0.3125, 0.5, 0.4}, -- NodeBox2
-			{0.3125, -0.5, -0.4, 0.4, 0.5, 0.4}, -- NodeBox3
-			{-0.3125, -0.5, -0.4, 0.3125, -0.405, 0.4}, -- NodeBox4
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.4, -0.5, -0.4, 0.4, 1.5, 0.4 }
-	},
-	expand = { top="homedecor:grandfather_clock_top" },
-})
-
-homedecor.register("grandfather_clock_top", {
-	tiles = {
-		"homedecor_grandfather_clock_sides.png",
-		"homedecor_grandfather_clock_sides.png",
-		"homedecor_grandfather_clock_sides.png",
-		"homedecor_grandfather_clock_sides.png",
-		"homedecor_grandfather_clock_sides.png",
-		"homedecor_grandfather_clock_top.png"
-	},
-	groups = { snappy = 3, not_in_creative_inventory=1 },
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.4, -0.5, -0.4, -0.3125, 0.5, 0.4}, -- NodeBox1
-			{-0.3125, -0.1875, -0.4, 0.3125, 0.5, 0.4}, -- NodeBox2
-			{0.3125, -0.5, -0.4, 0.4, 0.5, 0.4}, -- NodeBox3
-			{-0.3125, -0.5, -0.3125, 0.3125, 0.5, 0.4}, -- NodeBox4
-		}
-	},
-	selection_box = homedecor.nodebox.null,
-})
-
 local ofchairs_sbox = {
 		type = "fixed",
 		fixed = { -8/16, -8/16, -8/16, 8/16, 29/32, 8/16 }
