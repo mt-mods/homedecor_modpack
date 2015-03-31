@@ -1,0 +1,31 @@
+# Blender MTL File: 'towel-rod.blend'
+# Material Count: 3
+
+newmtl none
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl towel
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /home/vanessa/Minetest-related/mods/my_mods/homedecor_modpack/homedecor/textures/homedecor_generic_terrycloth.png
+
+newmtl wood
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.140660 0.071954 0.022368
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /home/vanessa/Minetest-related/games/minetest_game/mods/default/textures/default_wood.png
