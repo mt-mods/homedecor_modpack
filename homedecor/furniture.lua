@@ -128,29 +128,13 @@ for i in ipairs(chaircolors) do
 	if color ~= "" then
 		homedecor.register("armchair"..color, {
 			description = S("Armchair (%s)"):format(name),
-			tiles = { "forniture_armchair_top"..color..".png" },
+			mesh = "forniture_armchair.obj",
+			tiles = {
+				"wool"..color..".png",
+				"wool_dark_grey.png",
+				"default_wood.png"
+			},
 			sunlight_propagates = true,
-			node_box = {
-			type = "fixed",
-			fixed = {
-				{ -0.50, -0.50, -0.45, -0.30,  0.05,  0.30 },
-				{ -0.45, -0.50, -0.50, -0.35,  0.05, -0.45 },
-				{ -0.45,  0.05, -0.45, -0.35,  0.10,  0.15 },
-				{  0.30, -0.50, -0.45,  0.50,  0.05,  0.30 },
-				{  0.35, -0.50, -0.50,  0.45,  0.05, -0.45 },
-				{  0.35,  0.05, -0.45,  0.45,  0.10,  0.15 },
-				{ -0.50, -0.50,  0.30,  0.50,  0.45,  0.50 },
-				{ -0.45,  0.45,  0.35,  0.45,  0.50,  0.45 },
-				{ -0.30, -0.45, -0.35,  0.30, -0.10,  0.30 },
-				{ -0.30, -0.45, -0.40,  0.30, -0.15, -0.35 },
-				{ -0.50,  0.05,  0.15, -0.30,  0.45,  0.30 },
-				{ -0.45,  0.10,  0.10, -0.35,  0.45,  0.15 },
-				{ -0.45,  0.45,  0.15, -0.35,  0.50,  0.35 },
-				{  0.30,  0.05,  0.15,  0.50,  0.45,  0.30 },
-				{  0.35,  0.10,  0.10,  0.45,  0.45,  0.15 },
-				{  0.35,  0.45,  0.15,  0.45,  0.50,  0.35 },
-			},
-			},
 			groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
 			on_rightclick = function(pos, node, clicker)
 				pos.y = pos.y-0.1 -- player's sit position.
