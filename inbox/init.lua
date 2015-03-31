@@ -29,6 +29,7 @@ minetest.register_node("inbox:empty", {
 		"inbox_white_metal.png",
 		"inbox_grey_metal.png",
 	},
+	inventory_image = "mailbox_inv.png",
 	selection_box = mb_cbox,
 	collision_box = mb_cbox,
 	paramtype2 = "facedir",
