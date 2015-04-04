@@ -86,6 +86,22 @@ homedecor.register("torch_wall", {
 	groups = {cracky=2},
 })
 
+local wl_cbox = {
+	type = "fixed",
+	fixed = { -0.2, -0.5, 0, 0.2, 0.5, 0.5 },
+}
+
+homedecor.register("wall_lamp", {
+	description = S("Wall Lamp"),
+	mesh = "homedecor_wall_lamp.obj",
+	tiles = {"homedecor_wall_lamp.png"},
+	inventory_image = "homedecor_wall_lamp_inv.png",
+	groups = {snappy=3},
+	light_source = 11,
+	selection_box = wl_cbox,
+	collision_box = wl_cbox
+})
+
 minetest.register_alias("3dforniture:bars", "homedecor:bars")
 minetest.register_alias("3dforniture:L_binding_bars", "homedecor:L_binding_bars")
 minetest.register_alias("3dforniture:chains", "homedecor:chains")
