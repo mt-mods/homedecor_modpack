@@ -50,7 +50,10 @@ for _, p in ipairs(pot_colors) do
 homedecor.register("flower_pot_"..p, {
 	description = S("Flower Pot ("..p..")"),
 	mesh = "homedecor_flowerpot.obj",
-	tiles = { "homedecor_flower_pot_"..p..".png" },
+	tiles = {
+		"homedecor_flower_pot_"..p..".png",
+		"homedecor_potting_soil.png"
+	},
 	groups = { snappy = 3, potting_soil=1 },
 	sounds = default.node_sound_leaves_defaults(),
 })
