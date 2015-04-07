@@ -32,6 +32,18 @@ for i in ipairs(longsofas_list) do
 				{-0.5, -0.5, -0.5, 0.5, 0.5, 2.5},
 			}
 		},
+        on_place = function(itemstack, placer, pointed_thing)
+			local pos = pointed_thing.above
+			local fdir = minetest.dir_to_facedir(placer:get_look_dir(), false)
+
+			if lrfurn.check_forward(pos, fdir, true) then
+				minetest.set_node(pos, {name = "lrfurn:longsofa_"..colour, param2 = fdir})
+				itemstack:take_item()
+			else
+				minetest.chat_send_player(placer:get_player_name(), "No room to place the sofa!")
+			end
+			return itemstack
+		end,
 		on_rightclick = function(pos, node, clicker)
 			if not clicker:is_player() then
 				return
