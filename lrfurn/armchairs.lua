@@ -26,8 +26,6 @@ for i in ipairs(armchairs_list) do
 		paramtype2 = "facedir",
 		groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=3},
 		sounds = default.node_sound_wood_defaults(),
-		selection_box = { type = "regular" },
-
 		on_rightclick = function(pos, node, clicker)
 			if not clicker:is_player() then
 				return

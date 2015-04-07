@@ -10,6 +10,11 @@ local sofas_list = {
 	{ "White Sofa", "white"},
 }
 
+local sofa_cbox = {
+	type = "fixed",
+	fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 1.5}
+}
+
 for i in ipairs(sofas_list) do
 	local sofadesc = sofas_list[i][1]
 	local colour = sofas_list[i][2]
@@ -26,12 +31,8 @@ for i in ipairs(sofas_list) do
 		paramtype2 = "facedir",
 		groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=3},
 		sounds = default.node_sound_wood_defaults(),
-		selection_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0.5, 1.5},
-			}
-		},
+		selection_box = sofa_cbox,
+		collision_box = sofa_cbox,
         on_place = function(itemstack, placer, pointed_thing)
 			local pos = pointed_thing.above
 			local fdir = minetest.dir_to_facedir(placer:get_look_dir(), false)
