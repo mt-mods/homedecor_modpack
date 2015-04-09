@@ -407,6 +407,7 @@ homedecor.register("bottle_"..b, {
 	mesh = "homedecor_bottle.obj",
 	sunlight_propagates = true,
 	groups = {snappy=3},
+	sounds = default.node_sound_glass_defaults(),
 	collision_box = bottle_cbox,
 	selection_box = bottle_cbox
 })
@@ -420,6 +421,7 @@ homedecor.register("4_bottles_"..b, {
 	mesh = "homedecor_4_bottles.obj",
 	sunlight_propagates = true,
 	groups = {snappy=3},
+	sounds = default.node_sound_glass_defaults(),
 	collision_box = fbottle_cbox,
 	selection_box = fbottle_cbox
 })
@@ -433,6 +435,7 @@ homedecor.register("4_bottles_multi", {
 	mesh = "homedecor_4_bottles_multi.obj",
 	sunlight_propagates = true,
 	groups = {snappy=3},
+	sounds = default.node_sound_glass_defaults(),
 	collision_box = fbottle_cbox,
 	selection_box = fbottle_cbox
 })

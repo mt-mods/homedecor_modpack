@@ -2504,7 +2504,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:wardrobe_bottom",
+        output = "homedecor:wardrobe",
         recipe = {
 			{ "homedecor:drawer_small", "homedecor:kitchen_cabinet" },
 			{ "homedecor:drawer_small", "default:wood" },
@@ -2758,7 +2758,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "homedecor:deckchair_foot",
+	output = "homedecor:deckchair",
 	recipe = {
 		{ "group:stick", "building_blocks:terrycloth_towel", "group:stick" },
 		{ "group:stick", "building_blocks:terrycloth_towel", "group:stick" },
@@ -2801,7 +2801,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "homedecor:grandfather_clock_bottom",
+	output = "homedecor:grandfather_clock",
 	recipe = {
 		{ "building_blocks:slab_hardwood","homedecor:analog_clock_wood","building_blocks:slab_hardwood" },
 		{ "building_blocks:slab_hardwood","technic:brass_ingot","building_blocks:slab_hardwood" },
@@ -3076,7 +3076,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "homedecor:tool_cabinet_bottom",
+	output = "homedecor:tool_cabinet",
 	recipe = {
 		{ "homedecor:motor", "default:axe_steel", "default:pick_steel" },
 		{ "default:steel_ingot", "homedecor:drawer_small", "default:steel_ingot" },

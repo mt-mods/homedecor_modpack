@@ -173,67 +173,24 @@ homedecor.register("bench_large_2_right", {
 	selection_box = homedecor.nodebox.null,
 })
 
-homedecor.register("deckchair_head", {
-	tiles = {
-		"homedecor_deckchair_top_c1.png",
-		"homedecor_deckchair_sides.png",
-		"homedecor_deckchair_sides.png",
-		"homedecor_deckchair_sides.png^[transformFX",
-		"homedecor_deckchair_sides.png",
-		"homedecor_deckchair_front.png"
-	},
-	groups = { snappy = 3, not_in_creative_inventory = 1 },
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.375, -0.3125, -0.0625, 0.375, -0.25, 0}, -- NodeBox1
-			{-0.375, -0.25, 0, 0.375, -0.1875, 0.0625}, -- NodeBox2
-			{-0.375, -0.1875, 0.0625, 0.375, -0.125, 0.125}, -- NodeBox3
-			{-0.375, -0.125, 0.125, 0.375, -0.0625, 0.1875}, -- NodeBox4
-			{-0.375, -0.0625, 0.1875, 0.375, 0, 0.25}, -- NodeBox5
-			{-0.375, 0, 0.25, 0.375, 0.0625, 0.3125}, -- NodeBox6
-			{-0.375, 0.0625, 0.3125, 0.375, 0.125, 0.375}, -- NodeBox7
-			{-0.375, 0.125, 0.375, 0.375, 0.1875, 0.4375}, -- NodeBox8
-			{-0.375, 0.1875, 0.4375, 0.375, 0.25, 0.5}, -- NodeBox9
-			{-0.375, -0.375, -0.5, 0.375, -0.3125, 0.0625}, -- NodeBox10
-			{0.3125, -0.1875, -0.5, 0.4375, -0.1575, 0.0625}, -- NodeBox11
-			{-0.4375, -0.1875, -0.5, -0.3125, -0.1575, 0.0625}, -- NodeBox12
-			{0.3125, -0.5, 0, 0.375, -0.25, 0.0625}, -- NodeBox13
-			{-0.375, -0.5, 0, -0.3125, -0.25, 0.0625}, -- NodeBox14
-		}
-	},
-	selection_box = homedecor.nodebox.null
+local dc_cbox = {
+	type = "fixed",
+	fixed = { -0.5, -0.5, -0.5, 0.5, 0, 1 }
+}
+
+homedecor.register("deckchair", {
+	mesh = "homedecor_deckchair.obj",
+	tiles = {"homedecor_deckchair.png"},
+	description = "Deck Chair",
+	groups = { snappy = 3 },
+	expand = { forward="air" },
+	sounds = default.node_sound_wood_defaults(),
+	selection_box = dc_cbox,
+	collision_box = dc_cbox,
 })
 
-homedecor.register("deckchair_foot", {
-	tiles = {
-		"homedecor_deckchair_top_c2.png",
-		"homedecor_deckchair_sides.png",
-		"homedecor_deckchair_sides.png",
-		"homedecor_deckchair_sides.png^[transformFX",
-		"homedecor_deckchair_front.png"
-	},
-	description = "Deck chair",
-	inventory_image = "homedecor_deckchair_inv.png",
-	groups = { snappy = 3 },
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.375, -0.375, -0.5, 0.375, -0.3125, 0.5}, -- NodeBox1
-			{0.3125, -0.5, -0.5, 0.375, -0.375, -0.4375}, -- NodeBox2
-			{-0.375, -0.5, -0.5, -0.3125, -0.375, -0.4375}, -- NodeBox3
-			{0.3125, -0.1875, 0.3, 0.4375, -0.1575, 0.5}, -- NodeBox4
-			{-0.4375, -0.1875, 0.3, -0.3125, -0.1575, 0.5}, -- NodeBox5
-			{-0.365, -0.3125, 0.32, -0.3225, -0.1875, 0.4375}, -- NodeBox6
-			{0.3225, -0.3125, 0.32, 0.365, -0.1875, 0.4375}, -- NodeBox7
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.45, -0.5, -0.5, 0.45, 0.35, 1.5 }
-	},
-	expand = { forward="homedecor:deckchair_head" },
-})
+minetest.register_alias("homedecor:deckchair_foot", "homedecor:deckchair")
+minetest.register_alias("homedecor:deckchair_head", "air")
 
 homedecor.register("doghouse", {
 	mesh = "homedecor_doghouse.obj",
