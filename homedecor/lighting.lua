@@ -147,46 +147,44 @@ homedecor.register("plasma_lamp", {
 	end
 })
 
+local tc_cbox = {
+	type = "fixed",
+	fixed = {
+		{ -0.1875, -0.5, -0.1875, 0.1875, 0.375, 0.1875 },
+	}
+}
+
 homedecor.register("candle", {
 	description = S("Thick Candle"),
+	mesh = "homedecor_candle_thick.obj",
 	tiles = {
-		'homedecor_candle_top.png',
-		'homedecor_candle_top.png',
-		{name="homedecor_candle_sides.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
+		'homedecor_candle_sides.png',
+		{name="homedecor_candle_flame.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
 	},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{ -0.125, -0.5, -0.125, 0.125, 0, 0.125 },
-			{ -0.125, 0, 0, 0.125, 0.5, 0 },
-			{ 0, 0, -0.125, 0, 0.5, 0.125 }
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = {
-			{ -0.1875, -0.5, -0.1875, 0.1875, 0.5, 0.1875 },
-		}
-	},
+	selection_box = tc_cbox,
+	collision_box = tc_cbox,
 	sunlight_propagates = true,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-4,
 	sounds = default.node_sound_wood_defaults(),
 })
 
+local c_cbox = {
+	type = "fixed",
+	fixed = {
+		{ -0.1, -0.5, -0.1, 0.125, 0.05, 0.125 },
+	}
+}
+
 homedecor.register("candle_thin", {
 	description = S("Little Candle"),
-	inventory_image = 'homedecor_candle_inv.png',
-	drawtype = "plantlike",
+	mesh = "homedecor_candle_thin.obj",
 	tiles = {
-		{name="homedecor_candle.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=1.0}},
+		'homedecor_candle_sides.png',
+		{name="homedecor_candle_flame.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = {
-			{ -0.1, -0.5, -0.1, 0.125, 0.05, 0.125 },
-		}
-	},
+	selection_box = c_cbox,
+	collision_box = c_cbox,
 	sunlight_propagates = true,
 	walkable = false,
 	groups = { snappy = 3 },
