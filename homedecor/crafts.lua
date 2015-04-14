@@ -1270,6 +1270,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "homedecor:wall_sconce 2",
+	recipe = {
+		{"default:iron_lump", "", ""},
+		{"default:iron_lump", "homedecor:candle", ""},
+		{"default:iron_lump", "", ""},
+	}
+})
+
+minetest.register_craft({
 	output = "homedecor:oil_lamp 4",
 	recipe = {
 		{ "", "vessels:glass_bottle", "" },

@@ -191,6 +191,26 @@ homedecor.register("candle_thin", {
 	light_source = LIGHT_MAX-4,
 })
 
+homedecor.register("wall_sconce", {
+	description = S("Wall sconce"),
+	mesh = "homedecor_wall_sconce.obj",
+	tiles = {
+		'homedecor_candle_sides.png',
+		{name="homedecor_candle_flame.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
+		'homedecor_wall_sconce_back.png',
+		'homedecor_tile_wrought_iron2.png',
+	},
+	inventory_image = "homedecor_wall_sconce_inv.png",
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.1875, -0.25, 0.3125, 0.1875, 0.25, 0.5 }
+	},
+	sunlight_propagates = true,
+	walkable = false,
+	groups = { snappy = 3 },
+	light_source = LIGHT_MAX-4,
+})
+
 homedecor.register("oil_lamp", {
 	description = S("Oil lamp"),
 	drawtype = "plantlike",
