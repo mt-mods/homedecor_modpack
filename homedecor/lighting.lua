@@ -311,7 +311,17 @@ homedecor.register("lattice_lantern_small", {
 })
 
 local repl = { off="low", low="med", med="hi", hi="max", max="off", }
-local lamp_colors = { "", "blue", "green", "pink", "red", "violet" }
+
+local brights_tab = { 0, 50, 100, 150, 200 }
+
+local lamp_colors = {
+	"",
+	"blue",
+	"green",
+	"pink",
+	"red",
+	"violet"
+}
 
 local tlamp_cbox = {
 	type = "fixed",
@@ -326,15 +336,25 @@ local slamp_cbox = {
 local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 	local lampcolor = "_"..color
 	local colordesc = " ("..color..")"
+	local woolcolor = color
+	local wool_brighten = (light or 0) * 7
+	local bulb_brighten = (light or 0) * 14
+
 	if color == "" then
 		lampcolor = ""
 		colordesc  = " (white)"
+		woolcolor = "white"
 	end
 
 	homedecor.register("table_lamp"..lampcolor.."_"..suffix, {
 		description = S("Table Lamp "..colordesc),
 		mesh = "homedecor_table_lamp.obj",
-		tiles = { "homedecor_table_standing_lamp"..lampcolor.."_"..suffix..".png" },
+		tiles = {
+			"wool_"..woolcolor..".png^[colorize:#ffffff:"..wool_brighten,
+			"homedecor_table_standing_lamp_lightbulb.png^[colorize:#ffffff:"..bulb_brighten,
+			"homedecor_table_standing_lamp_wood.png",
+			"forniture_metal.png",
+		},
 		inventory_image = "homedecor_table_lamp"..lampcolor.."_inv.png",
 		walkable = false,
 		light_source = light,
@@ -355,7 +375,12 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 	homedecor.register("standing_lamp"..lampcolor.."_"..suffix, {
 		description = S("Standing Lamp"..colordesc),
 		mesh = "homedecor_standing_lamp.obj",
-		tiles = { "homedecor_table_standing_lamp"..lampcolor.."_"..suffix..".png" },
+		tiles = {
+			"wool_"..woolcolor..".png^[colorize:#ffffff:"..wool_brighten,
+			"homedecor_table_standing_lamp_lightbulb.png^[colorize:#ffffff:"..bulb_brighten,
+			"homedecor_table_standing_lamp_wood.png",
+			"forniture_metal.png",
+		},
 		inventory_image = "homedecor_standing_lamp"..lampcolor.."_inv.png",
 		walkable = false,
 		light_source = light,
@@ -371,11 +396,10 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 		expand = { top="air" },
 	})
 
-	-- "bottom" in the node name is obsolete now, as "top" node doesn't exist anymore.
 	minetest.register_alias("homedecor:standing_lamp_bottom"..lampcolor.."_"..suffix, "homedecor:standing_lamp"..lampcolor.."_"..suffix)
 	minetest.register_alias("homedecor:standing_lamp_top"..lampcolor.."_"..suffix, "air")
 
-	-- for old maps that had 3dfornit`ure
+	-- for old maps that had the original 3dforniture mod
 	if lampcolor == "" then
 		minetest.register_alias("3dforniture:table_lamp_"..suffix, "homedecor:table_lamp_"..suffix)
 	end
