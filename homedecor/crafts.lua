@@ -2767,6 +2767,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "homedecor:deckchair_striped_blue",
+	type = "shapeless",
+	recipe = {
+		"homedecor:deckchair",
+		"dye:blue"
+	}
+})
+
+minetest.register_craft({
 	output = "homedecor:office_chair_basic",
 	recipe = {
 		{ "", "", "wool:black" },
