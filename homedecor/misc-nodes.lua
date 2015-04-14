@@ -480,37 +480,22 @@ homedecor.register("piano", {
 minetest.register_alias("homedecor:piano_left", "homedecor:piano")
 minetest.register_alias("homedecor:piano_right", "air")
 
+local tr_cbox = {
+	type = "fixed",
+	fixed = { -0.21, -0.5, -0.125, 0.2725, 0.125, 0.1875 }
+}
+
 homedecor.register("trophy", {
-        description = "Trophy",
+	description = "Trophy",
+	mesh = "homedecor_trophy.obj",
 	tiles = {
+		"default_wood.png",
 		"default_gold_block.png"
 	},
 	inventory_image = "homedecor_trophy_inv.png",
-        groups = { snappy=3 },
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.125, -0.5, -0.125, 0.1875, -0.4375, 0.1875}, -- NodeBox1
-			{-0.0625, -0.4375, -0.0625, 0.125, -0.375, 0.125}, -- NodeBox2
-			{-0.02, -0.375, -0.02, 0.0825, -0.1875, 0.0825}, -- NodeBox3
-			{-0.0625, -0.1875, -0.0625, 0.125, -0.125, 0.125}, -- NodeBox4
-			{-0.125, -0.1875, -0.0625, -0.0625, 0.125, 0.125}, -- NodeBox5
-			{0.125, -0.1875, -0.0625, 0.1875, 0.125, 0.125}, -- NodeBox6
-			{-0.125, -0.1875, 0.125, 0.1875, 0.125, 0.1875}, -- NodeBox7
-			{-0.125, -0.1875, -0.125, 0.1875, 0.125, -0.0625}, -- NodeBox8
-			{-0.0625, -0.25, -0.0625, 0.125, -0.1875, 0.125}, -- NodeBox9
-			{0.1875, 0.05, 0, 0.23, 0.0925, 0.0625}, -- NodeBox10
-			{0.1875, -0.15, 0, 0.23, -0.11, 0.0625}, -- NodeBox11
-			{0.23, -0.15, 0, 0.2725, 0.0925, 0.0625}, -- NodeBox12
-			{-0.1675, -0.15, 0, -0.125, -0.11, 0.0625}, -- NodeBox13
-			{-0.1675, 0.05, 0, -0.125, 0.0925, 0.0625}, -- NodeBox14
-			{-0.21, -0.15, 0, -0.1675, 0.0925, 0.0625}, -- NodeBox15
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.21, -0.5, -0.125, 0.2725, 0.125, 0.1875 }
-	}
+	groups = { snappy=3 },
+	selection_box = tr_cbox,
+	collision_box = tr_cbox,
 })
 
 homedecor.register("sportbench", {

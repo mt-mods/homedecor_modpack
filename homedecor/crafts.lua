@@ -2814,7 +2814,7 @@ minetest.register_craft({
 	recipe = {
 		{ "default:gold_ingot","","default:gold_ingot" },
 		{ "","default:gold_ingot","" },
-		{ "default:gold_ingot","default:gold_ingot","default:gold_ingot" }
+		{ "group:wood","default:gold_ingot","group:wood" }
 	},
 })
 
