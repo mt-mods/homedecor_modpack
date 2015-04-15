@@ -26,7 +26,8 @@ for i in ipairs(lavalamps_list) do
 	                length=6.0,
 	            },
 	        },
-	    },    
+	    },
+		inventory_image = "lavalamp_lamp_"..colour.."_inv.png",
 	    paramtype = "light",
 	    paramtype2 = "facedir",
 	    sunlight_propagates = true,
@@ -77,8 +78,4 @@ for i in ipairs(lavalamps_list) do
 	})
 	
 end
-
-
-
-
 
