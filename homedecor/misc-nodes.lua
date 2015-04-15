@@ -342,17 +342,6 @@ homedecor.register("coatrack_wallmount", {
 	},
 })
 
-local ct_cbox = {
-	type = "fixed",
-	fixed = {
-		{  -8/16, 18/16,  -8/16,  8/16, 22/16,  8/16 },
-		{  -4/16, 12/16,  -4/16,  4/16, 18/16,  4/16 },
-		{ -10/32, 10/16, -10/32, 10/32, 12/16, 10/32 },
-		{  -1/16,  1/16,  -1/16,  1/16, 10/16,  1/16 },
-		{ -10/32, -8/16, -10/32, 10/32,  1/16, 10/32 }
-	}
-}
-
 homedecor.register("coat_tree", {
 	mesh = "homedecor_coatrack.obj",
 	tiles = {
@@ -363,8 +352,20 @@ homedecor.register("coat_tree", {
 	description = "Coat tree",
 	groups = {snappy=3},
 	expand = { top="air" },
-	selection_box = ct_cbox,
-	node_box = ct_cbox,
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.4, -0.5, -0.4, 0.4, 1.5, 0.4 }
+	},
+	node_box = {	-- this is used here to create a multi-part collision box.
+		type = "fixed",
+		fixed = {
+			{  -8/16, 18/16,  -8/16,  8/16, 22/16,  8/16 },
+			{  -4/16, 12/16,  -4/16,  4/16, 18/16,  4/16 },
+			{ -10/32, 10/16, -10/32, 10/32, 12/16, 10/32 },
+			{  -1/16,  1/16,  -1/16,  1/16, 10/16,  1/16 },
+			{ -10/32, -8/16, -10/32, 10/32,  1/16, 10/32 }
+		}
+	},
 })
 
 local cutlery_cbox = {
