@@ -127,14 +127,7 @@ minetest.register_alias("homedecor:doghouse_roof", "air")
 minetest.register_alias("homedecor:doghouse_base", "homedecor:doghouse")
 
 homedecor.register("simple_bench", {
-	tiles = {
-		"homedecor_old_wood.png",
-		"homedecor_old_wood.png",
-		"homedecor_old_wood.png",
-		"homedecor_old_wood.png",
-		"homedecor_old_wood.png",
-		"homedecor_old_wood.png^[transformFX"
-	},
+	tiles = { "homedecor_old_wood.png" },
 	description = "Simple Bench",
 	groups = {snappy=3},
 	node_box = {
