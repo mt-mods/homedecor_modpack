@@ -344,7 +344,13 @@ homedecor.register("coatrack_wallmount", {
 
 local ct_cbox = {
 	type = "fixed",
-	fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
+	fixed = {
+		{  -8/16, 18/16,  -8/16,  8/16, 22/16,  8/16 },
+		{  -4/16, 12/16,  -4/16,  4/16, 18/16,  4/16 },
+		{ -10/32, 10/16, -10/32, 10/32, 12/16, 10/32 },
+		{  -1/16,  1/16,  -1/16,  1/16, 10/16,  1/16 },
+		{ -10/32, -8/16, -10/32, 10/32,  1/16, 10/32 }
+	}
 }
 
 homedecor.register("coat_tree", {
@@ -358,7 +364,7 @@ homedecor.register("coat_tree", {
 	groups = {snappy=3},
 	expand = { top="air" },
 	selection_box = ct_cbox,
-	collision_box = ct_cbox,
+	node_box = ct_cbox,
 })
 
 local cutlery_cbox = {
