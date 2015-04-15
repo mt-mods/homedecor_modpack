@@ -13,39 +13,22 @@ for i in ipairs(lavalamps_list) do
 
 	minetest.register_node("lavalamp:"..colour, {
 	    description = lavalampdesc,
-	    drawtype = "nodebox",
+		drawtype = "mesh",
+		mesh = "lavalamp.obj",
 	    tiles = {
-	        "lavalamp_lamp_top.png",
-	        "lavalamp_lamp_bottom.png",
+	        "lavalamp_metal.png",
 	        {
 	            name="lavalamp_lamp_anim_"..colour..".png",
 	            animation={
 	                type="vertical_frames",
 	                aspect_w=40,
 	                aspect_h=40,
-	                length=3.0,
+	                length=6.0,
 	            },
 	        },
 	    },    
 	    paramtype = "light",
 	    paramtype2 = "facedir",
-	    node_box = {
-	        type = "fixed",
-	        fixed = {        
-				-- base
-	            { -0.1875, -0.5,  -0.1875,  0.1875, -0.3125,  0.1875, },
-	            { -0.125, -0.5,  -0.25,  0.125, -0.3125,  -0.1875, },
-	            { -0.25, -0.5,  -0.125,  -0.1875, -0.3125,  0.125, },
-	            { 0.1875, -0.5,  -0.125,  0.25, -0.3125,  0.125, },
-	            { -0.125, -0.5,  0.1875,  0.125, -0.3125,  0.25, },          
-	            -- lamp
-	            { -0.125, -0.3125,  -0.125,  0.125,  0.5,  0.125, },
-	            { -0.0625,  -0.3125,  -0.1875,  0.0625,  0.5,  -0.125, },
-	            { -0.0625,  -0.3125,  0.125,  0.0625,  0.5,  0.1875, },	 
-	            { -0.1875,  -0.3125,  -0.0625,  0.125,  0.5,  0.0625, },
-	            { 0.125,  -0.3125,  -0.0625,  0.1875,  0.5,  0.0625, },	           			
-	        },
-	    },
 	    sunlight_propagates = true,
 	    walkable = false,
 	    light_source = 14,
@@ -62,31 +45,14 @@ for i in ipairs(lavalamps_list) do
 
 	minetest.register_node("lavalamp:"..colour.."_off", {
 	    description = lavalampdesc.." off",
-	    drawtype = "nodebox",
+	    drawtype = "mesh",
+		mesh = "lavalamp.obj",
 	    tiles = {
-	        "lavalamp_lamp_top.png",
-	        "lavalamp_lamp_bottom.png",
-	        "lavalamp_lamp_off_sides.png",
+	        "lavalamp_metal.png",
+	        "lavalamp_lamp_off.png",
 	    },	    
 	    paramtype = "light",
 	    paramtype2 = "facedir",
-	    node_box = {
-	        type = "fixed",
-			fixed = {        
-				-- base
-	            { -0.1875, -0.5,  -0.1875,  0.1875, -0.3125,  0.1875, },
-	            { -0.125, -0.5,  -0.25,  0.125, -0.3125,  -0.1875, },
-	            { -0.25, -0.5,  -0.125,  -0.1875, -0.3125,  0.125, },
-	            { 0.1875, -0.5,  -0.125,  0.25, -0.3125,  0.125, },
-	            { -0.125, -0.5,  0.1875,  0.125, -0.3125,  0.25, },          
-	            -- lamp
-	            { -0.125, -0.3125,  -0.125,  0.125,  0.5,  0.125, },
-	            { -0.0625,  -0.3125,  -0.1875,  0.0625,  0.5,  -0.125, },
-	            { -0.0625,  -0.3125,  0.125,  0.0625,  0.5,  0.1875, },	 
-	            { -0.1875,  -0.3125,  -0.0625,  0.125,  0.5,  0.0625, },
-	            { 0.125,  -0.3125,  -0.0625,  0.1875,  0.5,  0.0625, },	           			
-	        },
-	    },
 	    sunlight_propagates = true,
 	    walkable = false,
 	    selection_box = {
