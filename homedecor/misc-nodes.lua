@@ -512,6 +512,7 @@ homedecor.register("sportbench", {
 		"forniture_black_metal.png",
 		"wool_black.png"
 	},
+	inventory_image = "homedecor_sport_bench_inv.png",
 	groups = { snappy=3 },
 	selection_box = sb_cbox,
 	collision_box = sb_cbox,
