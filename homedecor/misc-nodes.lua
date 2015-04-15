@@ -342,25 +342,23 @@ homedecor.register("coatrack_wallmount", {
 	},
 })
 
+local ct_cbox = {
+	type = "fixed",
+	fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
+}
+
 homedecor.register("coat_tree", {
-	tiles = { "forniture_wood.png" },
+	mesh = "homedecor_coatrack.obj",
+	tiles = {
+		"forniture_wood.png",
+		"homedecor_generic_wood.png"
+	},
 	inventory_image = "homedecor_coatrack_inv.png",
 	description = "Coat tree",
 	groups = {snappy=3},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{0, -0.5, 0, 0.0625, 1.5, 0.0625}, -- NodeBox1
-			{-0.125, -0.5, -0.125, 0.1875, -0.4375, 0.1875}, -- NodeBox2
-			{0.1875, -0.5, -0.0625, 0.22, -0.4375, 0.125}, -- NodeBox3
-			{-0.0625, -0.5, 0.188, 0.125, -0.4375, 0.22}, -- NodeBox4
-			{-0.16, -0.5, -0.0625, -0.125, -0.4375, 0.125}, -- NodeBox5
-			{-0.0625, -0.5, -0.16, 0.125, -0.4375, -0.125}, -- NodeBox6
-			{-0.25, 1.1875, 0, 0.3125, 1.25, 0.0625}, -- NodeBox7
-			{0, 1.1875, -0.25, 0.0625, 1.25, 0.3125}, -- NodeBox8
-			{-0.0207468, 1.4375, -0.0207468, 0.0829876, 1.5, 0.0829876}, -- NodeBox9
-		}
-	},
+	expand = { top="air" },
+	selection_box = ct_cbox,
+	collision_box = ct_cbox,
 })
 
 local cutlery_cbox = {
