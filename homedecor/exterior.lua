@@ -30,68 +30,28 @@ homedecor.register("barbecue", {
 
 minetest.register_alias("homedecor:barbecue_meat", "air")
 
-homedecor.register("bench_large_1_left", {
+local bl1_cbox = {
+	type = "fixed",
+	fixed = { -0.5, -0.5, -0.25, 1.5, 0.5, 0.5 }
+}
+
+homedecor.register("bench_large_1", {
+	mesh = "homedecor_bench_large_1.obj",
+	tiles = {
+		"homedecor_old_wood.png",
+		"homedecor_tile_wrought_iron2.png"
+	},
 	description = "Garden Bench (style 1)",
-	tiles = {
-		"homedecor_bench_large_1_left_top.png",
-		"homedecor_bench_large_1_left_bottom.png",
-		"homedecor_bench_large_1_ends.png^[transformFX",
-		"homedecor_bench_large_1_ends.png",
-		"homedecor_bench_large_1_left_back.png",
-		"homedecor_bench_large_1_left_front.png"
-	},
 	inventory_image = "homedecor_bench_large_1_inv.png",
-	groups = {snappy=3},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, 0.25, 0.375, 0.5, 0.4375, 0.4375}, -- NodeBox1
-			{-0.5, 0, 0.375, 0.5, 0.1875, 0.4375}, -- NodeBox2
-			{-0.5, -0.125, 0.115, 0.5, -0.0625, 0.35}, -- NodeBox3
-			{-0.5, -0.125, -0.0872, 0.5, -0.0625, 0.079}, -- NodeBox4
-			{-0.3125, -0.5, 0.4375, -0.25, 0.375, 0.5}, -- NodeBox5
-			{-0.3125, -0.25, -0.0625, -0.25, -0.125, 0.4375}, -- NodeBox6
-			{-0.3125, -0.5, -0.0625, -0.25, -0.25, 0}, -- NodeBox7
-		}
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.09375, 1.5, 0.5, 0.5 }
-	},
-	expand = { right="homedecor:bench_large_1_right" },
-	--[[
-	on_rightclick = function(pos, node, clicker)
-		pos.y = pos.y-0 -- player's sit position.
-		homedecor.sit_exec(pos, node, clicker)
-	end,
-	--]]
+	groups = { snappy = 3 },
+	expand = { right="air" },
+	sounds = default.node_sound_wood_defaults(),
+	selection_box = bl1_cbox,
+	collision_box = bl1_cbox,
 })
 
-homedecor.register("bench_large_1_right", {
-	tiles = {
-		"homedecor_bench_large_1_left_top.png^[transformFX",
-		"homedecor_bench_large_1_left_bottom.png^[transformFX",
-		"homedecor_bench_large_1_ends.png^[transformFX",
-		"homedecor_bench_large_1_ends.png",
-		"homedecor_bench_large_1_left_back.png^[transformFX",
-		"homedecor_bench_large_1_left_front.png^[transformFX"
-	},
-	groups = {snappy=3},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, 0.25, 0.375, 0.5, 0.4375, 0.4375}, -- NodeBox1
-			{-0.5, 0, 0.375, 0.5, 0.1875, 0.4375}, -- NodeBox2
-			{-0.5, -0.125, 0.115, 0.5, -0.0625, 0.35}, -- NodeBox3
-			{-0.5, -0.125, -0.0872, 0.5, -0.0625, 0.079}, -- NodeBox4
-			{0.25, -0.5, 0.4375, 0.3125, 0.375, 0.5}, -- NodeBox5
-			{0.25, -0.25, -0.0625, 0.3125, -0.125, 0.5}, -- NodeBox6
-			{0.25, -0.5, -0.0625, 0.3125, -0.25, 0}, -- NodeBox7
-		}
-	},
-	selection_box = homedecor.nodebox.null,
-})
-
+minetest.register_alias("homedecor:bench_large_1_left", "homedecor:bench_large_1")
+minetest.register_alias("homedecor:bench_large_1_right", "air")
 
 homedecor.register("bench_large_2_left", {
 	description = "Garden Bench (style 2)",

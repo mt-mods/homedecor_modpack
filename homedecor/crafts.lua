@@ -2590,7 +2590,7 @@ minetest.register_craft( {
 
 
 minetest.register_craft( {
-        output = "homedecor:bench_large_1_left",
+        output = "homedecor:bench_large_1",
         recipe = {
 			{ "group:wood", "group:wood", "group:wood" },
 			{ "group:wood", "group:wood", "group:wood" },
