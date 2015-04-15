@@ -128,12 +128,12 @@ minetest.register_alias("homedecor:doghouse_base", "homedecor:doghouse")
 
 homedecor.register("simple_bench", {
 	tiles = {
-		"homedecor_generic_wood.png",
-		"homedecor_generic_wood.png",
-		"homedecor_generic_wood.png",
-		"homedecor_generic_wood.png",
-		"homedecor_bench_large_2_left_back.png",
-		"homedecor_bench_large_2_left_back.png^[transformFX"
+		"homedecor_old_wood.png",
+		"homedecor_old_wood.png",
+		"homedecor_old_wood.png",
+		"homedecor_old_wood.png",
+		"homedecor_old_wood.png",
+		"homedecor_old_wood.png^[transformFX"
 	},
 	description = "Simple Bench",
 	groups = {snappy=3},
