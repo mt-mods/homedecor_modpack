@@ -628,11 +628,11 @@ function signs_lib.determine_sign_type(itemstack, placer, pointed_thing, locked)
 			minetest.add_node(above, {name = "signs:sign_hanging", param2 = fdir})
 		elseif wdir == 1 and signname == "default:sign_wall" then
 			minetest.add_node(above, {name = "signs:sign_yard", param2 = fdir})
-		elseif signname ~= "default:sign_wall" then -- it must be a metal wall sign.
+		elseif signname ~= "default:sign_wall"
+		  and signname ~= "locked_sign:sign_wall_locked" then -- it's a metal wall sign.
 			minetest.add_node(above, {name = signname, param2 = fdir})
 		else -- it must be a default or locked wooden wall sign
 			minetest.add_node(above, {name = signname, param2 = wdir }) -- note it's wallmounted here!
-			print(dump(wdir))
 			if locked then
 				local meta = minetest.get_meta(above)
 				local owner = placer:get_player_name()
