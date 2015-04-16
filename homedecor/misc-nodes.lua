@@ -631,17 +631,20 @@ minetest.register_alias("homedecor:tool_cabinet_top", "air")
 
 homedecor.register("calendar", {
 	description = "Calendar",
-	drawtype = "signlike",
+	mesh = "homedecor_calendar.obj",
 	tiles = {"homedecor_calendar.png"},
-	inventory_image = "homedecor_calendar.png",
-	wield_image = "homedecor_calendar.png",
+	inventory_image = "homedecor_calendar_inv.png",
+	wield_image = "homedecor_calendar_inv.png",
 	paramtype2 = "wallmounted",
 	sunlight_propagates = true,
 	walkable = false,
 	selection_box = {
 		type = "wallmounted",
+		wall_side =   { -8/16, -8/16, -4/16, -5/16,  5/16, 4/16 },
+		wall_bottom = { -4/16, -8/16, -8/16,  4/16, -5/16, 5/16 },
+		wall_top =    { -4/16,  5/16, -8/16,  4/16,  8/16, 5/16 }
 	},
-	groups = {choppy=2,dig_immediate=2,attached_node=1},
+	groups = {choppy=2,attached_node=1},
 	legacy_wallmounted = true,
 	sounds = default.node_sound_defaults(),
 })
