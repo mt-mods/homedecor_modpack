@@ -125,7 +125,7 @@ minetest.register_node("plasmascreen:tv", {
 		end
 	end,
 	on_punch = function(pos, node, puncher, pointed_thing)
-		minetest.set_node(pos, {name = "plasmascreen:tv_off", param2 = node.fdir})
+		minetest.set_node(pos, {name = "plasmascreen:tv_off", param2 = node.param2})
 	end
 })
 
@@ -152,7 +152,7 @@ minetest.register_node("plasmascreen:tv_off", {
 		end
 	end,
 	on_punch = function(pos, node, puncher, pointed_thing)
-		minetest.set_node(pos, {name = "plasmascreen:tv", param2 = node.fdir})
+		minetest.set_node(pos, {name = "plasmascreen:tv", param2 = node.param2})
 	end,
 	drop = "plasmascreen:tv"
 })
