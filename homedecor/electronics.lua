@@ -140,3 +140,15 @@ homedecor.register("telephone", {
 	collision_box = tel_cbox,
 })
 
+minetest.register_abm({
+	nodenames = "homedecor:telephone",
+	interval = 30,
+	chance = 10,
+	action = function(pos, node)
+		minetest.sound_play("homedecor_telephone_ringing", {
+		pos = pos,
+		gain = 1.0,
+		max_hear_distance = 10
+	})
+	end
+})
