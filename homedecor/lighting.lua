@@ -211,6 +211,13 @@ homedecor.register("wall_sconce", {
 	light_source = LIGHT_MAX-4,
 })
 
+local ol_cbox = {
+	type = "fixed",
+	fixed = {
+		{ -5/16, -8/16, -3/16, 5/16, 4/16, 3/16 },
+	}
+}
+
 homedecor.register("oil_lamp", {
 	description = S("Oil lamp"),
 	mesh = "homedecor_oil_lamp.obj",
@@ -223,12 +230,8 @@ homedecor.register("oil_lamp", {
 	},
 	inventory_image = "homedecor_oil_lamp_inv.png",
 	sunlight_propagates = true,
-	selection_box = {
-		type = "fixed",
-		fixed = {
-			{ -5/16, -8/16, -3/16, 5/16, 4/16, 3/16 },
-		}
-	},
+	selection_box = ol_cbox,
+	collision_box = ol_cbox,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-3,
 	sounds = default.node_sound_wood_defaults(),
