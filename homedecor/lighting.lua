@@ -213,18 +213,24 @@ homedecor.register("wall_sconce", {
 
 homedecor.register("oil_lamp", {
 	description = S("Oil lamp"),
-	drawtype = "plantlike",
-	tiles = { 'homedecor_oil_lamp.png' },
-	inventory_image = 'homedecor_oil_lamp.png',
+	mesh = "homedecor_oil_lamp.obj",
+	tiles = {
+		"homedecor_oil_lamp_handles.png",
+		"homedecor_oil_lamp_glass.png",
+		"homedecor_tile_brass2.png",
+		"homedecor_oil_lamp_base.png",
+		"homedecor_oil_lamp_top.png",
+	},
+	inventory_image = "homedecor_oil_lamp_inv.png",
 	sunlight_propagates = true,
 	selection_box = {
 		type = "fixed",
 		fixed = {
-			{ -0.3, -0.5, -0.3, 0.3, 0.5, 0.3 },
+			{ -5/16, -8/16, -3/16, 5/16, 4/16, 3/16 },
 		}
 	},
 	groups = { snappy = 3 },
-	light_source = LIGHT_MAX-4,
+	light_source = LIGHT_MAX-3,
 	sounds = default.node_sound_wood_defaults(),
 })
 
