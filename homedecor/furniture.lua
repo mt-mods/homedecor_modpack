@@ -155,24 +155,26 @@ for i in ipairs(chaircolors) do
 	end
 end
 
+local ob_cbox = {
+	type = "fixed",
+	fixed = { -0.5, -0.5, 0, 0.5, 0.5, 0.5 }
+}
+
 minetest.register_node(":homedecor:openframe_bookshelf", {
 	description = "Bookshelf (open-frame)",
 	drawtype = "mesh",
 	mesh = "homedecor_openframe_bookshelf.obj",
-	tiles = { "homedecor_openframe_bookshelf.png" },
+	tiles = {
+		"homedecor_openframe_bookshelf_books.png",
+		"default_wood.png"
+	},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	is_ground_content = false,
 	groups = {choppy=3,oddly_breakable_by_hand=2,flammable=3},
 	sounds = default.node_sound_wood_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, 0, 0.5, 0.5, 0.5 }
-	},
-	collision_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, 0, 0.5, 0.5, 0.5 }
-	},
+	selection_box = ob_cbox,
+	collision_box = ob_cbox,
 })
 
 local bedcolors = {
