@@ -2427,8 +2427,8 @@ for i in ipairs(color_pairings) do
 	minetest.register_craft( {
 		    output = "homedecor:tiles_"..result.." 2",
 		    recipe = {
-				{ "building_blocks:Marble", "dye:"..dye1 },
-				{ "building_blocks:Marble", "dye:"..dye2 }
+				{ "group:marble", "dye:"..dye1 },
+				{ "group:marble", "dye:"..dye2 }
 		    },
 	})
 end

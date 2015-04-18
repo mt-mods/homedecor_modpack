@@ -60,8 +60,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'building_blocks:BWtile 10',
 	recipe = {
-		{"building_blocks:Marble", "group:tar_block"},
-		{"group:tar_block", "building_blocks:Marble"},
+		{"group:marble", "group:tar_block"},
+		{"group:tar_block", "group:marble"},
 	}
 })
 minetest.register_craft({
@@ -526,7 +526,7 @@ minetest.register_node("building_blocks:Marble", {
 	description = "Marble",
 	tiles = {"building_blocks_marble.png"},
 	is_ground_content = true,
-	groups = {cracky=3},
+	groups = {cracky=3, marble = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
 minetest.register_craft({
@@ -579,9 +579,9 @@ if not minetest.get_modpath("technic") then
 	minetest.register_craft({
 		output = "technic:granite 9",
 		recipe = {
-			{ "group:tar_block", "building_blocks:Marble", "group:tar_block" },
-			{ "building_blocks:Marble", "group:tar_block", "building_blocks:Marble" },
-			{ "group:tar_block", "building_blocks:Marble", "group:tar_block" }
+			{ "group:tar_block", "group:marble", "group:tar_block" },
+			{ "group:marble", "group:tar_block", "group:marble" },
+			{ "group:tar_block", "group:marble", "group:tar_block" }
 		},
 	})
 
