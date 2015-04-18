@@ -20,7 +20,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'building_blocks:Tarmac_spread 4',
 	recipe = {
-		{"building_blocks:Tar", "building_blocks:Tar"},
+		{"group:tar_block", "group:tar_block"},
 	}
 })
 minetest.register_craft({
@@ -60,8 +60,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'building_blocks:BWtile 10',
 	recipe = {
-		{"building_blocks:Marble", "building_blocks:Tar"},
-		{"building_blocks:Tar", "building_blocks:Marble"},
+		{"building_blocks:Marble", "group:tar_block"},
+		{"group:tar_block", "building_blocks:Marble"},
 	}
 })
 minetest.register_craft({
@@ -500,7 +500,7 @@ minetest.register_craftitem("building_blocks:tar_base", {
 minetest.register_craft({
 	output = 'building_blocks:knife 1',
 	recipe = {
-		{"building_blocks:Tar"},
+		{"group:tar_block"},
 		{"group:stick"},
 	}
 })
@@ -519,7 +519,7 @@ minetest.register_node("building_blocks:Tar", {
 	description = "Tar",
 	tiles = {"building_blocks_tar.png"},
 	is_ground_content = true,
-	groups = {crumbly=1},
+	groups = {crumbly=1, tar_block = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
 minetest.register_node("building_blocks:Marble", {
@@ -558,14 +558,12 @@ minetest.register_tool("building_blocks:knife", {
 	},
 })
 
-minetest.add_to_creative_inventory('building_blocks:Tar 0')
-minetest.add_to_creative_inventory('building_blocks:hardwood 0')
 minetest.register_craft({
 	output = "building_blocks:Marble 9",
 	recipe = {
-		{"default:clay", "building_blocks:Tar", "default:clay"},
-		{"building_blocks:Tar","default:clay", "building_blocks:Tar"},
-		{"default:clay", "building_blocks:Tar","default:clay"},
+		{"default:clay", "group:tar_block", "default:clay"},
+		{"group:tar_block","default:clay", "group:tar_block"},
+		{"default:clay", "group:tar_block","default:clay"},
 	}
 })
 
@@ -581,9 +579,9 @@ if not minetest.get_modpath("technic") then
 	minetest.register_craft({
 		output = "technic:granite 9",
 		recipe = {
-			{ "building_blocks:Tar", "building_blocks:Marble", "building_blocks:Tar" },
-			{ "building_blocks:Marble", "building_blocks:Tar", "building_blocks:Marble" },
-			{ "building_blocks:Tar", "building_blocks:Marble", "building_blocks:Tar" }
+			{ "group:tar_block", "building_blocks:Marble", "group:tar_block" },
+			{ "building_blocks:Marble", "group:tar_block", "building_blocks:Marble" },
+			{ "group:tar_block", "building_blocks:Marble", "group:tar_block" }
 		},
 	})
 
@@ -592,15 +590,6 @@ if not minetest.get_modpath("technic") then
 				description="Granite",
 				groups={cracky=1, not_in_creative_inventory=1},
 				tiles={"technic_granite.png"},
-		})
-
-		minetest.register_craft({
-			output = "technic:granite 9",
-			recipe = {
-				{ "moreblocks:tar", "building_blocks:Marble", "moreblocks:tar" },
-				{ "building_blocks:Marble", "moreblocks:tar", "building_blocks:Marble" },
-				{ "moreblocks:tar", "building_blocks:Marble", "moreblocks:tar" }
-			},
 		})
 	end
 end
