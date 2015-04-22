@@ -509,7 +509,7 @@ homedecor.register("ceiling_lamp_off", {
 		"homedecor_table_standing_lamp_lightbulb.png",
 		"homedecor_generic_brown_plastic.png",
 	},
-	groups = {snappy=3},
+	groups = {snappy=3, not_in_creative_inventory=1},
 	on_punch = function(pos, node, puncher)
 		minetest.set_node(pos, {name = "homedecor:ceiling_lamp"})
 	end,
