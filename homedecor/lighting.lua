@@ -493,6 +493,7 @@ homedecor.register("ceiling_lamp", {
 		"homedecor_table_standing_lamp_lightbulb.png^[colorize:#ffffff:200",
 		"homedecor_generic_brown_plastic.png",
 	},
+	inventory_image = "homedecor_ceiling_lamp_inv.png",
 	light_source = LIGHT_MAX,
 	groups = {snappy=3},
 	on_punch = function(pos, node, puncher)
