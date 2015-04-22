@@ -1279,6 +1279,24 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "homedecor:candlestick_wrought_iron",
+	recipe = {
+		{""},
+		{"homedecor:candle_thin"},
+		{"default:iron_lump"},
+	}
+})
+
+minetest.register_craft({
+	output = "homedecor:candlestick_brass",
+	recipe = {
+		{""},
+		{"homedecor:candle_thin"},
+		{"technic:brass_ingot"},
+	}
+})
+
+minetest.register_craft({
 	output = "homedecor:oil_lamp 4",
 	recipe = {
 		{ "", "vessels:glass_bottle", "" },
