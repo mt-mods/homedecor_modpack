@@ -442,3 +442,36 @@ for _, color in ipairs(dlamp_colors) do
 		groups = {snappy=3},
 	})
 end
+
+homedecor.register("ceiling_lamp", {
+	description = S("Ceiling Lamp"),
+	mesh = "homedecor_ceiling_lamp.obj",
+	tiles = {
+		"homedecor_tile_brass2.png",
+		"homedecor_ceiling_lamp_glass.png",
+		"homedecor_table_standing_lamp_lightbulb.png^[colorize:#ffffff:200",
+		"homedecor_generic_brown_plastic.png",
+	},
+	light_source = LIGHT_MAX,
+	groups = {snappy=3},
+	on_punch = function(pos, node, puncher)
+		minetest.set_node(pos, {name = "homedecor:ceiling_lamp_off"})
+	end,
+})
+
+homedecor.register("ceiling_lamp_off", {
+	description = S("Ceiling Lamp (off)"),
+	mesh = "homedecor_ceiling_lamp.obj",
+	tiles = {
+		"homedecor_tile_brass2.png",
+		"homedecor_ceiling_lamp_glass.png",
+		"homedecor_table_standing_lamp_lightbulb.png",
+		"homedecor_generic_brown_plastic.png",
+	},
+	groups = {snappy=3},
+	on_punch = function(pos, node, puncher)
+		minetest.set_node(pos, {name = "homedecor:ceiling_lamp"})
+	end,
+	drop = "homedecor:ceiling_lamp"
+})
+

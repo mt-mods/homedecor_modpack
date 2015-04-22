@@ -3120,6 +3120,23 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:ceiling_lamp",
+	recipe = {
+		{ "", "technic:brass_ingot", ""},
+		{ "", "homedecor:chainlink_brass", ""},
+		{ "default:glass", "homedecor:glowlight_small_cube_white", "default:glass"}
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:ceiling_lamp",
+	recipe = {
+		{ "", "chains:chain_top_brass", ""},
+		{ "default:glass", "homedecor:glowlight_small_cube_white", "default:glass"}
+	},
+})
+
 if (minetest.get_modpath("technic") and minetest.get_modpath("dye") and minetest.get_modpath("bees")) then
 	technic.register_separating_recipe({ input = {"bees:wax 1"}, output = {"homedecor:oil_extract 2","dye:yellow 1"} })
 end
