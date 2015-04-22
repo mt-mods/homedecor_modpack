@@ -152,15 +152,22 @@ function homedecor.bed_expansion(pos, placer, itemstack, pointed_thing, color)
 
 	local lxd = homedecor.fdir_to_left[fdir+1][1]
 	local lzd = homedecor.fdir_to_left[fdir+1][2]
-
 	local leftpos = {x=pos.x+lxd, y=pos.y, z=pos.z+lzd}
 	local leftnode = minetest.get_node(leftpos)
 
+	local rxd = homedecor.fdir_to_right[fdir+1][1]
+	local rzd = homedecor.fdir_to_right[fdir+1][2]
+	local rightpos = {x=pos.x+rxd, y=pos.y, z=pos.z+rzd}
+	local rightnode = minetest.get_node(rightpos)
+
 	if leftnode.name == "homedecor:bed_"..color.."_regular" then
 		local newname = string.gsub(thisnode.name, "_regular", "_kingsize")
-
 		minetest.set_node(pos, {name = "air"})
 		minetest.set_node(leftpos, { name = newname, param2 = fdir})
+	elseif rightnode.name == "homedecor:bed_"..color.."_regular" then
+		local newname = string.gsub(thisnode.name, "_regular", "_kingsize")
+		minetest.set_node(rightpos, {name = "air"})
+		minetest.set_node(pos, { name = newname, param2 = fdir})
 	end
 	
 	local topnode = minetest.get_node({x=pos.x, y=pos.y+1.0, z=pos.z})
