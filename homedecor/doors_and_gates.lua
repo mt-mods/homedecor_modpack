@@ -221,10 +221,12 @@ for i in ipairs(sides) do
 
 		local selbox = door_model.selectbox or def_selbox
 		local colbox = door_model.collisionbox or door_model.selectbox or def_selbox
-		
 		local mesh = door_model.mesh
+		local groups = {snappy = 3}
+
 		if side == "right" then
 			mesh = string.gsub(door_model.mesh, ".obj", "_right.obj")
+			groups = {snappy = 3, not_in_creative_inventory = 1}
 		end
 
 		minetest.register_node("homedecor:door_"..doorname.."_"..side, {
@@ -236,7 +238,7 @@ for i in ipairs(sides) do
 			wield_image = "homedecor_door_"..doorname.."_inv.png",
 			paramtype = "light",
 			paramtype2 = "facedir",
-			groups = {snappy = 3},
+			groups = groups,
 			sounds = default.node_sound_wood_defaults(),
 			use_texture_alpha = door_model.usealpha,
 			selection_box = selbox,
