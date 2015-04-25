@@ -280,15 +280,10 @@ for i in ipairs(sides) do
 		    }
 		})
 
-		if doorname ~= "wood_glass_oak" then
-			minetest.register_alias("homedecor:door_"..doorname.."_top_"..side, "air")
-			minetest.register_alias("homedecor:door_"..doorname.."_bottom_"..side, "homedecor:door_"..doorname.."_"..side)
-		end
-	end
+		minetest.register_alias("homedecor:door_"..doorname.."_top_"..side, "air")
+		minetest.register_alias("homedecor:door_"..doorname.."_bottom_"..side, "homedecor:door_"..doorname.."_"..side)
 
-	minetest.register_alias("homedecor:door_wood_glass_top_"..side, "air")
-	minetest.register_alias("homedecor:door_wood_glass_bottom_"..side, "homedecor:door_wood_glass_oak_"..side)
-	minetest.register_alias("homedecor:door_wood_glass_"..side, "homedecor:door_wood_glass_oak_"..side)
+	end
 end
 
 -- Gates
