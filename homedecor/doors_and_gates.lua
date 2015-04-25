@@ -284,6 +284,10 @@ for i in ipairs(sides) do
 		minetest.register_alias("homedecor:door_"..doorname.."_bottom_"..side, "homedecor:door_"..doorname.."_"..side)
 
 	end
+
+	minetest.register_alias("homedecor:door_wood_glass_top_"..side, "air")
+	minetest.register_alias("homedecor:door_wood_glass_bottom_"..side, "homedecor:door_wood_glass_oak_"..side)
+
 end
 
 -- Gates
