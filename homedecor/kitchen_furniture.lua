@@ -53,7 +53,12 @@ homedecor.register("kitchen_cabinet_half", {
 homedecor.register("kitchen_cabinet_with_sink", {
 	description = S("Kitchen Cabinet with sink"),
 	mesh = "homedecor_kitchen_sink.obj",
-	tiles = { "homedecor_kitchen_sink.png" },
+	tiles = {
+		"homedecor_kitchen_sink_top.png",
+		"homedecor_kitchen_cabinet_front.png",
+		"homedecor_kitchen_cabinet_sides.png",
+		"homedecor_kitchen_cabinet_bottom.png"
+	},
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	infotext=S("Under-sink cabinet"),
