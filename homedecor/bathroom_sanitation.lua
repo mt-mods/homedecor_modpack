@@ -50,6 +50,27 @@ homedecor.register("toilet_open", {
 	end,
 })
 
+-- toilet paper :-)
+
+local tp_cbox = {
+	type = "fixed",
+	fixed = { -0.25, 0.125, 0.0625, 0.1875, 0.4375, 0.5 }
+}
+
+homedecor.register("toilet_paper", {
+	description = S("Toilet paper"),
+	mesh = "homedecor_toilet_paper.obj",
+	tiles = {
+		"homedecor_generic_quilted_paper.png",
+		"default_wood.png"
+	},
+	inventory_image = "homedecor_toilet_paper_inv.png",
+	selection_box = tp_cbox,
+	collision_box = tp_cbox,
+	groups = {snappy=2,oddly_breakable_by_hand=3,flammable=3},
+	sounds = default.node_sound_defaults(),
+})
+
 --Sink
 
 local sink_cbox = {

@@ -100,7 +100,10 @@ homedecor.register("kitchen_faucet", {
 
 homedecor.register("paper_towel", {
 	mesh = "homedecor_paper_towel.obj",
-	tiles = { "homedecor_paper_towel.png" },
+	tiles = {
+		"homedecor_generic_quilted_paper.png",
+		"default_wood.png"
+	},
 	inventory_image = "homedecor_paper_towel_inv.png",
 	description = "Paper towels",
 	groups = { snappy=3 },
