@@ -495,7 +495,7 @@ homedecor.register("trophy", {
 	mesh = "homedecor_trophy.obj",
 	tiles = {
 		"default_wood.png",
-		"default_gold_block.png"
+		"homedecor_tile_gold.png"
 	},
 	inventory_image = "homedecor_trophy_inv.png",
 	groups = { snappy=3 },
