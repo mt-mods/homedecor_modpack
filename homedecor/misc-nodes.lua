@@ -236,26 +236,11 @@ homedecor.register("cardboard_box", {
 
 homedecor.register("dvd_cd_cabinet", {
 	description = "DVD/CD cabinet",
+	mesh = "homedecor_dvd_cabinet.obj",
 	tiles = {
-		"homedecor_dvdcd_cabinet_top.png",
-		"homedecor_dvdcd_cabinet_top.png",
-		"homedecor_dvdcd_cabinet_sides.png",
-		"homedecor_dvdcd_cabinet_sides.png^[transformFX",
-		"homedecor_dvdcd_cabinet_back.png",
+		"default_wood.png",
 		"homedecor_dvdcd_cabinet_front.png",
-	},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, 0, -0.4375, 0.5, 0.5},
-			{0.4375, -0.5, 0, 0.5, 0.5, 0.5},
-			{-0.0625, -0.5, 0, 0.0625, 0.5, 0.5},
-			{-0.5, 0.4375, 0, 0.5, 0.5, 0.5},
-			{-0.5, -0.5, 0, 0.5, -0.4375, 0.5},
-			{-0.5, -0.5, 0.0625, 0.5, 0.5, 0.4375},
-			{-0.375, -0.5, 0.02756, -0.125, 0.5, 0.5},
-			{0.125, -0.5, 0.01217, 0.375, 0.5, 0.5},
-		}
+		"homedecor_dvdcd_cabinet_back.png"
 	},
 	selection_box = homedecor.nodebox.slab_z(0.5),
 	groups = {choppy=2,oddly_breakable_by_hand=2,flammable=3},
