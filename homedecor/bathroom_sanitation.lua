@@ -94,6 +94,7 @@ homedecor.register("sink", {
 })
 
 --Taps
+
 homedecor.register("taps", {
 	description = S("Bathroom taps/faucet"),
 	mesh = "homedecor_bathroom_faucet.obj",
@@ -103,12 +104,14 @@ homedecor.register("taps", {
 		"homedecor_white_metal.png",
 		"homedecor_bright_metal.png"
 	},
-	inventory_image="3dforniture_inv_taps.png",
+	inventory_image = "3dforniture_inv_taps.png",
+	wield_image = "3dforniture_inv_taps.png",
 	sunlight_propagates = true,
 	selection_box = {
 		type = "fixed",
 		fixed = { -4/16, -7/16, 4/16, 4/16, -4/16, 8/16 },
 	},
+	walkable = false,
 	groups = {cracky=2,},
 	sounds = default.node_sound_stone_defaults(),
 })
