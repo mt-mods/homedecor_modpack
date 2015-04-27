@@ -669,7 +669,13 @@ local wine_cbox = homedecor.nodebox.slab_z(0.25)
 homedecor.register("wine_rack", {
 	description = "Wine Rack",
 	mesh = "homedecor_wine_rack.obj",
-	tiles = {"homedecor_wine_rack.png"},
+	tiles = {
+		"homedecor_generic_wood_red.png",
+		"homedecor_bottle_brown.png",
+		"homedecor_bottle_brown2.png",
+		"homedecor_bottle_brown3.png",
+		"homedecor_bottle_brown4.png"
+	},
 	inventory_image = "homedecor_wine_rack_inv.png",
 	groups = {choppy=2},
 	selection_box = wine_cbox,
