@@ -201,9 +201,9 @@ homedecor.register("desk", {
 	description = "Desk",
 	mesh = "homedecor_desk.obj",
 	tiles = {
+		"forniture_wood.png",
 		"homedecor_desk_drawers.png",
 		"forniture_black_metal.png",
-		"forniture_wood.png"
 	},
 	inventory_image = "homedecor_desk_inv.png",
 	selection_box = desk_cbox,
