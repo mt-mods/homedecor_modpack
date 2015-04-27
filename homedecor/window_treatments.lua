@@ -171,7 +171,7 @@ for c in ipairs(curtaincolors) do
 end
 
 local mats = {
-	{ "brass", "Brass", "homedecor_tile_brass2.png" },
+	{ "brass", "Brass", "homedecor_tile_brass.png" },
 	{ "wrought_iron", "Wrought iron", "homedecor_tile_wrought_iron2.png" },
 	{ "wood", "Wooden", "default_wood.png" }
 }

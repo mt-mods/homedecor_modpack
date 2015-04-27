@@ -81,7 +81,7 @@ homedecor.register("grandfather_clock", {
 		"homedecor_grandfather_clock_face.png",
 		"homedecor_grandfather_clock_wood.png",
 		"homedecor_grandfather_clock_face_edge.png",
-		"homedecor_tile_brass2.png"
+		"homedecor_tile_brass.png"
 	},
 	inventory_image = "homedecor_grandfather_clock_inv.png",
 	groups = { snappy = 3 },

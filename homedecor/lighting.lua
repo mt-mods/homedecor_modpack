@@ -222,7 +222,7 @@ homedecor.register("candlestick_brass", {
 	tiles = {
 		"homedecor_candle_sides.png",
 		{name="homedecor_candle_flame.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
-		"homedecor_tile_brass2.png",
+		"homedecor_tile_brass.png",
 	},
 	inventory_image = "homedecor_candlestick_brass_inv.png",
 	selection_box = cs_cbox,
@@ -266,7 +266,7 @@ homedecor.register("oil_lamp", {
 	tiles = {
 		"homedecor_oil_lamp_handles.png",
 		"homedecor_oil_lamp_glass.png",
-		"homedecor_tile_brass2.png",
+		"homedecor_tile_brass.png",
 		"homedecor_oil_lamp_base.png",
 		"homedecor_oil_lamp_top.png",
 	},
@@ -488,7 +488,7 @@ homedecor.register("ceiling_lamp", {
 	description = S("Ceiling Lamp"),
 	mesh = "homedecor_ceiling_lamp.obj",
 	tiles = {
-		"homedecor_tile_brass2.png",
+		"homedecor_tile_brass.png",
 		"homedecor_ceiling_lamp_glass.png",
 		"homedecor_table_standing_lamp_lightbulb.png^[colorize:#ffffff:200",
 		"homedecor_generic_brown_plastic.png",
@@ -505,7 +505,7 @@ homedecor.register("ceiling_lamp_off", {
 	description = S("Ceiling Lamp (off)"),
 	mesh = "homedecor_ceiling_lamp.obj",
 	tiles = {
-		"homedecor_tile_brass2.png",
+		"homedecor_tile_brass.png",
 		"homedecor_ceiling_lamp_glass.png",
 		"homedecor_table_standing_lamp_lightbulb.png",
 		"homedecor_generic_brown_plastic.png",

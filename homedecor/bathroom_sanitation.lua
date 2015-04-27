@@ -120,10 +120,10 @@ homedecor.register("taps_brass", {
 	description = S("Bathroom taps/faucet (brass)"),
 	mesh = "homedecor_bathroom_faucet.obj",
 	tiles = {
-		"homedecor_tile_brass2.png",
-		"homedecor_tile_brass2.png",
+		"homedecor_tile_brass.png",
+		"homedecor_tile_brass.png",
 		"homedecor_white_metal.png",
-		"homedecor_tile_brass2.png"
+		"homedecor_tile_brass.png"
 	},
 	inventory_image = "3dforniture_taps_brass_inv.png",
 	wield_image = "3dforniture_taps_brass_inv.png",

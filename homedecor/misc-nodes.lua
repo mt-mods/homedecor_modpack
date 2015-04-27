@@ -62,7 +62,7 @@ end
 homedecor.register("pole_brass", {
     description = S("Brass Pole"),
 	mesh = "homedecor_round_pole.obj",
-    tiles = {"homedecor_tile_brass2.png"},
+    tiles = {"homedecor_tile_brass.png^homedecor_tile_horizlines_overlay.png",},
     inventory_image = "homedecor_pole_brass_inv.png",
     wield_image = "homedecor_pole_brass_inv.png",
     selection_box = {
@@ -437,7 +437,7 @@ homedecor.register("piano", {
 	mesh = "homedecor_piano.obj",
 	tiles = {
 		"homedecor_piano_keys.png",
-		"homedecor_tile_brass2.png",
+		"homedecor_tile_brass.png",
 		"homedecor_piano_wood.png"
 	},
 	inventory_image = "homedecor_piano_inv.png",
@@ -694,7 +694,7 @@ homedecor.banister_materials = {
 	{	"brass",
 		"brass",
 		"homedecor_white_wood.png",
-		"homedecor_tile_brass2.png",
+		"homedecor_tile_brass.png",
 		"technic:brass_ingot",
 		"group:stick",
 		"",
