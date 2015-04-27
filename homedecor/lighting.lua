@@ -205,7 +205,7 @@ homedecor.register("candlestick_wrought_iron", {
 	tiles = {
 		"homedecor_candle_sides.png",
 		{name="homedecor_candle_flame.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
-		"homedecor_tile_wrought_iron2.png",
+		"homedecor_tile_wrought_iron.png",
 	},
 	inventory_image = "homedecor_candlestick_wrought_iron_inv.png",
 	selection_box = cs_cbox,
@@ -240,7 +240,7 @@ homedecor.register("wall_sconce", {
 		'homedecor_candle_sides.png',
 		{name="homedecor_candle_flame.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
 		'homedecor_wall_sconce_back.png',
-		'homedecor_tile_wrought_iron2.png',
+		'homedecor_tile_wrought_iron.png',
 	},
 	inventory_image = "homedecor_wall_sconce_inv.png",
 	selection_box = {

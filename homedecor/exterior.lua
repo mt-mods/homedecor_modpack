@@ -39,7 +39,7 @@ homedecor.register("bench_large_1", {
 	mesh = "homedecor_bench_large_1.obj",
 	tiles = {
 		"homedecor_generic_wood.png",
-		"homedecor_tile_wrought_iron2.png"
+		"homedecor_tile_wrought_iron.png"
 	},
 	description = "Garden Bench (style 1)",
 	inventory_image = "homedecor_bench_large_1_inv.png",

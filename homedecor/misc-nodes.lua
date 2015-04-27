@@ -79,7 +79,7 @@ homedecor.register("pole_brass", {
 
 homedecor.register("pole_wrought_iron", {
     description = S("Wrought Iron Pole"),
-    tiles = {"homedecor_tile_wrought_iron2.png"},
+    tiles = { "homedecor_tile_wrought_iron.png^homedecor_tile_horizlines_overlay.png" },
     inventory_image = "homedecor_pole_wrought_iron_inv.png",
     wield_image = "homedecor_pole_wrought_iron_inv.png",
     selection_box = {
@@ -478,7 +478,7 @@ homedecor.register("sportbench", {
 	description = "Sport bench",
 	mesh = "homedecor_sport_bench.obj",
 	tiles = {
-		"homedecor_tile_wrought_iron2.png",
+		"homedecor_tile_wrought_iron.png",
 		"homedecor_bright_metal.png",
 		"forniture_black_metal.png",
 		"wool_black.png"
@@ -702,8 +702,8 @@ homedecor.banister_materials = {
 	},
 	{	"wrought_iron",
 		"wrought iron",
-		"homedecor_tile_wrought_iron2.png",
-		"homedecor_tile_wrought_iron2.png",
+		"homedecor_tile_wrought_iron.png",
+		"homedecor_tile_wrought_iron.png",
 		"homedecor:pole_wrought_iron",
 		"homedecor:pole_wrought_iron",
 		"",

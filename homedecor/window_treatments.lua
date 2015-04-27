@@ -172,7 +172,7 @@ end
 
 local mats = {
 	{ "brass", "Brass", "homedecor_tile_brass.png" },
-	{ "wrought_iron", "Wrought iron", "homedecor_tile_wrought_iron2.png" },
+	{ "wrought_iron", "Wrought iron", "homedecor_tile_wrought_iron.png" },
 	{ "wood", "Wooden", "default_wood.png" }
 }
 
