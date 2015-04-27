@@ -17,7 +17,7 @@ minetest.register_node("chains:chain", {
 	description = "Hanging chain (wrought iron)",
 	drawtype = "mesh",
 	mesh = "chains.obj",
-	tiles = {"wrought_iron.png"},
+	tiles = {"chains_wrought_iron.png"},
 	walkable = false,
 	climbable = true,
 	sunlight_propagates = true,
@@ -31,7 +31,7 @@ minetest.register_node("chains:chain_brass", {
 	description = "Hanging chain (brass)",
 	drawtype = "mesh",
 	mesh = "chains.obj",
-	tiles = {"brass.png"},
+	tiles = {"chains_brass.png"},
 	walkable = false,
 	climbable = true,
 	sunlight_propagates = true,
@@ -45,7 +45,7 @@ minetest.register_node("chains:chain_top", {
 	description = "Hanging chain (ceiling mount, wrought iron)",
 	drawtype = "mesh",
 	mesh = "top_chains.obj",
-	tiles = {"wrought_iron.png"},
+	tiles = {"chains_wrought_iron.png"},
 	walkable = false,
 	climbable = true,
 	sunlight_propagates = true,
@@ -59,7 +59,7 @@ minetest.register_node("chains:chain_top_brass", {
 	description = "Hanging chain (ceiling mount, brass)",
 	drawtype = "mesh",
 	mesh = "top_chains.obj",
-	tiles = {"brass.png"},
+	tiles = {"chains_brass.png"},
 	walkable = false,
 	climbable = true,
 	sunlight_propagates = true,
@@ -77,9 +77,21 @@ minetest.register_node("chains:chandelier", {
 	climbable = true,
 	sunlight_propagates = true,
 	paramtype = "light",
-	tiles = { {name="chains_chandelier.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}}},
-	inventory_image = "chains_chandelier_inv.png",
-	drawtype = "plantlike",
+	tiles = {
+		"chains_wrought_iron.png",
+		"chains_candle.png",
+		{
+			name="chains_candle_flame.png",
+			animation={
+				type="vertical_frames",
+				aspect_w=16,
+				aspect_h=16,
+				length=3.0
+			}
+		}
+	},
+	drawtype = "mesh",
+	mesh = "chains_chandelier.obj",
 	groups = {cracky=3},
 	sounds =  default.node_sound_stone_defaults(),
 })
@@ -92,9 +104,21 @@ minetest.register_node("chains:chandelier_brass", {
 	climbable = true,
 	sunlight_propagates = true,
 	paramtype = "light",
-	tiles = { {name="chains_chandelier_brass.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}}},
-	inventory_image = "chains_chandelier_brass_inv.png",
-	drawtype = "plantlike",
+	tiles = {
+		"chains_brass.png",
+		"chains_candle.png",
+		{
+			name="chains_candle_flame.png",
+			animation={
+				type="vertical_frames",
+				aspect_w=16,
+				aspect_h=16,
+				length=3.0
+			}
+		}
+	},
+	drawtype = "mesh",
+	mesh = "chains_chandelier.obj",
 	groups = {cracky=3},
 	sounds =  default.node_sound_stone_defaults(),
 })
