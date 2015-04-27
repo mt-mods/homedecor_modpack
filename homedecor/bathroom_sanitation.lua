@@ -95,27 +95,19 @@ homedecor.register("sink", {
 
 --Taps
 homedecor.register("taps", {
-	description = S("Taps"),
-	tiles = { "forniture_metal.png" },
+	description = S("Bathroom taps/faucet"),
+	mesh = "homedecor_bathroom_faucet.obj",
+	tiles = {
+		"forniture_metal.png",
+		"homedecor_bright_metal.png",
+		"homedecor_white_metal.png",
+		"homedecor_bright_metal.png"
+	},
 	inventory_image="3dforniture_inv_taps.png",
 	sunlight_propagates = true,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{ -0.25, -0.450,  0.49,  0.25, -0.30,  0.50, },
-			{ -0.05, -0.400,  0.25,  0.05, -0.35,  0.50, },
-			{ -0.05, -0.425,  0.25,  0.05, -0.40,  0.30, },
-			{ -0.20, -0.400,  0.45, -0.15, -0.35,  0.50, },
-			{ -0.20, -0.450,  0.40, -0.15, -0.30,  0.45, },
-			{ -0.25, -0.400,  0.40, -0.10, -0.35,  0.45, },
-			{  0.15, -0.400,  0.45,  0.20, -0.35,  0.50, },
-			{  0.15, -0.450,  0.40,  0.20, -0.30,  0.45, },
-			{  0.10, -0.400,  0.40,  0.25, -0.35,  0.45, },
-		},
-	},
 	selection_box = {
 		type = "fixed",
-		fixed = { -0.25, -0.45, 0.25, 0.25, -0.3, 0.5 },
+		fixed = { -4/16, -7/16, 4/16, 4/16, -4/16, 8/16 },
 	},
 	groups = {cracky=2,},
 	sounds = default.node_sound_stone_defaults(),
