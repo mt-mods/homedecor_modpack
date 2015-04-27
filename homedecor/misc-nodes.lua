@@ -273,22 +273,12 @@ homedecor.register("dvd_cd_cabinet", {
 
 homedecor.register("filing_cabinet", {
 	description = S("Filing Cabinet"),
+	mesh = "homedecor_filing_cabinet.obj",
 	tiles = {
-		'forniture_wood.png',
-		'homedecor_filing_cabinet_bottom.png',
-		'forniture_wood.png',
-		'forniture_wood.png',
-		'forniture_wood.png',
-		'homedecor_filing_cabinet_front.png'
+		"forniture_wood.png",
+		"homedecor_filing_cabinet_front.png",
+		"homedecor_filing_cabinet_bottom.png"
 	},
-        selection_box = { type = "regular" },
-        node_box = {
-                type = "fixed",
-		fixed = {
-			{ -8/16, -8/16, -30/64,  8/16,  8/16,   8/16 },	-- main body
-			{ -7/16, -7/16, -8/16,  7/16,  7/16,   8/16 },	-- drawer
-		}
-        },
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	infotext=S("Filing cabinet"),
