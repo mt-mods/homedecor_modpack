@@ -117,19 +117,10 @@ end
 
 homedecor.register("chimney", {
 	description = "Chimney",
+	mesh = "homedecor_chimney.obj",
 	tiles = {
-		"homedecor_chimney_top.png",
-		"homedecor_chimney_bottom.png",
-		"homedecor_chimney_sides.png",
-	},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.25, -0.5, -0.25, 0.25, 0.5, -0.1875},
-			{-0.25, -0.5, 0.1875, 0.25, 0.5, 0.25},
-			{-0.25, -0.5, -0.25, -0.1875, 0.5, 0.25},
-			{0.1875, -0.5, -0.25, 0.25, 0.5, 0.25},
-		}
+		"homedecor_chimney_tb.png",
+		"default_brick.png"
 	},
 	selection_box = homedecor.nodebox.bar_y(0.25),
 	groups = {cracky=3},
