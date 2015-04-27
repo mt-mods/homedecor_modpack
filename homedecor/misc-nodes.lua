@@ -736,6 +736,7 @@ for _, side in ipairs({"left", "right"}) do
 				homedecor.banister_materials[i][3],
 				homedecor.banister_materials[i][4]
 			},
+			inventory_image = "homedecor_banister_"..name.."_inv.png",
 			groups = groups,
 			selection_box = cbox,
 			collision_box = cbox,
