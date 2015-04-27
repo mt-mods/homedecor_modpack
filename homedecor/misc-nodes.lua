@@ -730,7 +730,7 @@ for _, side in ipairs({"left", "right"}) do
 		end
 
 		homedecor.register("banister_"..name.."_"..side, {
-			description = S("banister ("..homedecor.banister_materials[i][2]..", "..side.." side)"),
+			description = S("Banister for Stairs ("..homedecor.banister_materials[i][2]..", "..side.." side)"),
 			mesh = "homedecor_banister_"..side..".obj",
 			tiles = {
 				homedecor.banister_materials[i][3],
