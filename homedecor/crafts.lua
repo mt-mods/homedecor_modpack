@@ -3162,6 +3162,24 @@ minetest.register_craft({
 	},
 })
 
+for i in ipairs(homedecor.banister_materials) do
+
+	local name    = homedecor.banister_materials[i][1]
+	local topmat  = homedecor.banister_materials[i][5]
+	local vertmat = homedecor.banister_materials[i][6]
+	local dye1    = homedecor.banister_materials[i][7]
+	local dye2    = homedecor.banister_materials[i][8]
+
+	minetest.register_craft({
+		output = "homedecor:banister_"..name.."_left 2",
+		recipe = {
+			{ topmat,  "",      dye1   },
+			{ vertmat, topmat,  ""     },
+			{ dye2,    vertmat, topmat }
+		},
+	})
+end
+
 if (minetest.get_modpath("technic") and minetest.get_modpath("dye") and minetest.get_modpath("bees")) then
 	technic.register_separating_recipe({ input = {"bees:wax 1"}, output = {"homedecor:oil_extract 2","dye:yellow 1"} })
 end

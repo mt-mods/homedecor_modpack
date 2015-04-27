@@ -672,3 +672,76 @@ for _, i in ipairs(n) do
 	})
 end
 
+homedecor.banister_materials = {
+	{	"wood",
+		"wood",
+		"default_wood.png",
+		"default_wood.png",
+		"group:wood",
+		"group:stick",
+		"",
+		""
+	},
+	{	"white_dark",
+		"dark topped",
+		"homedecor_white_wood.png",
+		"homedecor_dark_wood.png",
+		"group:wood",
+		"group:stick",
+		"dye:brown",
+		"dye:white"
+	},
+	{	"brass",
+		"brass",
+		"homedecor_white_wood.png",
+		"homedecor_tile_brass2.png",
+		"technic:brass_ingot",
+		"group:stick",
+		"",
+		"dye:white"
+	},
+	{	"wrought_iron",
+		"wrought iron",
+		"homedecor_tile_wrought_iron2.png",
+		"homedecor_tile_wrought_iron2.png",
+		"homedecor:pole_wrought_iron",
+		"homedecor:pole_wrought_iron",
+		"",
+		""
+	}
+}
+
+for _, side in ipairs({"left", "right"}) do
+
+	for i in ipairs(homedecor.banister_materials) do
+
+		local name = homedecor.banister_materials[i][1]
+		local cbox = {
+			type = "fixed",
+			fixed = { -9/16, -3/16, 5/16, 9/16, 24/16, 8/16}
+		}
+
+		local onplace = nil
+		groups = { snappy = 3, not_in_creative_inventory = 1}
+
+		if side == "left" then
+			onplace = homedecor.place_banister
+			groups = { snappy = 3 }
+		end
+
+		homedecor.register("banister_"..name.."_"..side, {
+			description = S("banister ("..homedecor.banister_materials[i][2]..", "..side.." side)"),
+			mesh = "homedecor_banister_"..side..".obj",
+			tiles = {
+				homedecor.banister_materials[i][3],
+				homedecor.banister_materials[i][4]
+			},
+			groups = groups,
+			selection_box = cbox,
+			collision_box = cbox,
+			on_place = onplace,
+			drop = "homedecor:banister_"..name.."_left",
+		})
+	end
+end
+
