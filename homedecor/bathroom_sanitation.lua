@@ -163,9 +163,23 @@ homedecor.register("shower_tray", {
 	},
 	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults(),
+	on_destruct = function(pos)
+		if id and s_handle then
+			minetest.delete_particlespawner(id)
+			minetest.after(0, function(s_handle)
+				minetest.sound_stop(s_handle)
+			end, s_handle)
+		else return end
+	end
 })
 
 --Shower Head
+
+local fdir_to_flowpos = {
+	minx = { 0.15, 0.05, -0.15, -0.05 }, maxx = { -0.15, -0.3, 0.15, 0.3 },
+	minz = { 0.05, 0.15, -0.05, -0.15 }, maxz = { -0.3, -0.15, 0.3, 0.15 },
+	velx = { 0, -0.2, 0, 0.2 }, velz = { -0.2, 0, 0.2, 0 }
+}
 
 local sh_cbox = {
 	type = "fixed",
@@ -184,6 +198,45 @@ homedecor.register("shower_head", {
 	groups = {snappy=3},
 	selection_box = sh_cbox,
 	collision_box = sh_cbox,
+	on_rightclick = function (pos, node, clicker)
+		local below = minetest.get_node({x=pos.x, y=pos.y-2.0, z=pos.z})
+		local is_tray = string.find(below.name, "homedecor:shower_tray")
+		local this_spawner_meta = minetest.get_meta(pos)
+		local fdir = node.param2
+		local minx = fdir_to_flowpos.minx[fdir + 1]
+		local maxx = fdir_to_flowpos.maxx[fdir + 1]
+		local minz = fdir_to_flowpos.minz[fdir + 1]
+		local maxz = fdir_to_flowpos.maxz[fdir + 1]
+		local velx = fdir_to_flowpos.velx[fdir + 1]
+		local velz = fdir_to_flowpos.velz[fdir + 1]
+
+		if fdir and fdir < 4 and this_spawner_meta:get_string("active") ~= "yes" and is_tray
+		 or this_spawner_meta:get_string("active") == "yes" and id == nil and is_tray then
+			this_spawner_meta:set_string("active", "yes")
+			id = minetest.add_particlespawner({
+				amount = 60, time = 0, collisiondetection = true,
+				minpos = {x=pos.x - minx, y=pos.y-0.45, z=pos.z - minz},
+				maxpos = {x=pos.x - maxx, y=pos.y-0.45, z=pos.z - maxz},
+				minvel = {x=velx, y=-2, z=velz}, maxvel = {x=velx, y=-2, z=velz},
+				minacc = {x=0, y=0, z=0}, maxacc = {x=0, y=-0.05, z=0},
+				minexptime = 2, maxexptime = 4, minsize = 0.5, maxsize = 1,
+				texture = "homedecor_water_particle.png",
+			})
+			s_handle = minetest.sound_play("homedecor_shower", {
+				pos = pos, max_hear_distance = 5, loop = true 
+			})
+		elseif this_spawner_meta:get_string("active") == "yes" and id then
+			this_spawner_meta:set_string("active", "no")
+			minetest.after(0, function(s_handle)
+				minetest.sound_stop(s_handle)
+			end, s_handle)
+			local player = clicker:get_player_name()
+			minetest.delete_particlespawner(id, player)
+		end
+	end,
+	on_destruct = function(pos)
+		minetest.delete_particlespawner(id)
+	end
 })
 
 local bs_cbox = {
