@@ -164,12 +164,24 @@ homedecor.register("shower_tray", {
 	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults(),
 	on_destruct = function(pos)
-		if id and s_handle then
+		headpos = {x=pos.x, y=pos.y+2, z=pos.z}
+		local above_spawner_meta = minetest.get_meta(headpos)
+
+		local id = above_spawner_meta:get_int("active")
+		local s_handle = above_spawner_meta:get_int("sound")
+
+		if id ~= 0 then
 			minetest.delete_particlespawner(id)
+		end
+
+		if s_handle then
 			minetest.after(0, function(s_handle)
 				minetest.sound_stop(s_handle)
 			end, s_handle)
-		else return end
+		end
+
+		above_spawner_meta:set_int("active", nil)
+		above_spawner_meta:set_int("sound", nil)
 	end
 })
 
