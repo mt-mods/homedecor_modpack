@@ -12,7 +12,7 @@ homedecor.register("toilet", {
 		"homedecor_marble_light.png",
 		"homedecor_marble_light.png",
 		"homedecor_marble_light.png",
-		"forniture_metal.png"
+		"homedecor_generic_metal_neutral.png"
 	},
 	selection_box = toilet_cbox,
 	collision_box = toilet_cbox,
@@ -31,7 +31,7 @@ homedecor.register("toilet_open", {
 		"homedecor_marble_light.png",
 		"homedecor_marble_light.png",
 		"default_water.png",
-		"forniture_metal.png"
+		"homedecor_generic_metal_neutral.png"
 	},
 	selection_box = toilet_cbox,
 	collision_box = toilet_cbox,
@@ -99,10 +99,10 @@ homedecor.register("taps", {
 	description = S("Bathroom taps/faucet"),
 	mesh = "homedecor_bathroom_faucet.obj",
 	tiles = {
-		"forniture_metal.png",
-		"homedecor_bright_metal.png",
-		"homedecor_white_metal.png",
-		"homedecor_bright_metal.png"
+		"homedecor_generic_metal_neutral.png",
+		"homedecor_generic_metal_bright.png",
+		"homedecor_generic_metal_white.png",
+		"homedecor_generic_metal_bright.png"
 	},
 	inventory_image = "3dforniture_taps_inv.png",
 	wield_image = "3dforniture_taps_inv.png",
@@ -120,10 +120,10 @@ homedecor.register("taps_brass", {
 	description = S("Bathroom taps/faucet (brass)"),
 	mesh = "homedecor_bathroom_faucet.obj",
 	tiles = {
-		"homedecor_tile_brass.png",
-		"homedecor_tile_brass.png",
-		"homedecor_white_metal.png",
-		"homedecor_tile_brass.png"
+		"homedecor_generic_metal_brass.png",
+		"homedecor_generic_metal_brass.png",
+		"homedecor_generic_metal_white.png",
+		"homedecor_generic_metal_brass.png"
 	},
 	inventory_image = "3dforniture_taps_brass_inv.png",
 	wield_image = "3dforniture_taps_brass_inv.png",

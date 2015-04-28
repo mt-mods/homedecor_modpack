@@ -79,9 +79,9 @@ homedecor.register("grandfather_clock", {
 	tiles = {
 		"default_glass.png",
 		"homedecor_grandfather_clock_face.png",
-		"homedecor_grandfather_clock_wood.png",
+		"homedecor_generic_wood_luxury_brown1.png",
 		"homedecor_grandfather_clock_face_edge.png",
-		"homedecor_tile_brass.png"
+		"homedecor_generic_metal_brass.png"
 	},
 	inventory_image = "homedecor_grandfather_clock_inv.png",
 	groups = { snappy = 3 },

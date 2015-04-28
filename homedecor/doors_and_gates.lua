@@ -497,7 +497,7 @@ minetest.register_node("homedecor:japanese_wall_top", {
 	drawtype = "mesh",
 	mesh = "homedecor_wall_japanese_top.obj",
 	tiles = {
-		"homedecor_japanese_wood.png",
+		"homedecor_generic_wood_luxury_brown2.png",
 		"homedecor_japanese_paper.png"
 	},
 	paramtype = "light",
@@ -512,7 +512,7 @@ minetest.register_node("homedecor:japanese_wall_middle", {
 	drawtype = "mesh",
 	mesh = "homedecor_wall_japanese_middle.obj",
 	tiles = {
-		"homedecor_japanese_wood.png",
+		"homedecor_generic_wood_luxury_brown2.png",
 		"homedecor_japanese_paper.png"
 	},
 	paramtype = "light",
@@ -527,7 +527,7 @@ minetest.register_node("homedecor:japanese_wall_bottom", {
 	drawtype = "mesh",
 	mesh = "homedecor_wall_japanese_bottom.obj",
 	tiles = {
-		"homedecor_japanese_wood.png",
+		"homedecor_generic_wood_luxury_brown2.png",
 		"homedecor_japanese_paper.png"
 	},
 	paramtype = "light",
@@ -562,7 +562,7 @@ homedecor.register("door_japanese_closed", {
 	description = "Japanese-style door",
 	inventory_image = "homedecor_door_japanese_inv.png",
 	tiles = {
-		"homedecor_japanese_wood.png",
+		"homedecor_generic_wood_luxury_brown2.png",
 		"homedecor_japanese_paper.png"
 	},
 	mesh = "homedecor_door_japanese_closed.obj",
@@ -583,7 +583,7 @@ homedecor.register("door_japanese_closed", {
 
 minetest.register_node("homedecor:door_japanese_open", {
 	tiles = {
-		"homedecor_japanese_wood.png",
+		"homedecor_generic_wood_luxury_brown2.png",
 		"homedecor_japanese_paper.png"
 	},
 	drawtype = "mesh",

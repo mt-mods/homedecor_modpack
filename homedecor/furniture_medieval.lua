@@ -3,7 +3,7 @@ local S = homedecor.gettext
 
 homedecor.register("bars", {
 	description = S("Bars"),
-	tiles = { "forniture_black_metal.png" },
+	tiles = { "homedecor_generic_metal_black.png" },
 	sunlight_propagates = true,
 	node_box = {
 		type = "fixed",
@@ -25,7 +25,7 @@ homedecor.register("bars", {
 --L Binding Bars
 homedecor.register("L_binding_bars", {
 	description = S("Binding Bars"),
-	tiles = { "forniture_black_metal.png" },
+	tiles = { "homedecor_generic_metal_black.png" },
 	sunlight_propagates = true,
 	node_box = {
 		type = "fixed",
@@ -50,7 +50,7 @@ local chain_cbox = {
 homedecor.register("chains", {
 	description = S("Chains"),
 	mesh = "forniture_chains.obj",
-	tiles = { "forniture_black_metal.png" },
+	tiles = { "homedecor_generic_metal_black.png" },
 	inventory_image="forniture_chains_inv.png",
 	sunlight_propagates = true,
 	selection_box = chain_cbox,
@@ -71,8 +71,8 @@ homedecor.register("torch_wall", {
 				length=1.0,
 			},
 		},
-		"forniture_black_metal.png",
-		"forniture_metal.png",
+		"homedecor_generic_metal_black.png",
+		"homedecor_generic_metal_neutral.png",
 		"forniture_coal.png",
 	},
 	inventory_image="forniture_torch_inv.png",

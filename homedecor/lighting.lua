@@ -205,7 +205,7 @@ homedecor.register("candlestick_wrought_iron", {
 	tiles = {
 		"homedecor_candle_sides.png",
 		{name="homedecor_candle_flame.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
-		"homedecor_tile_wrought_iron.png",
+		"homedecor_generic_metal_wrought_iron.png",
 	},
 	inventory_image = "homedecor_candlestick_wrought_iron_inv.png",
 	selection_box = cs_cbox,
@@ -222,7 +222,7 @@ homedecor.register("candlestick_brass", {
 	tiles = {
 		"homedecor_candle_sides.png",
 		{name="homedecor_candle_flame.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
-		"homedecor_tile_brass.png",
+		"homedecor_generic_metal_brass.png",
 	},
 	inventory_image = "homedecor_candlestick_brass_inv.png",
 	selection_box = cs_cbox,
@@ -240,7 +240,7 @@ homedecor.register("wall_sconce", {
 		'homedecor_candle_sides.png',
 		{name="homedecor_candle_flame.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=3.0}},
 		'homedecor_wall_sconce_back.png',
-		'homedecor_tile_wrought_iron.png',
+		'homedecor_generic_metal_wrought_iron.png',
 	},
 	inventory_image = "homedecor_wall_sconce_inv.png",
 	selection_box = {
@@ -266,7 +266,7 @@ homedecor.register("oil_lamp", {
 	tiles = {
 		"homedecor_oil_lamp_handles.png",
 		"homedecor_oil_lamp_glass.png",
-		"homedecor_tile_brass.png",
+		"homedecor_generic_metal_brass.png",
 		"homedecor_oil_lamp_base.png",
 		"homedecor_oil_lamp_top.png",
 	},
@@ -403,8 +403,8 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 		tiles = {
 			"wool_"..woolcolor..".png^[colorize:#ffffff:"..wool_brighten,
 			"homedecor_table_standing_lamp_lightbulb.png^[colorize:#ffffff:"..bulb_brighten,
-			"homedecor_table_standing_lamp_wood.png",
-			"forniture_metal.png",
+			"homedecor_generic_wood_red.png",
+			"homedecor_generic_metal_neutral.png",
 		},
 		inventory_image = "homedecor_table_lamp"..lampcolor.."_inv.png",
 		walkable = false,
@@ -429,8 +429,8 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 		tiles = {
 			"wool_"..woolcolor..".png^[colorize:#ffffff:"..wool_brighten,
 			"homedecor_table_standing_lamp_lightbulb.png^[colorize:#ffffff:"..bulb_brighten,
-			"homedecor_table_standing_lamp_wood.png",
-			"forniture_metal.png",
+			"homedecor_generic_wood_red.png",
+			"homedecor_generic_metal_neutral.png",
 		},
 		inventory_image = "homedecor_standing_lamp"..lampcolor.."_inv.png",
 		walkable = false,
@@ -488,10 +488,10 @@ homedecor.register("ceiling_lamp", {
 	description = S("Ceiling Lamp"),
 	mesh = "homedecor_ceiling_lamp.obj",
 	tiles = {
-		"homedecor_tile_brass.png",
+		"homedecor_generic_metal_brass.png",
 		"homedecor_ceiling_lamp_glass.png",
 		"homedecor_table_standing_lamp_lightbulb.png^[colorize:#ffffff:200",
-		"homedecor_generic_brown_plastic.png",
+		"homedecor_generic_plastic_brown.png",
 	},
 	inventory_image = "homedecor_ceiling_lamp_inv.png",
 	light_source = LIGHT_MAX,
@@ -505,10 +505,10 @@ homedecor.register("ceiling_lamp_off", {
 	description = S("Ceiling Lamp (off)"),
 	mesh = "homedecor_ceiling_lamp.obj",
 	tiles = {
-		"homedecor_tile_brass.png",
+		"homedecor_generic_metal_brass.png",
 		"homedecor_ceiling_lamp_glass.png",
 		"homedecor_table_standing_lamp_lightbulb.png",
-		"homedecor_generic_brown_plastic.png",
+		"homedecor_generic_plastic_brown.png",
 	},
 	groups = {snappy=3, not_in_creative_inventory=1},
 	on_punch = function(pos, node, puncher)

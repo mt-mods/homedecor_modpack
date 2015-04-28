@@ -48,16 +48,18 @@ local table_colors = { "", "mahogany", "white" }
 
 for _, i in ipairs(table_colors) do
 	local color = "_"..i
+	local color2 = "_"..i
 	local desc = S("Table ("..i..")")
 
 	if i == "" then
 		color = ""
+		color2 = "_beech"
 		desc = S("Table")
 	end
 
 	homedecor.register("table"..color, {
 		description = desc,
-		tiles = { "forniture_wood"..color..".png" },
+		tiles = { "homedecor_generic_wood"..color2..".png" },
 		node_box = {
 			type = "fixed",
 			fixed = {
@@ -97,15 +99,15 @@ for i in ipairs(chaircolors) do
 	local color2 = chaircolors[i][1]
 	local name = S(chaircolors[i][2])
 	local chairtiles = {
-		"forniture_wood.png",
+		"homedecor_generic_wood_beech.png",
 		"wool"..color..".png",
 	}
 
 	if chaircolors[i][1] == "" then
 		color = ""
 		chairtiles = {
-			"forniture_wood.png",
-			"forniture_wood.png"
+			"homedecor_generic_wood_beech.png",
+			"homedecor_generic_wood_beech.png"
 		}
 	end
 
@@ -320,7 +322,7 @@ local wd_cbox = {
 homedecor.register("wardrobe_bottom", {
 	mesh = "homedecor_bedroom_wardrobe.obj",
 	tiles = {
-		"forniture_wood.png",
+		"homedecor_generic_wood_beech.png",
 		"homedecor_wardrobe_drawers.png",
 		"homedecor_wardrobe_doors.png"
 	},

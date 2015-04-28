@@ -62,7 +62,7 @@ end
 homedecor.register("pole_brass", {
     description = S("Brass Pole"),
 	mesh = "homedecor_round_pole.obj",
-    tiles = {"homedecor_tile_brass.png^homedecor_tile_horizlines_overlay.png",},
+    tiles = {"homedecor_generic_metal_brass.png^homedecor_generic_metal_lines_overlay.png",},
     inventory_image = "homedecor_pole_brass_inv.png",
     wield_image = "homedecor_pole_brass_inv.png",
     selection_box = {
@@ -79,7 +79,7 @@ homedecor.register("pole_brass", {
 
 homedecor.register("pole_wrought_iron", {
     description = S("Wrought Iron Pole"),
-    tiles = { "homedecor_tile_wrought_iron.png^homedecor_tile_horizlines_overlay.png" },
+    tiles = { "homedecor_generic_metal_wrought_iron.png^homedecor_generic_metal_lines_overlay.png" },
     inventory_image = "homedecor_pole_wrought_iron_inv.png",
     wield_image = "homedecor_pole_wrought_iron_inv.png",
     selection_box = {
@@ -251,7 +251,7 @@ homedecor.register("filing_cabinet", {
 	description = S("Filing Cabinet"),
 	mesh = "homedecor_filing_cabinet.obj",
 	tiles = {
-		"forniture_wood.png",
+		"homedecor_generic_wood_beech.png",
 		"homedecor_filing_cabinet_front.png",
 		"homedecor_filing_cabinet_bottom.png"
 	},
@@ -275,7 +275,7 @@ homedecor.register("pool_table", {
 		"homedecor_pool_table_baize.png",
 		"homedecor_pool_table_pockets.png",
 		"homedecor_pool_table_balls.png",
-		"homedecor_pool_table_wood.png"
+		"homedecor_generic_wood_luxury_brown3.png"
 	},
 	description = "Pool Table",
 	inventory_image = "homedecor_pool_table_inv.png",
@@ -288,7 +288,7 @@ homedecor.register("pool_table", {
 minetest.register_alias("homedecor:pool_table_2", "air")
 
 homedecor.register("coatrack_wallmount", {
-	tiles = { "forniture_wood.png" },
+	tiles = { "homedecor_generic_wood_beech.png" },
 	inventory_image = "homedecor_coatrack_wallmount_inv.png",
 	description = "Coatrack (wallmounted)",
         groups = {snappy=3},
@@ -311,8 +311,8 @@ homedecor.register("coatrack_wallmount", {
 homedecor.register("coat_tree", {
 	mesh = "homedecor_coatrack.obj",
 	tiles = {
-		"forniture_wood.png",
-		"homedecor_generic_wood.png"
+		"homedecor_generic_wood_beech.png",
+		"homedecor_generic_wood_neutral.png"
 	},
 	inventory_image = "homedecor_coatrack_inv.png",
 	description = "Coat tree",
@@ -437,8 +437,8 @@ homedecor.register("piano", {
 	mesh = "homedecor_piano.obj",
 	tiles = {
 		"homedecor_piano_keys.png",
-		"homedecor_tile_brass.png",
-		"homedecor_piano_wood.png"
+		"homedecor_generic_metal_brass.png",
+		"homedecor_generic_wood_luxury_black.png"
 	},
 	inventory_image = "homedecor_piano_inv.png",
 	description = "Piano",
@@ -461,7 +461,7 @@ homedecor.register("trophy", {
 	mesh = "homedecor_trophy.obj",
 	tiles = {
 		"default_wood.png",
-		"homedecor_tile_gold.png"
+		"homedecor_generic_metal_gold.png"
 	},
 	inventory_image = "homedecor_trophy_inv.png",
 	groups = { snappy=3 },
@@ -478,9 +478,9 @@ homedecor.register("sportbench", {
 	description = "Sport bench",
 	mesh = "homedecor_sport_bench.obj",
 	tiles = {
-		"homedecor_tile_wrought_iron.png",
-		"homedecor_bright_metal.png",
-		"forniture_black_metal.png",
+		"homedecor_generic_metal_wrought_iron.png",
+		"homedecor_generic_metal_bright.png",
+		"homedecor_generic_metal_black.png",
 		"wool_black.png"
 	},
 	inventory_image = "homedecor_sport_bench_inv.png",
@@ -576,11 +576,11 @@ homedecor.register("tool_cabinet", {
 	description = "Metal tool cabinet and work table",
 	mesh = "homedecor_tool_cabinet.obj",
 	tiles = {
-		"homedecor_red_metal.png",
+		"homedecor_generic_metal_red.png",
 		"homedecor_tool_cabinet_drawers.png",
-		"homedecor_green_metal.png",
-		"forniture_metal.png",
-		"homedecor_bright_metal.png",
+		"homedecor_generic_metal_green.png",
+		"homedecor_generic_metal_neutral.png",
+		"homedecor_generic_metal_bright.png",
 		"homedecor_tool_cabinet_misc.png",
 	},
 	inventory_image = "homedecor_tool_cabinet_inv.png",
@@ -684,8 +684,8 @@ homedecor.banister_materials = {
 	},
 	{	"white_dark",
 		"dark topped",
-		"homedecor_white_wood.png",
-		"homedecor_dark_wood.png",
+		"homedecor_generic_wood_white.png",
+		"homedecor_generic_wood_dark.png",
 		"group:wood",
 		"group:stick",
 		"dye:brown",
@@ -693,8 +693,8 @@ homedecor.banister_materials = {
 	},
 	{	"brass",
 		"brass",
-		"homedecor_white_wood.png",
-		"homedecor_tile_brass.png",
+		"homedecor_generic_wood_white.png",
+		"homedecor_generic_metal_brass.png",
 		"technic:brass_ingot",
 		"group:stick",
 		"",
@@ -702,8 +702,8 @@ homedecor.banister_materials = {
 	},
 	{	"wrought_iron",
 		"wrought iron",
-		"homedecor_tile_wrought_iron.png",
-		"homedecor_tile_wrought_iron.png",
+		"homedecor_generic_metal_wrought_iron.png",
+		"homedecor_generic_metal_wrought_iron.png",
 		"homedecor:pole_wrought_iron",
 		"homedecor:pole_wrought_iron",
 		"",

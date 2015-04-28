@@ -10,7 +10,7 @@ homedecor.register("barbecue", {
 	description = "Barbecue",
 	mesh = "homedecor_barbecue.obj",
 	tiles = {
-		"forniture_black_metal.png",
+		"homedecor_generic_metal_black.png",
 		{	name="homedecor_embers.png",
 			animation={
 				type="vertical_frames",
@@ -38,8 +38,8 @@ local bl1_cbox = {
 homedecor.register("bench_large_1", {
 	mesh = "homedecor_bench_large_1.obj",
 	tiles = {
-		"homedecor_generic_wood.png",
-		"homedecor_tile_wrought_iron.png"
+		"homedecor_generic_wood_neutral.png",
+		"homedecor_generic_metal_wrought_iron.png"
 	},
 	description = "Garden Bench (style 1)",
 	inventory_image = "homedecor_bench_large_1_inv.png",
@@ -61,7 +61,7 @@ local bl2_cbox = {
 homedecor.register("bench_large_2", {
 	description = "Garden Bench (style 2)",
 	mesh = "homedecor_bench_large_2.obj",
-	tiles = { "homedecor_generic_wood.png" },
+	tiles = { "homedecor_generic_wood_neutral.png" },
 	inventory_image = "homedecor_bench_large_2_inv.png",
 	groups = {snappy=3},
 	selection_box = bl2_cbox,
@@ -127,7 +127,7 @@ minetest.register_alias("homedecor:doghouse_roof", "air")
 minetest.register_alias("homedecor:doghouse_base", "homedecor:doghouse")
 
 homedecor.register("simple_bench", {
-	tiles = { "homedecor_generic_wood.png" },
+	tiles = { "homedecor_generic_wood_neutral.png" },
 	description = "Simple Bench",
 	groups = {snappy=3},
 	node_box = {
@@ -263,7 +263,7 @@ homedecor.register("well", {
 	mesh = "homedecor_well.obj",
 	tiles = {
 		"homedecor_rope_texture.png",
-		"forniture_metal.png",
+		"homedecor_generic_metal_neutral.png",
 		"default_water.png",
 		"default_cobble.png",
 		"default_wood.png",

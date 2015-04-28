@@ -161,7 +161,7 @@ local r_cbox = {
 homedecor.register("radiator", {
 	mesh = "homedecor_radiator.obj",
 	tiles = {
-		"homedecor_white_metal.png",
+		"homedecor_generic_metal_white.png",
 		"homedecor_radiator_controls.png"
 	},
 	inventory_image = "homedecor_radiator_inv.png",

@@ -90,7 +90,7 @@ local kf_cbox = {
 
 homedecor.register("kitchen_faucet", {
 	mesh = "homedecor_kitchen_faucet.obj",
-	tiles = { "homedecor_bright_metal.png" },
+	tiles = { "homedecor_generic_metal_bright.png" },
 	inventory_image = "homedecor_kitchen_faucet_inv.png",
 	description = "Kitchen Faucet",
 	groups = {snappy=3},
