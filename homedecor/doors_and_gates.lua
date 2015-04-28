@@ -185,7 +185,7 @@ local door_model_list = {
 
 	{	name = "wrought_iron",
 		description = S("Wrought Iron Gate/Door"),
-		mesh = "homedecor_door_plain.obj"
+		mesh = "homedecor_door_wrought_iron.obj"
 	},
 
 	{	name = "woodglass",
