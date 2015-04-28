@@ -261,7 +261,7 @@ local ol_cbox = {
 }
 
 homedecor.register("oil_lamp", {
-	description = S("Oil lamp"),
+	description = S("Oil lamp (hurricane)"),
 	mesh = "homedecor_oil_lamp.obj",
 	tiles = {
 		"homedecor_oil_lamp_handles.png",
@@ -274,6 +274,18 @@ homedecor.register("oil_lamp", {
 	sunlight_propagates = true,
 	selection_box = ol_cbox,
 	collision_box = ol_cbox,
+	groups = { snappy = 3 },
+	light_source = LIGHT_MAX-3,
+	sounds = default.node_sound_glass_defaults(),
+})
+
+homedecor.register("oil_lamp_tabletop", {
+	description = S("Oil Lamp (tabletop)"),
+	mesh = "homedecor_oil_lamp_tabletop.obj",
+	tiles = {"homedecor_oil_lamp_tabletop.png"},
+	inventory_image = "homedecor_oil_lamp_tabletop_inv.png",
+	selection_box = cl_cbox,
+	collision_box = cl_cbox,
 	groups = { snappy = 3 },
 	light_source = LIGHT_MAX-3,
 	sounds = default.node_sound_glass_defaults(),

@@ -1297,11 +1297,20 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "homedecor:oil_lamp 4",
+	output = "homedecor:oil_lamp",
 	recipe = {
 		{ "", "vessels:glass_bottle", "" },
 		{ "", "farming:string", "" },
 		{ "default:steel_ingot", "homedecor:oil_extract", "default:steel_ingot" }
+	}
+})
+
+minetest.register_craft({
+	output = "homedecor:oil_lamp_tabletop",
+	recipe = {
+		{ "", "vessels:glass_bottle", "" },
+		{ "", "farming:string", "" },
+		{ "default:iron_lump", "homedecor:oil_extract", "default:iron_lump" }
 	}
 })
 
