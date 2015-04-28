@@ -166,6 +166,7 @@ homedecor.register("shower_tray", {
 })
 
 --Shower Head
+
 local sh_cbox = {
 	type = "fixed",
 	fixed = { -0.2, -0.4, -0.05, 0.2, 0.1, 0.5 }
@@ -174,7 +175,10 @@ local sh_cbox = {
 homedecor.register("shower_head", {
 	drawtype = "mesh",
 	mesh = "homedecor_shower_head.obj",
-	tiles = { "homedecor_shower_head.png" },
+	tiles = {
+		"homedecor_generic_metal_neutral.png",
+		"homedecor_shower_head.png"
+	},
 	inventory_image = "homedecor_shower_head_inv.png",
 	description = "Shower Head",
 	groups = {snappy=3},
