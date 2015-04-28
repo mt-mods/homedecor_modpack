@@ -201,7 +201,6 @@ homedecor.register("shower_head", {
 	on_rightclick = function (pos, node, clicker)
 		local below = minetest.get_node({x=pos.x, y=pos.y-2.0, z=pos.z})
 		local is_tray = string.find(below.name, "homedecor:shower_tray")
-		local this_spawner_meta = minetest.get_meta(pos)
 		local fdir = node.param2
 		local minx = fdir_to_flowpos.minx[fdir + 1]
 		local maxx = fdir_to_flowpos.maxx[fdir + 1]
@@ -210,9 +209,20 @@ homedecor.register("shower_head", {
 		local velx = fdir_to_flowpos.velx[fdir + 1]
 		local velz = fdir_to_flowpos.velz[fdir + 1]
 
-		if fdir and fdir < 4 and this_spawner_meta:get_string("active") ~= "yes" and is_tray
-		 or this_spawner_meta:get_string("active") == "yes" and id == nil and is_tray then
-			this_spawner_meta:set_string("active", "yes")
+		local this_spawner_meta = minetest.get_meta(pos)
+		local id = this_spawner_meta:get_int("active")
+
+		if id ~= 0 then
+			minetest.after(0, function(s_handle)
+				minetest.sound_stop(s_handle)
+			end, s_handle)
+			local player = clicker:get_player_name()
+			minetest.delete_particlespawner(id, player)
+			this_spawner_meta:set_int("active", nil)
+			return
+		end
+
+		if fdir and fdir < 4 and is_tray and (not id or id == 0) then
 			id = minetest.add_particlespawner({
 				amount = 60, time = 0, collisiondetection = true,
 				minpos = {x=pos.x - minx, y=pos.y-0.45, z=pos.z - minz},
@@ -223,19 +233,21 @@ homedecor.register("shower_head", {
 				texture = "homedecor_water_particle.png",
 			})
 			s_handle = minetest.sound_play("homedecor_shower", {
-				pos = pos, max_hear_distance = 5, loop = true 
+				pos = pos,
+				max_hear_distance = 5,
+				loop = true 
 			})
-		elseif this_spawner_meta:get_string("active") == "yes" and id then
-			this_spawner_meta:set_string("active", "no")
-			minetest.after(0, function(s_handle)
-				minetest.sound_stop(s_handle)
-			end, s_handle)
-			local player = clicker:get_player_name()
-			minetest.delete_particlespawner(id, player)
+			this_spawner_meta:set_int("active", id)
+			return
 		end
 	end,
 	on_destruct = function(pos)
-		minetest.delete_particlespawner(id)
+		local this_spawner_meta = minetest.get_meta(pos)
+		local id = this_spawner_meta:get_int("active")
+		if id ~= 0 then
+			minetest.delete_particlespawner(id)
+			this_spawner_meta:set_int("active", nil)
+		end
 	end
 })
 
