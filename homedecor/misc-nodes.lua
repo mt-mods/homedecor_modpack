@@ -371,39 +371,44 @@ local bottle_colors = {"brown", "green"}
 
 for _, b in ipairs(bottle_colors) do
 
-homedecor.register("bottle_"..b, {
-	tiles = { "homedecor_bottle_"..b..".png" },
-	inventory_image = "homedecor_bottle_"..b.."_inv.png",
-	description = "Bottle ("..b..")",
-	mesh = "homedecor_bottle.obj",
-	sunlight_propagates = true,
-	groups = {snappy=3},
-	sounds = default.node_sound_glass_defaults(),
-	collision_box = bottle_cbox,
-	selection_box = bottle_cbox
-})
+	homedecor.register("bottle_"..b, {
+		tiles = { "homedecor_bottle_"..b..".png" },
+		inventory_image = "homedecor_bottle_"..b.."_inv.png",
+		description = "Bottle ("..b..")",
+		mesh = "homedecor_bottle.obj",
+		sunlight_propagates = true,
+		groups = {snappy=3},
+		sounds = default.node_sound_glass_defaults(),
+		collision_box = bottle_cbox,
+		selection_box = bottle_cbox
+	})
 
--- 4-bottle sets
+	-- 4-bottle sets
 
-homedecor.register("4_bottles_"..b, {
-	tiles = { "homedecor_bottle_"..b..".png" },
-	inventory_image = "homedecor_4_bottles_"..b.."_inv.png",
-	description = "Four "..b.." bottles",
-	mesh = "homedecor_4_bottles.obj",
-	sunlight_propagates = true,
-	groups = {snappy=3},
-	sounds = default.node_sound_glass_defaults(),
-	collision_box = fbottle_cbox,
-	selection_box = fbottle_cbox
-})
-
+	homedecor.register("4_bottles_"..b, {
+		tiles = {
+			"homedecor_bottle_"..b..".png",
+			"homedecor_bottle_"..b..".png"
+		},
+		inventory_image = "homedecor_4_bottles_"..b.."_inv.png",
+		description = "Four "..b.." bottles",
+		mesh = "homedecor_4_bottles.obj",
+		sunlight_propagates = true,
+		groups = {snappy=3},
+		sounds = default.node_sound_glass_defaults(),
+		collision_box = fbottle_cbox,
+		selection_box = fbottle_cbox
+	})
 end
 
 homedecor.register("4_bottles_multi", {
-	tiles = { "homedecor_4_bottles_multi.png" },
+	tiles = {
+		"homedecor_bottle_brown.png",
+		"homedecor_bottle_green.png"
+	},
 	inventory_image = "homedecor_4_bottles_multi_inv.png",
 	description = "Four misc brown/green bottles",
-	mesh = "homedecor_4_bottles_multi.obj",
+	mesh = "homedecor_4_bottles.obj",
 	sunlight_propagates = true,
 	groups = {snappy=3},
 	sounds = default.node_sound_glass_defaults(),
