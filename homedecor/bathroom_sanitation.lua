@@ -211,14 +211,18 @@ homedecor.register("shower_head", {
 
 		local this_spawner_meta = minetest.get_meta(pos)
 		local id = this_spawner_meta:get_int("active")
+		local s_handle = this_spawner_meta:get_int("sound")
 
 		if id ~= 0 then
-			minetest.after(0, function(s_handle)
-				minetest.sound_stop(s_handle)
-			end, s_handle)
+			if s_handle then
+				minetest.after(0, function(s_handle)
+					minetest.sound_stop(s_handle)
+				end, s_handle)
+			end
 			local player = clicker:get_player_name()
 			minetest.delete_particlespawner(id, player)
 			this_spawner_meta:set_int("active", nil)
+			this_spawner_meta:set_int("sound", nil)
 			return
 		end
 
@@ -238,16 +242,27 @@ homedecor.register("shower_head", {
 				loop = true 
 			})
 			this_spawner_meta:set_int("active", id)
+			this_spawner_meta:set_int("sound", s_handle)
 			return
 		end
 	end,
 	on_destruct = function(pos)
 		local this_spawner_meta = minetest.get_meta(pos)
 		local id = this_spawner_meta:get_int("active")
+		local s_handle = this_spawner_meta:get_int("sound")
+
 		if id ~= 0 then
 			minetest.delete_particlespawner(id)
-			this_spawner_meta:set_int("active", nil)
 		end
+
+		if s_handle then
+			minetest.after(0, function(s_handle)
+				minetest.sound_stop(s_handle)
+			end, s_handle)
+		end
+
+		this_spawner_meta:set_int("active", nil)
+		this_spawner_meta:set_int("sound", nil)
 	end
 })
 
