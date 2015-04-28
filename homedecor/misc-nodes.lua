@@ -623,7 +623,11 @@ local globe_cbox = {
 homedecor.register("desk_globe", {
 	description = "Desk globe",
 	mesh = "homedecor_desk_globe.obj",
-	tiles = {"homedecor_desk_globe.png"},
+	tiles = {
+		"homedecor_generic_wood_red.png",
+		"homedecor_generic_metal_neutral.png",
+		"homedecor_earth.png"
+	},
 	inventory_image = "homedecor_desk_globe_inv.png",
 	selection_box = globe_cbox,
 	collision_box = globe_cbox,
