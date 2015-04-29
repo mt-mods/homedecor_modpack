@@ -1,5 +1,3 @@
--- Various kinds of shingles
-
 local S = homedecor.gettext
 
 local slope_cbox = {
@@ -41,9 +39,6 @@ homedecor.register_outer_corner = function(modname, subname, groups, slope_image
 		drawtype = "mesh",
 		mesh = "homedecor_slope_outer_corner.obj",
 		tiles = { "homedecor_slope_outer_corner_"..slope_image..".png" },
-		paramtype = "light",
-		paramtype2 = "facedir",
-		walkable = true,
 		selection_box = ocorner_cbox,
 		collision_box = ocorner_cbox,
 		groups = groups,
@@ -57,10 +52,6 @@ homedecor.register_inner_corner = function(modname, subname, groups, slope_image
 		drawtype = "mesh",
 		mesh = "homedecor_slope_inner_corner.obj",
 		tiles = { "homedecor_slope_inner_corner_"..slope_image..".png" },
-		paramtype = "light",
-		paramtype2 = "facedir",
-		walkable = true,
-		selection_box = { type = "regular" },
 		collision_box = icorner_cbox,
 		groups = groups,
 		on_place = minetest.rotate_node
@@ -73,9 +64,6 @@ homedecor.register_slope = function(modname, subname, recipeitem, groups, slope_
 		drawtype = "mesh",
 		mesh = "homedecor_slope.obj",
 		tiles = { "homedecor_slope_"..slope_image..".png" },
-		paramtype = "light",
-		paramtype2 = "facedir",
-		walkable = true,
 		selection_box = slope_cbox,
 		collision_box = slope_cbox,
 		groups = groups,
@@ -248,4 +236,3 @@ homedecor.register_slope("homedecor", "glass",
 	"glass",
 	"Glass Shingles"
 )
-

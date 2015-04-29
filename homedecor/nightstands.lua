@@ -11,7 +11,6 @@ homedecor.register("nightstand_"..w.."_one_drawer", {
 			'homedecor_nightstand_'..w..'_left.png',
 			'homedecor_nightstand_'..w..'_back.png',
 			'homedecor_nightstand_'..w..'_1_drawer_front.png'},
-	selection_box = { type = "regular" },
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -39,7 +38,6 @@ homedecor.register("nightstand_"..w.."_two_drawers", {
 			'homedecor_nightstand_'..w..'_left.png',
 			'homedecor_nightstand_'..w..'_back.png',
 			'homedecor_nightstand_'..w..'_2_drawer_front.png'},
-	selection_box = { type = "regular" },
 	node_box = {
 		type = "fixed",
 		fixed = {

@@ -1,14 +1,3 @@
-local clock_cbox = {
-	type = "fixed",
-	fixed = {
-		{ -8/32, -3/32, 14/32, 8/32, 3/32, 16/32 },
-		{ -7/32, -5/32, 14/32, 7/32, 5/32, 16/32 },
-		{ -6/32, -6/32, 14/32, 6/32, 6/32, 16/32 },
-		{ -5/32, -7/32, 14/32, 5/32, 7/32, 16/32 },
-		{ -3/32, -8/32, 14/32, 3/32, 8/32, 16/32 }
-	}
-}
-
 local clock_sbox = {
 	type = "fixed",
 	fixed = { -8/32, -8/32, 14/32, 8/32, 8/32, 16/32 }
@@ -31,9 +20,10 @@ for i in ipairs(clock_materials) do
 			"homedecor_analog_clock_back.png"
 		},
 		inventory_image = "homedecor_analog_clock_"..m1.."_inv.png",
-		collision_box = clock_cbox,
+		walkable = false,
 		selection_box = clock_sbox,
 		groups = {snappy=3},
+		sounds = default.node_sound_wood_defaults(),
 	})
 end
 
@@ -54,6 +44,8 @@ homedecor.register("digital_clock", {
 			{-0.28125, -0.25, 0.4375, 0.3125, 0.25, 0.5},
 		}
 	},
+	walkable = false,
+	sounds = default.node_sound_wood_defaults(),
 	groups = {snappy=3},
 })
 
@@ -74,6 +66,8 @@ homedecor.register("alarm_clock", {
 			{ -9/32, -16/32, 7/32, 10/32, -5/32, 16/32 },
 		}
 	},
+	walkable = false,
+	sounds = default.node_sound_wood_defaults(),
 	groups = {snappy=3},
 })
 
@@ -102,5 +96,3 @@ homedecor.register("grandfather_clock", {
 
 minetest.register_alias("homedecor:grandfather_clock_bottom", "homedecor:grandfather_clock")
 minetest.register_alias("homedecor:grandfather_clock_top", "air")
-
-

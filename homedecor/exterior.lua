@@ -1,5 +1,4 @@
 local S = homedecor.gettext
-dofile(homedecor.modpath.."/furniture.lua")
 
 local bbq_cbox = {
 	type = "fixed",
@@ -25,6 +24,7 @@ homedecor.register("barbecue", {
 	light_source = 9,
 	selection_box = bbq_cbox,
 	collision_box = bbq_cbox,
+	sounds = default.node_sound_stone_defaults(),
 	expand = { top="air" },
 })
 
@@ -67,12 +67,7 @@ homedecor.register("bench_large_2", {
 	selection_box = bl2_cbox,
 	collision_box = bl2_cbox,
 	expand = { right="air" },
-	--[[
-	on_rightclick = function(pos, node, clicker)
-		pos.y = pos.y-0 -- player's sit position.
-		homedecor.sit_exec(pos, node, clicker)
-	end,
-	--]]
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_alias("homedecor:bench_large_2_left", "homedecor:bench_large_2")
@@ -121,6 +116,7 @@ homedecor.register("doghouse", {
 	collision_box = homedecor.nodebox.slab_y(1.5),
 	groups = {snappy=3},
 	expand = { top="air" },
+	sounds = default.node_sound_wood_defaults(),
 })
 
 minetest.register_alias("homedecor:doghouse_roof", "air")
@@ -138,12 +134,7 @@ homedecor.register("simple_bench", {
 			{ 0.3, -0.5,  0.1,  0.4, -0.15, 0.3},
 			}
 	},
-	--[[
-	on_rightclick = function(pos, node, clicker)
-		pos.y = pos.y-0 -- player's sit position.
-		homedecor.sit_exec(pos, node, clicker)
-	end,
-	--]]
+	sounds = default.node_sound_wood_defaults(),
 })
 
 homedecor.register("stonepath", {
@@ -169,7 +160,8 @@ homedecor.register("stonepath", {
 	selection_box = {
 		type = "fixed",
 		fixed = { -0.4375, -0.5, -0.4375, 0.4375, -0.4, 0.4375 }
-	}
+	},
+	sounds = default.node_sound_stone_defaults(),
 })
 
 homedecor.register("swing", {
@@ -181,6 +173,8 @@ homedecor.register("swing", {
 	},
 	inventory_image = "homedecor_swing_inv.png",
 	groups = { snappy=3, oddly_breakable_by_hand=3 },
+	sounds = default.node_sound_wood_defaults(),
+	walkable = false,
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -249,6 +243,7 @@ homedecor.register("swing_rope", {
 		"homedecor_swingrope_sides.png"
 	},
 	groups = { not_in_creative_inventory=1 },
+	walkable = false,
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -275,8 +270,8 @@ homedecor.register("well", {
 	selection_box = homedecor.nodebox.slab_y(2),
 	collision_box = homedecor.nodebox.slab_y(2),
 	expand = { top="air" },
+	sounds = default.node_sound_stone_defaults(),
 })
 
 minetest.register_alias("homedecor:well_top", "air")
 minetest.register_alias("homedecor:well_base", "homedecor:well")
-

@@ -82,7 +82,6 @@ homedecor.register("blinds_thick", {
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
 	selection_box = wb1_cbox,
-	collision_box = wb1_cbox,
 })
 
 local wb2_cbox = {
@@ -102,7 +101,6 @@ homedecor.register("blinds_thin", {
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
 	selection_box = wb2_cbox,
-	collision_box = wb2_cbox,
 })
 
 local curtaincolors = {
@@ -124,7 +122,6 @@ for c in ipairs(curtaincolors) do
 		inventory_image = "homedecor_curtain_"..color..".png",
 		wield_image = "homedecor_curtain_"..color..".png",
 		drawtype = 'signlike',
-		sunlight_propagates = true,
 		use_texture_alpha = true,
 		walkable = false,
 		groups = { snappy = 3 },
@@ -149,7 +146,6 @@ for c in ipairs(curtaincolors) do
 		inventory_image = "homedecor_curtain_open_"..color..".png",
 		wield_image = "homedecor_curtain_open_"..color..".png",
 		drawtype = 'signlike',
-		sunlight_propagates = true,
 		use_texture_alpha = true,
 		walkable = false,
 		groups = { snappy = 3 },
@@ -184,7 +180,6 @@ for i in ipairs(mats) do
 		tiles = { texture },
 		inventory_image  = "homedecor_curtainrod_"..material.."_inv.png",
 		description = "Curtain Rod ("..mat_name..")",
-		sunlight_propagates = true,
 		groups = { snappy = 3 },
 		node_box = {
 			type = "fixed",
@@ -205,6 +200,7 @@ homedecor.register("window_flowerbox", {
 		"homedecor_flowerbox_sides.png"
 	},
 	inventory_image = "homedecor_flowerbox_inv.png",
+	sounds = default.node_sound_stone_defaults(),
 	groups = { snappy = 3 },
 	node_box = {
 		type = "fixed",

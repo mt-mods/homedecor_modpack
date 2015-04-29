@@ -17,7 +17,6 @@ homedecor.register("washing_machine", {
 			{-0.5, -0.5, 0.3125, 0.5, 0.5, 0.5},
 		}
 	},
-	selection_box = { type = "regular" },
 	groups = { snappy = 3 },
 })
 
@@ -38,7 +37,6 @@ homedecor.register("dryer", {
 			{-0.5, -0.5, 0.3125, 0.5, 0.5, 0.5},
 		}
 	},
-	selection_box = { type = "regular" },
 	groups = { snappy = 3 },
 })
 
@@ -59,4 +57,3 @@ homedecor.register("ironing_board", {
 	selection_box = ib_cbox,
 	collision_box = ib_cbox
 })
-

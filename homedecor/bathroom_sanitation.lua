@@ -66,7 +66,7 @@ homedecor.register("toilet_paper", {
 	},
 	inventory_image = "homedecor_toilet_paper_inv.png",
 	selection_box = tp_cbox,
-	collision_box = tp_cbox,
+	walkable = false,
 	groups = {snappy=2,oddly_breakable_by_hand=3,flammable=3},
 	sounds = default.node_sound_defaults(),
 })
@@ -112,7 +112,7 @@ homedecor.register("taps", {
 		fixed = { -4/16, -7/16, 4/16, 4/16, -4/16, 8/16 },
 	},
 	walkable = false,
-	groups = {cracky=2,},
+	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -127,13 +127,12 @@ homedecor.register("taps_brass", {
 	},
 	inventory_image = "3dforniture_taps_brass_inv.png",
 	wield_image = "3dforniture_taps_brass_inv.png",
-	sunlight_propagates = true,
 	selection_box = {
 		type = "fixed",
 		fixed = { -4/16, -7/16, 4/16, 4/16, -4/16, 8/16 },
 	},
 	walkable = false,
-	groups = {cracky=2,},
+	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -145,8 +144,6 @@ homedecor.register("shower_tray", {
 		"forniture_marble_base_ducha_top.png",
 		"forniture_marble.png"
 	},
-	sunlight_propagates = true,
-	legacy_facedir_simple = true,
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -209,7 +206,7 @@ homedecor.register("shower_head", {
 	description = "Shower Head",
 	groups = {snappy=3},
 	selection_box = sh_cbox,
-	collision_box = sh_cbox,
+	walkable = false,
 	on_rightclick = function (pos, node, clicker)
 		local below = minetest.get_node({x=pos.x, y=pos.y-2.0, z=pos.z})
 		local is_tray = string.find(below.name, "homedecor:shower_tray")
@@ -296,7 +293,8 @@ homedecor.register("bathroom_set", {
 	description = "Bathroom sundries set",
 	groups = {snappy=3},
 	selection_box = bs_cbox,
-	collision_box = bs_cbox,
+	walkable = false,
+	sounds = default.node_sound_glass_defaults(),
 })
 
 minetest.register_alias("3dforniture:toilet", "homedecor:toilet")

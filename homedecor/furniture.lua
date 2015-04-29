@@ -1,49 +1,5 @@
 local S = homedecor.gettext
 
--- Sitting functions disabled for now because of buggyness.
-
---[[
-function homedecor.sit(pos, node, clicker)
-	local name = clicker:get_player_name()
-	local meta = minetest:get_meta(pos)
-	local param2 = node.param2
-	if clicker:get_player_name() == meta:get_string("player") then
-		meta:set_string("player", "")
-		pos.y = pos.y-0.5
-		clicker:setpos(pos)
-		clicker:set_eye_offset({x=0,y=0,z=0}, {x=0,y=0,z=0})
-		clicker:set_physics_override(1, 1, 1)
-		default.player_attached[name] = false
-		default.player_set_animation(clicker, "stand", 30)
-	else
-		meta:set_string("player", clicker:get_player_name())
-		clicker:set_eye_offset({x=0,y=-7,z=2}, {x=0,y=0,z=0})
-		clicker:set_physics_override(0, 0, 0)
-		default.player_attached[name] = true
-		if param2 == 1 then
-			clicker:set_look_yaw(7.9)
-		elseif param2 == 3 then
-			clicker:set_look_yaw(4.75)
-		elseif param2 == 0 then
-			clicker:set_look_yaw(3.15)
-		else
-			clicker:set_look_yaw(6.28)
-		end
-	end
-end
-
-function homedecor.sit_exec(pos, node, clicker) -- don't move these functions inside sit()
-	if not clicker or not clicker:is_player()
-		or clicker:get_player_control().up == true or clicker:get_player_control().down == true
-		or clicker:get_player_control().left == true or clicker:get_player_control().right == true
-		or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
-	return end
-	homedecor.sit(pos, node, clicker)
-	clicker:setpos(pos)
-	default.player_set_animation(clicker, "sit", 30)
-end
---]]
-
 local table_colors = { "", "mahogany", "white" }
 
 for _, i in ipairs(table_colors) do
@@ -75,6 +31,7 @@ for _, i in ipairs(table_colors) do
 			},
 		},
 		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+		sounds = default.node_sound_wood_defaults(),
 	})
 end
 
@@ -118,6 +75,7 @@ for i in ipairs(chaircolors) do
 		selection_box = kc_cbox,
 		collision_box = kc_cbox,
 		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+		sounds = default.node_sound_wood_defaults(),
 		--[[
 		on_rightclick = function(pos, node, clicker)
 			pos.y = pos.y-0 -- player's sit position.
@@ -135,15 +93,8 @@ for i in ipairs(chaircolors) do
 				"wool_dark_grey.png",
 				"default_wood.png"
 			},
-			sunlight_propagates = true,
 			groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
-			--[[
-			on_rightclick = function(pos, node, clicker)
-				pos.y = pos.y-0.1 -- player's sit position.
-				homedecor.sit_exec(pos, node, clicker)
-				clicker:set_hp(20)
-			end,
-			--]]
+			sounds = default.node_sound_wood_defaults(),
 		})
 
 		minetest.register_craft({
@@ -170,149 +121,11 @@ minetest.register_node(":homedecor:openframe_bookshelf", {
 		"homedecor_openframe_bookshelf_books.png",
 		"default_wood.png"
 	},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	is_ground_content = false,
 	groups = {choppy=3,oddly_breakable_by_hand=2,flammable=3},
 	sounds = default.node_sound_wood_defaults(),
 	selection_box = ob_cbox,
 	collision_box = ob_cbox,
 })
-
-local bedcolors = {
-	"red",
-	"green",
-	"blue",
-	"violet",
-	"brown",
-	"darkgrey",
-	"orange",
-	"yellow",
-	"pink",
-}
-
-local bed_sbox = {
-	type = "fixed",
-	fixed = { -0.5, -0.5, -0.5, 0.5, 0.5, 1.5 }
-}
-
-local bed_cbox = {
-	type = "fixed",
-	fixed = { 
-		{ -0.5, -0.5, -0.5, 0.5, -0.05, 1.5 },
-		{ -0.5, -0.5, 1.44, 0.5, 0.5, 1.5 },
-		{ -0.5, -0.5, -0.5, 0.5, 0.18, -0.44 },
-	}
-}
-
-local kbed_sbox = {
-	type = "fixed",
-	fixed = { -0.5, -0.5, -0.5, 1.5, 0.5, 1.5 }
-}
-
-local kbed_cbox = {
-	type = "fixed",
-	fixed = { 
-		{ -0.5, -0.5, -0.5, 1.5, -0.05, 1.5 },
-		{ -0.5, -0.5, 1.44, 1.5, 0.5, 1.5 },
-		{ -0.5, -0.5, -0.5, 1.5, 0.18, -0.44 },
-	}
-}
-
-for _, color in ipairs(bedcolors) do
-	local color2=color
-	if color == "darkgrey" then
-		color2 = "dark_grey"
-	end
-	homedecor.register("bed_"..color.."_regular", {
-		mesh = "homedecor_bed_regular.obj",
-		tiles = {
-			"homedecor_bed_frame.png",
-			"default_wood.png",
-			"wool_white.png",
-			"wool_"..color2..".png",
-			"homedecor_bed_bottom.png",
-			"wool_"..color2..".png^[brighten", -- pillow
-		},
-		inventory_image = "homedecor_bed_"..color.."_inv.png",
-		description = S("Bed (%s)"):format(color),
-		groups = {snappy=3},
-		selection_box = bed_sbox,
-		collision_box = bed_cbox,
-		after_place_node = function(pos, placer, itemstack, pointed_thing)
-			if not placer:get_player_control().sneak then
-				return homedecor.bed_expansion(pos, placer, itemstack, pointed_thing, color)
-			end
-		end,
-		after_dig_node = function(pos)
-			homedecor.unextend_bed(pos, color)
-		end,
-		on_rightclick = function(pos, node, clicker)
-			if minetest.get_modpath("beds") then
-				beds.on_rightclick(pos, clicker)
-			else return end
-		end
-	})
-
-	homedecor.register("bed_"..color.."_extended", {
-		mesh = "homedecor_bed_extended.obj",
-		tiles = {
-			"homedecor_bed_frame.png",
-			"default_wood.png",
-			"wool_white.png",
-			"wool_"..color2..".png",
-			"homedecor_bed_bottom.png",
-			"wool_"..color2..".png^[brighten",
-		},
-		groups = {snappy=3, not_in_creative_inventory=1},
-		selection_box = bed_sbox,
-		collision_box = bed_cbox,
-		expand = { forward = "air" },
-		after_dig_node = function(pos)
-			homedecor.unextend_bed(pos, color)
-		end,
-		on_rightclick = function(pos, node, clicker)
-			if minetest.get_modpath("beds") then
-				beds.on_rightclick(pos, clicker)
-			else return end
-		end,
-		drop = "homedecor:bed_"..color.."_regular"
-	})
-
-	homedecor.register("bed_"..color.."_kingsize", {
-		mesh = "homedecor_bed_kingsize.obj",
-		tiles = {
-			"homedecor_bed_frame.png",
-			"default_wood.png",
-			"wool_white.png",
-			"wool_"..color2..".png",
-			"homedecor_bed_bottom.png",
-			"wool_"..color2..".png^[brighten",
-		},
-		inventory_image = "homedecor_bed_kingsize_"..color.."_inv.png",
-		description = S("Bed (%s, king sized)"):format(color),
-		groups = {snappy=3, not_in_creative_inventory=1},
-		selection_box = kbed_sbox,
-		collision_box = kbed_cbox,
-		after_dig_node = function(pos, oldnode, oldmetadata, digger)
-			local inv = digger:get_inventory()
-			if digger:get_player_control().sneak and inv:room_for_item("main", "bed_"..color.."_regular 1") then
-				inv:remove_item("main", "homedecor:bed_"..color.."_kingsize 1")
-				inv:add_item("main", "homedecor:bed_"..color.."_regular 2")
-			end
-		end,
-		on_rightclick = function(pos, node, clicker)
-			if minetest.get_modpath("beds") then
-				beds.on_rightclick(pos, clicker)
-			else return end
-		end
-	})
-
-	minetest.register_alias("homedecor:bed_"..color.."_foot",    "homedecor:bed_"..color.."_regular")
-	minetest.register_alias("homedecor:bed_"..color.."_footext", "homedecor:bed_"..color.."_extended")
-	minetest.register_alias("homedecor:bed_"..color.."_head",    "air")
-
-end
 
 local wd_cbox = {
 	type = "fixed",
@@ -331,6 +144,7 @@ homedecor.register("wardrobe_bottom", {
 	groups = {snappy=3},
 	selection_box = wd_cbox,
 	collision_box = wd_cbox,
+	sounds = default.node_sound_wood_defaults(),
 	expand = { top="air" },
 	infotext = S("Wardrobe cabinet"),
 	inventory = {
@@ -347,6 +161,7 @@ homedecor.register("wall_shelf", {
 		"homedecor_wood_table_large_edges.png",
 	},
 	groups = { snappy = 3 },
+	sounds = default.node_sound_wood_defaults(),
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -385,15 +200,53 @@ homedecor.register("office_chair_"..c, {
 	selection_box = ofchairs_sbox,
 	collision_box = ofchairs_cbox,
 	expand = { top = "air" },
-	--[[
-	on_rightclick = function(pos, node, clicker)
-		pos.y = pos.y+0.14 -- player's sit position.
-		homedecor.sit_exec(pos, node, clicker)
-	end,
-	--]]
 })
 
 end
+
+-- Sitting functions disabled for now because of buggyness.
+
+--[[
+function homedecor.sit(pos, node, clicker)
+	local name = clicker:get_player_name()
+	local meta = minetest:get_meta(pos)
+	local param2 = node.param2
+	if clicker:get_player_name() == meta:get_string("player") then
+		meta:set_string("player", "")
+		pos.y = pos.y-0.5
+		clicker:setpos(pos)
+		clicker:set_eye_offset({x=0,y=0,z=0}, {x=0,y=0,z=0})
+		clicker:set_physics_override(1, 1, 1)
+		default.player_attached[name] = false
+		default.player_set_animation(clicker, "stand", 30)
+	else
+		meta:set_string("player", clicker:get_player_name())
+		clicker:set_eye_offset({x=0,y=-7,z=2}, {x=0,y=0,z=0})
+		clicker:set_physics_override(0, 0, 0)
+		default.player_attached[name] = true
+		if param2 == 1 then
+			clicker:set_look_yaw(7.9)
+		elseif param2 == 3 then
+			clicker:set_look_yaw(4.75)
+		elseif param2 == 0 then
+			clicker:set_look_yaw(3.15)
+		else
+			clicker:set_look_yaw(6.28)
+		end
+	end
+end
+
+function homedecor.sit_exec(pos, node, clicker) -- don't move these functions inside sit()
+	if not clicker or not clicker:is_player()
+		or clicker:get_player_control().up == true or clicker:get_player_control().down == true
+		or clicker:get_player_control().left == true or clicker:get_player_control().right == true
+		or clicker:get_player_control().jump == true then  -- make sure that the player is immobile.
+	return end
+	homedecor.sit(pos, node, clicker)
+	clicker:setpos(pos)
+	default.player_set_animation(clicker, "sit", 30)
+end
+--]]
 
 -- Aliases for 3dforniture mod.
 

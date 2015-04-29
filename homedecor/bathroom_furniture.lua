@@ -44,7 +44,7 @@ homedecor.register("towel_rod", {
 	},
 	inventory_image = "homedecor_towel_rod_inv.png",
 	selection_box = tr_cbox,
-	collision_box = tr_cbox,
+	walkable = false,
 	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=3,flammable=3},
 	sounds = default.node_sound_defaults(),
 })

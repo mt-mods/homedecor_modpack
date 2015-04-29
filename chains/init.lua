@@ -1,5 +1,3 @@
-print("[Chains] v1.3")
-
 local chains_sbox = {
 	type = "fixed",
 	fixed = { -0.1, -0.625, -0.1, 0.1, 0.5, 0.1 }

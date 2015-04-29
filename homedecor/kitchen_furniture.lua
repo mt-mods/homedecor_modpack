@@ -79,7 +79,7 @@ homedecor.register("copper_pans", {
 	inventory_image = "homedecor_copper_pans_inv.png",
 	groups = { snappy=3 },
 	selection_box = cp_cbox,
-	collision_box = cp_cbox,
+	walkable = false,
 	on_place = minetest.rotate_node
 })
 
@@ -95,7 +95,7 @@ homedecor.register("kitchen_faucet", {
 	description = "Kitchen Faucet",
 	groups = {snappy=3},
 	selection_box = kf_cbox,
-	collision_box = kf_cbox,
+	walkable = false
 })
 
 homedecor.register("paper_towel", {
@@ -107,13 +107,9 @@ homedecor.register("paper_towel", {
 	inventory_image = "homedecor_paper_towel_inv.png",
 	description = "Paper towels",
 	groups = { snappy=3 },
+	walkable = false,
 	selection_box = {
 		type = "fixed",
 		fixed = { -0.4375, 0.125, 0.0625, 0.4375, 0.4375, 0.5 }
 	},
-	collision_box = {
-		type = "fixed",
-		fixed = { -0.4375, 0.125, 0.0625, 0.4375, 0.4375, 0.5 }
-	}
 })
-
