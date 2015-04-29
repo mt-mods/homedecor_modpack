@@ -225,6 +225,7 @@ homedecor.register("dishwasher", {
 			{-0.4375, -0.5, -0.5, 0.4375, 0.4375, 0.4375},
 		}
 	},
+	selection_box = { type = "regular" },
 	sounds = default.node_sound_stone_defaults(),
 	groups = { snappy = 3 },
 })

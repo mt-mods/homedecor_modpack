@@ -24,6 +24,7 @@ homedecor.register("nightstand_"..w.."_one_drawer", {
 	},
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
+	selection_box = { type = "regular" },
 	infotext=S("One-drawer Nightstand"),
 	inventory = {
 		size=8,
@@ -49,6 +50,7 @@ homedecor.register("nightstand_"..w.."_two_drawers", {
 	},
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
+	selection_box = { type = "regular" },
 	infotext=S("Two-drawer Nightstand"),
 	inventory = {
 		size=16,
