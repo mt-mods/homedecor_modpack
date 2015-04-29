@@ -231,8 +231,7 @@ homedecor.register("shower_head", {
 					minetest.sound_stop(s_handle)
 				end, s_handle)
 			end
-			local player = clicker:get_player_name()
-			minetest.delete_particlespawner(id, player)
+			minetest.delete_particlespawner(id)
 			this_spawner_meta:set_int("active", nil)
 			this_spawner_meta:set_int("sound", nil)
 			return
