@@ -1,4 +1,3 @@
-
 local S = homedecor.gettext
 
 homedecor.register("window_quartered", {
@@ -24,14 +23,12 @@ homedecor.register("window_quartered", {
 			{0.4375, -0.5, -0.0625, 0.5, 0.5, 0.0625}, -- NodeBox5
 			{-0.5, -0.5, -0.0625, -0.4375, 0.5, 0.0625}, -- NodeBox6
 			{-0.0625, -0.5, -0.025, 0.0625, 0.5, 0.025}, -- NodeBox7
-			},
-		},
+		}
+	},
 	selection_box = {
 		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.0625, 0.5, 0.5, 0.0625}
-		},
-	},
+		fixed = {-0.5, -0.5, -0.0625, 0.5, 0.5, 0.0625}
+	}
 })
 
 homedecor.register("window_plain", {
@@ -55,14 +52,12 @@ homedecor.register("window_plain", {
 			{-0.5, -0.5, -0.0625, 0.5, -0.4375, 0.0625}, -- NodeBox3
 			{0.4375, -0.5, -0.0625, 0.5, 0.5, 0.0625}, -- NodeBox4
 			{-0.5, -0.5, -0.0625, -0.4375, 0.5, 0.0625}, -- NodeBox5
-			},
-		},
+		}
+	},
 	selection_box = {
 		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.0625, 0.5, 0.5, 0.0625}
-			},
-		},
+		fixed = {-0.5, -0.5, -0.0625, 0.5, 0.5, 0.0625}
+	}
 })
 
 local wb1_cbox = {
@@ -81,7 +76,7 @@ homedecor.register("blinds_thick", {
 	walkable = false,
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
-	selection_box = wb1_cbox,
+	selection_box = wb1_cbox
 })
 
 local wb2_cbox = {
@@ -100,7 +95,7 @@ homedecor.register("blinds_thin", {
 	walkable = false,
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
-	selection_box = wb2_cbox,
+	selection_box = wb2_cbox
 })
 
 local curtaincolors = {
@@ -127,9 +122,7 @@ for c in ipairs(curtaincolors) do
 		groups = { snappy = 3 },
 		sounds = default.node_sound_leaves_defaults(),
 		paramtype2 = 'wallmounted',
-		selection_box = {
-			type = "wallmounted",
-		},
+		selection_box = { type = "wallmounted" },
 	-- Open the curtains
 		on_rightclick = function(pos, node, clicker, itemstack)
 			local topnode = minetest.get_node({x=pos.x, y=pos.y+1.0, z=pos.z})
@@ -151,9 +144,7 @@ for c in ipairs(curtaincolors) do
 		groups = { snappy = 3 },
 		sounds = default.node_sound_leaves_defaults(),
 		paramtype2 = 'wallmounted',
-		selection_box = {
-			type = "wallmounted",
-		},
+		selection_box = { type = "wallmounted" },
 	-- Close the curtains
 		on_rightclick = function(pos, node, clicker, itemstack)
 			local topnode = minetest.get_node({x=pos.x, y=pos.y+1.0, z=pos.z})

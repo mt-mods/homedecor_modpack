@@ -607,7 +607,12 @@ homedecor.register("calendar", {
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		local date = os.date("%Y-%m-%d") -- ISO 8601 format
-		meta:set_string("infotext", "Date: "..date)
+		meta:set_string("infotext", "Date (right-click to update):\n"..date)
+	end,
+	on_rightclick = function(pos, node, clicker)
+		local meta = minetest.get_meta(pos)
+		local date = os.date("%Y-%m-%d")
+		meta:set_string("infotext", "Date (right-click to update):\n"..date)
 	end
 })
 

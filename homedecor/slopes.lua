@@ -44,7 +44,8 @@ homedecor.register_outer_corner = function(modname, subname, groups, slope_image
 		selection_box = ocorner_cbox,
 		collision_box = ocorner_cbox,
 		groups = groups,
-		on_place = minetest.rotate_node
+		on_place = minetest.rotate_node,
+		sounds = default.node_sound_wood_defaults()
 	})
 end
 
@@ -58,7 +59,8 @@ homedecor.register_inner_corner = function(modname, subname, groups, slope_image
 		paramtype2 = "facedir",
 		collision_box = icorner_cbox,
 		groups = groups,
-		on_place = minetest.rotate_node
+		on_place = minetest.rotate_node,
+		sounds = default.node_sound_wood_defaults()
 	})
 end
 
@@ -73,7 +75,8 @@ homedecor.register_slope = function(modname, subname, recipeitem, groups, slope_
 		selection_box = slope_cbox,
 		collision_box = slope_cbox,
 		groups = groups,
-		on_place = minetest.rotate_node
+		on_place = minetest.rotate_node,
+		sounds = default.node_sound_wood_defaults()
 	})
 
 	-- convert between flat shingles and slopes

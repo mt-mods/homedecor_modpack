@@ -1,8 +1,16 @@
 local S = homedecor.gettext
 
+local toilet_sbox = {
+	type = "fixed",
+	fixed = { -6/16, -8/16, -8/16, 6/16, 9/16, 8/16 },
+}
+
 local toilet_cbox = {
 	type = "fixed",
-	fixed = { -6/16, -8/16, -8/16, 6/16, 9/16, 8/16 }
+	fixed = { 
+		{-6/16, -8/16, -8/16, 6/16, 1/16, 8/16 },
+		{-6/16, -8/16, 4/16, 6/16, 9/16, 8/16 }
+	}
 }
 
 homedecor.register("toilet", {
@@ -14,14 +22,14 @@ homedecor.register("toilet", {
 		"homedecor_marble_light.png",
 		"homedecor_generic_metal_neutral.png"
 	},
-	selection_box = toilet_cbox,
-	collision_box = toilet_cbox,
-	groups = {cracky=3,},
+	selection_box = toilet_sbox,
+	node_box = toilet_cbox,
+	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
 	on_punch = function (pos, node, puncher)
 		node.name = "homedecor:toilet_open"
 		minetest.set_node(pos, node)
-	end,
+	end
 })
 
 homedecor.register("toilet_open", {
@@ -33,11 +41,10 @@ homedecor.register("toilet_open", {
 		"default_water.png",
 		"homedecor_generic_metal_neutral.png"
 	},
-	selection_box = toilet_cbox,
+	selection_box = toilet_sbox,
 	collision_box = toilet_cbox,
 	drop = "homedecor:toilet",
-	groups = {cracky = 3,},
-	--sounds = {dig = "3dforniture_dig_toilet",  gain=0.5},
+	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
 	on_punch = function (pos, node, puncher)
 		node.name = "homedecor:toilet"
@@ -47,7 +54,7 @@ homedecor.register("toilet_open", {
 			max_hear_distance = 5,
 			gain = 1,
 		})
-	end,
+	end
 })
 
 -- toilet paper :-)
@@ -67,7 +74,7 @@ homedecor.register("toilet_paper", {
 	inventory_image = "homedecor_toilet_paper_inv.png",
 	selection_box = tp_cbox,
 	walkable = false,
-	groups = {snappy=2,oddly_breakable_by_hand=3,flammable=3},
+	groups = {snappy=3,oddly_breakable_by_hand=3},
 	sounds = default.node_sound_defaults(),
 })
 
@@ -89,7 +96,7 @@ homedecor.register("sink", {
 	inventory_image="homedecor_bathroom_sink_inv.png",
 	selection_box = sink_cbox,
 	collision_box = sink_cbox,
-	groups = {cracky=2,},
+	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -106,13 +113,12 @@ homedecor.register("taps", {
 	},
 	inventory_image = "3dforniture_taps_inv.png",
 	wield_image = "3dforniture_taps_inv.png",
-	sunlight_propagates = true,
 	selection_box = {
 		type = "fixed",
 		fixed = { -4/16, -7/16, 4/16, 4/16, -4/16, 8/16 },
 	},
 	walkable = false,
-	groups = {cracky=2},
+	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -132,7 +138,7 @@ homedecor.register("taps_brass", {
 		fixed = { -4/16, -7/16, 4/16, 4/16, -4/16, 8/16 },
 	},
 	walkable = false,
-	groups = {cracky=2},
+	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -147,11 +153,11 @@ homedecor.register("shower_tray", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{ -0.50, -0.50, -0.50,  0.50, -0.45,  0.50, },
-			{ -0.50, -0.45, -0.50,  0.50, -0.40, -0.45, },
-			{ -0.50, -0.45,  0.45,  0.50, -0.40,  0.50, },
-			{ -0.50, -0.45, -0.45, -0.45, -0.40,  0.45, },
-			{  0.45, -0.45, -0.45,  0.50, -0.40,  0.45, },
+			{ -0.5, -0.5, -0.5, 0.5, -0.45, 0.5 },
+			{ -0.5, -0.45, -0.5, 0.5, -0.4, -0.45 },
+			{ -0.5, -0.45, 0.45, 0.5, -0.4, 0.5 },
+			{ -0.5, -0.45, -0.45, -0.45, -0.4, 0.45 },
+			{  0.45, -0.45, -0.45, 0.5, -0.4, 0.45 }
 		},
 	},
 	selection_box = {
