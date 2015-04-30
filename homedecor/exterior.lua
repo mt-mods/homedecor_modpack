@@ -30,9 +30,17 @@ homedecor.register("barbecue", {
 
 minetest.register_alias("homedecor:barbecue_meat", "air")
 
-local bl1_cbox = {
+local bl1_sbox = {
 	type = "fixed",
 	fixed = { -0.5, -0.5, -0.25, 1.5, 0.5, 0.5 }
+}
+
+local bl1_cbox = {
+	type = "fixed",
+	fixed = { 
+		{-0.5, -0.5, -0.25, 1.5, 0, 0.5 },
+		{-0.5, -0.5, 0.45, 1.5, 0.5, 0.5 },
+	}
 }
 
 homedecor.register("bench_large_1", {
@@ -46,16 +54,24 @@ homedecor.register("bench_large_1", {
 	groups = { snappy = 3 },
 	expand = { right="air" },
 	sounds = default.node_sound_wood_defaults(),
-	selection_box = bl1_cbox,
-	collision_box = bl1_cbox,
+	selection_box = bl1_sbox,
+	node_box = bl1_cbox,
 })
 
 minetest.register_alias("homedecor:bench_large_1_left", "homedecor:bench_large_1")
 minetest.register_alias("homedecor:bench_large_1_right", "air")
 
-local bl2_cbox = {
+local bl2_sbox = {
 	type = "fixed",
 	fixed = { -0.5, -0.5, -0.25, 1.5, 0.5, 0.5 }
+}
+
+local bl2_cbox = {
+	type = "fixed",
+	fixed = { 
+		{-0.5, -0.5, -0.25, 1.5, 0, 0.5 },
+		{-0.5, -0.5, 0.45, 1.5, 0.5, 0.5 },
+	}
 }
 
 homedecor.register("bench_large_2", {
@@ -64,8 +80,8 @@ homedecor.register("bench_large_2", {
 	tiles = { "homedecor_generic_wood_neutral.png" },
 	inventory_image = "homedecor_bench_large_2_inv.png",
 	groups = {snappy=3},
-	selection_box = bl2_cbox,
-	collision_box = bl2_cbox,
+	selection_box = bl2_sbox,
+	node_box = bl2_cbox,
 	expand = { right="air" },
 	sounds = default.node_sound_wood_defaults(),
 })

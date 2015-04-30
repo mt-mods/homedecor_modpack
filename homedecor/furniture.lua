@@ -50,6 +50,14 @@ local kc_cbox = {
 	fixed = { -0.3125, -0.5, -0.3125, 0.3125, 0.5, 0.3125 },
 }
 
+local ac_cbox = {
+	type = "fixed",
+	fixed = { 
+		{-0.5, -0.5, -0.5, 0.5, 0, 0.5 },
+		{-0.5, -0.5, 0.4, 0.5, 0.5, 0.5 }
+	}
+}
+
 for i in ipairs(chaircolors) do
 
 	local color = "_"..chaircolors[i][1]
@@ -93,8 +101,9 @@ for i in ipairs(chaircolors) do
 				"wool_dark_grey.png",
 				"default_wood.png"
 			},
-			groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+			groups = {snappy=3},
 			sounds = default.node_sound_wood_defaults(),
+			node_box = ac_cbox
 		})
 
 		minetest.register_craft({
@@ -123,6 +132,8 @@ minetest.register_node(":homedecor:openframe_bookshelf", {
 	},
 	groups = {choppy=3,oddly_breakable_by_hand=2,flammable=3},
 	sounds = default.node_sound_wood_defaults(),
+	paramtype = "light",
+	paramtype2 = "facedir",
 	selection_box = ob_cbox,
 	collision_box = ob_cbox,
 })
