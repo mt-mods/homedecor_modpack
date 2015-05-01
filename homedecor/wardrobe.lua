@@ -23,18 +23,16 @@ homedecor.register("wardrobe", {
 		local meta = minetest.get_meta(pos)
 		local skins = {"male1", "male2", "male3", "male4", "male5"}
 		-- textures made by the Minetest community (mostly Calinou and Jordach)
+		local clothes_strings = ""
+		for i = 1,5 do
+			clothes_strings = clothes_strings..
+			  "image_button_exit["..(i-1)..".5,0;1.1,2;"..skins[i].."_preview.png;"..skins[i]..";]"..
+			  "image_button_exit["..(i-1)..".5,2;1.1,2;fe"..skins[i].."_preview.png;fe"..skins[i]..";]"
+		end
+
 		meta:set_string("formspec", "size[5.5,8.5]"..default.gui_bg..default.gui_bg_img..default.gui_slots..
 			"vertlabel[0,0.5;CLOTHES]"..
-			"image_button_exit[0.5,0;1.1,2;"..skins[1].."_preview.png;"..skins[1]..";]"..
-			"image_button_exit[1.5,0;1.1,2;"..skins[2].."_preview.png;"..skins[2]..";]"..
-			"image_button_exit[2.5,0;1.1,2;"..skins[3].."_preview.png;"..skins[3]..";]"..
-			"image_button_exit[3.5,0;1.1,2;"..skins[4].."_preview.png;"..skins[4]..";]"..
-			"image_button_exit[4.5,0;1.1,2;"..skins[5].."_preview.png;"..skins[5]..";]"..
-			"image_button_exit[0.5,2;1.1,2;fe"..skins[1].."_preview.png;fe"..skins[1]..";]"..
-			"image_button_exit[1.5,2;1.1,2;fe"..skins[2].."_preview.png;fe"..skins[2]..";]"..
-			"image_button_exit[2.5,2;1.1,2;fe"..skins[3].."_preview.png;fe"..skins[3]..";]"..
-			"image_button_exit[3.5,2;1.1,2;fe"..skins[4].."_preview.png;fe"..skins[4]..";]"..
-			"image_button_exit[4.5,2;1.1,2;fe"..skins[5].."_preview.png;fe"..skins[5]..";]"..
+			clothes_strings..
 			"vertlabel[0,5.2;STORAGE]"..
 			"list[current_name;main;0.5,4.5;5,2;]"..
 			"list[current_player;main;0.5,6.8;5,2;]")
@@ -61,35 +59,17 @@ homedecor.register("wardrobe", {
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
 		local meta = minetest.get_meta(pos)
-		local formats = {".x", ".b3d" }
 		local skins = {"male1", "male2", "male3", "male4", "male5"}
-		local skin = ""
 
-		if fields[skins[1]] then
-			skin = skins[1]..".png"
-		elseif fields[skins[2]] then
-			skin = skins[2]..".png"
-		elseif fields[skins[3]] then
-			skin = skins[3]..".png"
-		elseif fields[skins[4]] then
-			skin = skins[4]..".png"
-		elseif fields[skins[5]] then
-			skin = skins[5]..".png"
-		elseif fields["fe"..skins[1]] then
-			skin = "fe"..skins[1]..".png"
-		elseif fields["fe"..skins[2]] then
-			skin = "fe"..skins[2]..".png"
-		elseif fields["fe"..skins[3]] then
-			skin = "fe"..skins[3]..".png"
-		elseif fields["fe"..skins[4]] then
-			skin = "fe"..skins[4]..".png"
-		elseif fields["fe"..skins[5]] then
-			skin = "fe"..skins[5]..".png"
-		else
-			return
+		for i = 1,5 do
+			if fields[skins[i]] then
+				default.player_set_textures(sender, { skins[i]..".png" })
+				break
+			elseif fields["fe"..skins[i]] then
+				default.player_set_textures(sender, { skin = "fe"..skins[i]..".png" })
+				break
+			end
 		end
-
-		default.player_set_textures(sender, { skin })
 	end
 })
 
