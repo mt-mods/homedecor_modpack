@@ -147,6 +147,7 @@ dofile(homedecor.modpath.."/beds.lua")
 dofile(homedecor.modpath.."/books.lua")
 dofile(homedecor.modpath.."/exterior.lua")
 dofile(homedecor.modpath.."/trash_cans.lua")
+dofile(homedecor.modpath.."/wardrobe.lua")
 
 dofile(homedecor.modpath.."/handlers/locked.lua")
 

@@ -138,34 +138,6 @@ minetest.register_node(":homedecor:openframe_bookshelf", {
 	collision_box = ob_cbox,
 })
 
-local wd_cbox = {
-	type = "fixed",
-	fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
-}
-
-homedecor.register("wardrobe_bottom", {
-	mesh = "homedecor_bedroom_wardrobe.obj",
-	tiles = {
-		"homedecor_generic_wood_beech.png",
-		"homedecor_wardrobe_drawers.png",
-		"homedecor_wardrobe_doors.png"
-	},
-	inventory_image = "homedecor_wardrobe_inv.png",
-	description = "Wardrobe",
-	groups = {snappy=3},
-	selection_box = wd_cbox,
-	collision_box = wd_cbox,
-	sounds = default.node_sound_wood_defaults(),
-	expand = { top="air" },
-	infotext = S("Wardrobe cabinet"),
-	inventory = {
-		size=24,
-	},
-})
-
-minetest.register_alias("homedecor:wardrobe_bottom", "homedecor:wardrobe")
-minetest.register_alias("homedecor:wardrobe_top", "air")
-
 homedecor.register("wall_shelf", {
 	description = "Wall Shelf",
 	tiles = {
