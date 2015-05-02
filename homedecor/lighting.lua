@@ -303,13 +303,13 @@ homedecor.register("ground_lantern", {
 
 local hl_cbox = {
 	type = "fixed",
-	fixed = { -0.25, -0.4, -0.2, 0.25, 0.5, 0.5 },
+	fixed = { -0.25, -0.5, -0.2, 0.25, 0.5, 0.5 },
 }
 
 homedecor.register("hanging_lantern", {
 	description = S("Hanging Lantern"),
 	mesh = "homedecor_hanging_lantern.obj",
-	tiles = { "homedecor_light.png", "homedecor_generic_metal_wrought_iron.png" },
+	tiles = { "homedecor_generic_metal_wrought_iron.png", "homedecor_light.png" },
 	use_texture_alpha = true,
 	inventory_image = "homedecor_hanging_lantern_inv.png",
 	wield_image = "homedecor_hanging_lantern_inv.png",

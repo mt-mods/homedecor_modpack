@@ -93,7 +93,9 @@ local wl_cbox = {
 homedecor.register("wall_lamp", {
 	description = S("Wall Lamp"),
 	mesh = "homedecor_wall_lamp.obj",
-	tiles = {"homedecor_wall_lamp.png"},
+	tiles = {"homedecor_generic_metal_neutral.png", "homedecor_generic_wood_luxury_brown1.png", 
+			"homedecor_light.png", "homedecor_generic_metal_wrought_iron.png"},
+	use_texture_alpha = true,
 	inventory_image = "homedecor_wall_lamp_inv.png",
 	groups = {snappy=3},
 	light_source = 11,
