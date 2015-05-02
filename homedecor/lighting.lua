@@ -291,7 +291,8 @@ minetest.register_alias("homedecor:wall_lantern", "homedecor:ground_lantern")
 homedecor.register("ground_lantern", {
 	description = S("Ground Lantern"),
 	mesh = "homedecor_ground_lantern.obj",
-	tiles = {"homedecor_ground_lantern.png"},
+	tiles = { "homedecor_light.png", "homedecor_generic_metal_wrought_iron.png" },
+	use_texture_alpha = true,
 	inventory_image = "homedecor_ground_lantern_inv.png",
 	wield_image = "homedecor_ground_lantern_inv.png",
 	groups = {snappy=3},
@@ -308,7 +309,8 @@ local hl_cbox = {
 homedecor.register("hanging_lantern", {
 	description = S("Hanging Lantern"),
 	mesh = "homedecor_hanging_lantern.obj",
-	tiles = {"homedecor_hanging_lantern.png"},
+	tiles = { "homedecor_light.png", "homedecor_generic_metal_wrought_iron.png" },
+	use_texture_alpha = true,
 	inventory_image = "homedecor_hanging_lantern_inv.png",
 	wield_image = "homedecor_hanging_lantern_inv.png",
 	groups = {snappy=3},
@@ -325,7 +327,8 @@ local cl_cbox = {
 homedecor.register("ceiling_lantern", {
 	drawtype = "mesh",
 	mesh = "homedecor_ceiling_lantern.obj",
-	tiles = { "homedecor_ceiling_lantern.png" },
+	tiles = { "homedecor_light.png", "homedecor_generic_metal_wrought_iron.png" },
+	use_texture_alpha = true,
 	inventory_image = "homedecor_ceiling_lantern_inv.png",
 	description = "Ceiling Lantern",
 	groups = {snappy=3},	
