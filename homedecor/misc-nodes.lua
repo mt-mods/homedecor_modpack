@@ -568,10 +568,10 @@ homedecor.register("tool_cabinet", {
 	description = "Metal tool cabinet and work table",
 	mesh = "homedecor_tool_cabinet.obj",
 	tiles = {
-		"homedecor_generic_metal_red.png",
+		"homedecor_generic_metal_black.png^[colorize:#ff0000:150",
 		"homedecor_tool_cabinet_drawers.png",
-		"homedecor_generic_metal_green.png",
-		"homedecor_generic_metal_neutral.png",
+		"homedecor_generic_metal_black.png^[colorize:#006000:150",
+		"homedecor_generic_metal_black.png^[brighten",
 		"homedecor_generic_metal_bright.png",
 		"homedecor_tool_cabinet_misc.png",
 	},
@@ -626,7 +626,7 @@ homedecor.register("desk_globe", {
 	mesh = "homedecor_desk_globe.obj",
 	tiles = {
 		"homedecor_generic_wood_red.png",
-		"homedecor_generic_metal_neutral.png",
+		"homedecor_generic_metal_black.png^[brighten",
 		"homedecor_earth.png"
 	},
 	inventory_image = "homedecor_desk_globe_inv.png",

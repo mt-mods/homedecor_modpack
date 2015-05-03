@@ -274,7 +274,7 @@ homedecor.register("well", {
 	mesh = "homedecor_well.obj",
 	tiles = {
 		"homedecor_rope_texture.png",
-		"homedecor_generic_metal_neutral.png",
+		"homedecor_generic_metal_black.png^[brighten",
 		"default_water.png",
 		"default_cobble.png",
 		"default_wood.png",

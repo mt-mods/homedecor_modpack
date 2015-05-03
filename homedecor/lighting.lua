@@ -409,7 +409,7 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 			"wool_"..woolcolor..".png^[colorize:#ffffff:"..wool_brighten,
 			"homedecor_table_standing_lamp_lightbulb.png^[colorize:#ffffff:"..bulb_brighten,
 			"homedecor_generic_wood_red.png",
-			"homedecor_generic_metal_neutral.png",
+			"homedecor_generic_metal_black.png^[brighten",
 		},
 		inventory_image = "homedecor_table_lamp"..lampcolor.."_inv.png",
 		walkable = false,
@@ -435,7 +435,7 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 			"wool_"..woolcolor..".png^[colorize:#ffffff:"..wool_brighten,
 			"homedecor_table_standing_lamp_lightbulb.png^[colorize:#ffffff:"..bulb_brighten,
 			"homedecor_generic_wood_red.png",
-			"homedecor_generic_metal_neutral.png",
+			"homedecor_generic_metal_black.png^[brighten",
 		},
 		inventory_image = "homedecor_standing_lamp"..lampcolor.."_inv.png",
 		walkable = false,
@@ -480,8 +480,12 @@ for _, color in ipairs(dlamp_colors) do
 	homedecor.register("desk_lamp_"..color, {
 		description = S("Desk Lamp ("..color..")"),
 		mesh = "homedecor_desk_lamp.obj",
-		tiles = { "homedecor_generic_metal_white.png", "homedecor_generic_metal_black.png^[colorize:"..color..":150",
-				"homedecor_generic_metal_black.png", "homedecor_generic_metal_black.png^[colorize:"..color..":150" },
+		tiles = {
+			"homedecor_table_standing_lamp_lightbulb.png^[colorize:#ffffff:200",
+			"homedecor_generic_metal_black.png^[colorize:"..color..":150",
+			"homedecor_generic_metal_black.png",
+			"homedecor_generic_metal_black.png^[colorize:"..color..":150"
+		},
 		inventory_image = "homedecor_desk_lamp_inv_"..color..".png",
 		wield_image = "homedecor_desk_lamp_inv_"..color..".png",
 		selection_box = dlamp_cbox,
