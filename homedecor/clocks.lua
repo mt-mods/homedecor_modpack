@@ -4,7 +4,7 @@ local clock_sbox = {
 }
 
 local clock_materials = {
-	{ "plastic", "homedecor_generic_plastic_white.png" },
+	{ "plastic", "homedecor_generic_plastic_black.png^[colorize:#ffffff:220" },
 	{ "wood", "default_wood.png" }
 }
 
