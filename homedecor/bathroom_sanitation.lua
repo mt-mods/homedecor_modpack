@@ -17,9 +17,9 @@ homedecor.register("toilet", {
 	description = S("Toilet"),
 	mesh = "homedecor_toilet_closed.obj",
 	tiles = {
-		"homedecor_marble_light.png",
-		"homedecor_marble_light.png",
-		"homedecor_marble_light.png",
+		"homedecor_marble.png^[colorize:#ffffff:175",
+		"homedecor_marble.png^[colorize:#ffffff:175",
+		"homedecor_marble.png^[colorize:#ffffff:175",
 		"homedecor_generic_metal_neutral.png"
 	},
 	selection_box = toilet_sbox,
@@ -35,9 +35,9 @@ homedecor.register("toilet", {
 homedecor.register("toilet_open", {
 	mesh = "homedecor_toilet_open.obj",
 	tiles = {
-		"homedecor_marble_light.png",
-		"homedecor_marble_light.png",
-		"homedecor_marble_light.png",
+		"homedecor_marble.png^[colorize:#ffffff:175",
+		"homedecor_marble.png^[colorize:#ffffff:175",
+		"homedecor_marble.png^[colorize:#ffffff:175",
 		"default_water.png",
 		"homedecor_generic_metal_neutral.png"
 	},
@@ -89,8 +89,8 @@ homedecor.register("sink", {
 	description = S("Bathroom Sink"),
 	mesh = "homedecor_bathroom_sink.obj",
 	tiles = {
-		"homedecor_marble_light.png",
-		"forniture_marble.png",
+		"homedecor_marble.png^[colorize:#ffffff:175",
+		"homedecor_marble.png",
 		"default_water.png"
 	},
 	inventory_image="homedecor_bathroom_sink_inv.png",
@@ -148,7 +148,7 @@ homedecor.register("shower_tray", {
 	description = S("Shower Tray"),
 	tiles = {
 		"forniture_marble_base_ducha_top.png",
-		"forniture_marble.png"
+		"homedecor_marble.png"
 	},
 	node_box = {
 		type = "fixed",
