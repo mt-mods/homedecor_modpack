@@ -480,7 +480,8 @@ for _, color in ipairs(dlamp_colors) do
 	homedecor.register("desk_lamp_"..color, {
 		description = S("Desk Lamp ("..color..")"),
 		mesh = "homedecor_desk_lamp.obj",
-		tiles = {"homedecor_desk_lamp_"..color..".png"},
+		tiles = { "homedecor_generic_metal_white.png", "homedecor_generic_metal_black.png^[colorize:"..color..":150",
+				"homedecor_generic_metal_black.png", "homedecor_generic_metal_black.png^[colorize:"..color..":150" },
 		inventory_image = "homedecor_desk_lamp_inv_"..color..".png",
 		wield_image = "homedecor_desk_lamp_inv_"..color..".png",
 		selection_box = dlamp_cbox,
