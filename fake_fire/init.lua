@@ -90,7 +90,8 @@ for _, f in ipairs(flame_types) do
 			minetest.sound_play("fire_extinguish", {
 				pos = pos, max_hear_distance = 5
 			})
-		end
+		end,
+		drop = ""
 	})
 end
 
@@ -117,7 +118,16 @@ minetest.register_node("fake_fire:fancy_fire", {
 			minetest.sound_play("fire_extinguish", {
 				pos = pos, max_hear_distance = 5
 			})
-		end
+		end,
+		drop = {
+			max_items = 3,
+			items = {
+				{
+					items = { "default:torch", "default:torch", "building_blocks:sticks" },
+					rarity = 1,
+				}
+			}
+		}
 	})
 
 -- EMBERS
@@ -211,7 +221,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "shapeless",
 	output = 'fake_fire:fancy_fire',
-	recipe = {"fake_fire:fake_fire", "building_blocks:sticks"}
+	recipe = {"default:torch", "building_blocks:sticks", "default:torch" }
 })
 
 -- ALIASES
