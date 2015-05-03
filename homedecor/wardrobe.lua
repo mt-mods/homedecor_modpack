@@ -60,12 +60,24 @@ homedecor.register("wardrobe", {
 	on_receive_fields = function(pos, formname, fields, sender)
 		local meta = minetest.get_meta(pos)
 		local skins = {"male1", "male2", "male3", "male4", "male5"}
+		local playerName = sender:get_player_name()
+		local armor_mod = minetest.get_modpath("3d_armor")
 
 		for i = 1,5 do
 			if fields[skins[i]] then
+				if armor_mod then -- if 3D_armor's installed, let it set the skin
+					armor.textures[playerName].skin = skins[i]..".png"
+					armor:update_player_visuals(sender)
+					break
+				end
 				default.player_set_textures(sender, { skins[i]..".png" })
 				break
 			elseif fields["fe"..skins[i]] then
+				if armor_mod then
+					armor.textures[playerName].skin = "fe"..skins[i]..".png"
+					armor:update_player_visuals(sender)
+					break
+				end
 				default.player_set_textures(sender, { skin = "fe"..skins[i]..".png" })
 				break
 			end
