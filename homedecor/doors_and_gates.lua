@@ -337,17 +337,37 @@ for i in ipairs(gates_list) do
 
 	local gate=gates_list[i]
 
+	local edges = {
+		"homedecor_gate_"..gate.."_top.png",
+		"homedecor_gate_"..gate.."_bottom.png",
+		"homedecor_gate_"..gate.."_left.png",
+		"homedecor_gate_"..gate.."_right.png",
+	}
+
+	if gate == "barbed_wire" then
+		edges = {
+			"homedecor_gate_barbed_wire_edges.png",
+			"homedecor_gate_barbed_wire_edges.png",
+			"homedecor_gate_barbed_wire_edges.png",
+			"homedecor_gate_barbed_wire_edges.png",
+		}
+	end
+
+	local tiles = edges
+	if gate ~= "picket" and gate ~= "picket_white" then
+		table.insert (tiles, "homedecor_gate_"..gate.."_front.png^[transformFX")
+		table.insert (tiles, "homedecor_gate_"..gate.."_front.png")
+	else
+		table.insert (tiles, "homedecor_gate_"..gate.."_back.png")
+		table.insert (tiles, "homedecor_gate_"..gate.."_front.png")
+	end
+
+
+
     local def = {
 		drawtype = "nodebox",
 		description = S(gate_names[i].." Fence Gate"),
-		tiles = {
-			"homedecor_gate_"..gate.."_top.png",
-			"homedecor_gate_"..gate.."_bottom.png",
-			"homedecor_gate_"..gate.."_left.png",
-			"homedecor_gate_"..gate.."_right.png",
-			"homedecor_gate_"..gate.."_back.png",
-			"homedecor_gate_"..gate.."_front.png"
-		},
+		tiles = tiles,
 		paramtype = "light",
 		groups = {snappy=3},
 		sounds = default.node_sound_wood_defaults(),
@@ -378,15 +398,15 @@ for i in ipairs(gates_list) do
     def = homedecor.table_copy(def)
     def.groups.not_in_creative_inventory = 1
     def.selection_box.fixed = { 0.4, -0.5, -0.5, 0.5, 0.5, 0.5 }
-    def.tiles = {
-		"homedecor_gate_"..gate.."_top.png",
-		"homedecor_gate_"..gate.."_bottom.png",
-		"homedecor_gate_"..gate.."_front.png",
-		"homedecor_gate_"..gate.."_back.png",
-		"homedecor_gate_"..gate.."_left.png",
-        "homedecor_gate_"..gate.."_right.png"
-    }
     def.node_box.fixed = gate_models_open[i]
+	def.tiles = {
+		tiles[1],
+		tiles[2],
+		tiles[6],
+		tiles[5],
+		tiles[4],
+		tiles[3]
+	}
     def.drop = "homedecor:gate_"..gate.."_closed"
 	def.on_rightclick = function(pos, node, clicker)
         homedecor.flip_gate(pos, node, clicker, gate, "open")
