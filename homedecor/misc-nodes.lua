@@ -49,7 +49,7 @@ homedecor.register("flower_pot_"..p, {
 	mesh = "homedecor_flowerpot.obj",
 	tiles = {
 		"homedecor_flower_pot_"..p..".png",
-		"homedecor_potting_soil.png"
+		"default_dirt.png^[colorize:#000000:175"
 	},
 	groups = { snappy = 3, potting_soil=1 },
 	sounds = default.node_sound_stone_defaults(),
