@@ -1,21 +1,21 @@
 local S = homedecor.gettext
 
-local table_colors = { "", "mahogany", "white" }
+local table_colors = {
+	{ "",          homedecor.plain_wood },
+	{ "_mahogany", homedecor.mahogany_wood },
+	{ "_white",    homedecor.white_wood }
+}
 
-for _, i in ipairs(table_colors) do
-	local color = "_"..i
-	local color2 = "_"..i
+for i in ipairs(table_colors) do
 	local desc = S("Table ("..i..")")
 
-	if i == "" then
-		color = ""
-		color2 = "_beech"
+	if i == 1 then
 		desc = S("Table")
 	end
 
-	homedecor.register("table"..color, {
+	homedecor.register("table"..table_colors[i][1], {
 		description = desc,
-		tiles = { "homedecor_generic_wood"..color2..".png" },
+		tiles = { table_colors[i][2] },
 		node_box = {
 			type = "fixed",
 			fixed = {
@@ -64,15 +64,15 @@ for i in ipairs(chaircolors) do
 	local color2 = chaircolors[i][1]
 	local name = S(chaircolors[i][2])
 	local chairtiles = {
-		"homedecor_generic_wood_beech.png",
+		homedecor.plain_wood,
 		"wool"..color..".png",
 	}
 
 	if chaircolors[i][1] == "" then
 		color = ""
 		chairtiles = {
-			"homedecor_generic_wood_beech.png",
-			"homedecor_generic_wood_beech.png"
+			homedecor.plain_wood,
+			homedecor.plain_wood
 		}
 	end
 

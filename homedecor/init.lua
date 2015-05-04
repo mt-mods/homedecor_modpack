@@ -99,6 +99,18 @@ function homedecor.find_ceiling(itemstack, placer, pointed_thing)
 	return isceiling, pos
 end
 
+homedecor.plain_wood = "homedecor_generic_wood_plain.png^"..
+					   "(homedecor_generic_wood_boards_overlay.png^[colorize:#a7682020:100)"
+
+homedecor.mahogany_wood = "(homedecor_generic_wood_plain.png^[colorize:#401010:125)^"..
+					      "(homedecor_generic_wood_boards_overlay.png^[colorize:#66493880:200)"
+
+homedecor.white_wood = "(homedecor_generic_wood_plain.png^[colorize:#e0f0ff:200)^"..
+					   "(homedecor_generic_wood_boards_overlay.png^[colorize:#ffffff:200)"
+
+homedecor.dark_wood = "(homedecor_generic_wood_plain.png^[colorize:#140900:200)^"..
+					  "(homedecor_generic_wood_boards_overlay.png^[colorize:#21110180:180)"
+
 -- nodebox arithmetics and helpers
 -- (please keep non-generic nodeboxes with their node definition)
 dofile(homedecor.modpath.."/handlers/nodeboxes.lua")

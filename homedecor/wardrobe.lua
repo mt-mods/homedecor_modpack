@@ -8,7 +8,7 @@ local wd_cbox = {
 homedecor.register("wardrobe", {
 	mesh = "homedecor_bedroom_wardrobe.obj",
 	tiles = {
-		"homedecor_generic_wood_beech.png",
+		homedecor.plain_wood,
 		"homedecor_wardrobe_drawers.png",
 		"homedecor_wardrobe_doors.png"
 	},

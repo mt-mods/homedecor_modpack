@@ -244,7 +244,7 @@ homedecor.register("filing_cabinet", {
 	description = S("Filing Cabinet"),
 	mesh = "homedecor_filing_cabinet.obj",
 	tiles = {
-		"homedecor_generic_wood_beech.png",
+		homedecor.plain_wood,
 		"homedecor_filing_cabinet_front.png",
 		"homedecor_filing_cabinet_bottom.png"
 	},
@@ -282,7 +282,7 @@ homedecor.register("pool_table", {
 minetest.register_alias("homedecor:pool_table_2", "air")
 
 homedecor.register("coatrack_wallmount", {
-	tiles = { "homedecor_generic_wood_beech.png" },
+	tiles = { homedecor.plain_wood },
 	inventory_image = "homedecor_coatrack_wallmount_inv.png",
 	description = "Coatrack (wallmounted)",
 	groups = {snappy=3},
@@ -306,7 +306,7 @@ homedecor.register("coatrack_wallmount", {
 homedecor.register("coat_tree", {
 	mesh = "homedecor_coatrack.obj",
 	tiles = {
-		"homedecor_generic_wood_beech.png",
+		homedecor.plain_wood,
 		"homedecor_generic_wood_neutral.png"
 	},
 	inventory_image = "homedecor_coatrack_inv.png",
@@ -717,8 +717,8 @@ homedecor.banister_materials = {
 	},
 	{	"white_dark",
 		"dark topped",
-		"homedecor_generic_wood_white.png",
-		"homedecor_generic_wood_dark.png",
+		homedecor.white_wood,
+		homedecor.dark_wood,
 		"group:wood",
 		"group:stick",
 		"dye:brown",
@@ -726,7 +726,7 @@ homedecor.banister_materials = {
 	},
 	{	"brass",
 		"brass",
-		"homedecor_generic_wood_white.png",
+		homedecor.white_wood,
 		"homedecor_generic_metal_brass.png",
 		"technic:brass_ingot",
 		"group:stick",
