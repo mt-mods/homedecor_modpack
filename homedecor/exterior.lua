@@ -46,7 +46,7 @@ local bl1_cbox = {
 homedecor.register("bench_large_1", {
 	mesh = "homedecor_bench_large_1.obj",
 	tiles = {
-		"homedecor_generic_wood_neutral.png",
+		"homedecor_generic_wood_old.png",
 		"homedecor_generic_metal_wrought_iron.png"
 	},
 	description = "Garden Bench (style 1)",
@@ -77,7 +77,7 @@ local bl2_cbox = {
 homedecor.register("bench_large_2", {
 	description = "Garden Bench (style 2)",
 	mesh = "homedecor_bench_large_2.obj",
-	tiles = { "homedecor_generic_wood_neutral.png" },
+	tiles = { "homedecor_generic_wood_old.png" },
 	inventory_image = "homedecor_bench_large_2_inv.png",
 	groups = {snappy=3},
 	selection_box = bl2_sbox,
@@ -139,7 +139,7 @@ minetest.register_alias("homedecor:doghouse_roof", "air")
 minetest.register_alias("homedecor:doghouse_base", "homedecor:doghouse")
 
 homedecor.register("simple_bench", {
-	tiles = { "homedecor_generic_wood_neutral.png" },
+	tiles = { "homedecor_generic_wood_old.png" },
 	description = "Simple Bench",
 	groups = {snappy=3},
 	node_box = {

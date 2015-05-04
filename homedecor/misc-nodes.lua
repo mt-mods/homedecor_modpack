@@ -307,7 +307,7 @@ homedecor.register("coat_tree", {
 	mesh = "homedecor_coatrack.obj",
 	tiles = {
 		homedecor.plain_wood,
-		"homedecor_generic_wood_neutral.png"
+		"homedecor_generic_wood_old.png"
 	},
 	inventory_image = "homedecor_coatrack_inv.png",
 	description = "Coat tree",
