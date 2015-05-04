@@ -268,7 +268,7 @@ homedecor.register("pool_table", {
 		"homedecor_pool_table_baize.png",
 		"homedecor_pool_table_pockets.png",
 		"homedecor_pool_table_balls.png",
-		"homedecor_generic_wood_luxury_brown3.png"
+		"homedecor_generic_wood_luxury.png^[colorize:#000000:90"
 	},
 	description = "Pool Table",
 	inventory_image = "homedecor_pool_table_inv.png",
@@ -425,9 +425,9 @@ local piano_cbox = {
 homedecor.register("piano", {
 	mesh = "homedecor_piano.obj",
 	tiles = {
+		"homedecor_generic_wood_luxury.png^[colorize:#000000:175",
 		"homedecor_piano_keys.png",
 		"homedecor_generic_metal_brass.png",
-		"homedecor_generic_wood_luxury_black.png"
 	},
 	inventory_image = "homedecor_piano_inv.png",
 	description = "Piano",
