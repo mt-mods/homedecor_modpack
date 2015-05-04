@@ -99,23 +99,24 @@ homedecor.register("blinds_thin", {
 })
 
 local curtaincolors = {
-	"red",
-	"green",
-	"blue",
-	"white",
-	"pink",
-	"violet"
+	{ "red",    "#ad2323e0:175" },
+	{ "green",  "#27a927e0:175" },
+	{ "blue",   "#2626c6e0:175" },
+	{ "white",  "#ffffffe0:175" },
+	{ "pink",   "#ff8fb7e0:175" },
+	{ "violet", "#7f29d7e0:175" },
 }
 
 for c in ipairs(curtaincolors) do
-	local color = curtaincolors[c]
-	local color_d = S(curtaincolors[c])
+	local color = curtaincolors[c][1]
+	local hue = curtaincolors[c][2]
+	local color_d = S(curtaincolors[c][1])
 
 	homedecor.register("curtain_"..color, {
 		description = S("Curtains (%s)"):format(color_d),
-		tiles = { "homedecor_curtain_"..color..".png" },
-		inventory_image = "homedecor_curtain_"..color..".png",
-		wield_image = "homedecor_curtain_"..color..".png",
+		tiles = { "homedecor_curtain.png^[colorize:"..hue },
+		inventory_image = "homedecor_curtain.png^[colorize:"..hue,
+		wield_image = "homedecor_curtain.png^[colorize:"..hue,
 		drawtype = 'signlike',
 		use_texture_alpha = true,
 		walkable = false,
@@ -135,9 +136,9 @@ for c in ipairs(curtaincolors) do
 
 	homedecor.register("curtain_open_"..color, {
 		description = S("Curtains (%s)"):format(color_d),
-		tiles = { "homedecor_curtain_open_"..color..".png" },
-		inventory_image = "homedecor_curtain_open_"..color..".png",
-		wield_image = "homedecor_curtain_open_"..color..".png",
+		tiles = { "homedecor_curtain_open.png^[colorize:"..hue },
+		inventory_image = "homedecor_curtain_open.png^[colorize:"..hue,
+		wield_image = "homedecor_curtain_open.png^[colorize:"..hue,
 		drawtype = 'signlike',
 		use_texture_alpha = true,
 		walkable = false,
