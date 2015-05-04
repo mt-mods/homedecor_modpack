@@ -189,8 +189,8 @@ homedecor.register("fence_privacy", {
 homedecor.register("fence_privacy_corner", {
 	description = S("Wooden Privacy Fence Corner"),
 	tiles = {
-		"homedecor_fence_privacy_corner_top.png",
-		"homedecor_fence_privacy_corner_bottom.png",
+		"homedecor_fence_privacy_corner_tb.png",
+		"homedecor_fence_privacy_corner_tb.png^[transformFY",
 		"homedecor_fence_privacy_corner_right.png",
 		"homedecor_fence_privacy_backside2.png",
 		"homedecor_fence_privacy_backside.png",

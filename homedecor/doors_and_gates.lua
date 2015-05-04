@@ -337,32 +337,36 @@ for i in ipairs(gates_list) do
 
 	local gate=gates_list[i]
 
-	local edges = {
-		"homedecor_gate_"..gate.."_top.png",
-		"homedecor_gate_"..gate.."_bottom.png",
-		"homedecor_gate_"..gate.."_left.png",
-		"homedecor_gate_"..gate.."_right.png",
+	local tiles = {
+		"homedecor_gate_"..gate.."_tb.png",
+		"homedecor_gate_"..gate.."_tb.png",
+		"homedecor_gate_"..gate.."_lr.png",
+		"homedecor_gate_"..gate.."_lr.png",
+		"homedecor_gate_"..gate.."_fb.png^[transformFX",
+		"homedecor_gate_"..gate.."_fb.png"
 	}
 
 	if gate == "barbed_wire" then
-		edges = {
+		tiles = {
 			"homedecor_gate_barbed_wire_edges.png",
 			"homedecor_gate_barbed_wire_edges.png",
 			"homedecor_gate_barbed_wire_edges.png",
 			"homedecor_gate_barbed_wire_edges.png",
+			"homedecor_gate_barbed_wire_fb.png^[transformFX",
+			"homedecor_gate_barbed_wire_fb.png"
 		}
 	end
 
-	local tiles = edges
-	if gate ~= "picket" and gate ~= "picket_white" then
-		table.insert (tiles, "homedecor_gate_"..gate.."_front.png^[transformFX")
-		table.insert (tiles, "homedecor_gate_"..gate.."_front.png")
-	else
-		table.insert (tiles, "homedecor_gate_"..gate.."_back.png")
-		table.insert (tiles, "homedecor_gate_"..gate.."_front.png")
+	if gate == "picket" or gate == "picket_white" then
+		tiles = {
+			"homedecor_blanktile.png",
+			"homedecor_blanktile.png",
+			"homedecor_blanktile.png",
+			"homedecor_blanktile.png",
+			"homedecor_gate_"..gate.."_back.png",
+			"homedecor_gate_"..gate.."_front.png"
+		}
 	end
-
-
 
     local def = {
 		drawtype = "nodebox",
