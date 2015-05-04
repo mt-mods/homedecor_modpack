@@ -70,6 +70,7 @@ homedecor.register("medicine_cabinet", {
 		type = "fixed",
 		fixed = {-0.3125, -0.1875, 0.3125, 0.3125, 0.5, 0.5}
 	},
+	walkable = false,
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
 	on_punch = function(pos, node, puncher, pointed_thing)
@@ -93,6 +94,7 @@ homedecor.register("medicine_cabinet_open", {
 		type = "fixed",
 		fixed = {-0.3125, -0.1875, -0.25, 0.3125, 0.5, 0.5}
 	},
+	walkable = false,
 	groups = { snappy = 3, not_in_creative_inventory=1 },
 	drop = "homedecor:medicine_cabinet",
 	on_punch = function(pos, node, puncher, pointed_thing)
