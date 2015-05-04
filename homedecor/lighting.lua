@@ -371,12 +371,12 @@ local repl = { off="low", low="med", med="hi", hi="max", max="off", }
 local brights_tab = { 0, 50, 100, 150, 200 }
 
 local lamp_colors = {
-	"",
-	"blue",
-	"green",
-	"pink",
-	"red",
-	"violet"
+	{"white", "#ffffffe0:175"},
+	{"blue", "#2626c6e0:200"},
+	{"green", "#27a927e0:200"},
+	{"pink", "#ff8fb7e0:200"},
+	{"red", "#ad2323e0:200"},
+	{"violet", "#7f29d7e0:200"}
 }
 
 local tlamp_cbox = {
@@ -390,9 +390,10 @@ local slamp_cbox = {
 }
 
 local function reg_lamp(suffix, nxt, tilesuffix, light, color)
-	local lampcolor = "_"..color
-	local colordesc = " ("..color..")"
-	local woolcolor = color
+	local lampcolor = "_"..color[1]
+	local colordesc = " ("..color[1]..")"
+	local woolcolor = color[1]
+	local invcolor = color[2]
 	local wool_brighten = (light or 0) * 7
 	local bulb_brighten = (light or 0) * 14
 
@@ -411,7 +412,7 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 			"homedecor_generic_wood_red.png",
 			"homedecor_generic_metal_black.png^[brighten",
 		},
-		inventory_image = "homedecor_table_lamp"..lampcolor.."_inv.png",
+		inventory_image = "homedecor_table_lamp_foot_inv.png^(homedecor_table_lamp_top_inv.png^[colorize:"..invcolor..")",
 		walkable = false,
 		light_source = light,
 		selection_box = tlamp_cbox,
@@ -437,7 +438,7 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 			"homedecor_generic_wood_red.png",
 			"homedecor_generic_metal_black.png^[brighten",
 		},
-		inventory_image = "homedecor_standing_lamp"..lampcolor.."_inv.png",
+		inventory_image = "homedecor_standing_lamp_foot_inv.png^(homedecor_standing_lamp_top_inv.png^[colorize:"..invcolor..")",
 		walkable = false,
 		light_source = light,
 		groups = {cracky=2,oddly_breakable_by_hand=1,
