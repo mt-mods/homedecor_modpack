@@ -667,7 +667,7 @@ for _, i in ipairs(n) do
 		mesh = "homedecor_picture_frame.obj",
 		tiles = {
 			"homedecor_picture_frame_image"..i..".png",
-			"homedecor_picture_frame_edges.png",
+			"homedecor_generic_wood_luxury.png^[colorize:#000000:50",
 			"homedecor_picture_frame_back.png",
 		},
 		inventory_image = "homedecor_picture_frame"..i.."_inv.png",
