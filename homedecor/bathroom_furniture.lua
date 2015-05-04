@@ -1,29 +1,38 @@
 local S = homedecor.gettext
 
 local bathroom_tile_colors = {
-	{ "1", "white/grey" },
-	{ "2", "white/dark grey" },
-	{ "3", "white/black" },
-	{ "4", "black/dark grey" },
-	{ "red", "white/red" },
-	{ "green", "white/green" },
-	{ "blue", "white/blue" },
-	{ "yellow", "white/yellow" },
-	{ "tan", "white/tan" },
+	{ "1",      "white/grey",      "#c0c0c0:200" },
+	{ "2",      "white/dark grey", "#404040:150" },
+	{ "3",      "white/black",     "#000000:200" },
+	{ "4",      "black/dark grey", ""       },
+	{ "red",    "white/red",       "#d00000:150" },
+	{ "green",  "white/green",     "#00d000:150" },
+	{ "blue",   "white/blue",      "#0000d0:150" },
+	{ "yellow", "white/yellow",    "#ffff00:150" },
+	{ "tan",    "white/tan",       "#ceaf42:150" }
 }
 
 for i in ipairs(bathroom_tile_colors) do
 	local color = bathroom_tile_colors[i][1]
 	local shade = bathroom_tile_colors[i][2]
+	local hue =   bathroom_tile_colors[i][3]
+
+	local coloredtile = "homedecor_bathroom_tiles_bg.png^(homedecor_bathroom_tiles_fg.png^[colorize:"..hue..")"
+
+	if color == "4" then
+		coloredtile = "(homedecor_bathroom_tiles_bg.png^[colorize:#000000:75)"..
+					  "^(homedecor_bathroom_tiles_fg.png^[colorize:#000000:200)"
+	end
+
 	minetest.register_node("homedecor:tiles_"..color, {
 		description = "Bathroom/kitchen tiles ("..shade..")",
 		tiles = {
-			"homedecor_bathroom_tiles_"..color..".png",
-			"homedecor_bathroom_tiles_"..color..".png",
-			"homedecor_bathroom_tiles_"..color..".png",
-			"homedecor_bathroom_tiles_"..color..".png",
-			"homedecor_bathroom_tiles_"..color..".png^[transformR90",
-			"homedecor_bathroom_tiles_"..color..".png^[transformR90"
+			coloredtile,
+			coloredtile,
+			coloredtile,
+			coloredtile,
+			"("..coloredtile..")^[transformR90",
+			"("..coloredtile..")^[transformR90"
 		},
 		groups = {cracky=3},
 		sounds = default.node_sound_stone_defaults(),
