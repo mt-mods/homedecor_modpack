@@ -3,6 +3,8 @@
 local S = homedecor.gettext
 
 local counter_materials = { "", "granite", "marble", "steel" }
+local cabinet_sides = "(default_wood.png^[transformR90)^homedecor_kitchen_cabinet_bevel.png"
+local cabinet_bottom = "(default_wood.png^[colorize:#000000:100)^(homedecor_kitchen_cabinet_bevel.png^[colorize:#46321580)"
 
 for _, mat in ipairs(counter_materials) do
 
@@ -17,10 +19,10 @@ for _, mat in ipairs(counter_materials) do
 	homedecor.register("kitchen_cabinet"..material, {
 		description = desc,
 		tiles = { 'homedecor_kitchen_cabinet_top'..material..'.png',
-				'homedecor_kitchen_cabinet_bottom.png',
-				'homedecor_kitchen_cabinet_sides.png',
-				'homedecor_kitchen_cabinet_sides.png',
-				'homedecor_kitchen_cabinet_sides.png',
+				cabinet_bottom,
+				cabinet_sides,
+				cabinet_sides,
+				cabinet_sides,
 				'homedecor_kitchen_cabinet_front.png'},
 		groups = { snappy = 3 },
 		sounds = default.node_sound_wood_defaults(),
@@ -34,12 +36,14 @@ end
 local kitchen_cabinet_half_box = homedecor.nodebox.slab_y(0.5, 0.5)
 homedecor.register("kitchen_cabinet_half", {
 	description = S('Half-height Kitchen Cabinet (on ceiling)'),
-	tiles = { 'homedecor_kitchen_cabinet_sides.png',
-			'homedecor_kitchen_cabinet_bottom.png',
-			'homedecor_kitchen_cabinet_sides.png',
-			'homedecor_kitchen_cabinet_sides.png',
-			'homedecor_kitchen_cabinet_sides.png',
-			'homedecor_kitchen_cabinet_front_half.png'},
+	tiles = {
+		cabinet_sides,
+		cabinet_bottom,
+		cabinet_sides,
+		cabinet_sides,
+		cabinet_sides,
+		'homedecor_kitchen_cabinet_front_half.png'
+	},
 	selection_box = kitchen_cabinet_half_box,
 	node_box = kitchen_cabinet_half_box,
 	groups = { snappy = 3 },
@@ -56,8 +60,8 @@ homedecor.register("kitchen_cabinet_with_sink", {
 	tiles = {
 		"homedecor_kitchen_sink_top.png",
 		"homedecor_kitchen_cabinet_front.png",
-		"homedecor_kitchen_cabinet_sides.png",
-		"homedecor_kitchen_cabinet_bottom.png"
+		cabinet_sides,
+		cabinet_bottom
 	},
 	groups = { snappy = 3 },
 	sounds = default.node_sound_wood_defaults(),
