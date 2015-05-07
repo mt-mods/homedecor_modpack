@@ -4,21 +4,13 @@ local S = homedecor.gettext
 
 homedecor.register("air_conditioner", {
 	description = S("Air Conditioner"),
-	tiles = { 'homedecor_ac_tb.png',
-		  'homedecor_ac_tb.png',
-		  'homedecor_ac_sides.png',
-		  'homedecor_ac_sides.png',
-		  'homedecor_ac_back.png',
-		  'homedecor_ac_front.png'},
+	mesh = "homedecor_ac.obj",
+	tiles = {
+		"homedecor_ac.png",
+		"default_glass.png"
+	},
 	groups = { snappy = 3 },
 	sounds = default.node_sound_leaves_defaults(),
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, 0.124, 0.5 }, -- off by just a tad to force the adjoining faces to be drawn.
-			{-0.5, 0.125, -0.5, 0.5, 0.5, 0.5 },
-		}
-	},
 	selection_box = { type="regular" },
 })
 
