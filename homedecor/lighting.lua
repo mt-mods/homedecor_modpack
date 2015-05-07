@@ -491,8 +491,7 @@ for _, color in ipairs(dlamp_colors) do
 			"homedecor_generic_metal_black.png",
 			"homedecor_generic_metal_black.png^[colorize:"..color..":150"
 		},
-		inventory_image = "homedecor_desk_lamp_inv_"..color..".png",
-		wield_image = "homedecor_desk_lamp_inv_"..color..".png",
+		inventory_image = "homedecor_desk_lamp_stem_inv.png^(homedecor_desk_lamp_metal_inv.png^[colorize:"..color..":140)",
 		selection_box = dlamp_cbox,
 		walkable = false,
 		groups = {snappy=3},
