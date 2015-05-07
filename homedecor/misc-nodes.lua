@@ -679,27 +679,24 @@ for _, i in ipairs(n) do
 	})
 end
 
+local p_cbox = {
+	type = "fixed",
+	fixed = {
+		{ -0.5, -0.5, 0.4375, 0.5, 0.5, 0.5 }
+	}
+}
+
 for i = 1,20 do
 	homedecor.register("painting_"..i, {
 		description = "Decorative painting #"..i,
+		mesh = "homedecor_painting.obj",
 		tiles = {
-			"homedecor_painting_edges.png",
-			"homedecor_painting_edges.png",
-			"homedecor_painting_edges.png",
-			"homedecor_painting_edges.png",
-			"homedecor_painting_back.png",
+			"default_wood.png",
+			"homedecor_blank_canvas.png",
 			"homedecor_painting"..i..".png"
 		},
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{ -32/64, -32/64, 28/64, -30/64,  32/64, 32/64 }, -- left edge
-				{  30/64, -32/64, 28/64,  32/64,  32/64, 32/64 }, -- right edge
-				{ -32/64,  30/64, 28/64,  32/64,  32/64, 32/64 }, -- top edge
-				{ -32/64, -30/64, 28/64,  32/64, -32/64, 32/64 }, -- bottom edge
-				{ -32/64, -32/64, 29/64,  32/64,  32/64, 29/64 }  -- the canvas
-			}
-		},
+		selection_box = p_cbox,
+		walkable = false,
 		groups = {snappy=3},
 		sounds = default.node_sound_wood_defaults(),
 	})
