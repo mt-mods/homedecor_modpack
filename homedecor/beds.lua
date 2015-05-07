@@ -1,15 +1,15 @@
 local S = homedecor.gettext
 
 local bedcolors = {
-	"red",
-	"green",
-	"blue",
-	"violet",
-	"brown",
-	"darkgrey",
-	"orange",
-	"yellow",
-	"pink",
+	{ "red",       "#d00000:150" },
+	{ "green",     "#00d000:150" },
+	{ "blue",      "#0000d0:150" },
+	{ "violet",    "#7000e0:150" },
+	{ "brown",     "#603010:175" },
+	{ "darkgrey",  "#101010:150" },
+	{ "orange",    "#ff3000:150" },
+	{ "yellow",    "#ffe000:150" },
+	{ "pink",      "#ff80b0:150" }
 }
 
 local bed_sbox = {
@@ -40,8 +40,11 @@ local kbed_cbox = {
 	}
 }
 
-for _, color in ipairs(bedcolors) do
+for i in ipairs(bedcolors) do
+	local color = bedcolors[i][1]
 	local color2=color
+	local hue = bedcolors[i][2]
+
 	if color == "darkgrey" then
 		color2 = "dark_grey"
 	end
@@ -55,7 +58,7 @@ for _, color in ipairs(bedcolors) do
 			"homedecor_bed_bottom.png",
 			"wool_"..color2..".png^[brighten", -- pillow
 		},
-		inventory_image = "homedecor_bed_"..color.."_inv.png",
+		inventory_image = "homedecor_bed_inv.png^(homedecor_bed_overlay_inv.png^[colorize:"..hue..")",
 		description = S("Bed (%s)"):format(color),
 		groups = {snappy=3},
 		selection_box = bed_sbox,
@@ -86,7 +89,6 @@ for _, color in ipairs(bedcolors) do
 			"homedecor_bed_bottom.png",
 			"wool_"..color2..".png^[brighten",
 		},
-		groups = {snappy=3, not_in_creative_inventory=1},
 		selection_box = bed_sbox,
 		collision_box = bed_cbox,
 		sounds = default.node_sound_wood_defaults(),
@@ -112,7 +114,8 @@ for _, color in ipairs(bedcolors) do
 			"homedecor_bed_bottom.png",
 			"wool_"..color2..".png^[brighten",
 		},
-		inventory_image = "homedecor_bed_kingsize_"..color.."_inv.png",
+		inventory_image = "homedecor_bed_kingsize_inv.png^(homedecor_bed_kingsize_overlay_inv.png^[colorize:"..hue..")",
+		groups = {snappy=3, not_in_creative_inventory=1},
 		description = S("Bed (%s, king sized)"):format(color),
 		groups = {snappy=3, not_in_creative_inventory=1},
 		selection_box = kbed_sbox,
