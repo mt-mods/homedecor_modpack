@@ -26,8 +26,8 @@ homedecor.register("wardrobe", {
 		local clothes_strings = ""
 		for i = 1,5 do
 			clothes_strings = clothes_strings..
-			  "image_button_exit["..(i-1)..".5,0;1.1,2;"..skins[i].."_preview.png;"..skins[i]..";]"..
-			  "image_button_exit["..(i-1)..".5,2;1.1,2;fe"..skins[i].."_preview.png;fe"..skins[i]..";]"
+			  "image_button_exit["..(i-1)..".5,0;1.1,2;homedecor_clothes_"..skins[i].."_preview.png;"..skins[i]..";]"..
+			  "image_button_exit["..(i-1)..".5,2;1.1,2;homedecor_clothes_fe"..skins[i].."_preview.png;fe"..skins[i]..";]"
 		end
 
 		meta:set_string("formspec", "size[5.5,8.5]"..default.gui_bg..default.gui_bg_img..default.gui_slots..
@@ -66,11 +66,11 @@ homedecor.register("wardrobe", {
 		for i = 1,5 do
 			if fields[skins[i]] then
 				if armor_mod then -- if 3D_armor's installed, let it set the skin
-					armor.textures[playerName].skin = skins[i]..".png"
+					armor.textures[playerName].skin = "homedecor_clothes_"..skins[i]..".png"
 					armor:update_player_visuals(sender)
 					break
 				end
-				default.player_set_textures(sender, { skins[i]..".png" })
+				default.player_set_textures(sender, { "homedecor_clothes_"..skins[i]..".png" })
 				break
 			elseif fields["fe"..skins[i]] then
 				if armor_mod then
@@ -78,7 +78,7 @@ homedecor.register("wardrobe", {
 					armor:update_player_visuals(sender)
 					break
 				end
-				default.player_set_textures(sender, { skin = "fe"..skins[i]..".png" })
+				default.player_set_textures(sender, { skin = "homedecor_clothes_fe"..skins[i]..".png" })
 				break
 			end
 		end
