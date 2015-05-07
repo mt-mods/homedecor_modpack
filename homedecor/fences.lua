@@ -365,10 +365,10 @@ homedecor.register("fence_wrought_iron_2_corner", {
 	tiles = {
 		"homedecor_fence_corner_wrought_iron_2_tb.png",
 		"homedecor_fence_corner_wrought_iron_2_tb.png",
-		"homedecor_fence_corner_wrought_iron_2_lr.png",
-		"homedecor_fence_corner_wrought_iron_2_lr.png^[transformFX",
-		"homedecor_fence_corner_wrought_iron_2_fb.png^[transformFX",
-		"homedecor_fence_corner_wrought_iron_2_fb.png"
+		"homedecor_fence_corner_wrought_iron_2_sides.png^[transformFX",
+		"homedecor_fence_corner_wrought_iron_2_sides.png",
+		"homedecor_fence_corner_wrought_iron_2_sides.png^[transformFX",
+		"homedecor_fence_corner_wrought_iron_2_sides.png"
 	},
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
