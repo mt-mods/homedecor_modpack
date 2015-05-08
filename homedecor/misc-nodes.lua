@@ -133,12 +133,12 @@ homedecor.register("fishtank", {
 	description = "Fishtank",
 	mesh = "homedecor_fishtank.obj",
 	tiles = {
+		"homedecor_fishtank_gravel.png",
 		"homedecor_fishtank_filter.png",
 		"homedecor_generic_plastic_black.png",
 		"homedecor_fishtank_fishes.png",
-		"homedecor_fishtank_gravel.png",
-		"homedecor_fishtank_glass.png",
-		"homedecor_fishtank_water.png"
+		"homedecor_fishtank_sides.png",
+		"homedecor_fishtank_water_top.png"
 	},
 	use_texture_alpha = true,
 	selection_box = ft_cbox,
@@ -154,12 +154,12 @@ homedecor.register("fishtank_lighted", {
 	description = "Fishtank (lighted)",
 	mesh = "homedecor_fishtank.obj",
 	tiles = {
+		"homedecor_fishtank_gravel_lighted.png",
 		"homedecor_fishtank_filter.png",
 		"homedecor_generic_plastic_black.png",
 		"homedecor_fishtank_fishes_lighted.png",
-		"homedecor_fishtank_gravel_lighted.png",
-		"homedecor_fishtank_glass.png",
-		"homedecor_fishtank_water_lighted.png"
+		"homedecor_fishtank_sides_lighted.png",
+		"homedecor_fishtank_water_top_lighted.png"
 	},
 	light_source = LIGHT_MAX-4,
 	use_texture_alpha = true,
