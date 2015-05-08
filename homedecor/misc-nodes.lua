@@ -169,7 +169,8 @@ homedecor.register("fishtank_lighted", {
 	sounds = default.node_sound_glass_defaults(),
 	on_rightclick = function(pos, node, clicker)
 		minetest.set_node(pos, {name = "homedecor:fishtank", param2 = node.param2})
-	end
+	end,
+	drop = "homedecor:fishtank",
 })
 
 homedecor.register("cardboard_box_big", {
