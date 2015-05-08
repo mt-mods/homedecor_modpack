@@ -157,6 +157,7 @@ homedecor.register("plasma_ball", {
 		"homedecor_plasma_ball_glass.png", 
 		"homedecor_generic_plastic_black.png"
 	},
+	inventory_image = "homedecor_plasma_ball_inv.png",
 	selection_box = {	
 		type = "fixed",
 		fixed = { -0.1875, -0.5, -0.1875, 0.1875, 0, 0.1875 }
