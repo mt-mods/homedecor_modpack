@@ -124,72 +124,51 @@ homedecor.register("chimney", {
 	sounds = default.node_sound_stone_defaults()
 })
 
+local ft_cbox = {
+	type = "fixed",
+	fixed = { -0.5, -0.5, -0.375, 0.5, 0.3125, 0.375 }
+}
+
 homedecor.register("fishtank", {
 	description = "Fishtank",
+	mesh = "homedecor_fishtank.obj",
 	tiles = {
-		"homedecor_fishtank_top.png",
-		"homedecor_fishtank_bottom.png",
-		"homedecor_fishtank_right.png",
-		"homedecor_fishtank_left.png",
-		"homedecor_fishtank_back.png",
-		"homedecor_fishtank_front.png"
-	},
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5,    -0.5,    -0.375,  0.5,    -0.4375, 0.375},
-			{-0.4375, -0.4375, -0.3125, 0.4375,  0.1875, 0.3125},
-			{-0.4375,  0.1875, -0.1875, 0.4375,  0.25,   0.1875},
-			{-0.1875,  0.0625,  0.0625, 0.1875,  0.25,   0.375},
-			{ 0.125,  -0.5,     0.25,   0.1875,  0.1875, 0.375},
-			{-0.375,   0.25,   -0.125,  0.375,   0.3125, 0.125},
-		}
+		"homedecor_fishtank_filter.png",
+		"homedecor_generic_plastic_black.png",
+		"homedecor_fishtank_fishes.png",
+		"homedecor_fishtank_gravel.png",
+		"homedecor_fishtank_glass.png",
+		"homedecor_fishtank_water.png"
 	},
 	use_texture_alpha = true,
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.375, 0.5, 0.3125, 0.375 }
-	},
+	selection_box = ft_cbox,
+	collision_box = ft_cbox,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
 	sounds = default.node_sound_glass_defaults(),
 	on_rightclick = function(pos, node, clicker)
-		fdir = minetest.get_node(pos).param2
-		minetest.set_node(pos, {name = "homedecor:fishtank_lighted", param2 = fdir})
+		minetest.set_node(pos, {name = "homedecor:fishtank_lighted", param2 = node.param2})
 	end
 })
 
 homedecor.register("fishtank_lighted", {
-	description = "Fishtank",
+	description = "Fishtank (lighted)",
+	mesh = "homedecor_fishtank.obj",
 	tiles = {
-		"homedecor_fishtank_top.png",
-		"homedecor_fishtank_bottom.png",
-		"homedecor_fishtank_right_lighted.png",
-		"homedecor_fishtank_left_lighted.png",
-		"homedecor_fishtank_back_lighted.png",
-		"homedecor_fishtank_front_lighted.png"
+		"homedecor_fishtank_filter.png",
+		"homedecor_generic_plastic_black.png",
+		"homedecor_fishtank_fishes_lighted.png",
+		"homedecor_fishtank_gravel_lighted.png",
+		"homedecor_fishtank_glass.png",
+		"homedecor_fishtank_water_lighted.png"
 	},
 	light_source = LIGHT_MAX-4,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5,    -0.5,    -0.375,  0.5,    -0.4375, 0.375},
-			{-0.4375, -0.4375, -0.3125, 0.4375,  0.1875, 0.3125},
-			{-0.4375,  0.1875, -0.1875, 0.4375,  0.25,   0.1875},
-			{-0.1875,  0.0625,  0.0625, 0.1875,  0.25,   0.375},
-			{ 0.125,  -0.5,     0.25,   0.1875,  0.1875, 0.375},
-			{-0.375,   0.25,   -0.125,  0.375,   0.3125, 0.125},
-		}
-	},
 	use_texture_alpha = true,
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.5, -0.5, -0.375, 0.5, 0.3125, 0.375 }
-	},
+	selection_box = ft_cbox,
+	collision_box = ft_cbox,
 	groups = {cracky=3,oddly_breakable_by_hand=3,not_in_creative_inventory=1},
 	sounds = default.node_sound_glass_defaults(),
 	on_rightclick = function(pos, node, clicker)
-		fdir = minetest.get_node(pos).param2
-		minetest.set_node(pos, {name = "homedecor:fishtank", param2 = fdir})
+		minetest.set_node(pos, {name = "homedecor:fishtank", param2 = node.param2})
 	end
 })
 
