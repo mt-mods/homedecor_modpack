@@ -1493,6 +1493,15 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+    output = "homedecor:plasma_ball 2",
+    recipe = {
+		{"", "default:glass", ""},
+		{"default:glass", "default:copper_ingot", "default:glass"},
+		{"homedecor:plastic_sheeting", "homedecor:power_crystal", "homedecor:plastic_sheeting"}
+	}
+})
+
 -- Brass/wrought iron fences
 
 
