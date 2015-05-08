@@ -136,7 +136,7 @@ homedecor.register("plasma_lamp", {
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0},
 		}
 	},
---	use_texture_alpha = true,
+	use_texture_alpha = true,
 	light_source = LIGHT_MAX - 1,
 	sunlight_propagates = true,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
@@ -144,6 +144,29 @@ homedecor.register("plasma_lamp", {
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		minetest.swap_node(pos, {name = "homedecor:plasma_lamp", param2 = 255})
 	end
+})
+
+homedecor.register("plasma_ball", {
+	description = "Plasma Ball",
+	mesh = "homedecor_plasma_ball.obj",
+	tiles = {
+		{
+			name = "homedecor_plasma_ball_streamers.png",
+			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0},
+		},
+		"homedecor_plasma_ball_glass.png", 
+		"homedecor_generic_plastic_black.png"
+	},
+	selection_box = {	
+		type = "fixed",
+		fixed = { -0.1875, -0.5, -0.1875, 0.1875, 0, 0.1875 }
+	},
+	walkable = false,
+	use_texture_alpha = true,
+	light_source = LIGHT_MAX - 5,
+	sunlight_propagates = true,
+	groups = {cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
 })
 
 local tc_cbox = {
