@@ -738,3 +738,41 @@ for _, side in ipairs({"left", "right"}) do
 		})
 	end
 end
+
+homedecor.register("spiral_staircase", {
+	description = "Spiral Staircase",
+	mesh = "homedecor_spiral_staircase.obj",
+	tiles = {
+		"homedecor_generic_metal_wrought_iron.png",
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = { -1.5, -0.5, -1.5, 0.5, 3.0, 0.5 }
+	},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5625, -0.5, -0.5625, -0.4375, 2.5, -0.4375}, -- NodeBox9
+			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0}, -- NodeBox14
+			{-0.5, -0.125, -0.5, -0.25, -0.0625, 0.5}, -- NodeBox15
+			{-0.25, -0.125, -0.0625, 0, -0.0625, 0.5}, -- NodeBox16
+			{-1, 0.25, -0.5, -0.5, 0.3125, 0.5}, -- NodeBox17
+			{-1.5, 0.625, -0.5, -0.5, 0.6875, -0.25}, -- NodeBox18
+			{-1.5, 0.625, -0.25, -0.9375, 0.6875, 0}, -- NodeBox19
+			{-1.5, 1, -1, -0.5, 1.0625, -0.5}, -- NodeBox20
+			{-0.75, 1.375, -1.5, -0.5, 1.4375, -0.5}, -- NodeBox21
+			{-1, 1.375, -1.5, -0.75, 1.4375, -1}, -- NodeBox22
+			{-0.5, 1.75, -1.5, 0.0625, 1.8125, -0.5}, -- NodeBox23
+			{-0.5, 2.125, -0.8125, 0.5, 2.1875, -0.5}, -- NodeBox24
+			{-0.0625, 2.125, -1.0625, 0.5, 2.1875, -0.75}, -- NodeBox25
+			{-1.5, -0.125, 0.4375, 0.5, 1.625, 0.5}, -- NodeBox26
+			{-1.5, 1.5625, -1.5, -1.4375, 2.875, 0.5}, -- NodeBox27
+			{-1.5, 1.75, -1.5, 0.5, 3.3125, -1.4375}, -- NodeBox28
+			{0.4375, -0.5, -0.5, 0.5, 0.875, 0.5}, -- NodeBox29
+			{0.4375, 2.125, -1.5, 0.5, 3.3125, 0.5}, -- NodeBox30
+		}
+	},
+	groups = {choppy=2},
+	sounds = default.node_sound_wood_defaults(),
+})
+
