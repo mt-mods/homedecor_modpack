@@ -480,31 +480,14 @@ homedecor.register("skateboard", {
 
 homedecor.register("beer_tap", {
 	description = "Beer tap",
+	mesh = "homedecor_beer_taps.obj",
 	tiles = {
-		"homedecor_beertap_front.png",
-		"homedecor_beertap_front.png",
-		"homedecor_beertap_right.png",
-		"homedecor_beertap_right.png^[transformFX",
-		"homedecor_beertap_front.png",
-		"homedecor_beertap_front.png"
+		"homedecor_generic_metal_bright.png",
+		"homedecor_generic_metal_black.png",
 	},
 	inventory_image = "homedecor_beertap_inv.png",
 	groups = { snappy=3 },
 	walkable = false,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.25, -0.5, -0.4375, 0.25, -0.48, 0}, -- NodeBox1
-			{-0.0625, -0.48, -0.1875, 0.0625, 0.125, -0.0625}, -- NodeBox2
-			{-0.1875, 0, -0.375, -0.125, 0.0315, -0.125}, -- NodeBox3
-			{-0.1875, 0, -0.1875, 0.1875, 0.0315, -0.125}, -- NodeBox4
-			{0.125, 0, -0.375, 0.1875, 0.0315, -0.125}, -- NodeBox5
-			{0.135, 0.0315, -0.3225, 0.1775, 0.235, -0.29}, -- NodeBox6
-			{-0.1775, 0.0315, -0.3225, -0.135, 0.235, -0.29}, -- NodeBox7
-			{-0.1675, -0.0825, -0.355, -0.145, 0, -0.3325}, -- NodeBox8
-			{0.145, -0.0825, -0.355, 0.1675, 0, -0.3325}, -- NodeBox9
-		}
-	},
 	selection_box = {
 		type = "fixed",
 		fixed = { -0.25, -0.5, -0.4375, 0.25, 0.235, 0 }
