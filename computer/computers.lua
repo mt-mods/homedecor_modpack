@@ -151,7 +151,7 @@ minetest.register_node("computer:monitor", {
 	description = "Monitor and keyboard",
 	drawtype = "mesh",
 	mesh = "computer_monitor.obj",
-	tiles = {"computer_black.png", "monitor_plastic.png", "computer_black.png", "monitor_plastic.png"},
+	tiles = {"monitor_plastic.png", "monitor_plastic.png", "computer_black.png", "computer_black.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = false,
@@ -167,7 +167,7 @@ minetest.register_node("computer:monitor_on", {
 	description = "Monitor and keyboard",
 	drawtype = "mesh",
 	mesh = "computer_monitor.obj",
-	tiles = {"computer_black.png", "monitor_plastic.png", "monitor_display.png^[transformR90", "monitor_plastic.png"},
+	tiles = {"monitor_plastic.png", "monitor_plastic.png", "computer_black.png", "monitor_display.png^[transformR90"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	light_source = 9,
@@ -208,67 +208,26 @@ minetest.register_node("computer:router", {
 	}
 })
 
---Modern PC Tower
-minetest.register_node("computer:tower_on", {
-	description = "Computer Tower",
-	tiles = {"computer_tower_t.png","computer_tower_bt.png","computer_tower_l.png",
-			"computer_tower_r.png","computer_tower_b.png","computer_tower_f_on.png"},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	walkable = true,
-	groups = {snappy=3, not_in_creative_inventory=1},
-	sound = default.node_sound_wood_defaults(),
-	drawtype = "nodebox",
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.1875, -0.5, -0.3125, 0.1875, 0.3125, 0.4375},
-			{-0.1875, -0.5, -0.353774, 0.1875, 0, -0.0625},
-			{-0.1875, 0.247641, -0.353774, 0.1875, 0.3125, 0.1875}
-		},
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = {
-			{-0.1875, -0.5, -0.3125, 0.1875, 0.3125, 0.4375},
-		},
-	},
-	drop = 'computer:tower',
-	on_rightclick = function(pos, node, clicker, itemstack)
-		node.name = "computer:tower"
-		minetest.set_node(pos, node)
-	end
-})
+local pct_cbox = {
+	type = "fixed",
+	fixed = { -0.1875, -0.5, -0.36, 0.1875, 0.34, 0.46 }
+}
 
+--Modern PC Tower
 minetest.register_node("computer:tower", {
 	description = "Computer Tower",
-	tiles = {"computer_tower_t.png","computer_tower_bt.png","computer_tower_l.png","computer_tower_r.png",
-			"computer_tower_b.png","computer_tower_f_off.png"},
+	drawtype = "mesh",
+	mesh = "computer_tower.obj",
+	tiles = {"computer_tower.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
-	walkable = true,
 	groups = {snappy=3},
 	sound = default.node_sound_wood_defaults(),
-	drawtype = "nodebox",
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.1875, -0.5, -0.3125, 0.1875, 0.3125, 0.4375},
-			{-0.1875, -0.5, -0.353774, 0.1875, 0, -0.0625},
-			{-0.1875, 0.247641, -0.353774, 0.1875, 0.3125, 0.1875},
-		},
-	},
-	selection_box = {
-		type = "fixed",
-		fixed = {
-			{-0.1875, -0.5, -0.3125, 0.1875, 0.3125, 0.4375},
-		},
-	},
-	on_rightclick = function(pos, node, clicker, itemstack)
-		node.name = "computer:tower_on"
-		minetest.set_node(pos, node)
-	end
+	selection_box = pct_cbox,
+	collision_box = pct_cbox
 })
+
+minetest.register_alias("computer:tower_on", "computer:tower")
 
 -- Printer/scaner combo
 minetest.register_node("computer:printer", {
