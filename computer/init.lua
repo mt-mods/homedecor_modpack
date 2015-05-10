@@ -13,6 +13,7 @@ computer.register = function (name, def)
 		paramtype = "light",
 		paramtype2 = "facedir",
 		description = def.description,
+		inventory_image = def.inventory_image,
 		groups = {snappy=2, choppy=2, oddly_breakable_by_hand=2},
 		tiles = {
 			TEXPFX.."tp.png",

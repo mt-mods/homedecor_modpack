@@ -108,7 +108,7 @@ minetest.register_node("fake_fire:fancy_fire", {
 		walkable = false,
 		damage_per_second = 4,
 		tiles = {
-		{name='fire_basic_flame_animated.png', 
+		{name="fake_fire_animated.png", 
 		animation={type='vertical_frames', aspect_w=16, aspect_h=16, length=1}}, {name='fake_fire_logs.png'}},
 		on_rightclick = function (pos, node, clicker)
 			start_smoke(pos, node, clicker)

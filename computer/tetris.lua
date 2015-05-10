@@ -29,12 +29,12 @@ local colors = { "computer_cyan.png", "computer_magenta.png", "computer_red.png"
 	"computer_blue.png", "computer_green.png", "computer_orange.png", "computer_yellow.png" }
 
 local background = "image[0,0;3.55,6.66;computer_black.png]"
-local buttons = "button[3,4.5;0.6,0.6;left;◄]"
+local buttons = "button[3,4.5;0.6,0.6;left;<]"
 	.."button[3.6,4.5;0.6,0.6;rotateleft;L]"
-	.."button[4.2,4.5;0.6,0.6;down;V]"
-	.."button[4.2,5.3;0.6,0.6;drop;▼]"
+	.."button[4.2,4.5;0.6,0.6;down;v]"
+	.."button[4.2,5.3;0.6,0.6;drop;V]"
 	.."button[4.8,4.5;0.6,0.6;rotateright;R]"
-	.."button[5.4,4.5;0.6,0.6;right;►]"
+	.."button[5.4,4.5;0.6,0.6;right;>]"
 	.."button[3.5,3;2,2;new;New Game]"
 
 local formsize = "size[5.9,5.7]"
@@ -240,7 +240,7 @@ local function step(pos, fields)
 	return run
 end
 
-local arcade = {
+minetest.register_node("computer:tetris_arcade", {
 	description="Tetris Arcade",
 	drawtype = "mesh",
 	mesh = "tetris_arcade.obj",
@@ -276,7 +276,6 @@ local arcade = {
 		local node = {name="computer:tetris_arcade", param1=0, param2 = minetest.dir_to_facedir(dir)}
 		minetest.set_node(pos, node)
 		itemstack:take_item()
+		return itemstack
 	end
-}
-
-minetest.register_node("computer:tetris_arcade", arcade)
+})
