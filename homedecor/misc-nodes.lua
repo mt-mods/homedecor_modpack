@@ -24,9 +24,9 @@ homedecor.register("ceiling_tile", {
 	selection_box = { type = "wallmounted" },
 })
 
-local rug_sizes = {"small", "large"}
+local rug_types = {"small", "large", "persian"}
 
-for _, s in ipairs(rug_sizes) do
+for _, s in ipairs(rug_types) do
 homedecor.register("rug_"..s, {
 	description = S("Throw Rug ("..s..")"),
 	drawtype = 'signlike',
