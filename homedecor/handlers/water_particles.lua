@@ -7,8 +7,9 @@
 -- outletx/y/z are the exact coords of the starting point
 --     for the spawner, relative to the center of the node
 --
--- velocityx/y are the speed of the particles,
---     relative to a node placed while looking north (facedir 0)
+-- velocityx/y/z are the speed of the particles,
+--    (x and z are relative to a node placed while looking north/facedir 0)
+--    negative Y values flow downward.
 --
 -- spread is the radius from the starting point,
 -- along X and Z only, to randomly spawn particles.
@@ -42,6 +43,7 @@ function homedecor.start_particle_spawner(pos, node, particledef, soundname)
 		local outlety    = particledef.outlet_y
 		local outletz    = particledef.outlet_z
 		local velocityx  = particledef.velocity_x
+		local velocityy  = particledef.velocity_y
 		local velocityz  = particledef.velocity_z
 		local spread     = particledef.spread
 
@@ -71,8 +73,8 @@ function homedecor.start_particle_spawner(pos, node, particledef, soundname)
 			collisiondetection = true,
 			minpos = {x=pos.x - minx, y=pos.y + outlety, z=pos.z - minz},
 			maxpos = {x=pos.x - maxx, y=pos.y + outlety, z=pos.z - maxz},
-			minvel = {x = minvelx, y=-2, z = minvelz},
-			maxvel = {x = maxvelx, y=-2, z = maxvelz},
+			minvel = {x = minvelx, y = velocityy, z = minvelz},
+			maxvel = {x = maxvelx, y = velocityy, z = maxvelz},
 			minacc = {x=0, y=0, z=0},
 			maxacc = {x=0, y=-0.05, z=0},
 			minexptime = 2,

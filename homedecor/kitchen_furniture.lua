@@ -69,6 +69,19 @@ homedecor.register("kitchen_cabinet_with_sink", {
 	inventory = {
 		size=16,
 	},
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{ -8/16, -8/16, -8/16,  8/16, 6/16,  8/16 },
+			{ -8/16,  6/16, -8/16, -6/16, 8/16,  8/16 },
+			{  6/16,  6/16, -8/16,  8/16, 8/16,  8/16 },
+			{ -8/16,  6/16, -8/16,  8/16, 8/16, -6/16 },
+			{ -8/16,  6/16,  6/16,  8/16, 8/16,  8/16 },
+		}
+	},
+	on_destruct = function(pos)
+		homedecor.stop_particle_spawner({x=pos.x, y=pos.y+1, z=pos.z})
+	end
 })
 
 local cp_cbox = {

@@ -95,12 +95,43 @@ homedecor.register("sink", {
 	},
 	inventory_image="homedecor_bathroom_sink_inv.png",
 	selection_box = sink_cbox,
-	collision_box = sink_cbox,
 	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{ -5/16,  5/16, 1/16, -4/16, 8/16, 8/16 },
+			{  5/16,  5/16, 1/16,  4/16, 8/16, 8/16 },
+			{ -5/16,  5/16, 1/16,  5/16, 8/16, 2/16 },
+			{ -5/16,  5/16, 6/16,  5/16, 8/16, 8/16 },
+			{ -4/16, -8/16, 1/16,  4/16, 5/16, 6/16 }
+		}
+	},
+	on_destruct = function(pos)
+		homedecor.stop_particle_spawner({x=pos.x, y=pos.y+1, z=pos.z})
+	end
 })
 
 --Taps
+
+local function taps_on_rightclick(pos, node, clicker)
+	local below = minetest.get_node_or_nil({x=pos.x, y=pos.y-1, z=pos.z})
+	if below and
+	  string.find(below.name, "homedecor:shower_tray") or
+	  string.find(below.name, "homedecor:sink") or
+	  string.find(below.name, "homedecor:kitchen_cabinet_with_sink") then
+		local particledef = {
+			outlet_x    = 0,
+			outlet_y    = -0.44,
+			outlet_z    = 0.28,
+			velocity_x  = { min = -0.1, max = 0.1 },
+			velocity_y  = -0.3,
+			velocity_z  = { min = -0.1, max = 0 },
+			spread      = 0
+		}
+		homedecor.start_particle_spawner(pos, node, particledef, "homedecor_shower")
+	end
+end
 
 homedecor.register("taps", {
 	description = S("Bathroom taps/faucet"),
@@ -120,6 +151,8 @@ homedecor.register("taps", {
 	walkable = false,
 	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
+	on_rightclick = taps_on_rightclick,
+	on_destruct = homedecor.stop_particle_spawner
 })
 
 homedecor.register("taps_brass", {
@@ -140,6 +173,8 @@ homedecor.register("taps_brass", {
 	walkable = false,
 	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
+	on_rightclick = taps_on_rightclick,
+	on_destruct = homedecor.stop_particle_spawner
 })
 
 --Shower Tray
@@ -167,8 +202,8 @@ homedecor.register("shower_tray", {
 	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults(),
 	on_destruct = function(pos)
-		headpos = {x=pos.x, y=pos.y+2, z=pos.z}
-		homedecor.stop_particle_spawner(headpos)
+		homedecor.stop_particle_spawner({x=pos.x, y=pos.y+2, z=pos.z}) -- the showerhead
+		homedecor.stop_particle_spawner({x=pos.x, y=pos.y+1, z=pos.z}) -- the taps, if any
 	end
 })
 
@@ -200,6 +235,7 @@ homedecor.register("shower_head", {
 				outlet_y    = -0.42,
 				outlet_z    = 0.1,
 				velocity_x  = { min = -0.15, max = 0.15 },
+				velocity_y  = -2,
 				velocity_z  = { min = -0.3,  max = 0.1 },
 				spread      = 0.12
 			}
