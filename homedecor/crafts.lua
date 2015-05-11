@@ -118,6 +118,17 @@ minetest.register_craftitem("homedecor:chainlink_brass", {
 	inventory_image = "homedecor_chainlink_brass.png"
 })
 
+minetest.register_craftitem("homedecor:soda_can", {
+	description = "Soda Can",
+	inventory_image = "homedecor_soda_can.png",
+	on_use = minetest.item_eat(2),
+})
+
+minetest.register_craftitem("homedecor:coin", {
+	description = "Gold Coin",
+	inventory_image = "homedecor_coin.png",
+})
+
 -- alternate crafting if mesecons is/isn't installed
 
 if not minetest.get_modpath("mesecons") then
@@ -3196,6 +3207,33 @@ minetest.register_craft({
 		{ "", "homedecor:pole_wrought_iron", "default:steelblock" },
 		{ "default:steelblock", "homedecor:pole_wrought_iron", "" }
 	},
+})
+
+minetest.register_craft({
+	output = "homedecor:soda_machine",
+	recipe = {
+		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
+		{"default:steel_ingot", "dye:red", "default:steel_ingot"},
+		{"default:steel_ingot", "default:copperblock", "default:steel_ingot"},
+	},
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:coin 5",
+	recipe = {"moreblocks:micro_goldblock_1", "default:sword_stone"}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:coin 15",
+	recipe = {"default:gold_ingot", "default:sword_steel"}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:coin 50",
+	recipe = {"default:goldblock", "default:sword_mese"}
 })
 
 for i in ipairs(homedecor.banister_materials) do

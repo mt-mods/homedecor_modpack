@@ -828,3 +828,35 @@ minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack
 	end
 end)
 
+local svm_cbox = {
+	type = "fixed",
+	fixed = {-0.5, -0.5, -0.5, 0.5, 1.5, 0.5}
+}
+
+homedecor.register("soda_machine", {
+	description = "Soda Vending Machine",
+	mesh = "homedecor_soda_machine.obj",
+	tiles = {"homedecor_soda_machine.png"},
+	groups = {snappy=3},
+	selection_box = svm_cbox,
+	collision_box = svm_cbox,
+	expand = { top="air" },
+	sounds = default.node_sound_wood_defaults(),
+	on_punch = function(pos, node, puncher, pointed_thing)
+		local wielditem = puncher:get_wielded_item()
+		local wieldname = wielditem:get_name()
+		local fdir_to_fwd = { {0, -1}, {-1, 0}, {0, 1}, {1, 0} }
+		local fdir = node.param2
+		local pos_drop = { x=pos.x+fdir_to_fwd[fdir+1][1], y=pos.y, z=pos.z+fdir_to_fwd[fdir+1][2] }
+		if wieldname == "homedecor:coin" then
+			wielditem:take_item()
+			puncher:set_wielded_item(wielditem)
+			minetest.spawn_item(pos_drop, "homedecor:soda_can")
+			minetest.sound_play("insert_coin", {
+				pos=pos, max_hear_distance = 5
+			})
+		else
+			minetest.chat_send_player(puncher:get_player_name(), "Please insert a coin in the machine.")
+		end
+	end
+})
