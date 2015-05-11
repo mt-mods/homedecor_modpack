@@ -120,6 +120,8 @@ dofile(homedecor.modpath.."/handlers/expansion.lua")
 dofile(homedecor.modpath.."/handlers/furnaces.lua")
 -- glue it all together into a registration function
 dofile(homedecor.modpath.."/handlers/registration.lua")
+-- some nodes have particle spawners
+dofile(homedecor.modpath.."/handlers/water_particles.lua")
 
 -- load various other components
 dofile(homedecor.modpath.."/misc-nodes.lua")					-- the catch-all for all misc nodes
