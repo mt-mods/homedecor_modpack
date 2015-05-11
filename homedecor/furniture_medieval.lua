@@ -3,7 +3,7 @@ local S = homedecor.gettext
 
 homedecor.register("bars", {
 	description = S("Bars"),
-	tiles = { "homedecor_generic_metal_black.png" },
+	tiles = { "homedecor_generic_metal_black.png^[transformR270" },
 	node_box = {
 		type = "fixed",
 		fixed = {
