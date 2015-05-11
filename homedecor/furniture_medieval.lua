@@ -25,7 +25,7 @@ homedecor.register("bars", {
 --L Binding Bars
 homedecor.register("L_binding_bars", {
 	description = S("Binding Bars"),
-	tiles = { "homedecor_generic_metal_black.png" },
+	tiles = { "homedecor_generic_metal_black.png^[transformR270" },
 	node_box = {
 		type = "fixed",
 		fixed = {
