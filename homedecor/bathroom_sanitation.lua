@@ -121,9 +121,7 @@ local function taps_on_rightclick(pos, node, clicker)
 	  below.name == "homedecor:sink" or
 	  below.name == "homedecor:kitchen_cabinet_with_sink" then
 		local particledef = {
-			outlet_x    = 0,
-			outlet_y    = -0.44,
-			outlet_z    = 0.28,
+			outlet      = { x = 0, y = -0.44, z = 0.28 },
 			velocity_x  = { min = -0.1, max = 0.1 },
 			velocity_y  = -0.3,
 			velocity_z  = { min = -0.1, max = 0 },
@@ -231,9 +229,7 @@ homedecor.register("shower_head", {
 		local below = minetest.get_node_or_nil({x=pos.x, y=pos.y-2.0, z=pos.z})
 		if below and below.name == "homedecor:shower_tray" then
 			local particledef = {
-				outlet_x    = 0,
-				outlet_y    = -0.42,
-				outlet_z    = 0.1,
+				outlet      = { x = 0, y = -0.42, z = 0.1 },
 				velocity_x  = { min = -0.15, max = 0.15 },
 				velocity_y  = -2,
 				velocity_z  = { min = -0.3,  max = 0.1 },

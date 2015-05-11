@@ -39,9 +39,9 @@ function homedecor.start_particle_spawner(pos, node, particledef, soundname)
 
 	if fdir and fdir < 4 and (not id or id == 0) then
 
-		local outletx    = particledef.outlet_x
-		local outlety    = particledef.outlet_y
-		local outletz    = particledef.outlet_z
+		local outletx    = particledef.outlet.x
+		local outlety    = particledef.outlet.y
+		local outletz    = particledef.outlet.z
 		local velocityx  = particledef.velocity_x
 		local velocityy  = particledef.velocity_y
 		local velocityz  = particledef.velocity_z
