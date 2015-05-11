@@ -116,8 +116,8 @@ homedecor.register("kitchen_faucet", {
 	on_rightclick = function(pos, node, clicker)
 		local below = minetest.get_node_or_nil({x=pos.x, y=pos.y-1, z=pos.z})
 		if below and
-		  string.find(below.name, "homedecor:sink") or
-		  string.find(below.name, "homedecor:kitchen_cabinet_with_sink") then
+		  below.name == "homedecor:sink" or
+		  below.name == "homedecor:kitchen_cabinet_with_sink" then
 			local particledef = {
 				outlet_x    = 0,
 				outlet_y    = -0.19,

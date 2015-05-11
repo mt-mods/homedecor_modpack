@@ -117,9 +117,9 @@ homedecor.register("sink", {
 local function taps_on_rightclick(pos, node, clicker)
 	local below = minetest.get_node_or_nil({x=pos.x, y=pos.y-1, z=pos.z})
 	if below and
-	  string.find(below.name, "homedecor:shower_tray") or
-	  string.find(below.name, "homedecor:sink") or
-	  string.find(below.name, "homedecor:kitchen_cabinet_with_sink") then
+	  below.name == "homedecor:shower_tray" or
+	  below.name == "homedecor:sink" or
+	  below.name == "homedecor:kitchen_cabinet_with_sink" then
 		local particledef = {
 			outlet_x    = 0,
 			outlet_y    = -0.44,
@@ -229,7 +229,7 @@ homedecor.register("shower_head", {
 	walkable = false,
 	on_rightclick = function (pos, node, clicker)
 		local below = minetest.get_node_or_nil({x=pos.x, y=pos.y-2.0, z=pos.z})
-		if below and string.find(below.name, "homedecor:shower_tray") then
+		if below and below.name == "homedecor:shower_tray" then
 			local particledef = {
 				outlet_x    = 0,
 				outlet_y    = -0.42,
