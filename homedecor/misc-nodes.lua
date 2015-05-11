@@ -747,7 +747,7 @@ homedecor.register("spiral_staircase", {
 	},
 	selection_box = {
 		type = "fixed",
-		fixed = { -1.5, -0.5, -1.5, 0.5, 3.0, 0.5 }
+		fixed = { -1.5, -0.5, -1.5, 0.5, 2.5, 0.5 }
 	},
 	node_box = {
 		type = "fixed",
@@ -774,5 +774,57 @@ homedecor.register("spiral_staircase", {
 	},
 	groups = {choppy=2},
 	sounds = default.node_sound_wood_defaults(),
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+		local leftx =  homedecor.fdir_to_left[fdir+1][1]
+		local leftz =  homedecor.fdir_to_left[fdir+1][2]
+		local revx  = -homedecor.fdir_to_fwd[fdir+1][1]
+		local revz  = -homedecor.fdir_to_fwd[fdir+1][2]
+
+		local corner1 = { x = pos.x + leftx + revx, y = pos.y, z = pos.z + leftz + revz}
+		local corner2 = { x = pos.x, y = pos.y + 2, z = pos.z }
+
+		local minp = { x = math.min(corner1.x, corner2.x),
+		               y = math.min(corner1.y, corner2.y),
+		               z = math.min(corner1.z, corner2.z) }
+
+		local maxp = { x = math.max(corner1.x, corner2.x),
+		               y = math.max(corner1.y, corner2.y),
+		               z = math.max(corner1.z, corner2.z) }
+
+		if #minetest.find_nodes_in_area(minp, maxp, "air") < 11 then
+			minetest.set_node(pos, {name = "air"})
+			minetest.chat_send_player(placer:get_player_name(), "This object takes up a 2x3x2 block of space (the bottom step goes in the forward-right corner), and some of it is occupied!" )
+			return true
+		end
+
+		local belownode = minetest.get_node({ x = pos.x, y = pos.y - 1, z = pos.z })
+
+		if belownode and belownode.name == "homedecor:spiral_staircase" then
+			local newpos = { x = pos.x, y = pos.y + 2, z = pos.z }
+			minetest.set_node(pos, { name = "air" })
+			minetest.set_node(newpos, { name = "homedecor:spiral_staircase", param2 = belownode.param2 })
+		end
+	end
 })
+
+minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
+
+	local belownode = minetest.get_node({ x = pos.x, y = pos.y - 1, z = pos.z })
+
+	if belownode and belownode.name == "homedecor:spiral_staircase" then
+
+		minetest.set_node(pos, { name = "air" })
+
+		local newpos = { x = pos.x, y = pos.y + 2, z = pos.z }
+		local checknode = minetest.get_node(newpos)
+
+		if checknode and checknode.name == "air" then
+			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+			minetest.set_node(newpos, { name = newnode.name, param2 = fdir })
+		else
+			return true
+		end
+	end
+end)
 
