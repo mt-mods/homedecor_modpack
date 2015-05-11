@@ -112,7 +112,24 @@ homedecor.register("kitchen_faucet", {
 	description = "Kitchen Faucet",
 	groups = {snappy=3},
 	selection_box = kf_cbox,
-	walkable = false
+	walkable = false,
+	on_rightclick = function(pos, node, clicker)
+		local below = minetest.get_node_or_nil({x=pos.x, y=pos.y-1, z=pos.z})
+		if below and
+		  string.find(below.name, "homedecor:sink") or
+		  string.find(below.name, "homedecor:kitchen_cabinet_with_sink") then
+			local particledef = {
+				outlet_x    = 0,
+				outlet_y    = -0.19,
+				outlet_z    = 0.13,
+				velocity_x  = { min = -0.05, max = 0.05 },
+				velocity_y  = -0.3,
+				velocity_z  = { min = -0.1,  max = 0 },
+				spread      = 0
+			}
+			homedecor.start_particle_spawner(pos, node, particledef, "homedecor_shower")
+		end
+	end
 })
 
 homedecor.register("paper_towel", {
