@@ -3189,6 +3189,15 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:spiral_staircase",
+	recipe = {
+		{ "default:steelblock", "homedecor:pole_wrought_iron", "" },
+		{ "", "homedecor:pole_wrought_iron", "default:steelblock" },
+		{ "default:steelblock", "homedecor:pole_wrought_iron", "" }
+	},
+})
+
 for i in ipairs(homedecor.banister_materials) do
 
 	local name    = homedecor.banister_materials[i][1]

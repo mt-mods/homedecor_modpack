@@ -127,7 +127,7 @@ local function taps_on_rightclick(pos, node, clicker)
 			velocity_z  = { min = -0.1, max = 0 },
 			spread      = 0
 		}
-		homedecor.start_particle_spawner(pos, node, particledef, "homedecor_shower")
+		homedecor.start_particle_spawner(pos, node, particledef, "homedecor_faucet")
 	end
 end
 
