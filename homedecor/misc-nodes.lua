@@ -24,21 +24,44 @@ homedecor.register("ceiling_tile", {
 	selection_box = { type = "wallmounted" },
 })
 
-local rug_types = {"small", "large", "persian"}
+local rug_types = {
+	{ "small",   "homedecor_small_rug.obj" },
+	{ "large",   { -0.5, -0.5, -0.5, 0.5, -0.4375, 0.5 } },
+	{ "persian", { -0.5, -0.5, -0.5, 0.5, -0.4375, 0.5 } }
+}
 
-for _, s in ipairs(rug_types) do
-homedecor.register("rug_"..s, {
-	description = S("Throw Rug ("..s..")"),
-	drawtype = 'signlike',
-	tiles = {"homedecor_rug_"..s..".png"},
-	wield_image = "homedecor_rug_"..s..".png",
-	inventory_image = "homedecor_rug_"..s..".png",
-	paramtype2 = "wallmounted",
-	walkable = false,
-	groups = {snappy = 3},
-	sounds = default.node_sound_leaves_defaults(),
-        selection_box = { type = "wallmounted" },
-})
+for i in ipairs(rug_types) do
+	s = rug_types[i][1]
+	m = rug_types[i][2]
+
+	local mesh = m
+	local nodebox = nil
+	local tiles = { "homedecor_rug_"..s..".png", "wool_grey.png" }
+
+	if type(m) == "table" then
+		mesh = nil
+		nodebox = {
+			type = "fixed",	
+			fixed = m
+		}
+		tiles = {
+			"homedecor_rug_"..s..".png",
+			"wool_grey.png",
+			"homedecor_rug_"..s..".png"
+		}
+	end
+
+	homedecor.register("rug_"..s, {
+		description = S("Rug ("..s..")"),
+		mesh = mesh,
+		tiles = tiles,
+		node_box = nodebox,
+		paramtype2 = "wallmounted",
+		walkable = false,
+		groups = {snappy = 3},
+		sounds = default.node_sound_leaves_defaults(),
+		selection_box = { type = "wallmounted" },
+	})
 end
 
 local pot_colors = {"black", "green", "terracotta"}
