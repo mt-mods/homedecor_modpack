@@ -727,26 +727,31 @@ homedecor.banister_materials = {
 	}
 }
 
-for _, side in ipairs({"left", "right"}) do
+for _, side in ipairs({"diagonal_left", "diagonal_right", "horizontal"}) do
 
 	for i in ipairs(homedecor.banister_materials) do
 
 		local name = homedecor.banister_materials[i][1]
+		local nodename = "banister_"..name.."_"..side
+
+		local groups = { snappy = 3, not_in_creative_inventory = 1 }
 		local cbox = {
 			type = "fixed",
-			fixed = { -9/16, -3/16, 5/16, 9/16, 24/16, 8/16}
+			fixed = { -9/16, -3/16, 5/16, 9/16, 24/16, 8/16 }
 		}
 
-		local onplace = nil
-		groups = { snappy = 3, not_in_creative_inventory = 1}
-
-		if side == "left" then
-			onplace = homedecor.place_banister
+		if side == "horizontal" then
 			groups = { snappy = 3 }
+			cbox = {
+				type = "fixed",
+				fixed = { -8/16, -8/16, 5/16, 8/16, 8/16, 8/16 }
+			}
+		else
+			minetest.register_alias(string.gsub("homedecor:"..nodename, "diagonal_", ""), "homedecor:"..nodename)
 		end
 
-		homedecor.register("banister_"..name.."_"..side, {
-			description = S("Banister for Stairs ("..homedecor.banister_materials[i][2]..", "..side.." side)"),
+		homedecor.register(nodename, {
+			description = S("Banister for Stairs ("..homedecor.banister_materials[i][2]..", "..side..")"),
 			mesh = "homedecor_banister_"..side..".obj",
 			tiles = {
 				homedecor.banister_materials[i][3],
@@ -756,8 +761,8 @@ for _, side in ipairs({"left", "right"}) do
 			groups = groups,
 			selection_box = cbox,
 			collision_box = cbox,
-			on_place = onplace,
-			drop = "homedecor:banister_"..name.."_left",
+			on_place = homedecor.place_banister,
+			drop = "homedecor:banister_"..name.."_horizontal",
 		})
 	end
 end
