@@ -122,6 +122,7 @@ dofile(homedecor.modpath.."/handlers/furnaces.lua")
 dofile(homedecor.modpath.."/handlers/registration.lua")
 -- some nodes have particle spawners
 dofile(homedecor.modpath.."/handlers/water_particles.lua")
+dofile(homedecor.modpath.."/handlers/sit.lua")
 
 -- load various other components
 dofile(homedecor.modpath.."/misc-nodes.lua")					-- the catch-all for all misc nodes
