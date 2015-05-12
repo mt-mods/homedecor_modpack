@@ -180,6 +180,37 @@ homedecor.register("stonepath", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+local lattice_colors = {
+	{"wood", ".png^[colorize:#704214:180"},
+	{"white_wood", ".png"},
+	{"wood_vegetal", ".png^[colorize:#704214:180^homedecor_lattice_vegetal.png"},
+	{"white_wood_vegetal", ".png^homedecor_lattice_vegetal.png"},
+}
+
+for _, m in ipairs(lattice_colors) do
+homedecor.register("lattice_"..m[1], {
+	description = "Garden Lattice ("..m[1]..")",
+	tiles = {"homedecor_lattice"..m[2]},
+	inventory_image = "homedecor_lattice"..m[2],
+	groups = { snappy=3 },
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, 0.47, 0.5, 0.5, 0.47}, -- NodeBox1
+			{-0.5, 0.422, 0.44, 0.5, 0.5, 0.5}, -- NodeBox2
+			{-0.5, -0.5, 0.44, 0.5, -0.422, 0.5}, -- NodeBox3
+			{0.422, -0.5, 0.44, 0.5, 0.5, 0.5}, -- NodeBox4
+			{-0.5, -0.5, 0.44, -0.422, 0.5, 0.5} -- NodeBox5
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, 0.44, 0.5, 0.5, 0.5}
+	},
+	sounds = default.node_sound_wood_defaults(),
+})
+end
+
 homedecor.register("swing", {
 	description = "Tree's swing",
 	tiles = {

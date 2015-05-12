@@ -3262,6 +3262,42 @@ minetest.register_craft({
 	recipe = {"default:goldblock", "default:sword_mese"}
 })
 
+minetest.register_craft({
+	output = "homedecor:lattice_wood 8",
+	recipe = {
+		{"group:stick", "group:wood", "group:stick"},
+		{"group:wood", "", "group:wood"},
+		{"group:stick", "group:wood", "group:stick"},
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:lattice_white_wood 8",
+	recipe = {
+		{"group:stick", "group:wood", "group:stick"},
+		{"group:wood", "dye:white", "group:wood"},
+		{"group:stick", "group:wood", "group:stick"},
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:lattice_wood_vegetal 8",
+	recipe = {
+		{"group:stick", "group:wood", "group:stick"},
+		{"group:wood", "group:leaves", "group:wood"},
+		{"group:stick", "group:wood", "group:stick"},
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:lattice_white_wood_vegetal 8",
+	recipe = {
+		{"group:stick", "group:wood", "group:stick"},
+		{"group:wood", "group:leaves", "group:wood"},
+		{"group:stick", "dye:white", "group:stick"},
+	},
+})
+
 for i in ipairs(homedecor.banister_materials) do
 
 	local name    = homedecor.banister_materials[i][1]
