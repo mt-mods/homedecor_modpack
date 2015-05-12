@@ -3271,7 +3271,7 @@ for i in ipairs(homedecor.banister_materials) do
 	local dye2    = homedecor.banister_materials[i][8]
 
 	minetest.register_craft({
-		output = "homedecor:banister_"..name.."_left 2",
+		output = "homedecor:banister_"..name.."_horizontal 2",
 		recipe = {
 			{ topmat,  "",      dye1   },
 			{ vertmat, topmat,  ""     },
