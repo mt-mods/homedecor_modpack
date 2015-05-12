@@ -203,3 +203,17 @@ homedecor.register("window_flowerbox", {
 		}
 	}
 })
+
+homedecor.register("stained_glass", {
+	description = "Stained Glass",
+	tiles = {"homedecor_stained_glass.png"},
+	inventory_image = "homedecor_stained_glass.png",
+	groups = {snappy=3},
+	use_texture_alpha = true,
+	light_source = 3,
+	sounds = default.node_sound_glass_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = { {-0.5, -0.5, 0.46875, 0.5, 0.5, 0.5} }
+	}
+})
