@@ -231,30 +231,42 @@ function homedecor.place_banister(itemstack, placer, pointed_thing)
 	local fxd = homedecor.fdir_to_fwd[fdir+1][1]
 	local fzd = homedecor.fdir_to_fwd[fdir+1][2]
 
+	local below_pos =           { x=pos.x, y=pos.y-1, z=pos.z }
 	local fwd_pos =             { x=pos.x+fxd, y=pos.y, z=pos.z+fzd }
 	local left_pos =            { x=pos.x+lxd, y=pos.y, z=pos.z+lzd }
 	local right_pos =           { x=pos.x+rxd, y=pos.y, z=pos.z+rzd }
-
+	local left_fwd_pos =        { x=pos.x+lxd+fxd, y=pos.y, z=pos.z+lzd+fzd  }
+	local right_fwd_pos =       { x=pos.x+rxd+fxd, y=pos.y, z=pos.z+rzd+fzd  }
 	local right_fwd_above_pos = { x=pos.x+rxd+fxd, y=pos.y+1, z=pos.z+rzd+fzd }
 	local left_fwd_above_pos =  { x=pos.x+lxd+fxd, y=pos.y+1, z=pos.z+lzd+fzd }
+	local right_fwd_below_pos = { x=pos.x+rxd+fxd, y=pos.y-1, z=pos.z+rzd+fzd }
+	local left_fwd_below_pos =  { x=pos.x+lxd+fxd, y=pos.y-1, z=pos.z+lzd+fzd }
 
+	local below_node =           minetest.get_node(below_pos) 
 	local fwd_node =             minetest.get_node(fwd_pos)
 	local left_node =            minetest.get_node(left_pos)
 	local right_node =           minetest.get_node(right_pos)
-
+	local left_fwd_node =        minetest.get_node(left_fwd_pos)
+	local right_fwd_node =        minetest.get_node(right_fwd_pos)
 	local left_below_node =      minetest.get_node({x=left_pos.x, y=left_pos.y-1, z=left_pos.z})
 	local right_below_node =     minetest.get_node({x=right_pos.x, y=right_pos.y-1, z=right_pos.z})
-
 	local right_fwd_above_node = minetest.get_node(right_fwd_above_pos)
 	local left_fwd_above_node =  minetest.get_node(left_fwd_above_pos)
+	local right_fwd_below_node = minetest.get_node(right_fwd_below_pos)
+	local left_fwd_below_node =  minetest.get_node(left_fwd_below_pos)
 
 	local new_place_name = itemstack:get_name()
 	local n = 0
 
 	-- try to place a diagonal one on the side of blocks stacked like stairs
-	if not is_buildable_to(placer_name, right_fwd_above_pos, nil, right_fwd_above_pos) then
+	-- or follow an existing diagonal with another.
+	if (left_below_node and string.find(left_below_node.name, "banister_.-_diagonal_right")
+	  and below_node and is_buildable_to(placer_name, below_pos, nil, below_pos))
+	  or not is_buildable_to(placer_name, right_fwd_above_pos, nil, right_fwd_above_pos) then
 		new_place_name = string.gsub(new_place_name, "_horizontal", "_diagonal_right")
-	elseif not is_buildable_to(placer_name, left_fwd_above_pos, nil, left_fwd_above_pos) then
+	elseif (right_below_node and string.find(right_below_node.name, "banister_.-_diagonal_left")
+	  and below_node and is_buildable_to(placer_name, below_pos, nil, below_pos))
+	  or not is_buildable_to(placer_name, left_fwd_above_pos, nil, left_fwd_above_pos) then
 		new_place_name = string.gsub(new_place_name, "_horizontal", "_diagonal_left")
 
 	-- try to follow a diagonal with the corresponding horizontal
@@ -266,13 +278,37 @@ function homedecor.place_banister(itemstack, placer, pointed_thing)
 		fdir = right_below_node.param2
 		new_place_name = string.gsub(right_below_node.name, "_diagonal_.-$", "_horizontal")
 
-	-- from the bottom of it
+	-- try to place a horizontal in-line with the nearest diagonal, at the top
+	elseif left_fwd_below_node and string.find(left_fwd_below_node.name, "homedecor:banister_.*_diagonal")
+	  and is_buildable_to(placer_name, fwd_pos, nil, fwd_pos) then	
+		fdir = left_fwd_below_node.param2
+		pos = fwd_pos
+		new_place_name = string.gsub(left_fwd_below_node.name, "_diagonal_.-$", "_horizontal")
+	elseif right_fwd_below_node and string.find(right_fwd_below_node.name, "homedecor:banister_.*_diagonal")
+	  and is_buildable_to(placer_name, fwd_pos, nil, fwd_pos) then	
+		fdir = right_fwd_below_node.param2
+		pos = fwd_pos
+		new_place_name = string.gsub(right_fwd_below_node.name, "_diagonal_.-$", "_horizontal")
+
+	-- try to follow a diagonal with a horizontal, at the bottom of the diagonal
 	elseif left_node and string.find(left_node.name, "homedecor:banister_.*_diagonal") then
 		fdir = left_node.param2
 		new_place_name = string.gsub(left_node.name, "_diagonal_.-$", "_horizontal")
 	elseif right_node and string.find(right_node.name, "homedecor:banister_.*_diagonal") then
 		fdir = right_node.param2
 		new_place_name = string.gsub(right_node.name, "_diagonal_.-$", "_horizontal")
+
+	-- try to place a horizontal in-line with the nearest diagonal, at the bottom
+	elseif left_fwd_node and string.find(left_fwd_node.name, "homedecor:banister_.*_diagonal") 
+	  and is_buildable_to(placer_name, fwd_pos, nil, fwd_pos) then	
+		fdir = left_fwd_node.param2
+		pos = fwd_pos
+		new_place_name = string.gsub(left_fwd_node.name, "_diagonal_.-$", "_horizontal")
+	elseif right_fwd_node and string.find(right_fwd_node.name, "homedecor:banister_.*_diagonal")
+	  and is_buildable_to(placer_name, fwd_pos, nil, fwd_pos) then	
+		fdir = right_fwd_node.param2
+		pos = fwd_pos
+		new_place_name = string.gsub(right_fwd_node.name, "_diagonal_.-$", "_horizontal")
 
 	-- try to follow a horizontal with another of the same
 	elseif left_node and string.find(left_node.name, "homedecor:banister_.*_horizontal") then
