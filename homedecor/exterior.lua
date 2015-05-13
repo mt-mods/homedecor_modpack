@@ -320,5 +320,26 @@ homedecor.register("well", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+if minetest.get_modpath("bucket") then
+	minetest.override_item("bucket:bucket_empty", {
+		on_use = function(itemstack, user, pointed_thing)
+			local wielditem = user:get_wielded_item()
+			local wieldname = itemstack:get_name()
+			local inv = user:get_inventory()
+			
+			if pointed_thing.type == "node" and minetest.get_node(pointed_thing.under).name == "homedecor:well" then
+				if inv:room_for_item("main", "bucket:bucket_water 1") then
+					wielditem:take_item()
+					user:set_wielded_item(wielditem)
+					inv:add_item("main", "bucket:bucket_water 1")
+				else
+					minetest.chat_send_player(user:get_player_name(), "No room in your inventory to add a filled bucket!")
+				end
+			end
+			return wielditem
+		end	
+	})
+end
+
 minetest.register_alias("homedecor:well_top", "air")
 minetest.register_alias("homedecor:well_base", "homedecor:well")
