@@ -472,6 +472,7 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 		},
 		selection_box = slamp_cbox,
 		sounds = default.node_sound_wood_defaults(),
+		on_rotate = screwdriver.rotate_simple,
 		on_punch = function(pos, node, puncher)
 			node.name = "homedecor:standing_lamp"..lampcolor.."_"..repl[suffix]
 			minetest.set_node(pos, node)

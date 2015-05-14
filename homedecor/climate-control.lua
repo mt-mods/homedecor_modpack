@@ -37,6 +37,7 @@ homedecor.register("desk_fan", {
 	inventory_image = "homedecor_desk_fan_inv.png",
 	wield_image = "homedecor_desk_fan_inv.png",
 	selection_box = { type = "regular" },
+	on_rotate = screwdriver.disallow,
 	on_construct = function(pos)
 		local entity_remove = minetest.get_objects_inside_radius(pos, 0.1)
 		local meta = minetest.get_meta(pos)

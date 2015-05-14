@@ -150,7 +150,8 @@ homedecor.register("taps", {
 	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
 	on_rightclick = taps_on_rightclick,
-	on_destruct = homedecor.stop_particle_spawner
+	on_destruct = homedecor.stop_particle_spawner,
+	on_rotate = screwdriver.disallow
 })
 
 homedecor.register("taps_brass", {
@@ -172,7 +173,8 @@ homedecor.register("taps_brass", {
 	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
 	on_rightclick = taps_on_rightclick,
-	on_destruct = homedecor.stop_particle_spawner
+	on_destruct = homedecor.stop_particle_spawner,
+	on_rotate = screwdriver.disallow
 })
 
 --Shower Tray
@@ -225,6 +227,7 @@ homedecor.register("shower_head", {
 	groups = {snappy=3},
 	selection_box = sh_cbox,
 	walkable = false,
+	on_rotate = screwdriver.disallow,
 	on_rightclick = function (pos, node, clicker)
 		local below = minetest.get_node_or_nil({x=pos.x, y=pos.y-2.0, z=pos.z})
 		if below and below.name == "homedecor:shower_tray" then

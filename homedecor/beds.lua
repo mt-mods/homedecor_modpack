@@ -64,6 +64,7 @@ for i in ipairs(bedcolors) do
 		selection_box = bed_sbox,
 		collision_box = bed_cbox,
 		sounds = default.node_sound_wood_defaults(),
+		on_rotate = screwdriver.disallow,
 		after_place_node = function(pos, placer, itemstack, pointed_thing)
 			if not placer:get_player_control().sneak then
 				return homedecor.bed_expansion(pos, placer, itemstack, pointed_thing, color)
@@ -93,6 +94,7 @@ for i in ipairs(bedcolors) do
 		collision_box = bed_cbox,
 		sounds = default.node_sound_wood_defaults(),
 		expand = { forward = "air" },
+		on_rotate = screwdriver.disallow,
 		after_dig_node = function(pos)
 			homedecor.unextend_bed(pos, color)
 		end,
@@ -121,6 +123,7 @@ for i in ipairs(bedcolors) do
 		selection_box = kbed_sbox,
 		collision_box = kbed_cbox,
 		sounds = default.node_sound_wood_defaults(),
+		on_rotate = screwdriver.disallow,
 		after_dig_node = function(pos, oldnode, oldmetadata, digger)
 			local inv = digger:get_inventory()
 			if digger:get_player_control().sneak and inv:room_for_item("main", "bed_"..color.."_regular 1") then

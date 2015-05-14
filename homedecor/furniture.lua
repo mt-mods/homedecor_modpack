@@ -181,6 +181,7 @@ homedecor.register("office_chair_"..c, {
 	selection_box = ofchairs_sbox,
 	collision_box = ofchairs_cbox,
 	expand = { top = "air" },
+	on_rotate = screwdriver.rotate_simple
 })
 
 end

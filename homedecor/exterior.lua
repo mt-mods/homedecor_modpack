@@ -56,6 +56,7 @@ homedecor.register("bench_large_1", {
 	sounds = default.node_sound_wood_defaults(),
 	selection_box = bl1_sbox,
 	node_box = bl1_cbox,
+	on_rotate = screwdriver.disallow
 })
 
 minetest.register_alias("homedecor:bench_large_1_left", "homedecor:bench_large_1")
@@ -84,6 +85,7 @@ homedecor.register("bench_large_2", {
 	node_box = bl2_cbox,
 	expand = { right="air" },
 	sounds = default.node_sound_wood_defaults(),
+	on_rotate = screwdriver.disallow
 })
 
 minetest.register_alias("homedecor:bench_large_2_left", "homedecor:bench_large_2")
@@ -103,6 +105,7 @@ homedecor.register("deckchair", {
 	sounds = default.node_sound_wood_defaults(),
 	selection_box = dc_cbox,
 	collision_box = dc_cbox,
+	on_rotate = screwdriver.disallow
 })
 
 minetest.register_alias("homedecor:deckchair_foot", "homedecor:deckchair")
@@ -117,6 +120,7 @@ homedecor.register("deckchair_striped_blue", {
 	sounds = default.node_sound_wood_defaults(),
 	selection_box = dc_cbox,
 	collision_box = dc_cbox,
+	on_rotate = screwdriver.disallow
 })
 
 homedecor.register("doghouse", {
@@ -133,6 +137,7 @@ homedecor.register("doghouse", {
 	groups = {snappy=3},
 	expand = { top="air" },
 	sounds = default.node_sound_wood_defaults(),
+	on_rotate = screwdriver.rotate_simple
 })
 
 minetest.register_alias("homedecor:doghouse_roof", "air")
@@ -222,6 +227,7 @@ homedecor.register("swing", {
 	groups = { snappy=3, oddly_breakable_by_hand=3 },
 	sounds = default.node_sound_wood_defaults(),
 	walkable = false,
+	on_rotate = screwdriver.disallow,
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -318,6 +324,7 @@ homedecor.register("well", {
 	collision_box = homedecor.nodebox.slab_y(2),
 	expand = { top="air" },
 	sounds = default.node_sound_stone_defaults(),
+	on_rotate = screwdriver.rotate_simple
 })
 
 if minetest.get_modpath("bucket") then

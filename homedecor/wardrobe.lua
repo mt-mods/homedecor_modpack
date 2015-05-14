@@ -19,6 +19,7 @@ homedecor.register("wardrobe", {
 	collision_box = wd_cbox,
 	sounds = default.node_sound_wood_defaults(),
 	expand = { top="air" },
+	on_rotate = screwdriver.rotate_simple,
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		local skins = {"male1", "male2", "male3", "male4", "male5"}

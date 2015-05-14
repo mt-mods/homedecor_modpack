@@ -248,6 +248,7 @@ minetest.register_node("computer:tetris_arcade", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {snappy=3},
+	on_rotate = screwdriver.rotate_simple,
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.5, -0.5, -0.5, 0.5, 1.5, 0.5}

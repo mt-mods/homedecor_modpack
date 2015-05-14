@@ -243,6 +243,7 @@ for i in ipairs(sides) do
 			use_texture_alpha = door_model.usealpha,
 			selection_box = selbox,
 			collision_box = colbox,
+			on_rotate = screwdriver.rotate_simple,
 			on_place = function(itemstack, placer, pointed_thing)
 				return homedecor.stack_wing(itemstack, placer, pointed_thing,
 					"homedecor:door_"..doorname.."_left", "air",
@@ -620,6 +621,7 @@ minetest.register_node("homedecor:door_japanese_open", {
 	paramtype2 = "facedir",
 	groups = { snappy = 3, not_in_creative_inventory = 1 },
 	sounds = default.node_sound_wood_defaults(),
+	on_rotate = screwdriver.disallow,
 	selection_box = {
 		type = "fixed",
 		fixed = {-1.5, -0.5, -0.0625, 0.5, 1.5, 0},

@@ -110,6 +110,7 @@ minetest.register_node("itemframes:frame",{
 	groups = { choppy=2,dig_immediate=2 },
 	legacy_wallmounted = true,
 	sounds = default.node_sound_defaults(),
+	on_rotate = screwdriver.disallow,
 	after_place_node = function(pos, placer, itemstack)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("owner",placer:get_player_name())
@@ -155,6 +156,7 @@ minetest.register_node("itemframes:pedestal",{
 	paramtype = "light",
 	groups = { cracky=3 },
 	sounds = default.node_sound_defaults(),
+	on_rotate = screwdriver.disallow,
 	after_place_node = function(pos, placer, itemstack)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("owner",placer:get_player_name())

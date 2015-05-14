@@ -107,6 +107,7 @@ minetest.register_node("fake_fire:fancy_fire", {
 		light_source = 14,
 		walkable = false,
 		damage_per_second = 4,
+		on_rotate = screwdriver.rotate_simple,
 		tiles = {
 		{name="fake_fire_animated.png", 
 		animation={type='vertical_frames', aspect_w=16, aspect_h=16, length=1}}, {name='fake_fire_logs.png'}},

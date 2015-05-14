@@ -92,6 +92,7 @@ homedecor.register("grandfather_clock", {
 	collision_box = gf_cbox,
 	sounds = default.node_sound_wood_defaults(),
 	expand = { top="air" },
+	on_rotate = screwdriver.rotate_simple
 })
 
 minetest.register_alias("homedecor:grandfather_clock_bottom", "homedecor:grandfather_clock")

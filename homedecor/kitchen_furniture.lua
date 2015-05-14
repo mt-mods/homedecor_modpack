@@ -113,6 +113,7 @@ homedecor.register("kitchen_faucet", {
 	groups = {snappy=3},
 	selection_box = kf_cbox,
 	walkable = false,
+	on_rotate = screwdriver.disallow,
 	on_rightclick = function(pos, node, clicker)
 		local below = minetest.get_node_or_nil({x=pos.x, y=pos.y-1, z=pos.z})
 		if below and

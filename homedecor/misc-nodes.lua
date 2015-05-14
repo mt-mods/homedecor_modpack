@@ -280,6 +280,7 @@ homedecor.register("pool_table", {
 	collision_box = pooltable_cbox,
 	expand = { forward="air" },
 	sounds = default.node_sound_wood_defaults(),
+	on_rotate = screwdriver.disallow
 })
 
 minetest.register_alias("homedecor:pool_table_2", "air")
@@ -322,6 +323,7 @@ homedecor.register("coat_tree", {
 		type = "fixed",
 		fixed = { -0.4, -0.5, -0.4, 0.4, 1.5, 0.4 }
 	},
+	on_rotate = screwdriver.rotate_simple
 })
 
 local cutlery_cbox = {
@@ -439,6 +441,7 @@ homedecor.register("piano", {
 	collision_box = piano_cbox,
 	expand = { right="air" },
 	sounds = default.node_sound_wood_defaults(),
+	on_rotate = screwdriver.disallow
 })
 
 minetest.register_alias("homedecor:piano_left", "homedecor:piano")
@@ -562,6 +565,7 @@ homedecor.register("tool_cabinet", {
 		"homedecor_tool_cabinet_misc.png",
 	},
 	inventory_image = "homedecor_tool_cabinet_inv.png",
+	on_rotate = screwdriver.rotate_simple,
 	groups = { snappy=3 },
 	selection_box = homedecor.nodebox.slab_y(2),
 	expand = { top="air" },
@@ -802,6 +806,7 @@ homedecor.register("spiral_staircase", {
 	},
 	groups = {choppy=2},
 	sounds = default.node_sound_wood_defaults(),
+	on_rotate = screwdriver.rotate_simple,
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 		local leftx =  homedecor.fdir_to_left[fdir+1][1]
@@ -870,6 +875,7 @@ homedecor.register("soda_machine", {
 	collision_box = svm_cbox,
 	expand = { top="air" },
 	sounds = default.node_sound_wood_defaults(),
+	on_rotate = screwdriver.rotate_simple,
 	on_punch = function(pos, node, puncher, pointed_thing)
 		local wielditem = puncher:get_wielded_item()
 		local wieldname = wielditem:get_name()
