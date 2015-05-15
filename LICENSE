@@ -1,3 +1,13 @@
+For the Lua code:  LGPL 3.0 or higher
+For all models, all textures, and all sounds:  CC-by-SA 3.0 or higher
+For everything else: WTFPL
+
+Exceptions to the above:
+
+Fancy mesh fire model and texture by NathanS (CC-0).
+
+===============================================================================
+
                    GNU LESSER GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
@@ -163,3 +173,27 @@ whether future versions of the GNU Lesser General Public License shall
 apply, that proxy's public statement of acceptance of any version is
 permanent authorization for you to choose that version for the
 Library.
+
+===============================================================================
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 
+4.0 International License. To view a copy of this license, visit 
+http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to 
+Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+===============================================================================
+
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+                    Version 2, December 2004
+
+ Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
+
+ Everyone is permitted to copy and distribute verbatim or modified
+ copies of this license document, and changing it is allowed as long
+ as the name is changed.
+
+            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+
+  0. You just DO WHAT THE FUCK YOU WANT TO.
+
