@@ -1,4 +1,5 @@
 local tmp = {}
+screwdriver = screwdriver or {}
 
 minetest.register_entity("itemframes:item",{
 	hp_max = 1,
