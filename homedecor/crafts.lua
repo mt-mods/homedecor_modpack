@@ -3329,6 +3329,11 @@ minetest.register_craft( {
 	}
 })
 
+minetest.register_craft( {
+	output = "homedecor:flower_pot_small 3",
+	recipe = { { "homedecor:flower_pot_terracotta" } }
+})
+
 for i in ipairs(homedecor.banister_materials) do
 
 	local name    = homedecor.banister_materials[i][1]
