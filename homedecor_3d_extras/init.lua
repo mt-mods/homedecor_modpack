@@ -17,11 +17,11 @@ if minetest.get_modpath("vessels")
 
 	minetest.override_item("vessels:shelf", {
 		drawtype = "mesh",
-		mesh = "3dvesselshelf.obj",
+		mesh = "3dvessels_shelf.obj",
 		tiles = {
 			"default_wood.png",
 			"default_wood.png^3dbookshelf_inside_back.png",
-			"3dvesselshelf_glass.png",
+			"3dvessels_shelf_glass.png",
 		},
 		paramtype = "light",
 		paramtype2 = "facedir",
@@ -35,8 +35,8 @@ if minetest.get_modpath("vessels")
 
 	minetest.override_item("vessels:glass_bottle", {
 		drawtype = "mesh",
-		mesh = "3dvesselbottle.obj",
-		tiles = {"3dvesselshelf_glass.png"},
+		mesh = "3dvessels_bottle.obj",
+		tiles = {"3dvessels_shelf_glass.png"},
 		inventory_image = "3dvessels_glass_bottle_inv.png",
 		wield_image = "3dvessels_glass_bottle_inv.png",
 		use_texture_alpha = true,
@@ -45,7 +45,7 @@ if minetest.get_modpath("vessels")
 
 	minetest.override_item("vessels:steel_bottle", {
 		drawtype = "mesh",
-		mesh = "3dvesselbottle.obj",
+		mesh = "3dvessels_bottle_steel.obj",
 		tiles = {"bottle_metal_bright.png"},
 		inventory_image = "3dvessels_steel_bottle_inv.png",
 		wield_image = "3dvessels_steel_bottle_inv.png",
@@ -54,8 +54,8 @@ if minetest.get_modpath("vessels")
 
 	minetest.override_item("vessels:drinking_glass", {
 		drawtype = "mesh",
-		mesh = "3dvesseldrink.obj",
-		tiles = {"3dvesselshelf_glass.png"},
+		mesh = "3dvessels_drink.obj",
+		tiles = {"3dvessels_shelf_glass.png"},
 		inventory_image = "3dvessels_drinking_glass_inv.png",
 		wield_image = "3dvessels_drinking_glass_inv.png",
 		use_texture_alpha = true,
