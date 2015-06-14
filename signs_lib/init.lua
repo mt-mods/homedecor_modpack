@@ -121,6 +121,9 @@ signs_lib.sign_node_list = {
 		"signs:sign_wall_red",
 		"signs:sign_wall_white_red",
 		"signs:sign_wall_white_black",
+		"signs:sign_wall_orange",
+		"signs:sign_wall_blue",
+		"signs:sign_wall_brown",
 		"locked_sign:sign_wall_locked"
 }
 
@@ -851,7 +854,7 @@ minetest.register_node(":locked_sign:sign_wall_locked", {
 
 -- metal, colored signs
 
-local sign_colors = { "green", "yellow", "red", "white_red", "white_black" }
+local sign_colors = { "green", "yellow", "red", "white_red", "white_black", "orange", "blue", "brown" }
 
 for _, color in ipairs(sign_colors) do
 	minetest.register_node(":signs:sign_wall_"..color, {
@@ -1101,6 +1104,54 @@ minetest.register_craft( {
         output = "signs:sign_wall_white_black 2",
         recipe = {
 			{ "dye:white", "dye:black", "dye:white" },
+			{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
+        },
+})
+
+minetest.register_craft( {
+        output = "signs:sign_wall_orange 4",
+        recipe = {
+			{ "dye:orange", "dye:black", "dye:orange" },
+			{ "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" }
+        },
+})
+
+minetest.register_craft( {
+        output = "signs:sign_wall_orange 2",
+        recipe = {
+			{ "dye:orange", "dye:black", "dye:orange" },
+			{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
+        },
+})
+
+minetest.register_craft( {
+        output = "signs:sign_wall_blue 4",
+        recipe = {
+			{ "dye:blue", "dye:white", "dye:blue" },
+			{ "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" }
+        },
+})
+
+minetest.register_craft( {
+        output = "signs:sign_wall_blue 2",
+        recipe = {
+			{ "dye:blue", "dye:white", "dye:blue" },
+			{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
+        },
+})
+
+minetest.register_craft( {
+        output = "signs:sign_wall_brown 4",
+        recipe = {
+			{ "dye:brown", "dye:white", "dye:brown" },
+			{ "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" }
+        },
+})
+
+minetest.register_craft( {
+        output = "signs:sign_wall_brown 2",
+        recipe = {
+			{ "dye:brown", "dye:white", "dye:brown" },
 			{ "steel:sheet_metal", "steel:sheet_metal", "steel:sheet_metal" }
         },
 })
