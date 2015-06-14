@@ -331,7 +331,6 @@ if minetest.get_modpath("bucket") then
 	local original_bucket_on_use = minetest.registered_items["bucket:bucket_empty"].on_use
 	minetest.override_item("bucket:bucket_empty", {
 		on_use = function(itemstack, user, pointed_thing)
-			local wieldname = itemstack:get_name()
 			local inv = user:get_inventory()
 
 			if pointed_thing.type == "node" and minetest.get_node(pointed_thing.under).name == "homedecor:well" then
