@@ -10,6 +10,9 @@
 --		{ delta = {entity position for 90° yaw}, exact yaw expression }
 -- }
 
+-- CWz's keyword interact mod uses this setting.
+local keyword = minetest.setting_get("interact_keyword") or "iaccept"
+
 signs_lib = {}
 screwdriver = screwdriver or {}
 
@@ -364,6 +367,7 @@ end
 
 local function split_lines_and_words(text)
 	if not text then return end
+	text = string.gsub(text, "@KEYWORD", keyword)
 	local lines = { }
 	for _, line in ipairs(text:split("\n")) do
 		table.insert(lines, line:split(" "))
@@ -526,9 +530,33 @@ local function make_infotext(text)
 end
 
 signs_lib.update_sign = function(pos, fields, owner)
-    local meta = minetest.get_meta(pos)
 
-    local new
+	-- First, check if the interact keyword from CWz's mod is being set,
+	-- or has been changed since the last restart...
+
+	local meta = minetest.get_meta(pos)
+	local stored_text = meta:get_string("text") or ""
+
+	if fields then -- ...we're editing the sign.
+		if fields.text and string.find(dump(fields.text), "@KEYWORD") then
+			meta:set_string("keyword", keyword)
+		else
+			meta:set_string("keyword", nil)
+		end
+	elseif string.find(dump(stored_text), "@KEYWORD") then -- we need to check if the password is being set/changed
+
+		local stored_keyword = meta:get_string("keyword")
+		if stored_keyword and stored_keyword ~= "" and stored_keyword ~= keyword then
+			signs_lib.destruct_sign(pos)
+			meta:set_string("keyword", keyword)
+			local ownstr = ""
+			if owner then ownstr = "Locked sign, owned by "..owner.."\n" end
+			meta:set_string("infotext", ownstr..string.gsub(make_infotext(stored_text), "@KEYWORD", keyword).." ")
+		end
+	end
+
+	local new
+
 	if fields then
 
 		fields.text = trim_input(fields.text)
@@ -536,18 +564,19 @@ signs_lib.update_sign = function(pos, fields, owner)
 		local ownstr = ""
 		if owner then ownstr = "Locked sign, owned by "..owner.."\n" end
 
-		meta:set_string("infotext", ownstr..make_infotext(fields.text).." ")
+		meta:set_string("infotext", ownstr..string.gsub(make_infotext(fields.text), "@KEYWORD", keyword).." ")
 		meta:set_string("text", fields.text)
+		
 		meta:set_int("__signslib_new_format", 1)
 		new = true
 	else
 		new = (meta:get_int("__signslib_new_format") ~= 0)
 	end
-    local text = meta:get_string("text")
-    if text == nil then return end
-    local objects = minetest.get_objects_inside_radius(pos, 0.5)
-    local found
-    for _, v in ipairs(objects) do
+	local text = meta:get_string("text")
+	if text == nil then return end
+	local objects = minetest.get_objects_inside_radius(pos, 0.5)
+	local found
+	for _, v in ipairs(objects) do
 		local e = v:get_luaentity()
 		if e and e.name == "signs:text" then
 			if found then
@@ -556,11 +585,11 @@ signs_lib.update_sign = function(pos, fields, owner)
 				set_obj_text(v, text, new)
 				found = true
 			end
-        end
-    end
-    if found then
+		end
+	end
+	if found then
 		return
-    end
+	end
 
 	-- if there is no entity
 	local sign_info
