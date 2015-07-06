@@ -174,8 +174,7 @@ local PNG_HDR = string.char(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
 -- Read the image size from a PNG file.
 -- Returns image_w, image_h.
 -- Only the LSB is read from each field!
-local function read_char_size(c)
-	local filename = FONT_FMT:format(TP, c)
+local function read_image_size(filename)
 	local f = io.open(filename, "rb")
 	f:seek("set", 0x0)
 	local hdr = f:read(8)
@@ -194,6 +193,7 @@ end
 -- Set by build_char_db()
 local LINE_HEIGHT
 local SIGN_WIDTH
+local COLORBGW, COLORBGH
 
 -- Size of the canvas, in characters.
 -- Please note that CHARS_PER_LINE is multiplied by the average character
@@ -209,10 +209,7 @@ local MAX_INPUT_CHARS = 600
 
 -- This holds the individual character widths.
 -- Indexed by the actual character (e.g. charwidth["A"])
-local charwidth = { }
-
--- File to cache the font size to.
-local CHARDB_FILE = minetest.get_worldpath().."/signs_lib_chardb"
+local charwidth
 
 -- helper functions to trim sign text input/output
 
@@ -220,123 +217,30 @@ local function trim_input(text)
 	return text:sub(1, math.min(MAX_INPUT_CHARS, text:len()))
 end
 
--- Returns true if any file differs from cached one.
-local function check_random_chars()
-	for i = 1, 5 do
-		local c = math.random(32, 126)
-		local w, h = read_char_size(c)
-
-		-- File is not a PNG... wut?
-		if not (w and h) then return true end
-
-		local ch = string.char(c)
-		if  (not charwidth[ch])                     -- Char is not cached.
-		 or (charwidth[ch] ~= w)                    -- Width differs.
-		 or (LINE_HEIGHT and (LINE_HEIGHT ~= h))    -- Height differs
-		 then
-			-- In any case, file is different; rebuild cache.
-			return true
-		end
-	end
-	-- OK, our superficial check passed. If the textures are messed up,
-	-- it's not our problem.
-	return false
-end
-
 local function build_char_db()
 
-	LINE_HEIGHT = nil
-	SIGN_WIDTH = nil
+	charwidth = { }
 
 	-- To calculate average char width.
 	local total_width = 0
 	local char_count = 0
 
-	-- Try to load cached data to avoid heavy disk I/O.
-
-	local cdbf = io.open(CHARDB_FILE, "rt")
-
-	if cdbf then
-		minetest.log("info", "[signs_lib] "..S("Reading cached character database."))
-		for line in cdbf:lines() do
-			local ch, w = line:match("(0x[0-9A-Fa-f]+)%s+([0-9][0-9]*)")
-			if ch and w then
-				local c = tonumber(ch)
-				w = tonumber(w)
-				if c and w then
-					if c == 0 then
-						LINE_HEIGHT = w
-					elseif (c >= 32) and (c < 127) then
-						charwidth[string.char(c)] = w
-						total_width = total_width + w
-						char_count = char_count + 1
-					end
-				end
-			end
-		end
-		cdbf:close()
-		if LINE_HEIGHT then
-			-- Check some random characters to see if the file on disk differs
-			-- from the cached one. If so, then ditch cached data and rebuild
-			-- (font probably was changed).
-			if check_random_chars() then
-				LINE_HEIGHT = nil
-				minetest.log("info", "[signs_lib] "
-					..S("Font seems to have changed. Rebuilding cache.")
-				)
-			end
-		else
-			minetest.log("warning", "[signs_lib] "
-				..S("Could not find font line height in cached DB. Trying brute force.")
-			)
+	for c = 32, 126 do
+		local w, h = read_image_size(FONT_FMT:format(TP, c))
+		if w and h then
+			local ch = string.char(c)
+			charwidth[ch] = w
+			total_width = total_width + w
+			char_count = char_count + 1
 		end
 	end
 
-	if not LINE_HEIGHT then
-		-- OK, something went wrong... try brute force loading from texture files.
-
-		charwidth = { }
-
-		total_width = 0
-		char_count = 0
-
-		for c = 32, 126 do
-			local w, h = read_char_size(c)
-			if w and h then
-				local ch = string.char(c)
-				charwidth[ch] = w
-				total_width = total_width + w
-				char_count = char_count + 1
-				if not LINE_HEIGHT then LINE_HEIGHT = h end
-			end
-		end
-
-		if not LINE_HEIGHT then
-			error("Could not find font line height.")
-		end
-
-	end
+	COLORBGW, COLORBGH = read_image_size(TP.."/slc_n.png")
+	assert(COLORBGW and COLORBGH, "error reading bg dimensions")
+	LINE_HEIGHT = COLORBGH
 
 	-- XXX: Is there a better way to calc this?
 	SIGN_WIDTH = math.floor((total_width / char_count) * CHARS_PER_LINE)
-
-	-- Try to save cached list back to disk.
-
-	local e -- Note: `cdbf' is already declared local above.
-	cdbf, e = io.open(CHARDB_FILE, "wt")
-	if not cdbf then
-		minetest.log("warning", "[signs_lib] Could not save cached char DB: "..(e or ""))
-		return
-	end
-
-	cdbf:write(("0x00 %d\n"):format(LINE_HEIGHT))
-	for c = 32, 126 do
-		local w = charwidth[string.char(c)]
-		if w then
-			cdbf:write(("0x%02X %d\n"):format(c, w))
-		end
-	end
-	cdbf:close()
 
 end
 
@@ -380,11 +284,8 @@ local math_max = math.max
 local function fill_line(x, y, w, c)
 	c = c or "0"
 	local tex = { }
-	for xx = 0, math.max(0, w-16), 16 do
+	for xx = 0, math.max(0, w), COLORBGW do
 		table.insert(tex, (":%d,%d=slc_%s.png"):format(x + xx, y, c))
-	end
-	if ((w % 16) > 0) and (w > 16) then
-		table.insert(tex, (":%d,%d=slc_%s.png"):format(x + w - 16, y, c))
 	end
 	return table.concat(tex)
 end
