@@ -349,5 +349,51 @@ if minetest.get_modpath("bucket") then
 	})
 end
 
+minetest.register_node("homedecor:shrubbery_large", {
+	description = S("Shrubbery"),
+	drawtype = "allfaces_optional",
+	tiles = {"homedecor_shrubbery_top.png"},
+	paramtype = "light",
+	is_ground_content = false,
+	groups = {snappy=3, flammable=2},
+	sounds = default.node_sound_leaves_defaults(),
+})
+
+minetest.register_node("homedecor:shrubbery", {
+	description = S("Shrubbery"),
+	drawtype = "nodebox",
+	tiles = {
+		"homedecor_shrubbery_top.png",
+		"homedecor_shrubbery_bottom.png",
+		"homedecor_shrubbery_sides.png"
+	},
+	paramtype = "light",
+	is_ground_content = false,
+	groups = {snappy=3, flammable=2},
+	sounds = default.node_sound_leaves_defaults(),
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.312500,-0.500000,0.250000,-0.187500,-0.437500,0.375000}, --NodeBox 1
+			{0.187500,-0.500000,-0.125000,0.312500,-0.437500,0.000000}, --NodeBox 2
+			{0.000000,-0.500000,-0.312500,0.125000,-0.437500,-0.187500}, --NodeBox 3
+			{-0.375000,-0.500000,-0.062500,-0.250000,-0.437500,0.062500}, --NodeBox 4
+			{0.000000,-0.500000,-0.250000,0.125000,-0.437500,-0.125000}, --NodeBox 5
+			{0.187500,-0.437500,-0.187500,0.375000,-0.375000,0.062500}, --NodeBox 6
+			{-0.062500,-0.437500,0.125000,0.187500,-0.375000,0.375000}, --NodeBox 7
+			{-0.062500,-0.437500,-0.375000,0.187500,-0.375000,-0.062500}, --NodeBox 8
+			{-0.375000,-0.437500,0.187500,-0.125000,-0.375000,0.431179}, --NodeBox 9
+			{-0.437500,-0.437500,-0.125000,-0.187500,-0.375000,0.125000}, --NodeBox 10
+			{-0.437500,-0.375000,-0.437500,0.439966,-0.312500,0.420887}, --NodeBox 11
+			{-0.500000,-0.312500,-0.500000,0.500000,0.500000,0.500000}, --NodeBox 12
+			{0.000000,-0.500000,0.187500,0.125000,-0.437500,0.312500}, --NodeBox 13
+		}
+	}
+})
+
+
 minetest.register_alias("homedecor:well_top", "air")
 minetest.register_alias("homedecor:well_base", "homedecor:well")
+
+minetest.register_alias("gloopblocks:shrubbery", "homedecor:shrubbery")
+minetest.register_alias("gloopblocks:shrubbery_large", "homedecor:shrubbery_large")

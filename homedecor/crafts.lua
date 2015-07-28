@@ -3344,6 +3344,32 @@ minetest.register_craft( {
 	recipe = { { "homedecor:flower_pot_terracotta" } }
 })
 
+minetest.register_craft({
+	output = "homedecor:shrubbery 3",
+	recipe = {
+		{ "group:leaves", "group:leaves", "group:leaves" },
+		{ "group:leaves", "group:leaves", "group:leaves" },
+		{ "group:stick", "group:stick", "group:stick" }
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:shrubbery_large",
+	recipe = {
+		"homedecor:shrubbery"
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:shrubbery",
+	recipe = {
+		"homedecor:shrubbery_large"
+	}
+})
+
+
 for i in ipairs(homedecor.banister_materials) do
 
 	local name    = homedecor.banister_materials[i][1]
