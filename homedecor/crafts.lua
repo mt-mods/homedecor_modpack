@@ -3345,7 +3345,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft({
-	output = "homedecor:shrubbery 3",
+	output = "homedecor:shrubbery_green 3",
 	recipe = {
 		{ "group:leaves", "group:leaves", "group:leaves" },
 		{ "group:leaves", "group:leaves", "group:leaves" },
@@ -3353,22 +3353,45 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	type = "shapeless",
-	output = "homedecor:shrubbery_large",
-	recipe = {
-		"homedecor:shrubbery"
-	}
-})
+for _, color in ipairs(homedecor.shrub_colors) do
 
-minetest.register_craft({
-	type = "shapeless",
-	output = "homedecor:shrubbery",
-	recipe = {
-		"homedecor:shrubbery_large"
-	}
-})
+	minetest.register_craft({
+		type = "shapeless",
+		output = "homedecor:shrubbery_large_"..color,
+		recipe = {
+			"homedecor:shrubbery_"..color
+		}
+	})
 
+	minetest.register_craft({
+		type = "shapeless",
+		output = "homedecor:shrubbery_"..color,
+		recipe = {
+			"homedecor:shrubbery_large_"..color
+		}
+	})
+
+	if color ~= "green" then
+		minetest.register_craft({
+			type = "shapeless",
+			output = "homedecor:shrubbery_large_"..color,
+			recipe = {
+				"homedecor:shrubbery_large_green",
+				"dye:"..color
+			}
+		})
+
+		minetest.register_craft({
+			type = "shapeless",
+			output = "homedecor:shrubbery_"..color,
+			recipe = {
+				"homedecor:shrubbery_green",
+				"dye:"..color
+			}
+		})
+
+	end
+end
 
 for i in ipairs(homedecor.banister_materials) do
 
