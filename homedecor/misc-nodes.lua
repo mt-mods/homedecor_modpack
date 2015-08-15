@@ -887,11 +887,11 @@ homedecor.register("spiral_staircase", {
 })
 
 minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
-
 	local belownode = minetest.get_node({ x = pos.x, y = pos.y - 1, z = pos.z })
 
-	if belownode and belownode.name == "homedecor:spiral_staircase" then
-
+	if newnode.name ~= "homedecor:spiral_staircase"
+	  and belownode
+	  and belownode.name == "homedecor:spiral_staircase" then
 		minetest.set_node(pos, { name = "air" })
 
 		local newpos = { x = pos.x, y = pos.y + 2, z = pos.z }
