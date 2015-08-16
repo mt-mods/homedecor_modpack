@@ -116,11 +116,12 @@ dofile(modpath.."/gastronomy.lua")
 dofile(modpath.."/bathroom_furniture.lua")
 dofile(modpath.."/bathroom_sanitation.lua")
 
+dofile(modpath.."/bedroom.lua")
+
 dofile(modpath.."/laundry.lua")
 
 dofile(modpath.."/office.lua")
 
-dofile(modpath.."/nightstands.lua")
 dofile(modpath.."/clocks.lua")
 dofile(modpath.."/electrics.lua")
 
@@ -132,7 +133,6 @@ dofile(modpath.."/furniture_recipes.lua")
 dofile(modpath.."/climate-control.lua")
 
 dofile(modpath.."/cobweb.lua")
-dofile(modpath.."/beds.lua")
 dofile(modpath.."/books.lua")
 dofile(modpath.."/exterior.lua")
 dofile(modpath.."/trash_cans.lua")
