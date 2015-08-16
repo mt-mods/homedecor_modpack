@@ -151,7 +151,7 @@ dofile(homedecor.modpath.."/laundry.lua")
 
 dofile(homedecor.modpath.."/nightstands.lua")
 dofile(homedecor.modpath.."/clocks.lua")
-dofile(homedecor.modpath.."/misc-electrical.lua")
+dofile(homedecor.modpath.."/electrics.lua")
 
 dofile(homedecor.modpath.."/window_treatments.lua")
 
