@@ -142,6 +142,7 @@ dofile(homedecor.modpath.."/lighting.lua")
 
 dofile(homedecor.modpath.."/kitchen_appliances.lua")
 dofile(homedecor.modpath.."/kitchen_furniture.lua")
+dofile(homedecor.modpath.."/gastronomy.lua")
 
 dofile(homedecor.modpath.."/bathroom_furniture.lua")
 dofile(homedecor.modpath.."/bathroom_sanitation.lua")
