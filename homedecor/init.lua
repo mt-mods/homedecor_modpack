@@ -101,6 +101,8 @@ dofile(modpath.."/shutters.lua")
 dofile(modpath.."/shingles.lua")
 dofile(modpath.."/slopes.lua")
 
+dofile(modpath.."/foyer.lua")
+
 dofile(modpath.."/doors_and_gates.lua")
 
 dofile(modpath.."/fences.lua")
