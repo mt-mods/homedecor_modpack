@@ -158,18 +158,6 @@ homedecor.register("pole_wrought_iron", {
     sounds = default.node_sound_wood_defaults(),
 })
 
-homedecor.register("chimney", {
-	description = "Chimney",
-	mesh = "homedecor_chimney.obj",
-	tiles = {
-		"homedecor_chimney_tb.png",
-		"default_brick.png"
-	},
-	selection_box = homedecor.nodebox.bar_y(0.25),
-	groups = {cracky=3},
-	sounds = default.node_sound_stone_defaults()
-})
-
 local ft_cbox = {
 	type = "fixed",
 	fixed = { -0.5, -0.5, -0.375, 0.5, 0.3125, 0.375 }

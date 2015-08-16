@@ -98,8 +98,8 @@ dofile(modpath.."/misc-nodes.lua")					-- the catch-all for all misc nodes
 dofile(modpath.."/tables.lua")
 dofile(modpath.."/electronics.lua")
 dofile(modpath.."/shutters.lua")
-dofile(modpath.."/shingles.lua")
-dofile(modpath.."/slopes.lua")
+
+dofile(modpath.."/roofing.lua")
 
 dofile(modpath.."/foyer.lua")
 
