@@ -116,6 +116,8 @@ dofile(modpath.."/bathroom_sanitation.lua")
 
 dofile(modpath.."/laundry.lua")
 
+dofile(modpath.."/office.lua")
+
 dofile(modpath.."/nightstands.lua")
 dofile(modpath.."/clocks.lua")
 dofile(modpath.."/electrics.lua")

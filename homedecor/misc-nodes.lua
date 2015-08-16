@@ -287,22 +287,6 @@ homedecor.register("dvd_cd_cabinet", {
 	sounds = default.node_sound_wood_defaults(),
 })
 
-homedecor.register("filing_cabinet", {
-	description = S("Filing Cabinet"),
-	mesh = "homedecor_filing_cabinet.obj",
-	tiles = {
-		homedecor.plain_wood,
-		"homedecor_filing_cabinet_front.png",
-		"homedecor_filing_cabinet_bottom.png"
-	},
-	groups = { snappy = 3 },
-	sounds = default.node_sound_wood_defaults(),
-	infotext=S("Filing cabinet"),
-	inventory = {
-		size=16,
-	},
-})
-
 local pooltable_cbox = {
 	type = "fixed",
 	fixed = { -0.5, -0.5, -0.5, 0.5, 0.3125, 1.5 }
@@ -476,56 +460,6 @@ homedecor.register("tool_cabinet", {
 
 minetest.register_alias("homedecor:tool_cabinet_bottom", "homedecor:tool_cabinet")
 minetest.register_alias("homedecor:tool_cabinet_top", "air")
-
-homedecor.register("calendar", {
-	description = "Calendar",
-	mesh = "homedecor_calendar.obj",
-	tiles = {"homedecor_calendar.png"},
-	inventory_image = "homedecor_calendar_inv.png",
-	wield_image = "homedecor_calendar_inv.png",
-	paramtype2 = "wallmounted",
-	walkable = false,
-	selection_box = {
-		type = "wallmounted",
-		wall_side =   { -8/16, -8/16, -4/16, -5/16,  5/16, 4/16 },
-		wall_bottom = { -4/16, -8/16, -8/16,  4/16, -5/16, 5/16 },
-		wall_top =    { -4/16,  5/16, -8/16,  4/16,  8/16, 5/16 }
-	},
-	groups = {choppy=2,attached_node=1},
-	legacy_wallmounted = true,
-	sounds = default.node_sound_defaults(),
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		local date = os.date("%Y-%m-%d") -- ISO 8601 format
-		meta:set_string("infotext", "Date (right-click to update):\n"..date)
-	end,
-	on_rightclick = function(pos, node, clicker)
-		local meta = minetest.get_meta(pos)
-		local date = os.date("%Y-%m-%d")
-		meta:set_string("infotext", "Date (right-click to update):\n"..date)
-	end
-})
-
-local globe_cbox = {
-	type = "fixed",
-	fixed = { -0.4, -0.5, -0.3, 0.3, 0.3, 0.3 }
-}
-
-homedecor.register("desk_globe", {
-	description = "Desk globe",
-	mesh = "homedecor_desk_globe.obj",
-	tiles = {
-		"homedecor_generic_wood_red.png",
-		"homedecor_generic_metal_black.png^[brighten",
-		"homedecor_earth.png"
-	},
-	inventory_image = "homedecor_desk_globe_inv.png",
-	selection_box = globe_cbox,
-	collision_box = globe_cbox,
-	groups = {choppy=2},
-	walkable = false,
-	sounds = default.node_sound_wood_defaults(),
-})
 
 local pframe_cbox = {
 	type = "fixed",
