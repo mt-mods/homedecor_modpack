@@ -87,6 +87,8 @@ dofile(modpath.."/handlers/nodeboxes.lua")
 dofile(modpath.."/handlers/expansion.lua")
 -- register nodes that cook stuff
 dofile(modpath.."/handlers/furnaces.lua")
+-- register individual handlers used by the registration function
+dofile(modpath.."/handlers/inventory.lua")
 -- glue it all together into a registration function
 dofile(modpath.."/handlers/registration.lua")
 -- some nodes have particle spawners
