@@ -5,7 +5,6 @@ local default_can_dig = function(pos,player)
 	return meta:get_inventory():is_empty("main")
 end
 
-local default_inventory_size = 32
 local background = default.gui_bg .. default.gui_bg_img .. default.gui_slots
 local default_inventory_formspecs = {
 	["4"]="size[8,6]".. background ..
@@ -63,13 +62,15 @@ function homedecor.handle_inventory(name, def, original_def)
 	if not inventory then return end
 	def.inventory = nil
 
-	local on_construct = def.on_construct
-	def.on_construct = function(pos)
-		local size = inventory.size or default_inventory_size
-		local meta = minetest.get_meta(pos)
-		meta:get_inventory():set_size("main", size)
-		meta:set_string("formspec", inventory.formspec or get_formspec_by_size(size))
-		if on_construct then on_construct(pos) end
+	if inventory.size then
+		local on_construct = def.on_construct
+		def.on_construct = function(pos)
+			local size = inventory.size
+			local meta = minetest.get_meta(pos)
+			meta:get_inventory():set_size("main", size)
+			meta:set_string("formspec", inventory.formspec or get_formspec_by_size(size))
+			if on_construct then on_construct(pos) end
+		end
 	end
 
 	def.can_dig = def.can_dig or default_can_dig
