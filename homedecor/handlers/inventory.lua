@@ -61,16 +61,13 @@ function homedecor.handle_inventory(name, def)
 	if not inventory then return end
 	def.inventory = nil
 
-	local infotext = def.infotext
-
-	def.on_construct = def.on_construct or function(pos)
-		local meta = minetest.get_meta(pos)
-		if infotext then
-			meta:set_string("infotext", infotext)
-		end
+	local on_construct = def.on_construct
+	def.on_construct = function(pos)
 		local size = inventory.size or default_inventory_size
+		local meta = minetest.get_meta(pos)
 		meta:get_inventory():set_size("main", size)
 		meta:set_string("formspec", inventory.formspec or get_formspec_by_size(size))
+		if on_construct then on_construct(pos) end
 	end
 
 	def.can_dig = def.can_dig or default_can_dig
