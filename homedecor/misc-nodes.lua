@@ -249,7 +249,7 @@ homedecor.register("dvd_cd_cabinet", {
 		"homedecor_dvdcd_cabinet_front.png",
 		"homedecor_dvdcd_cabinet_back.png"
 	},
-	selection_box = homedecor.nodebox.slab_z(0.5),
+	selection_box = homedecor.nodebox.slab_z(-0.5),
 	groups = {choppy=2,oddly_breakable_by_hand=2},
 	sounds = default.node_sound_wood_defaults(),
 })

@@ -80,7 +80,7 @@ homedecor.register("4_bottles_multi", {
 	selection_box = fbottle_cbox
 })
 
-local wine_cbox = homedecor.nodebox.slab_z(0.25)
+local wine_cbox = homedecor.nodebox.slab_z(-0.75)
 homedecor.register("wine_rack", {
 	description = "Wine Rack",
 	mesh = "homedecor_wine_rack.obj",
