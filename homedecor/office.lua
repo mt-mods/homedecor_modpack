@@ -78,11 +78,7 @@ homedecor.register("calendar", {
 	groups = {choppy=2,attached_node=1},
 	legacy_wallmounted = true,
 	sounds = default.node_sound_defaults(),
-	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		local date = os.date("%Y-%m-%d") -- ISO 8601 format
-		meta:set_string("infotext", "Date (right-click to update):\n"..date)
-	end,
+	infotext = "Date (right-click to update):\n" .. os.date("%Y-%m-%d"), -- ISO 8601 format
 	on_rightclick = function(pos, node, clicker)
 		local meta = minetest.get_meta(pos)
 		local date = os.date("%Y-%m-%d")
