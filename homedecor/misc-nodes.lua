@@ -26,8 +26,8 @@ homedecor.register("ceiling_tile", {
 
 local rug_types = {
 	{ "small",   "homedecor_small_rug.obj" },
-	{ "large",   { -0.5, -0.5, -0.5, 0.5, -0.4375, 0.5 } },
-	{ "persian", { -0.5, -0.5, -0.5, 0.5, -0.4375, 0.5 } }
+	{ "large", homedecor.box.slab_y(0.0625)},
+	{ "persian", homedecor.box.slab_y(0.0625)}
 }
 
 for i in ipairs(rug_types) do

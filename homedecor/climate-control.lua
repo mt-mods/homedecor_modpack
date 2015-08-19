@@ -145,11 +145,7 @@ homedecor.register("space_heater", {
 	}
 })
 
-local r_cbox = {
-	type = "fixed",
-	fixed = { -0.5, -0.5, 0.25, 0.5, 0.5, 0.5 }
-}
-
+local r_cbox = homedecor.nodebox.slab_z(-0.25)
 homedecor.register("radiator", {
 	mesh = "homedecor_radiator.obj",
 	tiles = {
