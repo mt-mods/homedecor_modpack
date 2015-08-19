@@ -80,20 +80,9 @@ homedecor.white_wood = "(homedecor_generic_wood_plain.png^[colorize:#e0f0ff:200)
 homedecor.dark_wood = "(homedecor_generic_wood_plain.png^[colorize:#140900:200)^"..
 					  "(homedecor_generic_wood_boards_overlay.png^[colorize:#21110180:180)"
 
--- nodebox arithmetics and helpers
--- (please keep non-generic nodeboxes with their node definition)
-dofile(modpath.."/handlers/nodeboxes.lua")
--- expand and unexpand decor
-dofile(modpath.."/handlers/expansion.lua")
--- register nodes that cook stuff
-dofile(modpath.."/handlers/furnaces.lua")
--- register individual handlers used by the registration function
-dofile(modpath.."/handlers/inventory.lua")
--- glue it all together into a registration function
-dofile(modpath.."/handlers/registration.lua")
--- some nodes have particle spawners
-dofile(modpath.."/handlers/water_particles.lua")
-dofile(modpath.."/handlers/sit.lua")
+
+-- load different handler subsystems
+dofile(modpath.."/handlers/init.lua")
 
 -- load various other components
 dofile(modpath.."/misc-nodes.lua")					-- the catch-all for all misc nodes
