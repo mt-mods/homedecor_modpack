@@ -154,7 +154,7 @@ function homedecor.handle_inventory(name, def, original_def)
 	local lockable = inventory.lockable
 	if lockable then
 		local locked_def = table.copy(original_def)
-		locked_def.description = S("%s (Locked)"):format(def.infotext or def.description)
+		locked_def.description = S("Locked %s"):format(def.description or name)
 
 		local locked_inventory = locked_def.inventory
 		locked_inventory.locked = true
