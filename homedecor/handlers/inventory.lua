@@ -54,7 +54,8 @@ end
 -- inventory = {
 --	size = 16,
 --	formspec = …,
---	locked = true,
+--	locked = false,
+--	lockable = true,
 -- }
 --
 function homedecor.handle_inventory(name, def, original_def)
@@ -88,20 +89,15 @@ function homedecor.handle_inventory(name, def, original_def)
 		))
 	end
 
-	local locked = def.locked
-	def.locked = nil
-
+	local locked = inventory.locked
 	if locked then
-		local description = def.description
-		-- def.description = S("%s (Locked)"):format(description)
-
 		local after_place_node = def.after_place_node
 		def.after_place_node = function(pos, placer)
 			local meta = minetest.get_meta(pos)
 			local owner = placer:get_player_name() or ""
 
 			meta:set_string("owner", owner)
-			meta:set_string("infotext", S("%s (owned by %s)"):format(def.infotext or description, owner))
+			meta:set_string("infotext", S("%s (owned by %s)"):format(def.infotext or def.description, owner))
 			return after_place_node and after_place_node(pos, placer)
 		end
 
@@ -113,7 +109,7 @@ function homedecor.handle_inventory(name, def, original_def)
 
 			if (playername ~= owner) then
 				minetest.log("action", string.format("%s tried to access a %s belonging to %s at %s",
-					playername, infotext, owner, minetest.pos_to_string(pos)
+					playername, name, owner, minetest.pos_to_string(pos)
 				))
 				return 0
 			end
@@ -130,7 +126,7 @@ function homedecor.handle_inventory(name, def, original_def)
 
 			if (playername ~= owner) then
 				minetest.log("action", string.format("%s tried to access a %s belonging to %s at %s",
-					playername, infotext, owner, minetest.pos_to_string(pos)
+					playername, name, owner, minetest.pos_to_string(pos)
 				))
 				return 0
 			end
@@ -146,7 +142,7 @@ function homedecor.handle_inventory(name, def, original_def)
 
 			if (playername ~= owner) then
 				minetest.log("action", string.format("%s tried to access a %s belonging to %s at %s",
-					playername, infotext, owner, minetest.pos_to_string(pos)
+					playername, name, owner, minetest.pos_to_string(pos)
 				))
 				return 0
 			end
@@ -154,4 +150,23 @@ function homedecor.handle_inventory(name, def, original_def)
 				or stack:get_count()
 		end
 	end
+
+	local lockable = inventory.lockable
+	if lockable then
+		local locked_def = table.copy(original_def)
+		locked_def.description = S("%s (Locked)"):format(def.infotext or def.description)
+
+		local locked_inventory = locked_def.inventory
+		locked_inventory.locked = true
+		locked_inventory.lockable = nil -- avoid loops of locked locked stuff
+
+		local locked_name = name .. "_locked"
+		homedecor.register(locked_name, locked_def)
+		minetest.register_craft({
+			type = "shapeless",
+			output = "homedecor:" .. locked_name,
+			recipe = { "homedecor:" .. name, "default:steel_ingot" }
+		})
+	end
+
 end

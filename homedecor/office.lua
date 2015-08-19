@@ -13,6 +13,7 @@ homedecor.register("filing_cabinet", {
 	infotext=S("Filing cabinet"),
 	inventory = {
 		size=16,
+		lockable=true,
 	},
 })
 

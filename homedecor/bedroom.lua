@@ -171,6 +171,7 @@ for _, w in pairs({"mahogany", "oak"}) do
 		infotext=S("One-drawer Nightstand"),
 		inventory = {
 			size=8,
+			lockable=true,
 		},
 	})
 
@@ -196,6 +197,7 @@ for _, w in pairs({"mahogany", "oak"}) do
 		infotext=S("Two-drawer Nightstand"),
 		inventory = {
 			size=16,
+			lockable=true,
 		},
 	})
 end

@@ -35,7 +35,7 @@ homedecor.register("refrigerator_white", {
 	infotext=S("Refrigerator"),
 	inventory = {
 		size=50,
-		lockable=true
+		lockable=true,
 	},
 	on_rotate = screwdriver.rotate_simple
 })
