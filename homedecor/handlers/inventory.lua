@@ -57,7 +57,7 @@ end
 --	locked = true,
 -- }
 --
-function homedecor.handle_inventory(name, def)
+function homedecor.handle_inventory(name, def, original_def)
 	local inventory = def.inventory
 	if not inventory then return end
 	def.inventory = nil
@@ -153,6 +153,5 @@ function homedecor.handle_inventory(name, def)
 			return allow_take and allow_take(pos, listname, index, stack, player)
 				or stack:get_count()
 		end
-
 	end
 end

@@ -2,7 +2,9 @@ homedecor = homedecor or {}
 local S = homedecor.gettext
 
 --wrapper around minetest.register_node that sets sane defaults and interprets some specialized settings
-function homedecor.register(name, def)
+function homedecor.register(name, original_def)
+	local def = table.copy(original_def)
+
 	def.drawtype = def.drawtype
 		or (def.mesh and "mesh")
 		or (def.node_box and "nodebox")
@@ -19,7 +21,7 @@ function homedecor.register(name, def)
 		def.paramtype2 = def.paramtype2 or "facedir"
 	end
 
-	homedecor.handle_inventory(name, def)
+	homedecor.handle_inventory(name, def, original_def)
 
 	local infotext = def.infotext
 	--def.infotext = nil -- currently used to set locked refrigerator infotexts
