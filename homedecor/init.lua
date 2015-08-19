@@ -140,8 +140,6 @@ dofile(modpath.."/exterior.lua")
 dofile(modpath.."/trash_cans.lua")
 dofile(modpath.."/wardrobe.lua")
 
-dofile(modpath.."/handlers/locked.lua")
-
 dofile(modpath.."/crafts.lua")
 
 print("[HomeDecor] " .. homedecor.gettext("Loaded!"))

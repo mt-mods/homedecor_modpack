@@ -97,9 +97,7 @@ function homedecor.register_furnace(name, furnacedef)
 	local def = {
 		description = furnacedef.description,
 		tiles = tiles,
-		paramtype2 = furnacedef.paramtype2 or "facedir",
 		groups = furnacedef.groups or {cracky=2},
-		legacy_facedir_simple = true,
 		sounds = furnacedef.sounds or default.node_sound_wood_defaults(),
 		on_construct = function(pos)
 			local meta = minetest.get_meta(pos)
@@ -159,17 +157,17 @@ function homedecor.register_furnace(name, furnacedef)
 				return 0
 			end
 		end,
+		inventory = {
+			lockable = true
+		}
 	}
 
 	local def_active = {
 		description = furnacedef.description.." (active)",
 		tiles = tiles_active,
-		paramtype = furnacedef.paramtype,
-		paramtype2 = furnacedef.paramtype2 or "facedir",
 		light_source = 8,
-		drop = name,
+		drop = "homedecor:" .. name,
 		groups = furnacedef.groups or {cracky=2, not_in_creative_inventory=1},
-		legacy_facedir_simple = true,
 		sounds = furnacedef.sounds or default.node_sound_stone_defaults(),
 		on_construct = function(pos)
 			local meta = minetest.get_meta(pos)
@@ -229,6 +227,9 @@ function homedecor.register_furnace(name, furnacedef)
 				return 0
 			end
 		end,
+		inventory = {
+			lockable = true
+		}
 	}
 
 	if furnacedef.extra_nodedef_fields then
@@ -238,8 +239,10 @@ function homedecor.register_furnace(name, furnacedef)
 		end
 	end
 
-	minetest.register_node(name, def)
-	minetest.register_node(name_active, def_active)
+	homedecor.register(name, def)
+	homedecor.register(name_active, def_active)
+
+	local name, name_active = "homedecor:"..name, "homedecor:"..name_active
 
 	minetest.register_abm({
 		nodenames = {name, name_active, name.."_locked", name_active.."_locked"},
