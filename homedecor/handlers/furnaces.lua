@@ -281,8 +281,6 @@ function homedecor.register_furnace(name, furnacedef)
 						inv:add_item("dst", cooked.item)
 						-- take stuff from "src" list
 						inv:set_stack("src", 1, aftercooked.items[1])
-					else
-						print(S("Could not insert '%s'"):format(cooked.item:to_string()))
 					end
 					meta:set_string("src_time", 0)
 				end
