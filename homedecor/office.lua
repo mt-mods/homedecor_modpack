@@ -37,6 +37,7 @@ homedecor.register("desk", {
 	expand = { right="air" },
 	inventory = {
 		size=24,
+		lockable=true,
 	},
 })
 minetest.register_alias("homedecor:desk_r", "air")
