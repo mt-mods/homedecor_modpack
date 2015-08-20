@@ -176,6 +176,7 @@ function homedecor.register_furnace(name, furnacedef)
 
 	minetest.register_abm({
 		nodenames = {name, name_active, name.."_locked", name_active.."_locked"},
+		label = "furnaces",
 		interval = 1.0,
 		chance = 1,
 		action = function(pos, node, active_object_count, active_object_count_wider)
