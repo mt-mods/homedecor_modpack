@@ -241,7 +241,7 @@ homedecor.register("swing", {
 		fixed = { -0.3125, 0.33, -0.125, 0.3125, 0.5, 0.1875 }
 	},
 	on_place = function(itemstack, placer, pointed_thing)
-		isceiling, pos = homedecor.find_ceiling(itemstack, placer, pointed_thing)
+		local isceiling, pos = homedecor.find_ceiling(itemstack, placer, pointed_thing)
 		if isceiling then
 			local height = 0
 
@@ -261,6 +261,7 @@ homedecor.register("swing", {
 				end
 			end
 
+			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 			for j = 0, height do -- then fill that space with ropes...
 				local testpos = { x=pos.x, y=pos.y-j, z=pos.z }
 				local testnode = minetest.get_node(testpos)
