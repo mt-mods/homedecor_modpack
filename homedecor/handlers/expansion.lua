@@ -41,7 +41,7 @@ local function select_node(pointed_thing)
 	local pos = pointed_thing.under
 	local def = minetest.registered_nodes[minetest.get_node(pos).name]
 
-	if not def or (not def.on_rightclick and not def.buildable_to) then
+	if not def or not def.buildable_to then
 		pos = pointed_thing.above
 		def = minetest.registered_nodes[minetest.get_node(pos).name]
 	end
@@ -81,20 +81,27 @@ local function stack(itemstack, placer, fdir, pos, def, pos2, node1, node2)
 
 		if not homedecor.expect_infinite_stacks then
 			itemstack:take_item()
-			return itemstack
 		end
 	end
+	return itemstack
+end
+
+local function rightclick_pointed_thing(pos, placer, itemstack)
+	local node = minetest.get_node_or_nil(pos)
+	if not node then return false end
+	local def = minetest.registered_nodes[node.name]
+	if not def or not def.on_rightclick then return false end
+	return def.on_rightclick(pos, node, placer, itemstack) or itemstack
 end
 
 -- Stack one node above another
 -- leave the last argument nil if it's one 2m high node
 function homedecor.stack_vertically(itemstack, placer, pointed_thing, node1, node2)
-	local pos, def = select_node(pointed_thing)
-	if not def then return end -- rare corner case, but happened in #205
+	local rightclick_result = rightclick_pointed_thing(pointed_thing.under, placer, itemstack)
+	if rightclick_result then return rightclick_result end
 
-	if def.on_rightclick then
-		return def.on_rightclick(pointed_thing.under, minetest.get_node(pos), placer, itemstack)
-	end
+	local pos, def = select_node(pointed_thing)
+	if not def then return itemstack end -- rare corner case, but happened in #205
 
 	local top_pos = { x=pos.x, y=pos.y+1, z=pos.z }
 
@@ -105,12 +112,11 @@ end
 -- like  homedecor.stack_vertically but tests first if it was placed as a right wing, then uses node1_right and node2_right instead
 
 function homedecor.stack_wing(itemstack, placer, pointed_thing, node1, node2, node1_right, node2_right)
-	local pos, def = select_node(pointed_thing)
-	if not def then return end -- rare corner case, but happened in #205
+	local rightclick_result = rightclick_pointed_thing(pointed_thing.under, placer, itemstack)
+	if rightclick_result then return rightclick_result end
 
-	if def.on_rightclick then
-		return def.on_rightclick(pointed_thing.under, minetest.get_node(pos), placer, itemstack)
-	end
+	local pos, def = select_node(pointed_thing)
+	if not def then return itemstack end -- rare corner case, but happened in #205
 
 	local forceright = placer:get_player_control()["sneak"]
 	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
@@ -125,12 +131,11 @@ function homedecor.stack_wing(itemstack, placer, pointed_thing, node1, node2, no
 end
 
 function homedecor.stack_sideways(itemstack, placer, pointed_thing, node1, node2, dir)
-	local pos, def = select_node(pointed_thing)
-	if not def then return end -- rare corner case, but happened in #205
+	local rightclick_result = rightclick_pointed_thing(pointed_thing.under, placer, itemstack)
+	if rightclick_result then return rightclick_result end
 
-	if def.on_rightclick then
-		return def.on_rightclick(pointed_thing.under, minetest.get_node(pos), placer, itemstack)
-	end
+	local pos, def = select_node(pointed_thing)
+	if not def then return itemstack end -- rare corner case, but happened in #205
 
 	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 	local fdir_transform = dir and homedecor.fdir_to_right or homedecor.fdir_to_fwd
@@ -215,11 +220,10 @@ function homedecor.unextend_bed(pos, color)
 end
 
 function homedecor.place_banister(itemstack, placer, pointed_thing)
-	local pos, def = select_node(pointed_thing)
+	local rightclick_result = rightclick_pointed_thing(pointed_thing.under, placer, itemstack)
+	if rightclick_result then return rightclick_result end
 
-	if def.on_rightclick then
-		return def.on_rightclick(pointed_thing.under, minetest.get_node(pos), placer, itemstack)
-	end				
+	local pos, def = select_node(pointed_thing)
 
 	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 
@@ -231,12 +235,12 @@ function homedecor.place_banister(itemstack, placer, pointed_thing)
 
 	if not (adef and adef.buildable_to) then
 		minetest.chat_send_player(placer_name, "Not enough room - the upper space is occupied!" )
-		return
+		return itemstack
 	end
 
 	if minetest.is_protected(abovepos, placer_name) then 
 		minetest.chat_send_player(placer_name, "Someone already owns that spot." )
-		return
+		return itemstack
 	end
 
 	local lxd = homedecor.fdir_to_left[fdir+1][1]
