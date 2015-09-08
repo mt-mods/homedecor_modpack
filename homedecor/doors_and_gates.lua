@@ -604,21 +604,18 @@ homedecor.register("door_japanese_closed", {
 		type = "fixed",
 		fixed = {-0.5, -0.5, -0.0625, 0.5, 1.5, 0},
 	},
-	expand = { top = "air" },
+	expand = { top = "placeholder" },
 	on_rightclick = function(pos, node, clicker)
 		minetest.set_node(pos, {name = "homedecor:door_japanese_open", param2 = node.param2})
 	end
 })
 
-minetest.register_node("homedecor:door_japanese_open", {
+homedecor.register("door_japanese_open", {
 	tiles = {
 		"homedecor_generic_wood_luxury.png",
 		"homedecor_japanese_paper.png"
 	},
-	drawtype = "mesh",
 	mesh = "homedecor_door_japanese_open.obj",
-	paramtype = "light",
-	paramtype2 = "facedir",
 	groups = { snappy = 3, not_in_creative_inventory = 1 },
 	sounds = default.node_sound_wood_defaults(),
 	on_rotate = screwdriver.disallow,
@@ -630,6 +627,7 @@ minetest.register_node("homedecor:door_japanese_open", {
 		type = "fixed",
 		fixed = {-1.5, -0.5, -0.0625, -0.5, 1.5, 0},
 	},
+	expand = { top = "placeholder" },
 	on_rightclick = function(pos, node, clicker)
 		minetest.set_node(pos, {name = "homedecor:door_japanese_closed", param2 = node.param2})
 	end,
