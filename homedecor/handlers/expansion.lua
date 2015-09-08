@@ -23,6 +23,19 @@ homedecor.fdir_to_fwd = {
 	{ -1,  0 },
 }
 
+local placeholder_node = "homedecor:expansion_placeholder"
+minetest.register_node(placeholder_node, {
+	description = "Expansion placeholder (you hacker you!)",
+	groups = { not_in_creative_inventory=1 },
+	drawtype = "airlike",
+	paramtype = "light",
+	walkable = false,
+	selection_box = { type = "fixed", fixed = { 0, 0, 0, 0, 0, 0 } },
+	is_ground_content = false,
+	sunlight_propagates = true,
+	buildable_to = false,
+})
+
 -- selects which node was pointed at based on it being known, and either clickable or buildable_to
 local function select_node(pointed_thing)
 	local pos = pointed_thing.under
@@ -52,7 +65,13 @@ local function stack(itemstack, placer, fdir, pos, def, pos2, node1, node2)
 		local fdir = fdir or minetest.dir_to_facedir(placer:get_look_dir())
 		minetest.set_node(pos, { name = node1, param2 = fdir })
 		node2 = node2 or "air" -- this can be used to clear buildable_to nodes even though we are using a multinode mesh
-		minetest.set_node(pos2, { name = node2, param2 = (node2 ~= "air" and fdir) or nil })
+		-- do not assume by default, as we still might want to allow overlapping in some cases
+		local has_facedir = node2 ~= "air"
+		if node2 == "placeholder" then
+			has_facedir = false
+			node2 = placeholder_node
+		end
+		minetest.set_node(pos2, { name = node2, param2 = (has_facedir and fdir) or nil })
 
 		-- call after_place_node of the placed node if available
 		local ctrl_node_def = minetest.registered_nodes[node1]
