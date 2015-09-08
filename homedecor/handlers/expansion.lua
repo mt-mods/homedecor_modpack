@@ -36,22 +36,30 @@ minetest.register_node(placeholder_node, {
 	buildable_to = false,
 })
 
--- selects which node was pointed at based on it being known, and either clickable or buildable_to
+--- select which node was pointed at based on it being known, not ignored, buildable_to
+-- returns nil if no node could be selected
 local function select_node(pointed_thing)
 	local pos = pointed_thing.under
-	local def = minetest.registered_nodes[minetest.get_node(pos).name]
+	local node = minetest.get_node_or_nil(pos)
+	local def = node and minetest.registered_nodes[node.name]
 
 	if not def or not def.buildable_to then
 		pos = pointed_thing.above
-		def = minetest.registered_nodes[minetest.get_node(pos).name]
+		node = minetest.get_node_or_nil(pos)
+		def = node and minetest.registered_nodes[node.name]
 	end
-	return pos, def
+	return def and pos, def
 end
 
--- abstract function checking if 2 given nodes can and may be build to a place
+--- check if 2 given nodes can and may be build to a place
 local function is_buildable_to(placer_name, pos, def, pos2)
-	local def = def or minetest.registered_nodes[minetest.get_node(pos).name]
-	local def2 = minetest.registered_nodes[minetest.get_node(pos2).name]
+	if not def then
+		local node = minetest.get_node_or_nil(pos)
+		def = node and minetest.registered_nodes[node.name]
+	end
+
+	local node = minetest.get_node_or_nil(pos2)
+	local def2 = node and minetest.registered_nodes[node.name]
 
 	return def and def.buildable_to and def2 and def2.buildable_to
 		and not minetest.is_protected(pos, placer_name)
@@ -101,7 +109,7 @@ function homedecor.stack_vertically(itemstack, placer, pointed_thing, node1, nod
 	if rightclick_result then return rightclick_result end
 
 	local pos, def = select_node(pointed_thing)
-	if not def then return itemstack end -- rare corner case, but happened in #205
+	if not pos then return itemstack end
 
 	local top_pos = { x=pos.x, y=pos.y+1, z=pos.z }
 
@@ -116,7 +124,7 @@ function homedecor.stack_wing(itemstack, placer, pointed_thing, node1, node2, no
 	if rightclick_result then return rightclick_result end
 
 	local pos, def = select_node(pointed_thing)
-	if not def then return itemstack end -- rare corner case, but happened in #205
+	if not pos then return itemstack end
 
 	local forceright = placer:get_player_control()["sneak"]
 	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
@@ -135,7 +143,7 @@ function homedecor.stack_sideways(itemstack, placer, pointed_thing, node1, node2
 	if rightclick_result then return rightclick_result end
 
 	local pos, def = select_node(pointed_thing)
-	if not def then return itemstack end -- rare corner case, but happened in #205
+	if not pos then return itemstack end
 
 	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 	local fdir_transform = dir and homedecor.fdir_to_right or homedecor.fdir_to_fwd
@@ -224,6 +232,7 @@ function homedecor.place_banister(itemstack, placer, pointed_thing)
 	if rightclick_result then return rightclick_result end
 
 	local pos, def = select_node(pointed_thing)
+	if not pos then return itemstack end
 
 	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 
