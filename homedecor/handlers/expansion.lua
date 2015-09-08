@@ -51,25 +51,22 @@ local function select_node(pointed_thing)
 	return def and pos, def
 end
 
---- check if 2 given nodes can and may be build to a place
-local function is_buildable_to(placer_name, pos, def, pos2)
-	if not def then
+--- check if all nodes can and may be build to
+local function is_buildable_to(placer_name, ...)
+	for _, pos in ipairs({...}) do
 		local node = minetest.get_node_or_nil(pos)
-		def = node and minetest.registered_nodes[node.name]
+		local def = node and minetest.registered_nodes[node.name]
+		if not (def and def.buildable_to) or minetest.is_protected(pos, placer_name) then
+			return false
+		end
 	end
-
-	local node = minetest.get_node_or_nil(pos2)
-	local def2 = node and minetest.registered_nodes[node.name]
-
-	return def and def.buildable_to and def2 and def2.buildable_to
-		and not minetest.is_protected(pos, placer_name)
-		and not minetest.is_protected(pos2, placer_name)
+	return true
 end
 
 -- place one or two nodes if and only if both can be placed
 local function stack(itemstack, placer, fdir, pos, def, pos2, node1, node2)
 	local placer_name = placer:get_player_name() or ""
-	if is_buildable_to(placer_name, pos, def, pos2) then
+	if is_buildable_to(placer_name, pos, pos2) then
 		local fdir = fdir or minetest.dir_to_facedir(placer:get_look_dir())
 		minetest.set_node(pos, { name = node1, param2 = fdir })
 		node2 = node2 or "air" -- this can be used to clear buildable_to nodes even though we are using a multinode mesh
@@ -291,12 +288,12 @@ function homedecor.place_banister(itemstack, placer, pointed_thing)
 	-- try to place a diagonal one on the side of blocks stacked like stairs
 	-- or follow an existing diagonal with another.
 	if (left_below_node and string.find(left_below_node.name, "banister_.-_diagonal_right")
-	  and below_node and is_buildable_to(placer_name, below_pos, nil, below_pos))
-	  or not is_buildable_to(placer_name, right_fwd_above_pos, nil, right_fwd_above_pos) then
+	  and below_node and is_buildable_to(placer_name, below_pos, below_pos))
+	  or not is_buildable_to(placer_name, right_fwd_above_pos, right_fwd_above_pos) then
 		new_place_name = string.gsub(new_place_name, "_horizontal", "_diagonal_right")
 	elseif (right_below_node and string.find(right_below_node.name, "banister_.-_diagonal_left")
-	  and below_node and is_buildable_to(placer_name, below_pos, nil, below_pos))
-	  or not is_buildable_to(placer_name, left_fwd_above_pos, nil, left_fwd_above_pos) then
+	  and below_node and is_buildable_to(placer_name, below_pos, below_pos))
+	  or not is_buildable_to(placer_name, left_fwd_above_pos, left_fwd_above_pos) then
 		new_place_name = string.gsub(new_place_name, "_horizontal", "_diagonal_left")
 
 	-- try to follow a diagonal with the corresponding horizontal
@@ -310,12 +307,12 @@ function homedecor.place_banister(itemstack, placer, pointed_thing)
 
 	-- try to place a horizontal in-line with the nearest diagonal, at the top
 	elseif left_fwd_below_node and string.find(left_fwd_below_node.name, "homedecor:banister_.*_diagonal")
-	  and is_buildable_to(placer_name, fwd_pos, nil, fwd_pos) then	
+	  and is_buildable_to(placer_name, fwd_pos, fwd_pos) then
 		fdir = left_fwd_below_node.param2
 		pos = fwd_pos
 		new_place_name = string.gsub(left_fwd_below_node.name, "_diagonal_.-$", "_horizontal")
 	elseif right_fwd_below_node and string.find(right_fwd_below_node.name, "homedecor:banister_.*_diagonal")
-	  and is_buildable_to(placer_name, fwd_pos, nil, fwd_pos) then	
+	  and is_buildable_to(placer_name, fwd_pos, fwd_pos) then
 		fdir = right_fwd_below_node.param2
 		pos = fwd_pos
 		new_place_name = string.gsub(right_fwd_below_node.name, "_diagonal_.-$", "_horizontal")
@@ -330,12 +327,12 @@ function homedecor.place_banister(itemstack, placer, pointed_thing)
 
 	-- try to place a horizontal in-line with the nearest diagonal, at the bottom
 	elseif left_fwd_node and string.find(left_fwd_node.name, "homedecor:banister_.*_diagonal") 
-	  and is_buildable_to(placer_name, fwd_pos, nil, fwd_pos) then	
+	  and is_buildable_to(placer_name, fwd_pos, fwd_pos) then
 		fdir = left_fwd_node.param2
 		pos = fwd_pos
 		new_place_name = string.gsub(left_fwd_node.name, "_diagonal_.-$", "_horizontal")
 	elseif right_fwd_node and string.find(right_fwd_node.name, "homedecor:banister_.*_diagonal")
-	  and is_buildable_to(placer_name, fwd_pos, nil, fwd_pos) then	
+	  and is_buildable_to(placer_name, fwd_pos, fwd_pos) then
 		fdir = right_fwd_node.param2
 		pos = fwd_pos
 		new_place_name = string.gsub(right_fwd_node.name, "_diagonal_.-$", "_horizontal")
