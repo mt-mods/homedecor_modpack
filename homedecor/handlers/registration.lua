@@ -41,6 +41,12 @@ function homedecor.register(name, original_def)
 	def.after_unexpand = nil
 
 	if expand then
+		-- dissallow rotating only half the expanded node by default
+		-- unless we know better
+		def.on_rotate = def.on_rotate
+			or (def.mesh and expand.top and screwdriver.rotate_simple)
+			or screwdriver.disallow
+
 		def.on_place = def.on_place or function(itemstack, placer, pointed_thing)
 			if expand.top then
 				return homedecor.stack_vertically(itemstack, placer, pointed_thing, itemstack:get_name(), expand.top)
