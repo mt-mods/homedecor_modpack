@@ -241,6 +241,9 @@ homedecor.register("swing", {
 		type = "fixed",
 		fixed = { -0.3125, 0.33, -0.125, 0.3125, 0.5, 0.1875 }
 	},
+	hint = {
+		place_on = "bottom"
+	},
 	on_place = function(itemstack, placer, pointed_thing)
 		local isceiling, pos = homedecor.find_ceiling(itemstack, placer, pointed_thing)
 		if isceiling then
