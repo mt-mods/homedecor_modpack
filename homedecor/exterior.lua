@@ -249,13 +249,13 @@ homedecor.register("swing", {
 			for i = 0, 4 do	-- search up to 5 spaces downward from the ceiling for the first non-buildable-to node...
 				height = i
 				local testpos = { x=pos.x, y=pos.y-i-1, z=pos.z }
-				local testnode = minetest.get_node(testpos)
-				local testreg = core.registered_nodes[testnode.name]
+				local testnode = minetest.get_node_or_nil(testpos)
+				local testreg = testnode and core.registered_nodes[testnode.name]
 
-				if not testreg.buildable_to then
+				if not testreg or not testreg.buildable_to then
 					if i < 1 then
 						minetest.chat_send_player(placer:get_player_name(), "No room under there to hang a swing.")
-						return
+						return itemstack
 					else
 						break
 					end
@@ -274,12 +274,11 @@ homedecor.register("swing", {
 
 			if not homedecor.expect_infinite_stacks then
 				itemstack:take_item()
-				return itemstack
 			end
-
 		else
 			minetest.chat_send_player(placer:get_player_name(), "You have to point at the bottom side of an overhanging object to place a swing.")
 		end
+		return itemstack
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		for i = 0, 4 do
