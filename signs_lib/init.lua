@@ -437,7 +437,7 @@ signs_lib.update_sign = function(pos, fields, owner)
 
 	local meta = minetest.get_meta(pos)
 	local stored_text = meta:get_string("text") or ""
-	current_keyword = mki_interact_keyword or current_keyword
+	current_keyword = rawget(_G, "mki_interact_keyword") or current_keyword
 
 	if fields then -- ...we're editing the sign.
 		if fields.text and string.find(dump(fields.text), "@KEYWORD") then
@@ -568,7 +568,6 @@ function signs_lib.determine_sign_type(itemstack, placer, pointed_thing, locked)
 		local fdir = minetest.dir_to_facedir(dir)
 
 		local pt_name = minetest.get_node(under).name
-		print(dump(pt_name))
 		local signname = itemstack:get_name()
 
 		if fences_with_sign[pt_name] and signname == "default:sign_wall" then
@@ -915,7 +914,7 @@ function signs_lib.register_fence_with_sign(fencename, fencewithsignname)
 	minetest.register_node(":"..fencename, def)
 	minetest.register_node(":"..fencewithsignname, def_sign)
 	table.insert(signs_lib.sign_node_list, fencewithsignname)
-	print(S("Registered %s and %s"):format(fencename, fencewithsignname))
+	minetest.log("debug", S("Registered %s and %s"):format(fencename, fencewithsignname))
 end
 
 build_char_db()
