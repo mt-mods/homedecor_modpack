@@ -857,7 +857,7 @@ function signs_lib.register_fence_with_sign(fencename, fencewithsignname)
     def_sign = signs_lib.table_copy(def_sign)
     fences_with_sign[fencename] = fencewithsignname
 
-    def.on_place = function(itemstack, placer, pointed_thing, ...)
+    def_sign.on_place = function(itemstack, placer, pointed_thing, ...)
 		local node_above = minetest.get_node(pointed_thing.above)
 		local node_under = minetest.get_node(pointed_thing.under)
 		local def_above = minetest.registered_nodes[node_above.name]
