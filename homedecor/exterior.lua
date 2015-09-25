@@ -378,6 +378,8 @@ homedecor.shrub_colors = {
 	"yellow"
 }
 
+local shrub_cbox = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
+
 for _, color in ipairs(homedecor.shrub_colors) do
 	minetest.register_node("homedecor:shrubbery_large_"..color, {
 		description = S("Shrubbery ("..color..")"),
@@ -401,6 +403,8 @@ for _, color in ipairs(homedecor.shrub_colors) do
 		is_ground_content = false,
 		groups = {snappy=3, flammable=2},
 		sounds = default.node_sound_leaves_defaults(),
+		selection_box = shrub_cbox,
+		collision_box = shrub_cbox,
 		node_box = shrub_model
 	})
 end
