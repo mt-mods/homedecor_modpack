@@ -353,25 +353,6 @@ if minetest.get_modpath("bucket") then
 	})
 end
 
-local shrub_model = {
-	type = "fixed",
-	fixed = {
-		{-0.312500,-0.500000,0.250000,-0.187500,-0.437500,0.375000}, --NodeBox 1
-		{0.187500,-0.500000,-0.125000,0.312500,-0.437500,0.000000}, --NodeBox 2
-		{0.000000,-0.500000,-0.312500,0.125000,-0.437500,-0.187500}, --NodeBox 3
-		{-0.375000,-0.500000,-0.062500,-0.250000,-0.437500,0.062500}, --NodeBox 4
-		{0.000000,-0.500000,-0.250000,0.125000,-0.437500,-0.125000}, --NodeBox 5
-		{0.187500,-0.437500,-0.187500,0.375000,-0.375000,0.062500}, --NodeBox 6
-		{-0.062500,-0.437500,0.125000,0.187500,-0.375000,0.375000}, --NodeBox 7
-		{-0.062500,-0.437500,-0.375000,0.187500,-0.375000,-0.062500}, --NodeBox 8
-		{-0.375000,-0.437500,0.187500,-0.125000,-0.375000,0.431179}, --NodeBox 9
-		{-0.437500,-0.437500,-0.125000,-0.187500,-0.375000,0.125000}, --NodeBox 10
-		{-0.437500,-0.375000,-0.437500,0.439966,-0.312500,0.420887}, --NodeBox 11
-		{-0.500000,-0.312500,-0.500000,0.500000,0.500000,0.500000}, --NodeBox 12
-		{0.000000,-0.500000,0.187500,0.125000,-0.437500,0.312500}, --NodeBox 13
-	}
-}
-
 homedecor.shrub_colors = {
 	"green",
 	"red",
@@ -383,7 +364,8 @@ local shrub_cbox = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
 for _, color in ipairs(homedecor.shrub_colors) do
 	minetest.register_node("homedecor:shrubbery_large_"..color, {
 		description = S("Shrubbery ("..color..")"),
-		drawtype = "allfaces_optional",
+		drawtype = "mesh",
+		mesh = "homedecor_cube.obj",
 		tiles = {"homedecor_shrubbery_"..color.."_top.png"},
 		paramtype = "light",
 		is_ground_content = false,
@@ -393,11 +375,12 @@ for _, color in ipairs(homedecor.shrub_colors) do
 
 	minetest.register_node("homedecor:shrubbery_"..color, {
 		description = S("Shrubbery ("..color..")"),
-		drawtype = "nodebox",
+		drawtype = "mesh",
+		mesh = "homedecor_shrubbery.obj",
 		tiles = {
-			"homedecor_shrubbery_"..color.."_top.png",
-			"homedecor_shrubbery_bottom.png",
-			"homedecor_shrubbery_"..color.."_sides.png"
+			"homedecor_shrubbery_"..color..".png",
+			"homedecor_shrubbery_"..color.."_bottom.png",
+			"homedecor_shrubbery_roots.png"
 		},
 		paramtype = "light",
 		is_ground_content = false,
@@ -405,7 +388,6 @@ for _, color in ipairs(homedecor.shrub_colors) do
 		sounds = default.node_sound_leaves_defaults(),
 		selection_box = shrub_cbox,
 		collision_box = shrub_cbox,
-		node_box = shrub_model
 	})
 end
 
