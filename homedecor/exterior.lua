@@ -366,7 +366,7 @@ for _, color in ipairs(homedecor.shrub_colors) do
 		description = S("Shrubbery ("..color..")"),
 		drawtype = "mesh",
 		mesh = "homedecor_cube.obj",
-		tiles = {"homedecor_shrubbery_"..color.."_top.png"},
+		tiles = {"homedecor_shrubbery_"..color..".png"},
 		paramtype = "light",
 		is_ground_content = false,
 		groups = {snappy=3, flammable=2},
