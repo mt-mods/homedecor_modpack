@@ -57,6 +57,7 @@ minetest.register_node("inbox:empty", {
 				"default:chest_locked",
 				inbox.get_inbox_insert_formspec(pos))
 		end
+		return itemstack
 	end,
 	can_dig = function(pos,player)
 		local meta = minetest.get_meta(pos);
