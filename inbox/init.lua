@@ -95,7 +95,8 @@ function inbox.get_inbox_formspec(pos)
 	local formspec =
 		"size[8,9]"..
 		"list[nodemeta:".. spos .. ";main;0,0;8,4;]"..
-		"list[current_player;main;0,5;8,4;]"
+		"list[current_player;main;0,5;8,4;]" ..
+		"listring[]"
 	return formspec
 end
 
@@ -104,6 +105,7 @@ function inbox.get_inbox_insert_formspec(pos)
 	local formspec =
 		"size[8,9]"..
 		"list[nodemeta:".. spos .. ";drop;3.5,2;1,1;]"..
-		"list[current_player;main;0,5;8,4;]"
+		"list[current_player;main;0,5;8,4;]"..
+		"listring[]"
 	return formspec
 end
