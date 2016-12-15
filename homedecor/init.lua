@@ -32,9 +32,6 @@ function homedecor.find_ceiling(itemstack, placer, pointed_thing)
 				itemstack, pointed_thing)
 		return
 	end
-	local pitch = placer:get_look_pitch()
-	local fdir = core.dir_to_facedir(placer:get_look_dir())
-	local wield_name = itemstack:get_name()
 
 	local above = pointed_thing.above
 	local under = pointed_thing.under
@@ -50,7 +47,6 @@ function homedecor.find_ceiling(itemstack, placer, pointed_thing)
 	if undef and undef.buildable_to then
 		pos = pointed_thing.under
 		node = unode
-		iswall = false
 	end
 
 	if core.is_protected(pos, placer:get_player_name()) then

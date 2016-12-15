@@ -1,4 +1,3 @@
-local S = homedecor.gettext
 
 local tg_cbox = {
 	type = "fixed",

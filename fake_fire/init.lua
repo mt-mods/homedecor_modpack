@@ -8,8 +8,8 @@ local function start_smoke(pos, node, clicker, chimney)
 
 	if id ~= 0 then
 		if s_handle then
-			minetest.after(0, function(s_handle)
-				minetest.sound_stop(s_handle)
+			minetest.after(0, function(handle)
+				minetest.sound_stop(handle)
 			end, s_handle)
 		end
 		minetest.delete_particlespawner(id)
@@ -30,19 +30,18 @@ local function start_smoke(pos, node, clicker, chimney)
 			texture = "smoke_particle.png",
 		})
 		if chimney == 1 then
-			s_handle = nil
 			this_spawner_meta:set_int("smoky", id)
 			this_spawner_meta:set_int("sound", nil)
 		else
-		s_handle = minetest.sound_play("fire_small", {
-			pos = pos,
-			max_hear_distance = 5,
-			loop = true
-		})
-		this_spawner_meta:set_int("smoky", id)
-		this_spawner_meta:set_int("sound", s_handle)
+			s_handle = minetest.sound_play("fire_small", {
+				pos = pos,
+				max_hear_distance = 5,
+				loop = true
+			})
+			this_spawner_meta:set_int("smoky", id)
+			this_spawner_meta:set_int("sound", s_handle)
 		end
-	return end
+	end
 end
 
 local function stop_smoke(pos)
@@ -55,8 +54,8 @@ local function stop_smoke(pos)
 	end
 
 	if s_handle then
-		minetest.after(0, function(s_handle)
-			minetest.sound_stop(s_handle)
+		minetest.after(0, function(handle)
+			minetest.sound_stop(handle)
 		end, s_handle)
 	end
 

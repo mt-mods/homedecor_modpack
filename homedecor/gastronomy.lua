@@ -1,4 +1,3 @@
-local S = homedecor.gettext
 
 local cutlery_cbox = {
 	type = "fixed",

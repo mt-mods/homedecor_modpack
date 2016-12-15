@@ -1,6 +1,5 @@
 -- This file supplies glowlights
 
-local dirs1 = { 20, 23, 22, 21 }
 local dirs2 = { 9, 18, 7, 12 }
 
 local S = homedecor.gettext
@@ -393,8 +392,6 @@ homedecor.register("lattice_lantern_small", {
 })
 
 local repl = { off="low", low="med", med="hi", hi="max", max="off", }
-
-local brights_tab = { 0, 50, 100, 150, 200 }
 
 local lamp_colors = {
 	{"white", "#ffffffe0:175"},

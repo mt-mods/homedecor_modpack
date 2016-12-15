@@ -1,6 +1,6 @@
--- Various kinds of tables
-
 local S = homedecor.gettext
+
+-- Various kinds of tables
 
 local materials = {
 	{"glass","Glass"},
@@ -15,7 +15,7 @@ local tables_cbox = {
 for i in ipairs(materials) do
 	local m = materials[i][1]
 	local d = materials[i][2]
-	local s = nil
+	local s
 
 	if m == "glass" then
 		s = default.node_sound_glass_defaults()
@@ -154,7 +154,7 @@ homedecor.register("utility_table_top", {
 
 -- Various kinds of table legs
 
-local materials = {"brass", "wrought_iron"}
+materials = {"brass", "wrought_iron"}
 
 for _, t in ipairs(materials) do
 homedecor.register("table_legs_"..t, {

@@ -1,4 +1,3 @@
-local S = homedecor.gettext
 
 -- vectors to place one node next to or behind another
 
@@ -67,8 +66,8 @@ end
 local function stack(itemstack, placer, fdir, pos, def, pos2, node1, node2)
 	local placer_name = placer:get_player_name() or ""
 	if is_buildable_to(placer_name, pos, pos2) then
-		local fdir = fdir or minetest.dir_to_facedir(placer:get_look_dir())
-		minetest.set_node(pos, { name = node1, param2 = fdir })
+		local lfdir = fdir or minetest.dir_to_facedir(placer:get_look_dir())
+		minetest.set_node(pos, { name = node1, param2 = lfdir })
 		node2 = node2 or "air" -- this can be used to clear buildable_to nodes even though we are using a multinode mesh
 		-- do not assume by default, as we still might want to allow overlapping in some cases
 		local has_facedir = node2 ~= "air"
@@ -76,7 +75,7 @@ local function stack(itemstack, placer, fdir, pos, def, pos2, node1, node2)
 			has_facedir = false
 			node2 = placeholder_node
 		end
-		minetest.set_node(pos2, { name = node2, param2 = (has_facedir and fdir) or nil })
+		minetest.set_node(pos2, { name = node2, param2 = (has_facedir and lfdir) or nil })
 
 		-- call after_place_node of the placed node if available
 		local ctrl_node_def = minetest.registered_nodes[node1]
@@ -228,7 +227,7 @@ function homedecor.place_banister(itemstack, placer, pointed_thing)
 	local rightclick_result = rightclick_pointed_thing(pointed_thing.under, placer, itemstack)
 	if rightclick_result then return rightclick_result end
 
-	local pos, def = select_node(pointed_thing)
+	local pos, _ = select_node(pointed_thing)
 	if not pos then return itemstack end
 
 	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
@@ -270,20 +269,19 @@ function homedecor.place_banister(itemstack, placer, pointed_thing)
 	local left_fwd_below_pos =  { x=pos.x+lxd+fxd, y=pos.y-1, z=pos.z+lzd+fzd }
 
 	local below_node =           minetest.get_node(below_pos)
-	local fwd_node =             minetest.get_node(fwd_pos)
+	--local fwd_node =             minetest.get_node(fwd_pos)
 	local left_node =            minetest.get_node(left_pos)
 	local right_node =           minetest.get_node(right_pos)
 	local left_fwd_node =        minetest.get_node(left_fwd_pos)
 	local right_fwd_node =        minetest.get_node(right_fwd_pos)
 	local left_below_node =      minetest.get_node({x=left_pos.x, y=left_pos.y-1, z=left_pos.z})
 	local right_below_node =     minetest.get_node({x=right_pos.x, y=right_pos.y-1, z=right_pos.z})
-	local right_fwd_above_node = minetest.get_node(right_fwd_above_pos)
-	local left_fwd_above_node =  minetest.get_node(left_fwd_above_pos)
+	--local right_fwd_above_node = minetest.get_node(right_fwd_above_pos)
+	--local left_fwd_above_node =  minetest.get_node(left_fwd_above_pos)
 	local right_fwd_below_node = minetest.get_node(right_fwd_below_pos)
 	local left_fwd_below_node =  minetest.get_node(left_fwd_below_pos)
 
 	local new_place_name = itemstack:get_name()
-	local n = 0
 
 	-- try to place a diagonal one on the side of blocks stacked like stairs
 	-- or follow an existing diagonal with another.

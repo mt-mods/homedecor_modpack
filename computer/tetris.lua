@@ -71,7 +71,7 @@ local function step(pos, fields)
 	local meta = minetest.get_meta(pos)
 	local t = minetest.deserialize(meta:get_string("tetris"))
 
-	local function new_game(pos)
+	local function new_game(p)
 		local nex = math.random(7)
 
 		t = {
@@ -84,7 +84,7 @@ local function step(pos, fields)
 			x=4, y=0, rot=1
 		}
 
-		local timer = minetest.get_node_timer(pos)
+		local timer = minetest.get_node_timer(p)
 		timer:set(0.3, 0)
 	end
 

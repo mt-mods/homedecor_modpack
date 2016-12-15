@@ -171,28 +171,28 @@ function homedecor.register_furnace(name, furnacedef)
 		end
 	end
 
-	local name_active = name.."_active"
+	local n_active = name.."_active"
 
 	homedecor.register(name, def)
-	homedecor.register(name_active, def_active)
+	homedecor.register(n_active, def_active)
 
-	local name, name_active = "homedecor:"..name, "homedecor:"..name_active
+	local nname, name_active = "homedecor:"..name, "homedecor:"..n_active
 
 	minetest.register_abm({
-		nodenames = {name, name_active, name.."_locked", name_active.."_locked"},
+		nodenames = {nname, name_active, nname.."_locked", name_active.."_locked"},
 		label = "furnaces",
 		interval = 1.0,
 		chance = 1,
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			local meta = minetest.get_meta(pos)
-			for i, name in ipairs({
+			for i, pname in ipairs({
 					"fuel_totaltime",
 					"fuel_time",
 					"src_totaltime",
 					"src_time"
 			}) do
-				if meta:get_string(name) == "" then
-					meta:set_float(name, 0.0)
+				if meta:get_string(pname) == "" then
+					meta:set_float(pname, 0.0)
 				end
 			end
 
@@ -239,9 +239,9 @@ function homedecor.register_furnace(name, furnacedef)
 
 			local fuel = nil
 			local afterfuel
-			local cooked = nil
+			cooked = nil
 			local fuellist = inv:get_list("fuel")
-			local srclist = inv:get_list("src")
+			srclist = inv:get_list("src")
 
 			if srclist then
 				cooked = minetest.get_craft_result({method = "cooking", width = 1, items = srclist})
@@ -252,7 +252,7 @@ function homedecor.register_furnace(name, furnacedef)
 
 			if (not fuel) or (fuel.time <= 0) then
 				meta:set_string("infotext",desc..S(": Out of fuel"))
-				swap_node(pos, name..locked)
+				swap_node(pos, nname..locked)
 				meta:set_string("formspec", make_formspec(furnacedef, 0))
 				return
 			end
@@ -260,7 +260,7 @@ function homedecor.register_furnace(name, furnacedef)
 			if cooked.item:is_empty() then
 				if was_active then
 					meta:set_string("infotext",S("%s is empty"):format(desc))
-					swap_node(pos, name..locked)
+					swap_node(pos, nname..locked)
 					meta:set_string("formspec", make_formspec(furnacedef, 0))
 				end
 				return
@@ -268,7 +268,7 @@ function homedecor.register_furnace(name, furnacedef)
 
 			if not inv:room_for_item("dst", cooked.item) then
 				meta:set_string("infotext", desc..S(": output bins are full"))
-				swap_node(pos, name..locked)
+				swap_node(pos, nname..locked)
 				meta:set_string("formspec", make_formspec(furnacedef, 0))
 				return
 			end

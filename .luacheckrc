@@ -12,5 +12,12 @@ read_globals = {
 	"default",
 	"stairsplus",
 	"signs_lib",
+	"beds",
+	"technic",
+	"mesecon",
+}
+
+globals = {
+	"armor",
 }
 

@@ -78,7 +78,6 @@ homedecor.register("desk_fan", {
 				entity_remove[1]:setyaw(0)
 			end
 		end
-		local entity_anim = minetest.get_objects_inside_radius(pos, 0.1)
 		if minetest.get_meta(pos):get_string("active") == "no" then
 			entity_anim[1]:set_animation({x=0,y=0}, 1, 0)
 		elseif minetest.get_meta(pos):get_string("active") == "yes" then

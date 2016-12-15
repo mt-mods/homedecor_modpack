@@ -268,8 +268,6 @@ homedecor.register("swing", {
 			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 			for j = 0, height do -- then fill that space with ropes...
 				local testpos = { x=pos.x, y=pos.y-j, z=pos.z }
-				local testnode = minetest.get_node(testpos)
-				local testreg = core.registered_nodes[testnode.name]
 				minetest.set_node(testpos, { name = "homedecor:swing_rope", param2 = fdir })
 			end
 

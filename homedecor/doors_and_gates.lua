@@ -4,8 +4,8 @@ local S = homedecor.gettext
 
 -- doors
 
-local function isSolid(pos,adj)
-    local adj = {x=adj[1],y=adj[2],z=adj[3]}
+local function isSolid(pos, adjust)
+    local adj = {x = adjust[1], y = adjust[2], z = adjust[3]}
     local node = minetest.get_node(vector.add(pos,adj))
     if node then
         local idef = minetest.registered_nodes[minetest.get_node(vector.add(pos,adj)).name]
@@ -42,14 +42,12 @@ local function calculateClosed(pos)
     local node = minetest.get_node(pos)
     -- the door is considered closed if it is closing off something.
 
-    local solids = 0
     local direction = node.param2 % 6
     local isTrap = direction == 0 or direction == 5
     if isTrap then
         -- the trap door is considered closed when all nodes on its sides are solid
         -- or all nodes in the 3x3 above/below it are solid except the center
         for level = 0, 1 do
-            local fail = false
             local solids = countSolids(pos,node,level)
             if solids == 8 then
                 return true
@@ -99,7 +97,6 @@ local function calculateClosed(pos)
             end
             return false
         end
-        error("What direction is this???",direction)
     end
 end
 
@@ -448,8 +445,8 @@ function homedecor.flip_door(pos, node, player, name, side, isClosed)
     -- and if not isClosed, a closed door
     isClosed = not isClosed
 
-	local rside = nil
-	local nfdir = nil
+	local rside
+	local nfdir
 	local ofdir = node.param2 or 0
 	if side == "left" then
 		rside = "right"
@@ -485,7 +482,7 @@ function homedecor.flip_gate(pos, node, player, gate, oc)
     -- since right facing gates use "open" nodes for closed, we need an
     -- isClosed flag to tell if it's "really" closed.
 
-	local gateresult = nil
+	local gateresult
 	if oc == "closed" then
 		gateresult = "homedecor:gate_"..gate.."_open"
 	else

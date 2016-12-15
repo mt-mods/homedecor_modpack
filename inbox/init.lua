@@ -45,7 +45,6 @@ minetest.register_node("inbox:empty", {
 		local meta = minetest.get_meta(pos)
 		local player = clicker:get_player_name()
 		local owner  = meta:get_string("owner")
-		local meta = minetest.get_meta(pos)
 		if owner == player then
 			minetest.show_formspec(
 				clicker:get_player_name(),
