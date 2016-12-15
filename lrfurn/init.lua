@@ -9,17 +9,17 @@ lrfurn.fdir_to_fwd = {
 }
 
 lrfurn.colors = { -- mod changed to use colorize feature of minetest engine (cg72)
-	{ "black",       "#000000:230" }, 
+	{ "black",       "#000000:230" },
 	{ "brown",       "#251005:225" },
 	{ "blue",        "#0000d0:225" },
-	{ "cyan",        "#009fa7:250" }, 
+	{ "cyan",        "#009fa7:250" },
 	{ "dark_grey",   "#101010:175" },
 	{ "dark_green",  "#007000:230" },
 	{ "green",       "#00d000:250" },
 	{ "grey",        "#101010:100" },
 	{ "magenta",     "#e0048b:250" },
 	{ "orange",      "#ee9000:240" },
-	{ "pink",        "#ff90b0:250" },	
+	{ "pink",        "#ff90b0:250" },
 	{ "red",         "#800000:240" },
 	{ "violet",      "#9000d0:250" },
 	{ "white",       "#000000:000" },

@@ -639,7 +639,7 @@ minetest.register_craft({
 minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:shutter_mahogany 4",
-       	recipe = {
+	recipe = {
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
@@ -649,14 +649,14 @@ minetest.register_craft( {
 })
 
 minetest.register_craft({
-       	type = "fuel",
-       	recipe = "homedecor:shutter_mahogany",
-       	burntime = 30,
+	type = "fuel",
+	recipe = "homedecor:shutter_mahogany",
+	burntime = 30,
 })
 minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:shutter_red 4",
-       	recipe = {
+	recipe = {
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
@@ -666,15 +666,15 @@ minetest.register_craft( {
 })
 
 minetest.register_craft({
-       	type = "fuel",
-       	recipe = "homedecor:shutter_red",
-       	burntime = 30,
+	type = "fuel",
+	recipe = "homedecor:shutter_red",
+	burntime = 30,
 })
 
 minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:shutter_yellow 4",
-       	recipe = {
+	recipe = {
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
@@ -684,9 +684,9 @@ minetest.register_craft( {
 })
 
 minetest.register_craft({
-       	type = "fuel",
-       	recipe = "homedecor:shutter_yellow",
-       	burntime = 30,
+	type = "fuel",
+	recipe = "homedecor:shutter_yellow",
+	burntime = 30,
 })
 
 --
@@ -714,7 +714,7 @@ minetest.register_craft({
 minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:shutter_light_blue 4",
-       	recipe = {
+	recipe = {
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
@@ -724,15 +724,15 @@ minetest.register_craft( {
 })
 
 minetest.register_craft({
-       	type = "fuel",
-       	recipe = "homedecor:shutter_light_blue",
-       	burntime = 30,
+	type = "fuel",
+	recipe = "homedecor:shutter_light_blue",
+	burntime = 30,
 })
 
 minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:shutter_violet 4",
-       	recipe = {
+	recipe = {
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
 		"homedecor:shutter_oak",
@@ -742,9 +742,9 @@ minetest.register_craft( {
 })
 
 minetest.register_craft({
-       	type = "fuel",
-       	recipe = "homedecor:shutter_violet",
-       	burntime = 30,
+	type = "fuel",
+	recipe = "homedecor:shutter_violet",
+	burntime = 30,
 })
 
 --
@@ -931,7 +931,7 @@ minetest.register_craft( {
 minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:rug_small 8",
-       	recipe = {
+	recipe = {
 			"wool:red",
 			"wool:yellow",
 			"wool:blue",
@@ -953,7 +953,7 @@ minetest.register_craft( {
 minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:rug_small 8",
-       	recipe = {
+	recipe = {
 			"cotton:red",
 			"cotton:yellow",
 			"cotton:blue",
@@ -973,37 +973,37 @@ minetest.register_craft( {
 -- fuel recipes for same
 
 minetest.register_craft({
-       	type = "fuel",
-       	recipe = "homedecor:rug_small",
-       	burntime = 30,
+	type = "fuel",
+	recipe = "homedecor:rug_small",
+	burntime = 30,
 })
 
 minetest.register_craft( {
 	type = "shapeless",
         output = "homedecor:rug_large 2",
-       	recipe = {
+	recipe = {
 		"homedecor:rug_small",
 		"homedecor:rug_small",
 	},
 })
 
 minetest.register_craft({
-       	type = "fuel",
-       	recipe = "homedecor:rug_large",
-       	burntime = 30,
+	type = "fuel",
+	recipe = "homedecor:rug_large",
+	burntime = 30,
 })
 
 minetest.register_craft({
-       	type = "fuel",
-       	recipe = "homedecor:rug_persian",
-       	burntime = 30,
+	type = "fuel",
+	recipe = "homedecor:rug_persian",
+	burntime = 30,
 })
 
 -- Speakers
 
 minetest.register_craft( {
         output = "homedecor:speaker_driver 2",
-      		recipe = {
+		recipe = {
 		{ "", "default:steel_ingot", "" },
 		{ "default:paper", "homedecor:copper_wire", "default:iron_lump" },
 		{ "", "default:steel_ingot", "" },
@@ -1012,14 +1012,14 @@ minetest.register_craft( {
 
 minetest.register_craft( {
         output = "homedecor:speaker_small",
-      		recipe = {
+		recipe = {
 		{ "wool:black", "homedecor:speaker_driver", "group:wood" },
 	},
 })
 
 minetest.register_craft( {
         output = "homedecor:speaker",
-      		recipe = {
+		recipe = {
 		{ "wool:black", "homedecor:speaker_driver", "group:wood" },
 		{ "wool:black", "homedecor:speaker_driver", "group:wood" },
 		{ "wool:black", "group:wood", "group:wood" },
@@ -1030,14 +1030,14 @@ minetest.register_craft( {
 
 minetest.register_craft( {
         output = "homedecor:speaker_small",
-      		recipe = {
+		recipe = {
 		{ "cotton:black", "homedecor:speaker_driver", "group:wood" },
 	},
 })
 
 minetest.register_craft( {
         output = "homedecor:speaker",
-      		recipe = {
+		recipe = {
 		{ "cotton:black", "homedecor:speaker_driver", "group:wood" },
 		{ "cotton:black", "homedecor:speaker_driver", "group:wood" },
 		{ "cotton:black", "group:wood", "group:wood" },
@@ -1059,7 +1059,7 @@ for c in ipairs(curtaincolors) do
 	local color = curtaincolors[c]
 	minetest.register_craft( {
 		output = "homedecor:curtain_"..color.." 3",
-	      		recipe = {
+			recipe = {
 			{ "wool:"..color, "", ""},
 			{ "wool:"..color, "", ""},
 			{ "wool:"..color, "", ""},
@@ -2120,64 +2120,64 @@ minetest.register_craft({
 
 local painting_patterns = {
 	[1] = {	{ "brown", "red", "brown" },
-	 		{ "dark_green", "red", "green" } },
+			{ "dark_green", "red", "green" } },
 
 	[2] = {	{ "green", "yellow", "green" },
-	 		{ "green", "yellow", "green" } },
+			{ "green", "yellow", "green" } },
 
 	[3] = {	{ "green", "pink", "green" },
-	 		{ "brown", "pink", "brown" } },
+			{ "brown", "pink", "brown" } },
 
 	[4] = {	{ "black", "orange", "grey" },
-	 		{ "dark_green", "orange", "orange" } },
+			{ "dark_green", "orange", "orange" } },
 
 	[5] = {	{ "blue", "orange", "yellow" },
-	 		{ "green", "red", "brown" } },
+			{ "green", "red", "brown" } },
 
 	[6] = {	{ "green", "red", "orange" },
-	 		{ "orange", "yellow", "green" } },
+			{ "orange", "yellow", "green" } },
 
 	[7] = {	{ "blue", "dark_green", "dark_green" },
-	 		{ "green", "grey", "green" } },
+			{ "green", "grey", "green" } },
 
 	[8] = {	{ "blue", "blue", "blue" },
-	 		{ "green", "green", "green" } },
+			{ "green", "green", "green" } },
 
 	[9] = {	{ "blue", "blue", "dark_green" },
-	 		{ "green", "grey", "dark_green" } },
+			{ "green", "grey", "dark_green" } },
 
 	[10] = { { "green", "white", "green" },
-	 		 { "dark_green", "white", "dark_green" } },
+			 { "dark_green", "white", "dark_green" } },
 
 	[11] = { { "blue", "white", "blue" },
-	 		 { "blue", "grey", "dark_green" } },
+			 { "blue", "grey", "dark_green" } },
 
 	[12] = { { "green", "green", "green" },
-	 		 { "grey", "grey", "green" } },
+			 { "grey", "grey", "green" } },
 
 	[13] = { { "blue", "blue", "grey" },
-	 		 { "dark_green", "white", "white" } },
+			 { "dark_green", "white", "white" } },
 
 	[14] = { { "red", "yellow", "blue" },
-	 		 { "blue", "green", "violet" } },
+			 { "blue", "green", "violet" } },
 
 	[15] = { { "blue", "yellow", "blue" },
-	 		 { "black", "black", "black" } },
+			 { "black", "black", "black" } },
 
 	[16] = { { "red", "orange", "blue" },
-	 		 { "black", "dark_grey", "grey" } },
+			 { "black", "dark_grey", "grey" } },
 
 	[17] = { { "orange", "yellow", "orange" },
-	 		 { "black", "black", "black" } },
+			 { "black", "black", "black" } },
 
 	[18] = { { "grey", "dark_green", "grey" },
-	 		 { "white", "white", "white" } },
+			 { "white", "white", "white" } },
 
 	[19] = { { "white", "brown", "green" },
-	 		 { "green", "brown", "brown" } },
+			 { "green", "brown", "brown" } },
 
 	[20] = { { "blue", "blue", "blue" },
-	 		 { "red", "brown", "grey" } }
+			 { "red", "brown", "grey" } }
 }
 
 for i,recipe in pairs(painting_patterns) do
@@ -3414,4 +3414,3 @@ end
 if (minetest.get_modpath("technic") and minetest.get_modpath("dye") and minetest.get_modpath("bees")) then
 	technic.register_separating_recipe({ input = {"bees:wax 1"}, output = {"homedecor:oil_extract 2","dye:yellow 1"} })
 end
-

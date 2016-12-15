@@ -103,4 +103,3 @@ homedecor.register("medicine_cabinet_open", {
 		minetest.swap_node(pos, node)
 	end,
 })
-

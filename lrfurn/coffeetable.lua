@@ -68,7 +68,7 @@ minetest.register_node("lrfurn:coffeetable_back", {
 
 		if minetest.is_protected(pos, digger:get_player_name()) then return true end
 
-		if (minetest.get_node({x=pos.x, y=pos.y, z=pos.z}).name == "lrfurn:coffeetable_front") 
+		if (minetest.get_node({x=pos.x, y=pos.y, z=pos.z}).name == "lrfurn:coffeetable_front")
 		  and (minetest.get_node({x=pos.x, y=pos.y, z=pos.z}).param2 == param2) then
 				minetest.remove_node(pos)
 		end

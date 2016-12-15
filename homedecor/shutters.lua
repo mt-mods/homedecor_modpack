@@ -49,4 +49,3 @@ for i in ipairs(shutters) do
 end
 
 minetest.register_alias("homedecor:shutter_purple", "homedecor:shutter_violet")
-
