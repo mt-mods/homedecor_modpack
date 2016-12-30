@@ -58,7 +58,7 @@ homedecor.register("desk_globe", {
 	inventory_image = "homedecor_desk_globe_inv.png",
 	selection_box = globe_cbox,
 	collision_box = globe_cbox,
-	groups = {choppy=2},
+	groups = {choppy=2, oddly_breakable_by_hand=2},
 	walkable = false,
 	sounds = default.node_sound_wood_defaults(),
 })
