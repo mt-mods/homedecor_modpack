@@ -117,15 +117,17 @@ function homedecor.handle_inventory(name, def, original_def)
 			local owner = meta:get_string("owner")
 			local playername = player:get_player_name()
 
-			if (playername ~= owner) then
-				minetest.log("action", string.format("%s tried to access a %s belonging to %s at %s",
-					playername, name, owner, minetest.pos_to_string(pos)
-				))
-				return 0
+			if playername == owner or
+					minetest.check_player_privs(player, "protection_bypass") then
+				return allow_move and
+						allow_move(pos, from_list, from_index, to_list, to_index, count, player) or
+						count
 			end
 
-			return allow_move and allow_move(pos, from_list, from_index, to_list, to_index, count, player)
-				or count
+			minetest.log("action", string.format("%s tried to access a %s belonging to %s at %s",
+				playername, name, owner, minetest.pos_to_string(pos)
+			))
+			return 0
 		end
 
 		local allow_put = def.allow_metadata_inventory_put
@@ -134,14 +136,16 @@ function homedecor.handle_inventory(name, def, original_def)
 			local owner = meta:get_string("owner")
 			local playername = player:get_player_name()
 
-			if (playername ~= owner) then
-				minetest.log("action", string.format("%s tried to access a %s belonging to %s at %s",
-					playername, name, owner, minetest.pos_to_string(pos)
-				))
-				return 0
+			if playername == owner or
+					minetest.check_player_privs(player, "protection_bypass") then
+				return allow_put and allow_put(pos, listname, index, stack, player) or
+						stack:get_count()
 			end
-			return allow_put and allow_put(pos, listname, index, stack, player)
-				or stack:get_count()
+
+			minetest.log("action", string.format("%s tried to access a %s belonging to %s at %s",
+				playername, name, owner, minetest.pos_to_string(pos)
+			))
+			return 0
 		end
 
 		local allow_take = def.allow_metadata_inventory_take
@@ -150,14 +154,16 @@ function homedecor.handle_inventory(name, def, original_def)
 			local owner = meta:get_string("owner")
 			local playername = player:get_player_name()
 
-			if (playername ~= owner) then
-				minetest.log("action", string.format("%s tried to access a %s belonging to %s at %s",
-					playername, name, owner, minetest.pos_to_string(pos)
-				))
-				return 0
+			if playername == owner or
+					minetest.check_player_privs(player, "protection_bypass") then
+				return allow_take and allow_take(pos, listname, index, stack, player) or
+						stack:get_count()
 			end
-			return allow_take and allow_take(pos, listname, index, stack, player)
-				or stack:get_count()
+
+			minetest.log("action", string.format("%s tried to access a %s belonging to %s at %s",
+				playername, name, owner, minetest.pos_to_string(pos)
+			))
+			return 0
 		end
 	end
 

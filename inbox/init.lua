@@ -45,7 +45,9 @@ minetest.register_node("inbox:empty", {
 		local meta = minetest.get_meta(pos)
 		local player = clicker:get_player_name()
 		local owner  = meta:get_string("owner")
-		if owner == player then
+		if owner == player or
+				minetest.check_player_privs(player, "protection_bypass") and
+				clicker:get_player_control().aux1 then
 			minetest.show_formspec(
 				clicker:get_player_name(),
 				"default:chest_locked",

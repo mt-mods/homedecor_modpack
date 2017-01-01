@@ -126,7 +126,8 @@ minetest.register_node("itemframes:frame",{
 	on_rightclick = function(pos, node, clicker, itemstack)
 		if not itemstack then return end
 		local meta = minetest.get_meta(pos)
-		if clicker:get_player_name() == meta:get_string("owner") then
+		if clicker:get_player_name() == meta:get_string("owner") or
+				minetest.check_player_privs(clicker, "protection_bypass") then
 			drop_item(pos,node)
 			local s = itemstack:take_item()
 			meta:set_string("item",s:to_string())
@@ -136,14 +137,16 @@ minetest.register_node("itemframes:frame",{
 	end,
 	on_punch = function(pos,node,puncher)
 		local meta = minetest.get_meta(pos)
-		if puncher:get_player_name() == meta:get_string("owner") then
+		if puncher:get_player_name() == meta:get_string("owner") or
+				minetest.check_player_privs(puncher, "protection_bypass") then
 			drop_item(pos, node)
 		end
 	end,
 	can_dig = function(pos,player)
 		local name = player and player:get_player_name()
 		local meta = minetest.get_meta(pos)
-		return name == meta:get_string("owner")
+		return name == meta:get_string("owner") or
+				minetest.check_player_privs(player, "protection_bypass")
 	end,
 	on_destruct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -183,7 +186,8 @@ minetest.register_node("itemframes:pedestal",{
 	on_rightclick = function(pos, node, clicker, itemstack)
 		if not itemstack then return end
 		local meta = minetest.get_meta(pos)
-		if clicker:get_player_name() == meta:get_string("owner") then
+		if clicker:get_player_name() == meta:get_string("owner") or
+				minetest.check_player_privs(clicker, "protection_bypass") then
 			drop_item(pos,node)
 			local s = itemstack:take_item()
 			meta:set_string("item",s:to_string())
@@ -193,14 +197,16 @@ minetest.register_node("itemframes:pedestal",{
 	end,
 	on_punch = function(pos,node,puncher)
 		local meta = minetest.get_meta(pos)
-		if puncher:get_player_name() == meta:get_string("owner") then
+		if puncher:get_player_name() == meta:get_string("owner") or
+				minetest.check_player_privs(puncher, "protection_bypass") then
 			drop_item(pos,node)
 		end
 	end,
 	can_dig = function(pos,player)
 		local name = player and player:get_player_name()
 		local meta = minetest.get_meta(pos)
-		return name == meta:get_string("owner")
+		return name == meta:get_string("owner") or
+				minetest.check_player_privs(player, "protection_bypass")
 	end,
 	on_destruct = function(pos)
 		local meta = minetest.get_meta(pos)
