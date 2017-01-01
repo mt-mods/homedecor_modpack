@@ -226,7 +226,7 @@ function homedecor.register_furnace(name, furnacedef)
 
 			-- XXX: Quick patch, make it better in the future.
 			local locked = node.name:find("_locked$") and "_locked" or ""
-			local desc = minetest.registered_nodes[name..locked].description
+			local desc = minetest.registered_nodes[nname..locked].description
 
 			if meta:get_float("fuel_time") < meta:get_float("fuel_totaltime") then
 				local percent = math.floor(meta:get_float("fuel_time") /
