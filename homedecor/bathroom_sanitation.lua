@@ -119,7 +119,8 @@ local function taps_on_rightclick(pos, node, clicker, itemstack, pointed_thing)
 	if below and
 	  below.name == "homedecor:shower_tray" or
 	  below.name == "homedecor:sink" or
-	  below.name == "homedecor:kitchen_cabinet_with_sink" then
+	  below.name == "homedecor:kitchen_cabinet_with_sink" or
+	  below.name == "homedecor:kitchen_cabinet_with_sink_locked" then
 		local particledef = {
 			outlet      = { x = 0, y = -0.44, z = 0.28 },
 			velocity_x  = { min = -0.1, max = 0.1 },
