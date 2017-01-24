@@ -1,7 +1,7 @@
 local S = homedecor.gettext
 
 homedecor.register("filing_cabinet", {
-	description = S("Filing Cabinet"),
+	description = S("Filing cabinet"),
 	mesh = "homedecor_filing_cabinet.obj",
 	tiles = {
 		homedecor.plain_wood,

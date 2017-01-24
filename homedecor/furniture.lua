@@ -1,21 +1,17 @@
 local S = homedecor.gettext
 
 local table_colors = {
-	{ "",          homedecor.plain_wood },
-	{ "_mahogany", homedecor.mahogany_wood },
-	{ "_white",    homedecor.white_wood }
+	{ "",           S("Table"),           homedecor.plain_wood },
+	{ "_mahogany",  S("Mahogany Table"),  homedecor.mahogany_wood },
+	{ "_white",     S("White Table"),     homedecor.white_wood }
 }
 
-for i in ipairs(table_colors) do
-	local desc = S("Table ("..i..")")
+for _, t in ipairs(table_colors) do
+	local suffix, desc, texture = unpack(t)
 
-	if i == 1 then
-		desc = S("Table")
-	end
-
-	homedecor.register("table"..table_colors[i][1], {
+	homedecor.register("table"..suffix, {
 		description = desc,
-		tiles = { table_colors[i][2] },
+		tiles = { texture },
 		node_box = {
 			type = "fixed",
 			fixed = {
@@ -36,13 +32,13 @@ for i in ipairs(table_colors) do
 end
 
 local chaircolors = {
-	{ "", "plain" },
-	{ "black", "Black" },
-	{ "red", "Red" },
-	{ "pink", "Pink" },
-	{ "violet", "Violet" },
-	{ "blue", "Blue" },
-	{ "dark_green", "Dark Green" },
+	{ "",           S("plain") },
+	{ "black",      S("black") },
+	{ "red",        S("red") },
+	{ "pink",       S("pink") },
+	{ "violet",     S("violet") },
+	{ "blue",       S("blue") },
+	{ "dark_green", S("dark green") },
 }
 
 local kc_cbox = {
@@ -58,26 +54,27 @@ local ac_cbox = {
 	}
 }
 
-for i in ipairs(chaircolors) do
+for _, t in ipairs(chaircolors) do
 
-	local color = "_"..chaircolors[i][1]
-	local color2 = chaircolors[i][1]
-	local name = S(chaircolors[i][2])
-	local chairtiles = {
-		homedecor.plain_wood,
-		"wool"..color..".png",
-	}
+	local woolcolor, colordesc = unpack(t)
+	local color = woolcolor
+	local chairtiles
 
-	if chaircolors[i][1] == "" then
-		color = ""
+	if woolcolor == "" then
 		chairtiles = {
 			homedecor.plain_wood,
 			homedecor.plain_wood
 		}
+	else
+		color = "_"..woolcolor
+		chairtiles = {
+			homedecor.plain_wood,
+			"wool"..color..".png",
+		}
 	end
 
 	homedecor.register("chair"..color, {
-		description = S("Kitchen chair (%s)"):format(name),
+		description = S("Kitchen chair (@1)", colordesc),
 		mesh = "homedecor_kitchen_chair.obj",
 		tiles = chairtiles,
 		selection_box = kc_cbox,
@@ -93,7 +90,7 @@ for i in ipairs(chaircolors) do
 
 	if color ~= "" then
 		homedecor.register("armchair"..color, {
-			description = S("Armchair (%s)"):format(name),
+			description = S("Armchair (@1)", colordesc),
 			mesh = "forniture_armchair.obj",
 			tiles = {
 				"wool"..color..".png",
@@ -108,9 +105,9 @@ for i in ipairs(chaircolors) do
 		minetest.register_craft({
 			output = "homedecor:armchair"..color.." 2",
 			recipe = {
-			{ "wool:"..color2,""},
+			{ "wool:"..woolcolor,""},
 			{ "group:wood","group:wood" },
-			{ "wool:"..color2,"wool:"..color2 },
+			{ "wool:"..woolcolor,"wool:"..woolcolor },
 			},
 		})
 	end
@@ -122,7 +119,7 @@ local ob_cbox = {
 }
 
 minetest.register_node(":homedecor:openframe_bookshelf", {
-	description = "Bookshelf (open-frame)",
+	description = S("Bookshelf (open-frame)"),
 	drawtype = "mesh",
 	mesh = "homedecor_openframe_bookshelf.obj",
 	tiles = {
@@ -138,7 +135,7 @@ minetest.register_node(":homedecor:openframe_bookshelf", {
 })
 
 homedecor.register("wall_shelf", {
-	description = "Wall Shelf",
+	description = S("Wall Shelf"),
 	tiles = {
 		"homedecor_wood_table_large_edges.png",
 	},

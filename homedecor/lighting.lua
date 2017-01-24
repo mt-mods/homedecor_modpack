@@ -4,7 +4,9 @@ local dirs2 = { 9, 18, 7, 12 }
 
 local S = homedecor.gettext
 
-local colors = {"yellow","white"}
+local function N_(x) return x end
+
+local colors = { N_("yellow"), N_("white") }
 
 for i in ipairs(colors) do
 	local color = colors[i]
@@ -68,7 +70,7 @@ local glowlight_nodebox = {
 }
 
 homedecor.register("glowlight_half_"..color, {
-	description = S("Thick Glowlight ("..color..")"),
+	description = S("Thick Glowlight (@1)", S(color)),
 	tiles = {
 		"homedecor_glowlight_"..color.."_top.png",
 		"homedecor_glowlight_"..color.."_bottom.png",
@@ -86,7 +88,7 @@ homedecor.register("glowlight_half_"..color, {
 })
 
 homedecor.register("glowlight_quarter_"..color, {
-	description = S("Thin Glowlight ("..color..")"),
+	description = S("Thin Glowlight (@1)", S(color)),
 	tiles = {
 		"homedecor_glowlight_"..color.."_top.png",
 		"homedecor_glowlight_"..color.."_bottom.png",
@@ -106,7 +108,7 @@ homedecor.register("glowlight_quarter_"..color, {
 -- Glowlight "cubes"
 
 homedecor.register("glowlight_small_cube_"..color, {
-	description = S("Small Glowlight Cube ("..color..")"),
+	description = S("Small Glowlight Cube (@1)", S(color)),
 	tiles = {
 		"homedecor_glowlight_cube_"..color.."_tb.png",
 		"homedecor_glowlight_cube_"..color.."_tb.png",
@@ -126,7 +128,7 @@ homedecor.register("glowlight_small_cube_"..color, {
 end
 
 homedecor.register("plasma_lamp", {
-	description = "Plasma Lamp",
+	description = S("Plasma Lamp"),
 	drawtype = "glasslike_framed",
 	tiles = {"default_gold_block.png","homedecor_glass_face_clean.png"},
 	special_tiles = {
@@ -146,7 +148,7 @@ homedecor.register("plasma_lamp", {
 })
 
 homedecor.register("plasma_ball", {
-	description = "Plasma Ball",
+	description = S("Plasma Ball"),
 	mesh = "homedecor_plasma_ball.obj",
 	tiles = {
 		"homedecor_generic_plastic_black.png",
@@ -394,12 +396,12 @@ homedecor.register("lattice_lantern_small", {
 local repl = { off="low", low="med", med="hi", hi="max", max="off", }
 
 local lamp_colors = {
-	{"white", "#ffffffe0:175"},
-	{"blue", "#2626c6e0:200"},
-	{"green", "#27a927e0:200"},
-	{"pink", "#ff8fb7e0:200"},
-	{"red", "#ad2323e0:200"},
-	{"violet", "#7f29d7e0:200"}
+	{ N_("white"),  "#ffffffe0:175" },
+	{ N_("blue"),   "#2626c6e0:200" },
+	{ N_("green"),  "#27a927e0:200" },
+	{ N_("pink"),   "#ff8fb7e0:200" },
+	{ N_("red"),    "#ad2323e0:200" },
+	{ N_("violet"), "#7f29d7e0:200" },
 }
 
 local tlamp_cbox = {
@@ -414,20 +416,14 @@ local slamp_cbox = {
 
 local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 	local lampcolor = "_"..color[1]
-	local colordesc = " ("..color[1]..")"
+	local colordesc = S(color[1])
 	local woolcolor = color[1]
 	local invcolor = color[2]
 	local wool_brighten = (light or 0) * 7
 	local bulb_brighten = (light or 0) * 14
 
-	if color == "" then
-		lampcolor = ""
-		colordesc  = " (white)"
-		woolcolor = "white"
-	end
-
 	homedecor.register("table_lamp"..lampcolor.."_"..suffix, {
-		description = S("Table Lamp "..colordesc),
+		description = S("Table Lamp (@1)", colordesc),
 		mesh = "homedecor_table_lamp.obj",
 		tiles = {
 			"wool_"..woolcolor..".png^[colorize:#ffffff:"..wool_brighten,
@@ -453,7 +449,7 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color)
 	-- standing lamps
 
 	homedecor.register("standing_lamp"..lampcolor.."_"..suffix, {
-		description = S("Standing Lamp"..colordesc),
+		description = S("Standing Lamp (@1)", colordesc),
 		mesh = "homedecor_standing_lamp.obj",
 		tiles = {
 			"wool_"..woolcolor..".png^[colorize:#ffffff:"..wool_brighten,
@@ -499,11 +495,11 @@ local dlamp_cbox = {
 	fixed = { -0.2, -0.5, -0.15, 0.32, 0.12, 0.15 },
 }
 
-local dlamp_colors = { "red","blue","green","violet" }
+local dlamp_colors = { N_("red"), N_("blue"), N_("green"), N_("violet") }
 
 for _, color in ipairs(dlamp_colors) do
 	homedecor.register("desk_lamp_"..color, {
-		description = S("Desk Lamp ("..color..")"),
+		description = S("Desk Lamp (@1)", S(color)),
 		mesh = "homedecor_desk_lamp.obj",
 		tiles = {
 			"homedecor_table_standing_lamp_lightbulb.png^[colorize:#ffffff:200",

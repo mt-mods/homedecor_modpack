@@ -9,11 +9,14 @@
 
 local modpath = minetest.get_modpath("homedecor")
 
+-- Load support for intllib.
+local S, NS = dofile(modpath.."/intllib.lua")
+
 homedecor = {
 	modpath = modpath,
 
-	-- Boilerplate to support localized strings if intllib mod is installed.
-	gettext = rawget(_G, "intllib") and intllib.Getter() or function(s) return s end,
+	gettext = S,
+	ngettext = NS,
 
 	-- infinite stacks
 	expect_infinite_stacks = minetest.setting_getbool("creative_mode") and not minetest.get_modpath("unified_inventory")
@@ -127,4 +130,4 @@ dofile(modpath.."/wardrobe.lua")
 
 dofile(modpath.."/crafts.lua")
 
-print("[HomeDecor] " .. homedecor.gettext("Loaded!"))
+print("[HomeDecor] " .. S("Loaded!"))

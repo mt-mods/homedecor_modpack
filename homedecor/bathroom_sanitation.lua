@@ -222,7 +222,7 @@ homedecor.register("shower_head", {
 		"homedecor_shower_head.png"
 	},
 	inventory_image = "homedecor_shower_head_inv.png",
-	description = "Shower Head",
+	description = S("Shower Head"),
 	groups = {snappy=3},
 	selection_box = sh_cbox,
 	walkable = false,
@@ -262,7 +262,7 @@ homedecor.register("bathroom_set", {
 		"homedecor_bathroom_set_toothpaste.png",
 	},
 	inventory_image = "homedecor_bathroom_set_inv.png",
-	description = "Bathroom sundries set",
+	description = S("Bathroom sundries set"),
 	groups = {snappy=3},
 	selection_box = bs_cbox,
 	walkable = false,

@@ -41,7 +41,7 @@ local add_mesh_desk_fan_entity = function(pos)
 end
 
 homedecor.register("desk_fan", {
-	description = "Desk Fan",
+	description = S("Desk Fan"),
 	groups = {oddly_breakable_by_hand=2},
 	node_box = {
 		type = "fixed",
@@ -136,7 +136,7 @@ homedecor.register("radiator", {
 		"homedecor_radiator_controls.png"
 	},
 	inventory_image = "homedecor_radiator_inv.png",
-	description = "Radiator heater",
+	description = S("Radiator heater"),
 	groups = {snappy=3},
 	selection_box = r_cbox,
 	collision_box = r_cbox,

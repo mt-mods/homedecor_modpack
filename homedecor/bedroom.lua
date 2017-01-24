@@ -1,21 +1,24 @@
-local S = homedecor.gettext
+
+local S, NS = homedecor.gettext, homedecor.ngettext
+
+local function N_(x) return x end
 
 local bedcolors = {
-	{ "black",       "#000000:200" }, --new cg72
-	{ "brown",       "#603010:175" },
-	{ "blue",        "#0000d0:150" },
-	{ "cyan",        "#009fa7:150" }, --new cg72
-	{ "darkgrey",    "#101010:175" },
-	{ "dark_green",  "#007000:150" },
-	{ "green",       "#00d000:150" }, --new cg72
-	{ "grey",        "#101010:100" }, --new cg72
-	{ "magenta",     "#e0048b:150" }, --new cg72
-	{ "orange",      "#ff3000:150" },
-	{ "pink",        "#ff80b0:150" },
-	{ "red",         "#d00000:150" },
-	{ "violet",      "#7000e0:150" },
-	{ "white",       "#000000:000" }, --new cg72
-	{ "yellow",      "#ffe000:150" }
+	{ S("black"),       "black",       "#000000:200" }, --new cg72
+	{ S("brown"),       "brown",       "#603010:175" },
+	{ S("blue"),        "blue",        "#0000d0:150" },
+	{ S("cyan"),        "cyan",        "#009fa7:150" }, --new cg72
+	{ S("dark grey"),   "darkgrey",    "#101010:175" },
+	{ S("dark green"),  "dark_green",  "#007000:150" },
+	{ S("green"),       "green",       "#00d000:150" }, --new cg72
+	{ S("grey"),        "grey",        "#101010:100" }, --new cg72
+	{ S("magenta"),     "magenta",     "#e0048b:150" }, --new cg72
+	{ S("orange"),      "orange",      "#ff3000:150" },
+	{ S("pink"),        "pink",        "#ff80b0:150" },
+	{ S("red"),         "red",         "#d00000:150" },
+	{ S("violet"),      "violet",      "#7000e0:150" },
+	{ S("white"),       "white",       "#000000:000" }, --new cg72
+	{ S("yellow"),      "yellow",      "#ffe000:150" }
 }
 
 local bed_sbox = {
@@ -46,10 +49,9 @@ local kbed_cbox = {
 	}
 }
 
-for i in ipairs(bedcolors) do
-	local color = bedcolors[i][1]
+for _, c in ipairs(bedcolors) do
+	local colordesc, color, hue = unpack(c)
 	local color2=color
-	local hue = bedcolors[i][2]
 
 	if color == "darkgrey" then
 		color2 = "dark_grey"
@@ -65,7 +67,7 @@ for i in ipairs(bedcolors) do
 			"wool_"..color2..".png^[brighten", -- pillow
 		},
 		inventory_image = "homedecor_bed_inv.png^(homedecor_bed_overlay_inv.png^[colorize:"..hue..")",
-		description = S("Bed (%s)"):format(color),
+		description = S("Bed (@1)", colordesc),
 		groups = {snappy=3},
 		selection_box = bed_sbox,
 		collision_box = bed_cbox,
@@ -126,7 +128,7 @@ for i in ipairs(bedcolors) do
 		},
 		inventory_image = "homedecor_bed_kingsize_inv.png^(homedecor_bed_kingsize_overlay_inv.png^[colorize:"..hue..")",
 		groups = {snappy=3, not_in_creative_inventory=1},
-		description = S("Bed (%s, king sized)"):format(color),
+		description = S("Bed (@1, king sized)", colordesc),
 		groups = {snappy=3, not_in_creative_inventory=1},
 		selection_box = kbed_sbox,
 		collision_box = kbed_cbox,
@@ -154,9 +156,9 @@ for i in ipairs(bedcolors) do
 end
 
 
-for _, w in pairs({"mahogany", "oak"}) do
+for _, w in pairs({ N_("mahogany"), N_("oak") }) do
 	homedecor.register("nightstand_"..w.."_one_drawer", {
-		description = S("Nightstand with One Drawer ("..w..")"),
+		description = S("Nightstand with One Drawer (@1)", S(w)),
 		tiles = { 'homedecor_nightstand_'..w..'_tb.png',
 			'homedecor_nightstand_'..w..'_tb.png^[transformFY',
 			'homedecor_nightstand_'..w..'_lr.png^[transformFX',
@@ -185,7 +187,7 @@ for _, w in pairs({"mahogany", "oak"}) do
 	})
 
 	homedecor.register("nightstand_"..w.."_two_drawers", {
-		description = S("Nightstand with Two Drawers ("..w..")"),
+		description = S("Nightstand with Two Drawers (@1)", S(w)),
 		tiles = { 'homedecor_nightstand_'..w..'_tb.png',
 			'homedecor_nightstand_'..w..'_tb.png^[transformFY',
 			'homedecor_nightstand_'..w..'_lr.png^[transformFX',

@@ -109,23 +109,23 @@ minetest.register_craftitem("homedecor:steel_strip", {
 })
 
 minetest.register_craftitem(":glooptest:chainlink", {
-	description = "Steel chainlink",
+	description = S("Steel chainlink"),
 	inventory_image = "homedecor_chainlink_steel.png"
 })
 
 minetest.register_craftitem("homedecor:chainlink_brass", {
-	description = "Brass chainlink",
+	description = S("Brass chainlink"),
 	inventory_image = "homedecor_chainlink_brass.png"
 })
 
 minetest.register_craftitem("homedecor:soda_can", {
-	description = "Soda Can",
+	description = S("Soda Can"),
 	inventory_image = "homedecor_soda_can.png",
 	on_use = minetest.item_eat(2),
 })
 
 minetest.register_craftitem("homedecor:coin", {
-	description = "Gold Coin (for soda vending machine)",
+	description = S("Gold Coin (for soda vending machine)"),
 	inventory_image = "homedecor_coin.png",
 })
 
