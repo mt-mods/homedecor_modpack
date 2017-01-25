@@ -23,7 +23,7 @@ homedecor.register("speaker_open", {
 		"homedecor_speaker_sides.png",
 		"homedecor_speaker_driver.png",
 		"homedecor_speaker_open_front.png",
-		"homedecor_generic_metal_black.png"
+		{ name = "homedecor_generic_metal.png", color = homedecor.color_black }
 	},
 	groups = { snappy = 3, not_in_creative_inventory=1 },
 	sounds = default.node_sound_wood_defaults(),
