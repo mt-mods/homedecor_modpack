@@ -21,7 +21,7 @@ for i in ipairs(lrfurn.colors) do
 		drawtype = "mesh",
 		mesh = "lrfurn_sofa_long.obj",
 		tiles = {
-			"lrfurn_bg_white.png^[colorize:"..hue.."^lrfurn_sofa_overlay.png",
+			{ name = "lrfurn_upholstery.png", color = hue },
 			"lrfurn_sofa_bottom.png"
 		},
 		paramtype = "light",

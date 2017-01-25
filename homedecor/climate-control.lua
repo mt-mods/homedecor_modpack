@@ -132,7 +132,7 @@ local r_cbox = homedecor.nodebox.slab_z(-0.25)
 homedecor.register("radiator", {
 	mesh = "homedecor_radiator.obj",
 	tiles = {
-		"homedecor_generic_metal_black.png^[colorize:#ffffff:200",
+		"homedecor_generic_metal.png",
 		"homedecor_radiator_controls.png"
 	},
 	inventory_image = "homedecor_radiator_inv.png",
