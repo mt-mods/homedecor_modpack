@@ -9,7 +9,7 @@ lrfurn.fdir_to_fwd = {
 }
 
 lrfurn.colors = {
-	{ "black",       0xff000000 },
+	{ "black",       0xff181818 },
 	{ "brown",       0xff251005 },
 	{ "blue",        0xff0000d0 },
 	{ "cyan",        0xff009fa7 },
@@ -22,7 +22,7 @@ lrfurn.colors = {
 	{ "pink",        0xffff90b0 },
 	{ "red",         0xff800000 },
 	{ "violet",      0xff9000d0 },
-	{ "white",       0xff000000 },
+	{ "white",       0xffffffff },
 	{ "yellow",      0xffdde000 }
 }
 
