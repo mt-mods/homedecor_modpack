@@ -98,8 +98,6 @@ for _, color in ipairs(colors) do
 	table.insert(lavalamp.old_static_nodes, "lavalamp:"..color.."_off")
 end
 
-print(dump(lavalamp.old_static_nodes))
-
 minetest.register_lbm({
 	name = "lavalamp:convert",
 	label = "Convert lava lamps to use param2 color",
@@ -125,7 +123,6 @@ minetest.register_lbm({
 		end
 
 		local paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..color, false)
-		print("LAVALAMP: "..node.name..", "..color.." ("..paletteidx..")")
 
 		minetest.set_node(pos, { name = "lavalamp:lavalamp", param2 = paletteidx })
 		local meta = minetest.get_meta(pos)

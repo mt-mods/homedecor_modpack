@@ -574,8 +574,6 @@ for _, power in ipairs(lamp_power) do
 	end
 end
 
-print(dump(homedecor.old_static_nodes))
-
 minetest.register_lbm({
 	name = "homedecor:convert_lighting",
 	label = "Convert homedecor glowlights, table lamps, and standing lamps to use param2 color",
@@ -637,6 +635,7 @@ minetest.register_lbm({
 		local old_fdir
 		local new_node = newname
 		local new_fdir
+		local param2
 
 		if string.find(name, "glowlight") then
 			paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..color, "wallmounted")
@@ -660,9 +659,6 @@ minetest.register_lbm({
 		else
 			param2 = paletteidx
 		end
-
-		print(node.name.." --> "..newname..", "..color.." ("..paletteidx.."), fdir = "..node.param2.." --> "..param2)
-		print("fdir "..dump(old_fdir).." --> "..dump(new_fdir))
 
 		minetest.set_node(pos, { name = new_node, param2 = param2 })
 		local meta = minetest.get_meta(pos)
