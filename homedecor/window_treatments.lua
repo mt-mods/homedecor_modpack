@@ -279,8 +279,6 @@ minetest.register_lbm({
 		local paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..metadye, "wallmounted")
 		local newparam2 = paletteidx + (node.param2 % 8)
 
-		print(node.name.." --> "..newnode..", "..metadye.." ("..paletteidx..")")
-
 		minetest.set_node(pos, { name = newnode, param2 = newparam2 })
 		local meta = minetest.get_meta(pos)
 		meta:set_string("dye", "unifieddyes:"..metadye)
