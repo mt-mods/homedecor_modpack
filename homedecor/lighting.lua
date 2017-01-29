@@ -8,75 +8,90 @@ local function N_(x) return x end
 
 local colors = { N_("yellow"), N_("white") }
 
-for i in ipairs(colors) do
+local glowlight_nodebox = {
+	half = homedecor.nodebox.slab_y(1/2),
+	quarter = homedecor.nodebox.slab_y(1/4),
+	small_cube = {
+			type = "fixed",
+			fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
+	},
+}
 
-	local color = colors[i]
-	local glowlight_nodebox = {
-		half = homedecor.nodebox.slab_y(1/2),
-		quarter = homedecor.nodebox.slab_y(1/4),
-		small_cube = {
-				type = "fixed",
-				fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-		},
-	}
+homedecor.register("glowlight_half", {
+	description = S("Thick Glowlight"),
+	tiles = {
+		"homedecor_glowlight_top.png",
+		"homedecor_glowlight_bottom.png",
+		"homedecor_glowlight_thick_sides.png",
+		"homedecor_glowlight_thick_sides.png",
+		"homedecor_glowlight_thick_sides.png",
+		"homedecor_glowlight_thick_sides.png"
+	},
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
+	selection_box = glowlight_nodebox.half,
+	node_box = glowlight_nodebox.half,
+	groups = { snappy = 3 },
+	light_source = default.LIGHT_MAX,
+	sounds = default.node_sound_glass_defaults(),
+	on_place = minetest.rotate_node,
+	after_dig_node = unifieddyes.after_dig_node,
+	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		unifieddyes.on_rightclick(pos, node, clicker,
+		  itemstack, pointed_thing, "glowlight_half", "wallmounted")
+	end,
+})
 
-	homedecor.register("glowlight_half_"..color, {
-		description = S("Thick Glowlight (@1)", S(color)),
-		tiles = {
-			"homedecor_glowlight_"..color.."_top.png",
-			"homedecor_glowlight_"..color.."_bottom.png",
-			"homedecor_glowlight_thick_"..color.."_sides.png",
-			"homedecor_glowlight_thick_"..color.."_sides.png",
-			"homedecor_glowlight_thick_"..color.."_sides.png",
-			"homedecor_glowlight_thick_"..color.."_sides.png"
-		},
-		selection_box = glowlight_nodebox.half,
-		node_box = glowlight_nodebox.half,
-		groups = { snappy = 3 },
-		light_source = default.LIGHT_MAX,
-		sounds = default.node_sound_glass_defaults(),
-		on_place = minetest.rotate_node
-	})
+homedecor.register("glowlight_quarter", {
+	description = S("Thin Glowlight"),
+	tiles = {
+		"homedecor_glowlight_top.png",
+		"homedecor_glowlight_bottom.png",
+		"homedecor_glowlight_thin_sides.png",
+		"homedecor_glowlight_thin_sides.png",
+		"homedecor_glowlight_thin_sides.png",
+		"homedecor_glowlight_thin_sides.png"
+	},
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
+	selection_box = glowlight_nodebox.quarter,
+	node_box = glowlight_nodebox.quarter,
+	groups = { snappy = 3 },
+	light_source = default.LIGHT_MAX-1,
+	sounds = default.node_sound_glass_defaults(),
+	on_place = minetest.rotate_node,
+	after_dig_node = unifieddyes.after_dig_node,
+	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		unifieddyes.on_rightclick(pos, node, clicker,
+		  itemstack, pointed_thing, "glowlight_half", "wallmounted")
+	end,
+})
 
-	homedecor.register("glowlight_quarter_"..color, {
-		description = S("Thin Glowlight (@1)", S(color)),
-		tiles = {
-			"homedecor_glowlight_"..color.."_top.png",
-			"homedecor_glowlight_"..color.."_bottom.png",
-			"homedecor_glowlight_thin_"..color.."_sides.png",
-			"homedecor_glowlight_thin_"..color.."_sides.png",
-			"homedecor_glowlight_thin_"..color.."_sides.png",
-			"homedecor_glowlight_thin_"..color.."_sides.png"
-		},
-		selection_box = glowlight_nodebox.quarter,
-		node_box = glowlight_nodebox.quarter,
-		groups = { snappy = 3 },
-		light_source = default.LIGHT_MAX-1,
-		sounds = default.node_sound_glass_defaults(),
-		on_place = minetest.rotate_node
-	})
+homedecor.register("glowlight_small_cube", {
+	description = S("Small Glowlight Cube"),
+	tiles = {
+		"homedecor_glowlight_cube_tb.png",
+		"homedecor_glowlight_cube_tb.png",
+		"homedecor_glowlight_cube_sides.png",
+		"homedecor_glowlight_cube_sides.png",
+		"homedecor_glowlight_cube_sides.png",
+		"homedecor_glowlight_cube_sides.png"
+	},
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
+	selection_box = glowlight_nodebox.small_cube,
+	node_box = glowlight_nodebox.small_cube,
+	groups = { snappy = 3 },
+	light_source = default.LIGHT_MAX-1,
+	sounds = default.node_sound_glass_defaults(),
+	on_place = minetest.rotate_node,
+	after_dig_node = unifieddyes.after_dig_node,
+	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		unifieddyes.on_rightclick(pos, node, clicker,
+		  itemstack, pointed_thing, "glowlight_small_cube", "wallmounted")
+	end,
+})
 
-	-- Glowlight "cubes"
-
-	homedecor.register("glowlight_small_cube_"..color, {
-		description = S("Small Glowlight Cube (@1)", S(color)),
-		tiles = {
-			"homedecor_glowlight_cube_"..color.."_tb.png",
-			"homedecor_glowlight_cube_"..color.."_tb.png",
-			"homedecor_glowlight_cube_"..color.."_sides.png",
-			"homedecor_glowlight_cube_"..color.."_sides.png",
-			"homedecor_glowlight_cube_"..color.."_sides.png",
-			"homedecor_glowlight_cube_"..color.."_sides.png"
-		},
-		selection_box = glowlight_nodebox.small_cube,
-		node_box = glowlight_nodebox.small_cube,
-		groups = { snappy = 3 },
-		light_source = default.LIGHT_MAX-1,
-		sounds = default.node_sound_glass_defaults(),
-		on_place = minetest.rotate_node
-	})
-
-end
 
 homedecor.register("plasma_lamp", {
 	description = S("Plasma Lamp"),
@@ -344,15 +359,21 @@ homedecor.register("lattice_lantern_small", {
 	on_place = minetest.rotate_node
 })
 
-local repl = { off="low", low="med", med="hi", hi="max", max="off", }
+local repl = {
+	["off"] ="low",
+	["low"] ="med",
+	["med"] ="hi",
+	["hi"]  ="max",
+	["max"] ="off",
+}
 
 local lamp_colors = {
-	{ N_("white"),  "#ffffffe0:175" },
-	{ N_("blue"),   "#2626c6e0:200" },
-	{ N_("green"),  "#27a927e0:200" },
-	{ N_("pink"),   "#ff8fb7e0:200" },
-	{ N_("red"),    "#ad2323e0:200" },
-	{ N_("violet"), "#7f29d7e0:200" },
+	"white",
+	"blue",
+	"green",
+	"pink",
+	"red",
+	"violet",
 }
 
 local tlamp_cbox = {
@@ -373,22 +394,23 @@ local brightness_tab = {
 	0xffffffff,
 }
 
-local function reg_lamp(suffix, nxt, tilesuffix, light, color, brightness)
-	local lampcolor = "_"..color[1]
-	local colordesc = S(color[1])
-	local woolcolor = color[1]
-	local invcolor = color[2]
+local function reg_lamp(suffix, nxt, light, brightness)
 
-	homedecor.register("table_lamp"..lampcolor.."_"..suffix, {
-		description = S("Table Lamp (@1)", colordesc),
+	local wool_brighten = (light or 0) * 15
+
+	homedecor.register("table_lamp_"..suffix, {
+		description = S("Table Lamp"),
 		mesh = "homedecor_table_lamp.obj",
 		tiles = {
-			{ name = "wool_"..woolcolor..".png", color = brightness_tab[brightness] },
+			"wool_grey.png^[colorize:#ffffff:"..wool_brighten,
 			{ name = "homedecor_table_standing_lamp_lightbulb.png", color = brightness_tab[brightness] },
-			"homedecor_generic_wood_red.png",
+			{ name = "homedecor_generic_wood_red.png", color = 0xffffffff },
 			{ name = "homedecor_generic_metal.png", color = homedecor.color_black },
 		},
-		inventory_image = "homedecor_table_lamp_foot_inv.png^(homedecor_table_lamp_top_inv.png^[colorize:"..invcolor..")",
+		inventory_image = "homedecor_table_lamp_foot_inv.png^homedecor_table_lamp_top_inv.png",
+		paramtype = "light",
+		paramtype2 = "color",
+		palette = "unifieddyes_palette.png",
 		walkable = false,
 		light_source = light,
 		selection_box = tlamp_cbox,
@@ -396,25 +418,33 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color, brightness)
 		groups = {cracky=2,oddly_breakable_by_hand=1,
 			not_in_creative_inventory=((light ~= nil) and 1) or nil,
 		},
-		drop = "homedecor:table_lamp"..lampcolor.."_off",
+		drop = "homedecor:table_lamp_off",
 		on_punch = function(pos, node, puncher)
-			node.name = "homedecor:table_lamp"..lampcolor.."_"..repl[suffix]
+			node.name = "homedecor:table_lamp_"..repl[suffix]
 			minetest.set_node(pos, node)
+		end,
+		after_dig_node = unifieddyes.after_dig_node,
+		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+			unifieddyes.on_rightclick(pos, node, clicker,
+			  itemstack, pointed_thing, "homedecor:table_lamp_"..suffix, false)
 		end,
 	})
 
 	-- standing lamps
 
-	homedecor.register("standing_lamp"..lampcolor.."_"..suffix, {
-		description = S("Standing Lamp (@1)", colordesc),
+	homedecor.register("standing_lamp_"..suffix, {
+		description = S("Standing Lamp"),
 		mesh = "homedecor_standing_lamp.obj",
 		tiles = {
-			{ name = "wool_"..woolcolor..".png", color = brightness_tab[brightness] },
+			"wool_grey.png^[colorize:#ffffff:"..wool_brighten,
 			{ name = "homedecor_table_standing_lamp_lightbulb.png", color = brightness_tab[brightness] },
-			"homedecor_generic_wood_red.png",
-			{ name ="homedecor_generic_metal.png", color = homedecor.color_black },
+			{ name = "homedecor_generic_wood_red.png", color = 0xffffffff },
+			{ name = "homedecor_generic_metal.png", color = homedecor.color_black },
 		},
-		inventory_image = "homedecor_standing_lamp_foot_inv.png^(homedecor_standing_lamp_top_inv.png^[colorize:"..invcolor..")",
+		inventory_image = "homedecor_standing_lamp_foot_inv.png^homedecor_standing_lamp_top_inv.png",
+		paramtype = "light",
+		paramtype2 = "color",
+		palette = "unifieddyes_palette.png",
 		walkable = false,
 		light_source = light,
 		groups = {cracky=2,oddly_breakable_by_hand=1,
@@ -424,28 +454,26 @@ local function reg_lamp(suffix, nxt, tilesuffix, light, color, brightness)
 		sounds = default.node_sound_wood_defaults(),
 		on_rotate = screwdriver.rotate_simple,
 		on_punch = function(pos, node, puncher)
-			node.name = "homedecor:standing_lamp"..lampcolor.."_"..repl[suffix]
+			node.name = "homedecor:standing_lamp_"..repl[suffix]
 			minetest.set_node(pos, node)
+		end,
+		after_dig_node = unifieddyes.after_dig_node,
+		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+			unifieddyes.on_rightclick(pos, node, clicker,
+			  itemstack, pointed_thing, "homedecor:standing_lamp_"..suffix, false)
 		end,
 		expand = { top="placeholder" },
 	})
 
-	minetest.register_alias("homedecor:standing_lamp_bottom"..lampcolor.."_"..suffix, "homedecor:standing_lamp"..lampcolor.."_"..suffix)
-	minetest.register_alias("homedecor:standing_lamp_top"..lampcolor.."_"..suffix, "air")
-
 	-- for old maps that had the original 3dforniture mod
-	if lampcolor == "" then
-		minetest.register_alias("3dforniture:table_lamp_"..suffix, "homedecor:table_lamp_"..suffix)
-	end
+	minetest.register_alias("3dforniture:table_lamp_"..suffix, "homedecor:table_lamp_"..suffix)
 end
 
-for n, color in ipairs(lamp_colors) do
-	reg_lamp("off",  "low",  "",   nil,  color, 1 )
-	reg_lamp("low",  "med",  "l",    3,  color, 2 )
-	reg_lamp("med",  "hi",   "m",    7,  color, 3 )
-	reg_lamp("hi",   "max",  "h",   11,  color, 4 )
-	reg_lamp("max",  "off",  "x",   14,  color, 5 )
-end
+reg_lamp("off", "low",  nil, 1 )
+reg_lamp("low", "med",  3,   2 )
+reg_lamp("med", "hi",   7,   3 )
+reg_lamp("hi",  "max", 11,   4 )
+reg_lamp("max", "off", 14,   5 )
 
 local dlamp_cbox = {
 	type = "fixed",
@@ -504,4 +532,99 @@ homedecor.register("ceiling_lamp_off", {
 		minetest.set_node(pos, {name = "homedecor:ceiling_lamp"})
 	end,
 	drop = "homedecor:ceiling_lamp"
+})
+
+-- conversion LBM for param2 coloring
+
+homedecor.old_static_nodes = {
+	"homedecor:glowlight_quarter_white",
+	"homedecor:glowlight_quarter_yellow",
+	"homedecor:glowlight_half_white",
+	"homedecor:glowlight_half_yellow",
+	"homedecor:glowlight_small_cube_white",
+	"homedecor:glowlight_small_cube_yellow"
+}
+
+local lamp_power = {"off", "low", "med", "hi", "max"}
+
+for _, power in ipairs(lamp_power) do
+	for _, color in ipairs(lamp_colors) do
+		table.insert(homedecor.old_static_nodes, "homedecor:table_lamp_"..color.."_"..power)
+		table.insert(homedecor.old_static_nodes, "homedecor:standing_lamp_"..color.."_"..power)
+	end
+end
+
+print(dump(homedecor.old_static_nodes))
+
+minetest.register_lbm({
+	name = "homedecor:convert_lighting",
+	label = "Convert homedecor glowlights, table lamps, and standing lamps to use param2 color",
+	run_at_every_load = true,
+	nodenames = homedecor.old_static_nodes,
+	action = function(pos, node)
+		local name = node.name
+		local newnode
+		local color
+
+		if string.find(name, "small_cube") then
+			newname = "homedecor:glowlight_small_cube"
+		elseif string.find(name, "glowlight_half") then
+			newname = "homedecor:glowlight_half"
+		elseif string.find(name, "glowlight_quarter") then
+			newname = "homedecor:glowlight_quarter"
+		end
+
+		local lampname
+		if string.find(name, "standing_lamp") then 
+			lampname = "homedecor:standing_lamp"
+		elseif string.find(name, "table_lamp") then
+			lampname = "homedecor:table_lamp"
+		end
+		if lampname then
+			newname = lampname
+			if string.find(name, "_off") then
+				newname = newname.."_off"
+			elseif string.find(name, "_low") then
+				newname = newname.."_low"
+			elseif string.find(name, "_med") then
+				newname = newname.."_med"
+			elseif string.find(name, "_hi") then
+				newname = newname.."_hi"
+			elseif string.find(name, "_max") then
+				newname = newname.."_max"
+			end
+		end
+
+		if string.find(name, "red") then
+			color = "red"
+		elseif string.find(name, "pink") then
+			color = "pink"
+		elseif string.find(name, "green") then
+			color = "green"
+		elseif string.find(name, "blue") then
+			color = "blue"
+		elseif string.find(name, "yellow") then
+			color = "yellow"
+		elseif string.find(name, "violet") then
+			color = "violet"
+		else
+			color = "white"
+		end
+
+		local paletteidx
+		local fdir
+		if string.find(name, "glowlight") then
+			paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..color, "wallmounted")
+			param2 = paletteidx + (node.param2 % 8 )
+		else
+			paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..color, false)
+			param2 = paletteidx
+		end
+
+		print(node.name.." --> "..newname..", "..color.." ("..paletteidx.."), fdir = "..node.param2.." --> "..param2)
+
+		minetest.set_node(pos, { name = newname, param2 = param2 })
+		local meta = minetest.get_meta(pos)
+		meta:set_string("dye", "unifieddyes:"..color)
+	end
 })

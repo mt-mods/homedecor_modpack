@@ -1211,7 +1211,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "homedecor:refrigerator_steel",
 	recipe = {
-		{"default:steel_ingot", "homedecor:glowlight_small_cube_white", "default:steel_ingot", },
+		{"default:steel_ingot", "homedecor:glowlight_small_cube", "default:steel_ingot", },
 		{"default:steel_ingot", "default:copperblock", "default:steel_ingot", },
 		{"default:steel_ingot", "default:clay", "default:steel_ingot", },
 	}
@@ -1387,73 +1387,10 @@ minetest.register_craft( {
         },
 })
 
--- yellow glowlights
+-- glowlights
 
 minetest.register_craft({
-	output = "homedecor:glowlight_half_yellow 6",
-	recipe = {
-		{"default:glass", "homedecor:power_crystal", "default:glass", },
-	}
-})
-
-minetest.register_craft({
-	output = "homedecor:glowlight_half_yellow 6",
-	recipe = {
-		{"moreblocks:super_glow_glass", "moreblocks:glow_glass", "moreblocks:super_glow_glass", },
-	}
-})
-
-minetest.register_craft({
-        output = "homedecor:glowlight_quarter_yellow 6",
-        recipe = {
-		{"homedecor:glowlight_half_yellow", "homedecor:glowlight_half_yellow", "homedecor:glowlight_half_yellow", },
-	}
-})
-
-minetest.register_craft({
-	output = "homedecor:glowlight_small_cube_yellow 16",
-	recipe = {
-		{"default:glass" },
-		{"homedecor:power_crystal" },
-	}
-})
-
-minetest.register_craft({
-        output = "homedecor:glowlight_small_cube_yellow 16",
-        recipe = {
-		{"moreblocks:glow_glass" },
-		{"moreblocks:super_glow_glass" },
-	}
-})
-
-minetest.register_craft({
-        output = "homedecor:glowlight_small_cube_yellow 4",
-        recipe = {
-		{"homedecor:glowlight_half_yellow" },
-	}
-})
-
-minetest.register_craft({
-        output = "homedecor:glowlight_half_yellow",
-        recipe = {
-		{"homedecor:glowlight_small_cube_yellow","homedecor:glowlight_small_cube_yellow"},
-		{"homedecor:glowlight_small_cube_yellow","homedecor:glowlight_small_cube_yellow"}
-	}
-})
-
-minetest.register_craft({
-		output = "homedecor:glowlight_half_yellow",
-		type = "shapeless",
-		recipe = {
-		"homedecor:glowlight_quarter_yellow",
-		"homedecor:glowlight_quarter_yellow"
-	}
-})
-
--- white
-
-minetest.register_craft({
-	output = "homedecor:glowlight_half_white 6",
+	output = "homedecor:glowlight_half 6",
 	recipe = {
 		{ "dye:white", "dye:white", "dye:white" },
 		{ "default:glass", "homedecor:power_crystal", "default:glass", },
@@ -1461,7 +1398,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-        output = "homedecor:glowlight_half_white 6",
+        output = "homedecor:glowlight_half 6",
         recipe = {
 		{ "dye:white", "dye:white", "dye:white" },
 		{"moreblocks:super_glow_glass", "moreblocks:glow_glass", "moreblocks:super_glow_glass", },
@@ -1469,24 +1406,14 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	type = "shapeless",
-        output = "homedecor:glowlight_half_white 2",
+        output = "homedecor:glowlight_quarter 6",
         recipe = {
-		"dye:white",
-		"homedecor:glowlight_half_yellow",
-		"homedecor:glowlight_half_yellow",
+		{"homedecor:glowlight_half", "homedecor:glowlight_half", "homedecor:glowlight_half", },
 	}
 })
 
 minetest.register_craft({
-        output = "homedecor:glowlight_quarter_white 6",
-        recipe = {
-		{"homedecor:glowlight_half_white", "homedecor:glowlight_half_white", "homedecor:glowlight_half_white", },
-	}
-})
-
-minetest.register_craft({
-	output = "homedecor:glowlight_small_cube_white 8",
+	output = "homedecor:glowlight_small_cube 8",
 	recipe = {
 		{ "dye:white" },
 		{ "default:glass" },
@@ -1495,7 +1422,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-        output = "homedecor:glowlight_small_cube_white 8",
+        output = "homedecor:glowlight_small_cube 8",
         recipe = {
 		{"dye:white" },
 		{"moreblocks:super_glow_glass" },
@@ -1503,26 +1430,26 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-        output = "homedecor:glowlight_small_cube_white 4",
+        output = "homedecor:glowlight_small_cube 4",
         recipe = {
-		{"homedecor:glowlight_half_white" },
+		{"homedecor:glowlight_half" },
 	}
 })
 
 minetest.register_craft({
-        output = "homedecor:glowlight_half_white",
+        output = "homedecor:glowlight_half",
         recipe = {
-		{"homedecor:glowlight_small_cube_white","homedecor:glowlight_small_cube_white"},
-		{"homedecor:glowlight_small_cube_white","homedecor:glowlight_small_cube_white"}
+		{"homedecor:glowlight_small_cube","homedecor:glowlight_small_cube"},
+		{"homedecor:glowlight_small_cube","homedecor:glowlight_small_cube"}
 	}
 })
 
 minetest.register_craft({
-		output = "homedecor:glowlight_half_white",
+		output = "homedecor:glowlight_half",
 		type = "shapeless",
 		recipe = {
-		"homedecor:glowlight_quarter_white",
-		"homedecor:glowlight_quarter_white"
+		"homedecor:glowlight_quarter",
+		"homedecor:glowlight_quarter"
 	}
 })
 
@@ -2210,7 +2137,7 @@ minetest.register_craft({
 minetest.register_craft({
         output = "homedecor:fishtank",
         recipe = {
-			{ "homedecor:plastic_sheeting", "homedecor:glowlight_small_cube_white", "homedecor:plastic_sheeting" },
+			{ "homedecor:plastic_sheeting", "homedecor:glowlight_small_cube", "homedecor:plastic_sheeting" },
 			{ "default:glass", "bucket:bucket_water", "default:glass" },
 			{ "default:glass", "building_blocks:gravel_spread", "default:glass" },
         },
@@ -2346,7 +2273,7 @@ minetest.register_craft({
     recipe = {
 		{ "homedecor:motor" },
 		{ "homedecor:fan_blades" },
-		{ "homedecor:glowlight_small_cube_white" }
+		{ "homedecor:glowlight_small_cube" }
 	}
 })
 
@@ -2355,7 +2282,7 @@ minetest.register_craft({
     recipe = {
 		{ "technic:motor" },
 		{ "homedecor:fan_blades" },
-		{ "homedecor:glowlight_small_cube_white" }
+		{ "homedecor:glowlight_small_cube" }
 	}
 })
 
@@ -3137,7 +3064,7 @@ for _, color in ipairs(dlamp_colors) do
 	minetest.register_craft({
 		output = "homedecor:desk_lamp_"..color,
 		recipe = {
-			{ "", "homedecor:steel_strip", "homedecor:glowlight_small_cube_white" },
+			{ "", "homedecor:steel_strip", "homedecor:glowlight_small_cube" },
 			{ "", "homedecor:copper_wire", "" },
 			{ "homedecor:plastic_sheeting", "dye:"..color, "homedecor:plastic_sheeting" },
 		},
@@ -3221,7 +3148,7 @@ minetest.register_craft({
 	recipe = {
 		{ "", "technic:brass_ingot", ""},
 		{ "", "homedecor:chainlink_brass", ""},
-		{ "default:glass", "homedecor:glowlight_small_cube_white", "default:glass"}
+		{ "default:glass", "homedecor:glowlight_small", "default:glass"}
 	},
 })
 
@@ -3229,7 +3156,7 @@ minetest.register_craft({
 	output = "homedecor:ceiling_lamp",
 	recipe = {
 		{ "", "chains:chain_top_brass", ""},
-		{ "default:glass", "homedecor:glowlight_small_cube_white", "default:glass"}
+		{ "default:glass", "homedecor:glowlight_small", "default:glass"}
 	},
 })
 
