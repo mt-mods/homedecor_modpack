@@ -101,65 +101,79 @@ homedecor.register("blinds_thin", {
 	selection_box = wb2_cbox
 })
 
-local curtaincolors = {
-	{ N_("red"),    "ad2323" },
-	{ N_("green"),  "27a927" },
-	{ N_("blue"),   "2626c6" },
-	{ N_("white"),  "ffffff" },
-	{ N_("pink"),   "ff8fb7" },
-	{ N_("violet"), "7f29d7" },
-}
-
-for _, c in ipairs(curtaincolors) do
-	local color, hue = unpack(c)
-
-	homedecor.register("curtain_"..color, {
-		description = S("Curtains (@1)", S(color)),
-		tiles = { { name = "homedecor_curtain.png", color = tonumber("0xff"..hue) } },
-		inventory_image = "homedecor_curtain.png^[colorize:#"..hue.."e0:175",
-		wield_image = "homedecor_curtain.png^[colorize:#"..hue.."e0:175",
-		drawtype = 'signlike',
-		use_texture_alpha = true,
-		walkable = false,
-		groups = { snappy = 3 },
-		sounds = default.node_sound_leaves_defaults(),
-		paramtype2 = 'wallmounted',
-		selection_box = { type = "wallmounted" },
-		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+minetest.register_node("homedecor:curtain_closed", {
+	description = S("Curtains"),
+	tiles = { "homedecor_curtain.png" },
+	inventory_image = "homedecor_curtain.png",
+	drawtype = 'signlike',
+	use_texture_alpha = true,
+	walkable = false,
+	groups = { snappy = 3 },
+	sounds = default.node_sound_leaves_defaults(),
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
+	selection_box = { type = "wallmounted" },
+	after_dig_node = unifieddyes.after_dig_node,
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		local yaw = placer:get_look_yaw()
+		local dir = minetest.yaw_to_dir(yaw-1.5)
+		local fdir = minetest.dir_to_wallmounted(dir)
+		name = minetest.get_node(pos).name
+		minetest.swap_node(pos, { name = name, param2 = fdir })
+	end,
+	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		local itemname = itemstack:get_name()
+		if string.find(itemname, "dye:") or string.find(itemname, "unifieddyes:") then
+			unifieddyes.on_rightclick(pos, node, clicker,
+			  itemstack, pointed_thing, "homedecor:curtain_closed", "wallmounted")
+		else
 			local topnode = minetest.get_node({x=pos.x, y=pos.y+1.0, z=pos.z})
 			if string.find(topnode.name, "homedecor:curtainrod") then
 				-- Open the curtains
 				local fdir = node.param2
-				minetest.set_node(pos, { name = "homedecor:curtain_open_"..color, param2 = fdir })
+				minetest.set_node(pos, { name = "homedecor:curtain_open", param2 = fdir })
 			end
 			return itemstack
 		end
-	})
+	end
+})
 
-	homedecor.register("curtain_open_"..color, {
-		description = S("Curtains (@1)", S(color)),
-		tiles = { { name = "homedecor_curtain_open.png", color = tonumber("0xff"..hue) } },
-		inventory_image = "homedecor_curtain_open.png^[colorize:#"..hue.."e0:175",
-		wield_image = "homedecor_curtain_open.png^[colorize:#"..hue.."e0:175",
-		drawtype = 'signlike',
-		use_texture_alpha = true,
-		walkable = false,
-		groups = { snappy = 3 },
-		sounds = default.node_sound_leaves_defaults(),
-		paramtype2 = 'wallmounted',
-		selection_box = { type = "wallmounted" },
-		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+minetest.register_node("homedecor:curtain_open", {
+	description = S("Curtains"),
+	tiles = { "homedecor_curtain_open.png" },
+	inventory_image = "homedecor_curtain_open.png",
+	drawtype = 'signlike',
+	use_texture_alpha = true,
+	walkable = false,
+	groups = { snappy = 3 },
+	sounds = default.node_sound_leaves_defaults(),
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
+	selection_box = { type = "wallmounted" },
+	after_dig_node = unifieddyes.after_dig_node,
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		local yaw = placer:get_look_yaw()
+		local dir = minetest.yaw_to_dir(yaw-1.5)
+		local fdir = minetest.dir_to_wallmounted(dir)
+		name = minetest.get_node(pos).name
+		minetest.swap_node(pos, { name = name, param2 = fdir })
+	end,
+	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		local itemname = itemstack:get_name()
+		if string.find(itemname, "dye:") or string.find(itemname, "unifieddyes:") then
+			unifieddyes.on_rightclick(pos, node, clicker,
+			  itemstack, pointed_thing, "homedecor:curtain_open", "wallmounted")
+		else
 			local topnode = minetest.get_node({x=pos.x, y=pos.y+1.0, z=pos.z})
 			if string.find(topnode.name, "homedecor:curtainrod") then
 				-- Close the curtains
 				local fdir = node.param2
-				minetest.set_node(pos, { name = "homedecor:curtain_"..color, param2 = fdir })
+				minetest.set_node(pos, { name = "homedecor:curtain_closed", param2 = fdir })
 			end
 			return itemstack
 		end
-	})
-
-end
+	end
+})
 
 local mats = {
 	{ "brass", S("brass"), "homedecor_generic_metal_brass.png" },
@@ -217,4 +231,58 @@ homedecor.register("stained_glass", {
 		type = "fixed",
 		fixed = { {-0.5, -0.5, 0.46875, 0.5, 0.5, 0.5} }
 	}
+})
+
+-- Convert old curtain nodes to param2-colorization
+
+local curtaincolors = {
+	{ N_("red"),    "ad2323" },
+	{ N_("green"),  "27a927" },
+	{ N_("blue"),   "2626c6" },
+	{ N_("white"),  "ffffff" },
+	{ N_("pink"),   "ff8fb7" },
+	{ N_("violet"), "7f29d7" },
+}
+
+homedecor.old_static_curtain_nodes = {}
+
+for _, i in ipairs(curtaincolors) do
+	local color,hue = unpack(i)
+	table.insert(homedecor.old_static_curtain_nodes, "homedecor:curtain_"..color)
+	table.insert(homedecor.old_static_curtain_nodes, "homedecor:curtain_open_"..color)
+end
+
+minetest.register_lbm({
+	name = "homedecor:convert_curtains",
+	label = "Convert static curtain nodes to use param2 color",
+	run_at_every_load = true,
+	nodenames = homedecor.old_static_curtain_nodes,
+	action = function(pos, node)
+		local name = node.name
+		local color = string.sub(name, 19)
+		local openclose = "closed"
+
+		if string.find(color, "open") then
+			color = string.sub(color, 6)
+			openclose = "open"
+		end
+
+		local metadye = "medium_"..color
+		if color == "pink" then
+			metadye = "light_red"
+		end
+		if color == "white" then
+			metadye = "white"
+		end
+
+		local newnode = "homedecor:curtain_"..openclose
+		local paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..metadye, "wallmounted")
+		local newparam2 = paletteidx + (node.param2 % 8)
+
+		print(node.name.." --> "..newnode..", "..metadye.." ("..paletteidx..")")
+
+		minetest.set_node(pos, { name = newnode, param2 = newparam2 })
+		local meta = minetest.get_meta(pos)
+		meta:set_string("dye", "unifieddyes:"..metadye)
+	end
 })
