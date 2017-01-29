@@ -17,7 +17,7 @@ local glowlight_nodebox = {
 	},
 }
 
-homedecor.register("glowlight_half", {
+minetest.register_node("homedecor:glowlight_half", {
 	description = S("Thick Glowlight"),
 	tiles = {
 		"homedecor_glowlight_top.png",
@@ -27,14 +27,20 @@ homedecor.register("glowlight_half", {
 		"homedecor_glowlight_thick_sides.png",
 		"homedecor_glowlight_thick_sides.png"
 	},
+	drawtype = "nodebox",
+	paramtype = "light",
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
-	selection_box = glowlight_nodebox.half,
+	selection_box = {
+		type = "wallmounted",
+		wall_top =    { -0.5,    0, -0.5, 0.5, 0.5, 0.5 },
+		wall_bottom = { -0.5, -0.5, -0.5, 0.5,   0, 0.5 },
+		wall_side =   { -0.5, -0.5, -0.5,   0, 0.5, 0.5 }
+	},
 	node_box = glowlight_nodebox.half,
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX,
 	sounds = default.node_sound_glass_defaults(),
-	on_place = minetest.rotate_node,
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		unifieddyes.on_rightclick(pos, node, clicker,
@@ -42,7 +48,7 @@ homedecor.register("glowlight_half", {
 	end,
 })
 
-homedecor.register("glowlight_quarter", {
+minetest.register_node("homedecor:glowlight_quarter", {
 	description = S("Thin Glowlight"),
 	tiles = {
 		"homedecor_glowlight_top.png",
@@ -52,14 +58,20 @@ homedecor.register("glowlight_quarter", {
 		"homedecor_glowlight_thin_sides.png",
 		"homedecor_glowlight_thin_sides.png"
 	},
+	drawtype = "nodebox",
+	paramtype = "light",
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
-	selection_box = glowlight_nodebox.quarter,
+	selection_box = {
+		type = "wallmounted",
+		wall_top =    { -0.5, 0.25, -0.5,   0.5,   0.5, 0.5 },
+		wall_bottom = { -0.5, -0.5, -0.5,   0.5, -0.25, 0.5 },
+		wall_side =   { -0.5, -0.5, -0.5, -0.25,   0.5, 0.5 }
+	},
 	node_box = glowlight_nodebox.quarter,
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-1,
 	sounds = default.node_sound_glass_defaults(),
-	on_place = minetest.rotate_node,
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		unifieddyes.on_rightclick(pos, node, clicker,
@@ -67,7 +79,7 @@ homedecor.register("glowlight_quarter", {
 	end,
 })
 
-homedecor.register("glowlight_small_cube", {
+minetest.register_node("homedecor:glowlight_small_cube", {
 	description = S("Small Glowlight Cube"),
 	tiles = {
 		"homedecor_glowlight_cube_tb.png",
@@ -77,21 +89,26 @@ homedecor.register("glowlight_small_cube", {
 		"homedecor_glowlight_cube_sides.png",
 		"homedecor_glowlight_cube_sides.png"
 	},
+	paramtype = "light",
 	paramtype2 = "colorwallmounted",
+	drawtype = "nodebox",
 	palette = "unifieddyes_palette_colorwallmounted.png",
-	selection_box = glowlight_nodebox.small_cube,
+	selection_box = {
+		type = "wallmounted",
+		wall_top =    { -0.25,    0,  -0.25, 0.25,  0.5, 0.25 },
+		wall_bottom = { -0.25, -0.5,  -0.25, 0.25,    0, 0.25 },
+		wall_side =   {  -0.5, -0.25, -0.25,    0, 0.25, 0.25 }
+	},
 	node_box = glowlight_nodebox.small_cube,
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-1,
 	sounds = default.node_sound_glass_defaults(),
-	on_place = minetest.rotate_node,
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		unifieddyes.on_rightclick(pos, node, clicker,
 		  itemstack, pointed_thing, "glowlight_small_cube", "wallmounted")
 	end,
 })
-
 
 homedecor.register("plasma_lamp", {
 	description = S("Plasma Lamp"),
@@ -563,7 +580,7 @@ minetest.register_lbm({
 	nodenames = homedecor.old_static_nodes,
 	action = function(pos, node)
 		local name = node.name
-		local newnode
+		local newname
 		local color
 
 		if string.find(name, "small_cube") then
@@ -611,19 +628,40 @@ minetest.register_lbm({
 			color = "white"
 		end
 
-		local paletteidx
-		local fdir
+		local paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..color, false)
+
+		local old_node = node.name
+		local old_fdir
+		local new_node = newname
+		local new_fdir
+
 		if string.find(name, "glowlight") then
 			paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..color, "wallmounted")
-			param2 = paletteidx + (node.param2 % 8 )
+
+			old_fdir = math.floor(node.param2 / 4)
+
+			if old_fdir == 5 then
+				new_fdir = 0
+			elseif old_fdir == 1 then
+				new_fdir = 5
+			elseif old_fdir == 2 then
+				new_fdir = 4
+			elseif old_fdir == 3 then
+				new_fdir = 3
+			elseif old_fdir == 4 then
+				new_fdir = 2
+			elseif old_fdir == 0 then
+				new_fdir = 1
+			end
+			param2 = paletteidx + new_fdir
 		else
-			paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..color, false)
 			param2 = paletteidx
 		end
 
 		print(node.name.." --> "..newname..", "..color.." ("..paletteidx.."), fdir = "..node.param2.." --> "..param2)
+		print("fdir "..dump(old_fdir).." --> "..dump(new_fdir))
 
-		minetest.set_node(pos, { name = newname, param2 = param2 })
+		minetest.set_node(pos, { name = new_node, param2 = param2 })
 		local meta = minetest.get_meta(pos)
 		meta:set_string("dye", "unifieddyes:"..color)
 	end
