@@ -9,121 +9,72 @@ local function N_(x) return x end
 local colors = { N_("yellow"), N_("white") }
 
 for i in ipairs(colors) do
+
 	local color = colors[i]
+	local glowlight_nodebox = {
+		half = homedecor.nodebox.slab_y(1/2),
+		quarter = homedecor.nodebox.slab_y(1/4),
+		small_cube = {
+				type = "fixed",
+				fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
+		},
+	}
 
-	minetest.register_abm({
-		nodenames = { "homedecor:glowlight_thin_"..color },
-		interval = 1,
-		chance = 1,
-		action = function(pos, node, active_object_count, active_object_count_wider)
-			minetest.set_node(pos, {name = "homedecor:glowlight_quarter_"..color, param2 = 20})
-		end,
+	homedecor.register("glowlight_half_"..color, {
+		description = S("Thick Glowlight (@1)", S(color)),
+		tiles = {
+			"homedecor_glowlight_"..color.."_top.png",
+			"homedecor_glowlight_"..color.."_bottom.png",
+			"homedecor_glowlight_thick_"..color.."_sides.png",
+			"homedecor_glowlight_thick_"..color.."_sides.png",
+			"homedecor_glowlight_thick_"..color.."_sides.png",
+			"homedecor_glowlight_thick_"..color.."_sides.png"
+		},
+		selection_box = glowlight_nodebox.half,
+		node_box = glowlight_nodebox.half,
+		groups = { snappy = 3 },
+		light_source = default.LIGHT_MAX,
+		sounds = default.node_sound_glass_defaults(),
+		on_place = minetest.rotate_node
 	})
 
-	minetest.register_abm({
-		nodenames = { "homedecor:glowlight_thick_"..color },
-		interval = 1,
-		chance = 1,
-		action = function(pos, node, active_object_count, active_object_count_wider)
-			minetest.set_node(pos, {name = "homedecor:glowlight_half_"..color, param2 = 20})
-		end,
+	homedecor.register("glowlight_quarter_"..color, {
+		description = S("Thin Glowlight (@1)", S(color)),
+		tiles = {
+			"homedecor_glowlight_"..color.."_top.png",
+			"homedecor_glowlight_"..color.."_bottom.png",
+			"homedecor_glowlight_thin_"..color.."_sides.png",
+			"homedecor_glowlight_thin_"..color.."_sides.png",
+			"homedecor_glowlight_thin_"..color.."_sides.png",
+			"homedecor_glowlight_thin_"..color.."_sides.png"
+		},
+		selection_box = glowlight_nodebox.quarter,
+		node_box = glowlight_nodebox.quarter,
+		groups = { snappy = 3 },
+		light_source = default.LIGHT_MAX-1,
+		sounds = default.node_sound_glass_defaults(),
+		on_place = minetest.rotate_node
 	})
 
-	minetest.register_abm({
-		nodenames = { "homedecor:glowlight_thin_"..color.."_wall" },
-		interval = 1,
-		chance = 1,
-		action = function(pos, node, active_object_count, active_object_count_wider)
-			local fdir = node.param2 or 0
-			local nfdir = dirs2[fdir+1]
-			minetest.set_node(pos, {name = "homedecor:glowlight_quarter_"..color, param2 = nfdir})
-		end,
+	-- Glowlight "cubes"
+
+	homedecor.register("glowlight_small_cube_"..color, {
+		description = S("Small Glowlight Cube (@1)", S(color)),
+		tiles = {
+			"homedecor_glowlight_cube_"..color.."_tb.png",
+			"homedecor_glowlight_cube_"..color.."_tb.png",
+			"homedecor_glowlight_cube_"..color.."_sides.png",
+			"homedecor_glowlight_cube_"..color.."_sides.png",
+			"homedecor_glowlight_cube_"..color.."_sides.png",
+			"homedecor_glowlight_cube_"..color.."_sides.png"
+		},
+		selection_box = glowlight_nodebox.small_cube,
+		node_box = glowlight_nodebox.small_cube,
+		groups = { snappy = 3 },
+		light_source = default.LIGHT_MAX-1,
+		sounds = default.node_sound_glass_defaults(),
+		on_place = minetest.rotate_node
 	})
-
-	minetest.register_abm({
-		nodenames = { "homedecor:glowlight_thick_"..color.."_wall" },
-		interval = 1,
-		chance = 1,
-		action = function(pos, node, active_object_count, active_object_count_wider)
-			local fdir = node.param2 or 0
-			local nfdir = dirs2[fdir+1]
-			minetest.set_node(pos, {name = "homedecor:glowlight_half_"..color, param2 = nfdir})
-		end,
-	})
-
-	minetest.register_abm({
-		nodenames = { "homedecor:glowlight_small_cube_"..color.."_ceiling" },
-		interval = 1,
-		chance = 1,
-		action = function(pos, node, active_object_count, active_object_count_wider)
-			minetest.set_node(pos, {name = "homedecor:glowlight_small_cube_"..color, param2 = 20})
-		end,
-	})
-
-local glowlight_nodebox = {
-	half = homedecor.nodebox.slab_y(1/2),
-	quarter = homedecor.nodebox.slab_y(1/4),
-	small_cube = {
-			type = "fixed",
-			fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-	},
-}
-
-homedecor.register("glowlight_half_"..color, {
-	description = S("Thick Glowlight (@1)", S(color)),
-	tiles = {
-		"homedecor_glowlight_"..color.."_top.png",
-		"homedecor_glowlight_"..color.."_bottom.png",
-		"homedecor_glowlight_thick_"..color.."_sides.png",
-		"homedecor_glowlight_thick_"..color.."_sides.png",
-		"homedecor_glowlight_thick_"..color.."_sides.png",
-		"homedecor_glowlight_thick_"..color.."_sides.png"
-	},
-	selection_box = glowlight_nodebox.half,
-	node_box = glowlight_nodebox.half,
-	groups = { snappy = 3 },
-	light_source = default.LIGHT_MAX,
-	sounds = default.node_sound_glass_defaults(),
-	on_place = minetest.rotate_node
-})
-
-homedecor.register("glowlight_quarter_"..color, {
-	description = S("Thin Glowlight (@1)", S(color)),
-	tiles = {
-		"homedecor_glowlight_"..color.."_top.png",
-		"homedecor_glowlight_"..color.."_bottom.png",
-		"homedecor_glowlight_thin_"..color.."_sides.png",
-		"homedecor_glowlight_thin_"..color.."_sides.png",
-		"homedecor_glowlight_thin_"..color.."_sides.png",
-		"homedecor_glowlight_thin_"..color.."_sides.png"
-	},
-	selection_box = glowlight_nodebox.quarter,
-	node_box = glowlight_nodebox.quarter,
-	groups = { snappy = 3 },
-	light_source = default.LIGHT_MAX-1,
-	sounds = default.node_sound_glass_defaults(),
-	on_place = minetest.rotate_node
-})
-
--- Glowlight "cubes"
-
-homedecor.register("glowlight_small_cube_"..color, {
-	description = S("Small Glowlight Cube (@1)", S(color)),
-	tiles = {
-		"homedecor_glowlight_cube_"..color.."_tb.png",
-		"homedecor_glowlight_cube_"..color.."_tb.png",
-		"homedecor_glowlight_cube_"..color.."_sides.png",
-		"homedecor_glowlight_cube_"..color.."_sides.png",
-		"homedecor_glowlight_cube_"..color.."_sides.png",
-		"homedecor_glowlight_cube_"..color.."_sides.png"
-	},
-	selection_box = glowlight_nodebox.small_cube,
-	node_box = glowlight_nodebox.small_cube,
-	groups = { snappy = 3 },
-	light_source = default.LIGHT_MAX-1,
-	sounds = default.node_sound_glass_defaults(),
-	on_place = minetest.rotate_node
-})
 
 end
 
