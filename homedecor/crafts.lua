@@ -1046,26 +1046,23 @@ minetest.register_craft( {
 
 -- Curtains
 
-local curtaincolors = {
-	"red",
-	"green",
-	"blue",
-	"white",
-	"pink",
-	"violet"
-}
+minetest.register_craft( {
+	output = "homedecor:curtain_closed 4",
+		recipe = {
+		{ "wool:white", "", ""},
+		{ "wool:white", "", ""},
+		{ "wool:white", "", ""},
+	},
+})
 
-for c in ipairs(curtaincolors) do
-	local color = curtaincolors[c]
-	minetest.register_craft( {
-		output = "homedecor:curtain_"..color.." 3",
-			recipe = {
-			{ "wool:"..color, "", ""},
-			{ "wool:"..color, "", ""},
-			{ "wool:"..color, "", ""},
-		},
-	})
-end
+minetest.register_craft( {
+	output = "homedecor:curtain_closed 4",
+		recipe = {
+		{ "cottages:wool", "", ""},
+		{ "cottages:wool", "", ""},
+		{ "cottages:wool", "", ""},
+	},
+})
 
 local mats = {
 	{ "brass", "homedecor:pole_brass" },
