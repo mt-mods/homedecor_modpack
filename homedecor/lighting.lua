@@ -45,7 +45,7 @@ minetest.register_node("homedecor:glowlight_half", {
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		unifieddyes.on_rightclick(pos, node, clicker,
-		  itemstack, pointed_thing, "glowlight_half", "wallmounted")
+		  itemstack, pointed_thing, "homedecor:glowlight_half", "wallmounted")
 	end,
 })
 
@@ -77,7 +77,7 @@ minetest.register_node("homedecor:glowlight_quarter", {
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		unifieddyes.on_rightclick(pos, node, clicker,
-		  itemstack, pointed_thing, "glowlight_half", "wallmounted")
+		  itemstack, pointed_thing, "homedecor:glowlight_quarter", "wallmounted")
 	end,
 })
 
@@ -109,7 +109,7 @@ minetest.register_node("homedecor:glowlight_small_cube", {
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		unifieddyes.on_rightclick(pos, node, clicker,
-		  itemstack, pointed_thing, "glowlight_small_cube", "wallmounted")
+		  itemstack, pointed_thing, "homedecor:glowlight_small_cube", "wallmounted")
 	end,
 })
 
