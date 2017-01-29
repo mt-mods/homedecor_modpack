@@ -1,3 +1,6 @@
+
+local S = homedecor_i18n.gettext
+
 local tmp = {}
 screwdriver = screwdriver or {}
 
@@ -98,7 +101,7 @@ local drop_item = function(pos, node)
 end
 
 minetest.register_node("itemframes:frame",{
-	description = "Item frame",
+	description = S("Item frame"),
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
@@ -121,7 +124,7 @@ minetest.register_node("itemframes:frame",{
 	after_place_node = function(pos, placer, itemstack)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("owner",placer:get_player_name())
-		meta:set_string("infotext","Item frame (owned by "..placer:get_player_name()..")")
+		meta:set_string("infotext", S("Item frame (owned by @1)", placer:get_player_name()))
 	end,
 	on_rightclick = function(pos, node, clicker, itemstack)
 		if not itemstack then return end
@@ -159,7 +162,7 @@ minetest.register_node("itemframes:frame",{
 
 
 minetest.register_node("itemframes:pedestal",{
-	description = "Pedestal",
+	description = S("Pedestal"),
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed", fixed = {
@@ -181,7 +184,7 @@ minetest.register_node("itemframes:pedestal",{
 	after_place_node = function(pos, placer, itemstack)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("owner",placer:get_player_name())
-		meta:set_string("infotext","Pedestal (owned by "..placer:get_player_name()..")")
+		meta:set_string("infotext", S("Pedestal (owned by @1)", placer:get_player_name()))
 	end,
 	on_rightclick = function(pos, node, clicker, itemstack)
 		if not itemstack then return end

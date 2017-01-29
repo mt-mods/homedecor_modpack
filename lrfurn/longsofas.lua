@@ -1,4 +1,6 @@
 
+local S = homedecor_i18n.gettext
+
 local longsofa_sbox = {
 	type = "fixed",
 	fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 2.5}
@@ -12,12 +14,11 @@ local longsofa_cbox = {
 	}
 }
 
-for i in ipairs(lrfurn.colors) do
-	local colour = lrfurn.colors[i][1]
-	local hue = lrfurn.colors[i][2]
+for i, c in ipairs(lrfurn.colors) do
+	local colour, coldesc, hue = unpack(c)
 
 	minetest.register_node("lrfurn:longsofa_"..colour, {
-		description = "Long Sofa ("..colour..")",
+		description = S("Long Sofa (@1)", coldesc),
 		drawtype = "mesh",
 		mesh = "lrfurn_sofa_long.obj",
 		tiles = {
@@ -41,7 +42,8 @@ for i in ipairs(lrfurn.colors) do
 				minetest.set_node(pos, {name = "lrfurn:longsofa_"..colour, param2 = fdir})
 				itemstack:take_item()
 			else
-				minetest.chat_send_player(placer:get_player_name(), "No room to place the sofa!")
+				minetest.chat_send_player(placer:get_player_name(),
+						S("No room to place the sofa!"))
 				minetest.set_node(pos, { name = "air" })
 			end
 			return itemstack
@@ -82,5 +84,5 @@ for i in ipairs(lrfurn.colors) do
 end
 
 if minetest.setting_get("log_mods") then
-	minetest.log("action", "long sofas loaded")
+	minetest.log("action", "[lrfurn/longsofas] "..S("Loaded!"))
 end

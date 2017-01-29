@@ -1,3 +1,6 @@
+
+local S = homedecor_i18n.gettext
+
 lrfurn = {}
 screwdriver = screwdriver or {}
 
@@ -9,21 +12,21 @@ lrfurn.fdir_to_fwd = {
 }
 
 lrfurn.colors = {
-	{ "black",       0xff181818 },
-	{ "brown",       0xff251005 },
-	{ "blue",        0xff0000d0 },
-	{ "cyan",        0xff009fa7 },
-	{ "dark_grey",   0xff101010 },
-	{ "dark_green",  0xff007000 },
-	{ "green",       0xff00d000 },
-	{ "grey",        0xff303030 },
-	{ "magenta",     0xffe0048b },
-	{ "orange",      0xffee9000 },
-	{ "pink",        0xffff90b0 },
-	{ "red",         0xff800000 },
-	{ "violet",      0xff9000d0 },
-	{ "white",       0xffffffff },
-	{ "yellow",      0xffdde000 }
+	{ "black",       S("black"),       0xff181818 },
+	{ "brown",       S("brown"),       0xff251005 },
+	{ "blue",        S("blue"),        0xff0000d0 },
+	{ "cyan",        S("cyan"),        0xff009fa7 },
+	{ "dark_grey",   S("dark grey"),   0xff101010 },
+	{ "dark_green",  S("dark green"),  0xff007000 },
+	{ "green",       S("green"),       0xff00d000 },
+	{ "grey",        S("grey"),        0xff303030 },
+	{ "magenta",     S("magenta"),     0xffe0048b },
+	{ "orange",      S("orange"),      0xffee9000 },
+	{ "pink",        S("pink"),        0xffff90b0 },
+	{ "red",         S("red"),         0xff800000 },
+	{ "violet",      S("violet"),      0xff9000d0 },
+	{ "white",       S("white"),       0xffffffff },
+	{ "yellow",      S("yellow"),      0xffdde000 }
 }
 
 function lrfurn.check_forward(pos, fdir, long, placer)

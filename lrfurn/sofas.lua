@@ -1,4 +1,5 @@
 
+local S = homedecor_i18n.gettext
 
 local sofa_sbox = {
 	type = "fixed",
@@ -13,12 +14,11 @@ local sofa_cbox = {
 	}
 }
 
-for i in ipairs(lrfurn.colors) do
-	local colour = lrfurn.colors[i][1]
-	local hue = lrfurn.colors[i][2]
+for i, c in ipairs(lrfurn.colors) do
+	local colour, coldesc, hue = unpack(c)
 
 	minetest.register_node("lrfurn:sofa_"..colour, {
-		description = "Sofa ("..colour..")",
+		description = S("Sofa (@1)", coldesc),
 		drawtype = "mesh",
 		mesh = "lrfurn_sofa_short.obj",
 		tiles = {
@@ -83,5 +83,5 @@ for i in ipairs(lrfurn.colors) do
 end
 
 if minetest.setting_get("log_mods") then
-	minetest.log("action", "sofas loaded")
+	minetest.log("action", "[lrfurn/sofas] "..S("Loaded!"))
 end
