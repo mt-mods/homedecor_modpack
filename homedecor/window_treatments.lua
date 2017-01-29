@@ -114,13 +114,7 @@ minetest.register_node("homedecor:curtain_closed", {
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	selection_box = { type = "wallmounted" },
 	after_dig_node = unifieddyes.after_dig_node,
-	after_place_node = function(pos, placer, itemstack, pointed_thing)
-		local yaw = placer:get_look_yaw()
-		local dir = minetest.yaw_to_dir(yaw-1.5)
-		local fdir = minetest.dir_to_wallmounted(dir)
-		name = minetest.get_node(pos).name
-		minetest.swap_node(pos, { name = name, param2 = fdir })
-	end,
+	after_place_node = homedecor.fix_rotation,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		local itemname = itemstack:get_name()
 		if string.find(itemname, "dye:") or string.find(itemname, "unifieddyes:") then
@@ -151,13 +145,7 @@ minetest.register_node("homedecor:curtain_open", {
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	selection_box = { type = "wallmounted" },
 	after_dig_node = unifieddyes.after_dig_node,
-	after_place_node = function(pos, placer, itemstack, pointed_thing)
-		local yaw = placer:get_look_yaw()
-		local dir = minetest.yaw_to_dir(yaw-1.5)
-		local fdir = minetest.dir_to_wallmounted(dir)
-		name = minetest.get_node(pos).name
-		minetest.swap_node(pos, { name = name, param2 = fdir })
-	end,
+	after_place_node = homedecor.fix_rotation,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		local itemname = itemstack:get_name()
 		if string.find(itemname, "dye:") or string.find(itemname, "unifieddyes:") then

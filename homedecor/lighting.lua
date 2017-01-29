@@ -41,6 +41,7 @@ minetest.register_node("homedecor:glowlight_half", {
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX,
 	sounds = default.node_sound_glass_defaults(),
+	after_place_node = homedecor.fix_rotation,
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		unifieddyes.on_rightclick(pos, node, clicker,
@@ -72,6 +73,7 @@ minetest.register_node("homedecor:glowlight_quarter", {
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-1,
 	sounds = default.node_sound_glass_defaults(),
+	after_place_node = homedecor.fix_rotation,
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		unifieddyes.on_rightclick(pos, node, clicker,
@@ -103,6 +105,7 @@ minetest.register_node("homedecor:glowlight_small_cube", {
 	groups = { snappy = 3 },
 	light_source = default.LIGHT_MAX-1,
 	sounds = default.node_sound_glass_defaults(),
+	after_place_node = homedecor.fix_rotation,
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		unifieddyes.on_rightclick(pos, node, clicker,
