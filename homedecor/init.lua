@@ -9,14 +9,10 @@
 
 local modpath = minetest.get_modpath("homedecor")
 
--- Load support for intllib.
-local S, NS = dofile(modpath.."/intllib.lua")
+local S = homedecor_i18n.gettext
 
 homedecor = {
 	modpath = modpath,
-
-	gettext = S,
-	ngettext = NS,
 
 	-- infinite stacks
 	expect_infinite_stacks = minetest.setting_getbool("creative_mode") and not minetest.get_modpath("unified_inventory")

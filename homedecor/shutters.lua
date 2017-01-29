@@ -1,6 +1,6 @@
 -- Various kinds of window shutters
 
-local S = homedecor.gettext
+local S = homedecor_i18n.gettext
 
 local shutters = {
 	{"oak",          S("unpainted oak"), "bf8a51" },

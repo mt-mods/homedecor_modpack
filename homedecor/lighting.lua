@@ -2,7 +2,7 @@
 
 local dirs2 = { 9, 18, 7, 12 }
 
-local S = homedecor.gettext
+local S = homedecor_i18n.gettext
 
 local function N_(x) return x end
 

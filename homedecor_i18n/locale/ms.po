@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-25 00:03-0300\n"
+"POT-Creation-Date: 2017-01-29 20:10-0300\n"
 "PO-Revision-Date: 2017-01-25 00:03-0300\n"
 "Last-Translator: muhdnurhidayat <MuhdNurHidayat@users.noreply.github.com>\n"
 "Language-Team: Malay\n"
@@ -15,6 +15,127 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: ../building_blocks/init.lua:6
+msgid "Adobe"
+msgstr ""
+
+#: ../building_blocks/init.lua:14
+msgid "Roof block"
+msgstr ""
+
+#: ../building_blocks/init.lua:156
+msgid "Streak Free Glass"
+msgstr ""
+
+#: ../building_blocks/init.lua:167
+msgid "Grate"
+msgstr ""
+
+#: ../building_blocks/init.lua:177
+msgid "Fireplace"
+msgstr ""
+
+#: ../building_blocks/init.lua:194
+msgid "Wood Framed Glass"
+msgstr ""
+
+#: ../building_blocks/init.lua:205
+msgid "Terrycloth towel"
+msgstr ""
+
+#: ../building_blocks/init.lua:221
+msgid "Tarmac Spread"
+msgstr ""
+
+#: ../building_blocks/init.lua:238
+msgid "Chess board tiling"
+msgstr ""
+
+#: ../building_blocks/init.lua:254
+msgid "Brobble Spread"
+msgstr ""
+
+#: ../building_blocks/init.lua:270
+msgid "Gravel Spread"
+msgstr ""
+
+#: ../building_blocks/init.lua:291
+msgid "Hardwood"
+msgstr ""
+
+#: ../building_blocks/init.lua:454
+msgid "Marble stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:455
+msgid "Marble slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:460
+msgid "Hardwood stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:461
+msgid "Hardwood slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:466
+msgid "Grass stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:467
+#, fuzzy
+msgid "Grass slab"
+msgstr "Tiang Loyang"
+
+#: ../building_blocks/init.lua:472
+msgid "Tar stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:473
+msgid "Tar slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:478
+msgid "Grate Stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:479
+msgid "Grate Slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:484
+msgid "Adobe stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:485
+msgid "Adobe slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:490
+msgid "Roofing stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:491
+msgid "Roofing slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:543
+msgid "Tar"
+msgstr ""
+
+#: ../building_blocks/init.lua:550
+msgid "Marble"
+msgstr ""
+
+#: ../building_blocks/init.lua:574
+msgid "Tar Knife"
+msgstr ""
+
+#: ../building_blocks/init.lua:596 ../building_blocks/init.lua:614
+msgid "Granite"
+msgstr ""
 
 #: ../computer/miscitems.lua:13 ../homedecor/crafts.lua:32
 #, fuzzy
@@ -26,6 +147,64 @@ msgstr "Kepingan Plastik"
 msgid "Unprocessed Plastic base"
 msgstr "Bes Plastik Belum Diproses"
 
+#: ../chains/init.lua:18
+#, fuzzy
+msgid "Hanging chain (wrought iron)"
+msgstr "Tiang Besi Tempaan"
+
+#: ../chains/init.lua:32
+msgid "Hanging chain (brass)"
+msgstr ""
+
+#: ../chains/init.lua:46
+msgid "Hanging chain (ceiling mount, wrought iron)"
+msgstr ""
+
+#: ../chains/init.lua:60
+msgid "Hanging chain (ceiling mount, brass)"
+msgstr ""
+
+#: ../chains/init.lua:74
+#, fuzzy
+msgid "Chandelier (wrought iron)"
+msgstr "Tiang Besi Tempaan"
+
+#: ../chains/init.lua:101
+msgid "Chandelier (brass)"
+msgstr ""
+
+#: ../plasmascreen/init.lua:7
+msgid "Plasma Screen TV Stand"
+msgstr ""
+
+#: ../plasmascreen/init.lua:100
+msgid "Plasma TV"
+msgstr ""
+
+#: ../plasmascreen/init.lua:136
+msgid "Plasma TV (off)"
+msgstr ""
+
+#: ../fake_fire/init.lua:71
+msgid "Fake fire"
+msgstr ""
+
+#: ../fake_fire/init.lua:72
+msgid "Ice fire"
+msgstr ""
+
+#: ../fake_fire/init.lua:109
+msgid "Fancy Fire"
+msgstr ""
+
+#: ../fake_fire/init.lua:146
+msgid "Glowing Embers"
+msgstr ""
+
+#: ../fake_fire/init.lua:191
+msgid "Flint and steel"
+msgstr ""
+
 #: ../homedecor/bedroom.lua:7 ../homedecor/shutters.lua:13
 #: ../homedecor/misc-nodes.lua:69 ../homedecor/furniture.lua:36
 #, fuzzy
@@ -36,9 +215,9 @@ msgstr "Hitam"
 msgid "brown"
 msgstr ""
 
-#: ../homedecor/bedroom.lua:9 ../homedecor/window_treatments.lua:107
-#: ../homedecor/lighting.lua:400 ../homedecor/lighting.lua:498
-#: ../homedecor/books.lua:9 ../homedecor/furniture.lua:40
+#: ../homedecor/bedroom.lua:9 ../homedecor/window_treatments.lua:229
+#: ../homedecor/lighting.lua:503 ../homedecor/books.lua:9
+#: ../homedecor/furniture.lua:40
 #, fuzzy
 msgid "blue"
 msgstr "biru"
@@ -57,10 +236,9 @@ msgstr "Hijau Gelap"
 msgid "dark green"
 msgstr "Hijau Gelap"
 
-#: ../homedecor/bedroom.lua:13 ../homedecor/window_treatments.lua:106
-#: ../homedecor/lighting.lua:401 ../homedecor/lighting.lua:498
-#: ../homedecor/exterior.lua:361 ../homedecor/misc-nodes.lua:69
-#: ../homedecor/books.lua:8
+#: ../homedecor/bedroom.lua:13 ../homedecor/window_treatments.lua:228
+#: ../homedecor/lighting.lua:503 ../homedecor/exterior.lua:361
+#: ../homedecor/misc-nodes.lua:69 ../homedecor/books.lua:8
 #, fuzzy
 msgid "green"
 msgstr "hijau"
@@ -78,31 +256,29 @@ msgstr ""
 msgid "orange"
 msgstr ""
 
-#: ../homedecor/bedroom.lua:17 ../homedecor/window_treatments.lua:109
-#: ../homedecor/lighting.lua:402 ../homedecor/furniture.lua:38
+#: ../homedecor/bedroom.lua:17 ../homedecor/window_treatments.lua:231
+#: ../homedecor/furniture.lua:38
 #, fuzzy
 msgid "pink"
 msgstr "merah jambu"
 
-#: ../homedecor/bedroom.lua:18 ../homedecor/window_treatments.lua:105
-#: ../homedecor/lighting.lua:403 ../homedecor/lighting.lua:498
-#: ../homedecor/shutters.lua:8 ../homedecor/exterior.lua:362
-#: ../homedecor/books.lua:7 ../homedecor/furniture.lua:37
+#: ../homedecor/bedroom.lua:18 ../homedecor/window_treatments.lua:227
+#: ../homedecor/lighting.lua:503 ../homedecor/shutters.lua:8
+#: ../homedecor/exterior.lua:362 ../homedecor/books.lua:7
+#: ../homedecor/furniture.lua:37
 #, fuzzy
 msgid "red"
 msgstr "merah"
 
-#: ../homedecor/bedroom.lua:19 ../homedecor/window_treatments.lua:110
-#: ../homedecor/lighting.lua:404 ../homedecor/lighting.lua:498
-#: ../homedecor/shutters.lua:12 ../homedecor/books.lua:10
-#: ../homedecor/furniture.lua:39
+#: ../homedecor/bedroom.lua:19 ../homedecor/window_treatments.lua:232
+#: ../homedecor/lighting.lua:503 ../homedecor/shutters.lua:12
+#: ../homedecor/books.lua:10 ../homedecor/furniture.lua:39
 #, fuzzy
 msgid "violet"
 msgstr "ungu"
 
-#: ../homedecor/bedroom.lua:20 ../homedecor/window_treatments.lua:108
-#: ../homedecor/lighting.lua:9 ../homedecor/lighting.lua:399
-#: ../homedecor/shutters.lua:16
+#: ../homedecor/bedroom.lua:20 ../homedecor/window_treatments.lua:230
+#: ../homedecor/lighting.lua:9 ../homedecor/shutters.lua:16
 #, fuzzy
 msgid "white"
 msgstr "putih"
@@ -257,7 +433,7 @@ msgid "Dishwasher"
 msgstr ""
 
 #: ../homedecor/kitchen_appliances.lua:240 ../homedecor/roofing.lua:31
-#: ../homedecor/window_treatments.lua:167 ../homedecor/exterior.lua:193
+#: ../homedecor/window_treatments.lua:169 ../homedecor/exterior.lua:193
 #: ../homedecor/misc-nodes.lua:440
 msgid "wood"
 msgstr ""
@@ -342,33 +518,33 @@ msgstr "Lampu Bara Putih (tebal)"
 msgid "Window Blinds (thin)"
 msgstr "Lampu Bara (nipis)"
 
-#: ../homedecor/window_treatments.lua:117
-#: ../homedecor/window_treatments.lua:140
+#: ../homedecor/window_treatments.lua:105
+#: ../homedecor/window_treatments.lua:136
 #, fuzzy
-msgid "Curtains (@1)"
+msgid "Curtains"
 msgstr "Langsir (%s)"
 
-#: ../homedecor/window_treatments.lua:165 ../homedecor/fences.lua:22
+#: ../homedecor/window_treatments.lua:167 ../homedecor/fences.lua:22
 #: ../homedecor/misc-nodes.lua:458 ../homedecor/tables.lua:166
 msgid "brass"
 msgstr ""
 
-#: ../homedecor/window_treatments.lua:166 ../homedecor/fences.lua:23
+#: ../homedecor/window_treatments.lua:168 ../homedecor/fences.lua:23
 #: ../homedecor/misc-nodes.lua:467 ../homedecor/tables.lua:167
 #, fuzzy
 msgid "wrought iron"
 msgstr "Tiang Besi Tempaan"
 
-#: ../homedecor/window_treatments.lua:175
+#: ../homedecor/window_treatments.lua:177
 #, fuzzy
 msgid "Curtain Rod (@1)"
 msgstr "Langsir (%s)"
 
-#: ../homedecor/window_treatments.lua:189
+#: ../homedecor/window_treatments.lua:191
 msgid "Window flowerbox"
 msgstr ""
 
-#: ../homedecor/window_treatments.lua:209
+#: ../homedecor/window_treatments.lua:211
 msgid "Stained Glass"
 msgstr ""
 
@@ -481,7 +657,7 @@ msgstr "Ketulan Silikon"
 msgid "Brass Ingot"
 msgstr "Jongkong Loyang"
 
-#: ../homedecor/crafts.lua:3330
+#: ../homedecor/crafts.lua:3254
 #, fuzzy
 msgid "Small Flower Pot"
 msgstr "Pasu Bunga Plastik Hitam"
@@ -524,92 +700,92 @@ msgstr ""
 msgid "Telephone"
 msgstr ""
 
-#: ../homedecor/lighting.lua:73
+#: ../homedecor/lighting.lua:21
 #, fuzzy
-msgid "Thick Glowlight (@1)"
+msgid "Thick Glowlight"
 msgstr "Lampu Bara (nipis)"
 
-#: ../homedecor/lighting.lua:91
+#: ../homedecor/lighting.lua:53
 #, fuzzy
-msgid "Thin Glowlight (@1)"
+msgid "Thin Glowlight"
 msgstr "Lampu Bara (nipis)"
 
-#: ../homedecor/lighting.lua:111
+#: ../homedecor/lighting.lua:85
 #, fuzzy
-msgid "Small Glowlight Cube (@1)"
+msgid "Small Glowlight Cube"
 msgstr "Lampu Bara Kuning (kiub kecil)"
 
-#: ../homedecor/lighting.lua:131
+#: ../homedecor/lighting.lua:117
 msgid "Plasma Lamp"
 msgstr ""
 
-#: ../homedecor/lighting.lua:151
+#: ../homedecor/lighting.lua:137
 msgid "Plasma Ball"
 msgstr ""
 
-#: ../homedecor/lighting.lua:182
+#: ../homedecor/lighting.lua:168
 msgid "Thick Candle"
 msgstr ""
 
-#: ../homedecor/lighting.lua:203
+#: ../homedecor/lighting.lua:189
 msgid "Thin Candle"
 msgstr ""
 
-#: ../homedecor/lighting.lua:224
+#: ../homedecor/lighting.lua:210
 msgid "Candlestick (wrought iron)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:239
+#: ../homedecor/lighting.lua:225
 msgid "Candlestick (brass)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:254
+#: ../homedecor/lighting.lua:240
 #, fuzzy
 msgid "Wall sconce"
 msgstr "Obor Dinding"
 
-#: ../homedecor/lighting.lua:280
+#: ../homedecor/lighting.lua:266
 msgid "Oil lamp (hurricane)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:300
+#: ../homedecor/lighting.lua:286
 msgid "Oil Lamp (tabletop)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:319
+#: ../homedecor/lighting.lua:305
 msgid "Ground Lantern"
 msgstr ""
 
-#: ../homedecor/lighting.lua:337
+#: ../homedecor/lighting.lua:323
 msgid "Hanging Lantern"
 msgstr ""
 
-#: ../homedecor/lighting.lua:368
+#: ../homedecor/lighting.lua:354
 msgid "Lattice lantern (large)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:376
+#: ../homedecor/lighting.lua:362
 msgid "Lattice lantern (small)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:426
+#: ../homedecor/lighting.lua:422
 #, fuzzy
-msgid "Table Lamp (@1)"
+msgid "Table Lamp"
 msgstr "Lampu Meja"
 
-#: ../homedecor/lighting.lua:452
-msgid "Standing Lamp (@1)"
+#: ../homedecor/lighting.lua:456
+msgid "Standing Lamp"
 msgstr ""
 
-#: ../homedecor/lighting.lua:502
+#: ../homedecor/lighting.lua:507
 msgid "Desk Lamp (@1)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:518
+#: ../homedecor/lighting.lua:523
 msgid "Ceiling Lamp"
 msgstr ""
 
-#: ../homedecor/lighting.lua:536
+#: ../homedecor/lighting.lua:541
 msgid "Ceiling Lamp (off)"
 msgstr ""
 
@@ -923,7 +1099,7 @@ msgstr ""
 msgid "Japanese-style door"
 msgstr ""
 
-#: ../homedecor/init.lua:133
+#: ../homedecor/init.lua:148
 #, fuzzy
 msgid "Loaded!"
 msgstr "Telah Dimuatkan!"

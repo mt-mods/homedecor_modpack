@@ -1,5 +1,5 @@
 
-local S = homedecor.gettext
+local S = homedecor_i18n.gettext
 
 local bathroom_tile_colors = {
 	{ "1",       S("white/grey"),       "#c0c0c0:200" },

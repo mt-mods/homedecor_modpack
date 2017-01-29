@@ -2,7 +2,7 @@
 --
 -- Mostly my own code; overall template borrowed from game default
 
-local S = homedecor.gettext
+local S = homedecor_i18n.gettext
 
 -- misc craftitems
 

@@ -1,6 +1,6 @@
 -- Various home electronics
 
-local S = homedecor.gettext
+local S = homedecor_i18n.gettext
 
 homedecor.register("speaker", {
 	description = S("Large Stereo Speaker"),

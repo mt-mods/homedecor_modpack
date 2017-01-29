@@ -1,4 +1,4 @@
-# Italian translations for PACKAGE package.
+# German translations for PACKAGE package.
 # Copyright (C) 2017 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2017.
@@ -7,42 +7,221 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-25 00:03-0300\n"
+"POT-Creation-Date: 2017-01-29 20:10-0300\n"
 "PO-Revision-Date: 2017-01-25 00:03-0300\n"
-"Last-Translator: Emon <?>\n"
-"Language-Team: Italian\n"
-"Language: it\n"
+"Last-Translator: Xanthin <Xanthin@users.noreply.github.com>\n"
+"Language-Team: German\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: ../building_blocks/init.lua:6
+msgid "Adobe"
+msgstr ""
+
+#: ../building_blocks/init.lua:14
+msgid "Roof block"
+msgstr ""
+
+#: ../building_blocks/init.lua:156
+msgid "Streak Free Glass"
+msgstr ""
+
+#: ../building_blocks/init.lua:167
+msgid "Grate"
+msgstr ""
+
+#: ../building_blocks/init.lua:177
+msgid "Fireplace"
+msgstr ""
+
+#: ../building_blocks/init.lua:194
+msgid "Wood Framed Glass"
+msgstr ""
+
+#: ../building_blocks/init.lua:205
+msgid "Terrycloth towel"
+msgstr ""
+
+#: ../building_blocks/init.lua:221
+msgid "Tarmac Spread"
+msgstr ""
+
+#: ../building_blocks/init.lua:238
+msgid "Chess board tiling"
+msgstr ""
+
+#: ../building_blocks/init.lua:254
+msgid "Brobble Spread"
+msgstr ""
+
+#: ../building_blocks/init.lua:270
+msgid "Gravel Spread"
+msgstr ""
+
+#: ../building_blocks/init.lua:291
+msgid "Hardwood"
+msgstr ""
+
+#: ../building_blocks/init.lua:454
+msgid "Marble stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:455
+msgid "Marble slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:460
+msgid "Hardwood stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:461
+msgid "Hardwood slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:466
+msgid "Grass stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:467
+#, fuzzy
+msgid "Grass slab"
+msgstr "Messingstange"
+
+#: ../building_blocks/init.lua:472
+msgid "Tar stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:473
+msgid "Tar slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:478
+msgid "Grate Stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:479
+msgid "Grate Slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:484
+msgid "Adobe stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:485
+msgid "Adobe slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:490
+msgid "Roofing stair"
+msgstr ""
+
+#: ../building_blocks/init.lua:491
+msgid "Roofing slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:543
+msgid "Tar"
+msgstr ""
+
+#: ../building_blocks/init.lua:550
+msgid "Marble"
+msgstr ""
+
+#: ../building_blocks/init.lua:574
+msgid "Tar Knife"
+msgstr ""
+
+#: ../building_blocks/init.lua:596 ../building_blocks/init.lua:614
+msgid "Granite"
+msgstr ""
+
 #: ../computer/miscitems.lua:13 ../homedecor/crafts.lua:32
 #, fuzzy
 msgid "Plastic sheet"
-msgstr "Foglio di plastica"
+msgstr "Kunststoffplatte"
 
 #: ../computer/miscitems.lua:18
 #, fuzzy
 msgid "Unprocessed Plastic base"
-msgstr "Base non lavorata di plastica"
+msgstr "Unverarbeitetes Plastik"
+
+#: ../chains/init.lua:18
+#, fuzzy
+msgid "Hanging chain (wrought iron)"
+msgstr "Schmiedeeiserne Stange"
+
+#: ../chains/init.lua:32
+msgid "Hanging chain (brass)"
+msgstr ""
+
+#: ../chains/init.lua:46
+msgid "Hanging chain (ceiling mount, wrought iron)"
+msgstr ""
+
+#: ../chains/init.lua:60
+msgid "Hanging chain (ceiling mount, brass)"
+msgstr ""
+
+#: ../chains/init.lua:74
+#, fuzzy
+msgid "Chandelier (wrought iron)"
+msgstr "Schmiedeeiserne Stange"
+
+#: ../chains/init.lua:101
+msgid "Chandelier (brass)"
+msgstr ""
+
+#: ../plasmascreen/init.lua:7
+msgid "Plasma Screen TV Stand"
+msgstr ""
+
+#: ../plasmascreen/init.lua:100
+msgid "Plasma TV"
+msgstr ""
+
+#: ../plasmascreen/init.lua:136
+msgid "Plasma TV (off)"
+msgstr ""
+
+#: ../fake_fire/init.lua:71
+msgid "Fake fire"
+msgstr ""
+
+#: ../fake_fire/init.lua:72
+msgid "Ice fire"
+msgstr ""
+
+#: ../fake_fire/init.lua:109
+msgid "Fancy Fire"
+msgstr ""
+
+#: ../fake_fire/init.lua:146
+msgid "Glowing Embers"
+msgstr ""
+
+#: ../fake_fire/init.lua:191
+msgid "Flint and steel"
+msgstr ""
 
 #: ../homedecor/bedroom.lua:7 ../homedecor/shutters.lua:13
 #: ../homedecor/misc-nodes.lua:69 ../homedecor/furniture.lua:36
 #, fuzzy
 msgid "black"
-msgstr "nero"
+msgstr "schwarz"
 
 #: ../homedecor/bedroom.lua:8 ../homedecor/books.lua:12
 msgid "brown"
 msgstr ""
 
-#: ../homedecor/bedroom.lua:9 ../homedecor/window_treatments.lua:107
-#: ../homedecor/lighting.lua:400 ../homedecor/lighting.lua:498
-#: ../homedecor/books.lua:9 ../homedecor/furniture.lua:40
+#: ../homedecor/bedroom.lua:9 ../homedecor/window_treatments.lua:229
+#: ../homedecor/lighting.lua:503 ../homedecor/books.lua:9
+#: ../homedecor/furniture.lua:40
 #, fuzzy
 msgid "blue"
-msgstr "blu"
+msgstr "blau"
 
 #: ../homedecor/bedroom.lua:10
 msgid "cyan"
@@ -51,20 +230,19 @@ msgstr ""
 #: ../homedecor/bedroom.lua:11 ../homedecor/shutters.lua:14
 #, fuzzy
 msgid "dark grey"
-msgstr "verde scuro"
+msgstr "dunkelgruen"
 
 #: ../homedecor/bedroom.lua:12 ../homedecor/furniture.lua:41
 #, fuzzy
 msgid "dark green"
-msgstr "verde scuro"
+msgstr "dunkelgruen"
 
-#: ../homedecor/bedroom.lua:13 ../homedecor/window_treatments.lua:106
-#: ../homedecor/lighting.lua:401 ../homedecor/lighting.lua:498
-#: ../homedecor/exterior.lua:361 ../homedecor/misc-nodes.lua:69
-#: ../homedecor/books.lua:8
+#: ../homedecor/bedroom.lua:13 ../homedecor/window_treatments.lua:228
+#: ../homedecor/lighting.lua:503 ../homedecor/exterior.lua:361
+#: ../homedecor/misc-nodes.lua:69 ../homedecor/books.lua:8
 #, fuzzy
 msgid "green"
-msgstr "verde"
+msgstr "gruen"
 
 #: ../homedecor/bedroom.lua:14 ../homedecor/shutters.lua:15
 #: ../homedecor/books.lua:11
@@ -79,34 +257,32 @@ msgstr ""
 msgid "orange"
 msgstr ""
 
-#: ../homedecor/bedroom.lua:17 ../homedecor/window_treatments.lua:109
-#: ../homedecor/lighting.lua:402 ../homedecor/furniture.lua:38
+#: ../homedecor/bedroom.lua:17 ../homedecor/window_treatments.lua:231
+#: ../homedecor/furniture.lua:38
 #, fuzzy
 msgid "pink"
 msgstr "rosa"
 
-#: ../homedecor/bedroom.lua:18 ../homedecor/window_treatments.lua:105
-#: ../homedecor/lighting.lua:403 ../homedecor/lighting.lua:498
-#: ../homedecor/shutters.lua:8 ../homedecor/exterior.lua:362
-#: ../homedecor/books.lua:7 ../homedecor/furniture.lua:37
+#: ../homedecor/bedroom.lua:18 ../homedecor/window_treatments.lua:227
+#: ../homedecor/lighting.lua:503 ../homedecor/shutters.lua:8
+#: ../homedecor/exterior.lua:362 ../homedecor/books.lua:7
+#: ../homedecor/furniture.lua:37
 #, fuzzy
 msgid "red"
-msgstr "rosso"
+msgstr "rot"
 
-#: ../homedecor/bedroom.lua:19 ../homedecor/window_treatments.lua:110
-#: ../homedecor/lighting.lua:404 ../homedecor/lighting.lua:498
-#: ../homedecor/shutters.lua:12 ../homedecor/books.lua:10
-#: ../homedecor/furniture.lua:39
+#: ../homedecor/bedroom.lua:19 ../homedecor/window_treatments.lua:232
+#: ../homedecor/lighting.lua:503 ../homedecor/shutters.lua:12
+#: ../homedecor/books.lua:10 ../homedecor/furniture.lua:39
 #, fuzzy
 msgid "violet"
-msgstr "viola"
+msgstr "violett"
 
-#: ../homedecor/bedroom.lua:20 ../homedecor/window_treatments.lua:108
-#: ../homedecor/lighting.lua:9 ../homedecor/lighting.lua:399
-#: ../homedecor/shutters.lua:16
+#: ../homedecor/bedroom.lua:20 ../homedecor/window_treatments.lua:230
+#: ../homedecor/lighting.lua:9 ../homedecor/shutters.lua:16
 #, fuzzy
 msgid "white"
-msgstr "bianco"
+msgstr "weiss"
 
 #: ../homedecor/bedroom.lua:21 ../homedecor/lighting.lua:9
 #: ../homedecor/shutters.lua:9 ../homedecor/exterior.lua:363
@@ -132,22 +308,22 @@ msgstr ""
 #: ../homedecor/bedroom.lua:161
 #, fuzzy
 msgid "Nightstand with One Drawer (@1)"
-msgstr "Comodino in quercia con un cassetto"
+msgstr "Eichenachttisch mit einer Schublade"
 
 #: ../homedecor/bedroom.lua:182
 #, fuzzy
 msgid "One-drawer Nightstand"
-msgstr "Comodino a singolo cassetto"
+msgstr "Nachttisch mit einer Schublade"
 
 #: ../homedecor/bedroom.lua:190
 #, fuzzy
 msgid "Nightstand with Two Drawers (@1)"
-msgstr "Comodino in quercia con due cassetti"
+msgstr "Eichenachttisch mit zwei Schubladen"
 
 #: ../homedecor/bedroom.lua:208
 #, fuzzy
 msgid "Two-drawer Nightstand"
-msgstr "Comodino a doppio cassetto"
+msgstr "Nachttisch mit zwei Schubladen"
 
 #: ../homedecor/kitchen_furniture.lua:10
 #: ../homedecor/kitchen_appliances.lua:240
@@ -168,27 +344,27 @@ msgstr ""
 #: ../homedecor/kitchen_furniture.lua:55
 #, fuzzy
 msgid "Kitchen Cabinet"
-msgstr "Armadietto della cucina"
+msgstr "Kuechenschrank"
 
 #: ../homedecor/kitchen_furniture.lua:18
 #, fuzzy
 msgid "Kitchen Cabinet (@1 top)"
-msgstr "Armadietto della cucina"
+msgstr "Kuechenschrank"
 
 #: ../homedecor/kitchen_furniture.lua:42
 #, fuzzy
 msgid "Half-height Kitchen Cabinet (on ceiling)"
-msgstr "Armadietto della cucina di altezza dimezzata (sul soffitto)"
+msgstr "Halbhoher Kuechenschrank (haengend)"
 
 #: ../homedecor/kitchen_furniture.lua:63
 #, fuzzy
 msgid "Kitchen Cabinet with sink"
-msgstr "Armadietto della cucina con il lavandino"
+msgstr "Unterschrank mit Spuele"
 
 #: ../homedecor/kitchen_furniture.lua:73
 #, fuzzy
 msgid "Under-sink cabinet"
-msgstr "Armadietto sotto il lavandino"
+msgstr "Unterschrank"
 
 #: ../homedecor/kitchen_furniture.lua:150
 msgid "Paper towels"
@@ -197,44 +373,44 @@ msgstr ""
 #: ../homedecor/furniture_medieval.lua:5
 #, fuzzy
 msgid "Bars"
-msgstr "Sbarre"
+msgstr "Gitterstaebe"
 
 #: ../homedecor/furniture_medieval.lua:27
 #, fuzzy
 msgid "Binding Bars"
-msgstr "Ceppi"
+msgstr "Eckverbindung fuer Gitterstaebe"
 
 #: ../homedecor/furniture_medieval.lua:51
 #, fuzzy
 msgid "Chains"
-msgstr "Catene"
+msgstr "Ketten"
 
 #: ../homedecor/furniture_medieval.lua:62
 #, fuzzy
 msgid "Wall Torch"
-msgstr "Torcia a muro"
+msgstr "Wandfackel"
 
 #: ../homedecor/furniture_medieval.lua:94
 #, fuzzy
 msgid "Wall Lamp"
-msgstr "Lampada da tavolo"
+msgstr "Tischlampe"
 
 #: ../homedecor/kitchen_appliances.lua:12
 #, fuzzy
 msgid "Refrigerator (stainless steel)"
-msgstr "Frigorifero"
+msgstr "Kuehlschrank"
 
 #: ../homedecor/kitchen_appliances.lua:18
 #: ../homedecor/kitchen_appliances.lua:31
 #: ../homedecor/kitchen_appliances.lua:37
 #, fuzzy
 msgid "Refrigerator"
-msgstr "Frigorifero"
+msgstr "Kuehlschrank"
 
 #: ../homedecor/kitchen_appliances.lua:60
 #, fuzzy
 msgid "Oven"
-msgstr "Forno"
+msgstr "Herd"
 
 #: ../homedecor/kitchen_appliances.lua:68
 msgid "Oven (stainless steel)"
@@ -243,7 +419,7 @@ msgstr ""
 #: ../homedecor/kitchen_appliances.lua:76
 #, fuzzy
 msgid "Microwave Oven"
-msgstr "Forno a microonde"
+msgstr "Mikrowelle"
 
 #: ../homedecor/kitchen_appliances.lua:117
 msgid "Coffee Maker"
@@ -258,7 +434,7 @@ msgid "Dishwasher"
 msgstr ""
 
 #: ../homedecor/kitchen_appliances.lua:240 ../homedecor/roofing.lua:31
-#: ../homedecor/window_treatments.lua:167 ../homedecor/exterior.lua:193
+#: ../homedecor/window_treatments.lua:169 ../homedecor/exterior.lua:193
 #: ../homedecor/misc-nodes.lua:440
 msgid "wood"
 msgstr ""
@@ -270,12 +446,12 @@ msgstr ""
 #: ../homedecor/roofing.lua:7
 #, fuzzy
 msgid "Glass Skylight"
-msgstr "Lucernario di vetro"
+msgstr "Glasdachfenster"
 
 #: ../homedecor/roofing.lua:19
 #, fuzzy
 msgid "Glass Skylight Frosted"
-msgstr "Lucernario di vetro satinato"
+msgstr "Milchglasdachfenster"
 
 #: ../homedecor/roofing.lua:31
 msgid "asphalt"
@@ -284,42 +460,42 @@ msgstr ""
 #: ../homedecor/roofing.lua:31 ../homedecor/misc-nodes.lua:69
 #, fuzzy
 msgid "terracotta"
-msgstr "Tegole di terracotta"
+msgstr "Terrakottaschindeln"
 
 #: ../homedecor/roofing.lua:33
 #, fuzzy
 msgid "Shingles (@1)"
-msgstr "Tegole in legno"
+msgstr "Holzschindeln"
 
 #: ../homedecor/roofing.lua:87
 #, fuzzy
 msgid "@1 (outer corner)"
-msgstr "Tegole in legno (angolo esterno)"
+msgstr "Holzschindeln (Aussenecke)"
 
 #: ../homedecor/roofing.lua:109
 #, fuzzy
 msgid "@1 (inner corner)"
-msgstr "Tegole in legno (angolo interno)"
+msgstr "Holzschindeln (Innenecke)"
 
 #: ../homedecor/roofing.lua:265 ../homedecor/roofing.lua:286
 #, fuzzy
 msgid "Wood Shingles"
-msgstr "Tegole in legno"
+msgstr "Holzschindeln"
 
 #: ../homedecor/roofing.lua:271 ../homedecor/roofing.lua:293
 #, fuzzy
 msgid "Asphalt Shingles"
-msgstr "Mattonelle di asfalto"
+msgstr "Asphaltschindeln"
 
 #: ../homedecor/roofing.lua:277 ../homedecor/roofing.lua:300
 #, fuzzy
 msgid "Terracotta Shingles"
-msgstr "Tegole di terracotta"
+msgstr "Terrakottaschindeln"
 
 #: ../homedecor/roofing.lua:307
 #, fuzzy
 msgid "Glass Shingles"
-msgstr "Mattonelle di asfalto"
+msgstr "Asphaltschindeln"
 
 #: ../homedecor/roofing.lua:312
 msgid "Chimney"
@@ -336,52 +512,52 @@ msgstr ""
 #: ../homedecor/window_treatments.lua:72
 #, fuzzy
 msgid "Window Blinds (thick)"
-msgstr "Luce fosforescente bianca (spessa)"
+msgstr "Weisse Gluehlampe (dick)"
 
 #: ../homedecor/window_treatments.lua:91
 #, fuzzy
 msgid "Window Blinds (thin)"
-msgstr "Luce fosforescente bianca (sottile)"
+msgstr "Weisse Gluehlampe (duenn)"
 
-#: ../homedecor/window_treatments.lua:117
-#: ../homedecor/window_treatments.lua:140
+#: ../homedecor/window_treatments.lua:105
+#: ../homedecor/window_treatments.lua:136
 #, fuzzy
-msgid "Curtains (@1)"
-msgstr "Tende (%s)"
+msgid "Curtains"
+msgstr "Vorhaenge (%s)"
 
-#: ../homedecor/window_treatments.lua:165 ../homedecor/fences.lua:22
+#: ../homedecor/window_treatments.lua:167 ../homedecor/fences.lua:22
 #: ../homedecor/misc-nodes.lua:458 ../homedecor/tables.lua:166
 msgid "brass"
 msgstr ""
 
-#: ../homedecor/window_treatments.lua:166 ../homedecor/fences.lua:23
+#: ../homedecor/window_treatments.lua:168 ../homedecor/fences.lua:23
 #: ../homedecor/misc-nodes.lua:467 ../homedecor/tables.lua:167
 #, fuzzy
 msgid "wrought iron"
-msgstr "Palo di ferro battuto"
+msgstr "Schmiedeeiserne Stange"
 
-#: ../homedecor/window_treatments.lua:175
+#: ../homedecor/window_treatments.lua:177
 #, fuzzy
 msgid "Curtain Rod (@1)"
-msgstr "Tende (%s)"
+msgstr "Vorhaenge (%s)"
 
-#: ../homedecor/window_treatments.lua:189
+#: ../homedecor/window_treatments.lua:191
 msgid "Window flowerbox"
 msgstr ""
 
-#: ../homedecor/window_treatments.lua:209
+#: ../homedecor/window_treatments.lua:211
 msgid "Stained Glass"
 msgstr ""
 
 #: ../homedecor/crafts.lua:10
 #, fuzzy
 msgid "Uncooked Terracotta Base"
-msgstr "Base cruda di terracotta"
+msgstr "Ungebrannte Terrakotta"
 
 #: ../homedecor/crafts.lua:15
 #, fuzzy
 msgid "Terracotta Roof Tile"
-msgstr "Tegole di terracotta"
+msgstr "Terrakottadachziegel"
 
 #: ../homedecor/crafts.lua:20
 msgid "Oil extract"
@@ -390,22 +566,22 @@ msgstr ""
 #: ../homedecor/crafts.lua:25
 #, fuzzy
 msgid "Unprocessed paraffin"
-msgstr "Base non lavorata di plastica"
+msgstr "Unverarbeitetes Plastik"
 
 #: ../homedecor/crafts.lua:37
 #, fuzzy
 msgid "Plastic strips"
-msgstr "Foglio di plastica"
+msgstr "Kunststoffplatte"
 
 #: ../homedecor/crafts.lua:42
 #, fuzzy
 msgid "Small Wooden Drawer"
-msgstr "Bauletto in legno"
+msgstr "Kleiner Holzschubkasten"
 
 #: ../homedecor/crafts.lua:47
 #, fuzzy
 msgid "Simple Integrated Circuit"
-msgstr "Circuito integrato semplice"
+msgstr "Einfacher integrierter Schaltkreis"
 
 #: ../homedecor/crafts.lua:52
 msgid "Heating element"
@@ -462,7 +638,7 @@ msgstr ""
 #: ../homedecor/crafts.lua:117
 #, fuzzy
 msgid "Brass chainlink"
-msgstr "Recinzione di ottone/ringhiera"
+msgstr "Messingzaun/Gelaender"
 
 #: ../homedecor/crafts.lua:122
 msgid "Soda Can"
@@ -475,47 +651,47 @@ msgstr ""
 #: ../homedecor/crafts.lua:137
 #, fuzzy
 msgid "Silicon lump"
-msgstr "Grumo di silicone"
+msgstr "Silikonklumpen"
 
 #: ../homedecor/crafts.lua:154
 #, fuzzy
 msgid "Brass Ingot"
-msgstr "Lingotto di ottone"
+msgstr "Messingbarren"
 
-#: ../homedecor/crafts.lua:3330
+#: ../homedecor/crafts.lua:3254
 #, fuzzy
 msgid "Small Flower Pot"
-msgstr "Vaso per fiori di plastica nera"
+msgstr "Schwarzer Plastikblumentopf"
 
 #: ../homedecor/electronics.lua:6
 #, fuzzy
 msgid "Large Stereo Speaker"
-msgstr "Altoparlante stereo grande"
+msgstr "Grosser Lautsprecher"
 
 #: ../homedecor/electronics.lua:20
 #, fuzzy
 msgid "Large Stereo Speaker, open front"
-msgstr "Altoparlante stereo grande"
+msgstr "Grosser Lautsprecher"
 
 #: ../homedecor/electronics.lua:41
 #, fuzzy
 msgid "Small Surround Speaker"
-msgstr "Altoparlante audio surround piccolo"
+msgstr "Kleiner Lautsprecher"
 
 #: ../homedecor/electronics.lua:54
 #, fuzzy
 msgid "Stereo Receiver"
-msgstr "Ricevitore stereo"
+msgstr "Stereoanlage"
 
 #: ../homedecor/electronics.lua:66
 #, fuzzy
 msgid "Projection Screen Material"
-msgstr "Materiale per lo schermo di proiezione"
+msgstr "Projektorleinwand"
 
 #: ../homedecor/electronics.lua:82
 #, fuzzy
 msgid "Small CRT Television"
-msgstr "Piccola televisione a tubo catodico"
+msgstr "Kleiner Roehrenfernseher"
 
 #: ../homedecor/electronics.lua:103
 msgid "DVD and VCR"
@@ -525,164 +701,164 @@ msgstr ""
 msgid "Telephone"
 msgstr ""
 
-#: ../homedecor/lighting.lua:73
+#: ../homedecor/lighting.lua:21
 #, fuzzy
-msgid "Thick Glowlight (@1)"
-msgstr "Luce fosforescente bianca (sottile)"
+msgid "Thick Glowlight"
+msgstr "Weisse Gluehlampe (duenn)"
 
-#: ../homedecor/lighting.lua:91
+#: ../homedecor/lighting.lua:53
 #, fuzzy
-msgid "Thin Glowlight (@1)"
-msgstr "Luce fosforescente bianca (sottile)"
+msgid "Thin Glowlight"
+msgstr "Weisse Gluehlampe (duenn)"
 
-#: ../homedecor/lighting.lua:111
+#: ../homedecor/lighting.lua:85
 #, fuzzy
-msgid "Small Glowlight Cube (@1)"
-msgstr "Luce fosforescente gialla (cubo piccolo)"
+msgid "Small Glowlight Cube"
+msgstr "Gelbe Gluehlampe (kleiner Wuerfel)"
 
-#: ../homedecor/lighting.lua:131
+#: ../homedecor/lighting.lua:117
 msgid "Plasma Lamp"
 msgstr ""
 
-#: ../homedecor/lighting.lua:151
+#: ../homedecor/lighting.lua:137
 msgid "Plasma Ball"
 msgstr ""
 
-#: ../homedecor/lighting.lua:182
+#: ../homedecor/lighting.lua:168
 msgid "Thick Candle"
 msgstr ""
 
-#: ../homedecor/lighting.lua:203
+#: ../homedecor/lighting.lua:189
 msgid "Thin Candle"
 msgstr ""
 
-#: ../homedecor/lighting.lua:224
+#: ../homedecor/lighting.lua:210
 msgid "Candlestick (wrought iron)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:239
+#: ../homedecor/lighting.lua:225
 msgid "Candlestick (brass)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:254
+#: ../homedecor/lighting.lua:240
 #, fuzzy
 msgid "Wall sconce"
-msgstr "Torcia a muro"
+msgstr "Wandfackel"
 
-#: ../homedecor/lighting.lua:280
+#: ../homedecor/lighting.lua:266
 msgid "Oil lamp (hurricane)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:300
+#: ../homedecor/lighting.lua:286
 msgid "Oil Lamp (tabletop)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:319
+#: ../homedecor/lighting.lua:305
 msgid "Ground Lantern"
 msgstr ""
 
-#: ../homedecor/lighting.lua:337
+#: ../homedecor/lighting.lua:323
 msgid "Hanging Lantern"
 msgstr ""
 
-#: ../homedecor/lighting.lua:368
+#: ../homedecor/lighting.lua:354
 msgid "Lattice lantern (large)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:376
+#: ../homedecor/lighting.lua:362
 msgid "Lattice lantern (small)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:426
+#: ../homedecor/lighting.lua:422
 #, fuzzy
-msgid "Table Lamp (@1)"
-msgstr "Lampada da tavolo"
+msgid "Table Lamp"
+msgstr "Tischlampe"
 
-#: ../homedecor/lighting.lua:452
-msgid "Standing Lamp (@1)"
+#: ../homedecor/lighting.lua:456
+msgid "Standing Lamp"
 msgstr ""
 
-#: ../homedecor/lighting.lua:502
+#: ../homedecor/lighting.lua:507
 msgid "Desk Lamp (@1)"
 msgstr ""
 
-#: ../homedecor/lighting.lua:518
+#: ../homedecor/lighting.lua:523
 msgid "Ceiling Lamp"
 msgstr ""
 
-#: ../homedecor/lighting.lua:536
+#: ../homedecor/lighting.lua:541
 msgid "Ceiling Lamp (off)"
 msgstr ""
 
 #: ../homedecor/fences.lua:31
 #, fuzzy
 msgid "Fence/railing (@1)"
-msgstr "Recinzione di ottone/ringhiera"
+msgstr "Messingzaun/Gelaender"
 
 #: ../homedecor/fences.lua:43
 #, fuzzy
 msgid "Fence/railing with sign (@1)"
-msgstr "Recinzione di ottone/ringhiera con cartello"
+msgstr "Messingzaun/Gelaender mit Schild"
 
 #: ../homedecor/fences.lua:71
 #, fuzzy
 msgid "Unpainted Picket Fence"
-msgstr "Recinzione non verniciata di paletti"
+msgstr "Unlackierter Lattenenzaun"
 
 #: ../homedecor/fences.lua:87
 #, fuzzy
 msgid "Unpainted Picket Fence Corner"
-msgstr "Angolo della recinzione non verniciata di paletti"
+msgstr "Unlackierte Lattenenzaunecke"
 
 #: ../homedecor/fences.lua:103
 #, fuzzy
 msgid "White Picket Fence"
-msgstr "Recinzione di paletti bianca"
+msgstr "Weisser Lattenzaun"
 
 #: ../homedecor/fences.lua:119
 #, fuzzy
 msgid "White Picket Fence Corner"
-msgstr "Angolo della recinzione di paletti bianca"
+msgstr "Weisse Lattenzaunecke"
 
 #: ../homedecor/fences.lua:135
 #, fuzzy
 msgid "Wooden Privacy Fence"
-msgstr "Recinzione di isolamento in legno"
+msgstr "Sichtschutzzaun aus Holz"
 
 #: ../homedecor/fences.lua:159
 #, fuzzy
 msgid "Wooden Privacy Fence Corner"
-msgstr "Angolo della recinzione di isolamento in legno"
+msgstr "Sichtschutzzaunecke aus Holz"
 
 #: ../homedecor/fences.lua:194
 #, fuzzy
 msgid "Barbed Wire Fence"
-msgstr "Recinzione di filo spinato"
+msgstr "Stacheldrahtzaun"
 
 #: ../homedecor/fences.lua:204
 #, fuzzy
 msgid "Barbed Wire Fence Corner"
-msgstr "Angolo della recinzione di filo spinato"
+msgstr "Stacheldrahtzaunecke"
 
 #: ../homedecor/fences.lua:214
 #, fuzzy
 msgid "Chainlink Fence"
-msgstr "Rete metallica"
+msgstr "Maschendrahtzaun"
 
 #: ../homedecor/fences.lua:232
 #, fuzzy
 msgid "Chainlink Fence Corner"
-msgstr "Angolo della rete metallica"
+msgstr "Maschendrahtzaunecke"
 
 #: ../homedecor/fences.lua:249
 #, fuzzy
 msgid "Wrought Iron fence (type 2)"
-msgstr "Recinzione/ringhiera in ferro battuto"
+msgstr "Schmiedeeiserner Zaun/Gelaender"
 
 #: ../homedecor/fences.lua:276
 #, fuzzy
 msgid "Wrought Iron fence (type 2) Corner"
-msgstr "Recinzione/ringhiera in ferro battuto"
+msgstr "Schmiedeeiserner Zaun/Gelaender"
 
 #: ../homedecor/shutters.lua:6
 msgid "unpainted oak"
@@ -695,12 +871,12 @@ msgstr ""
 #: ../homedecor/shutters.lua:11
 #, fuzzy
 msgid "light blue"
-msgstr "destra"
+msgstr "rechts"
 
 #: ../homedecor/shutters.lua:35
 #, fuzzy
 msgid "Wooden Shutter (@1)"
-msgstr "Persiana in legno (rossa)"
+msgstr "Holzjalousie (rot)"
 
 #: ../homedecor/exterior.lua:12
 msgid "Barbecue"
@@ -717,7 +893,7 @@ msgstr ""
 #: ../homedecor/exterior.lua:106 ../homedecor/exterior.lua:121
 #, fuzzy
 msgid "Deck Chair"
-msgstr "Sedia"
+msgstr "Stuhl"
 
 #: ../homedecor/exterior.lua:137
 msgid "Doghouse"
@@ -734,7 +910,7 @@ msgstr ""
 #: ../homedecor/exterior.lua:194
 #, fuzzy
 msgid "white wood"
-msgstr "bianco"
+msgstr "weiss"
 
 #: ../homedecor/exterior.lua:195
 msgid "wood, with vegetation"
@@ -763,12 +939,12 @@ msgstr ""
 #: ../homedecor/bathroom_sanitation.lua:17
 #, fuzzy
 msgid "Toilet"
-msgstr "Water"
+msgstr "Toilette"
 
 #: ../homedecor/bathroom_sanitation.lua:68
 #, fuzzy
 msgid "Toilet paper"
-msgstr "Water"
+msgstr "Toilette"
 
 #: ../homedecor/bathroom_sanitation.lua:89
 msgid "Bathroom Sink"
@@ -785,12 +961,12 @@ msgstr ""
 #: ../homedecor/bathroom_sanitation.lua:185
 #, fuzzy
 msgid "Shower Tray"
-msgstr "Piatto della doccia"
+msgstr "Duschtasse"
 
 #: ../homedecor/bathroom_sanitation.lua:225
 #, fuzzy
 msgid "Shower Head"
-msgstr "Pigna della doccia"
+msgstr "Duschbrause"
 
 #: ../homedecor/bathroom_sanitation.lua:265
 msgid "Bathroom sundries set"
@@ -799,7 +975,7 @@ msgstr ""
 #: ../homedecor/climate-control.lua:6
 #, fuzzy
 msgid "Air Conditioner"
-msgstr "Condizionatore dell'aria"
+msgstr "Klimaanlage"
 
 #: ../homedecor/climate-control.lua:44
 msgid "Desk Fan"
@@ -820,42 +996,42 @@ msgstr ""
 #: ../homedecor/doors_and_gates.lua:124
 #, fuzzy
 msgid "Mahogany Closet Door (@1 opening)"
-msgstr "Porta dell'armadio in mogano"
+msgstr "Wandschranktuer aus Mahagoni"
 
 #: ../homedecor/doors_and_gates.lua:129
 #, fuzzy
 msgid "Oak Closet Door (@1 opening)"
-msgstr "Porta dell'armadio in quercia"
+msgstr "Wandschranktuer aus Eiche"
 
 #: ../homedecor/doors_and_gates.lua:134
 #, fuzzy
 msgid "Fancy Wood/Glass Door (@1 opening)"
-msgstr "Porta decorativa in vetro e legno"
+msgstr "Schicke Holz/Glastuer"
 
 #: ../homedecor/doors_and_gates.lua:144
 #, fuzzy
 msgid "Glass Office Door (@1 opening)"
-msgstr "Porta dell'ufficio in vetro"
+msgstr "Glasbuerotuer"
 
 #: ../homedecor/doors_and_gates.lua:149
 #, fuzzy
 msgid "Glass and Wood, Oak-colored (@1 opening)"
-msgstr "Vetro e legno, color quercia"
+msgstr "Glas-Holz-Tuer, eichefarben"
 
 #: ../homedecor/doors_and_gates.lua:158
 #, fuzzy
 msgid "Glass and Wood, Mahogany-colored (@1 opening)"
-msgstr "Vetro e legno, color mogano"
+msgstr "Glas-Holz-Tuer, mahagonifarben"
 
 #: ../homedecor/doors_and_gates.lua:167
 #, fuzzy
 msgid "Glass and Wood, White (@1 opening)"
-msgstr "Vetro e legno, bianca"
+msgstr "Glas-Holz-Tuer, weiss"
 
 #: ../homedecor/doors_and_gates.lua:176
 #, fuzzy
 msgid "Plain Wooden Door (@1 opening)"
-msgstr "Porta in legno semplice"
+msgstr "Einfache Holztuer"
 
 #: ../homedecor/doors_and_gates.lua:181
 msgid "White Bedroom Door (@1 opening)"
@@ -864,7 +1040,7 @@ msgstr ""
 #: ../homedecor/doors_and_gates.lua:186
 #, fuzzy
 msgid "Wrought Iron Gate/Door (@1 opening)"
-msgstr "Recinzione/ringhiera in ferro battuto"
+msgstr "Schmiedeeiserner Zaun/Gelaender"
 
 #: ../homedecor/doors_and_gates.lua:191
 msgid "Wooden door with glass insert (@1 opening)"
@@ -877,32 +1053,32 @@ msgstr ""
 #: ../homedecor/doors_and_gates.lua:212
 #, fuzzy
 msgid "left"
-msgstr "sinistra"
+msgstr "links"
 
 #: ../homedecor/doors_and_gates.lua:212
 #, fuzzy
 msgid "right"
-msgstr "destra"
+msgstr "rechts"
 
 #: ../homedecor/doors_and_gates.lua:296
 #, fuzzy
 msgid "Unpainted Picket Fence Gate"
-msgstr "Cancello della recinzione non verniciata di paletti"
+msgstr "Unlackiertes Lattenzauntor"
 
 #: ../homedecor/doors_and_gates.lua:297
 #, fuzzy
 msgid "White Picket Fence Gate"
-msgstr "Cancello della recinzione di paletti bianca"
+msgstr "Weisses Lattenzauntor"
 
 #: ../homedecor/doors_and_gates.lua:298
 #, fuzzy
 msgid "Barbed Wire Fence Gate"
-msgstr "Cancello della recinzione di filo spinato"
+msgstr "Stacheldrahtzauntor"
 
 #: ../homedecor/doors_and_gates.lua:299
 #, fuzzy
 msgid "Chainlink Fence Gate"
-msgstr "Cancello della rete metallica"
+msgstr "Maschendrahtzauntor"
 
 #: ../homedecor/doors_and_gates.lua:526
 msgid "Japanese wall (top)"
@@ -924,20 +1100,20 @@ msgstr ""
 msgid "Japanese-style door"
 msgstr ""
 
-#: ../homedecor/init.lua:133
+#: ../homedecor/init.lua:148
 #, fuzzy
 msgid "Loaded!"
-msgstr "Caricato!"
+msgstr "Geladen!"
 
 #: ../homedecor/misc-nodes.lua:7
 #, fuzzy
 msgid "Textured Ceiling Paint"
-msgstr "Vernice con trama per il soffitto"
+msgstr "Deckenfarbe (Raufaser)"
 
 #: ../homedecor/misc-nodes.lua:19
 #, fuzzy
 msgid "Drop-Ceiling Tile"
-msgstr "Piastrella del controsoffitto"
+msgstr "Deckenplatte"
 
 #: ../homedecor/misc-nodes.lua:31
 msgid "small"
@@ -982,7 +1158,7 @@ msgstr ""
 #: ../homedecor/misc-nodes.lua:90
 #, fuzzy
 msgid "Viola"
-msgstr "viola"
+msgstr "violett"
 
 #: ../homedecor/misc-nodes.lua:91
 msgid "Cactus"
@@ -999,12 +1175,12 @@ msgstr ""
 #: ../homedecor/misc-nodes.lua:127
 #, fuzzy
 msgid "Brass Pole"
-msgstr "Palo di ottone"
+msgstr "Messingstange"
 
 #: ../homedecor/misc-nodes.lua:145
 #, fuzzy
 msgid "Wrought Iron Pole"
-msgstr "Palo di ferro battuto"
+msgstr "Schmiedeeiserne Stange"
 
 #: ../homedecor/misc-nodes.lua:167
 msgid "Fishtank"
@@ -1030,7 +1206,7 @@ msgstr ""
 #: ../homedecor/misc-nodes.lua:273
 #, fuzzy
 msgid "Pool Table"
-msgstr "Tavolo"
+msgstr "Tisch"
 
 #: ../homedecor/misc-nodes.lua:298
 msgid "Piano"
@@ -1087,7 +1263,7 @@ msgstr ""
 #: ../homedecor/tables.lua:8
 #, fuzzy
 msgid "Small round glass table"
-msgstr "Altoparlante audio surround piccolo"
+msgstr "Kleiner Lautsprecher"
 
 #: ../homedecor/tables.lua:9
 msgid "Large glass table piece"
@@ -1096,12 +1272,12 @@ msgstr ""
 #: ../homedecor/tables.lua:12
 #, fuzzy
 msgid "Small square wooden table"
-msgstr "Bauletto in legno"
+msgstr "Kleiner Holzschubkasten"
 
 #: ../homedecor/tables.lua:13
 #, fuzzy
 msgid "Small round wooden table"
-msgstr "Altoparlante audio surround piccolo"
+msgstr "Kleiner Lautsprecher"
 
 #: ../homedecor/tables.lua:14
 msgid "Large wooden table piece"
@@ -1110,17 +1286,17 @@ msgstr ""
 #: ../homedecor/tables.lua:134
 #, fuzzy
 msgid "Utility Table"
-msgstr "Tavolo di lavoro"
+msgstr "Arbeitsplatte"
 
 #: ../homedecor/tables.lua:173
 #, fuzzy
 msgid "Table Legs (@1)"
-msgstr "Gambe in ottone del tavolo"
+msgstr "Messingtischbeine"
 
 #: ../homedecor/tables.lua:189
 #, fuzzy
 msgid "Legs for Utility Table"
-msgstr "Gambe per il tavolo da lavoro"
+msgstr "Tischbeine fuer Arbeitsplatte"
 
 #: ../homedecor/books.lua:45
 msgid "Writable Book (@1)"
@@ -1133,17 +1309,17 @@ msgstr ""
 #: ../homedecor/furniture.lua:4
 #, fuzzy
 msgid "Table"
-msgstr "Tavolo"
+msgstr "Tisch"
 
 #: ../homedecor/furniture.lua:5
 #, fuzzy
 msgid "Mahogany Table"
-msgstr "Porta dell'armadio in mogano"
+msgstr "Wandschranktuer aus Mahagoni"
 
 #: ../homedecor/furniture.lua:6
 #, fuzzy
 msgid "White Table"
-msgstr "Tavolo di lavoro"
+msgstr "Arbeitsplatte"
 
 #: ../homedecor/furniture.lua:35
 msgid "plain"
@@ -1152,12 +1328,12 @@ msgstr ""
 #: ../homedecor/furniture.lua:77
 #, fuzzy
 msgid "Kitchen chair (@1)"
-msgstr "Armadietto della cucina"
+msgstr "Kuechenschrank"
 
 #: ../homedecor/furniture.lua:93
 #, fuzzy
 msgid "Armchair (@1)"
-msgstr "Poltrona (%s)"
+msgstr "Sessel (%s)"
 
 #: ../homedecor/furniture.lua:122
 msgid "Bookshelf (open-frame)"
@@ -1170,7 +1346,7 @@ msgstr ""
 #: ../homedecor/handlers/inventory.lua:87
 #, fuzzy
 msgid "@1 moves stuff in @2 at @3"
-msgstr "%s sposta delle cose nel comodino alla posizione %s"
+msgstr "%s bewegt etwas im Nachttisch"
 
 #: ../homedecor/handlers/inventory.lua:92
 msgid "@1 moves @2 to @3 at @4"
@@ -1183,19 +1359,19 @@ msgstr ""
 #: ../homedecor/handlers/inventory.lua:110
 #, fuzzy
 msgid "@1 (owned by @2)"
-msgstr "%s (di proprietà di %s)"
+msgstr "%s (gehoert %s)"
 
 #: ../homedecor/handlers/inventory.lua:127
 #: ../homedecor/handlers/inventory.lua:145
 #: ../homedecor/handlers/inventory.lua:163
 #, fuzzy
 msgid "@1 tried to access a @2 belonging to @3 at @4"
-msgstr "%s ha provato ad accedere a %s di proprietà di %s alla posizione %s"
+msgstr "%s versuchte Zugang zu %s von %s zu bekommen bei %s"
 
 #: ../homedecor/handlers/inventory.lua:173
 #, fuzzy
 msgid "@1 (Locked)"
-msgstr "%s (Con lucchetto)"
+msgstr "%s (verschlossen)"
 
 #: ../homedecor/handlers/furnaces.lua:91
 msgid "Furnace"
@@ -1212,28 +1388,29 @@ msgid "@1 (active)"
 msgstr ""
 
 #: ../homedecor/handlers/furnaces.lua:234
+#, fuzzy
 msgid "@1 (active: @2%)"
-msgstr ""
+msgstr "%s ist aktiv: %d%%"
 
 #: ../homedecor/handlers/furnaces.lua:254
 #, fuzzy
 msgid "@1 (out of fuel)"
-msgstr "Senza combustibile"
+msgstr ": kein Brennmaterial vorhanden"
 
 #: ../homedecor/handlers/furnaces.lua:270
 #, fuzzy
 msgid "@1 (output bins are full)"
-msgstr "i contenitori sono pieni"
+msgstr ": Produktfelder sind voll"
 
 #: ../homedecor/office.lua:4 ../homedecor/office.lua:13
 #, fuzzy
 msgid "Filing cabinet"
-msgstr "Armadietto sotto il lavandino"
+msgstr "Unterschrank"
 
 #: ../homedecor/bathroom_furniture.lua:5
 #, fuzzy
 msgid "white/grey"
-msgstr "bianco"
+msgstr "weiss"
 
 #: ../homedecor/bathroom_furniture.lua:6
 msgid "white/dark grey"
@@ -1250,7 +1427,7 @@ msgstr ""
 #: ../homedecor/bathroom_furniture.lua:9
 #, fuzzy
 msgid "white/red"
-msgstr "bianco"
+msgstr "weiss"
 
 #: ../homedecor/bathroom_furniture.lua:10
 msgid "white/green"
@@ -1259,7 +1436,7 @@ msgstr ""
 #: ../homedecor/bathroom_furniture.lua:11
 #, fuzzy
 msgid "white/blue"
-msgstr "bianco"
+msgstr "weiss"
 
 #: ../homedecor/bathroom_furniture.lua:12
 msgid "white/yellow"
@@ -1268,7 +1445,7 @@ msgstr ""
 #: ../homedecor/bathroom_furniture.lua:13
 #, fuzzy
 msgid "white/tan"
-msgstr "bianco"
+msgstr "weiss"
 
 #: ../homedecor/bathroom_furniture.lua:27
 msgid "Bathroom/kitchen tiles (@1)"
@@ -1282,231 +1459,208 @@ msgstr ""
 #: ../homedecor/bathroom_furniture.lua:80
 #, fuzzy
 msgid "Medicine cabinet"
-msgstr "Armadietto sotto il lavandino"
+msgstr "Unterschrank"
 
 #~ msgid "%s moves stuff in kitchen cabinet at %s "
-#~ msgstr "%s sposta delle cose nell'armadietto della cucina a %s"
+#~ msgstr "%s bewegt etwas im Kuechenschrank bei %s"
 
 #~ msgid "%s moves stuff to kitchen cabinet at %s "
-#~ msgstr "%s mette delle cose nell'armadietto della cucina a %s"
+#~ msgstr "%s legt etwas in den Kuechenschrank bei %s"
 
 #~ msgid "%s takes stuff from kitchen cabinet at %s "
-#~ msgstr "%s prende delle cose nell'armadietto della cucina a %s"
-
-#~ msgid "(Top Half, %s-opening) "
-#~ msgstr "(Metà superiore, apertura a %s)"
-
-#~ msgid "(%s-opening) "
-#~ msgstr "(apertura a %s)"
+#~ msgstr "%s nimmt etwas aus dem Kuechenschrank bei %s"
 
 #~ msgid "Not enough space above that spot to place a door! "
-#~ msgstr "Non c'è abbastanza spazio sopra quel punto per mettere una porta!"
+#~ msgstr ""
+#~ "Es gibt nicht genug Raum ueber dieser Stelle um die Tuer zu platzieren!"
 
 #~ msgid "Bucket of white paint "
-#~ msgstr "Secchio di vernice bianca"
+#~ msgstr "Eimer mit weisser Farbe"
 
 #~ msgid "Legs for Small Utility table "
-#~ msgstr "Gambe per il tavolo da lavoro piccolo"
+#~ msgstr "Tischbeine fuer kleinen Arbeitsplatte"
 
 #~ msgid "Titanium Dioxide "
-#~ msgstr "Biossido di titanio"
+#~ msgstr "Titandioxid"
 
 #~ msgid "Wrought Iron Fence/railing with sign "
-#~ msgstr "Recinzione/ringhiera in ferro battuto con cartello"
+#~ msgstr "Schmiedeeiserner Zaun/Gelaender mit Schild"
 
 #~ msgid "want to simply place the wielded item like usual. "
-#~ msgstr "vuole mettere l'oggetto impugnato come sempre."
+#~ msgstr "Moechte einfach den getragenen Gegenstand wie gewohnt platzieren."
 
 #~ msgid "Red "
-#~ msgstr "rosso"
+#~ msgstr "rot"
 
 #~ msgid "Pink "
 #~ msgstr "rosa"
 
 #~ msgid "Blue "
-#~ msgstr "blu"
+#~ msgstr "blau"
 
 #~ msgid "Sink "
-#~ msgstr "Lavandino"
+#~ msgstr "Waschbecken"
 
 #~ msgid "Taps "
-#~ msgstr "Rubinetti"
+#~ msgstr "Wasserhahn"
 
 #~ msgid "Asphalt Shingles (outer corner) "
-#~ msgstr "Mattonelle di asfalto (angolo esterno)"
+#~ msgstr "Asphaltschindeln (Aussenecke)"
 
 #~ msgid "Asphalt Shingles (inner corner) "
-#~ msgstr "Mattonelle di asfalto (angolo interno)"
+#~ msgstr "Asphaltschindeln (Innenecke)"
 
 #~ msgid "Wrought Iron Table Legs "
-#~ msgstr "Gambe in ferro battuto del tavolo"
+#~ msgstr "Schmiedeeiserne Tischbeine"
 
 #~ msgid "Glass Table (Small, Round) "
-#~ msgstr "Tavolo di vetro (piccolo, rotondo)"
+#~ msgstr "Glastischplatte (klein, rund)"
 
 #~ msgid "Glass Table (Small, Square) "
-#~ msgstr "Tavolo di vetro (piccolo, quadrato)"
+#~ msgstr "Glastischplatte (klein, quadratisch)"
 
 #~ msgid "Glass Table Piece (large) "
-#~ msgstr "Pezzo di tavolo di vetro (grande)"
+#~ msgstr "Glastischplatte (gross)"
 
 #~ msgid "Green Plastic Flower Pot "
-#~ msgstr "Vaso per fiori di plastica verde"
+#~ msgstr "Gruener Plastikblumentopf"
 
 #~ msgid "Large Area Rug "
-#~ msgstr "Tappeto per aree grandi"
+#~ msgstr "Grosser Teppich"
 
 #~ msgid "Small Throw Rug "
-#~ msgstr "Tappetino"
+#~ msgstr "Kleiner Teppich"
 
 #~ msgid "Terracotta Flower Pot "
-#~ msgstr "Vaso per fiori in terracotta"
+#~ msgstr "Terrakottablumentopf"
 
 #~ msgid "Terracotta Shingles (outer corner) "
-#~ msgstr "Tegole di terracotta (angolo esterno)"
+#~ msgstr "Terrakottaschindeln (Aussenecke)"
 
 #~ msgid "Terracotta Shingles (inner corner) "
-#~ msgstr "Tegole di terracotta (angolo interno)"
+#~ msgstr "Terrakottaschindeln (Innenecke)"
 
 #~ msgid "Utility table mk2 "
-#~ msgstr "Tavolo di lavoro mk2"
+#~ msgstr "Arbeitsplatte Modell 2"
 
 #~ msgid "Wooden Shutter (Black) "
-#~ msgstr "Persiana in legno (nera)"
+#~ msgstr "Holzjalousie (schwarz)"
 
 #~ msgid "Wooden Shutter (Dark grey) "
-#~ msgstr "Persiana in legno (grigia scura)"
+#~ msgstr "Holzjalousie (dunkelgrau)"
 
 #~ msgid "Wooden Shutter (Forest green) "
-#~ msgstr "Persiana in legno (verde foresta)"
+#~ msgstr "Holzjalousie (waldgruen)"
 
 #~ msgid "Wooden Shutter (Grey) "
-#~ msgstr "Persiana in legno (grigia)"
+#~ msgstr "Holzjalousie (grau)"
 
 #~ msgid "Wooden Shutter (Light blue) "
-#~ msgstr "Persiana in legno (blu chiaro)"
+#~ msgstr "Holzjalousie (hellblau)"
 
 #~ msgid "Wooden Shutter (Violet) "
-#~ msgstr "Persiana in legno (viola)"
+#~ msgstr "Holzjalousie (violett)"
 
 #~ msgid "Wooden Shutter (Mahogany) "
-#~ msgstr "Persiana in legno (mogano)"
+#~ msgstr "Holzjalousie (mahagoni)"
 
 #~ msgid "Wooden Shutter (Unpainted oak) "
-#~ msgstr "Persiana in legno (quercia non verniciata)"
+#~ msgstr "Holzjalousie (eiche)"
 
 #~ msgid "Wooden Shutter (White) "
-#~ msgstr "Persiana in legno (bianca)"
+#~ msgstr "Holzjalousie (weiss)"
 
 #~ msgid "Wooden Shutter (Yellow) "
-#~ msgstr "Persiana in legno (gialla)"
+#~ msgstr "Holzjalousie (gelb)"
 
 #~ msgid "Wood Table Piece (large)"
-#~ msgstr "Pezzo di tavolo in legno (grande)"
+#~ msgstr "Holztischplatte (gross)"
 
 #~ msgid "Wood Table (Small, Round) "
-#~ msgstr "Tavolo in legno (piccolo, rotondo)"
+#~ msgstr "Holztischplatte (klein, rund)"
 
 #~ msgid "Wood Table (Small, Square) "
-#~ msgstr "Tavolo in legno (piccolo, quadrato)"
+#~ msgstr "Holztischplatte (klein, quadratisch)"
 
 #~ msgid "someone "
-#~ msgstr "qualcuno"
+#~ msgstr "jemand"
 
 #~ msgid "Sorry, %s owns that spot. "
-#~ msgstr "Spiacente, quel punto è di proprietà di %s."
+#~ msgstr "Tut mir leid, %s gehoert diese Stelle."
 
 #~ msgid "White Glowlight (small cube) "
-#~ msgstr "Luce fosforescente bianca (cubo piccolo)"
+#~ msgstr "Weisse Gluehlampe (kleiner Wuerfel)"
 
 #~ msgid "White Glowlight (small cube, on ceiling) "
-#~ msgstr "Luce fosforescente bianca (cubo piccolo, sul soffitto)"
+#~ msgstr "Weisse Gluehlampe (kleiner Wuerfel, an der Decke)"
 
 #~ msgid "White Glowlight (thick, on wall) "
-#~ msgstr "Luce fosforescente bianca (spessa, a muro)"
+#~ msgstr "Weisse Gluehlampe (dick, an der Wand)"
 
 #~ msgid "White Glowlight (thin, on wall) "
-#~ msgstr "Luce fosforescente bianca (sottile, a muro)"
+#~ msgstr "Weisse Gluehlampe (duenn, an der Wand)"
 
 #~ msgid "Yellow Glowlight (small cube, on ceiling) "
-#~ msgstr "Luce fosforescente gialla (cubo piccolo, sul soffitto)"
+#~ msgstr "Gelbe Gluehlampe (kleiner Wuerfel, an der Decke)"
 
 #~ msgid "Yellow Glowlight (thick) "
-#~ msgstr "Luce fosforescente gialla (spessa)"
+#~ msgstr "Gelbe Gluehlampe (dick)"
 
 #~ msgid "Yellow Glowlight (thick, on wall) "
-#~ msgstr "Luce fosforescente gialla (spessa, a muro)"
+#~ msgstr "Gelbe Gluehlampe (dick, an der Wand)"
 
 #~ msgid "Yellow Glowlight (thin) "
-#~ msgstr "Luce fosforescente gialla (sottile)"
+#~ msgstr "Gelbe Gluehlampe (duenn)"
 
 #~ msgid "Yellow Glowlight (thin, on wall) "
-#~ msgstr "Luce fosforescente gialla (sottile, a muro)"
+#~ msgstr "Gelbe Gluehlampe (duenn, an der Wand)"
 
 #~ msgid "Locked Fridge "
-#~ msgstr "Frigorifero con lucchetto"
+#~ msgstr "Verschlossener Kuehlschrank"
 
 #~ msgid "Locked Cabinet "
-#~ msgstr "Armadietto con lucchetto"
+#~ msgstr "Verschlossener Schrank"
 
 #~ msgid "Locked Nightstand "
-#~ msgstr "Comodino con lucchetto"
+#~ msgstr "Verschlossener Nachttisch"
 
 #~ msgid "Locked Oven "
-#~ msgstr "Forno con lucchetto"
+#~ msgstr "Verschlossener Herd"
 
 #~ msgid "Locked Oven (active) "
-#~ msgstr "Forno con lucchetto (attivo)"
+#~ msgstr "Verschlossener Herd (aktiv)"
 
 #~ msgid "Locked Microwave Oven "
-#~ msgstr "Forno a microonde con lucchetto"
+#~ msgstr "Verschlossene Mikrowelle"
 
 #~ msgid "Locked Microwave Oven (active) "
-#~ msgstr "Forno a microonde con lucchetto (attivo)"
+#~ msgstr "Verschlossene Mikrowelle (aktiv)"
 
 #~ msgid "Mahogany Nightstand with One Drawer "
-#~ msgstr "Comodino in mogano con un cassetto"
+#~ msgstr "Mahagoninachttisch mit einer Schublade"
 
 #~ msgid "Mahogany Nightstand with Two Drawers "
-#~ msgstr "Comodino in mogano con due cassetti"
+#~ msgstr "Mahagoninachttisch mit zwei Schubladen"
 
 #~ msgid "%s moves stuff to nightstand at %s "
-#~ msgstr "%s mette delle cose nel comodino alla posizione %s"
+#~ msgstr "%s legt etwas in den Nachttisch"
 
 #~ msgid "%s takes stuff from nightstand at %s "
-#~ msgstr "%s prende delle cose nel comodino alla posizione %s"
+#~ msgstr "%s nimmt etwas aus dem Nachttisch"
 
 #~ msgid "%s is empty "
-#~ msgstr "%s è vuoto"
+#~ msgstr "%s ist leer"
 
 #~ msgid "%s moves stuff in refrigerator at %s "
-#~ msgstr "%s sposta delle cose nel frigorifero alla posizione %s"
+#~ msgstr "%s bewegt etwas im Kuehlschrank bei %s"
 
 #~ msgid "%s moves stuff to refrigerator at %s "
-#~ msgstr "%s mette delle cose nel comodino alla posizione %s"
+#~ msgstr "%s legt etwas in den Kuehlschrank bei %s"
 
 #~ msgid "%s takes stuff from refrigerator at %s "
-#~ msgstr "%s prende delle cose nel comodino alla posizione %s"
+#~ msgstr "%s nimmt etwas aus dem Kuehlschrank bei %s"
 
 #~ msgid "Not enough vertical space to place a refrigerator! "
-#~ msgstr "Non c'è abbastanza spazio verticale per mettere un frigorifero!"
-
-#~ msgid "%s wrote \"%s\" to sign at %s "
-#~ msgstr "%s ha scritto \"%s\" sul cartello alla posizione %s"
-
-#~ msgid "Reading cached character database. "
-#~ msgstr "Lettura della banca dati dei caratteri nella cache."
-
-#~ msgid "Font seems to have changed. Rebuilding cache. "
-#~ msgstr "Sembra che i caratteri siano cambiati. Ricostruzione della cache."
-
-#~ msgid "Could not find font line height in cached DB. Trying brute force. "
 #~ msgstr ""
-#~ "Non è stato possibile trovare l'altezza della riga del carattere nella "
-#~ "banca dati nella cache."
-
-#~ msgid "Registered %s and %s "
-#~ msgstr "Registrato %s e %s"
-
-#~ msgid "signs loaded "
-#~ msgstr "cartelli caricati"
+#~ "Es gibt nicht genug Raum ueber dieser Stelle um den Kuehlschrank zu "
+#~ "platzieren!"

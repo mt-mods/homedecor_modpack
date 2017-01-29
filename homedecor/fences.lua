@@ -14,7 +14,7 @@ if signs_modpath then
 	sign_post_model = signs_lib.sign_post_model.nodebox
 end
 
-local S = homedecor.gettext
+local S = homedecor_i18n.gettext
 
 local function N_(x) return x end
 

@@ -1,6 +1,6 @@
 -- This file supplies Kitchen cabinets and kitchen sink
 
-local S = homedecor.gettext
+local S = homedecor_i18n.gettext
 
 local cabinet_sides = "(default_wood.png^[transformR90)^homedecor_kitchen_cabinet_bevel.png"
 local cabinet_bottom = "(default_wood.png^[colorize:#000000:100)^(homedecor_kitchen_cabinet_bevel.png^[colorize:#46321580)"

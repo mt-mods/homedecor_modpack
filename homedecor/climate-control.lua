@@ -1,6 +1,6 @@
 -- Nodes that would affect the local temperature e.g. fans, heater, A/C
 
-local S = homedecor.gettext
+local S = homedecor_i18n.gettext
 
 homedecor.register("air_conditioner", {
 	description = S("Air Conditioner"),

@@ -1,4 +1,5 @@
-local S = homedecor.gettext
+
+local S = homedecor_i18n.gettext
 
 homedecor.register("filing_cabinet", {
 	description = S("Filing cabinet"),

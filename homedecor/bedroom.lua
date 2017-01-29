@@ -1,5 +1,5 @@
 
-local S, NS = homedecor.gettext, homedecor.ngettext
+local S = homedecor_i18n.gettext
 
 local function N_(x) return x end
 
