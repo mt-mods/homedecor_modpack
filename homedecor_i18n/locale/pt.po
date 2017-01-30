@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-29 20:10-0300\n"
+"POT-Creation-Date: 2017-01-29 21:44-0300\n"
 "PO-Revision-Date: 2017-01-29 00:21-0200\n"
 "Last-Translator: Aracnus <frederico@teia.bio.br>\n"
 "Language-Team: Portuguese\n"
@@ -59,102 +59,159 @@ msgstr ""
 msgid "Chess board tiling"
 msgstr ""
 
-#: ../building_blocks/init.lua:254
+#. Translators: "Brobble" is a portmanteau of "Brick" and "Cobble".
+#. Translate however you see fit.
+#: ../building_blocks/init.lua:256
 msgid "Brobble Spread"
 msgstr ""
 
-#: ../building_blocks/init.lua:270
+#: ../building_blocks/init.lua:272
 msgid "Gravel Spread"
 msgstr ""
 
-#: ../building_blocks/init.lua:291
+#: ../building_blocks/init.lua:293
 #, fuzzy
 msgid "Hardwood"
 msgstr "madeira"
 
-#: ../building_blocks/init.lua:454
+#: ../building_blocks/init.lua:456
 msgid "Marble stair"
 msgstr ""
 
-#: ../building_blocks/init.lua:455
+#: ../building_blocks/init.lua:457
 msgid "Marble slab"
 msgstr ""
 
-#: ../building_blocks/init.lua:460
+#: ../building_blocks/init.lua:462
 msgid "Hardwood stair"
 msgstr ""
 
-#: ../building_blocks/init.lua:461
+#: ../building_blocks/init.lua:463
 msgid "Hardwood slab"
 msgstr ""
 
-#: ../building_blocks/init.lua:466
+#: ../building_blocks/init.lua:468
 msgid "Grass stair"
 msgstr ""
 
-#: ../building_blocks/init.lua:467
+#: ../building_blocks/init.lua:469
 #, fuzzy
 msgid "Grass slab"
 msgstr "Poste de bronze"
 
-#: ../building_blocks/init.lua:472
+#: ../building_blocks/init.lua:474
 msgid "Tar stair"
 msgstr ""
 
-#: ../building_blocks/init.lua:473
+#: ../building_blocks/init.lua:475
 msgid "Tar slab"
 msgstr ""
 
-#: ../building_blocks/init.lua:478
+#: ../building_blocks/init.lua:480
 msgid "Grate Stair"
 msgstr ""
 
-#: ../building_blocks/init.lua:479
+#: ../building_blocks/init.lua:481
 msgid "Grate Slab"
 msgstr ""
 
-#: ../building_blocks/init.lua:484
+#: ../building_blocks/init.lua:486
 msgid "Adobe stair"
 msgstr ""
 
-#: ../building_blocks/init.lua:485
+#: ../building_blocks/init.lua:487
 msgid "Adobe slab"
 msgstr ""
 
-#: ../building_blocks/init.lua:490
+#: ../building_blocks/init.lua:492
 msgid "Roofing stair"
 msgstr ""
 
-#: ../building_blocks/init.lua:491
+#: ../building_blocks/init.lua:493
 msgid "Roofing slab"
 msgstr ""
 
-#: ../building_blocks/init.lua:543
+#: ../building_blocks/init.lua:545
 #, fuzzy
 msgid "Tar"
 msgstr "Torradeira"
 
-#: ../building_blocks/init.lua:550
+#: ../building_blocks/init.lua:552
 #, fuzzy
 msgid "Marble"
 msgstr "mármore"
 
-#: ../building_blocks/init.lua:574
+#: ../building_blocks/init.lua:576
 msgid "Tar Knife"
 msgstr ""
 
-#: ../building_blocks/init.lua:596 ../building_blocks/init.lua:614
+#: ../building_blocks/init.lua:598 ../building_blocks/init.lua:616
 #, fuzzy
 msgid "Granite"
 msgstr "granito"
 
-#: ../computer/miscitems.lua:13 ../homedecor/crafts.lua:32
+#: ../inbox/init.lua:25
+msgid "Mailbox"
+msgstr ""
+
+#: ../inbox/init.lua:42
+msgid "@1's Mailbox"
+msgstr ""
+
+#: ../lavalamp/init.lua:7
+#, fuzzy
+msgid "Lava Lamp"
+msgstr "Lâmpada de Plasma"
+
+#: ../lavalamp/init.lua:50
+#, fuzzy
+msgid "Lava Lamp (off)"
+msgstr "Luminária de Teto (desligada)"
+
+#: ../computer/miscitems.lua:12 ../homedecor/crafts.lua:32
 msgid "Plastic sheet"
 msgstr "Folha de Plástico"
 
-#: ../computer/miscitems.lua:18
+#: ../computer/miscitems.lua:17
 msgid "Unprocessed Plastic base"
 msgstr "Base de plástico não Processada"
+
+#: ../computer/computers.lua:163
+msgid "Monitor and keyboard"
+msgstr ""
+
+#: ../computer/computers.lua:205
+msgid "WIFI Router"
+msgstr ""
+
+#: ../computer/computers.lua:233
+msgid "Computer Tower"
+msgstr ""
+
+#: ../computer/computers.lua:250
+msgid "Printer-Scanner Combo"
+msgstr ""
+
+#: ../computer/computers.lua:278
+msgid "Rack Server"
+msgstr ""
+
+#: ../computer/computers.lua:309
+#, fuzzy
+msgid "Not enough vertical space to place a server!"
+msgstr "Não existe espaço vertical suficiente para colocar uma porta."
+
+#: ../computer/tetris.lua:41 ../computer/tetris.lua:266
+msgid "New Game"
+msgstr ""
+
+#: ../computer/tetris.lua:247
+msgid "Tetris Arcade"
+msgstr ""
+
+#: ../computer/tetris.lua:282
+msgid "No room for place the Arcade!"
+msgstr ""
 
 #: ../chains/init.lua:18
 #, fuzzy
@@ -184,6 +241,25 @@ msgstr "Castiçal (ferro forjado)"
 msgid "Chandelier (brass)"
 msgstr "Castiçal (latão)"
 
+#: ../itemframes/init.lua:104
+#, fuzzy
+msgid "Item frame"
+msgstr "Quadro de Foto"
+
+#: ../itemframes/init.lua:127
+#, fuzzy
+msgid "Item frame (owned by @1)"
+msgstr "@1 (pertence a @2)"
+
+#: ../itemframes/init.lua:165
+msgid "Pedestal"
+msgstr ""
+
+#: ../itemframes/init.lua:187
+#, fuzzy
+msgid "Pedestal (owned by @1)"
+msgstr "@1 (pertence a @2)"
+
 #: ../plasmascreen/init.lua:7
 msgid "Plasma Screen TV Stand"
 msgstr ""
@@ -195,6 +271,123 @@ msgstr "Lâmpada de Plasma"
 
 #: ../plasmascreen/init.lua:136
 msgid "Plasma TV (off)"
+msgstr ""
+
+#: ../lrfurn/longsofas.lua:21
+msgid "Long Sofa (@1)"
+msgstr ""
+
+#: ../lrfurn/longsofas.lua:46
+msgid "No room to place the sofa!"
+msgstr ""
+
+#: ../lrfurn/longsofas.lua:87 ../lrfurn/armchairs.lua:60 ../lrfurn/sofas.lua:86
+#: ../lrfurn/endtable.lua:52 ../lrfurn/coffeetable.lua:129
+#: ../homedecor/init.lua:144
+msgid "Loaded!"
+msgstr "Carregado!"
+
+#: ../lrfurn/armchairs.lua:16 ../homedecor/furniture.lua:94
+msgid "Armchair (@1)"
+msgstr "Poltrona (@1)"
+
+#: ../lrfurn/sofas.lua:21
+msgid "Sofa (@1)"
+msgstr ""
+
+#: ../lrfurn/init.lua:15 ../homedecor/bedroom.lua:7
+#: ../homedecor/shutters.lua:13 ../homedecor/misc-nodes.lua:69
+#: ../homedecor/furniture.lua:37
+msgid "black"
+msgstr "preto"
+
+#: ../lrfurn/init.lua:16 ../homedecor/bedroom.lua:8 ../homedecor/books.lua:12
+msgid "brown"
+msgstr "marrom"
+
+#: ../lrfurn/init.lua:17 ../homedecor/bedroom.lua:9
+#: ../homedecor/window_treatments.lua:229 ../homedecor/lighting.lua:503
+#: ../homedecor/books.lua:9 ../homedecor/furniture.lua:41
+msgid "blue"
+msgstr "azul"
+
+#: ../lrfurn/init.lua:18 ../homedecor/bedroom.lua:10
+msgid "cyan"
+msgstr "ciano\t\t"
+
+#: ../lrfurn/init.lua:19 ../homedecor/bedroom.lua:11
+#: ../homedecor/shutters.lua:14
+msgid "dark grey"
+msgstr "cinza escuro"
+
+#: ../lrfurn/init.lua:20 ../homedecor/bedroom.lua:12
+#: ../homedecor/furniture.lua:42
+msgid "dark green"
+msgstr "verde escuro"
+
+#: ../lrfurn/init.lua:21 ../homedecor/bedroom.lua:13
+#: ../homedecor/window_treatments.lua:228 ../homedecor/lighting.lua:503
+#: ../homedecor/exterior.lua:361 ../homedecor/misc-nodes.lua:69
+#: ../homedecor/books.lua:8
+msgid "green"
+msgstr "verde"
+
+#: ../lrfurn/init.lua:22 ../homedecor/bedroom.lua:14
+#: ../homedecor/shutters.lua:15 ../homedecor/books.lua:11
+msgid "grey"
+msgstr "cinza"
+
+#: ../lrfurn/init.lua:23 ../homedecor/bedroom.lua:15
+msgid "magenta"
+msgstr "magenta"
+
+#: ../lrfurn/init.lua:24 ../homedecor/bedroom.lua:16
+msgid "orange"
+msgstr "laranja"
+
+#: ../lrfurn/init.lua:25 ../homedecor/bedroom.lua:17
+#: ../homedecor/window_treatments.lua:231 ../homedecor/furniture.lua:39
+msgid "pink"
+msgstr "rosa"
+
+#: ../lrfurn/init.lua:26 ../homedecor/bedroom.lua:18
+#: ../homedecor/window_treatments.lua:227 ../homedecor/lighting.lua:503
+#: ../homedecor/shutters.lua:8 ../homedecor/exterior.lua:362
+#: ../homedecor/books.lua:7 ../homedecor/furniture.lua:38
+msgid "red"
+msgstr "vermelho"
+
+#: ../lrfurn/init.lua:27 ../homedecor/bedroom.lua:19
+#: ../homedecor/window_treatments.lua:232 ../homedecor/lighting.lua:503
+#: ../homedecor/shutters.lua:12 ../homedecor/books.lua:10
+#: ../homedecor/furniture.lua:40
+msgid "violet"
+msgstr "violeta"
+
+#: ../lrfurn/init.lua:28 ../homedecor/bedroom.lua:20
+#: ../homedecor/window_treatments.lua:230 ../homedecor/lighting.lua:9
+#: ../homedecor/shutters.lua:16
+msgid "white"
+msgstr "branco"
+
+#: ../lrfurn/init.lua:29 ../homedecor/bedroom.lua:21
+#: ../homedecor/lighting.lua:9 ../homedecor/shutters.lua:9
+#: ../homedecor/exterior.lua:363
+msgid "yellow"
+msgstr "amarelo"
+
+#: ../lrfurn/endtable.lua:5
+#, fuzzy
+msgid "End Table"
+msgstr "Mesa"
+
+#: ../lrfurn/coffeetable.lua:5
+#, fuzzy
+msgid "Coffee Table"
+msgstr "Cafeteira"
+
+#: ../lrfurn/coffeetable.lua:52
+msgid "No room to place the coffee table!"
 msgstr ""
 
 #: ../fake_fire/init.lua:71
@@ -216,80 +409,6 @@ msgstr ""
 #: ../fake_fire/init.lua:191
 msgid "Flint and steel"
 msgstr ""
-
-#: ../homedecor/bedroom.lua:7 ../homedecor/shutters.lua:13
-#: ../homedecor/misc-nodes.lua:69 ../homedecor/furniture.lua:36
-msgid "black"
-msgstr "preto"
-
-#: ../homedecor/bedroom.lua:8 ../homedecor/books.lua:12
-msgid "brown"
-msgstr "marrom"
-
-#: ../homedecor/bedroom.lua:9 ../homedecor/window_treatments.lua:229
-#: ../homedecor/lighting.lua:503 ../homedecor/books.lua:9
-#: ../homedecor/furniture.lua:40
-msgid "blue"
-msgstr "azul"
-
-#: ../homedecor/bedroom.lua:10
-msgid "cyan"
-msgstr "ciano\t\t"
-
-#: ../homedecor/bedroom.lua:11 ../homedecor/shutters.lua:14
-msgid "dark grey"
-msgstr "cinza escuro"
-
-#: ../homedecor/bedroom.lua:12 ../homedecor/furniture.lua:41
-msgid "dark green"
-msgstr "verde escuro"
-
-#: ../homedecor/bedroom.lua:13 ../homedecor/window_treatments.lua:228
-#: ../homedecor/lighting.lua:503 ../homedecor/exterior.lua:361
-#: ../homedecor/misc-nodes.lua:69 ../homedecor/books.lua:8
-msgid "green"
-msgstr "verde"
-
-#: ../homedecor/bedroom.lua:14 ../homedecor/shutters.lua:15
-#: ../homedecor/books.lua:11
-msgid "grey"
-msgstr "cinza"
-
-#: ../homedecor/bedroom.lua:15
-msgid "magenta"
-msgstr "magenta"
-
-#: ../homedecor/bedroom.lua:16
-msgid "orange"
-msgstr "laranja"
-
-#: ../homedecor/bedroom.lua:17 ../homedecor/window_treatments.lua:231
-#: ../homedecor/furniture.lua:38
-msgid "pink"
-msgstr "rosa"
-
-#: ../homedecor/bedroom.lua:18 ../homedecor/window_treatments.lua:227
-#: ../homedecor/lighting.lua:503 ../homedecor/shutters.lua:8
-#: ../homedecor/exterior.lua:362 ../homedecor/books.lua:7
-#: ../homedecor/furniture.lua:37
-msgid "red"
-msgstr "vermelho"
-
-#: ../homedecor/bedroom.lua:19 ../homedecor/window_treatments.lua:232
-#: ../homedecor/lighting.lua:503 ../homedecor/shutters.lua:12
-#: ../homedecor/books.lua:10 ../homedecor/furniture.lua:39
-msgid "violet"
-msgstr "violeta"
-
-#: ../homedecor/bedroom.lua:20 ../homedecor/window_treatments.lua:230
-#: ../homedecor/lighting.lua:9 ../homedecor/shutters.lua:16
-msgid "white"
-msgstr "branco"
-
-#: ../homedecor/bedroom.lua:21 ../homedecor/lighting.lua:9
-#: ../homedecor/shutters.lua:9 ../homedecor/exterior.lua:363
-msgid "yellow"
-msgstr "amarelo"
 
 #: ../homedecor/bedroom.lua:70
 msgid "Bed (@1)"
@@ -498,12 +617,12 @@ msgid "Curtains"
 msgstr "Cortinas (@1)"
 
 #: ../homedecor/window_treatments.lua:167 ../homedecor/fences.lua:22
-#: ../homedecor/misc-nodes.lua:458 ../homedecor/tables.lua:166
+#: ../homedecor/misc-nodes.lua:458 ../homedecor/tables.lua:167
 msgid "brass"
 msgstr "latão"
 
 #: ../homedecor/window_treatments.lua:168 ../homedecor/fences.lua:23
-#: ../homedecor/misc-nodes.lua:467 ../homedecor/tables.lua:167
+#: ../homedecor/misc-nodes.lua:467 ../homedecor/tables.lua:168
 msgid "wrought iron"
 msgstr "ferro forjado"
 
@@ -872,35 +991,35 @@ msgstr "Poço de agua"
 msgid "Shrubbery (@1)"
 msgstr "Matagal (@1)"
 
-#: ../homedecor/bathroom_sanitation.lua:17
+#: ../homedecor/bathroom_sanitation.lua:18
 msgid "Toilet"
 msgstr "Vaso Sanitário"
 
-#: ../homedecor/bathroom_sanitation.lua:68
+#: ../homedecor/bathroom_sanitation.lua:69
 msgid "Toilet paper"
 msgstr "Papel higiênico "
 
-#: ../homedecor/bathroom_sanitation.lua:89
+#: ../homedecor/bathroom_sanitation.lua:90
 msgid "Bathroom Sink"
 msgstr "Pia de Banheiro"
 
-#: ../homedecor/bathroom_sanitation.lua:137
+#: ../homedecor/bathroom_sanitation.lua:138
 msgid "Bathroom taps/faucet"
 msgstr "Torneira de Banheiro"
 
-#: ../homedecor/bathroom_sanitation.lua:160
+#: ../homedecor/bathroom_sanitation.lua:161
 msgid "Bathroom taps/faucet (brass)"
 msgstr "Torneira de Banheiro (latão)"
 
-#: ../homedecor/bathroom_sanitation.lua:185
+#: ../homedecor/bathroom_sanitation.lua:186
 msgid "Shower Tray"
 msgstr "Ralo do Chuveiro"
 
-#: ../homedecor/bathroom_sanitation.lua:225
+#: ../homedecor/bathroom_sanitation.lua:226
 msgid "Shower Head"
 msgstr "Chuveiro"
 
-#: ../homedecor/bathroom_sanitation.lua:265
+#: ../homedecor/bathroom_sanitation.lua:266
 msgid "Bathroom sundries set"
 msgstr "Espelho de Banheiro com bancada"
 
@@ -1015,10 +1134,6 @@ msgstr "Tatami Japonês"
 #: ../homedecor/doors_and_gates.lua:595
 msgid "Japanese-style door"
 msgstr "Porta estilo japonês"
-
-#: ../homedecor/init.lua:148
-msgid "Loaded!"
-msgstr "Carregado!"
 
 #: ../homedecor/misc-nodes.lua:7
 msgid "Textured Ceiling Paint"
@@ -1165,39 +1280,39 @@ msgstr "Corrimão para Escadas (@1, @2)"
 msgid "not enough space"
 msgstr "Espaço induficiente"
 
-#: ../homedecor/tables.lua:7
+#: ../homedecor/tables.lua:8
 msgid "Small square glass table"
 msgstr "Tampo Quadrado de Vidro"
 
-#: ../homedecor/tables.lua:8
+#: ../homedecor/tables.lua:9
 msgid "Small round glass table"
 msgstr "Tampo Redondo de Vidro"
 
-#: ../homedecor/tables.lua:9
+#: ../homedecor/tables.lua:10
 msgid "Large glass table piece"
 msgstr "Tampo Grande de Vidro"
 
-#: ../homedecor/tables.lua:12
+#: ../homedecor/tables.lua:13
 msgid "Small square wooden table"
 msgstr "Tampo Quadrado de Madeira"
 
-#: ../homedecor/tables.lua:13
+#: ../homedecor/tables.lua:14
 msgid "Small round wooden table"
 msgstr "Tampo Redondo de Madeira"
 
-#: ../homedecor/tables.lua:14
+#: ../homedecor/tables.lua:15
 msgid "Large wooden table piece"
 msgstr "Tampo Grande de Madeira"
 
-#: ../homedecor/tables.lua:134
+#: ../homedecor/tables.lua:135
 msgid "Utility Table"
 msgstr "Mesa de Trabalho"
 
-#: ../homedecor/tables.lua:173
+#: ../homedecor/tables.lua:174
 msgid "Table Legs (@1)"
 msgstr "Pernas de Mesa (@1)"
 
-#: ../homedecor/tables.lua:189
+#: ../homedecor/tables.lua:190
 msgid "Legs for Utility Table"
 msgstr "Pernas para Mesa de Trabalho"
 
@@ -1209,61 +1324,57 @@ msgstr "Livro Consumível (@1)"
 msgid "@1 has written in a book (title: \"@2\"): \"@3\" at location @4"
 msgstr "@1 escreveu um livro (título: \"@2\"): \"@3\" na localização @4"
 
-#: ../homedecor/furniture.lua:4
+#: ../homedecor/furniture.lua:5
 msgid "Table"
 msgstr "Mesa"
 
-#: ../homedecor/furniture.lua:5
+#: ../homedecor/furniture.lua:6
 msgid "Mahogany Table"
 msgstr "Mesa em Mogno"
 
-#: ../homedecor/furniture.lua:6
+#: ../homedecor/furniture.lua:7
 msgid "White Table"
 msgstr "Mesa Branca"
 
-#: ../homedecor/furniture.lua:35
+#: ../homedecor/furniture.lua:36
 msgid "plain"
 msgstr "Sem Acabamento"
 
-#: ../homedecor/furniture.lua:77
+#: ../homedecor/furniture.lua:78
 msgid "Kitchen chair (@1)"
 msgstr "Cadeira de Cozinha (@1)"
 
-#: ../homedecor/furniture.lua:93
-msgid "Armchair (@1)"
-msgstr "Poltrona (@1)"
-
-#: ../homedecor/furniture.lua:122
+#: ../homedecor/furniture.lua:123
 msgid "Bookshelf (open-frame)"
 msgstr "Estante de Livros de Parede"
 
-#: ../homedecor/furniture.lua:138
+#: ../homedecor/furniture.lua:139
 msgid "Wall Shelf"
 msgstr "Estante de Parede"
 
-#: ../homedecor/handlers/inventory.lua:87
+#: ../homedecor/handlers/inventory.lua:88
 msgid "@1 moves stuff in @2 at @3"
 msgstr "@1 moveu algo de @2 em @3"
 
-#: ../homedecor/handlers/inventory.lua:92
+#: ../homedecor/handlers/inventory.lua:93
 msgid "@1 moves @2 to @3 at @4"
 msgstr "@1 moveu @2 de @3 em @4"
 
-#: ../homedecor/handlers/inventory.lua:97
+#: ../homedecor/handlers/inventory.lua:98
 msgid "@1 takes @2 from @3 at @4"
 msgstr "@1 pegou @2 de @3 em @4"
 
-#: ../homedecor/handlers/inventory.lua:110
+#: ../homedecor/handlers/inventory.lua:111
 msgid "@1 (owned by @2)"
 msgstr "@1 (pertence a @2)"
 
-#: ../homedecor/handlers/inventory.lua:127
-#: ../homedecor/handlers/inventory.lua:145
-#: ../homedecor/handlers/inventory.lua:163
+#: ../homedecor/handlers/inventory.lua:128
+#: ../homedecor/handlers/inventory.lua:146
+#: ../homedecor/handlers/inventory.lua:164
 msgid "@1 tried to access a @2 belonging to @3 at @4"
 msgstr "@1 tentou acessar @2 pertencente a @3 em @4"
 
-#: ../homedecor/handlers/inventory.lua:173
+#: ../homedecor/handlers/inventory.lua:174
 msgid "@1 (Locked)"
 msgstr "@1 (trancado)"
 
@@ -1293,7 +1404,7 @@ msgstr "@1 (sem combustível)"
 msgid "@1 (output bins are full)"
 msgstr "@1 (saída de itens está lotada)"
 
-#: ../homedecor/office.lua:4 ../homedecor/office.lua:13
+#: ../homedecor/office.lua:5 ../homedecor/office.lua:14
 msgid "Filing cabinet"
 msgstr "Armário sob a Pia"
 
@@ -1346,6 +1457,14 @@ msgstr "Tolo de Toalha com Toalha"
 msgid "Medicine cabinet"
 msgstr "Gabinete Medicinal"
 
+#, fuzzy
+#~ msgid "dark_grey"
+#~ msgstr "cinza escuro"
+
+#, fuzzy
+#~ msgid "dark_green"
+#~ msgstr "verde escuro"
+
 #~ msgid "%s moves stuff in kitchen cabinet at %s "
 #~ msgstr "%s moveu itens no armário de cozinha em %s"
 
@@ -1360,9 +1479,6 @@ msgstr "Gabinete Medicinal"
 
 #~ msgid "(%s-opening) "
 #~ msgstr "(abre para %s)"
-
-#~ msgid "Not enough vertical space to place a door! "
-#~ msgstr "Não existe espaço vertical suficiente para colocar uma porta."
 
 #~ msgid "Bucket of white paint "
 #~ msgstr "Balde de tinta branca"
