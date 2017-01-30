@@ -503,7 +503,7 @@ minetest.register_craft({
 
 minetest.register_node("building_blocks:fakegrass", {
 	tiles = {"default_grass.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"},
-	description = "Fake Grass",
+	description = S("Fake Grass"),
 	is_ground_content = true,
 	groups = {crumbly=3},
 		sounds = default.node_sound_dirt_defaults({
@@ -512,13 +512,13 @@ minetest.register_node("building_blocks:fakegrass", {
 })
 
 minetest.register_craftitem("building_blocks:sticks", {
-	description = "Small bundle of sticks",
+	description = S("Small bundle of sticks"),
 	image = "building_blocks_sticks.png",
 	on_place_on_ground = minetest.craftitem_place_item,
 })
 
 minetest.register_craftitem("building_blocks:tar_base", {
-	description = "Tar base",
+	description = S("Tar base"),
 	image = "building_blocks_tar_base.png",
 })
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-29 21:44-0300\n"
+"POT-Creation-Date: 2017-01-29 23:46-0300\n"
 "PO-Revision-Date: 2017-01-25 00:03-0300\n"
 "Last-Translator: muhdnurhidayat <MuhdNurHidayat@users.noreply.github.com>\n"
 "Language-Team: Malay\n"
@@ -121,6 +121,18 @@ msgstr ""
 
 #: ../building_blocks/init.lua:493
 msgid "Roofing slab"
+msgstr ""
+
+#: ../building_blocks/init.lua:506
+msgid "Fake Grass"
+msgstr ""
+
+#: ../building_blocks/init.lua:515
+msgid "Small bundle of sticks"
+msgstr ""
+
+#: ../building_blocks/init.lua:521
+msgid "Tar base"
 msgstr ""
 
 #: ../building_blocks/init.lua:545

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-29 21:44-0300\n"
+"POT-Creation-Date: 2017-01-29 23:46-0300\n"
 "PO-Revision-Date: 2017-01-24 20:24-0300\n"
 "Last-Translator: Diego Martínez <kaeza@users.noreply.github.com>\n"
 "Language-Team: Spanish\n"
@@ -122,6 +122,18 @@ msgstr "Escaleras de techo"
 #: ../building_blocks/init.lua:493
 msgid "Roofing slab"
 msgstr "Losa de techo"
+
+#: ../building_blocks/init.lua:506
+msgid "Fake Grass"
+msgstr "Hierba falsa"
+
+#: ../building_blocks/init.lua:515
+msgid "Small bundle of sticks"
+msgstr "Manojo de palitos"
+
+#: ../building_blocks/init.lua:521
+msgid "Tar base"
+msgstr "Base de alquitrán"
 
 #: ../building_blocks/init.lua:545
 msgid "Tar"
