@@ -12,21 +12,21 @@ lrfurn.fdir_to_fwd = {
 }
 
 lrfurn.colors = {
-	{ "black",       S("black"),       0xff181818 },
-	{ "brown",       S("brown"),       0xff251005 },
-	{ "blue",        S("blue"),        0xff0000d0 },
-	{ "cyan",        S("cyan"),        0xff009fa7 },
-	{ "dark_grey",   S("dark grey"),   0xff101010 },
-	{ "dark_green",  S("dark green"),  0xff007000 },
-	{ "green",       S("green"),       0xff00d000 },
-	{ "grey",        S("grey"),        0xff303030 },
-	{ "magenta",     S("magenta"),     0xffe0048b },
-	{ "orange",      S("orange"),      0xffee9000 },
-	{ "pink",        S("pink"),        0xffff90b0 },
-	{ "red",         S("red"),         0xff800000 },
-	{ "violet",      S("violet"),      0xff9000d0 },
-	{ "white",       S("white"),       0xffffffff },
-	{ "yellow",      S("yellow"),      0xffdde000 }
+	"black",
+	"brown",
+	"blue",
+	"cyan",
+	"dark_grey",
+	"dark_green",
+	"green",
+	"grey",
+	"magenta",
+	"orange",
+	"pink",
+	"red",
+	"violet",
+	"white",
+	"yellow",
 }
 
 function lrfurn.check_forward(pos, fdir, long, placer)
@@ -58,6 +58,15 @@ function lrfurn.check_forward(pos, fdir, long, placer)
 	end
 
 	return true
+end
+
+function lrfurn.fix_rotation(pos, placer, itemstack, pointed_thing)
+	local node = minetest.get_node(pos)
+	local yaw = placer:get_look_yaw()
+	local dir = minetest.yaw_to_dir(yaw)
+	local fdir = minetest.dir_to_wallmounted(dir)
+
+	minetest.swap_node(pos, { name = node.name, param2 = fdir })
 end
 
 dofile(minetest.get_modpath("lrfurn").."/longsofas.lua")
