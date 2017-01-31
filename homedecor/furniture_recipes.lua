@@ -98,27 +98,9 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "homedecor:table_lamp_white_off",
+	output = "homedecor:standing_lamp_off",
 	recipe = {
-		{"default:paper","default:torch" ,"default:paper"},
-		{"","group:stick",""},
-		{"","stairs:slab_wood",""},
-	},
-})
-
-minetest.register_craft({
-	output = "homedecor:table_lamp_white_off",
-	recipe = {
-		{"default:paper","default:torch" ,"default:paper"},
-		{"","group:stick",""},
-		{"","moreblocks:slab_wood",""},
-	},
-})
-
-minetest.register_craft({
-	output = "homedecor:standing_lamp_white_off",
-	recipe = {
-		{"homedecor:table_lamp_white_off"},
+		{"homedecor:table_lamp_off"},
 		{"group:stick"},
 		{"group:stick"},
 	},
@@ -126,7 +108,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "homedecor:table_lamp_white_off",
+	recipe = "homedecor:table_lamp_off",
 	burntime = 10,
 })
 
@@ -134,6 +116,15 @@ minetest.register_craft({
 	output = "homedecor:table_lamp_off",
 	recipe = {
 		{ "wool:white", "default:torch", "wool:white"},
+		{ "", "group:stick", ""},
+		{ "", "stairs:slab_wood", "" },
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:table_lamp_off",
+	recipe = {
+		{ "cottages:wool", "default:torch", "cottages:wool"},
 		{ "", "group:stick", ""},
 		{ "", "stairs:slab_wood", "" },
 	},
