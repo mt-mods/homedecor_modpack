@@ -79,6 +79,14 @@ function homedecor.fix_rotation(pos, placer, itemstack, pointed_thing)
 	minetest.swap_node(pos, { name = node.name, param2 = fdir })
 end
 
+function homedecor.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)
+	local node = minetest.get_node(pos)
+	local yaw = placer:get_look_yaw()
+	local dir = minetest.yaw_to_dir(yaw)
+	local fdir = minetest.dir_to_wallmounted(dir)
+	minetest.swap_node(pos, { name = node.name, param2 = fdir })
+end
+
 screwdriver = screwdriver or {}
 
 homedecor.plain_wood    = { name = "homedecor_generic_wood_plain.png",  color = 0xffa76820 }
