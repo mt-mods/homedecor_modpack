@@ -9,7 +9,7 @@ local armchair_cbox = {
 }
 
 minetest.register_node("lrfurn:armchair", {
-	description = "Armchair",
+	description = S("Armchair"),
 	drawtype = "mesh",
 	mesh = "lrfurn_armchair.obj",
 	tiles = {

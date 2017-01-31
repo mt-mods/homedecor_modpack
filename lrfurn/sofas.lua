@@ -7,7 +7,7 @@ local sofa_cbox = {
 }
 
 minetest.register_node("lrfurn:sofa", {
-	description = "Sofa",
+	description = S("Sofa"),
 	drawtype = "mesh",
 	mesh = "lrfurn_sofa_short.obj",
 	tiles = {
@@ -32,7 +32,7 @@ minetest.register_node("lrfurn:sofa", {
 		if lrfurn.check_forward(pos, fdir, false, placer) then
 			itemstack:take_item()
 		else
-			minetest.chat_send_player(placer:get_player_name(), "No room to place the sofa!")
+			minetest.chat_send_player(placer:get_player_name(), S("No room to place the sofa!"))
 			minetest.set_node(pos, { name = "air" })
 		end
 		return itemstack

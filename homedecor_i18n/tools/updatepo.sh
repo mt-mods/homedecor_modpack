@@ -11,6 +11,7 @@ xgettext --from-code=UTF-8 \
 		--keyword=NS:1,2 \
 		--keyword=N_ \
 		--add-comments='Translators:' \
+		--add-location=file \
 		-o locale/template.pot \
 		$(find .. -name '*.lua')
 
