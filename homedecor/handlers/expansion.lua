@@ -22,6 +22,35 @@ homedecor.fdir_to_fwd = {
 	{ -1,  0 },
 }
 
+-- special case for wallmounted nodes
+
+homedecor.wall_fdir_to_right = {
+	nil,
+	nil,
+	{ -1,  0 },
+	{  1,  0 },
+	{  0, -1 },
+	{  0,  1 },
+}
+
+homedecor.wall_fdir_to_left = {
+	nil,
+	nil,
+	{  1,  0 },
+	{ -1,  0 },
+	{  0,  1 },
+	{  0, -1 },
+}
+
+homedecor.wall_fdir_to_fwd = {
+	nil,
+	nil,
+	{  0, -1 },
+	{  0,  1 },
+	{  1,  0 },
+	{ -1,  0 },
+}
+
 local placeholder_node = "homedecor:expansion_placeholder"
 minetest.register_node(placeholder_node, {
 	description = "Expansion placeholder (you hacker you!)",
@@ -125,7 +154,7 @@ function homedecor.stack_wing(itemstack, placer, pointed_thing, node1, node2, no
 	local forceright = placer:get_player_control()["sneak"]
 	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 
-	local is_right_wing = node1 == minetest.get_node({ x = pos.x + homedecor.fdir_to_left[fdir+1][1], y=pos.y, z = pos.z + homedecor.fdir_to_left[fdir+1][2] }).name
+	local is_right_wing = node1 == minetest.get_node({ x = pos.x + homedecor.wall_fdir_to_left[fdir+1][1], y=pos.y, z = pos.z + homedecor.fdir_to_left[fdir+1][2] }).name
 	if forceright or is_right_wing then
 		node1, node2 = node1_right, node2_right
 	end
@@ -142,20 +171,20 @@ function homedecor.stack_sideways(itemstack, placer, pointed_thing, node1, node2
 	if not pos then return itemstack end
 
 	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
-	local fdir_transform = dir and homedecor.fdir_to_right or homedecor.fdir_to_fwd
+	local fdir_transform = dir and homedecor.wall_fdir_to_right or homedecor.wall_dir_to_fwd
 
 	local pos2 = { x = pos.x + fdir_transform[fdir+1][1], y=pos.y, z = pos.z + fdir_transform[fdir+1][2] }
 
 	return stack(itemstack, placer, fdir, pos, def, pos2, node1, node2)
 end
 
-function homedecor.bed_expansion(pos, placer, itemstack, pointed_thing, color)
+function homedecor.bed_expansion(pos, placer, itemstack, pointed_thing, trybunks)
 
 	local thisnode = minetest.get_node(pos)
 	local fdir = thisnode.param2
 
-	local fxd = homedecor.fdir_to_fwd[fdir+1][1]
-	local fzd = homedecor.fdir_to_fwd[fdir+1][2]
+	local fxd = homedecor.wall_fdir_to_fwd[fdir+1][1]
+	local fzd = homedecor.wall_fdir_to_fwd[fdir+1][2]
 
 	local forwardpos = {x=pos.x+fxd, y=pos.y, z=pos.z+fzd}
 	local forwardnode = minetest.get_node(forwardpos)
@@ -176,48 +205,50 @@ function homedecor.bed_expansion(pos, placer, itemstack, pointed_thing, color)
 
 	minetest.set_node(forwardpos, {name = "air"})
 
-	local lxd = homedecor.fdir_to_left[fdir+1][1]
-	local lzd = homedecor.fdir_to_left[fdir+1][2]
+	local lxd = homedecor.wall_fdir_to_left[fdir+1][1]
+	local lzd = homedecor.wall_fdir_to_left[fdir+1][2]
 	local leftpos = {x=pos.x+lxd, y=pos.y, z=pos.z+lzd}
 	local leftnode = minetest.get_node(leftpos)
 
-	local rxd = homedecor.fdir_to_right[fdir+1][1]
-	local rzd = homedecor.fdir_to_right[fdir+1][2]
+	local rxd = homedecor.wall_fdir_to_right[fdir+1][1]
+	local rzd = homedecor.wall_fdir_to_right[fdir+1][2]
 	local rightpos = {x=pos.x+rxd, y=pos.y, z=pos.z+rzd}
 	local rightnode = minetest.get_node(rightpos)
 
-	if leftnode.name == "homedecor:bed_"..color.."_regular" then
+	if leftnode.name == "homedecor:bed_regular" then
 		local newname = string.gsub(thisnode.name, "_regular", "_kingsize")
 		minetest.set_node(pos, {name = "air"})
 		minetest.set_node(leftpos, { name = newname, param2 = fdir})
-	elseif rightnode.name == "homedecor:bed_"..color.."_regular" then
+	elseif rightnode.name == "homedecor:bed_regular" then
 		local newname = string.gsub(thisnode.name, "_regular", "_kingsize")
 		minetest.set_node(rightpos, {name = "air"})
 		minetest.set_node(pos, { name = newname, param2 = fdir})
 	end
 
-	local topnode = minetest.get_node({x=pos.x, y=pos.y+1.0, z=pos.z})
-	local bottomnode = minetest.get_node({x=pos.x, y=pos.y-1.0, z=pos.z})
+	local toppos = {x=pos.x, y=pos.y+1.0, z=pos.z}
+	local botpos = {x=pos.x, y=pos.y-1.0, z=pos.z}
 
-	if string.find(topnode.name, "homedecor:bed_.*_regular$") then
-		if fdir == topnode.param2 then
-			local newname = string.gsub(thisnode.name, "_regular", "_extended")
-			minetest.set_node(pos, { name = newname, param2 = fdir})
-		end
-	end
+	local topposfwd = {x=toppos.x+fxd, y=toppos.y, z=toppos.z+fzd}
+	local topnodefwd = minetest.get_node(topposfwd)
 
-	if string.find(bottomnode.name, "homedecor:bed_.*_regular$") then
-		if fdir == bottomnode.param2 then
-			local newname = string.gsub(bottomnode.name, "_regular", "_extended")
-			minetest.set_node({x=pos.x, y=pos.y-1.0, z=pos.z}, { name = newname, param2 = fdir})
-		end
+	local topnode = minetest.get_node(toppos)
+	local bottomnode = minetest.get_node(botpos)
+
+	print(topnode.name, thisnode.name, bottomnode.name, itemstack:get_name(), dump(trybunks))
+
+	if trybunks and is_buildable_to(placer_name, toppos, topposfwd) then
+		print("want to stack beds, top seems to be clear")
+		local newname = string.gsub(thisnode.name, "_regular", "_extended")
+		minetest.set_node(toppos, { name = thisnode.name, param2 = fdir})
+		minetest.set_node(pos, { name = newname, param2 = fdir})
+		itemstack:take_item()
 	end
 end
 
-function homedecor.unextend_bed(pos, color)
+function homedecor.unextend_bed(pos)
 	local bottomnode = minetest.get_node({x=pos.x, y=pos.y-1.0, z=pos.z})
 	local fdir = bottomnode.param2
-	if string.find(bottomnode.name, "homedecor:bed_.*_extended$") then
+	if bottomnode.name == "homedecor:bed_extended" then
 		local newname = string.gsub(bottomnode.name, "_extended", "_regular")
 		minetest.set_node({x=pos.x, y=pos.y-1.0, z=pos.z}, { name = newname, param2 = fdir})
 	end
