@@ -3,17 +3,16 @@
 local S = homedecor_i18n.gettext
 
 local shutters = {
-	{"oak",          S("unpainted oak"), "bf8a51" },
-	{"mahogany",     S("mahogany"),      "822606" },
-	{"red",          S("red"),           "d00000" },
-	{"yellow",       S("yellow"),        "ffff00" },
-	{"forest_green", S("forest green"),  "006000" },
-	{"light_blue",   S("light blue"),    "2878d8" },
-	{"violet",       S("violet"),        "7000e0" },
-	{"black",        S("black"),         "181818" },
-	{"dark_grey",    S("dark grey"),     "404040" },
-	{"grey",         S("grey"),          "b0b0b0" },
-	{"white",        S("white"),         "ffffff" },
+	"mahogany",
+	"red",
+	"yellow",
+	"forest_green",
+	"light_blue",
+	"violet",
+	"black",
+	"dark_grey",
+	"grey",
+	"white",
 }
 
 local shutter_cbox = {
@@ -23,27 +22,85 @@ local shutter_cbox = {
 	wall_side =		{ -0.5, -0.5,    -0.5, -0.4375,  0.5,    0.5 }
 }
 
-for _, s in ipairs(shutters) do
-	local name, desc, hue = unpack(s)
+local inv = "homedecor_window_shutter_inv.png^[colorize:#a87034:150"
 
-	local tile = { name = "homedecor_window_shutter.png", color = tonumber("0xff"..hue) }
-	local inv  = "homedecor_window_shutter_inv.png^[colorize:#"..hue..":150"
+homedecor.register("shutter", {
+	mesh = "homedecor_window_shutter.obj",
+	tiles = {
+		{ name = "homedecor_window_shutter.png", color = 0xffa87034 }
+	},
+	description = S("Wooden Shutter"),
+	inventory_image = inv,
+	wield_image = inv,
+	paramtype2 = "wallmounted",
+	groups = { snappy = 3 },
+	sounds = default.node_sound_wood_defaults(),
+	selection_box = shutter_cbox,
+	node_box = shutter_cbox,
+	after_place_node = homedecor.fix_rotation,
+	after_dig_node = unifieddyes.after_dig_node,
+	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		unifieddyes.on_rightclick(pos, node, clicker,
+		  itemstack, pointed_thing, "homedecor:shutter_colored", "wallmounted")
+	end
+})
 
-	homedecor.register("shutter_"..name, {
-		mesh = "homedecor_window_shutter.obj",
-		tiles = { tile },
-		description = S("Wooden Shutter (@1)", desc),
-		inventory_image = inv,
-		wield_image = inv,
-		paramtype2 = "wallmounted",
-		groups = { snappy = 3 },
-		sounds = default.node_sound_wood_defaults(),
-		selection_box = shutter_cbox,
-		node_box = shutter_cbox,
-			-- collision_box doesn't accept type="wallmounted", but node_box
-			-- does.  Said nodeboxes create a custom collision box but are
-			-- invisible themselves because drawtype="mesh".
-	})
-end
+homedecor.register("shutter_colored", {
+	mesh = "homedecor_window_shutter.obj",
+	tiles = { "homedecor_window_shutter.png" },
+	description = S("Wooden Shutter"),
+	inventory_image = "homedecor_window_shutter_inv.png",
+	wield_image = "homedecor_window_shutter_inv.png",
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
+	groups = { snappy = 3 , not_in_creative_inventory = 1},
+	sounds = default.node_sound_wood_defaults(),
+	selection_box = shutter_cbox,
+	node_box = shutter_cbox,
+	after_place_node = homedecor.fix_rotation,
+	after_dig_node = unifieddyes.after_dig_node,
+	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		unifieddyes.on_rightclick(pos, node, clicker,
+		  itemstack, pointed_thing, "homedecor:shutter_colored", "wallmounted")
+	end,
+	drop = "homedecor:shutter"
+})
 
 minetest.register_alias("homedecor:shutter_purple", "homedecor:shutter_violet")
+minetest.register_alias("homedecor:shutter_oak", "homedecor:shutter")
+
+-- convert to param2 coloring
+
+homedecor.old_shutter_nodes = {}
+
+for _, color in ipairs(shutters) do
+	table.insert(homedecor.old_shutter_nodes, "homedecor:shutter_"..color)
+end
+
+minetest.register_lbm({
+	name = "homedecor:convert_shutters",
+	label = "Convert shutter static nodes to use param2 color",
+	run_at_every_load = true,
+	nodenames = homedecor.old_shutter_nodes,
+	action = function(pos, node)
+		local name = node.name
+		local color = string.sub(name, string.find(name, "_") + 1)
+
+		if color == "mahogany" then
+			color = "dark_red"
+		elseif color == "forest_green" then
+			color = "dark_green"
+		elseif color == "light_blue" then
+			color = "medium_cyan"
+		elseif color == "red" then
+			color = "medium_red"
+		end
+
+		local paletteidx = unifieddyes.getpaletteidx("unifieddyes:"..color, "wallmounted")
+		local param2 = paletteidx + node.param2
+
+		minetest.set_node(pos, { name = "homedecor:shutter_colored", param2 = param2 })
+		local meta = minetest.get_meta(pos)
+		meta:set_string("dye", "unifieddyes:"..color)
+	end
+})
