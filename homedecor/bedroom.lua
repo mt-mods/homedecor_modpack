@@ -68,9 +68,9 @@ homedecor.register("bed_regular", {
 			homedecor.bed_expansion(pos, clicker, itemstack, pointed_thing, true)
 			return itemstack
 		else
-			if minetest.get_modpath("beds") then
-				beds.on_rightclick(pos, clicker)
-			end
+--			if minetest.get_modpath("beds") then
+--				beds.on_rightclick(pos, clicker)
+--			end
 			return itemstack
 		end
 	end
@@ -103,9 +103,9 @@ homedecor.register("bed_extended", {
 			unifieddyes.on_rightclick(pos, node, clicker,
 			itemstack, pointed_thing, "homedecor:bed_extended", "wallmounted")
 		else
-			if minetest.get_modpath("beds") then
-				beds.on_rightclick(pos, clicker)
-			end
+--			if minetest.get_modpath("beds") then
+--				beds.on_rightclick(pos, clicker)
+--			end
 			return itemstack
 		end
 	end,
@@ -146,9 +146,9 @@ homedecor.register("bed_kingsize", {
 			unifieddyes.on_rightclick(pos, node, clicker,
 			itemstack, pointed_thing, "homedecor:bed_kingsize", "wallmounted")
 		else
-			if minetest.get_modpath("beds") then
-				beds.on_rightclick(pos, clicker)
-			end
+--			if minetest.get_modpath("beds") then
+--				beds.on_rightclick(pos, clicker)
+--			end
 			return itemstack
 		end
 	end
