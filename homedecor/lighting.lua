@@ -379,6 +379,16 @@ homedecor.register("lattice_lantern_small", {
 	on_place = minetest.rotate_node
 })
 
+local brightness_tab = {
+	0xffd0d0d0,
+	0xffd8d8d8,
+	0xffe0e0e0,
+	0xffe8e8e8,
+	0xffffffff,
+}
+
+-- table lamps and standing lamps
+
 local repl = {
 	["off"] ="low",
 	["low"] ="med",
@@ -404,14 +414,6 @@ local tlamp_cbox = {
 local slamp_cbox = {
 	type = "fixed",
 	fixed = { -0.25, -0.5, -0.25, 0.25, 1.5, 0.25 }
-}
-
-local brightness_tab = {
-	0xffd0d0d0,
-	0xffd8d8d8,
-	0xffe0e0e0,
-	0xffe8e8e8,
-	0xffffffff,
 }
 
 local function reg_lamp(suffix, nxt, light, brightness)
@@ -449,8 +451,6 @@ local function reg_lamp(suffix, nxt, light, brightness)
 			  itemstack, pointed_thing, "homedecor:table_lamp_"..suffix, false)
 		end,
 	})
-
-	-- standing lamps
 
 	homedecor.register("standing_lamp_"..suffix, {
 		description = S("Standing Lamp"),
@@ -495,29 +495,39 @@ reg_lamp("med", "hi",   7,   3 )
 reg_lamp("hi",  "max", 11,   4 )
 reg_lamp("max", "off", 14,   5 )
 
+-- "gooseneck" style desk lamps
+
 local dlamp_cbox = {
-	type = "fixed",
-	fixed = { -0.2, -0.5, -0.15, 0.32, 0.12, 0.15 },
+	type = "wallmounted",
+	wall_side = { -0.2, -0.5, -0.15, 0.32, 0.12, 0.15 },
 }
 
-local dlamp_colors = { N_("red"), N_("blue"), N_("green"), N_("violet") }
+homedecor.register("desk_lamp", {
+	description = S("Desk Lamp"),
+	mesh = "homedecor_desk_lamp.obj",
+	tiles = {
+		"homedecor_generic_metal.png",
+		"homedecor_generic_metal.png",
+		{ name = "homedecor_generic_metal.png", color = homedecor.color_med_grey },
+		{ name = "homedecor_table_standing_lamp_lightbulb.png", color = brightness_tab[5] },
+	},
+	inventory_image = "homedecor_desk_lamp_inv.png",
+	paramtype = "light",
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
+	selection_box = dlamp_cbox,
+	node_box = dlamp_cbox,
+	walkable = false,
+	groups = {snappy=3},
+	after_place_node = homedecor.fix_rotation_nsew,
+	after_dig_node = unifieddyes.after_dig_node,
+	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		unifieddyes.on_rightclick(pos, node, clicker,
+		  itemstack, pointed_thing, "homedecor:desk_lamp", "wallmounted")
+	end,
+})
 
-for _, color in ipairs(dlamp_colors) do
-	homedecor.register("desk_lamp_"..color, {
-		description = S("Desk Lamp (@1)", S(color)),
-		mesh = "homedecor_desk_lamp.obj",
-		tiles = {
-			{ name = "homedecor_table_standing_lamp_lightbulb.png", color = brightness_tab[5] },
-			{ name = "homedecor_generic_metal.png", color = color },
-			{ name = "homedecor_generic_metal.png", color = homedecor.color_med_grey },
-			{ name = "homedecor_generic_metal.png", color = color }
-		},
-		inventory_image = "homedecor_desk_lamp_stem_inv.png^(homedecor_desk_lamp_metal_inv.png^[colorize:"..color..":140)",
-		selection_box = dlamp_cbox,
-		walkable = false,
-		groups = {snappy=3},
-	})
-end
+-- "kitchen"/"dining room" ceiling lamp
 
 homedecor.register("ceiling_lamp", {
 	description = S("Ceiling Lamp"),
@@ -661,6 +671,53 @@ minetest.register_lbm({
 		end
 
 		minetest.set_node(pos, { name = new_node, param2 = param2 })
+		local meta = minetest.get_meta(pos)
+		meta:set_string("dye", "unifieddyes:"..color)
+	end
+})
+
+-- this one's for the small "gooseneck" desk lamps
+
+homedecor.old_static_desk_lamps = {
+	"homedecor:desk_lamp_red",
+	"homedecor:desk_lamp_blue",
+	"homedecor:desk_lamp_green",
+	"homedecor:desk_lamp_violet",
+}
+
+minetest.register_lbm({
+	name = "homedecor:convert_lighting",
+	label = "Convert homedecor glowlights, table lamps, and standing lamps to use param2 color",
+	run_at_every_load = true,
+	nodenames = homedecor.old_static_desk_lamps,
+	action = function(pos, node)
+		local name = node.name
+		local newname
+		local color = string.sub(name, string.find(name, "_", -8) + 1)
+
+		if color == "green" then
+			color = "medium_green"
+		elseif color == "violet" then
+			color = "magenta"
+		end
+
+		local paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..color, "wallmounted")
+		local old_fdir = math.floor(node.param2 % 32)
+		local new_fdir = 3
+
+		if old_fdir == 0 then
+			new_fdir = 3
+		elseif old_fdir == 1 then
+			new_fdir = 4
+		elseif old_fdir == 2 then
+			new_fdir = 2
+		elseif old_fdir == 3 then
+			new_fdir = 5
+		end
+
+		local param2 = paletteidx + new_fdir
+
+		minetest.set_node(pos, { name = "homedecor:desk_lamp", param2 = param2 })
 		local meta = minetest.get_meta(pos)
 		meta:set_string("dye", "unifieddyes:"..color)
 	end
