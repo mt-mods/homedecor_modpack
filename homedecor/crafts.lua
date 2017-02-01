@@ -2861,18 +2861,14 @@ for i in ipairs(picture_dyes) do
 	})
 end
 
-local dlamp_colors = { "red","blue","green","violet" }
-
-for _, color in ipairs(dlamp_colors) do
-	minetest.register_craft({
-		output = "homedecor:desk_lamp_"..color,
-		recipe = {
-			{ "", "homedecor:steel_strip", "homedecor:glowlight_small_cube" },
-			{ "", "homedecor:copper_wire", "" },
-			{ "homedecor:plastic_sheeting", "dye:"..color, "homedecor:plastic_sheeting" },
-		},
-	})
-end
+minetest.register_craft({
+	output = "homedecor:desk_lamp 2",
+	recipe = {
+		{ "", "default:steel_ingot", "homedecor:glowlight_small_cube" },
+		{ "", "homedecor:steel_strip", "" },
+		{ "homedecor:plastic_sheeting", "homedecor:copper_wire", "homedecor:plastic_sheeting" },
+	},
+})
 
 minetest.register_craft({
 	output = "homedecor:hanging_lantern 2",
