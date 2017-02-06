@@ -5,7 +5,7 @@ minetest.register_node("homedecor:bathroom_tiles_dark", {
 	description = S("Bathroom/kitchen tiles (dark)"),
 	tiles = {
 		{ name = "homedecor_bathroom_tiles_bg.png", color = 0xff606060 },
-		"homedecor_bathroom_tiles_bg.png"
+		"homedecor_bathroom_tiles_fg.png"
 	},
 	drawtype = "mesh",
 	mesh = "homedecor_block_with_overlay.obj",
