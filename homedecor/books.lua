@@ -224,12 +224,8 @@ minetest.register_lbm({
 			color = "medium_"..color
 		end
 
-		print(name.." --> "..newname, color)
-
 		local paletteidx = unifieddyes.getpaletteidx("unifieddyes:"..color, "wallmounted")
 		local param2 = paletteidx + new_fdir
-
-		print(" ("..paletteidx..", "..param2..")")
 
 		minetest.swap_node(pos, { name = newname, param2 = param2 })
 		local meta = minetest.get_meta(pos)
