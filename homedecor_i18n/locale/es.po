@@ -1496,7 +1496,7 @@ msgstr "@1 (sin combustible)"
 
 #: ../homedecor/handlers/furnaces.lua
 msgid "@1 (output bins are full)"
-msgstr "@1 (output bins are full)"
+msgstr "@1 (ranuras de salida llenas)"
 
 #: ../homedecor/office.lua
 msgid "Filing cabinet"
