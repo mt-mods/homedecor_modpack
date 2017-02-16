@@ -15,6 +15,7 @@ read_globals = {
 	"beds",
 	"technic",
 	"mesecon",
+	"unifieddyes",
 }
 
 globals = {

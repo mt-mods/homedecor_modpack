@@ -233,7 +233,9 @@ minetest.register_lbm({
 	action = function(pos, node)
 		local name = node.name
 		local color = string.sub(name, string.find(name, "_") + 1)
-		local color = string.sub(color, 1, string.find(color, "_", -10) - 1) -- -10 puts us near the end of the color field
+
+		-- -10 puts us near the end of the color field
+		color = string.sub(color, 1, string.find(color, "_", -10) - 1)
 
 		if color == "darkgrey" then
 			color = "dark_grey"

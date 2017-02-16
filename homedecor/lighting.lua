@@ -1,12 +1,6 @@
 -- This file supplies glowlights
 
-local dirs2 = { 9, 18, 7, 12 }
-
 local S = homedecor_i18n.gettext
-
-local function N_(x) return x end
-
-local colors = { N_("yellow"), N_("white") }
 
 local glowlight_nodebox = {
 	half = homedecor.nodebox.slab_y(1/2),
@@ -579,7 +573,7 @@ minetest.register_lbm({
 		end
 
 		local lampname
-		if string.find(name, "standing_lamp") then 
+		if string.find(name, "standing_lamp") then
 			lampname = "homedecor:standing_lamp"
 		elseif string.find(name, "table_lamp") then
 			lampname = "homedecor:table_lamp"
@@ -617,7 +611,6 @@ minetest.register_lbm({
 
 		local paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..color, false)
 
-		local old_node = node.name
 		local old_fdir
 		local new_node = newname
 		local new_fdir = 1
@@ -668,7 +661,6 @@ minetest.register_lbm({
 	nodenames = homedecor.old_static_desk_lamps,
 	action = function(pos, node)
 		local name = node.name
-		local newname
 		local color = string.sub(name, string.find(name, "_", -8) + 1)
 
 		if color == "green" then

@@ -13,7 +13,7 @@ minetest.register_node("lrfurn:armchair", {
 	drawtype = "mesh",
 	mesh = "lrfurn_armchair.obj",
 	tiles = {
-		"lrfurn_upholstery.png", 
+		"lrfurn_upholstery.png",
 		{ name = "lrfurn_sofa_bottom.png", color = 0xffffffff }
 	},
 	paramtype = "light",
@@ -26,7 +26,6 @@ minetest.register_node("lrfurn:armchair", {
 	after_place_node = lrfurn.fix_rotation,
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-		local itemname = itemstack:get_name()
 		if not clicker:is_player() then
 			return itemstack
 		end

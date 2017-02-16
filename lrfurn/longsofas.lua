@@ -39,7 +39,6 @@ minetest.register_node("lrfurn:longsofa", {
 	end,
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-		local itemname = itemstack:get_name()
 		if not clicker:is_player() then
 			return itemstack
 		end

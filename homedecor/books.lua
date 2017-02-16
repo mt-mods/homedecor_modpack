@@ -1,8 +1,6 @@
 
 local S = homedecor_i18n.gettext
 
-local function N_(x) return x end
-
 local BOOK_FORMNAME = "homedecor:book_form"
 
 local player_current_book = { }
