@@ -137,7 +137,7 @@ local old_to_color = {
 minetest.register_lbm({
 	name = "homedecor:convert_bathroom_tiles",
 	label = "Convert bathroom tiles to use param2 color",
-	run_at_every_load = true,
+	run_at_every_load = false,
 	nodenames = homedecor.old_static_bathroom_tiles,
 	action = function(pos, node)
 		local name = node.name

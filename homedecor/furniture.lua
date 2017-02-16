@@ -168,7 +168,7 @@ table.insert(homedecor.old_static_chairs, "homedecor:chair")
 minetest.register_lbm({
 	name = "homedecor:convert_chairs",
 	label = "Convert homedecor chairs to use param2 color",
-	run_at_every_load = true,
+	run_at_every_load = false,
 	nodenames = homedecor.old_static_chairs,
 	action = function(pos, node)
 		local name = node.name

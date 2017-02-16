@@ -230,7 +230,7 @@ end
 minetest.register_lbm({
 	name = "homedecor:convert_curtains",
 	label = "Convert static curtain nodes to use param2 color",
-	run_at_every_load = true,
+	run_at_every_load = false,
 	nodenames = homedecor.old_static_curtain_nodes,
 	action = function(pos, node)
 		local name = node.name

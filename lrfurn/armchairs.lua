@@ -66,7 +66,7 @@ end
 minetest.register_lbm({
 	name = "lrfurn:convert_armchairs",
 	label = "Convert lrfurn armchairs to use param2 color",
-	run_at_every_load = true,
+	run_at_every_load = false,
 	nodenames = lrfurn.old_static_armchairs,
 	action = function(pos, node)
 		local name = node.name

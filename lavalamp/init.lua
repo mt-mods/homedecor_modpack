@@ -97,7 +97,7 @@ end
 minetest.register_lbm({
 	name = "lavalamp:convert",
 	label = "Convert lava lamps to use param2 color",
-	run_at_every_load = true,
+	run_at_every_load = false,
 	nodenames = lavalamp.old_static_nodes,
 	action = function(pos, node)
 		local name = node.name

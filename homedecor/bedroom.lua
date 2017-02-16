@@ -228,7 +228,7 @@ end
 minetest.register_lbm({
 	name = "homedecor:convert_beds",
 	label = "Convert homedecor static bed nodes to use param2 color",
-	run_at_every_load = true,
+	run_at_every_load = false,
 	nodenames = homedecor.old_bed_nodes,
 	action = function(pos, node)
 		local name = node.name

@@ -557,7 +557,7 @@ end
 minetest.register_lbm({
 	name = "homedecor:convert_lighting",
 	label = "Convert homedecor glowlights, table lamps, and standing lamps to use param2 color",
-	run_at_every_load = true,
+	run_at_every_load = false,
 	nodenames = homedecor.old_static_nodes,
 	action = function(pos, node)
 		local name = node.name
@@ -657,7 +657,7 @@ homedecor.old_static_desk_lamps = {
 minetest.register_lbm({
 	name = "homedecor:convert_desk_lamps",
 	label = "Convert homedecor desk lamps to use param2 color",
-	run_at_every_load = true,
+	run_at_every_load = false,
 	nodenames = homedecor.old_static_desk_lamps,
 	action = function(pos, node)
 		local name = node.name
