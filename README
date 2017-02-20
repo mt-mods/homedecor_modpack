@@ -46,10 +46,9 @@ thanks to Jeija for coming up with an elegant cylinder using nodeboxes;
 see his 'irregular' mods).  His code is used herein (you can guess where
 :-) ).
 
-Dependencies: none (just the game's default stuff)
+Dependencies: unifieddyes and a Minetest engine build newer than 2017-01-23.
 
-Recommends: buckets, flowers, unifieddyes, junglegrass, moreores, 
-mesecons, wool
+Recommends: signs_lib, windmill, moreblocks, unified_inventory.
 
 Skin credits:
 
