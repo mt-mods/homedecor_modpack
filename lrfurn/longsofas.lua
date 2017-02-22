@@ -25,12 +25,15 @@ minetest.register_node("lrfurn:longsofa", {
 	on_rotate = screwdriver.disallow,
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		unifieddyes.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)
+		local playername = placer:get_player_name()
 		if minetest.is_protected(pos, placer:get_player_name()) then return true end
 
 		local fdir = minetest.dir_to_facedir(placer:get_look_dir(), false)
 
 		if lrfurn.check_forward(pos, fdir, true, placer) then
-			itemstack:take_item()
+			if not creative.is_enabled_for(playername) then
+				itemstack:take_item()
+			end
 		else
 			minetest.chat_send_player(placer:get_player_name(), S("No room to place the sofa!"))
 			minetest.set_node(pos, { name = "air" })
