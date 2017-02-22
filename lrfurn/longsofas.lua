@@ -18,6 +18,7 @@ minetest.register_node("lrfurn:longsofa", {
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	inventory_image = "lrfurn_longsofa_inv.png",
+	wield_scale = { x = 0.6, y = 0.6, z = 0.6 },
 	groups = {snappy=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	selection_box = longsofa_cbox,
