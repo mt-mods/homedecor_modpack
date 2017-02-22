@@ -420,8 +420,8 @@ for i, g in ipairs(gate_list) do
     def.selection_box.fixed = { 0.4, -0.5, -0.5, 0.5, 0.5, 0.5 }
     def.node_box.fixed = gate_models_open[i]
 	def.tiles = {
-		tiles[1],
-		tiles[2],
+		tiles[1].."^[transformR90",
+		tiles[2].."^[transformR270",
 		tiles[6],
 		tiles[5],
 		tiles[4],
