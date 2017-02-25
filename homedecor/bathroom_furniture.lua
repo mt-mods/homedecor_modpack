@@ -179,7 +179,6 @@ minetest.register_lbm({
 	action = function(pos, node)
 		local meta = minetest.get_meta(pos)
 		if meta:get_string("palette") ~= "ext" then
-			print(node.param2.." --> "..unifieddyes.convert_classic_palette[node.param2])
 			minetest.swap_node(pos, { name = node.name, param2 = unifieddyes.convert_classic_palette[node.param2] })
 			meta:set_string("palette", "ext")
 		end
