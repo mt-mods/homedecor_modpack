@@ -159,7 +159,7 @@ minetest.register_lbm({
 			color = color.."_s50"
 		end
 
-		local paletteidx = unifieddyes.getpaletteidx("unifieddyes:"..color)
+		local paletteidx = unifieddyes.getpaletteidx("unifieddyes:"..color, "extended")
 
 		minetest.set_node(pos, { name = newname, param2 = paletteidx })
 		local meta = minetest.get_meta(pos)

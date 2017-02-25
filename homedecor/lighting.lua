@@ -612,7 +612,7 @@ minetest.register_lbm({
 			color = "white"
 		end
 
-		local paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..color, false)
+		local paletteidx, _ = unifieddyes.getpaletteidx("unifieddyes:"..color, "extended")
 
 		local old_fdir
 		local new_node = newname
