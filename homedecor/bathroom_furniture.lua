@@ -164,6 +164,7 @@ minetest.register_lbm({
 		minetest.set_node(pos, { name = newname, param2 = paletteidx })
 		local meta = minetest.get_meta(pos)
 		meta:set_string("dye", "unifieddyes:"..color)
+		meta:set_string("palette", "ext")
 	end
 })
 
