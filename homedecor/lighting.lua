@@ -153,7 +153,7 @@ homedecor.register("plasma_ball", {
 	description = S("Plasma Ball"),
 	mesh = "homedecor_plasma_ball.obj",
 	tiles = {
-		"homedecor_generic_plastic.png",
+		{ name = "homedecor_generic_plastic.png", color = homedecor.color_black },
 		{
 			name = "homedecor_plasma_ball_streamers.png",
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0},
