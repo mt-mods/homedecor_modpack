@@ -106,9 +106,10 @@ minetest.register_node("homedecor:glowlight_small_cube", {
 
 homedecor.register("plasma_lamp", {
 	description = S("Plasma Lamp"),
-	drawtype = "glasslike_framed",
-	tiles = {"default_gold_block.png","homedecor_glass_face_clean.png"},
-	special_tiles = {
+	drawtype = "mesh",
+	mesh = "plasma_lamp.obj",
+	tiles = {
+		"default_gold_block.png",
 		{
 			name="homedecor_plasma_storm.png",
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0},
@@ -119,9 +120,6 @@ homedecor.register("plasma_lamp", {
 	sunlight_propagates = true,
 	groups = {cracky=3,oddly_breakable_by_hand=3},
 	sounds = default.node_sound_glass_defaults(),
-	after_place_node = function(pos, placer, itemstack, pointed_thing)
-		minetest.swap_node(pos, {name = "homedecor:plasma_lamp", param2 = 255})
-	end
 })
 
 homedecor.register("plasma_ball", {
