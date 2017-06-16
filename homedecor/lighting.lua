@@ -21,6 +21,15 @@ minetest.register_node("homedecor:glowlight_half", {
 		"homedecor_glowlight_thick_sides.png",
 		"homedecor_glowlight_thick_sides.png"
 	},
+	overlay_tiles = {
+		{ name = "homedecor_glowlight_top_overlay.png", color = "white"},
+		"",
+		{ name = "homedecor_glowlight_thick_sides_overlay.png", color = "white"},
+		{ name = "homedecor_glowlight_thick_sides_overlay.png", color = "white"},
+		{ name = "homedecor_glowlight_thick_sides_overlay.png", color = "white"},
+		{ name = "homedecor_glowlight_thick_sides_overlay.png", color = "white"},
+	},
+	use_texture_alpha = true,
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "colorwallmounted",
@@ -52,6 +61,15 @@ minetest.register_node("homedecor:glowlight_quarter", {
 		"homedecor_glowlight_thin_sides.png",
 		"homedecor_glowlight_thin_sides.png"
 	},
+	overlay_tiles = {
+		{ name = "homedecor_glowlight_top_overlay.png", color = "white"},
+		"",
+		{ name = "homedecor_glowlight_thin_sides_overlay.png", color = "white"},
+		{ name = "homedecor_glowlight_thin_sides_overlay.png", color = "white"},
+		{ name = "homedecor_glowlight_thin_sides_overlay.png", color = "white"},
+		{ name = "homedecor_glowlight_thin_sides_overlay.png", color = "white"},
+	},
+	use_texture_alpha = true,
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "colorwallmounted",
@@ -83,6 +101,15 @@ minetest.register_node("homedecor:glowlight_small_cube", {
 		"homedecor_glowlight_cube_sides.png",
 		"homedecor_glowlight_cube_sides.png"
 	},
+	overlay_tiles = {
+		{ name = "homedecor_glowlight_cube_tb_overlay.png", color = "white"},
+		{ name = "homedecor_glowlight_cube_tb_overlay.png", color = "white"},
+		{ name = "homedecor_glowlight_cube_sides_overlay.png", color = "white"},
+		{ name = "homedecor_glowlight_cube_sides_overlay.png", color = "white"},
+		{ name = "homedecor_glowlight_cube_sides_overlay.png", color = "white"},
+		{ name = "homedecor_glowlight_cube_sides_overlay.png", color = "white"},
+	},
+	use_texture_alpha = true,
 	paramtype = "light",
 	paramtype2 = "colorwallmounted",
 	drawtype = "nodebox",
