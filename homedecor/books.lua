@@ -3,12 +3,12 @@ local S = homedecor_i18n.gettext
 local function N_(x) return x end
 
 local bookcolors = {
-	{ N_("red"),    "#c00000:150" },
-	{ N_("green"),  "#008000:150" },
-	{ N_("blue"),   "#4040c0:150" },
-	{ N_("violet"), "#600070:150" },
-	{ N_("grey"),   "#202020:150" },
-	{ N_("brown"),  "#603010:175" }
+	{ N_("red"),    0xffd26466 },
+	{ N_("green"),  0xff62aa66 },
+	{ N_("blue"),   0xff8686d7 },
+	{ N_("violet"), 0xff9c65a7 },
+	{ N_("grey"),   0xff757579 },
+	{ N_("brown"),  0xff896958 }
 }
 
 local BOOK_FORMNAME = "homedecor:book_form"
@@ -38,17 +38,17 @@ for _, c in ipairs(bookcolors) do
 		minetest.remove_node(pos)
 	end
 
-	local inv_img = "homedecor_book_inv.png^[colorize:"..hue.."^homedecor_book_trim_inv.png"
-
 	homedecor.register("book_"..color, {
 		description = S("Writable Book (@1)", S(color)),
 		mesh = "homedecor_book.obj",
 		tiles = {
-			"(homedecor_book_cover.png^[colorize:"..hue..")^homedecor_book_cover_trim.png",
-			"homedecor_book_edges.png"
+			{ name = "homedecor_book_cover.png", color = hue },
+			{ name = "homedecor_book_edges.png", color = "white" }
 		},
-		inventory_image = inv_img,
-		wield_image = inv_img,
+		overlay_tiles = {
+			{ name = "homedecor_book_cover_trim.png", color = "white" },
+			""
+		},
 		groups = { snappy=3, oddly_breakable_by_hand=3, book=1 },
 		walkable = false,
 		stack_max = 1,
@@ -104,9 +104,9 @@ for _, c in ipairs(bookcolors) do
 	homedecor.register("book_open_"..color, {
 		mesh = "homedecor_book_open.obj",
 		tiles = {
-			"(homedecor_book_cover.png^[colorize:"..hue..")^homedecor_book_cover_trim.png",
-			"homedecor_book_edges.png",
-			"homedecor_book_pages.png"
+			{ name = "homedecor_book_cover.png", color = hue },
+			{ name = "homedecor_book_edges.png", color = "white" },
+			{ name = "homedecor_book_pages.png", color = "white" }
 		},
 		groups = { snappy=3, oddly_breakable_by_hand=3, not_in_creative_inventory=1 },
 		drop = "homedecor:book_"..color,
