@@ -174,3 +174,4 @@ minetest.register_on_player_receive_fields(function(player, form_name, fields)
 end)
 
 minetest.register_alias("homedecor:book", "homedecor:book_grey")
+minetest.register_alias("homedecor:book_open", "homedecor:book_open_grey")
