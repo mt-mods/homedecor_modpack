@@ -302,7 +302,7 @@ if minetest.get_modpath("moreblocks") then
 		"marble",
 		"building_blocks:Marble",
 		{
-			description = "Marble",
+			description = S("Marble"),
 			tiles = {"building_blocks_marble.png"},
 			groups = {cracky=3},
 			sounds = default.node_sound_stone_defaults(),
@@ -313,7 +313,7 @@ if minetest.get_modpath("moreblocks") then
 		"hardwood",
 		"building_blocks:hardwood",
 		{
-			description = "Hardwood",
+			description = S("Hardwood"),
 			tiles = {"building_blocks_hardwood.png"},
 			groups = {choppy=1,flammable=1},
 			sounds = default.node_sound_wood_defaults(),
@@ -324,7 +324,7 @@ if minetest.get_modpath("moreblocks") then
 		"fakegrass",
 		"building_blocks:fakegrass",
 		{
-			description = "Grass",
+			description = S("Grass"),
 			tiles = {"default_grass.png"},
 			groups = {crumbly=3},
 			sounds = default.node_sound_dirt_defaults({
@@ -348,7 +348,7 @@ if minetest.get_modpath("moreblocks") then
 		"tar",
 		"building_blocks:Tar",
 		{
-			description = "Tar",
+			description = S("Tar"),
 			tiles = {"building_blocks_tar.png"},
 			groups = {crumbly=1},
 			sounds = default.node_sound_stone_defaults(),
@@ -360,7 +360,7 @@ if minetest.get_modpath("moreblocks") then
 		"grate",
 		"building_blocks:grate",
 		{
-			description = "Grate",
+			description = S("Grate"),
 			tiles = {"building_blocks_grate.png"},
 			groups = {cracky=1},
 			sounds = default.node_sound_stone_defaults(),
@@ -371,7 +371,7 @@ if minetest.get_modpath("moreblocks") then
 		"Adobe",
 		"building_blocks:Adobe",
 		{
-			description = "Adobe",
+			description = S("Adobe"),
 			tiles = {"building_blocks_Adobe.png"},
 			groups = {crumbly=3},
 			sounds = default.node_sound_stone_defaults(),
@@ -382,7 +382,7 @@ if minetest.get_modpath("moreblocks") then
 		"Roofing",
 		"building_blocks:Roofing",
 		{
-			description = "Roofing",
+			description = S("Roofing"),
 			tiles = {"building_blocks_Roofing.png"},
 			groups = {snappy=3},
 			sounds = default.node_sound_stone_defaults(),
