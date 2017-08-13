@@ -118,7 +118,7 @@ minetest.register_alias("homedecor:deckchair_head", "air")
 homedecor.register("deckchair_striped_blue", {
 	mesh = "homedecor_deckchair.obj",
 	tiles = {"homedecor_deckchair_striped_blue.png"},
-	description = S("Deck Chair"),
+	description = S("Deck Chair (blue striped)"),
 	groups = { snappy = 3 },
 	expand = { forward="placeholder" },
 	sounds = default.node_sound_wood_defaults(),
