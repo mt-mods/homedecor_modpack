@@ -349,6 +349,8 @@ building_blocks_stairs("building_blocks:hardwood", {
 })
 
 if minetest.get_modpath("moreblocks") then
+	stairsplus:register_alias_all("building_blocks", "Adobe", "building_blocks", "adobe")
+	stairsplus:register_alias_all("building_blocks", "Roofing", "building_blocks", "roofing")
 	for _, i in ipairs(stairsplus.shapes_list) do
 		local class = i[1]
 		local cut = i[2]
