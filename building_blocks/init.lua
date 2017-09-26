@@ -4,6 +4,8 @@ local function building_blocks_stairs(nodename, def)
 	minetest.register_node(nodename, def)	
 	if minetest.get_modpath("moreblocks") or minetest.get_modpath("stairs") then
 		local mod, name = nodename:match("(.*):(.*)")
+		minetest.register_alias(mod .. ":slab_" .. name, "stairs:slab_" .. name)
+		minetest.register_alias(mod .. ":stair_" .. name, "stairs:stair_" .. name)
 		for groupname,value in pairs(def.groups) do
 			if	groupname ~= "cracky" and
 				groupname ~= "choppy" and
@@ -37,6 +39,13 @@ local function building_blocks_stairs(nodename, def)
 			)
 		end	
 	end
+end
+
+if minetest.get_modpath("moreblocks") or minetest.get_modpath("stairs") then
+	minetest.register_alias("building_blocks:slab_Adobe", "stairs:slab_adobe")
+	minetest.register_alias("building_blocks:stair_Adobe", "stairs:stair_adobe")
+	minetest.register_alias("building_blocks:slab_Roofing", "stairs:slab_roofing")
+	minetest.register_alias("building_blocks:stair_Roofing", "stairs:stair_roofing")
 end
 
 building_blocks_stairs("building_blocks:adobe", {
