@@ -52,7 +52,7 @@ building_blocks_stairs("building_blocks:fakegrass", {
 	description = S("Fake Grass"),
 	is_ground_content = true,
 	groups = {crumbly=3},
-		sounds = default.node_sound_dirt_defaults({
+	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
 })
@@ -94,6 +94,29 @@ building_blocks_stairs("building_blocks:Marble", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_node("building_blocks:smoothglass", {
+	drawtype = "glasslike",
+	description = S("Streak Free Glass"),
+	tiles = {"building_blocks_sglass.png"},
+	inventory_image = minetest.inventorycube("building_blocks_sglass.png"),
+	paramtype = "light",
+	sunlight_propagates = true,
+	is_ground_content = true,
+	groups = {snappy=3,cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
+})
+minetest.register_node("building_blocks:woodglass", {
+	drawtype = "glasslike",
+	description = S("Wood Framed Glass"),
+	tiles = {"building_blocks_wglass.png"},
+	inventory_image = minetest.inventorycube("building_blocks_wglass.png"),
+	paramtype = "light",
+	sunlight_propagates = true,
+	is_ground_content = true,
+	groups = {snappy=3,cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
 minetest.register_node("building_blocks:brobble_spread", {
 	drawtype = "raillike",
 	-- Translators: "Brobble" is a portmanteau of "Brick" and "Cobble".
@@ -111,43 +134,6 @@ minetest.register_node("building_blocks:brobble_spread", {
 	sunlight_propagates = true,
 	is_ground_content = true,
 	groups = {crumbly=3},
-})
-minetest.register_node("building_blocks:BWtile", {
-	drawtype = "nodebox",
-	description = S("Chess board tiling"),
-	tiles = {
-		"building_blocks_BWtile.png",
-		"building_blocks_BWtile.png^[transformR90",
-		"building_blocks_BWtile.png^[transformR90",
-		"building_blocks_BWtile.png^[transformR90",
-		"building_blocks_BWtile.png",
-		"building_blocks_BWtile.png"
-	},
-	inventory_image = "building_blocks_bwtile_inv.png",
-	paramtype = "light",
-	walkable = false,
-	node_box = {
-		type = "fixed",
-		fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
-	},
-	sunlight_propagates = true,
-	is_ground_content = true,
-	groups = {crumbly=3},
-})
-minetest.register_node("building_blocks:Fireplace", {
-	description = S("Fireplace"),
-	tiles = {
-		"building_blocks_cast_iron.png",
-		"building_blocks_cast_iron.png",
-		"building_blocks_cast_iron.png",
-		"building_blocks_cast_iron_fireplace.png"
-	},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	light_source = default.LIGHT_MAX,
-	sunlight_propagates = true,
-	is_ground_content = true,
-	groups = {cracky=2},
 })
 minetest.register_node("building_blocks:gravel_spread", {
 	drawtype = "raillike",
@@ -168,17 +154,6 @@ minetest.register_node("building_blocks:gravel_spread", {
 		footstep = {name="default_gravel_footstep", gain=0.5},
 		dug = {name="default_gravel_footstep", gain=1.0},
 	}),
-})
-minetest.register_node("building_blocks:smoothglass", {
-	drawtype = "glasslike",
-	description = S("Streak Free Glass"),
-	tiles = {"building_blocks_sglass.png"},
-	inventory_image = minetest.inventorycube("building_blocks_sglass.png"),
-	paramtype = "light",
-	sunlight_propagates = true,
-	is_ground_content = true,
-	groups = {snappy=3,cracky=3,oddly_breakable_by_hand=3},
-	sounds = default.node_sound_glass_defaults(),
 })
 minetest.register_node("building_blocks:Tarmac_spread", {
 	drawtype = "raillike",
@@ -213,14 +188,42 @@ minetest.register_node("building_blocks:terrycloth_towel", {
 	is_ground_content = true,
 	groups = {crumbly=3},
 })
-minetest.register_node("building_blocks:woodglass", {
-	drawtype = "glasslike",
-	description = S("Wood Framed Glass"),
-	tiles = {"building_blocks_wglass.png"},
-	inventory_image = minetest.inventorycube("building_blocks_wglass.png"),
+
+minetest.register_node("building_blocks:BWtile", {
+	drawtype = "nodebox",
+	description = S("Chess board tiling"),
+	tiles = {
+		"building_blocks_BWtile.png",
+		"building_blocks_BWtile.png^[transformR90",
+		"building_blocks_BWtile.png^[transformR90",
+		"building_blocks_BWtile.png^[transformR90",
+		"building_blocks_BWtile.png",
+		"building_blocks_BWtile.png"
+	},
+	inventory_image = "building_blocks_bwtile_inv.png",
 	paramtype = "light",
+	walkable = false,
+	node_box = {
+		type = "fixed",
+		fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
+	},
 	sunlight_propagates = true,
 	is_ground_content = true,
-	groups = {snappy=3,cracky=3,oddly_breakable_by_hand=3},
-	sounds = default.node_sound_glass_defaults(),
+	groups = {crumbly=3},
+})
+
+minetest.register_node("building_blocks:Fireplace", {
+	description = S("Fireplace"),
+	tiles = {
+		"building_blocks_cast_iron.png",
+		"building_blocks_cast_iron.png",
+		"building_blocks_cast_iron.png",
+		"building_blocks_cast_iron_fireplace.png"
+	},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	light_source = default.LIGHT_MAX,
+	sunlight_propagates = true,
+	is_ground_content = true,
+	groups = {cracky=2},
 })
