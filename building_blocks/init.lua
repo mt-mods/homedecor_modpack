@@ -42,20 +42,20 @@ local function building_blocks_stairs(nodename, def)
 end
 
 if minetest.get_modpath("moreblocks") or minetest.get_modpath("stairs") then
-	minetest.register_alias("building_blocks:slab_Adobe", "stairs:slab_adobe")
-	minetest.register_alias("building_blocks:stair_Adobe", "stairs:stair_adobe")
-	minetest.register_alias("building_blocks:slab_Roofing", "stairs:slab_roofing")
-	minetest.register_alias("building_blocks:stair_Roofing", "stairs:stair_roofing")
+	minetest.register_alias("building_blocks:slab_marble", "stairs:slab_Marble")
+	minetest.register_alias("building_blocks:stair_marble", "stairs:stair_Marble")
+	minetest.register_alias("building_blocks:slab_tar", "stairs:slab_Tar")
+	minetest.register_alias("building_blocks:stair_tar", "stairs:stair_Tar")
 end
 
-building_blocks_stairs("building_blocks:adobe", {
+building_blocks_stairs("building_blocks:Adobe", {
 	tiles = {"building_blocks_Adobe.png"},
 	description = S("Adobe"),
 	is_ground_content = true,
 	groups = {crumbly=3},
 	sounds = default.node_sound_stone_defaults(),
 })
-building_blocks_stairs("building_blocks:roofing", {
+building_blocks_stairs("building_blocks:Roofing", {
 	tiles = {"building_blocks_Roofing.png"},
 	is_ground_content = true,
 	description = S("Roof block"),
@@ -92,7 +92,7 @@ minetest.register_craft({
 	}
 })
 minetest.register_craft({
-	output = 'building_blocks:adobe 3',
+	output = 'building_blocks:Adobe 3',
 	recipe = {
 		{"default:sand"},
 		{"default:clay"},
@@ -101,10 +101,10 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'building_blocks:roofing 10',
+	output = 'building_blocks:Roofing 10',
 	recipe = {
-		{"building_blocks:adobe", "building_blocks:adobe"},
-		{"building_blocks:adobe", "building_blocks:adobe"},
+		{"building_blocks:Adobe", "building_blocks:Adobe"},
+		{"building_blocks:Adobe", "building_blocks:Adobe"},
 	}
 })
 minetest.register_craft({
@@ -349,8 +349,8 @@ building_blocks_stairs("building_blocks:hardwood", {
 })
 
 if minetest.get_modpath("moreblocks") then
-	stairsplus:register_alias_all("building_blocks", "Adobe", "building_blocks", "adobe")
-	stairsplus:register_alias_all("building_blocks", "Roofing", "building_blocks", "roofing")
+	stairsplus:register_alias_all("building_blocks", "tar", "building_blocks", "Tar")
+	stairsplus:register_alias_all("building_blocks", "marble", "building_blocks", "Marble")
 	for _, i in ipairs(stairsplus.shapes_list) do
 		local class = i[1]
 		local cut = i[2]
@@ -359,7 +359,7 @@ if minetest.get_modpath("moreblocks") then
 
 	end
 	minetest.unregister_item("moreblocks:tar")
-	minetest.register_alias("moreblocks:tar", "building_blocks:tar")
+	minetest.register_alias("moreblocks:tar", "building_blocks:Tar")
 end
 
 
@@ -399,29 +399,24 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_alias("tar", "building_blocks:tar")
+minetest.register_alias("tar", "building_blocks:Tar")
 minetest.register_alias("fakegrass", "building_blocks:fakegrass")
 minetest.register_alias("tar_knife", "building_blocks:knife")
-minetest.register_alias("adobe", "building_blocks:adobe")
-minetest.register_alias("building_blocks_roofing", "building_blocks:roofing")
+minetest.register_alias("adobe", "building_blocks:Adobe")
+minetest.register_alias("building_blocks_roofing", "building_blocks:Roofing")
 minetest.register_alias("hardwood", "building_blocks:hardwood")
 minetest.register_alias("sticks", "building_blocks:sticks")
 minetest.register_alias("building_blocks:faggot", "building_blocks:sticks")
-minetest.register_alias("marble", "building_blocks:marble")
+minetest.register_alias("marble", "building_blocks:Marble")
 
-minetest.register_alias("building_blocks:Adobe", "building_blocks:adobe")
-minetest.register_alias("building_blocks:Roofing", "building_blocks:roofing")
-minetest.register_alias("building_blocks:Tar", "building_blocks:tar")
-minetest.register_alias("building_blocks:Marble", "building_blocks:marble")
-
-building_blocks_stairs("building_blocks:tar", {
+building_blocks_stairs("building_blocks:Tar", {
 	description = S("Tar"),
 	tiles = {"building_blocks_tar.png"},
 	is_ground_content = true,
 	groups = {crumbly=1, tar_block = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
-building_blocks_stairs("building_blocks:marble", {
+building_blocks_stairs("building_blocks:Marble", {
 	description = S("Marble"),
 	tiles = {"building_blocks_marble.png"},
 	is_ground_content = true,
@@ -435,13 +430,13 @@ minetest.register_craft({
 })
 minetest.register_craft({
 	type = "fuel",
-	recipe = "building_blocks:tar",
+	recipe = "building_blocks:Tar",
 	burntime = 40,
 })
 
 minetest.register_craft({
 	type = "cooking",
-	output = "building_blocks:tar",
+	output = "building_blocks:Tar",
 	recipe = "building_blocks:tar_base",
 })
 
@@ -458,7 +453,7 @@ minetest.register_tool("building_blocks:knife", {
 })
 
 minetest.register_craft({
-	output = "building_blocks:marble 9",
+	output = "building_blocks:Marble 9",
 	recipe = {
 		{"default:clay", "group:tar_block", "default:clay"},
 		{"group:tar_block","default:clay", "group:tar_block"},
