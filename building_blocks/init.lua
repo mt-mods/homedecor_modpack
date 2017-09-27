@@ -3,6 +3,7 @@ local modpath = minetest.get_modpath("building_blocks")
 
 dofile(modpath.."/alias.lua")
 dofile(modpath.."/node_stairs.lua")
+dofile(modpath.."/others.lua")
 
 
 
@@ -154,16 +155,7 @@ minetest.register_craft({
 	burntime = 28,
 })
 
-minetest.register_craftitem("building_blocks:sticks", {
-	description = S("Small bundle of sticks"),
-	image = "building_blocks_sticks.png",
-	on_place_on_ground = minetest.craftitem_place_item,
-})
 
-minetest.register_craftitem("building_blocks:tar_base", {
-	description = S("Tar base"),
-	image = "building_blocks_tar_base.png",
-})
 
 --Tar
 minetest.register_craft({
@@ -192,17 +184,6 @@ minetest.register_craft({
 	recipe = "building_blocks:tar_base",
 })
 
-minetest.register_tool("building_blocks:knife", {
-	description = S("Tar Knife"),
-	inventory_image = "building_blocks_knife.png",
-	tool_capabilities = {
-		max_drop_level=0,
-		groupcaps={
-			choppy={times={[2]=7.50, [3]=2.80}, uses=100, maxlevel=1},
-			fleshy={times={[2]=5.50, [3]=2.80}, uses=100, maxlevel=1}
-		}
-	},
-})
 
 minetest.register_craft({
 	output = "building_blocks:Marble 9",
