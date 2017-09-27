@@ -15,7 +15,7 @@ local function building_blocks_stairs(nodename, def)
 			then
 				def.groups.groupname = nil
 			end
-		end	
+		end
 		if minetest.get_modpath("moreblocks") then
 			stairsplus:register_all(
 				mod,
@@ -47,22 +47,14 @@ building_blocks_stairs("building_blocks:Adobe", {
 	groups = {crumbly=3},
 	sounds = default.node_sound_stone_defaults(),
 })
-building_blocks_stairs("building_blocks:Roofing", {
-	tiles = {"building_blocks_Roofing.png"},
+building_blocks_stairs("building_blocks:fakegrass", {
+	tiles = {"default_grass.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"},
+	description = S("Fake Grass"),
 	is_ground_content = true,
-	description = S("Roof block"),
-	groups = {snappy=3},
-})
-minetest.register_node("building_blocks:smoothglass", {
-	drawtype = "glasslike",
-	description = S("Streak Free Glass"),
-	tiles = {"building_blocks_sglass.png"},
-	inventory_image = minetest.inventorycube("building_blocks_sglass.png"),
-	paramtype = "light",
-	sunlight_propagates = true,
-	is_ground_content = true,
-	groups = {snappy=3,cracky=3,oddly_breakable_by_hand=3},
-	sounds = default.node_sound_glass_defaults(),
+	groups = {crumbly=3},
+		sounds = default.node_sound_dirt_defaults({
+		footstep = {name="default_grass_footstep", gain=0.4},
+	}),
 })
 building_blocks_stairs("building_blocks:grate", {
 	drawtype = "glasslike",
@@ -74,37 +66,41 @@ building_blocks_stairs("building_blocks:grate", {
 	is_ground_content = true,
 	groups = {cracky=1},
 })
-minetest.register_node("building_blocks:Fireplace", {
-	description = S("Fireplace"),
-	tiles = {
-		"building_blocks_cast_iron.png",
-		"building_blocks_cast_iron.png",
-		"building_blocks_cast_iron.png",
-		"building_blocks_cast_iron_fireplace.png"
-	},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	light_source = default.LIGHT_MAX,
-	sunlight_propagates = true,
+building_blocks_stairs("building_blocks:hardwood", {
+	tiles = {"building_blocks_hardwood.png"},
 	is_ground_content = true,
-	groups = {cracky=2},
+	description = S("Hardwood"),
+	groups = {choppy=1,flammable=1},
+	sounds = default.node_sound_wood_defaults(),
 })
-minetest.register_node("building_blocks:woodglass", {
-	drawtype = "glasslike",
-	description = S("Wood Framed Glass"),
-	tiles = {"building_blocks_wglass.png"},
-	inventory_image = minetest.inventorycube("building_blocks_wglass.png"),
-	paramtype = "light",
-	sunlight_propagates = true,
+building_blocks_stairs("building_blocks:Roofing", {
+	tiles = {"building_blocks_Roofing.png"},
 	is_ground_content = true,
-	groups = {snappy=3,cracky=3,oddly_breakable_by_hand=3},
-	sounds = default.node_sound_glass_defaults(),
+	description = S("Roof block"),
+	groups = {snappy=3},
 })
-minetest.register_node("building_blocks:terrycloth_towel", {
+building_blocks_stairs("building_blocks:Tar", {
+	description = S("Tar"),
+	tiles = {"building_blocks_tar.png"},
+	is_ground_content = true,
+	groups = {crumbly=1, tar_block = 1},
+	sounds = default.node_sound_stone_defaults(),
+})
+building_blocks_stairs("building_blocks:Marble", {
+	description = S("Marble"),
+	tiles = {"building_blocks_marble.png"},
+	is_ground_content = true,
+	groups = {cracky=3, marble = 1},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("building_blocks:brobble_spread", {
 	drawtype = "raillike",
-	description = S("Terrycloth towel"),
-	tiles = {"building_blocks_towel.png"},
-	inventory_image = "building_blocks_towel_inv.png",
+	-- Translators: "Brobble" is a portmanteau of "Brick" and "Cobble".
+	-- Translate however you see fit.
+	description = S("Brobble Spread"),
+	tiles = {"building_blocks_brobble.png"},
+	inventory_image = "building_blocks_brobble_spread_inv.png",
 	paramtype = "light",
 	walkable = false,
 	selection_box = {
@@ -115,23 +111,6 @@ minetest.register_node("building_blocks:terrycloth_towel", {
 	sunlight_propagates = true,
 	is_ground_content = true,
 	groups = {crumbly=3},
-})
-minetest.register_node("building_blocks:Tarmac_spread", {
-	drawtype = "raillike",
-	description = S("Tarmac Spread"),
-	tiles = {"building_blocks_tar.png"},
-	inventory_image = "building_blocks_tar_spread_inv.png",
-	paramtype = "light",
-	walkable = false,
-	selection_box = {
-		type = "fixed",
-                -- but how to specify the dimensions for curved and sideways rails?
-                fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
-	},
-	sunlight_propagates = true,
-	is_ground_content = true,
-	groups = {cracky=3},
-	sounds = default.node_sound_dirt_defaults(),
 })
 minetest.register_node("building_blocks:BWtile", {
 	drawtype = "nodebox",
@@ -155,23 +134,20 @@ minetest.register_node("building_blocks:BWtile", {
 	is_ground_content = true,
 	groups = {crumbly=3},
 })
-minetest.register_node("building_blocks:brobble_spread", {
-	drawtype = "raillike",
-	-- Translators: "Brobble" is a portmanteau of "Brick" and "Cobble".
-	-- Translate however you see fit.
-	description = S("Brobble Spread"),
-	tiles = {"building_blocks_brobble.png"},
-	inventory_image = "building_blocks_brobble_spread_inv.png",
-	paramtype = "light",
-	walkable = false,
-	selection_box = {
-		type = "fixed",
-                -- but how to specify the dimensions for curved and sideways rails?
-                fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
+minetest.register_node("building_blocks:Fireplace", {
+	description = S("Fireplace"),
+	tiles = {
+		"building_blocks_cast_iron.png",
+		"building_blocks_cast_iron.png",
+		"building_blocks_cast_iron.png",
+		"building_blocks_cast_iron_fireplace.png"
 	},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	light_source = default.LIGHT_MAX,
 	sunlight_propagates = true,
 	is_ground_content = true,
-	groups = {crumbly=3},
+	groups = {cracky=2},
 })
 minetest.register_node("building_blocks:gravel_spread", {
 	drawtype = "raillike",
@@ -193,34 +169,58 @@ minetest.register_node("building_blocks:gravel_spread", {
 		dug = {name="default_gravel_footstep", gain=1.0},
 	}),
 })
-building_blocks_stairs("building_blocks:hardwood", {
-	tiles = {"building_blocks_hardwood.png"},
+minetest.register_node("building_blocks:smoothglass", {
+	drawtype = "glasslike",
+	description = S("Streak Free Glass"),
+	tiles = {"building_blocks_sglass.png"},
+	inventory_image = minetest.inventorycube("building_blocks_sglass.png"),
+	paramtype = "light",
+	sunlight_propagates = true,
 	is_ground_content = true,
-	description = S("Hardwood"),
-	groups = {choppy=1,flammable=1},
-	sounds = default.node_sound_wood_defaults(),
+	groups = {snappy=3,cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
 })
-
-building_blocks_stairs("building_blocks:fakegrass", {
-	tiles = {"default_grass.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"},
-	description = S("Fake Grass"),
+minetest.register_node("building_blocks:Tarmac_spread", {
+	drawtype = "raillike",
+	description = S("Tarmac Spread"),
+	tiles = {"building_blocks_tar.png"},
+	inventory_image = "building_blocks_tar_spread_inv.png",
+	paramtype = "light",
+	walkable = false,
+	selection_box = {
+		type = "fixed",
+                -- but how to specify the dimensions for curved and sideways rails?
+                fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
+	},
+	sunlight_propagates = true,
+	is_ground_content = true,
+	groups = {cracky=3},
+	sounds = default.node_sound_dirt_defaults(),
+})
+minetest.register_node("building_blocks:terrycloth_towel", {
+	drawtype = "raillike",
+	description = S("Terrycloth towel"),
+	tiles = {"building_blocks_towel.png"},
+	inventory_image = "building_blocks_towel_inv.png",
+	paramtype = "light",
+	walkable = false,
+	selection_box = {
+		type = "fixed",
+                -- but how to specify the dimensions for curved and sideways rails?
+                fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
+	},
+	sunlight_propagates = true,
 	is_ground_content = true,
 	groups = {crumbly=3},
-		sounds = default.node_sound_dirt_defaults({
-		footstep = {name="default_grass_footstep", gain=0.4},
-	}),
 })
-building_blocks_stairs("building_blocks:Tar", {
-	description = S("Tar"),
-	tiles = {"building_blocks_tar.png"},
+minetest.register_node("building_blocks:woodglass", {
+	drawtype = "glasslike",
+	description = S("Wood Framed Glass"),
+	tiles = {"building_blocks_wglass.png"},
+	inventory_image = minetest.inventorycube("building_blocks_wglass.png"),
+	paramtype = "light",
+	sunlight_propagates = true,
 	is_ground_content = true,
-	groups = {crumbly=1, tar_block = 1},
-	sounds = default.node_sound_stone_defaults(),
-})
-building_blocks_stairs("building_blocks:Marble", {
-	description = S("Marble"),
-	tiles = {"building_blocks_marble.png"},
-	is_ground_content = true,
-	groups = {cracky=3, marble = 1},
-	sounds = default.node_sound_stone_defaults(),
+	groups = {snappy=3,cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
 })

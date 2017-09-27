@@ -1,10 +1,10 @@
 local S = homedecor_i18n.gettext
 
 if minetest.get_modpath("moreblocks") or minetest.get_modpath("stairs") then
-	minetest.register_alias("building_blocks:slab_marble", "stairs:slab_Marble")
-	minetest.register_alias("building_blocks:stair_marble", "stairs:stair_Marble")
 	minetest.register_alias("building_blocks:slab_tar", "stairs:slab_Tar")
 	minetest.register_alias("building_blocks:stair_tar", "stairs:stair_Tar")
+	minetest.register_alias("building_blocks:slab_marble", "stairs:slab_Marble")
+	minetest.register_alias("building_blocks:stair_marble", "stairs:stair_Marble")
 end
 
 if minetest.get_modpath("moreblocks") then
@@ -20,15 +20,15 @@ if minetest.get_modpath("moreblocks") then
 	minetest.register_alias("moreblocks:tar", "building_blocks:Tar")
 end
 
-minetest.register_alias("tar", "building_blocks:Tar")
-minetest.register_alias("fakegrass", "building_blocks:fakegrass")
-minetest.register_alias("tar_knife", "building_blocks:knife")
 minetest.register_alias("adobe", "building_blocks:Adobe")
-minetest.register_alias("building_blocks_roofing", "building_blocks:Roofing")
+minetest.register_alias("fakegrass", "building_blocks:fakegrass")
 minetest.register_alias("hardwood", "building_blocks:hardwood")
+minetest.register_alias("tar_knife", "building_blocks:knife")
+minetest.register_alias("marble", "building_blocks:Marble")
+minetest.register_alias("building_blocks_roofing", "building_blocks:Roofing")
 minetest.register_alias("sticks", "building_blocks:sticks")
 minetest.register_alias("building_blocks:faggot", "building_blocks:sticks")
-minetest.register_alias("marble", "building_blocks:Marble")
+minetest.register_alias("tar", "building_blocks:Tar")
 
 if not minetest.get_modpath("technic") then
 	minetest.register_node( ":technic:granite", {
