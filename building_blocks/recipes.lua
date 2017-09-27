@@ -38,7 +38,6 @@ minetest.register_craft({
 		{"group:stick"},
 	}
 })
-
 minetest.register_craft({
 	output = 'building_blocks:Roofing 10',
 	recipe = {
@@ -74,7 +73,6 @@ minetest.register_craft({
 		{"default:junglewood", "default:wood"},
 	}
 })
-
 minetest.register_craft({
 	output = 'building_blocks:hardwood 2',
 	recipe = {
@@ -100,14 +98,12 @@ else
 		}
 	})
 end
-
 minetest.register_craft({
 	output = 'default:stick 4',
 	recipe = {
 		{'building_blocks:sticks'},
 	}
 })
-
 minetest.register_craft({
 	output = 'building_blocks:fakegrass 2',
 	recipe = {
@@ -115,7 +111,6 @@ minetest.register_craft({
 		{"default:dirt"},
 	}
 })
-
 minetest.register_craft({
 	output = 'building_blocks:tar_base 4',
 	recipe = {
@@ -123,7 +118,6 @@ minetest.register_craft({
 		{"default:gravel", "default:coal_lump"}
 	}
 })
-
 minetest.register_craft({
 	output = 'building_blocks:tar_base 4',
 	recipe = {
@@ -131,26 +125,16 @@ minetest.register_craft({
 		{"default:coal_lump", "default:gravel"}
 	}
 })
-
 minetest.register_craft({
 	type = "cooking",
 	output = "building_blocks:smoothglass",
 	recipe = "default:glass"
 })
-
-
-
-
-
 minetest.register_craft({
 	type = "fuel",
 	recipe = "building_blocks:hardwood",
 	burntime = 28,
 })
-
-
-
---Tar
 minetest.register_craft({
 	output = 'building_blocks:knife 1',
 	recipe = {
@@ -158,8 +142,6 @@ minetest.register_craft({
 		{"group:stick"},
 	}
 })
-
-
 minetest.register_craft({
 	type = "fuel",
 	recipe = "building_blocks:sticks",
@@ -176,8 +158,6 @@ minetest.register_craft({
 	output = "building_blocks:Tar",
 	recipe = "building_blocks:tar_base",
 })
-
-
 minetest.register_craft({
 	output = "building_blocks:Marble 9",
 	recipe = {

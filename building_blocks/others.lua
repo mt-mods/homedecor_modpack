@@ -5,7 +5,6 @@ minetest.register_craftitem("building_blocks:sticks", {
 	image = "building_blocks_sticks.png",
 	on_place_on_ground = minetest.craftitem_place_item,
 })
-
 minetest.register_craftitem("building_blocks:tar_base", {
 	description = S("Tar base"),
 	image = "building_blocks_tar_base.png",

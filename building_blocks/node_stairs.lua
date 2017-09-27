@@ -15,8 +15,7 @@ local function building_blocks_stairs(nodename, def)
 			then
 				def.groups.groupname = nil
 			end
-		end
-		
+		end	
 		if minetest.get_modpath("moreblocks") then
 			stairsplus:register_all(
 				mod,
@@ -54,7 +53,6 @@ building_blocks_stairs("building_blocks:Roofing", {
 	description = S("Roof block"),
 	groups = {snappy=3},
 })
-
 minetest.register_node("building_blocks:smoothglass", {
 	drawtype = "glasslike",
 	description = S("Streak Free Glass"),
@@ -76,7 +74,6 @@ building_blocks_stairs("building_blocks:grate", {
 	is_ground_content = true,
 	groups = {cracky=1},
 })
-
 minetest.register_node("building_blocks:Fireplace", {
 	description = S("Fireplace"),
 	tiles = {
@@ -92,7 +89,6 @@ minetest.register_node("building_blocks:Fireplace", {
 	is_ground_content = true,
 	groups = {cracky=2},
 })
-
 minetest.register_node("building_blocks:woodglass", {
 	drawtype = "glasslike",
 	description = S("Wood Framed Glass"),
@@ -214,7 +210,6 @@ building_blocks_stairs("building_blocks:fakegrass", {
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
 })
-
 building_blocks_stairs("building_blocks:Tar", {
 	description = S("Tar"),
 	tiles = {"building_blocks_tar.png"},

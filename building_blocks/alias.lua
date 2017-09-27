@@ -38,7 +38,6 @@ if not minetest.get_modpath("technic") then
 		    groups = {cracky=1},
 		    sounds = default.node_sound_stone_defaults(),
 	})
-	
 	minetest.register_craft({
 		output = "technic:granite 9",
 		recipe = {
@@ -47,7 +46,6 @@ if not minetest.get_modpath("technic") then
 			{ "group:tar_block", "group:marble", "group:tar_block" }
 		},
 	})
-	
 	if minetest.get_modpath("moreblocks") then
 		stairsplus:register_all("technic", "granite", "technic:granite", {
 				description=S("Granite"),
