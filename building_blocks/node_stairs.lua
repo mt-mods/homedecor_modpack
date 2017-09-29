@@ -40,6 +40,37 @@ local function building_blocks_stairs(nodename, def)
 	end
 end
 
+building_blocks_stairs("building_blocks:grate", {
+	drawtype = "glasslike",
+	description = S("Grate"),
+	tiles = {"building_blocks_grate.png"},
+	paramtype = "light",
+	sunlight_propagates = true,
+	is_ground_content = true,
+	groups = {cracky=1},
+	sounds = default.node_sound_metal_defaults(),
+})
+building_blocks_stairs("building_blocks:smoothglass", {
+	drawtype = "glasslike",
+	description = S("Streak Free Glass"),
+	tiles = {"building_blocks_sglass.png"},
+	paramtype = "light",
+	sunlight_propagates = true,
+	is_ground_content = true,
+	groups = {snappy=3,cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
+})
+building_blocks_stairs("building_blocks:woodglass", {
+	drawtype = "glasslike",
+	description = S("Wood Framed Glass"),
+	tiles = {"building_blocks_wglass.png"},
+	paramtype = "light",
+	sunlight_propagates = true,
+	is_ground_content = true,
+	groups = {snappy=3,cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
+})
+
 building_blocks_stairs("building_blocks:Adobe", {
 	tiles = {"building_blocks_Adobe.png"},
 	description = S("Adobe"),
@@ -55,16 +86,6 @@ building_blocks_stairs("building_blocks:fakegrass", {
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
-})
-building_blocks_stairs("building_blocks:grate", {
-	drawtype = "glasslike",
-	description = S("Grate"),
-	tiles = {"building_blocks_grate.png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	is_ground_content = true,
-	groups = {cracky=1},
-	sounds = default.node_sound_metal_defaults(),
 })
 building_blocks_stairs("building_blocks:hardwood", {
 	tiles = {"building_blocks_hardwood.png"},
@@ -93,27 +114,6 @@ building_blocks_stairs("building_blocks:Marble", {
 	is_ground_content = true,
 	groups = {cracky=3, marble = 1},
 	sounds = default.node_sound_stone_defaults(),
-})
-
-minetest.register_node("building_blocks:smoothglass", {
-	drawtype = "glasslike",
-	description = S("Streak Free Glass"),
-	tiles = {"building_blocks_sglass.png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	is_ground_content = true,
-	groups = {snappy=3,cracky=3,oddly_breakable_by_hand=3},
-	sounds = default.node_sound_glass_defaults(),
-})
-minetest.register_node("building_blocks:woodglass", {
-	drawtype = "glasslike",
-	description = S("Wood Framed Glass"),
-	tiles = {"building_blocks_wglass.png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	is_ground_content = true,
-	groups = {snappy=3,cracky=3,oddly_breakable_by_hand=3},
-	sounds = default.node_sound_glass_defaults(),
 })
 
 minetest.register_node("building_blocks:brobble_spread", {
