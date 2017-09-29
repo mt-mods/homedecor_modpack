@@ -64,6 +64,7 @@ building_blocks_stairs("building_blocks:grate", {
 	sunlight_propagates = true,
 	is_ground_content = true,
 	groups = {cracky=1},
+	sounds = default.node_sound_metal_defaults(),
 })
 building_blocks_stairs("building_blocks:hardwood", {
 	tiles = {"building_blocks_hardwood.png"},
@@ -77,6 +78,7 @@ building_blocks_stairs("building_blocks:Roofing", {
 	is_ground_content = true,
 	description = S("Roof block"),
 	groups = {snappy=3},
+	sounds = default.node_sound_stone_defaults(),
 })
 building_blocks_stairs("building_blocks:Tar", {
 	description = S("Tar"),
@@ -223,4 +225,5 @@ minetest.register_node("building_blocks:Fireplace", {
 	sunlight_propagates = true,
 	is_ground_content = true,
 	groups = {cracky=2},
+	sounds = default.node_sound_stone_defaults(),
 })
