@@ -4,7 +4,9 @@ allow_defined_top = true
 read_globals = {
 	"DIR_DELIM",
 	"minetest", "core",
+	"unpack",
 	"dump",
+	table = { fields = { "copy", "getn" } },
 	"vector", "nodeupdate",
 	"VoxelManip", "VoxelArea",
 	"PseudoRandom", "ItemStack",
@@ -17,6 +19,7 @@ read_globals = {
 	"mesecon",
 	"unifieddyes",
 	"creative",
+	"homedecor_i18n",
 }
 
 globals = {
