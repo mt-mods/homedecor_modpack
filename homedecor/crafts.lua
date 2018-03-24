@@ -2950,23 +2950,25 @@ minetest.register_craft({
 	},
 })
 
-minetest.register_craft({
-	type = "shapeless",
-	output = "homedecor:coin 5",
-	recipe = {"moreblocks:micro_goldblock_1", "default:sword_stone"}
-})
+if not minetest.settings:get_bool("disable_coin_crafting") then
+	minetest.register_craft({
+		type = "shapeless",
+		output = "homedecor:coin 5",
+		recipe = {"moreblocks:micro_goldblock_1", "default:sword_stone"}
+	})
 
-minetest.register_craft({
-	type = "shapeless",
-	output = "homedecor:coin 15",
-	recipe = {"default:gold_ingot", "default:sword_steel"}
-})
+	minetest.register_craft({
+		type = "shapeless",
+		output = "homedecor:coin 15",
+		recipe = {"default:gold_ingot", "default:sword_steel"}
+	})
 
-minetest.register_craft({
-	type = "shapeless",
-	output = "homedecor:coin 50",
-	recipe = {"default:goldblock", "default:sword_mese"}
-})
+	minetest.register_craft({
+		type = "shapeless",
+		output = "homedecor:coin 50",
+		recipe = {"default:goldblock", "default:sword_mese"}
+	})
+end
 
 minetest.register_craft({
 	output = "homedecor:lattice_wood 8",
