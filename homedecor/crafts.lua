@@ -2950,7 +2950,7 @@ minetest.register_craft({
 	},
 })
 
-if not minetest.settings:get_bool("homedecor.disable_coin_crafting") then
+if minetest.settings:get_bool("homedecor.disable_coin_crafting") == false then
 	minetest.register_craft({
 		type = "shapeless",
 		output = "homedecor:coin 5",
@@ -2968,6 +2968,10 @@ if not minetest.settings:get_bool("homedecor.disable_coin_crafting") then
 		output = "homedecor:coin 50",
 		recipe = {"default:goldblock", "default:sword_mese"}
 	})
+else
+	if minetest.settings:get("log_mods") then
+		minetest.log("[HomeDecor] coin crafting is disabled!")
+	end
 end
 
 minetest.register_craft({
