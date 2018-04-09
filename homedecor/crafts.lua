@@ -2950,7 +2950,7 @@ minetest.register_craft({
 	},
 })
 
-if not minetest.settings:get_bool("disable_coin_crafting") then
+if not minetest.settings:get_bool("homedecor.disable_coin_crafting") then
 	minetest.register_craft({
 		type = "shapeless",
 		output = "homedecor:coin 5",
