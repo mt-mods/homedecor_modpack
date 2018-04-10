@@ -2970,7 +2970,7 @@ if minetest.settings:get_bool("homedecor.disable_coin_crafting") == false then
 	})
 else
 	if minetest.settings:get("log_mods") then
-		minetest.log("[HomeDecor] coin crafting is disabled!")
+		minetest.log("[HomeDecor] " .. S("coin crafting is disabled!"))
 	end
 end
 
