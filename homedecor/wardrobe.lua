@@ -9,8 +9,20 @@ local wd_cbox = {
 -- cache set_textures function (fallback to old version)
 -- default.player_set_textures is deprecated and will be removed in future
 local set_player_textures =
-	minetest.global_exists("player_api") and player_api.set_textures
+	minetest.get_modpath("player_api") and player_api.set_textures
 	or default.player_set_textures
+
+local armor_mod_path = minetest.get_modpath("3d_armor")
+local skins = {"male1", "male2", "male3", "male4", "male5"}
+
+local function set_player_skin(player, skin)
+	if armor_mod_path then -- if 3D_armor's installed, let it set the skin
+		armor.textures[player:get_player_name()].skin = skin
+		armor:update_player_visuals(player)
+	else
+		set_player_textures(player, { skin })
+	end
+end
 
 homedecor.register("wardrobe", {
 	mesh = "homedecor_bedroom_wardrobe.obj",
@@ -33,7 +45,6 @@ homedecor.register("wardrobe", {
 	},
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
-		local skins = {"male1", "male2", "male3", "male4", "male5"}
 		-- textures made by the Minetest community (mostly Calinou and Jordach)
 		local clothes_strings = ""
 		for i = 1,5 do
@@ -50,26 +61,12 @@ homedecor.register("wardrobe", {
 			"listring[]")
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
-		local skins = {"male1", "male2", "male3", "male4", "male5"}
-		local playerName = sender:get_player_name()
-		local armor_mod = minetest.get_modpath("3d_armor")
-
 		for i = 1,5 do
 			if fields[skins[i]] then
-				if armor_mod then -- if 3D_armor's installed, let it set the skin
-					armor.textures[playerName].skin = "homedecor_clothes_"..skins[i]..".png"
-					armor:update_player_visuals(sender)
-					break
-				end
-				set_player_textures(sender, { "homedecor_clothes_"..skins[i]..".png" })
+				set_player_skin(sender, "homedecor_clothes_"..skins[i]..".png")
 				break
 			elseif fields["fe"..skins[i]] then
-				if armor_mod then
-					armor.textures[playerName].skin = "homedecor_clothes_fe"..skins[i]..".png"
-					armor:update_player_visuals(sender)
-					break
-				end
-				set_player_textures(sender, { skin = "homedecor_clothes_fe"..skins[i]..".png" })
+				set_player_skin(sender, "homedecor_clothes_fe"..skins[i]..".png")
 				break
 			end
 		end
