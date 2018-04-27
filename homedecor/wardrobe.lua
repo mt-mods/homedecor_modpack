@@ -14,6 +14,7 @@ local set_player_textures =
 
 local armor_mod_path = minetest.get_modpath("3d_armor")
 local skins = {"male1", "male2", "male3", "male4", "male5"}
+local skin_updates = {} -- skin update queue
 
 local function set_player_skin(player, skin)
 	minetest.log("verbose",
