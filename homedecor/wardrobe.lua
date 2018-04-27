@@ -6,6 +6,12 @@ local wd_cbox = {
 	fixed = { -0.5, -0.5, -0.5, 0.5, 1.5, 0.5 }
 }
 
+-- cache set_textures function (fallback to old version)
+-- default.player_set_textures is deprecated and will be removed in future
+local set_player_textures =
+	minetest.global_exists("player_api") and player_api.set_textures
+	or default.player_set_textures
+
 homedecor.register("wardrobe", {
 	mesh = "homedecor_bedroom_wardrobe.obj",
 	tiles = {
@@ -55,7 +61,7 @@ homedecor.register("wardrobe", {
 					armor:update_player_visuals(sender)
 					break
 				end
-				default.player_set_textures(sender, { "homedecor_clothes_"..skins[i]..".png" })
+				set_player_textures(sender, { "homedecor_clothes_"..skins[i]..".png" })
 				break
 			elseif fields["fe"..skins[i]] then
 				if armor_mod then
@@ -63,7 +69,7 @@ homedecor.register("wardrobe", {
 					armor:update_player_visuals(sender)
 					break
 				end
-				default.player_set_textures(sender, { skin = "homedecor_clothes_fe"..skins[i]..".png" })
+				set_player_textures(sender, { skin = "homedecor_clothes_fe"..skins[i]..".png" })
 				break
 			end
 		end
