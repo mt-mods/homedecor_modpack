@@ -14,19 +14,43 @@ local set_player_textures =
 
 local armor_mod_path = minetest.get_modpath("3d_armor")
 local skins = {"male1", "male2", "male3", "male4", "male5"}
-local skin_updates = {} -- skin update queue
+local default_skin = "character.png"
 
-local function set_player_skin(player, skin)
-	minetest.log("verbose",
-		S("player @1 sets skin to @2", player:get_player_name(), skin) ..
-		(armor_mod_path and ' [armor]' or '')
-	)
+function homedecor.get_player_skin(player)
+	local skin = player:get_attribute("homedecor:player_skin")
+	if not skin or skin == "" then
+		return default_skin, true
+	end
+	return skin, false
+end
+
+function homedecor.set_player_skin(player, skin, save)
+	skin = skin or default_skin
 	if armor_mod_path then -- if 3D_armor's installed, let it set the skin
 		armor.textures[player:get_player_name()].skin = skin
 		armor:update_player_visuals(player)
 	else
 		set_player_textures(player, { skin })
 	end
+
+	if save then
+		if skin == default_skin then
+			skin = "default"
+			player:set_attribute("homedecor:player_skin", "")
+		else
+			player:set_attribute("homedecor:player_skin", skin)
+		end
+		if save == "player" then -- if player action
+			minetest.log("verbose",
+				S("player @1 sets skin to @2", player:get_player_name(), skin) ..
+				(armor_mod_path and ' [3d_armor]' or '')
+			)
+		end
+	end
+end
+
+function homedecor.unset_player_skin(player)
+	homedecor.set_player_skin(player, nil, true)
 end
 
 homedecor.register("wardrobe", {
@@ -59,6 +83,7 @@ homedecor.register("wardrobe", {
 		end
 		meta:set_string("formspec", "size[5.5,8.5]"..default.gui_bg..default.gui_bg_img..default.gui_slots..
 			"vertlabel[0,0.5;"..minetest.formspec_escape(S("Clothes")).."]"..
+			"button_exit[0,3.29;0.6,0.6;default;x]"..
 			clothes_strings..
 			"vertlabel[0,5.2;"..minetest.formspec_escape(S("Storage")).."]"..
 			"list[current_name;main;0.5,4.5;5,2;]"..
@@ -66,14 +91,17 @@ homedecor.register("wardrobe", {
 			"listring[]")
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
+		if fields.default then
+			homedecor.set_player_skin(sender, nil, "player")
+			return
+		end
+
 		for i = 1,5 do
 			if fields[skins[i]] then
-				set_player_skin(sender, "homedecor_clothes_"..skins[i]..".png")
-				sender:set_attribute("homedecor:player_skin", "homedecor_clothes_"..skins[i]..".png")
+				homedecor.set_player_skin(sender, "homedecor_clothes_"..skins[i]..".png", "player")
 				break
 			elseif fields["fe"..skins[i]] then
-				set_player_skin(sender, "homedecor_clothes_fe"..skins[i]..".png")
-				sender:set_attribute("homedecor:player_skin", "homedecor_clothes_fe"..skins[i]..".png")
+				homedecor.set_player_skin(sender, "homedecor_clothes_fe"..skins[i]..".png", "player")
 				break
 			end
 		end
@@ -85,19 +113,11 @@ minetest.register_alias("homedecor:wardrobe_top", "air")
 
 minetest.register_on_joinplayer(function(player)
 	local skin = player:get_attribute("homedecor:player_skin")
-	if skin ~= nil then
-		-- setting player skin on connect has no effect, so queue skin change for next game step
-		table.insert(skin_updates, {player, skin})
-	end
-end)
 
-minetest.register_globalstep(function(dtime)
-	-- if skin update queue is filled
-	if #skin_updates > 0 then
-		-- update player skins
-		for _,u in pairs(skin_updates) do
-			set_player_skin(u[1], u[2])
-		end
-		skin_updates = {} -- empty queue
+	if skin and skin ~= "" then
+		-- setting player skin on connect has no effect, so delay skin change
+		minetest.after(1, function(player, skin)
+			homedecor.set_player_skin(player, skin)
+		end, player, skin)
 	end
 end)
