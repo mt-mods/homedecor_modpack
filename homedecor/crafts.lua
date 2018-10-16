@@ -2170,6 +2170,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+    output = "homedecor:welcome_mat_green 2",
+    recipe = {
+		{ "", "dye:white", "" },
+		{ "dye:black", "dye:black", "dye:black" },
+		{ "wool:green", "wool:green", "wool:green" },
+    },
+})
+
+minetest.register_craft({
 	type = "shapeless",
     output = "homedecor:window_plain 8",
     recipe = {
