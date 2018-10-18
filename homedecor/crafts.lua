@@ -1214,6 +1214,21 @@ if minetest.get_modpath("darkage") then
 			{ "darkage:lamp" },
 		},
 	})
+
+	minetest.register_craft( {
+		output = "darkage:lamp",
+		type = "shapeless",
+		recipe = {
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+		},
+	})
 else
 	minetest.register_craft( {
 			output = "homedecor:lattice_lantern_large 2",
@@ -1228,6 +1243,21 @@ else
 		output = "homedecor:lattice_lantern_small 8",
 		recipe = {
 			{ "homedecor:lattice_lantern_large" },
+		},
+	})
+
+	minetest.register_craft( {
+		output = "homedecor:lattice_lantern_large",
+		type = "shapeless",
+		recipe = {
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
+			"homedecor:lattice_lantern_small",
 		},
 	})
 end
