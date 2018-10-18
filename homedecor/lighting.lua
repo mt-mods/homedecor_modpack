@@ -360,8 +360,11 @@ homedecor.register("ceiling_lantern", {
 	walkable = false
 })
 
+local sm_light = default.LIGHT_MAX-2
+
 if minetest.get_modpath("darkage") then
 	minetest.register_alias("homedecor:lattice_lantern_large", "darkage:lamp")
+	sm_light = default.LIGHT_MAX-5
 else
 	homedecor.register("lattice_lantern_large", {
 		description = S("Lattice lantern (large)"),
@@ -388,7 +391,7 @@ homedecor.register("lattice_lantern_small", {
 		fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
 	},
 	groups = { snappy = 3 },
-	light_source = default.LIGHT_MAX-1,
+	light_source = sm_light,
 	sounds = default.node_sound_glass_defaults(),
 	on_place = minetest.rotate_node
 })
