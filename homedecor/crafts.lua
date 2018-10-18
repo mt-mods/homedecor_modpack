@@ -1207,21 +1207,30 @@ minetest.register_craft({
 
 -- wood-lattice lamps
 
-minetest.register_craft( {
-        output = "homedecor:lattice_lantern_large 2",
-        recipe = {
-			{ "dye:black", "dye:yellow", "dye:black" },
-			{ "group:stick", "building_blocks:woodglass", "group:stick" },
-			{ "group:stick", "homedecor:power_crystal", "group:stick" }
-        },
-})
+if minetest.get_modpath("darkage") then
+	minetest.register_craft( {
+		output = "homedecor:lattice_lantern_small 8",
+		recipe = {
+			{ "darkage:lamp" },
+		},
+	})
+else
+	minetest.register_craft( {
+			output = "homedecor:lattice_lantern_large 2",
+			recipe = {
+				{ "dye:black", "dye:yellow", "dye:black" },
+				{ "group:stick", "building_blocks:woodglass", "group:stick" },
+				{ "group:stick", "homedecor:power_crystal", "group:stick" }
+			},
+	})
 
-minetest.register_craft( {
-        output = "homedecor:lattice_lantern_small 8",
-        recipe = {
+	minetest.register_craft( {
+		output = "homedecor:lattice_lantern_small 8",
+		recipe = {
 			{ "homedecor:lattice_lantern_large" },
-        },
-})
+		},
+	})
+end
 
 -- glowlights
 

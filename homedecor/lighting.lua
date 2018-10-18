@@ -360,13 +360,17 @@ homedecor.register("ceiling_lantern", {
 	walkable = false
 })
 
-homedecor.register("lattice_lantern_large", {
-	description = S("Lattice lantern (large)"),
-	tiles = { 'homedecor_lattice_lantern_large.png' },
-	groups = { snappy = 3 },
-	light_source = default.LIGHT_MAX,
-	sounds = default.node_sound_glass_defaults(),
-})
+if minetest.get_modpath("darkage") then
+	minetest.register_alias("homedecor:lattice_lantern_large", "darkage:lamp")
+else
+	homedecor.register("lattice_lantern_large", {
+		description = S("Lattice lantern (large)"),
+		tiles = { 'homedecor_lattice_lantern_large.png' },
+		groups = { snappy = 3 },
+		light_source = default.LIGHT_MAX,
+		sounds = default.node_sound_glass_defaults(),
+	})
+end
 
 homedecor.register("lattice_lantern_small", {
 	description = S("Lattice lantern (small)"),
