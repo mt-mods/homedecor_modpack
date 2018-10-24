@@ -212,7 +212,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-    output = "homedecor:empty_spool 2",
+    output = "homedecor:empty_spool 3",
     recipe = {
 		{ "homedecor:plastic_sheeting", "homedecor:plastic_sheeting", "homedecor:plastic_sheeting" },
 		{ "", "homedecor:plastic_sheeting", "" },
@@ -221,17 +221,23 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-    output = "homedecor:steel_wire 4",
-    recipe = {
-		{ "default:steel_ingot", "homedecor:empty_spool", "default:steel_ingot" },
-    },
+	output = "homedecor:steel_wire 2",
+	type = "shapeless",
+	recipe = {
+		"default:steel_ingot",
+		"homedecor:empty_spool",
+		"homedecor:empty_spool",
+	},
 })
 
 minetest.register_craft( {
-    output = "homedecor:copper_wire 4",
-    recipe = {
-		{ "default:copper_ingot", "homedecor:empty_spool", "default:copper_ingot" },
-    },
+	output = "homedecor:copper_wire 2",
+	type = "shapeless",
+	recipe = {
+		"default:copper_ingot",
+		"homedecor:empty_spool",
+		"homedecor:empty_spool",
+	},
 })
 
 minetest.register_craft( {
