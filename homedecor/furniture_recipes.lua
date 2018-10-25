@@ -226,7 +226,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "homedecor:shower_tray",
 	recipe = {
-		{ "group:marble","bucket:bucket_water", "group:marble" },
+		{ "group:marble","bucket:bucket_empty", "group:marble" },
 	},
 })
 
