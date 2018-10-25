@@ -1723,17 +1723,6 @@ minetest.register_craft( {
         },
 })
 
--- Solid glass with metal handle
-
-minetest.register_craft( {
-        output = "homedecor:door_glass_left 2",
-        recipe = {
-			{ "default:glass", "default:glass" },
-			{ "default:glass", "default:steel_ingot" },
-			{ "default:glass", "default:glass" },
-        },
-})
-
 -- Closet doors
 
 -- oak
