@@ -205,6 +205,7 @@ minetest.register_craft({
 	output = "homedecor:sink",
 	recipe = {
 		{ "group:marble","bucket:bucket_empty", "group:marble" },
+		{ "", "group:marble", "" }
 	},
 })
 
