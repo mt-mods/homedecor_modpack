@@ -1,0 +1,9 @@
+homedecor_common
+default
+basic_materials
+dye
+homedecor_i18n
+moreblocks?
+building_blocks?
+technic?
+bucket?

@@ -1,4 +1,5 @@
 homedecor_common
 default
-vessels?
+basic_materials
+homedecor_i18n
 moreblocks?

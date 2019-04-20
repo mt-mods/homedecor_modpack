@@ -1,0 +1,8 @@
+homedecor_common
+default
+unifieddyes
+homedecor_i18n
+wool
+moreblocks?
+technic?
+bucket?

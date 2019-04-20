@@ -1,4 +1,4 @@
 homedecor_common
 default
-homedecor_misc?
-skinsdb?
+dye
+homedecor_i18n
