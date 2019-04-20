@@ -2195,15 +2195,6 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:wardrobe",
-        recipe = {
-			{ "homedecor:drawer_small", "homedecor:kitchen_cabinet" },
-			{ "homedecor:drawer_small", "default:wood" },
-			{ "homedecor:drawer_small", "default:wood" }
-        },
-})
-
-minetest.register_craft( {
         output = "homedecor:pool_table",
         recipe = {
 			{ "wool:dark_green", "wool:dark_green", "wool:dark_green" },

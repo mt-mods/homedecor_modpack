@@ -115,7 +115,6 @@ dofile(modpath.."/cobweb.lua")
 dofile(modpath.."/books.lua")
 dofile(modpath.."/exterior.lua")
 dofile(modpath.."/trash_cans.lua")
-dofile(modpath.."/wardrobe.lua")
 
 dofile(modpath.."/crafts.lua")
 
