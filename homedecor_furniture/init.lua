@@ -34,15 +34,7 @@ end
 
 local kc_cbox = {
 	type = "fixed",
-	fixed = { -0.3125, -0.5, -0.3125, 0.3125, 0.5, 0.3125 },
-}
-
-local ac_cbox = {
-	type = "fixed",
-	fixed = {
-		{-0.5, -0.5, -0.5, 0.5, 0, 0.5 },
-		{-0.5, -0.5, 0.4, 0.5, 0.5, 0.5 }
-	}
+	fixed = { -0.3125, -0.3125, -0.5, 0.3125, 0.3125, 0.5 },
 }
 
 homedecor.register("kitchen_chair_wood", {
@@ -91,6 +83,14 @@ homedecor.register("kitchen_chair_padded", {
 		return itemstack
 	end
 })
+
+local ac_cbox = {
+	type = "fixed",
+	fixed = {
+		{-0.5, -0.5, -0.5, 0.5, 0, 0.5 },
+		{-0.5, -0.5, 0.4, 0.5, 0.5, 0.5 }
+	}
+}
 
 homedecor.register("armchair", {
 	description = S("Armchair"),
