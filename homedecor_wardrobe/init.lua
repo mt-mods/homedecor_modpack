@@ -3,118 +3,6 @@ modpath = minetest.get_modpath("homedecor")
 screwdriver = screwdriver or {}
 
 local placeholder_node = "air"
-
---- select which node was pointed at based on it being known, not ignored,
--- buildable_to.  returns nil if no node could be selected
-local function select_node(pointed_thing)
-
-	local pos = pointed_thing.under
-	local node = minetest.get_node_or_nil(pos)
-	local def = node and minetest.registered_nodes[node.name]
-
-	if not def or not def.buildable_to then
-
-		pos = pointed_thing.above
-		node = minetest.get_node_or_nil(pos)
-		def = node and minetest.registered_nodes[node.name]
-	end
-
-	return def and pos, def
-end
-
---- check if all nodes can and may be build to
-local function is_buildable_to(placer_name, ...)
-
-	for _, pos in ipairs({...}) do
-
-		local node = minetest.get_node_or_nil(pos)
-		local def = node and minetest.registered_nodes[node.name]
-
-		if not (def and def.buildable_to)
-		or minetest.is_protected(pos, placer_name) then
-			return false
-		end
-	end
-
-	return true
-end
-
--- place one or two nodes if and only if both can be placed
-local function stack(itemstack, placer, fdir, pos, def, pos2, node1,
-		node2, pointed_thing)
-
-	local placer_name = placer:get_player_name() or ""
-
-	if is_buildable_to(placer_name, pos, pos2) then
-
-		local lfdir = fdir or minetest.dir_to_facedir(placer:get_look_dir())
-
-		minetest.set_node(pos, {name = node1, param2 = lfdir})
-
-		-- this can be used to clear buildable_to nodes even though we are
-		-- using a multinode mesh, do not assume by default, as we still
-		-- might want to allow overlapping in some cases
-		node2 = node2 or "air"
-
-		local has_facedir = node2 ~= "air"
-
-		if node2 == "placeholder" then
-			has_facedir = false
-			node2 = placeholder_node
-		end
-
-		minetest.set_node(pos2, {name = node2,
-				param2 = (has_facedir and lfdir) or nil})
-
-		-- call after_place_node of the placed node if available
-		local ctrl_node_def = minetest.registered_nodes[node1]
-
-		if ctrl_node_def and ctrl_node_def.after_place_node then
-			ctrl_node_def.after_place_node(pos, placer, itemstack, pointed_thing)
-		end
-
-		if not creative.is_enabled_for(placer_name) then
-			itemstack:take_item()
-		end
-	end
-
-	return itemstack
-end
-
-local function rightclick_pointed_thing(pos, placer, itemstack, pointed_thing)
-
-	local node = minetest.get_node_or_nil(pos)
-
-	if not node then return false end
-
-	local def = minetest.registered_nodes[node.name]
-
-	if not def or not def.on_rightclick then return false end
-
-	return def.on_rightclick(pos, node, placer, itemstack, pointed_thing) or itemstack
-end
-
--- Stack one node above another
--- leave the last argument nil if it's one 2m high node
-local function stack_vertically(itemstack, placer, pointed_thing,
-		node1, node2)
-
-	local rightclick_result = rightclick_pointed_thing(pointed_thing.under,
-			 placer, itemstack, pointed_thing)
-
-	if rightclick_result then return rightclick_result end
-
-	local pos, def = select_node(pointed_thing)
-
-	if not pos then return itemstack end
-
-	local top_pos = {x = pos.x, y = pos.y + 1, z = pos.z}
-
-	return stack(itemstack, placer, nil, pos, def, top_pos, node1,
-			node2, pointed_thing)
-end
-
-local placeholder_node = "air"
 local wd_cbox = {type = "fixed", fixed = {-0.5, -0.5, -0.5, 0.5, 1.5, 0.5}}
 
 -- cache set_textures function (fallback to old version)
@@ -127,7 +15,6 @@ local armor_mod_path = minetest.get_modpath("3d_armor")
 
 local skinslist = {"male1", "male2", "male3", "male4", "male5"}
 local default_skin = "character.png"
-
 local skinsdb_mod_path = minetest.get_modpath("skinsdb")
 
 if skinsdb_mod_path then
@@ -221,7 +108,7 @@ local def = {
 
 	on_place = function(itemstack, placer, pointed_thing)
 
-		return stack_vertically(itemstack, placer, pointed_thing,
+		return homedecor.stack_vertically(itemstack, placer, pointed_thing,
 				itemstack:get_name(), "placeholder")
 	end,
 
