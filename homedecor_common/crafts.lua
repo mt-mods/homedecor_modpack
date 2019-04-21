@@ -1,6 +1,6 @@
 -- crafts for common items that are used by more than one home decor component
 
-local S = homedecor_i18n.gettext
+local S = homedecor.gettext
 
 -- items
 

@@ -1,6 +1,6 @@
 -- This file supplies Kitchen stuff like refrigerators, sinks, etc.
 
-local S = homedecor_i18n.gettext
+local S = homedecor.gettext
 
 local function N_(x) return x end
 
@@ -137,8 +137,6 @@ homedecor.register("dishwasher_"..m, {
 	sounds = default.node_sound_stone_defaults(),
 })
 end
-
-local S = homedecor_i18n.gettext
 
 local cabinet_sides = "(default_wood.png^[transformR90)^homedecor_kitchen_cabinet_bevel.png"
 local cabinet_bottom = "(default_wood.png^[colorize:#000000:100)^(homedecor_kitchen_cabinet_bevel.png^[colorize:#46321580)"

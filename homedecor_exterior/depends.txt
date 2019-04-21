@@ -1,7 +1,6 @@
 homedecor_common
 default
 dye
-homedecor_i18n
 creative
 moreblocks?
 building_blocks?

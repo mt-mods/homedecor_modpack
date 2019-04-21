@@ -1,5 +1,5 @@
 
-local S = homedecor_i18n.gettext
+local S = homedecor.gettext
 
 local default_can_dig = function(pos,player)
 	local meta = minetest.get_meta(pos)

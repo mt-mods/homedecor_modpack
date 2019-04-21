@@ -1,5 +1,5 @@
 
-local S = homedecor_i18n.gettext
+local S = homedecor.gettext
 
 -- vectors to place one node next to or behind another
 

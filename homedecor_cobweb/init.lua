@@ -1,5 +1,5 @@
 
-local S = homedecor_i18n.gettext
+local S = homedecor.gettext
 
 minetest.register_node(":homedecor:cobweb_corner", {
 	description = S("Cobweb"),

@@ -3,10 +3,13 @@
 
 local modpath = minetest.get_modpath("homedecor_common")
 
-local S = homedecor_i18n.gettext
-
 homedecor = {}
 homedecor.modpath = modpath
+
+-- Intllib support
+homedecor.gettext, homedecor.ngettext = dofile(modpath.."/intllib.lua")
+
+local S = homedecor.gettext
 
 -- Determine if the item being pointed at is the underside of a node (e.g a ceiling)
 function homedecor.find_ceiling(itemstack, placer, pointed_thing)

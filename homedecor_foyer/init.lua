@@ -1,5 +1,5 @@
 
-local S = homedecor_i18n.gettext
+local S = homedecor.gettext
 
 homedecor.register("coatrack_wallmount", {
 	tiles = { homedecor.plain_wood },

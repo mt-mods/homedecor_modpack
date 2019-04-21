@@ -1,5 +1,4 @@
 homedecor_common
 default
 basic_materials
-homedecor_i18n
 building_blocks?

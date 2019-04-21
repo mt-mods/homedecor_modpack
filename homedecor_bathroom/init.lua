@@ -1,5 +1,5 @@
 
-local S = homedecor_i18n.gettext
+local S = homedecor.gettext
 
 minetest.register_node(":homedecor:bathroom_tiles_dark", {
 	description = S("Bathroom/kitchen tiles (dark)"),
@@ -114,9 +114,6 @@ homedecor.register("medicine_cabinet_open", {
 })
 
 -- "Sanitation" related
-
-
-local S = homedecor_i18n.gettext
 
 local toilet_sbox = {
 	type = "fixed",

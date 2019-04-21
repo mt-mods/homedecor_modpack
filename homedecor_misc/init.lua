@@ -7,7 +7,7 @@
 -- The code for ovens, nightstands, refrigerators are basically modified
 -- copies of the code for chests and furnaces.
 
-local S = homedecor_i18n.gettext
+local S = homedecor.gettext
 
 homedecor.register("ceiling_paint", {
 	description = S("Textured Ceiling Paint"),
@@ -470,7 +470,7 @@ for _, side in ipairs({"diagonal_left", "diagonal_right", "horizontal"}) do
 		}
 
 		if side ~= "horizontal" then
-			def.groups.not_in_creative_inventory = 1 
+			def.groups.not_in_creative_inventory = 1
 		end
 
 		if name == "wood" then
@@ -489,7 +489,7 @@ for _, side in ipairs({"diagonal_left", "diagonal_right", "horizontal"}) do
 				homedecor.white_wood
 			}
 			def2.inventory_image = "homedecor_banister_wood_colored_inv.png"
-			def2.groups.not_in_creative_inventory = 1 
+			def2.groups.not_in_creative_inventory = 1
 
 			unifieddyes.generate_split_palette_nodes(nn, def2, "homedecor:banister_"..name.."_horizontal")
 		end
@@ -630,7 +630,7 @@ homedecor.register("dartboard", {
 --
 -- Mostly my own code; overall template borrowed from game default
 
-local S = homedecor_i18n.gettext
+local S = homedecor.gettext
 
 minetest.register_craft( {
         output = "homedecor:flower_pot_terracotta",

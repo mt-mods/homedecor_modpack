@@ -2,7 +2,6 @@ homedecor_common
 default
 basic_materials
 unifieddyes
-homedecor_i18n
 creative
 moreblocks?
 building_blocks?

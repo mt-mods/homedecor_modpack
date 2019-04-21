@@ -1,10 +1,13 @@
 -- Node definitions for Homedecor doors
 
-local S = homedecor_i18n.gettext
+local S = homedecor.gettext
 
 local function N_(x) return x end
 
-local m_rules = mesecon and mesecon.rules and mesecon.rules.pplate
+local m_rules
+if minetest.global_exists("mesecon") then
+	m_rules = mesecon and mesecon.rules and mesecon.rules.pplate
+end
 
 -- doors
 

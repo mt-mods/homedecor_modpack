@@ -1,5 +1,5 @@
 
-local S = homedecor_i18n.gettext
+local S = homedecor.gettext
 
 local table_colors = {
 	{ "",           S("Table"),           homedecor.plain_wood },
