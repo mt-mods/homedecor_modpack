@@ -529,61 +529,7 @@ function homedecor.flip_gate(pos, node, player, gate, oc)
 	end
 end
 
--- Japanese-style wood/paper wall pieces and door
-
-local jp_cbox = {
-	type = "fixed",
-	fixed = {-0.5, -0.5, 0, 0.5, 0.5, 0.0625},
-}
-
-minetest.register_node(":homedecor:japanese_wall_top", {
-	description = S("Japanese wall (top)"),
-	drawtype = "mesh",
-	mesh = "homedecor_wall_japanese_top.obj",
-	tiles = {
-		homedecor.lux_wood,
-		"homedecor_japanese_paper.png"
-	},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	groups = {snappy=3},
-	selection_box = jp_cbox,
-	collision_box = jp_cbox,
-	sounds = default.node_sound_wood_defaults(),
-})
-
-minetest.register_node(":homedecor:japanese_wall_middle", {
-	description = S("Japanese wall"),
-	drawtype = "mesh",
-	mesh = "homedecor_wall_japanese_middle.obj",
-	tiles = {
-		homedecor.lux_wood,
-		"homedecor_japanese_paper.png"
-	},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	groups = {snappy=3},
-	selection_box = jp_cbox,
-	collision_box = jp_cbox,
-	sounds = default.node_sound_wood_defaults(),
-})
-
-minetest.register_node(":homedecor:japanese_wall_bottom", {
-	description = S("Japanese wall (bottom)"),
-	drawtype = "mesh",
-	mesh = "homedecor_wall_japanese_bottom.obj",
-	tiles = {
-		homedecor.lux_wood,
-		"homedecor_japanese_paper.png"
-	},
-	paramtype = "light",
-	paramtype2 = "facedir",
-	groups = {snappy=3},
-	selection_box = jp_cbox,
-	collision_box = jp_cbox,
-	sounds = default.node_sound_wood_defaults(),
-})
-
+-- Japanese-style wood/paper door
 homedecor.register("door_japanese_closed", {
 	description = S("Japanese-style door"),
 	inventory_image = "homedecor_door_japanese_inv.png",
@@ -635,6 +581,44 @@ homedecor.register("door_japanese_open", {
 })
 
 -- crafting
+
+-- half-doors
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:gate_half_door_closed 4",
+	recipe = {
+		"homedecor:door_wood_plain_left",
+		"homedecor:door_wood_plain_left"
+	},
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:gate_half_door_closed 4",
+	recipe = {
+		"homedecor:door_wood_plain_right",
+		"homedecor:door_wood_plain_right"
+	},
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:gate_half_door_white_closed 4",
+	recipe = {
+		"homedecor:door_bedroom_left",
+		"homedecor:door_bedroom_left"
+	},
+})
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "homedecor:gate_half_door_white_closed 4",
+	recipe = {
+		"homedecor:door_bedroom_right",
+		"homedecor:door_bedroom_right"
+	},
+})
 
 -- Gates
 

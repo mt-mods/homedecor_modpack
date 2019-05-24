@@ -1188,6 +1188,79 @@ minetest.register_craft({
 	},
 })
 
+minetest.register_craft({
+	output = "homedecor:standing_lamp_off",
+	recipe = {
+		{"homedecor:table_lamp_off"},
+		{"group:stick"},
+		{"group:stick"},
+	},
+})
+
+unifieddyes.register_color_craft({
+	output = "homedecor:standing_lamp_off",
+	palette = "extended",
+	type = "shapeless",
+	neutral_node = "homedecor:standing_lamp_off",
+	recipe = {
+		"NEUTRAL_NODE",
+		"MAIN_DYE"
+	}
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "homedecor:table_lamp_off",
+	burntime = 10,
+})
+
+minetest.register_craft({
+	output = "homedecor:table_lamp_off",
+	recipe = {
+		{ "wool:white", "default:torch", "wool:white"},
+		{ "", "group:stick", ""},
+		{ "", "stairs:slab_wood", "" },
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:table_lamp_off",
+	recipe = {
+		{ "cottages:wool", "default:torch", "cottages:wool"},
+		{ "", "group:stick", ""},
+		{ "", "stairs:slab_wood", "" },
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:table_lamp_off",
+	recipe = {
+		{ "wool:white", "default:torch", "wool:white"},
+		{ "", "group:stick", ""},
+		{ "", "moreblocks:slab_wood", "" },
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:table_lamp_off",
+	recipe = {
+		{ "cottages:wool", "default:torch", "cottages:wool"},
+		{ "", "group:stick", ""},
+		{ "", "moreblocks:slab_wood", "" },
+	},
+})
+
+unifieddyes.register_color_craft({
+	output = "homedecor:table_lamp_off",
+	palette = "extended",
+	type = "shapeless",
+	neutral_node = "homedecor:table_lamp_off",
+	recipe = {
+		"NEUTRAL_NODE",
+		"MAIN_DYE"
+	}
+})
+
 -- aliases
 
 minetest.register_alias("chains:chain_top",        "homedecor:chain_steel_top")

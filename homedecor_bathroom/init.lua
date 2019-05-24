@@ -531,8 +531,8 @@ minetest.register_craft({
 minetest.register_craft( {
 		output = "homedecor:bathroom_tiles_light 4",
 		recipe = {
-			{ "group:marble", "group:marble", "" },
-			{ "group:marble", "group:marble", "dye:white" }
+			{ "group:marble", "group:marble" },
+			{ "group:marble", "group:marble" }
 		},
 })
 
@@ -593,3 +593,67 @@ minetest.register_craft({
 		{ "group:stick", "basic_materials:plastic_sheet", "group:stick" }
 	},
 })
+
+minetest.register_craft({
+	output = "homedecor:toilet",
+	recipe = {
+		{ "","","bucket:bucket_water"},
+		{ "group:marble","group:marble", "group:marble" },
+		{ "", "bucket:bucket_empty", "" },
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:sink",
+	recipe = {
+		{ "group:marble","bucket:bucket_empty", "group:marble" },
+		{ "", "group:marble", "" }
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:taps",
+	recipe = {
+		{ "default:steel_ingot","bucket:bucket_water", "default:steel_ingot" },
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:taps_brass",
+	recipe = {
+		{ "basic_materials:brass_ingot","bucket:bucket_water", "basic_materials:brass_ingot" },
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:shower_tray",
+	recipe = {
+		{ "group:marble","bucket:bucket_empty", "group:marble" },
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:shower_head",
+	recipe = {
+		{"default:steel_ingot", "bucket:bucket_water"},
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:bathtub_clawfoot_brass_taps",
+	recipe = {
+		{ "homedecor:taps_brass", "", "" },
+		{ "group:marble", "", "group:marble" },
+		{ "default:steel_ingot", "group:marble", "default:steel_ingot"},
+	},
+})
+
+minetest.register_craft({
+	output = "homedecor:bathtub_clawfoot_chrome_taps",
+	recipe = {
+		{ "homedecor:taps", "", "" },
+		{ "group:marble", "", "group:marble" },
+		{"default:steel_ingot", "group:marble", "default:steel_ingot"},
+	},
+})
+
