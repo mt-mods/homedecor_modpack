@@ -836,6 +836,64 @@ minetest.register_node(":homedecor:chandelier_brass", {
 	sounds =  default.node_sound_stone_defaults(),
 })
 
+minetest.register_node(":homedecor:rope_light_on_floor", {
+	description = "Rope lighting (on floor)",
+	inventory_image =  "homedecor_rope_light_on_floor.png",
+	paramtype = "light",
+	light_source = default.LIGHT_MAX-3,
+	walkable = false,
+	sunlight_propagates = true,
+	tiles = { "homedecor_table_standing_lamp_lightbulb.png" },
+	drawtype = "nodebox",
+	node_box = {
+		type = "connected",
+		fixed = {},
+		connect_front = { -1/16, -8/16, -8/16, 1/16, -6/16, 1/16 },
+		connect_left =  { -8/16, -8/16, -1/16, 1/16, -6/16, 1/16 },
+		connect_back =  { -1/16, -8/16, -1/16, 1/16, -6/16, 8/16 },
+		connect_right = { -1/16, -8/16, -1/16, 8/16, -6/16, 1/16 },
+		disconnected_sides = {
+			{ -6/16, -8/16, -6/16, -4/16, -6/16,  6/16 },
+			{  4/16, -8/16, -6/16,  6/16, -6/16,  6/16 },
+			{ -6/16, -8/16, -6/16,  6/16, -6/16, -4/16 },
+			{ -6/16, -8/16,  4/16,  6/16, -6/16,  6/16 }
+		},
+	},
+	connects_to = { "homedecor:rope_light_on_floor" },
+	mesh = "homedecor_chandelier.obj",
+	groups = {cracky=3},
+	sounds =  default.node_sound_stone_defaults(),
+})
+
+minetest.register_node(":homedecor:rope_light_on_ceiling", {
+	description = "Rope lighting (on ceiling)",
+	inventory_image =  "homedecor_rope_light_on_ceiling.png",
+	paramtype = "light",
+	light_source = default.LIGHT_MAX-3,
+	walkable = false,
+	sunlight_propagates = true,
+	tiles = { "homedecor_table_standing_lamp_lightbulb.png" },
+	drawtype = "nodebox",
+	node_box = {
+		type = "connected",
+		fixed = {},
+		connect_front = { -1/16, 8/16, -8/16, 1/16, 6/16, 1/16 },
+		connect_left =  { -8/16, 8/16, -1/16, 1/16, 6/16, 1/16 },
+		connect_back =  { -1/16, 8/16, -1/16, 1/16, 6/16, 8/16 },
+		connect_right = { -1/16, 8/16, -1/16, 8/16, 6/16, 1/16 },
+		disconnected_sides = {
+			{ -6/16, 8/16, -6/16, -4/16, 6/16,  6/16 },
+			{  4/16, 8/16, -6/16,  6/16, 6/16,  6/16 },
+			{ -6/16, 8/16, -6/16,  6/16, 6/16, -4/16 },
+			{ -6/16, 8/16,  4/16,  6/16, 6/16,  6/16 }
+		},
+	},
+	connects_to = { "homedecor:rope_light_on_ceiling" },
+	mesh = "homedecor_chandelier.obj",
+	groups = {cracky=3},
+	sounds =  default.node_sound_stone_defaults(),
+})
+
 -- crafting
 
 minetest.register_craft({
