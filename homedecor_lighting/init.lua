@@ -1,178 +1,543 @@
--- This file supplies glowlights
+-- This file supplies the majority of homedecor's lighting
 
 local S = homedecor.gettext
 
-local glowlight_nodebox = {
-	half = homedecor.nodebox.slab_y(1/2),
-	quarter = homedecor.nodebox.slab_y(1/4),
-	small_cube = {
-			type = "fixed",
-			fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-	},
+local brightness_tab = {
+	0xffd0d0d0,
+	0xffd8d8d8,
+	0xffe0e0e0,
+	0xffe8e8e8,
+	0xffffffff,
 }
 
-minetest.register_node(":homedecor:glowlight_half", {
-	description = S("Thick Glowlight"),
-	tiles = {
-		"homedecor_glowlight_top.png",
-		"homedecor_glowlight_bottom.png",
-		"homedecor_glowlight_thick_sides.png",
-		"homedecor_glowlight_thick_sides.png",
-		"homedecor_glowlight_thick_sides.png",
-		"homedecor_glowlight_thick_sides.png"
-	},
-	overlay_tiles = {
-		{ name = "homedecor_glowlight_top_overlay.png", color = "white"},
-		"",
-		{ name = "homedecor_glowlight_thick_sides_overlay.png", color = "white"},
-		{ name = "homedecor_glowlight_thick_sides_overlay.png", color = "white"},
-		{ name = "homedecor_glowlight_thick_sides_overlay.png", color = "white"},
-		{ name = "homedecor_glowlight_thick_sides_overlay.png", color = "white"},
-	},
-	use_texture_alpha = true,
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "colorwallmounted",
-	palette = "unifieddyes_palette_colorwallmounted.png",
-	selection_box = {
-		type = "wallmounted",
-		wall_top =    { -0.5,    0, -0.5, 0.5, 0.5, 0.5 },
-		wall_bottom = { -0.5, -0.5, -0.5, 0.5,   0, 0.5 },
-		wall_side =   { -0.5, -0.5, -0.5,   0, 0.5, 0.5 }
-	},
-	node_box = glowlight_nodebox.half,
-	groups = { snappy = 3, ud_param2_colorable = 1 },
-	light_source = default.LIGHT_MAX,
-	sounds = default.node_sound_glass_defaults(),
-	after_place_node = function(pos, placer, itemstack, pointed_thing)
-		unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
-	end,
-})
+function homedecor.toggle_light(pos, node, clicker, itemstack, pointed_thing)
+	if minetest.is_protected(pos, clicker:get_player_name()) then
+		minetest.record_protection_violation(pos,
+		sender:get_player_name())
+		return
+	end
+	local sep = string.find(node.name, "_o", -5)
+	local onoff = string.sub(node.name, sep + 1)
+	local newname = string.sub(node.name, 1, sep - 1)..((onoff == "off") and "_on" or "_off")
+	minetest.swap_node(pos, {name = newname, param2 = node.param2})
+end
 
-minetest.register_node(":homedecor:glowlight_quarter", {
-	description = S("Thin Glowlight"),
-	tiles = {
-		"homedecor_glowlight_top.png",
-		"homedecor_glowlight_bottom.png",
-		"homedecor_glowlight_thin_sides.png",
-		"homedecor_glowlight_thin_sides.png",
-		"homedecor_glowlight_thin_sides.png",
-		"homedecor_glowlight_thin_sides.png"
-	},
-	overlay_tiles = {
-		{ name = "homedecor_glowlight_top_overlay.png", color = "white"},
-		"",
-		{ name = "homedecor_glowlight_thin_sides_overlay.png", color = "white"},
-		{ name = "homedecor_glowlight_thin_sides_overlay.png", color = "white"},
-		{ name = "homedecor_glowlight_thin_sides_overlay.png", color = "white"},
-		{ name = "homedecor_glowlight_thin_sides_overlay.png", color = "white"},
-	},
-	use_texture_alpha = true,
-	drawtype = "nodebox",
-	paramtype = "light",
-	paramtype2 = "colorwallmounted",
-	palette = "unifieddyes_palette_colorwallmounted.png",
-	selection_box = {
-		type = "wallmounted",
-		wall_top =    { -0.5, 0.25, -0.5,   0.5,   0.5, 0.5 },
-		wall_bottom = { -0.5, -0.5, -0.5,   0.5, -0.25, 0.5 },
-		wall_side =   { -0.5, -0.5, -0.5, -0.25,   0.5, 0.5 }
-	},
-	node_box = glowlight_nodebox.quarter,
-	groups = { snappy = 3, ud_param2_colorable = 1 },
-	light_source = default.LIGHT_MAX-1,
-	sounds = default.node_sound_glass_defaults(),
-	after_place_node = function(pos, placer, itemstack, pointed_thing)
-		unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
-	end,
-})
+for _, onoff in ipairs({"on", "off"}) do
 
-minetest.register_node(":homedecor:glowlight_small_cube", {
-	description = S("Small Glowlight Cube"),
-	tiles = {
-		"homedecor_glowlight_cube_tb.png",
-		"homedecor_glowlight_cube_tb.png",
-		"homedecor_glowlight_cube_sides.png",
-		"homedecor_glowlight_cube_sides.png",
-		"homedecor_glowlight_cube_sides.png",
-		"homedecor_glowlight_cube_sides.png"
-	},
-	overlay_tiles = {
-		{ name = "homedecor_glowlight_cube_tb_overlay.png", color = "white"},
-		{ name = "homedecor_glowlight_cube_tb_overlay.png", color = "white"},
-		{ name = "homedecor_glowlight_cube_sides_overlay.png", color = "white"},
-		{ name = "homedecor_glowlight_cube_sides_overlay.png", color = "white"},
-		{ name = "homedecor_glowlight_cube_sides_overlay.png", color = "white"},
-		{ name = "homedecor_glowlight_cube_sides_overlay.png", color = "white"},
-	},
-	use_texture_alpha = true,
-	paramtype = "light",
-	paramtype2 = "colorwallmounted",
-	drawtype = "nodebox",
-	palette = "unifieddyes_palette_colorwallmounted.png",
-	selection_box = {
-		type = "wallmounted",
-		wall_top =    { -0.25,    0,  -0.25, 0.25,  0.5, 0.25 },
-		wall_bottom = { -0.25, -0.5,  -0.25, 0.25,    0, 0.25 },
-		wall_side =   {  -0.5, -0.25, -0.25,    0, 0.25, 0.25 }
-	},
-	node_box = glowlight_nodebox.small_cube,
-	groups = { snappy = 3, ud_param2_colorable = 1 },
-	light_source = default.LIGHT_MAX-1,
-	sounds = default.node_sound_glass_defaults(),
-	after_place_node = function(pos, placer, itemstack, pointed_thing)
-		unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
-	end,
-})
+	local onflag = (onoff == "on")
+	local tiles
+	local overlay
+	if not onflag then nici = 1 end
 
-homedecor.register("plasma_lamp", {
-	description = S("Plasma Lamp/Light"),
-	drawtype = "mesh",
-	mesh = "plasma_lamp.obj",
-	tiles = {
-		"default_gold_block.png",
-		{
+	local glowlight_nodebox = {
+		half = homedecor.nodebox.slab_y(1/2),
+		quarter = homedecor.nodebox.slab_y(1/4),
+		small_cube = {
+				type = "fixed",
+				fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
+		},
+	}
+
+	local base =        "homedecor_glowlight_base.png"
+
+	local tb_edges =    "homedecor_glowlight_tb_edges.png"
+	local sides_edges = "homedecor_glowlight_thick_sides_edges.png"
+	local sides_glare = "homedecor_glowlight_thick_sides_glare.png"
+
+	if onflag then
+		tiles = {
+			"("..base.."^"..tb_edges..")^[brighten",
+			"("..base.."^"..tb_edges..")^[brighten",
+			"("..base.."^"..sides_edges..")^[brighten",
+			"("..base.."^"..sides_edges..")^[brighten",
+			"("..base.."^"..sides_edges..")^[brighten",
+			"("..base.."^"..sides_edges..")^[brighten",
+		}
+		overlay = {
+			{ name = "homedecor_glowlight_top_glare.png", color = "white"},
+			"",
+			{ name = sides_glare, color = "white"},
+			{ name = sides_glare, color = "white"},
+			{ name = sides_glare, color = "white"},
+			{ name = sides_glare, color = "white"},
+		}
+	else
+		tiles = {
+			base.."^"..tb_edges,
+			base.."^"..tb_edges,
+			base.."^"..sides_edges,
+			base.."^"..sides_edges,
+			base.."^"..sides_edges,
+			base.."^"..sides_edges,
+		}
+		overlay = nil
+	end
+
+	minetest.register_alias("homedecor:glowlight_half", "homedecor:glowlight_half_on")
+
+	minetest.register_node(":homedecor:glowlight_half_"..onoff, {
+		description = S("Thick Glowlight"),
+		tiles = tiles,
+		overlay_tiles = overlay,
+		use_texture_alpha = true,
+		drawtype = "nodebox",
+		paramtype = "light",
+		paramtype2 = "colorwallmounted",
+		palette = "unifieddyes_palette_colorwallmounted.png",
+		selection_box = {
+			type = "wallmounted",
+			wall_top =    { -0.5,    0, -0.5, 0.5, 0.5, 0.5 },
+			wall_bottom = { -0.5, -0.5, -0.5, 0.5,   0, 0.5 },
+			wall_side =   { -0.5, -0.5, -0.5,   0, 0.5, 0.5 }
+		},
+		node_box = glowlight_nodebox.half,
+		groups = { snappy = 3, ud_param2_colorable = 1, not_in_creative_inventory = nici },
+		light_source = onflag and default.LIGHT_MAX or nil,
+		sounds = default.node_sound_glass_defaults(),
+		after_place_node = function(pos, placer, itemstack, pointed_thing)
+			unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
+		end,
+		on_rightclick = homedecor.toggle_light
+	})
+
+	sides_edges = "homedecor_glowlight_thin_sides_edges.png"
+	sides_glare = "homedecor_glowlight_thin_sides_glare.png"
+
+	if onflag then
+		tiles = {
+			"("..base.."^"..tb_edges..")^[brighten",
+			"("..base.."^"..tb_edges..")^[brighten",
+			"("..base.."^"..sides_edges..")^[brighten",
+			"("..base.."^"..sides_edges..")^[brighten",
+			"("..base.."^"..sides_edges..")^[brighten",
+			"("..base.."^"..sides_edges..")^[brighten",
+		}
+		overlay = {
+			{ name = "homedecor_glowlight_top_glare.png", color = "white"},
+			"",
+			{ name = sides_glare, color = "white"},
+			{ name = sides_glare, color = "white"},
+			{ name = sides_glare, color = "white"},
+			{ name = sides_glare, color = "white"},
+		}
+	else
+		tiles = {
+			base.."^"..tb_edges,
+			base.."^"..tb_edges,
+			base.."^"..sides_edges,
+			base.."^"..sides_edges,
+			base.."^"..sides_edges,
+			base.."^"..sides_edges,
+		}
+		overlay = nil
+	end
+
+	minetest.register_alias("homedecor:glowlight_quarter", "homedecor:glowlight_quarter_on")
+
+	minetest.register_node(":homedecor:glowlight_quarter_"..onoff, {
+		description = S("Thin Glowlight"),
+		tiles = tiles,
+		overlay_tiles = overlay,
+		use_texture_alpha = true,
+		drawtype = "nodebox",
+		paramtype = "light",
+		paramtype2 = "colorwallmounted",
+		palette = "unifieddyes_palette_colorwallmounted.png",
+		selection_box = {
+			type = "wallmounted",
+			wall_top =    { -0.5, 0.25, -0.5,   0.5,   0.5, 0.5 },
+			wall_bottom = { -0.5, -0.5, -0.5,   0.5, -0.25, 0.5 },
+			wall_side =   { -0.5, -0.5, -0.5, -0.25,   0.5, 0.5 }
+		},
+		node_box = glowlight_nodebox.quarter,
+		groups = { snappy = 3, ud_param2_colorable = 1, not_in_creative_inventory = nici },
+		light_source = onflag and (default.LIGHT_MAX - 1) or nil,
+		sounds = default.node_sound_glass_defaults(),
+		after_place_node = function(pos, placer, itemstack, pointed_thing)
+			unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
+		end,
+		on_rightclick = homedecor.toggle_light
+	})
+
+	tb_edges =    "homedecor_glowlight_cube_tb_edges.png"
+	sides_edges = "homedecor_glowlight_cube_sides_edges.png"
+	sides_glare = "homedecor_glowlight_cube_sides_glare.png"
+
+	if onflag then
+		tiles = {
+			"("..base.."^"..tb_edges..")^[brighten",
+			"("..base.."^"..tb_edges..")^[brighten",
+			"("..base.."^"..sides_edges..")^[brighten",
+			"("..base.."^"..sides_edges..")^[brighten",
+			"("..base.."^"..sides_edges..")^[brighten",
+			"("..base.."^"..sides_edges..")^[brighten",
+		}
+		overlay = {
+			{ name = "homedecor_glowlight_cube_top_glare.png", color = "white"},
+			"",
+			{ name = sides_glare, color = "white"},
+			{ name = sides_glare, color = "white"},
+			{ name = sides_glare, color = "white"},
+			{ name = sides_glare, color = "white"},
+		}
+	else
+		tiles = {
+			base.."^"..tb_edges,
+			base.."^"..tb_edges,
+			base.."^"..sides_edges,
+			base.."^"..sides_edges,
+			base.."^"..sides_edges,
+			base.."^"..sides_edges,
+		}
+		overlay = nil
+	end
+
+	minetest.register_alias("homedecor:glowlight_small_cube", "homedecor:glowlight_small_cube_on")
+
+	minetest.register_node(":homedecor:glowlight_small_cube_"..onoff, {
+		description = S("Small Glowlight Cube"),
+		tiles = tiles,
+		overlay_tiles = overlay,
+		use_texture_alpha = true,
+		paramtype = "light",
+		paramtype2 = "colorwallmounted",
+		drawtype = "nodebox",
+		palette = "unifieddyes_palette_colorwallmounted.png",
+		selection_box = {
+			type = "wallmounted",
+			wall_top =    { -0.25,    0,  -0.25, 0.25,  0.5, 0.25 },
+			wall_bottom = { -0.25, -0.5,  -0.25, 0.25,    0, 0.25 },
+			wall_side =   {  -0.5, -0.25, -0.25,    0, 0.25, 0.25 }
+		},
+		node_box = glowlight_nodebox.small_cube,
+		groups = { snappy = 3, ud_param2_colorable = 1, not_in_creative_inventory = nici },
+		light_source = onflag and (default.LIGHT_MAX - 1) or nil,
+		sounds = default.node_sound_glass_defaults(),
+		after_place_node = function(pos, placer, itemstack, pointed_thing)
+			unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
+		end,
+		on_rightclick = homedecor.toggle_light
+	})
+
+	local lighttex
+
+	if onflag then
+		lighttex = {
 			name="homedecor_plasma_storm.png",
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0},
 		}
-	},
-	use_texture_alpha = true,
-	light_source = default.LIGHT_MAX - 1,
-	sunlight_propagates = true,
-	groups = {cracky=3,oddly_breakable_by_hand=3},
-	sounds = default.node_sound_glass_defaults(),
-})
+	else
+		lighttex = "homedecor_plasma_lamp_off.png"
+	end
 
-homedecor.register("plasma_ball", {
-	description = S("Plasma Ball"),
-	mesh = "homedecor_plasma_ball.obj",
-	tiles = {
-		{ name = "homedecor_generic_plastic.png", color = homedecor.color_black },
-		{
+	minetest.register_alias("homedecor:plasma_lamp", "homedecor:plasma_lamp_on")
+
+	homedecor.register("plasma_lamp_"..onoff, {
+		description = S("Plasma Lamp/Light"),
+		drawtype = "mesh",
+		mesh = "plasma_lamp.obj",
+		tiles = {
+			"default_gold_block.png",
+			lighttex
+		},
+		use_texture_alpha = true,
+		light_source = onflag and (default.LIGHT_MAX - 1) or nil,
+		sunlight_propagates = true,
+		groups = {cracky=3, oddly_breakable_by_hand=3, not_in_creative_inventory = nici},
+		sounds = default.node_sound_glass_defaults(),
+		on_rightclick = homedecor.toggle_light
+	})
+
+	local lighttex = "homedecor_blanktile.png"
+	if onflag then
+		lighttex = {
 			name = "homedecor_plasma_ball_streamers.png",
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0},
-		},
-		"homedecor_plasma_ball_glass.png"
-	},
-	inventory_image = "homedecor_plasma_ball_inv.png",
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.1875, -0.5, -0.1875, 0.1875, 0, 0.1875 }
-	},
-	walkable = false,
-	use_texture_alpha = true,
-	light_source = default.LIGHT_MAX - 5,
-	sunlight_propagates = true,
-	groups = {cracky=3,oddly_breakable_by_hand=3},
-	sounds = default.node_sound_glass_defaults(),
-})
+		}
+	end
 
-local tc_cbox = {
-	type = "fixed",
-	fixed = {
-		{ -0.1875, -0.5, -0.1875, 0.1875, 0.375, 0.1875 },
+	minetest.register_alias("homedecor:plasma_ball", "homedecor:plasma_ball_on")
+
+	homedecor.register("plasma_ball_"..onoff, {
+		description = S("Plasma Ball"),
+		mesh = "homedecor_plasma_ball.obj",
+		tiles = {
+			{ name = "homedecor_generic_plastic.png", color = homedecor.color_black },
+			lighttex,
+			"homedecor_plasma_ball_glass.png"
+		},
+		inventory_image = "homedecor_plasma_ball_inv.png",
+		selection_box = {
+			type = "fixed",
+			fixed = { -0.1875, -0.5, -0.1875, 0.1875, 0, 0.1875 }
+		},
+		walkable = false,
+		use_texture_alpha = true,
+		light_source = onflag and (default.LIGHT_MAX - 5) or nil,
+		sunlight_propagates = true,
+		groups = {cracky=3, oddly_breakable_by_hand=3, not_in_creative_inventory = nici},
+		sounds = default.node_sound_glass_defaults(),
+		on_rightclick = homedecor.toggle_light
+	})
+
+	local tc_cbox = {
+		type = "fixed",
+		fixed = {
+			{ -0.1875, -0.5, -0.1875, 0.1875, 0.375, 0.1875 },
+		}
 	}
-}
+
+	local gl_cbox = {
+		type = "fixed",
+		fixed = { -0.25, -0.5, -0.25, 0.25, 0.45, 0.25 },
+	}
+
+	minetest.register_alias("homedecor:wall_lantern", "homedecor:ground_lantern")
+
+	local lighttex
+	if onflag then
+		lighttex = "homedecor_light.png"
+	else
+		lighttex = "homedecor_table_generic_light_source_off.png"
+	end
+
+	minetest.register_alias("homedecor:ground_lantern", "homedecor:ground_lantern_on")
+
+	homedecor.register("ground_lantern_"..onoff, {
+		description = S("Ground Lantern/Light"),
+		mesh = "homedecor_ground_lantern.obj",
+		tiles = { lighttex, "homedecor_generic_metal_wrought_iron.png" },
+		use_texture_alpha = true,
+		inventory_image = "homedecor_ground_lantern_inv.png",
+		wield_image = "homedecor_ground_lantern_inv.png",
+		groups = {snappy=3, not_in_creative_inventory = nici},
+		light_source = onflag and (default.LIGHT_MAX - 3) or nil,
+		selection_box = gl_cbox,
+		walkable = false,
+		on_rightclick = homedecor.toggle_light
+	})
+
+	local hl_cbox = {
+		type = "fixed",
+		fixed = { -0.25, -0.5, -0.2, 0.25, 0.5, 0.5 },
+	}
+
+	minetest.register_alias("homedecor:hanging_lantern", "homedecor:hanging_lantern_on")
+
+	homedecor.register("hanging_lantern_"..onoff, {
+		description = S("Hanging Lantern/Light"),
+		mesh = "homedecor_hanging_lantern.obj",
+		tiles = { "homedecor_generic_metal_wrought_iron.png", lighttex },
+		use_texture_alpha = true,
+		inventory_image = "homedecor_hanging_lantern_inv.png",
+		wield_image = "homedecor_hanging_lantern_inv.png",
+		groups = {snappy=3, not_in_creative_inventory = nici},
+		light_source = onflag and (default.LIGHT_MAX - 3) or nil,
+		selection_box = hl_cbox,
+		walkable = false,
+		on_rightclick = homedecor.toggle_light
+	})
+
+	local cl_cbox = {
+		type = "fixed",
+		fixed = { -0.35, -0.45, -0.35, 0.35, 0.5, 0.35 }
+	}
+
+	minetest.register_alias("homedecor:ceiling_lantern", "homedecor:ceiling_lantern_on")
+
+	homedecor.register("ceiling_lantern_"..onoff, {
+		drawtype = "mesh",
+		mesh = "homedecor_ceiling_lantern.obj",
+		tiles = { lighttex, "homedecor_generic_metal_wrought_iron.png" },
+		use_texture_alpha = true,
+		inventory_image = "homedecor_ceiling_lantern_inv.png",
+		description = S("Ceiling Lantern/Light"),
+		groups = {snappy=3, not_in_creative_inventory = nici},
+		light_source = onflag and (default.LIGHT_MAX - 3) or nil,
+		selection_box = cl_cbox,
+		walkable = false,
+		on_rightclick = homedecor.toggle_light
+	})
+
+	if minetest.get_modpath("darkage") then
+		minetest.register_alias("homedecor:lattice_lantern_large_on", "darkage:lamp")
+		minetest.register_alias("homedecor:lattice_lantern_large_off", "darkage:lamp")
+		sm_light = default.LIGHT_MAX-5
+	else
+		local lighttex
+		if onflag then
+			lighttex = "homedecor_lattice_lantern_large_light.png"
+		else
+			lighttex = "homedecor_table_generic_light_source_off.png"
+		end
+
+		minetest.register_alias("homedecor:lattice_lantern_large", "homedecor:lattice_lantern_large_on")
+
+		homedecor.register("lattice_lantern_large_"..onoff, {
+			description = S("Lattice lantern/Light (large)"),
+			tiles = { lighttex.."^homedecor_lattice_lantern_large_overlay.png" },
+			groups = { snappy = 3, not_in_creative_inventory = nici },
+			light_source = onflag and default.LIGHT_MAX or nil,
+			sounds = default.node_sound_glass_defaults(),
+			on_rightclick = homedecor.toggle_light
+		})
+	end
+
+	local lighttex_tb
+	local lighttex_sides
+
+	if onflag then
+		lighttex_tb =    "homedecor_lattice_lantern_small_tb_light.png"
+		lighttex_sides = "homedecor_lattice_lantern_small_sides_light.png"
+	else
+		lighttex_tb =    "homedecor_table_generic_light_source_off.png"
+		lighttex_sides = "homedecor_table_generic_light_source_off.png"
+	end
+
+	minetest.register_alias("homedecor:lattice_lantern_small", "homedecor:lattice_lantern_small_on")
+
+	homedecor.register("lattice_lantern_small_"..onoff, {
+		description = S("Lattice lantern/light (small)"),
+		tiles = {
+			lighttex_tb.."^homedecor_lattice_lantern_small_tb_overlay.png",
+			lighttex_tb.."^homedecor_lattice_lantern_small_tb_overlay.png",
+			lighttex_sides.."^homedecor_lattice_lantern_small_sides_overlay.png"
+		},
+		selection_box = {
+			type = "fixed",
+			fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
+		},
+		node_box = {
+			type = "fixed",
+			fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
+		},
+		groups = { snappy = 3, not_in_creative_inventory = nici },
+		light_source = onflag and (default.LIGHT_MAX - 2) or nil,
+		sounds = default.node_sound_glass_defaults(),
+		on_place = minetest.rotate_node,
+		on_rightclick = homedecor.toggle_light
+	})
+
+	-- "gooseneck" style desk lamps
+
+	local dlamp_cbox = {
+		type = "wallmounted",
+		wall_side = { -0.2, -0.5, -0.15, 0.32, 0.12, 0.15 },
+	}
+
+	minetest.register_alias("homedecor:desk_lamp", "homedecor:desk_lamp_on")
+
+	homedecor.register("desk_lamp_"..onoff, {
+		description = S("Desk Lamp/Light"),
+		mesh = "homedecor_desk_lamp.obj",
+		tiles = {
+			"homedecor_generic_metal.png",
+			"homedecor_generic_metal.png",
+			{ name = "homedecor_generic_metal.png", color = homedecor.color_med_grey },
+			{ name = "homedecor_table_generic_light_source_"..onoff..".png", color = brightness_tab[5] },
+		},
+		inventory_image = "homedecor_desk_lamp_inv.png",
+		paramtype = "light",
+		paramtype2 = "colorwallmounted",
+		palette = "unifieddyes_palette_colorwallmounted.png",
+		selection_box = dlamp_cbox,
+		node_box = dlamp_cbox,
+		walkable = false,
+		groups = {snappy=3, ud_param2_colorable = 1, not_in_creative_inventory = nici},
+		after_place_node = function(pos, placer, itemstack, pointed_thing)
+			unifieddyes.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)
+		end,
+		on_rotate = unifieddyes.fix_after_screwdriver_nsew,
+		light_source = onflag and (default.LIGHT_MAX - 2) or nil,
+		on_rightclick = homedecor.toggle_light
+	})
+
+	-- "kitchen"/"dining room" ceiling lamp
+
+	homedecor.register("ceiling_lamp_"..onoff, {
+		description = S("Ceiling Lamp/Light"),
+		mesh = "homedecor_ceiling_lamp.obj",
+		tiles = {
+			"homedecor_generic_metal_brass.png",
+			"homedecor_ceiling_lamp_glass.png",
+			"homedecor_table_generic_light_source_"..onoff..".png",
+			{ name = "homedecor_generic_plastic.png", color = 0xff442d04 },
+		},
+		inventory_image = "homedecor_ceiling_lamp_inv.png",
+		light_source = onflag and default.LIGHT_MAX or nil,
+		groups = {snappy=3, not_in_creative_inventory = nici},
+		walkable = false,
+		on_rightclick = homedecor.toggle_light
+	})
+
+	minetest.register_alias("homedecor:rope_light_on_floor", "homedecor:rope_light_on_floor_on")
+
+	minetest.register_node(":homedecor:rope_light_on_floor_"..onoff, {
+		description = "Rope lighting (on floor)",
+		inventory_image =  "homedecor_rope_light_on_floor.png",
+		paramtype = "light",
+		light_source = onflag and (default.LIGHT_MAX - 3) or nil,
+		walkable = false,
+		sunlight_propagates = true,
+		tiles = { "homedecor_table_generic_light_source_"..onoff..".png" },
+		drawtype = "nodebox",
+		node_box = {
+			type = "connected",
+			fixed = {},
+			connect_front = { -1/16, -8/16, -8/16, 1/16, -6/16, 1/16 },
+			connect_left =  { -8/16, -8/16, -1/16, 1/16, -6/16, 1/16 },
+			connect_back =  { -1/16, -8/16, -1/16, 1/16, -6/16, 8/16 },
+			connect_right = { -1/16, -8/16, -1/16, 8/16, -6/16, 1/16 },
+			disconnected_sides = {
+				{ -6/16, -8/16, -6/16, -4/16, -6/16,  6/16 },
+				{  4/16, -8/16, -6/16,  6/16, -6/16,  6/16 },
+				{ -6/16, -8/16, -6/16,  6/16, -6/16, -4/16 },
+				{ -6/16, -8/16,  4/16,  6/16, -6/16,  6/16 }
+			},
+		},
+		connects_to = { "homedecor:rope_light_on_floor" },
+		mesh = "homedecor_chandelier.obj",
+		groups = {cracky=3, not_in_creative_inventory = nici},
+		sounds =  default.node_sound_stone_defaults(),
+		on_rightclick = homedecor.toggle_light
+	})
+
+	minetest.register_alias("homedecor:rope_light_on_ceiling", "homedecor:rope_light_on_ceiling_on")
+
+	minetest.register_node(":homedecor:rope_light_on_ceiling_"..onoff, {
+		description = "Rope lighting (on ceiling)",
+		inventory_image =  "homedecor_rope_light_on_ceiling.png",
+		paramtype = "light",
+		light_source = onflag and (default.LIGHT_MAX - 3) or nil,
+		walkable = false,
+		sunlight_propagates = true,
+		tiles = { "homedecor_table_generic_light_source_"..onoff..".png" },
+		drawtype = "nodebox",
+		node_box = {
+			type = "connected",
+			fixed = {},
+			connect_front = { -1/16, 8/16, -8/16, 1/16, 6/16, 1/16 },
+			connect_left =  { -8/16, 8/16, -1/16, 1/16, 6/16, 1/16 },
+			connect_back =  { -1/16, 8/16, -1/16, 1/16, 6/16, 8/16 },
+			connect_right = { -1/16, 8/16, -1/16, 8/16, 6/16, 1/16 },
+			disconnected_sides = {
+				{ -6/16, 8/16, -6/16, -4/16, 6/16,  6/16 },
+				{  4/16, 8/16, -6/16,  6/16, 6/16,  6/16 },
+				{ -6/16, 8/16, -6/16,  6/16, 6/16, -4/16 },
+				{ -6/16, 8/16,  4/16,  6/16, 6/16,  6/16 }
+			},
+		},
+		connects_to = { "homedecor:rope_light_on_ceiling" },
+		mesh = "homedecor_chandelier.obj",
+		groups = {cracky=3, not_in_creative_inventory = nici},
+		sounds =  default.node_sound_stone_defaults(),
+		on_rightclick = homedecor.toggle_light
+	})
+
+end
+
+-- Light sources and other items that either don't turn on/off
+-- or which need special light-control code.
 
 homedecor.register("candle", {
 	description = S("Thick Candle"),
@@ -304,105 +669,98 @@ homedecor.register("oil_lamp_tabletop", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
-local gl_cbox = {
+local chains_sbox = {
 	type = "fixed",
-	fixed = { -0.25, -0.5, -0.25, 0.25, 0.45, 0.25 },
+	fixed = { -0.1, -0.5, -0.1, 0.1, 0.5, 0.1 }
 }
 
-minetest.register_alias("homedecor:wall_lantern", "homedecor:ground_lantern")
-
-homedecor.register("ground_lantern", {
-	description = S("Ground Lantern/Light"),
-	mesh = "homedecor_ground_lantern.obj",
-	tiles = { "homedecor_light.png", "homedecor_generic_metal_wrought_iron.png" },
-	use_texture_alpha = true,
-	inventory_image = "homedecor_ground_lantern_inv.png",
-	wield_image = "homedecor_ground_lantern_inv.png",
-	groups = {snappy=3},
-	light_source = 11,
-	selection_box = gl_cbox,
-	walkable = false
-})
-
-local hl_cbox = {
+local topchains_sbox = {
 	type = "fixed",
-	fixed = { -0.25, -0.5, -0.2, 0.25, 0.5, 0.5 },
+	fixed = {
+		{ -0.25, 0.35, -0.25, 0.25, 0.5, 0.25 },
+		{ -0.1, -0.5, -0.1, 0.1, 0.4, 0.1 }
+	}
 }
 
-homedecor.register("hanging_lantern", {
-	description = S("Hanging Lantern/Light"),
-	mesh = "homedecor_hanging_lantern.obj",
-	tiles = { "homedecor_generic_metal_wrought_iron.png", "homedecor_light.png" },
-	use_texture_alpha = true,
-	inventory_image = "homedecor_hanging_lantern_inv.png",
-	wield_image = "homedecor_hanging_lantern_inv.png",
-	groups = {snappy=3},
-	light_source = 11,
-	selection_box = hl_cbox,
-	walkable = false
-})
-
-local cl_cbox = {
-	type = "fixed",
-	fixed = { -0.35, -0.45, -0.35, 0.35, 0.5, 0.35 }
-}
-
-homedecor.register("ceiling_lantern", {
+minetest.register_node(":homedecor:chain_steel_top", {
+	description = S("Hanging chain (ceiling mount, steel)"),
 	drawtype = "mesh",
-	mesh = "homedecor_ceiling_lantern.obj",
-	tiles = { "homedecor_light.png", "homedecor_generic_metal_wrought_iron.png" },
-	use_texture_alpha = true,
-	inventory_image = "homedecor_ceiling_lantern_inv.png",
-	description = S("Ceiling Lantern/Light"),
-	groups = {snappy=3},
-	light_source = 11,
-	selection_box = cl_cbox,
-	walkable = false
+	mesh = "homedecor_chains_top.obj",
+	tiles = {"basic_materials_chain_steel.png"},
+	walkable = false,
+	climbable = true,
+	sunlight_propagates = true,
+	paramtype = "light",
+	inventory_image = "basic_materials_chain_steel_inv.png",
+	groups = {cracky=3},
+	selection_box = topchains_sbox,
 })
 
-local sm_light = default.LIGHT_MAX-2
+minetest.register_node(":homedecor:chain_brass_top", {
+	description = S("Hanging chain (ceiling mount, brass)"),
+	drawtype = "mesh",
+	mesh = "homedecor_chains_top.obj",
+	tiles = {"basic_materials_chain_brass.png"},
+	walkable = false,
+	climbable = true,
+	sunlight_propagates = true,
+	paramtype = "light",
+	inventory_image = "basic_materials_chain_brass_inv.png",
+	groups = {cracky=3},
+	selection_box = topchains_sbox,
+})
 
-if minetest.get_modpath("darkage") then
-	minetest.register_alias("homedecor:lattice_lantern_large", "darkage:lamp")
-	sm_light = default.LIGHT_MAX-5
-else
-	homedecor.register("lattice_lantern_large", {
-		description = S("Lattice lantern/Light (large)"),
-		tiles = { 'homedecor_lattice_lantern_large.png' },
-		groups = { snappy = 3 },
-		light_source = default.LIGHT_MAX,
-		sounds = default.node_sound_glass_defaults(),
-	})
-end
-
-homedecor.register("lattice_lantern_small", {
-	description = S("Lattice lantern (small)"),
+minetest.register_node(":homedecor:chandelier_steel", {
+	description = S("Chandelier (steel)"),
+	paramtype = "light",
+	light_source = 12,
+	walkable = false,
+	climbable = true,
+	sunlight_propagates = true,
 	tiles = {
-		'homedecor_lattice_lantern_small_tb.png',
-		'homedecor_lattice_lantern_small_tb.png',
-		'homedecor_lattice_lantern_small_sides.png'
+		"basic_materials_chain_steel.png",
+		"homedecor_candle_flat.png",
+		{
+			name="homedecor_candle_flame.png",
+			animation={
+				type="vertical_frames",
+				aspect_w=16,
+				aspect_h=16,
+				length=3.0
+			}
+		}
 	},
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-	},
-	node_box = {
-		type = "fixed",
-		fixed = { -0.25, -0.5, -0.25, 0.25, 0, 0.25 }
-	},
-	groups = { snappy = 3 },
-	light_source = sm_light,
-	sounds = default.node_sound_glass_defaults(),
-	on_place = minetest.rotate_node
+	drawtype = "mesh",
+	mesh = "homedecor_chandelier.obj",
+	groups = {cracky=3},
+	sounds =  default.node_sound_stone_defaults(),
 })
 
-local brightness_tab = {
-	0xffd0d0d0,
-	0xffd8d8d8,
-	0xffe0e0e0,
-	0xffe8e8e8,
-	0xffffffff,
-}
+minetest.register_node(":homedecor:chandelier_brass", {
+	description = S("Chandelier (brass)"),
+	paramtype = "light",
+	light_source = 12,
+	walkable = false,
+	climbable = true,
+	sunlight_propagates = true,
+	tiles = {
+		"basic_materials_chain_brass.png",
+		"homedecor_candle_flat.png",
+		{
+			name="homedecor_candle_flame.png",
+			animation={
+				type="vertical_frames",
+				aspect_w=16,
+				aspect_h=16,
+				length=3.0
+			}
+		}
+	},
+	drawtype = "mesh",
+	mesh = "homedecor_chandelier.obj",
+	groups = {cracky=3},
+	sounds =  default.node_sound_stone_defaults(),
+})
 
 -- table lamps and standing lamps
 
@@ -436,13 +794,14 @@ local slamp_cbox = {
 local function reg_lamp(suffix, nxt, light, brightness)
 
 	local wool_brighten = (light or 0) * 15
+	local onoff = (suffix == "off") and "off" or "on"
 
 	homedecor.register("table_lamp_"..suffix, {
 		description = S("Table Lamp/Light"),
 		mesh = "homedecor_table_lamp.obj",
 		tiles = {
 			"wool_grey.png^[colorize:#ffffff:"..wool_brighten,
-			{ name = "homedecor_table_standing_lamp_lightbulb.png", color = brightness_tab[brightness] },
+			{ name = "homedecor_table_generic_light_source_"..onoff..".png", color = brightness_tab[brightness] },
 			{ name = "homedecor_generic_wood_red.png", color = 0xffffffff },
 			{ name = "homedecor_generic_metal.png", color = homedecor.color_black },
 		},
@@ -475,7 +834,7 @@ local function reg_lamp(suffix, nxt, light, brightness)
 		mesh = "homedecor_standing_lamp.obj",
 		tiles = {
 			"wool_grey.png^[colorize:#ffffff:"..wool_brighten,
-			{ name = "homedecor_table_standing_lamp_lightbulb.png", color = brightness_tab[brightness] },
+			{ name = "homedecor_table_generic_light_source_"..onoff..".png", color = brightness_tab[brightness] },
 			{ name = "homedecor_generic_wood_red.png", color = 0xffffffff },
 			{ name = "homedecor_generic_metal.png", color = homedecor.color_black },
 		},
@@ -514,72 +873,6 @@ reg_lamp("med", "hi",   7,   3 )
 reg_lamp("hi",  "max", 11,   4 )
 reg_lamp("max", "off", 14,   5 )
 
--- "gooseneck" style desk lamps
-
-local dlamp_cbox = {
-	type = "wallmounted",
-	wall_side = { -0.2, -0.5, -0.15, 0.32, 0.12, 0.15 },
-}
-
-homedecor.register("desk_lamp", {
-	description = S("Desk Lamp/Light"),
-	mesh = "homedecor_desk_lamp.obj",
-	tiles = {
-		"homedecor_generic_metal.png",
-		"homedecor_generic_metal.png",
-		{ name = "homedecor_generic_metal.png", color = homedecor.color_med_grey },
-		{ name = "homedecor_table_standing_lamp_lightbulb.png", color = brightness_tab[5] },
-	},
-	inventory_image = "homedecor_desk_lamp_inv.png",
-	paramtype = "light",
-	paramtype2 = "colorwallmounted",
-	palette = "unifieddyes_palette_colorwallmounted.png",
-	selection_box = dlamp_cbox,
-	node_box = dlamp_cbox,
-	walkable = false,
-	groups = {snappy=3, ud_param2_colorable = 1},
-	after_place_node = function(pos, placer, itemstack, pointed_thing)
-		unifieddyes.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)
-	end,
-	on_rotate = unifieddyes.fix_after_screwdriver_nsew
-})
-
--- "kitchen"/"dining room" ceiling lamp
-
-homedecor.register("ceiling_lamp", {
-	description = S("Ceiling Lamp/Light"),
-	mesh = "homedecor_ceiling_lamp.obj",
-	tiles = {
-		"homedecor_generic_metal_brass.png",
-		"homedecor_ceiling_lamp_glass.png",
-		"homedecor_table_standing_lamp_lightbulb.png",
-		{ name = "homedecor_generic_plastic.png", color = 0xff442d04 },
-	},
-	inventory_image = "homedecor_ceiling_lamp_inv.png",
-	light_source = default.LIGHT_MAX,
-	groups = {snappy=3},
-	walkable = false,
-	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-		minetest.set_node(pos, {name = "homedecor:ceiling_lamp_off"})
-	end,
-})
-
-homedecor.register("ceiling_lamp_off", {
-	description = S("Ceiling Lamp/Light (off)"),
-	mesh = "homedecor_ceiling_lamp.obj",
-	tiles = {
-		"homedecor_generic_metal_brass.png",
-		"homedecor_ceiling_lamp_glass.png",
-		{ "homedecor_table_standing_lamp_lightbulb.png", color = 0xffd0d0d0 },
-		{ name = "homedecor_generic_plastic.png", color = 0xff442d04 },
-	},
-	groups = {snappy=3, not_in_creative_inventory=1},
-	walkable = false,
-	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-		minetest.set_node(pos, {name = "homedecor:ceiling_lamp"})
-	end,
-	drop = "homedecor:ceiling_lamp"
-})
 
 -- conversion LBM for param2 coloring
 
@@ -743,156 +1036,7 @@ minetest.register_lbm({
 	end
 })
 
-local chains_sbox = {
-	type = "fixed",
-	fixed = { -0.1, -0.5, -0.1, 0.1, 0.5, 0.1 }
-}
 
-local topchains_sbox = {
-	type = "fixed",
-	fixed = {
-		{ -0.25, 0.35, -0.25, 0.25, 0.5, 0.25 },
-		{ -0.1, -0.5, -0.1, 0.1, 0.4, 0.1 }
-	}
-}
-
-minetest.register_node(":homedecor:chain_steel_top", {
-	description = S("Hanging chain (ceiling mount, steel)"),
-	drawtype = "mesh",
-	mesh = "homedecor_chains_top.obj",
-	tiles = {"basic_materials_chain_steel.png"},
-	walkable = false,
-	climbable = true,
-	sunlight_propagates = true,
-	paramtype = "light",
-	inventory_image = "basic_materials_chain_steel_inv.png",
-	groups = {cracky=3},
-	selection_box = topchains_sbox,
-})
-
-minetest.register_node(":homedecor:chain_brass_top", {
-	description = S("Hanging chain (ceiling mount, brass)"),
-	drawtype = "mesh",
-	mesh = "homedecor_chains_top.obj",
-	tiles = {"basic_materials_chain_brass.png"},
-	walkable = false,
-	climbable = true,
-	sunlight_propagates = true,
-	paramtype = "light",
-	inventory_image = "basic_materials_chain_brass_inv.png",
-	groups = {cracky=3},
-	selection_box = topchains_sbox,
-})
-
-minetest.register_node(":homedecor:chandelier_steel", {
-	description = S("Chandelier (steel)"),
-	paramtype = "light",
-	light_source = 12,
-	walkable = false,
-	climbable = true,
-	sunlight_propagates = true,
-	tiles = {
-		"basic_materials_chain_steel.png",
-		"homedecor_candle_flat.png",
-		{
-			name="homedecor_candle_flame.png",
-			animation={
-				type="vertical_frames",
-				aspect_w=16,
-				aspect_h=16,
-				length=3.0
-			}
-		}
-	},
-	drawtype = "mesh",
-	mesh = "homedecor_chandelier.obj",
-	groups = {cracky=3},
-	sounds =  default.node_sound_stone_defaults(),
-})
-
-minetest.register_node(":homedecor:chandelier_brass", {
-	description = S("Chandelier (brass)"),
-	paramtype = "light",
-	light_source = 12,
-	walkable = false,
-	climbable = true,
-	sunlight_propagates = true,
-	tiles = {
-		"basic_materials_chain_brass.png",
-		"homedecor_candle_flat.png",
-		{
-			name="homedecor_candle_flame.png",
-			animation={
-				type="vertical_frames",
-				aspect_w=16,
-				aspect_h=16,
-				length=3.0
-			}
-		}
-	},
-	drawtype = "mesh",
-	mesh = "homedecor_chandelier.obj",
-	groups = {cracky=3},
-	sounds =  default.node_sound_stone_defaults(),
-})
-
-minetest.register_node(":homedecor:rope_light_on_floor", {
-	description = "Rope lighting (on floor)",
-	inventory_image =  "homedecor_rope_light_on_floor.png",
-	paramtype = "light",
-	light_source = default.LIGHT_MAX-3,
-	walkable = false,
-	sunlight_propagates = true,
-	tiles = { "homedecor_table_standing_lamp_lightbulb.png" },
-	drawtype = "nodebox",
-	node_box = {
-		type = "connected",
-		fixed = {},
-		connect_front = { -1/16, -8/16, -8/16, 1/16, -6/16, 1/16 },
-		connect_left =  { -8/16, -8/16, -1/16, 1/16, -6/16, 1/16 },
-		connect_back =  { -1/16, -8/16, -1/16, 1/16, -6/16, 8/16 },
-		connect_right = { -1/16, -8/16, -1/16, 8/16, -6/16, 1/16 },
-		disconnected_sides = {
-			{ -6/16, -8/16, -6/16, -4/16, -6/16,  6/16 },
-			{  4/16, -8/16, -6/16,  6/16, -6/16,  6/16 },
-			{ -6/16, -8/16, -6/16,  6/16, -6/16, -4/16 },
-			{ -6/16, -8/16,  4/16,  6/16, -6/16,  6/16 }
-		},
-	},
-	connects_to = { "homedecor:rope_light_on_floor" },
-	mesh = "homedecor_chandelier.obj",
-	groups = {cracky=3},
-	sounds =  default.node_sound_stone_defaults(),
-})
-
-minetest.register_node(":homedecor:rope_light_on_ceiling", {
-	description = "Rope lighting (on ceiling)",
-	inventory_image =  "homedecor_rope_light_on_ceiling.png",
-	paramtype = "light",
-	light_source = default.LIGHT_MAX-3,
-	walkable = false,
-	sunlight_propagates = true,
-	tiles = { "homedecor_table_standing_lamp_lightbulb.png" },
-	drawtype = "nodebox",
-	node_box = {
-		type = "connected",
-		fixed = {},
-		connect_front = { -1/16, 8/16, -8/16, 1/16, 6/16, 1/16 },
-		connect_left =  { -8/16, 8/16, -1/16, 1/16, 6/16, 1/16 },
-		connect_back =  { -1/16, 8/16, -1/16, 1/16, 6/16, 8/16 },
-		connect_right = { -1/16, 8/16, -1/16, 8/16, 6/16, 1/16 },
-		disconnected_sides = {
-			{ -6/16, 8/16, -6/16, -4/16, 6/16,  6/16 },
-			{  4/16, 8/16, -6/16,  6/16, 6/16,  6/16 },
-			{ -6/16, 8/16, -6/16,  6/16, 6/16, -4/16 },
-			{ -6/16, 8/16,  4/16,  6/16, 6/16,  6/16 }
-		},
-	},
-	connects_to = { "homedecor:rope_light_on_ceiling" },
-	mesh = "homedecor_chandelier.obj",
-	groups = {cracky=3},
-	sounds =  default.node_sound_stone_defaults(),
-})
 
 -- crafting
 
