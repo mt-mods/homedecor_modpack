@@ -893,7 +893,7 @@ local function reg_lamp(suffix, nxt, light, brightness)
 		on_construct = unifieddyes.on_construct,
 		drop = {
 			items = {
-				{items = {"homedecor:table_lamp_off"}, inherit_color = true },
+				{items = {"homedecor:table_lamp_hi"}, inherit_color = true },
 			}
 		}
 
@@ -928,7 +928,7 @@ local function reg_lamp(suffix, nxt, light, brightness)
 		--expand = { top="air" },
 		drop = {
 			items = {
-				{items = {"homedecor:standing_lamp_off"}, inherit_color = true },
+				{items = {"homedecor:standing_lamp_hi"}, inherit_color = true },
 			}
 		}
 	})
@@ -1461,19 +1461,19 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "homedecor:standing_lamp_off",
+	output = "homedecor:standing_lamp_hi",
 	recipe = {
-		{"homedecor:table_lamp_off"},
+		{"homedecor:table_lamp_hi"},
 		{"group:stick"},
 		{"group:stick"},
 	},
 })
 
 unifieddyes.register_color_craft({
-	output = "homedecor:standing_lamp_off",
+	output = "homedecor:standing_lamp_hi",
 	palette = "extended",
 	type = "shapeless",
-	neutral_node = "homedecor:standing_lamp_off",
+	neutral_node = "homedecor:standing_lamp_hi",
 	recipe = {
 		"NEUTRAL_NODE",
 		"MAIN_DYE"
@@ -1482,12 +1482,12 @@ unifieddyes.register_color_craft({
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "homedecor:table_lamp_off",
+	recipe = "homedecor:table_lamp_hi",
 	burntime = 10,
 })
 
 minetest.register_craft({
-	output = "homedecor:table_lamp_off",
+	output = "homedecor:table_lamp_hi",
 	recipe = {
 		{ "wool:white", "default:torch", "wool:white"},
 		{ "", "group:stick", ""},
@@ -1496,7 +1496,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "homedecor:table_lamp_off",
+	output = "homedecor:table_lamp_hi",
 	recipe = {
 		{ "cottages:wool", "default:torch", "cottages:wool"},
 		{ "", "group:stick", ""},
@@ -1505,7 +1505,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "homedecor:table_lamp_off",
+	output = "homedecor:table_lamp_hi",
 	recipe = {
 		{ "wool:white", "default:torch", "wool:white"},
 		{ "", "group:stick", ""},
@@ -1514,7 +1514,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "homedecor:table_lamp_off",
+	output = "homedecor:table_lamp_hi",
 	recipe = {
 		{ "cottages:wool", "default:torch", "cottages:wool"},
 		{ "", "group:stick", ""},
@@ -1523,10 +1523,10 @@ minetest.register_craft({
 })
 
 unifieddyes.register_color_craft({
-	output = "homedecor:table_lamp_off",
+	output = "homedecor:table_lamp_hi",
 	palette = "extended",
 	type = "shapeless",
-	neutral_node = "homedecor:table_lamp_off",
+	neutral_node = "homedecor:table_lamp_hi",
 	recipe = {
 		"NEUTRAL_NODE",
 		"MAIN_DYE"
