@@ -97,7 +97,7 @@ for _, onoff in ipairs ({"on", "off"}) do
 				{ -0.1875,   -0.5625,    0.375,  0.1875,   -0.1250, 0.5 },
 			}
 		},
-		groups = {cracky=3,dig_immediate=2},
+		groups = {cracky=3, dig_immediate=2, mesecon_needs_receiver=1, not_in_creative_inventory = (onoff == "on") and 1 or nil},
 		walkable = false,
 		drop = {
 			items = {
@@ -143,7 +143,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:light_switch",
+        output = "homedecor:light_switch_off",
         recipe = {
 			{"", "basic_materials:plastic_sheet", "basic_materials:copper_strip"},
 			{"basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:copper_strip"},
