@@ -60,6 +60,7 @@ for _, onoff in ipairs({"on", "off"}) do
 	local onflag = (onoff == "on")
 	local tiles
 	local overlay
+	local nici
 	if not onflag then nici = 1 end
 
 	local glowlight_nodebox = {
@@ -105,8 +106,6 @@ for _, onoff in ipairs({"on", "off"}) do
 		}
 		overlay = nil
 	end
-
-	minetest.register_alias("homedecor:glowlight_half", "homedecor:glowlight_half_on")
 
 	minetest.register_node(":homedecor:glowlight_half_"..onoff, {
 		description = S("Thick Glowlight"),
@@ -173,8 +172,6 @@ for _, onoff in ipairs({"on", "off"}) do
 		overlay = nil
 	end
 
-	minetest.register_alias("homedecor:glowlight_quarter", "homedecor:glowlight_quarter_on")
-
 	minetest.register_node(":homedecor:glowlight_quarter_"..onoff, {
 		description = S("Thin Glowlight"),
 		tiles = tiles,
@@ -239,8 +236,6 @@ for _, onoff in ipairs({"on", "off"}) do
 		overlay = nil
 	end
 
-	minetest.register_alias("homedecor:glowlight_small_cube", "homedecor:glowlight_small_cube_on")
-
 	minetest.register_node(":homedecor:glowlight_small_cube_"..onoff, {
 		description = S("Small Glowlight Cube"),
 		tiles = tiles,
@@ -283,8 +278,6 @@ for _, onoff in ipairs({"on", "off"}) do
 		lighttex = "homedecor_plasma_lamp_off.png"
 	end
 
-	minetest.register_alias("homedecor:plasma_lamp", "homedecor:plasma_lamp_on")
-
 	homedecor.register("plasma_lamp_"..onoff, {
 		description = S("Plasma Lamp/Light"),
 		drawtype = "mesh",
@@ -314,8 +307,6 @@ for _, onoff in ipairs({"on", "off"}) do
 		}
 	end
 
-	minetest.register_alias("homedecor:plasma_ball", "homedecor:plasma_ball_on")
-
 	homedecor.register("plasma_ball_"..onoff, {
 		description = S("Plasma Ball"),
 		mesh = "homedecor_plasma_ball.obj",
@@ -343,19 +334,10 @@ for _, onoff in ipairs({"on", "off"}) do
 		}
 	})
 
-	local tc_cbox = {
-		type = "fixed",
-		fixed = {
-			{ -0.1875, -0.5, -0.1875, 0.1875, 0.375, 0.1875 },
-		}
-	}
-
 	local gl_cbox = {
 		type = "fixed",
 		fixed = { -0.25, -0.5, -0.25, 0.25, 0.45, 0.25 },
 	}
-
-	minetest.register_alias("homedecor:wall_lantern", "homedecor:ground_lantern")
 
 	local lighttex
 	if onflag then
@@ -363,8 +345,6 @@ for _, onoff in ipairs({"on", "off"}) do
 	else
 		lighttex = "homedecor_table_generic_light_source_off.png"
 	end
-
-	minetest.register_alias("homedecor:ground_lantern", "homedecor:ground_lantern_on")
 
 	homedecor.register("ground_lantern_"..onoff, {
 		description = S("Ground Lantern/Light"),
@@ -390,8 +370,6 @@ for _, onoff in ipairs({"on", "off"}) do
 		fixed = { -0.25, -0.5, -0.2, 0.25, 0.5, 0.5 },
 	}
 
-	minetest.register_alias("homedecor:hanging_lantern", "homedecor:hanging_lantern_on")
-
 	homedecor.register("hanging_lantern_"..onoff, {
 		description = S("Hanging Lantern/Light"),
 		mesh = "homedecor_hanging_lantern.obj",
@@ -416,8 +394,6 @@ for _, onoff in ipairs({"on", "off"}) do
 		fixed = { -0.35, -0.45, -0.35, 0.35, 0.5, 0.35 }
 	}
 
-	minetest.register_alias("homedecor:ceiling_lantern", "homedecor:ceiling_lantern_on")
-
 	homedecor.register("ceiling_lantern_"..onoff, {
 		drawtype = "mesh",
 		mesh = "homedecor_ceiling_lantern.obj",
@@ -438,8 +414,6 @@ for _, onoff in ipairs({"on", "off"}) do
 	})
 
 	if minetest.get_modpath("darkage") then
-		minetest.register_alias("homedecor:lattice_lantern_large_on", "darkage:lamp")
-		minetest.register_alias("homedecor:lattice_lantern_large_off", "darkage:lamp")
 		sm_light = default.LIGHT_MAX-5
 	else
 		local lighttex
@@ -448,8 +422,6 @@ for _, onoff in ipairs({"on", "off"}) do
 		else
 			lighttex = "homedecor_table_generic_light_source_off.png"
 		end
-
-		minetest.register_alias("homedecor:lattice_lantern_large", "homedecor:lattice_lantern_large_on")
 
 		homedecor.register("lattice_lantern_large_"..onoff, {
 			description = S("Lattice lantern/Light (large)"),
@@ -476,8 +448,6 @@ for _, onoff in ipairs({"on", "off"}) do
 		lighttex_tb =    "homedecor_table_generic_light_source_off.png"
 		lighttex_sides = "homedecor_table_generic_light_source_off.png"
 	end
-
-	minetest.register_alias("homedecor:lattice_lantern_small", "homedecor:lattice_lantern_small_on")
 
 	homedecor.register("lattice_lantern_small_"..onoff, {
 		description = S("Lattice lantern/light (small)"),
@@ -512,8 +482,6 @@ for _, onoff in ipairs({"on", "off"}) do
 		type = "wallmounted",
 		wall_side = { -0.2, -0.5, -0.15, 0.32, 0.12, 0.15 },
 	}
-
-	minetest.register_alias("homedecor:desk_lamp", "homedecor:desk_lamp_on")
 
 	homedecor.register("desk_lamp_"..onoff, {
 		description = S("Desk Lamp/Light"),
@@ -568,8 +536,6 @@ for _, onoff in ipairs({"on", "off"}) do
 		}
 	})
 
-	minetest.register_alias("homedecor:rope_light_on_floor", "homedecor:rope_light_on_floor_on")
-
 	minetest.register_node(":homedecor:rope_light_on_floor_"..onoff, {
 		description = "Rope lighting (on floor)",
 		inventory_image =  "homedecor_rope_light_on_floor.png",
@@ -604,8 +570,6 @@ for _, onoff in ipairs({"on", "off"}) do
 			}
 		}
 	})
-
-	minetest.register_alias("homedecor:rope_light_on_ceiling", "homedecor:rope_light_on_ceiling_on")
 
 	minetest.register_node(":homedecor:rope_light_on_ceiling_"..onoff, {
 		description = "Rope lighting (on ceiling)",
@@ -646,6 +610,13 @@ end
 
 -- Light sources and other items that either don't turn on/off
 -- or which need special light-control code.
+
+local tc_cbox = {
+	type = "fixed",
+	fixed = {
+		{ -0.1875, -0.5, -0.1875, 0.1875, 0.375, 0.1875 },
+	}
+}
 
 homedecor.register("candle", {
 	description = S("Thick Candle"),
@@ -1573,9 +1544,28 @@ unifieddyes.register_color_craft({
 
 -- aliases
 
-minetest.register_alias("chains:chain_top",        "homedecor:chain_steel_top")
-minetest.register_alias("chains:chain_top_brass",  "homedecor:chain_brass_top")
+minetest.register_alias("chains:chain_top",                "homedecor:chain_steel_top")
+minetest.register_alias("chains:chain_top_brass",          "homedecor:chain_brass_top")
 
-minetest.register_alias("chains:chandelier_steel", "homedecor:chandelier_steel")
-minetest.register_alias("chains:chandelier_brass", "homedecor:chandelier_brass")
+minetest.register_alias("chains:chandelier_steel",         "homedecor:chandelier_steel")
+minetest.register_alias("chains:chandelier_brass",         "homedecor:chandelier_brass")
 
+minetest.register_alias("homedecor:glowlight_half",        "homedecor:glowlight_half_on")
+minetest.register_alias("homedecor:glowlight_quarter",     "homedecor:glowlight_quarter_on")
+minetest.register_alias("homedecor:glowlight_small_cube",  "homedecor:glowlight_small_cube_on")
+minetest.register_alias("homedecor:plasma_lamp",           "homedecor:plasma_lamp_on")
+minetest.register_alias("homedecor:plasma_ball",           "homedecor:plasma_ball_on")
+minetest.register_alias("homedecor:wall_lantern",          "homedecor:ground_lantern")
+minetest.register_alias("homedecor:ground_lantern",        "homedecor:ground_lantern_on")
+minetest.register_alias("homedecor:hanging_lantern",       "homedecor:hanging_lantern_on")
+minetest.register_alias("homedecor:ceiling_lantern",       "homedecor:ceiling_lantern_on")
+minetest.register_alias("homedecor:lattice_lantern_large", "homedecor:lattice_lantern_large_on")
+minetest.register_alias("homedecor:lattice_lantern_small", "homedecor:lattice_lantern_small_on")
+minetest.register_alias("homedecor:desk_lamp",             "homedecor:desk_lamp_on")
+minetest.register_alias("homedecor:rope_light_on_floor",   "homedecor:rope_light_on_floor_on")
+minetest.register_alias("homedecor:rope_light_on_ceiling", "homedecor:rope_light_on_ceiling_on")
+
+if minetest.get_modpath("darkage") then
+	minetest.register_alias("homedecor:lattice_lantern_large_on",  "darkage:lamp")
+	minetest.register_alias("homedecor:lattice_lantern_large_off", "darkage:lamp")
+end
