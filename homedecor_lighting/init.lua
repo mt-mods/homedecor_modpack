@@ -97,7 +97,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		after_place_node = function(pos, placer, itemstack, pointed_thing)
 			unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
 		end,
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:glowlight_half_on"}, inherit_color = true },
+			}
+		}
 	})
 
 	sides_edges = "homedecor_glowlight_thin_sides_edges.png"
@@ -156,7 +161,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		after_place_node = function(pos, placer, itemstack, pointed_thing)
 			unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
 		end,
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:glowlight_quarter_on"}, inherit_color = true },
+			}
+		}
 	})
 
 	tb_edges =    "homedecor_glowlight_cube_tb_edges.png"
@@ -216,7 +226,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		after_place_node = function(pos, placer, itemstack, pointed_thing)
 			unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
 		end,
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:glowlight_small_cube_on"}, inherit_color = true },
+			}
+		}
 	})
 
 	local lighttex
@@ -245,7 +260,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		sunlight_propagates = true,
 		groups = {cracky=3, oddly_breakable_by_hand=3, not_in_creative_inventory = nici},
 		sounds = default.node_sound_glass_defaults(),
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:plasma_lamp_on"}},
+			}
+		}
 	})
 
 	local lighttex = "homedecor_blanktile.png"
@@ -277,7 +297,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		sunlight_propagates = true,
 		groups = {cracky=3, oddly_breakable_by_hand=3, not_in_creative_inventory = nici},
 		sounds = default.node_sound_glass_defaults(),
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:plasma_ball_on"}},
+			}
+		}
 	})
 
 	local tc_cbox = {
@@ -314,7 +339,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		light_source = onflag and (default.LIGHT_MAX - 3) or nil,
 		selection_box = gl_cbox,
 		walkable = false,
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:ground_lantern_on"}},
+			}
+		}
 	})
 
 	local hl_cbox = {
@@ -335,7 +365,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		light_source = onflag and (default.LIGHT_MAX - 3) or nil,
 		selection_box = hl_cbox,
 		walkable = false,
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:hanging_lantern_on"}},
+			}
+		}
 	})
 
 	local cl_cbox = {
@@ -356,7 +391,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		light_source = onflag and (default.LIGHT_MAX - 3) or nil,
 		selection_box = cl_cbox,
 		walkable = false,
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:ceiling_lantern_on"}},
+			}
+		}
 	})
 
 	if minetest.get_modpath("darkage") then
@@ -379,7 +419,12 @@ for _, onoff in ipairs({"on", "off"}) do
 			groups = { snappy = 3, not_in_creative_inventory = nici },
 			light_source = onflag and default.LIGHT_MAX or nil,
 			sounds = default.node_sound_glass_defaults(),
-			on_rightclick = homedecor.toggle_light
+			on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:lattice_lantern_large_on"}},
+			}
+		}
 		})
 	end
 
@@ -415,7 +460,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		light_source = onflag and (default.LIGHT_MAX - 2) or nil,
 		sounds = default.node_sound_glass_defaults(),
 		on_place = minetest.rotate_node,
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:lattice_lantern_small_on"}},
+			}
+		}
 	})
 
 	-- "gooseneck" style desk lamps
@@ -449,7 +499,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		end,
 		on_rotate = unifieddyes.fix_after_screwdriver_nsew,
 		light_source = onflag and (default.LIGHT_MAX - 2) or nil,
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:desk_lamp_on"}, inherit_color = true },
+			}
+		}
 	})
 
 	-- "kitchen"/"dining room" ceiling lamp
@@ -467,7 +522,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		light_source = onflag and default.LIGHT_MAX or nil,
 		groups = {snappy=3, not_in_creative_inventory = nici},
 		walkable = false,
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:ceiling_lamp_on"}},
+			}
+		}
 	})
 
 	minetest.register_alias("homedecor:rope_light_on_floor", "homedecor:rope_light_on_floor_on")
@@ -499,7 +559,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		mesh = "homedecor_chandelier.obj",
 		groups = {cracky=3, not_in_creative_inventory = nici},
 		sounds =  default.node_sound_stone_defaults(),
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:rope_light_on_floor_on"} },
+			}
+		}
 	})
 
 	minetest.register_alias("homedecor:rope_light_on_ceiling", "homedecor:rope_light_on_ceiling_on")
@@ -531,7 +596,12 @@ for _, onoff in ipairs({"on", "off"}) do
 		mesh = "homedecor_chandelier.obj",
 		groups = {cracky=3, not_in_creative_inventory = nici},
 		sounds =  default.node_sound_stone_defaults(),
-		on_rightclick = homedecor.toggle_light
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:rope_light_on_ceiling_on"}},
+			}
+		}
 	})
 
 end
