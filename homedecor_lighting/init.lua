@@ -88,7 +88,7 @@ local brightness_tab = {
 function homedecor.toggle_light(pos, node, clicker, itemstack, pointed_thing)
 	if minetest.is_protected(pos, clicker:get_player_name()) then
 		minetest.record_protection_violation(pos,
-		sender:get_player_name())
+		clicker:get_player_name())
 		return
 	end
 	local sep = string.find(node.name, "_o", -5)
