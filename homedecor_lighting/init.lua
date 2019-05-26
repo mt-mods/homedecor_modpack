@@ -2,6 +2,39 @@
 
 local S = homedecor.gettext
 
+if minetest.get_modpath("mesecons") then
+	homedecor.mesecon_wall_light = {
+		off = {
+			effector = {
+				action_off = function(pos, node)
+					print("off event")
+					local sep = string.find(node.name, "_o", -5)
+					local onoff = string.sub(node.name, sep + 1)
+					minetest.swap_node(pos, {
+						name = string.sub(node.name, 1, sep - 1).."_off",
+						param2 = node.param2
+					})
+				end,
+				rules = mesecon.rules.wallmounted_get
+			}
+		},
+		on = {
+			effector = {
+				action_on = function(pos, node)
+					print("on event")
+					local sep = string.find(node.name, "_o", -5)
+					local onoff = string.sub(node.name, sep + 1)
+					minetest.swap_node(pos, {
+						name = string.sub(node.name, 1, sep - 1).."_on",
+						param2 = node.param2
+					})
+				end,
+				rules = mesecon.rules.wallmounted_get
+			}
+		}
+	}
+end
+
 local brightness_tab = {
 	0xffd0d0d0,
 	0xffd8d8d8,
@@ -102,9 +135,12 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:glowlight_half_on"}, inherit_color = true },
 			}
-		}
+		},
+		mesecons = homedecor.mesecon_wall_light[onoff]
 	})
 
+	print("##################")
+	print(dump(homedecor.mesecon_wall_light[onoff]))
 	sides_edges = "homedecor_glowlight_thin_sides_edges.png"
 	sides_glare = "homedecor_glowlight_thin_sides_glare.png"
 
@@ -166,7 +202,8 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:glowlight_quarter_on"}, inherit_color = true },
 			}
-		}
+		},
+		mesecons = homedecor.mesecon_wall_light[onoff]
 	})
 
 	tb_edges =    "homedecor_glowlight_cube_tb_edges.png"
@@ -231,7 +268,8 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:glowlight_small_cube_on"}, inherit_color = true },
 			}
-		}
+		},
+		mesecons = homedecor.mesecon_wall_light[onoff]
 	})
 
 	local lighttex
