@@ -2,31 +2,79 @@
 
 local S = homedecor.gettext
 
+local actions = {
+	action_off = function(pos, node)
+		local sep = string.find(node.name, "_o", -5)
+		local onoff = string.sub(node.name, sep + 1)
+		if minetest.get_meta(pos):get_int("toggled") > 0 then
+			minetest.swap_node(pos, {
+				name = string.sub(node.name, 1, sep - 1).."_off",
+				param2 = node.param2
+			})
+		end
+	end,
+	action_on = function(pos, node)
+		minetest.get_meta(pos):set_int("toggled", 1)
+		local sep = string.find(node.name, "_o", -5)
+		local onoff = string.sub(node.name, sep + 1)
+		minetest.swap_node(pos, {
+			name = string.sub(node.name, 1, sep - 1).."_on",
+			param2 = node.param2
+		})
+	end
+}
+
+local rules_xz = {
+	{x = -1, y = 0, z =  0}, -- borrowed from extrawires crossing
+	{x =  1, y = 0, z =  0},
+	{x =  0, y = 0, z = -1},
+	{x =  0, y = 0, z =  1},
+}
+
+local rules_alldir = {
+	{x =  0, y =  0, z = -1},  -- borrowed from lightstones
+	{x =  1, y =  0, z =  0},
+	{x = -1, y =  0, z =  0},
+	{x =  0, y =  0, z =  1},
+	{x =  1, y =  1, z =  0},
+	{x =  1, y = -1, z =  0},
+	{x = -1, y =  1, z =  0},
+	{x = -1, y = -1, z =  0},
+	{x =  0, y =  1, z =  1},
+	{x =  0, y = -1, z =  1},
+	{x =  0, y =  1, z = -1},
+	{x =  0, y = -1, z = -1},
+	{x =  0, y = -1, z =  0},
+}
+
+local rules_toponly = {
+	{x =  1, y =  1, z =  0},
+	{x = -1, y =  1, z =  0},
+	{x =  0, y =  1, z =  1},
+	{x =  0, y =  1, z = -1},
+}
+
 if minetest.get_modpath("mesecons") then
 	homedecor.mesecon_wall_light = {
-		effector = {
-			action_off = function(pos, node)
-				local sep = string.find(node.name, "_o", -5)
-				local onoff = string.sub(node.name, sep + 1)
-				if minetest.get_meta(pos):get_int("toggled") > 0 then
-					minetest.swap_node(pos, {
-						name = string.sub(node.name, 1, sep - 1).."_off",
-						param2 = node.param2
-					})
-				end
-			end,
-			action_on = function(pos, node)
-				minetest.get_meta(pos):set_int("toggled", 1)
-				local sep = string.find(node.name, "_o", -5)
-				local onoff = string.sub(node.name, sep + 1)
-				minetest.swap_node(pos, {
-					name = string.sub(node.name, 1, sep - 1).."_on",
-					param2 = node.param2
-				})
-			end,
-			rules = mesecon.rules.wallmounted_get
-		}
+		effector = table.copy(actions)
 	}
+	homedecor.mesecon_wall_light.effector.rules = mesecon.rules.wallmounted_get
+
+	homedecor.mesecon_xz_light = {
+		effector = table.copy(actions)
+	}
+	homedecor.mesecon_xz_light.effector.rules = rules_xz
+
+	homedecor.mesecon_alldir_light = {
+		effector = table.copy(actions),
+	}
+	homedecor.mesecon_alldir_light.effector.rules = rules_alldir
+
+	homedecor.mesecon_toponly_light = {
+		effector = table.copy(actions)
+	}
+	homedecor.mesecon_toponly_light.effector.rules = rules_toponly
+
 end
 
 local brightness_tab = {
@@ -291,7 +339,8 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:plasma_lamp_on"}},
 			}
-		}
+		},
+		mesecons = homedecor.mesecon_alldir_light
 	})
 
 	local lighttex = "homedecor_blanktile.png"
@@ -326,7 +375,8 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:plasma_ball_on"}},
 			}
-		}
+		},
+		mesecons = homedecor.mesecon_xz_light
 	})
 
 	local gl_cbox = {
@@ -357,7 +407,8 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:ground_lantern_on"}},
 			}
-		}
+		},
+		mesecons = homedecor.mesecon_xz_light
 	})
 
 	local hl_cbox = {
@@ -381,7 +432,8 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:hanging_lantern_on"}},
 			}
-		}
+		},
+		mesecons = homedecor.mesecon_alldir_light
 	})
 
 	local cl_cbox = {
@@ -405,7 +457,8 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:ceiling_lantern_on"}},
 			}
-		}
+		},
+		mesecons = homedecor.mesecon_toponly_light
 	})
 
 	if minetest.get_modpath("darkage") then
@@ -425,11 +478,12 @@ for _, onoff in ipairs({"on", "off"}) do
 			light_source = onflag and default.LIGHT_MAX or nil,
 			sounds = default.node_sound_glass_defaults(),
 			on_rightclick = homedecor.toggle_light,
-		drop = {
-			items = {
-				{items = {"homedecor:lattice_lantern_large_on"}},
-			}
-		}
+			drop = {
+				items = {
+					{items = {"homedecor:lattice_lantern_large_on"}},
+				}
+			},
+			mesecons = homedecor.mesecon_alldir_light
 		})
 	end
 
@@ -468,7 +522,8 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:lattice_lantern_small_on"}},
 			}
-		}
+		},
+		mesecons = homedecor.mesecon_wall_light
 	})
 
 	-- "gooseneck" style desk lamps
@@ -505,7 +560,8 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:desk_lamp_on"}, inherit_color = true },
 			}
-		}
+		},
+		mesecons = homedecor.mesecon_xz_light
 	})
 
 	-- "kitchen"/"dining room" ceiling lamp
@@ -528,8 +584,11 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:ceiling_lamp_on"}},
 			}
-		}
+		},
+		mesecons = homedecor.mesecon_toponly_light
 	})
+
+-- rope lighting
 
 	minetest.register_node(":homedecor:rope_light_on_floor_"..onoff, {
 		description = "Rope lighting (on floor)",
@@ -554,7 +613,11 @@ for _, onoff in ipairs({"on", "off"}) do
 				{ -6/16, -8/16,  4/16,  6/16, -6/16,  6/16 }
 			},
 		},
-		connects_to = { "homedecor:rope_light_on_floor" },
+		connects_to = {
+			"homedecor:rope_light_on_floor_on",
+			"homedecor:rope_light_on_floor_off",
+			"group:mesecon_conductor_craftable"
+		},
 		mesh = "homedecor_chandelier.obj",
 		groups = {cracky=3, not_in_creative_inventory = nici},
 		sounds =  default.node_sound_stone_defaults(),
@@ -563,6 +626,14 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:rope_light_on_floor_on"} },
 			}
+		},
+		mesecons = {
+			conductor = {
+				state = mesecon and (onflag and mesecon.state.on or mesecon.state.off),
+				onstate =  "homedecor:rope_light_on_floor_on",
+				offstate = "homedecor:rope_light_on_floor_off",
+				rules = rules_xz
+			},
 		}
 	})
 
@@ -589,7 +660,11 @@ for _, onoff in ipairs({"on", "off"}) do
 				{ -6/16, 8/16,  4/16,  6/16, 6/16,  6/16 }
 			},
 		},
-		connects_to = { "homedecor:rope_light_on_ceiling" },
+		connects_to = {
+			"homedecor:rope_light_on_ceiling_on",
+			"homedecor:rope_light_on_ceiling_off",
+			"group:mesecon_conductor_craftable"
+		},
 		mesh = "homedecor_chandelier.obj",
 		groups = {cracky=3, not_in_creative_inventory = nici},
 		sounds =  default.node_sound_stone_defaults(),
@@ -598,6 +673,14 @@ for _, onoff in ipairs({"on", "off"}) do
 			items = {
 				{items = {"homedecor:rope_light_on_ceiling_on"}},
 			}
+		},
+		mesecons = {
+			conductor = {
+				state = mesecon and (onflag and mesecon.state.on or mesecon.state.off),
+				onstate =  "homedecor:rope_light_on_ceiling_on",
+				offstate = "homedecor:rope_light_on_ceiling_off",
+				rules = rules_alldir
+			},
 		}
 	})
 
@@ -899,8 +982,7 @@ local function reg_lamp(suffix, nxt, light, brightness)
 			items = {
 				{items = {"homedecor:table_lamp_hi"}, inherit_color = true },
 			}
-		}
-
+		},
 	})
 
 	homedecor.register("standing_lamp_"..suffix, {
