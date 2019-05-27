@@ -1720,6 +1720,7 @@ minetest.register_alias("homedecor:plasma_ball",           "homedecor:plasma_bal
 minetest.register_alias("homedecor:wall_lantern",          "homedecor:ground_lantern")
 minetest.register_alias("homedecor:ground_lantern",        "homedecor:ground_lantern_on")
 minetest.register_alias("homedecor:hanging_lantern",       "homedecor:hanging_lantern_on")
+minetest.register_alias("homedecor:ceiling_lamp",          "homedecor:ceiling_lamp_on")
 minetest.register_alias("homedecor:ceiling_lantern",       "homedecor:ceiling_lantern_on")
 minetest.register_alias("homedecor:lattice_lantern_large", "homedecor:lattice_lantern_large_on")
 minetest.register_alias("homedecor:lattice_lantern_small", "homedecor:lattice_lantern_small_on")
