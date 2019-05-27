@@ -1,6 +1,7 @@
 -- Node definitions for Homedecor doors
 
 local S = homedecor.gettext
+local mesecons_mp = minetest.get_modpath("mesecons")
 
 -- clone node
 
@@ -142,7 +143,7 @@ local old_doors = {}
 local mesecons
 
 -- This part blatantly copied from Mesecons, and modified :-)
-if minetest.get_modpath("mesecons") then
+if mesecons_mp then
 	mesecons = {
 		effector = {
 			action_on = function(pos, node)
@@ -316,13 +317,16 @@ for i, g in ipairs(gate_list) do
 			homedecor.flip_gate(pos, node, clicker, gate, "closed")
 			return itemstack
 		end,
-        mesecons = {
+	}
+
+	if mesecons_mp then
+        def.mesecons = {
             effector = {
 				rules = mesecon.rules.pplate,
                 action_on = function(pos,node) homedecor.flip_gate(pos,node,nil,gate, "closed") end
             }
         }
-	}
+	end
 
     -- gates when placed default to closed, closed.
 
@@ -346,10 +350,13 @@ for i, g in ipairs(gate_list) do
         homedecor.flip_gate(pos, node, clicker, gate, "open")
         return itemstack
 	end
-    def.mesecons.effector = {
-		rules = mesecon.rules.pplate,
-        action_off = function(pos,node) homedecor.flip_gate(pos,node,nil,gate, "open") end
-    }
+
+	if mesecons_mp then
+		def.mesecons.effector = {
+			rules = mesecon.rules.pplate,
+			action_off = function(pos,node) homedecor.flip_gate(pos,node,nil,gate, "open") end
+		}
+	end
 
 	minetest.register_node(":homedecor:gate_"..gate.."_open", def)
 end
