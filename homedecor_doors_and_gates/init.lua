@@ -457,17 +457,8 @@ minetest.register_craft( {
 	type = "shapeless",
 	output = "homedecor:gate_half_door_closed 4",
 	recipe = {
-		"homedecor:door_wood_plain_left",
-		"homedecor:door_wood_plain_left"
-	},
-})
-
-minetest.register_craft( {
-	type = "shapeless",
-	output = "homedecor:gate_half_door_closed 4",
-	recipe = {
-		"homedecor:door_wood_plain_right",
-		"homedecor:door_wood_plain_right"
+		"homedecor:door_wood_plain_a",
+		"homedecor:door_wood_plain_a"
 	},
 })
 
@@ -475,17 +466,8 @@ minetest.register_craft( {
 	type = "shapeless",
 	output = "homedecor:gate_half_door_white_closed 4",
 	recipe = {
-		"homedecor:door_bedroom_left",
-		"homedecor:door_bedroom_left"
-	},
-})
-
-minetest.register_craft( {
-	type = "shapeless",
-	output = "homedecor:gate_half_door_white_closed 4",
-	recipe = {
-		"homedecor:door_bedroom_right",
-		"homedecor:door_bedroom_right"
+		"homedecor:door_bedroom_a",
+		"homedecor:door_bedroom_a"
 	},
 })
 
@@ -560,7 +542,7 @@ minetest.register_craft( {
 -- plain wood, non-windowed
 
 minetest.register_craft( {
-        output = "homedecor:door_wood_plain_left 2",
+        output = "homedecor:door_wood_plain_a 2",
         recipe = {
 			{ "group:wood", "group:wood", "" },
 			{ "group:wood", "group:wood", "default:steel_ingot" },
@@ -571,7 +553,7 @@ minetest.register_craft( {
 -- fancy exterior
 
 minetest.register_craft( {
-        output = "homedecor:door_exterior_fancy_left 2",
+        output = "homedecor:door_exterior_fancy_a 2",
         recipe = {
 			{ "group:wood", "default:glass" },
 			{ "group:wood", "group:wood" },
@@ -584,7 +566,7 @@ minetest.register_craft( {
 -- bare
 
 minetest.register_craft( {
-        output = "homedecor:door_wood_glass_oak_left 2",
+        output = "homedecor:door_wood_glass_oak_a 2",
         recipe = {
 			{ "default:glass", "group:wood" },
 			{ "group:wood", "default:glass" },
@@ -593,7 +575,7 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:door_wood_glass_oak_left 2",
+        output = "homedecor:door_wood_glass_oak_a 2",
         recipe = {
 			{ "group:wood", "default:glass" },
 			{ "default:glass", "group:wood" },
@@ -605,22 +587,11 @@ minetest.register_craft( {
 
 minetest.register_craft( {
 	type = "shapeless",
-        output = "homedecor:door_wood_glass_mahogany_left 2",
-        recipe = {
-			"default:dirt",
-			"default:coal_lump",
-			"homedecor:door_wood_glass_oak_left",
-			"homedecor:door_wood_glass_oak_left"
-        },
-})
-
-minetest.register_craft( {
-	type = "shapeless",
-        output = "homedecor:door_wood_glass_mahogany_left 2",
+        output = "homedecor:door_wood_glass_mahogany_a 2",
         recipe = {
 			"dye:brown",
-			"homedecor:door_wood_glass_oak_left",
-			"homedecor:door_wood_glass_oak_left"
+			"homedecor:door_wood_glass_oak_a",
+			"homedecor:door_wood_glass_oak_a"
         },
 })
 
@@ -628,11 +599,11 @@ minetest.register_craft( {
 
 minetest.register_craft( {
 	type = "shapeless",
-        output = "homedecor:door_wood_glass_white_left 2",
+        output = "homedecor:door_wood_glass_white_a 2",
         recipe = {
 			"dye:white",
-			"homedecor:door_wood_glass_oak_left",
-			"homedecor:door_wood_glass_oak_left"
+			"homedecor:door_wood_glass_oak_a",
+			"homedecor:door_wood_glass_oak_a"
         },
 })
 
@@ -641,7 +612,7 @@ minetest.register_craft( {
 -- oak
 
 minetest.register_craft( {
-        output = "homedecor:door_closet_oak_left 2",
+        output = "homedecor:door_closet_oak_a 2",
         recipe = {
 			{ "", "group:stick", "group:stick" },
 			{ "default:steel_ingot", "group:stick", "group:stick" },
@@ -653,21 +624,10 @@ minetest.register_craft( {
 
 minetest.register_craft( {
 	type = "shapeless",
-        output = "homedecor:door_closet_mahogany_left 2",
+        output = "homedecor:door_closet_mahogany_a 2",
         recipe = {
-			"homedecor:door_closet_oak_left",
-			"homedecor:door_closet_oak_left",
-			"default:dirt",
-			"default:coal_lump",
-        },
-})
-
-minetest.register_craft( {
-	type = "shapeless",
-        output = "homedecor:door_closet_mahogany_left 2",
-        recipe = {
-			"homedecor:door_closet_oak_left",
-			"homedecor:door_closet_oak_left",
+			"homedecor:door_closet_oak_a",
+			"homedecor:door_closet_oak_a",
 			"dye:brown"
         },
 })
@@ -675,7 +635,7 @@ minetest.register_craft( {
 -- wrought fence-like door
 
 minetest.register_craft( {
-        output = "homedecor:door_wrought_iron_left 2",
+        output = "homedecor:door_wrought_iron_a 2",
         recipe = {
 			{ "homedecor:pole_wrought_iron", "default:iron_lump" },
 			{ "homedecor:pole_wrought_iron", "default:iron_lump" },
@@ -686,10 +646,10 @@ minetest.register_craft( {
 -- bedroom door
 
 minetest.register_craft( {
-	output = "homedecor:door_bedroom_left",
+	output = "homedecor:door_bedroom_a",
 	recipe = {
 		{ "dye:white", "dye:white", "" },
-		{ "homedecor:door_wood_plain_left", "basic_materials:brass_ingot", "" },
+		{ "homedecor:door_wood_plain_a", "basic_materials:brass_ingot", "" },
 		{ "", "", "" },
 	},
 })
@@ -697,7 +657,7 @@ minetest.register_craft( {
 -- woodglass door
 
 minetest.register_craft( {
-	output = "homedecor:door_woodglass_left",
+	output = "homedecor:door_woodglass_a",
 	recipe = {
 		{ "group:wood", "default:glass", "" },
 		{ "group:wood", "default:glass", "basic_materials:brass_ingot" },
@@ -708,7 +668,7 @@ minetest.register_craft( {
 -- woodglass door type 2
 
 minetest.register_craft( {
-	output = "homedecor:door_woodglass2_left",
+	output = "homedecor:door_woodglass2_a",
 	recipe = {
 		{ "default:glass", "default:glass", "" },
 		{ "group:wood", "group:wood", "default:iron_lump" },
