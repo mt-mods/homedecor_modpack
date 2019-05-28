@@ -10,11 +10,7 @@ minetest.override_item("default:bookshelf", {
 	paramtype2 = "facedir",
 })
 
-if minetest.get_modpath("vessels")
- and minetest.registered_nodes["vessels:shelf"]
- and minetest.registered_nodes["vessels:glass_bottle"]
- and minetest.registered_nodes["vessels:drinking_glass"] then
-
+if minetest.get_modpath("vessels") then
 	minetest.override_item("vessels:shelf", {
 		drawtype = "mesh",
 		mesh = "3dvessels_shelf.obj",
@@ -88,4 +84,49 @@ if minetest.get_modpath("moreblocks") then
 			}
 		}
 	})
+end
+
+-- 3d-ify default mtg wood and steel doors and trap doors
+
+if minetest.get_modpath("doors") then
+	local function clone_node(name)
+		local node2 = {}
+		local node = minetest.registered_nodes[name]
+		for k,v in pairs(node) do
+			node2[k]=v
+		end
+		return node2
+	end
+
+	local def
+	for _,mat in ipairs({"wood", "steel"}) do
+		def = clone_node("doors:door_"..mat.."_a")
+			def.mesh = "homedecor_3d_door_"..mat.."_a.obj"
+			minetest.register_node(":doors:door_"..mat.."_a", def)
+
+		def = clone_node("doors:door_"..mat.."_b")
+			def.mesh = "homedecor_3d_door_"..mat.."_b.obj"
+			minetest.register_node(":doors:door_"..mat.."_b", def)
+	end
+
+	for _,mat in ipairs({"", "_steel"}) do
+		def = clone_node("doors:trapdoor"..mat)
+			def.drawtype = "mesh"
+			def.mesh = "homedecor_3d_trapdoor"..mat..".obj"
+			def.tiles = {
+				"doors_trapdoor"..mat..".png",
+				"doors_trapdoor"..mat.."_side.png"
+			}
+			minetest.register_node(":doors:trapdoor"..mat, def)
+
+		def = clone_node("doors:trapdoor"..mat.."_open")
+			def.mesh = "homedecor_3d_trapdoor"..mat.."_open.obj"
+			def.drawtype = "mesh"
+			def.tiles = {
+				"doors_trapdoor"..mat..".png",
+				"doors_trapdoor"..mat.."_side.png"
+			}
+			minetest.register_node(":doors:trapdoor"..mat.."_open", def)
+	end
+
 end
