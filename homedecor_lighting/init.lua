@@ -623,8 +623,8 @@ for light_brightn_name in pairs(brightn_light_source) do
 			lighttex_tb =    "homedecor_lattice_lantern_small_tb_light.png"
 			lighttex_sides = "homedecor_lattice_lantern_small_sides_light.png"
 		else
-			lighttex_tb =    "homedecor_table_generic_light_source_off.png"
-			lighttex_sides = "homedecor_table_generic_light_source_off.png"
+			lighttex_tb =    "homedecor_generic_light_source_off.png"
+			lighttex_sides = "homedecor_generic_light_source_off.png"
 		end
 
 		homedecor.register("lattice_lantern_small_"..light_brightn_name, {
@@ -900,6 +900,9 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 
 	local onflag = (light_brightn_name == "on")
 
+	local gen_ls_tex_yellow =          "homedecor_generic_light_source_off.png"
+	if onflag then gen_ls_tex_yellow = "homedecor_generic_light_source_yellow.png" end
+
 	local lighttex = "homedecor_blanktile.png"
 	if onflag then
 		lighttex = {
@@ -935,6 +938,37 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 		},
 		mesecons = homedecor.mesecon_xz_light,
 		digiline = homedecor.digiline_xz_light,
+		on_punch = digiline_on_punch
+	})
+
+	local wl_cbox = {
+		type = "fixed",
+		fixed = { -0.2, -0.5, 0, 0.2, 0.5, 0.5 },
+	}
+
+	homedecor.register("wall_lamp_"..light_brightn_name, {
+		description = S("Wall Lamp"),
+		mesh = "homedecor_wall_lamp.obj",
+		tiles = {
+			{ name = "homedecor_generic_metal.png", color = homedecor.color_med_grey },
+			homedecor.lux_wood,
+			gen_ls_tex_yellow,
+			"homedecor_generic_metal_wrought_iron.png"
+		},
+		use_texture_alpha = true,
+		inventory_image = "homedecor_wall_lamp_inv.png",
+		groups = {snappy=3, not_in_creative_inventory = nici},
+		light_source = onflag and (default.LIGHT_MAX - 3) or nil,
+		selection_box = wl_cbox,
+		walkable = false,
+		drop = {
+			items = {
+				{items = {"homedecor:wall_lamp_on"}},
+			}
+		},
+		on_rightclick = homedecor.toggle_light,
+		mesecons = homedecor.mesecon_alldir_light,
+		digiline = homedecor.digiline_alldir_light,
 		on_punch = digiline_on_punch
 	})
 end
@@ -1170,6 +1204,33 @@ minetest.register_node(":homedecor:chandelier_brass", {
 	mesh = "homedecor_chandelier.obj",
 	groups = {cracky=3},
 	sounds =  default.node_sound_stone_defaults(),
+})
+
+homedecor.register("torch_wall", {
+	description = S("Wall Torch"),
+	mesh = "forniture_torch.obj",
+	tiles = {
+		{
+			name="forniture_torch_flame.png",
+			animation={
+				type="vertical_frames",
+				aspect_w=40,
+				aspect_h=40,
+				length=1.0,
+			},
+		},
+		{ name = "homedecor_generic_metal.png", color = homedecor.color_black },
+		{ name = "homedecor_generic_metal.png", color = homedecor.color_med_grey },
+		"forniture_coal.png",
+	},
+	inventory_image="forniture_torch_inv.png",
+	walkable = false,
+	light_source = 14,
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.15, -0.45, 0.15, 0.15,0.35, 0.5 },
+	},
+	groups = {cracky=3},
 })
 
 -- table lamps and standing lamps
@@ -1828,8 +1889,14 @@ minetest.register_alias("homedecor:table_lamp_max",            "homedecor:table_
 minetest.register_alias("homedecor:standing_lamp",             "homedecor:standing_lamp_on")
 minetest.register_alias("homedecor:standing_lamp_max",         "homedecor:standing_lamp_on")
 
+minetest.register_alias("homedecor:wall_lamp",                 "homedecor:wall_lamp_on")
+minetest.register_alias("homedecor:wall_lamp_max",             "homedecor:wall_lamp_on")
+
 -- for old maps that had the original 3dforniture mod
 minetest.register_alias("3dforniture:table_lamp",              "homedecor:table_lamp_on")
+
+minetest.register_alias("3dforniture:torch_wall",              "homedecor:torch_wall")
+minetest.register_alias("torch_wall",                          "homedecor:torch_wall")
 
 if minetest.get_modpath("darkage") then
 	minetest.register_alias("homedecor:lattice_lantern_large_off", "darkage:lamp")
