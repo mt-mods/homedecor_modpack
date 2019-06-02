@@ -264,11 +264,11 @@ for light_brightn_name in pairs(brightn_light_source) do
 		local onflag = (light_brightn_name ~= "off")
 		local nici = (light_brightn_name ~= "on") and 1 or nil
 
-		local gen_ls_tex_white = "homedecor_table_generic_light_source_off.png"
-		if onflag then gen_ls_tex_white = "homedecor_table_generic_light_source_on.png" end
+		local gen_ls_tex_white =           "homedecor_generic_light_source_off.png"
+		if onflag then gen_ls_tex_white =  "homedecor_generic_light_source_white.png" end
 
-		local gen_ls_tex_yellow = "homedecor_table_generic_light_source_off.png"
-		if onflag then gen_ls_tex_yellow = "homedecor_light.png" end
+		local gen_ls_tex_yellow =          "homedecor_generic_light_source_off.png"
+		if onflag then gen_ls_tex_yellow = "homedecor_generic_light_source_yellow.png" end
 
 		local glowlight_nodebox = {
 			half = homedecor.nodebox.slab_y(1/2),

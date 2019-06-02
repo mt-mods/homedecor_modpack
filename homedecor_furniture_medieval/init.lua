@@ -96,7 +96,7 @@ homedecor.register("wall_lamp", {
 	tiles = {
 		{ name = "homedecor_generic_metal.png", color = homedecor.color_med_grey },
 		homedecor.lux_wood,
-		"homedecor_light.png",
+		"homedecor_generic_light_source_yellow.png",
 		"homedecor_generic_metal_wrought_iron.png"
 	},
 	use_texture_alpha = true,
