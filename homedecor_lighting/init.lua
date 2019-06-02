@@ -857,7 +857,7 @@ for light_brightn_name in pairs(brightn_light_source) do
 			},
 			digiline =      homedecor.digiline_xz_light,
 			mesecons =      homedecor.mesecon_wall_light,
-			on_rightclick = on_rightclick,
+			on_rightclick = homedecor.toggle_light,
 			on_punch =      digiline_on_punch
 		})
 
@@ -888,7 +888,7 @@ for light_brightn_name in pairs(brightn_light_source) do
 			},
 			digiline =      homedecor.digiline_xz_light,
 			mesecons =      homedecor.mesecon_wall_light,
-			on_rightclick = on_rightclick,
+			on_rightclick = homedecor.toggle_light,
 			on_punch =      digiline_on_punch
 		})
 	end
