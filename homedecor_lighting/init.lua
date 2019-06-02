@@ -30,6 +30,24 @@ local brightness_tab = {
 	0xffffffff,
 }
 
+local bright_to_word = {
+[0]  = "off",
+[1]  = "low",
+[2]  = "low",
+[3]  = "low",
+[4]  = "med",
+[5]  = "med",
+[6]  = "med",
+[7]  = "med",
+[8]  = "hi",
+[9]  = "hi",
+[10] = "hi",
+[11] = "hi",
+[12] = "on",
+[13] = "on",
+[14] = "on",
+}
+
 local rules_xz = {
 	{x = -1, y = 0, z =  0}, -- borrowed from extrawires crossing
 	{x =  1, y = 0, z =  0},
@@ -122,18 +140,20 @@ if minetest.get_modpath("digilines") then
 	local on_digiline_receive_string = function(pos, node, channel, msg)
 		local meta = minetest.get_meta(pos)
 		local setchan = meta:get_string("channel")
-
 		if setchan ~= channel then return end
-		if msg and msg ~= "" and type(msg) == "string" then
-			if msg == "off"
-			  or msg == "low"
-			  or msg == "med"
-			  or msg == "hi"
-			  or msg == "max"
-			  or msg == "on" then
-				local basename = string.sub(node.name, 1, string.find(node.name, "_", -5) - 1)
+
+		if msg and msg ~= "" then
+			local n = tonumber(msg)
+			local msg = bright_to_word[n] or msg
+
+			local basename = string.sub(node.name, 1, string.find(node.name, "_", -5) - 1)
+			if repl[msg] then
 				if minetest.registered_nodes[basename.."_"..msg] then
 					minetest.swap_node(pos, {name = basename.."_"..msg, param2 = node.param2})
+				elseif (n and n > 3) or msg == "hi" or msg == "max" or msg == "med" then
+					minetest.swap_node(pos, {name = basename.."_on", param2 = node.param2})
+				elseif (n and n < 4) or msg == "low" then
+					minetest.swap_node(pos, {name = basename.."_off", param2 = node.param2})
 				end
 			end
 		end
