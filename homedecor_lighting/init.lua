@@ -32,11 +32,12 @@ local brightn_light_source = {
 }
 
 local brightn_hex = {
-	0xffd0d0d0,
-	0xffd8d8d8,
-	0xffe0e0e0,
-	0xffe8e8e8,
-	0xffffffff,
+	["off"] = 0xffd0d0d0,
+	["low"] = 0xffd8d8d8,
+	["med"] = 0xffe0e0e0,
+	["hi"]  = 0xffe8e8e8,
+	["on"]  = 0xffffffff,
+	["max"] = 0xffffffff,
 }
 
 local bright_to_word = {
@@ -671,7 +672,7 @@ for light_brightn_name in pairs(brightn_light_source) do
 				"homedecor_generic_metal.png",
 				"homedecor_generic_metal.png",
 				{ name = "homedecor_generic_metal.png", color = homedecor.color_med_grey },
-				{ name = gen_ls_tex_white, color = brightn_hex[5] },
+				{ name = gen_ls_tex_white, color = brightn_hex[light_brightn_name] },
 			},
 			inventory_image = "homedecor_desk_lamp_inv.png",
 			paramtype = "light",
@@ -836,7 +837,7 @@ for light_brightn_name in pairs(brightn_light_source) do
 			mesh = "homedecor_table_lamp.obj",
 			tiles = {
 				wool_brightened,
-				{ name = gen_ls_tex_white, color = brightn_hex[brightness] },
+				{ name = gen_ls_tex_white, color = brightn_hex[light_brightn_name] },
 				{ name = "homedecor_generic_wood_red.png", color = 0xffffffff },
 				{ name = "homedecor_generic_metal.png", color = homedecor.color_black },
 			},
@@ -865,7 +866,7 @@ for light_brightn_name in pairs(brightn_light_source) do
 			mesh = "homedecor_standing_lamp.obj",
 			tiles = {
 				wool_brightened,
-				{ name = gen_ls_tex_white, color = brightn_hex[brightness] },
+				{ name = gen_ls_tex_white, color = brightn_hex[light_brightn_name] },
 				{ name = "homedecor_generic_wood_red.png", color = 0xffffffff },
 				{ name = "homedecor_generic_metal.png", color = homedecor.color_black },
 			},
