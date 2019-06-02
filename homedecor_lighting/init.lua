@@ -724,102 +724,6 @@ for light_brightn_name in pairs(brightn_light_source) do
 			on_punch = digiline_on_punch
 		})
 
-	-- rope lighting
-
-		minetest.register_node(":homedecor:rope_light_on_floor_"..light_brightn_name, {
-			description = "Rope lighting (on floor)",
-			inventory_image =  "homedecor_rope_light_on_floor.png",
-			paramtype = "light",
-			light_source = brightn_light_source[light_brightn_name],
-			walkable = false,
-			sunlight_propagates = true,
-			tiles = { gen_ls_tex_white },
-			drawtype = "nodebox",
-			node_box = {
-				type = "connected",
-				fixed = {},
-				connect_front = { -1/16, -8/16, -8/16, 1/16, -6/16, 1/16 },
-				connect_left =  { -8/16, -8/16, -1/16, 1/16, -6/16, 1/16 },
-				connect_back =  { -1/16, -8/16, -1/16, 1/16, -6/16, 8/16 },
-				connect_right = { -1/16, -8/16, -1/16, 8/16, -6/16, 1/16 },
-				disconnected_sides = {
-					{ -6/16, -8/16, -6/16, -4/16, -6/16,  6/16 },
-					{  4/16, -8/16, -6/16,  6/16, -6/16,  6/16 },
-					{ -6/16, -8/16, -6/16,  6/16, -6/16, -4/16 },
-					{ -6/16, -8/16,  4/16,  6/16, -6/16,  6/16 }
-				},
-			},
-			connects_to = {
-				"homedecor:rope_light_on_floor_on",
-				"homedecor:rope_light_on_floor_off",
-				"group:mesecon_conductor_craftable"
-			},
-			mesh = "homedecor_chandelier.obj",
-			groups = {cracky=3, not_in_creative_inventory = nici},
-			sounds =  default.node_sound_stone_defaults(),
-			on_rightclick = homedecor.toggle_light,
-			drop = {
-				items = {
-					{items = {"homedecor:rope_light_on_floor_on"} },
-				}
-			},
-			mesecons = {
-				conductor = {
-					state = mesecon and (onflag and mesecon.state.on or mesecon.state.off),
-					onstate =  "homedecor:rope_light_on_floor_on",
-					offstate = "homedecor:rope_light_on_floor_off",
-					rules = rules_xz
-				},
-			}
-		})
-
-		minetest.register_node(":homedecor:rope_light_on_ceiling_"..light_brightn_name, {
-			description = "Rope lighting (on ceiling)",
-			inventory_image =  "homedecor_rope_light_on_ceiling.png",
-			paramtype = "light",
-			light_source = brightn_light_source[light_brightn_name],
-			walkable = false,
-			sunlight_propagates = true,
-			tiles = { gen_ls_tex_white },
-			drawtype = "nodebox",
-			node_box = {
-				type = "connected",
-				fixed = {},
-				connect_front = { -1/16, 8/16, -8/16, 1/16, 6/16, 1/16 },
-				connect_left =  { -8/16, 8/16, -1/16, 1/16, 6/16, 1/16 },
-				connect_back =  { -1/16, 8/16, -1/16, 1/16, 6/16, 8/16 },
-				connect_right = { -1/16, 8/16, -1/16, 8/16, 6/16, 1/16 },
-				disconnected_sides = {
-					{ -6/16, 8/16, -6/16, -4/16, 6/16,  6/16 },
-					{  4/16, 8/16, -6/16,  6/16, 6/16,  6/16 },
-					{ -6/16, 8/16, -6/16,  6/16, 6/16, -4/16 },
-					{ -6/16, 8/16,  4/16,  6/16, 6/16,  6/16 }
-				},
-			},
-			connects_to = {
-				"homedecor:rope_light_on_ceiling_on",
-				"homedecor:rope_light_on_ceiling_off",
-				"group:mesecon_conductor_craftable"
-			},
-			mesh = "homedecor_chandelier.obj",
-			groups = {cracky=3, not_in_creative_inventory = nici},
-			sounds =  default.node_sound_stone_defaults(),
-			on_rightclick = homedecor.toggle_light,
-			drop = {
-				items = {
-					{items = {"homedecor:rope_light_on_ceiling_on"}},
-				}
-			},
-			mesecons = {
-				conductor = {
-					state = mesecon and (onflag and mesecon.state.on or mesecon.state.off),
-					onstate =  "homedecor:rope_light_on_ceiling_on",
-					offstate = "homedecor:rope_light_on_ceiling_off",
-					rules = rules_alldir
-				},
-			}
-		})
-
 		local tlamp_cbox = {
 			type = "fixed",
 			fixed = { -0.25, -0.5, -0.25, 0.25, 0.5, 0.25 }
@@ -902,6 +806,9 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 	local onflag = (light_brightn_name == "on")
 	local nici = (light_brightn_name == "off") and 1 or nil
 
+	local gen_ls_tex_white =           "homedecor_generic_light_source_off.png"
+	if onflag then gen_ls_tex_white =  "homedecor_generic_light_source_white.png" end
+
 	local gen_ls_tex_yellow =          "homedecor_generic_light_source_off.png"
 	if onflag then gen_ls_tex_yellow = "homedecor_generic_light_source_yellow.png" end
 
@@ -947,6 +854,100 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 		type = "fixed",
 		fixed = { -0.2, -0.5, 0, 0.2, 0.5, 0.5 },
 	}
+
+	-- rope lighting
+
+	minetest.register_node(":homedecor:rope_light_on_floor_"..light_brightn_name, {
+		description = "Rope lighting (on floor)",
+		inventory_image =  "homedecor_rope_light_on_floor.png",
+		paramtype = "light",
+		light_source = brightn_light_source[light_brightn_name],
+		walkable = false,
+		sunlight_propagates = true,
+		tiles = { gen_ls_tex_white },
+		drawtype = "nodebox",
+		node_box = {
+			type = "connected",
+			fixed = {},
+			connect_front = { -1/16, -8/16, -8/16, 1/16, -6/16, 1/16 },
+			connect_left =  { -8/16, -8/16, -1/16, 1/16, -6/16, 1/16 },
+			connect_back =  { -1/16, -8/16, -1/16, 1/16, -6/16, 8/16 },
+			connect_right = { -1/16, -8/16, -1/16, 8/16, -6/16, 1/16 },
+			disconnected_sides = {
+				{ -6/16, -8/16, -6/16, -4/16, -6/16,  6/16 },
+				{  4/16, -8/16, -6/16,  6/16, -6/16,  6/16 },
+				{ -6/16, -8/16, -6/16,  6/16, -6/16, -4/16 },
+				{ -6/16, -8/16,  4/16,  6/16, -6/16,  6/16 }
+			},
+		},
+		connects_to = {
+			"homedecor:rope_light_on_floor_on",
+			"homedecor:rope_light_on_floor_off",
+			"group:mesecon_conductor_craftable"
+		},
+		groups = {cracky=3, not_in_creative_inventory = nici},
+		sounds =  default.node_sound_stone_defaults(),
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:rope_light_on_floor_on"} },
+			}
+		},
+		mesecons = {
+			conductor = {
+				state = mesecon and (onflag and mesecon.state.on or mesecon.state.off),
+				onstate =  "homedecor:rope_light_on_floor_on",
+				offstate = "homedecor:rope_light_on_floor_off",
+				rules = rules_xz
+			},
+		}
+	})
+
+	minetest.register_node(":homedecor:rope_light_on_ceiling_"..light_brightn_name, {
+		description = "Rope lighting (on ceiling)",
+		inventory_image =  "homedecor_rope_light_on_ceiling.png",
+		paramtype = "light",
+		light_source = brightn_light_source[light_brightn_name],
+		walkable = false,
+		sunlight_propagates = true,
+		tiles = { gen_ls_tex_white },
+		drawtype = "nodebox",
+		node_box = {
+			type = "connected",
+			fixed = {},
+			connect_front = { -1/16, 8/16, -8/16, 1/16, 6/16, 1/16 },
+			connect_left =  { -8/16, 8/16, -1/16, 1/16, 6/16, 1/16 },
+			connect_back =  { -1/16, 8/16, -1/16, 1/16, 6/16, 8/16 },
+			connect_right = { -1/16, 8/16, -1/16, 8/16, 6/16, 1/16 },
+			disconnected_sides = {
+				{ -6/16, 8/16, -6/16, -4/16, 6/16,  6/16 },
+				{  4/16, 8/16, -6/16,  6/16, 6/16,  6/16 },
+				{ -6/16, 8/16, -6/16,  6/16, 6/16, -4/16 },
+				{ -6/16, 8/16,  4/16,  6/16, 6/16,  6/16 }
+			},
+		},
+		connects_to = {
+			"homedecor:rope_light_on_ceiling_on",
+			"homedecor:rope_light_on_ceiling_off",
+			"group:mesecon_conductor_craftable"
+		},
+		groups = {cracky=3, not_in_creative_inventory = nici},
+		sounds =  default.node_sound_stone_defaults(),
+		on_rightclick = homedecor.toggle_light,
+		drop = {
+			items = {
+				{items = {"homedecor:rope_light_on_ceiling_on"}},
+			}
+		},
+		mesecons = {
+			conductor = {
+				state = mesecon and (onflag and mesecon.state.on or mesecon.state.off),
+				onstate =  "homedecor:rope_light_on_ceiling_on",
+				offstate = "homedecor:rope_light_on_ceiling_off",
+				rules = rules_alldir
+			},
+		}
+	})
 
 	homedecor.register("wall_lamp_"..light_brightn_name, {
 		description = S("Wall Lamp"),
