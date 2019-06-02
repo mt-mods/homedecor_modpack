@@ -900,6 +900,7 @@ end
 for _, light_brightn_name in ipairs({"off", "on"}) do
 
 	local onflag = (light_brightn_name == "on")
+	local nici = (light_brightn_name == "off") and 1 or nil
 
 	local gen_ls_tex_yellow =          "homedecor_generic_light_source_off.png"
 	if onflag then gen_ls_tex_yellow = "homedecor_generic_light_source_yellow.png" end
