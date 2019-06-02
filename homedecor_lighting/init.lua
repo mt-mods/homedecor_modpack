@@ -549,7 +549,7 @@ for light_brightn_name in pairs(brightn_light_source) do
 		homedecor.register("hanging_lantern_"..light_brightn_name, {
 			description = S("Hanging Lantern/Light"),
 			mesh = "homedecor_hanging_lantern.obj",
-			tiles = { "homedecor_generic_metal_wrought_iron.png", lighttex },
+			tiles = { "homedecor_generic_metal_wrought_iron.png", gen_ls_tex_yellow },
 			use_texture_alpha = true,
 			inventory_image = "homedecor_hanging_lantern_inv.png",
 			wield_image = "homedecor_hanging_lantern_inv.png",
@@ -576,7 +576,7 @@ for light_brightn_name in pairs(brightn_light_source) do
 		homedecor.register("ceiling_lantern_"..light_brightn_name, {
 			drawtype = "mesh",
 			mesh = "homedecor_ceiling_lantern.obj",
-			tiles = { lighttex, "homedecor_generic_metal_wrought_iron.png" },
+			tiles = { gen_ls_tex_yellow, "homedecor_generic_metal_wrought_iron.png" },
 			use_texture_alpha = true,
 			inventory_image = "homedecor_ceiling_lantern_inv.png",
 			description = S("Ceiling Lantern/Light"),
