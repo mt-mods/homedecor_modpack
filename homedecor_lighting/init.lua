@@ -31,13 +31,6 @@ local word_to_bright = {
 	["max"] = 14,
 }
 
-local rules_xz = {
-	{x = -1, y = 0, z =  0}, -- borrowed from extrawires crossing
-	{x =  1, y = 0, z =  0},
-	{x =  0, y = 0, z = -1},
-	{x =  0, y = 0, z =  1},
-}
-
 local rules_alldir = {
 	{x =  0, y =  0, z = -1},  -- borrowed from lightstones
 	{x =  1, y =  0, z =  0},
@@ -52,13 +45,6 @@ local rules_alldir = {
 	{x =  0, y =  1, z = -1},
 	{x =  0, y = -1, z = -1},
 	{x =  0, y = -1, z =  0},
-}
-
-local rules_toponly = {
-	{x =  1, y =  1, z =  0},
-	{x = -1, y =  1, z =  0},
-	{x =  0, y =  1, z =  1},
-	{x =  0, y =  1, z = -1},
 }
 
 -- mesecons compatibility
@@ -94,21 +80,10 @@ if minetest.get_modpath("mesecons") then
 	}
 	homedecor.mesecon_wall_light.effector.rules = mesecon.rules.wallmounted_get
 
-	homedecor.mesecon_xz_light = {
-		effector = table.copy(actions)
-	}
-	homedecor.mesecon_xz_light.effector.rules = rules_xz
-
 	homedecor.mesecon_alldir_light = {
 		effector = table.copy(actions),
 	}
 	homedecor.mesecon_alldir_light.effector.rules = rules_alldir
-
-	homedecor.mesecon_toponly_light = {
-		effector = table.copy(actions)
-	}
-	homedecor.mesecon_toponly_light.effector.rules = rules_toponly
-
 end
 
 -- digilines compatibility
@@ -177,30 +152,12 @@ if minetest.get_modpath("digilines") then
 		}
 	end
 
-	homedecor.digiline_xz_light = {
-		effector = {
-			action = on_digiline_receive_string,
-		},
-		wire = {
-			rules = rules_xz
-		}
-	}
-
 	homedecor.digiline_alldir_light = {
 		effector = {
 			action = on_digiline_receive_string,
 		},
 		wire = {
 			rules = rules_alldir
-		}
-	}
-
-	homedecor.digiline_toponly_light = {
-		effector = {
-			action = on_digiline_receive_string,
-		},
-		wire = {
-			rules = rules_toponly
 		}
 	}
 
@@ -524,8 +481,8 @@ for brightness_level = 0, 14 do
 				{items = {"homedecor:ground_lantern_on"}},
 			}
 		},
-		mesecons = homedecor.mesecon_xz_light,
-		digiline = homedecor.digiline_xz_light,
+		mesecons = homedecor.mesecon_alldir_light,
+		digiline = homedecor.digiline_alldir_light,
 		on_punch = digiline_on_punch
 	})
 
@@ -578,8 +535,8 @@ for brightness_level = 0, 14 do
 				{items = {"homedecor:ceiling_lantern_on"}},
 			}
 		},
-		mesecons = homedecor.mesecon_toponly_light,
-		digiline = homedecor.digiline_toponly_light,
+		mesecons = homedecor.mesecon_alldir_light,
+		digiline = homedecor.digiline_alldir_light,
 		on_punch = digiline_on_punch
 	})
 
@@ -681,8 +638,8 @@ for brightness_level = 0, 14 do
 				{items = {"homedecor:desk_lamp_on"}, inherit_color = true },
 			}
 		},
-		mesecons = homedecor.mesecon_xz_light,
-		digiline = homedecor.digiline_xz_light,
+		mesecons = homedecor.mesecon_alldir_light,
+		digiline = homedecor.digiline_alldir_light,
 		on_punch = digiline_on_punch
 	})
 
@@ -707,8 +664,8 @@ for brightness_level = 0, 14 do
 				{items = {"homedecor:ceiling_lamp_on"}},
 			}
 		},
-		mesecons = homedecor.mesecon_toponly_light,
-		digiline = homedecor.digiline_toponly_light,
+		mesecons = homedecor.mesecon_alldir_light,
+		digiline = homedecor.digiline_alldir_light,
 		on_punch = digiline_on_punch
 	})
 
@@ -747,7 +704,7 @@ for brightness_level = 0, 14 do
 				{items = {"homedecor:table_lamp_hi"}, inherit_color = true },
 			}
 		},
-		digiline =      homedecor.digiline_xz_light,
+		digiline =      homedecor.digiline_alldir_light,
 		mesecons =      homedecor.mesecon_wall_light,
 		on_rightclick = homedecor.toggle_light,
 		on_punch =      digiline_on_punch
@@ -778,7 +735,7 @@ for brightness_level = 0, 14 do
 				{items = {"homedecor:standing_lamp_hi"}, inherit_color = true },
 			}
 		},
-		digiline =      homedecor.digiline_xz_light,
+		digiline =      homedecor.digiline_alldir_light,
 		mesecons =      homedecor.mesecon_wall_light,
 		on_rightclick = homedecor.toggle_light,
 		on_punch =      digiline_on_punch
@@ -832,8 +789,8 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 				{items = {"homedecor:plasma_ball_on"}},
 			}
 		},
-		mesecons = homedecor.mesecon_xz_light,
-		digiline = homedecor.digiline_xz_light,
+		mesecons = homedecor.mesecon_alldir_light,
+		digiline = homedecor.digiline_alldir_light,
 		on_punch = digiline_on_punch
 	})
 
@@ -885,7 +842,7 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 				state = mesecon and (onflag and mesecon.state.on or mesecon.state.off),
 				onstate =  "homedecor:rope_light_on_floor_on",
 				offstate = "homedecor:rope_light_on_floor_off",
-				rules = rules_xz
+				rules = rules_alldir
 			},
 		}
 	})
