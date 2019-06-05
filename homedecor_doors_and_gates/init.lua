@@ -740,7 +740,7 @@ old_doors[#old_doors + 1] = "homedecor:door_bedroom_left"
 old_doors[#old_doors + 1] = "homedecor:door_bedroom_right"
 
 minetest.register_lbm({
-	name = ":homedecor:convert_doors",
+	name = ":homedecor:convert_doors_2",
 	label = "Convert Homedecor doors to mtg doors API",
 	nodenames = old_doors,
 	run_at_every_load = false,
