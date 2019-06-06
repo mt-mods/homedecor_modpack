@@ -765,7 +765,7 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 	end
 
 	homedecor.register("plasma_ball_"..light_brightn_name, {
-		description = S("Plasma Ball"),
+		description = S("Plasma Ball/light"),
 		mesh = "homedecor_plasma_ball.obj",
 		tiles = {
 			{ name = "homedecor_generic_plastic.png", color = homedecor.color_black },
@@ -894,7 +894,7 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 	})
 
 	homedecor.register("wall_lamp_"..light_brightn_name, {
-		description = S("Wall Lamp"),
+		description = S("Wall Lamp/light"),
 		mesh = "homedecor_wall_lamp.obj",
 		tiles = {
 			{ name = "homedecor_generic_metal.png", color = homedecor.color_med_grey },
