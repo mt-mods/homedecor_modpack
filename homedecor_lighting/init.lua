@@ -724,7 +724,7 @@ for brightness_level = 0, 14 do
 		paramtype2 = "color",
 		palette = "unifieddyes_palette_extended.png",
 		walkable = false,
-		light_source = word_to_bright[light_brightn_name],
+		light_source = brightness_level,
 		groups = {cracky=2,oddly_breakable_by_hand=1, ud_param2_colorable = 1, not_in_creative_inventory=nici },
 		selection_box = slamp_cbox,
 		sounds = default.node_sound_wood_defaults(),
