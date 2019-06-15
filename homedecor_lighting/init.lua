@@ -11,6 +11,8 @@ local function is_protected(pos, clicker)
 	return false
 end
 
+local hd_mesecons = minetest.get_modpath("mesecons")
+
 -- control and brightness for dimmable lamps
 
 local brightn_cycle = {
@@ -51,7 +53,7 @@ local rules_alldir = {
 
 local actions
 
-if minetest.get_modpath("mesecons") then
+if hd_mesecons then
 
 	actions = {
 		action_off = function(pos, node)
@@ -132,7 +134,7 @@ if minetest.get_modpath("digilines") then
 		end
 	end)
 
-	if minetest.get_modpath("mesecons") then
+	if hd_mesecons then
 		homedecor.digiline_wall_light = {
 			effector = {
 				action = on_digiline_receive_string,
@@ -749,6 +751,15 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 
 	local onflag = (light_brightn_name == "on")
 	local nici = (light_brightn_name == "off") and 1 or nil
+	local nici_m = (light_brightn_name == "off") and 1 or nil
+	local on_rc = homedecor.toggle_light
+	local di = "on"
+
+	if hd_mesecons then
+		nici_m = (light_brightn_name ~= "off") and 1 or nil
+		on_rc = nil
+		di = "off"
+	end
 
 	local gen_ls_tex_white =           "homedecor_generic_light_source_off.png"
 	if onflag then gen_ls_tex_white =  "homedecor_generic_light_source_white.png" end
@@ -829,14 +840,14 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 			"homedecor:rope_light_on_floor_off",
 			"group:mesecon_conductor_craftable"
 		},
-		groups = {cracky=3, not_in_creative_inventory = nici},
+		groups = {cracky=3, oddly_breakable_by_hand=3, not_in_creative_inventory = nici_m},
 		sounds =  default.node_sound_stone_defaults(),
-		on_rightclick = homedecor.toggle_light,
 		drop = {
 			items = {
-				{items = {"homedecor:rope_light_on_floor_on"} },
+				{items = {"homedecor:rope_light_on_floor_"..di} },
 			}
 		},
+		on_rightclick = on_rc,
 		mesecons = {
 			conductor = {
 				state = mesecon and (onflag and mesecon.state.on or mesecon.state.off),
@@ -875,14 +886,14 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 			"homedecor:rope_light_on_ceiling_off",
 			"group:mesecon_conductor_craftable"
 		},
-		groups = {cracky=3, not_in_creative_inventory = nici},
+		groups = {cracky=3, oddly_breakable_by_hand=3, not_in_creative_inventory = nici_m},
 		sounds =  default.node_sound_stone_defaults(),
-		on_rightclick = homedecor.toggle_light,
 		drop = {
 			items = {
-				{items = {"homedecor:rope_light_on_ceiling_on"}},
+				{items = {"homedecor:rope_light_on_ceiling_"..di}},
 			}
 		},
+		on_rightclick = on_rc,
 		mesecons = {
 			conductor = {
 				state = mesecon and (onflag and mesecon.state.on or mesecon.state.off),
