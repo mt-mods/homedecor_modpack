@@ -184,10 +184,14 @@ function homedecor.toggle_light(pos, node, clicker, itemstack, pointed_thing)
 	local level = string.sub(node.name, sep + 1)
 	local n = tonumber(level) or 0
 
-	if level == "off" or n < 4 then
-		newsuff = "_14"
-	else
+	if level == "on" then
+		newsuff = "_off"
+	elseif level == "off" then
+		newsuff = "_on"
+	elseif n > 3 then
 		newsuff = "_0"
+	else
+		newsuff = "_14"
 	end
 
 	minetest.swap_node(pos, {name = string.sub(node.name, 1, sep - 1)..newsuff, param2 = node.param2})
@@ -1848,6 +1852,11 @@ minetest.register_alias("torch_wall",                          "homedecor:torch_
 minetest.register_alias("homedecor:plasma_ball",               "homedecor:plasma_ball_on")
 minetest.register_alias("homedecor:wall_lamp",                 "homedecor:wall_lamp_on")
 
+minetest.register_alias("homedecor:rope_light_on_floor_0",     "homedecor:rope_light_on_floor_off")
+minetest.register_alias("homedecor:rope_light_on_floor_14",    "homedecor:rope_light_on_floor_on")
+
+minetest.register_alias("homedecor:rope_light_on_ceiling_0",   "homedecor:rope_light_on_ceiling_off")
+minetest.register_alias("homedecor:rope_light_on_ceiling_14",  "homedecor:rope_light_on_ceiling_on")
 
 for name, level in pairs(word_to_bright) do
 	minetest.register_alias("homedecor:glowlight_half_"..name,        "homedecor:glowlight_half_"..level)
