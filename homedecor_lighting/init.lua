@@ -98,6 +98,7 @@ local digiline_on_punch
 if minetest.get_modpath("digilines") then
 
 	local on_digiline_receive_string = function(pos, node, channel, msg)
+		if not msg or not channel then return end
 		local meta = minetest.get_meta(pos)
 		local setchan = meta:get_string("channel")
 		if setchan ~= channel then return end
