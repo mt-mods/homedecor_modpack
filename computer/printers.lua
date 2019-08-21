@@ -32,21 +32,30 @@ minetest.register_node("computer:printer", {
 
 local cbox = {
 	type = "fixed",
-	fixed = {-0.25, -0.5, -0.25, 0.3, 0.25, 0.3 }
+	fixed = {-0.25, -0.25, -0.5, 0.3, 0.3, 0.25 }
 }
 
 minetest.register_node("computer:3dprinter_bedflinger", {
 	description = S('3D Printer ("bedflinger")'),
 	inventory_image = "computer_3dprinter_bedflinger_inv.png",
-	tiles = {"computer_3dprinter_bedflinger.png"},
+	tiles = {
+		{ name = "computer_3dprinter_bedflinger.png", color = 0xffffffff },
+		"computer_3dprinter_filament.png"
+	},
 	paramtype = "light",
-	paramtype2 = "facedir",
 	walkable = true,
-	groups = {snappy=3},
+	groups = {snappy=3, ud_param2_colorable = 1},
 	sound = default.node_sound_wood_defaults(),
 	drawtype = "mesh",
 	mesh = "computer_3dprinter_bedflinger.obj",
+	paramtype2 = "colorwallmounted",
+	palette = "unifieddyes_palette_colorwallmounted.png",
 	selection_box = cbox,
 	collision_box = cbox,
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		unifieddyes.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)
+	end,
+	on_dig = unifieddyes.on_dig,
+	on_rotate = unifieddyes.fix_after_screwdriver_nsew,
 })
 
