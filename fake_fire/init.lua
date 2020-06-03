@@ -294,8 +294,22 @@ minetest.register_craft({
 })
 
 -- ALIASES
+
 minetest.register_alias("fake_fire:smokeless_fire", "fake_fire:fake_fire")
 minetest.register_alias("fake_fire:smokeless_ice_fire", "fake_fire:ice_fire")
 minetest.register_alias("fake_fire:smokeless_chimney_top_stone", "fake_fire:chimney_top_stone")
 minetest.register_alias("fake_fire:smokeless_chimney_top_sandstone", "fake_fire:chimney_top_sandstone")
 minetest.register_alias("fake_fire:flint", "fake_fire:flint_and_steel")
+
+-- OTHER
+
+minetest.register_lbm({
+	name = "fake_fire:reload_particles",
+	label = "restart fire particles on reload",
+	nodenames = {"fake_fire:fancy_fire"},
+	run_at_every_load = true,
+	action = function(pos, node)
+		fire_particles_off(pos)
+		fire_particles_on(pos)
+	end
+})
