@@ -17,6 +17,7 @@ read_globals = {
 	"stairsplus",
 	"stairs",
 	"signs_lib",
+	"screwdriver",
 	"beds",
 	"technic",
 	"mesecon",
