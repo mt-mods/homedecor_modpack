@@ -13,6 +13,7 @@ read_globals = {
 	"PseudoRandom", "ItemStack",
 	"intllib",
 	"default",
+	"doors",
 	"stairsplus",
 	"stairs",
 	"signs_lib",
@@ -22,6 +23,7 @@ read_globals = {
 	"unifieddyes",
 	"creative",
 	"homedecor_i18n",
+	"homedecor",
 }
 
 globals = {
