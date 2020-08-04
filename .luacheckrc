@@ -14,6 +14,7 @@ read_globals = {
 	"intllib",
 	"default",
 	"stairsplus",
+	"stairs",
 	"signs_lib",
 	"beds",
 	"technic",
