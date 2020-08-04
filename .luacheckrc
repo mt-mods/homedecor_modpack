@@ -16,7 +16,6 @@ read_globals = {
 	"doors",
 	"stairsplus",
 	"stairs",
-	"signs_lib",
 	"screwdriver",
 	"beds",
 	"technic",
@@ -29,5 +28,6 @@ read_globals = {
 
 globals = {
 	"armor",
+	"signs_lib",
 }
 
