@@ -1,8 +1,7 @@
-
-local S = homedecor.gettext
+local S = minetest.get_translator("itemframes")
 
 local tmp = {}
-screwdriver = screwdriver or {}
+local sd_disallow = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil
 
 minetest.register_entity("itemframes:item",{
 	hp_max = 1,
@@ -139,7 +138,7 @@ minetest.register_node("itemframes:frame",{
 	groups = {choppy = 2, dig_immediate = 2},
 	legacy_wallmounted = true,
 	sounds = default.node_sound_wood_defaults(),
-	on_rotate = screwdriver.disallow,
+	on_rotate = sd_disallow or nil,
 	after_place_node = function(pos, placer, itemstack)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("owner",placer:get_player_name())
@@ -202,7 +201,7 @@ minetest.register_node("itemframes:pedestal",{
 	paramtype = "light",
 	groups = {cracky = 3},
 	sounds = default.node_sound_stone_defaults(),
-	on_rotate = screwdriver.disallow,
+	on_rotate = sd_disallow or nil,
 	after_place_node = function(pos, placer, itemstack)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("owner",placer:get_player_name())
@@ -252,7 +251,7 @@ minetest.register_lbm({
 	name = "itemframes:maintain_entities",
 	nodenames = {"itemframes:frame", "itemframes:pedestal"},
 	run_at_every_load = true,
-	action = function(pos, node)
+	action = function(pos1, node1)
 		minetest.after(0,
 			function(pos, node)
 				local meta = minetest.get_meta(pos)
@@ -271,7 +270,7 @@ minetest.register_lbm({
 					end
 				end
 			end,
-		pos, node)
+		pos1, node1)
 	end
 })
 
