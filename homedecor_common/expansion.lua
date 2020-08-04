@@ -146,7 +146,11 @@ function homedecor.stack_wing(itemstack, placer, pointed_thing, node1, node2, no
 	local forceright = placer:get_player_control()["sneak"]
 	local fdir = minetest.dir_to_facedir(placer:get_look_dir())
 
-	local is_right_wing = node1 == minetest.get_node({ x = pos.x + homedecor.fdir_to_left[fdir+1][1], y=pos.y, z = pos.z + homedecor.fdir_to_left[fdir+1][2] }).name
+	local is_right_wing = node1 == minetest.get_node(
+		{
+			x = pos.x + homedecor.fdir_to_left[fdir+1][1],
+			y = pos.y,
+			z = pos.z + homedecor.fdir_to_left[fdir+1][2] }).name
 	if forceright or is_right_wing then
 		node1, node2 = node1_right, node2_right
 	end
