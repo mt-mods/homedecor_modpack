@@ -24,6 +24,8 @@ read_globals = {
 	"creative",
 	"homedecor_i18n",
 	"homedecor",
+	"player_api",
+	"skins",
 }
 
 globals = {
