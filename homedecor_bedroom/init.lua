@@ -1,6 +1,6 @@
 local S = minetest.get_translator("homedecor_bedroom")
 
-local sc = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil
+local sc_disallow = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil
 
 local bed_sbox = {
 	type = "wallmounted",
@@ -29,6 +29,9 @@ local kbed_cbox = {
 		{ -0.5, -0.5, -0.5, 1.5, 0.18, -0.44 },
 	}
 }
+
+
+-- local bed_on_rightclick = minetest.registered_nodes["beds:bed"].on_rightclick
 
 homedecor.register("bed_regular", {
 	mesh = "homedecor_bed_regular.obj",
@@ -65,7 +68,7 @@ homedecor.register("bed_regular", {
 			homedecor.bed_expansion(pos, clicker, itemstack, pointed_thing, true)
 			return itemstack
 --		else
---			homedecor.beds_on_rightclick(pos, node, clicker)
+--			bed_on_rightclick(pos, node, clicker)
 --			return itemstack
 		end
 	end
@@ -94,7 +97,7 @@ homedecor.register("bed_extended", {
 	end,
 	on_dig = unifieddyes.on_dig,
 --	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
---		homedecor.beds_on_rightclick(pos, node, clicker)
+--		bed_on_rightclick(pos, node, clicker)
 --		return itemstack
 --	end,
 	drop = "homedecor:bed_regular"
@@ -131,7 +134,7 @@ homedecor.register("bed_kingsize", {
 	end,
 	on_dig = unifieddyes.on_dig,
 --	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
---		homedecor.beds_on_rightclick(pos, node, clicker)
+--		bed_on_rightclick(pos, node, clicker)
 --		return itemstack
 --	end,
 })
