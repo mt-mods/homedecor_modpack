@@ -847,14 +847,14 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 			}
 		},
 		on_rightclick = on_rc,
-		mesecons = {
+		mesecons = hd_mesecons and {
 			conductor = {
 				state = mesecon and (onflag and mesecon.state.on or mesecon.state.off),
 				onstate =  "homedecor:rope_light_on_floor_on",
 				offstate = "homedecor:rope_light_on_floor_off",
 				rules = rules_alldir
 			},
-		}
+		} or nil,
 	})
 
 	minetest.register_node(":homedecor:rope_light_on_ceiling_"..light_brightn_name, {
@@ -893,14 +893,14 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 			}
 		},
 		on_rightclick = on_rc,
-		mesecons = {
+		mesecons = hd_mesecons and {
 			conductor = {
 				state = mesecon and (onflag and mesecon.state.on or mesecon.state.off),
 				onstate =  "homedecor:rope_light_on_ceiling_on",
 				offstate = "homedecor:rope_light_on_ceiling_off",
 				rules = rules_alldir
 			},
-		}
+		} or nil,
 	})
 
 	homedecor.register("wall_lamp_"..light_brightn_name, {
