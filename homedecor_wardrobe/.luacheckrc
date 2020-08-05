@@ -12,22 +12,13 @@ read_globals = {
 	"VoxelManip", "VoxelArea",
 	"PseudoRandom", "ItemStack",
 	"default",
-	"doors",
-	"stairsplus",
-	"stairs",
-	"screwdriver",
-	"beds",
-	"technic",
-	"mesecon",
-	"unifieddyes",
-	"creative",
 	"homedecor",
 	"player_api",
+	"screwdriver",
 	"skins",
 }
 
 globals = {
 	"armor",
-	"signs_lib",
 }
 
