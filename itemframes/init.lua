@@ -153,6 +153,12 @@ minetest.register_node("itemframes:frame",{
 			drop_item(pos,node)
 			local s = itemstack:take_item()
 			meta:set_string("item",s:to_string())
+			local description = ""
+			local item_meta = s:get_meta()
+			if item_meta then
+				description = item_meta:get_string("description") or ""
+			end
+			meta:set_string("infotext", S("Item frame (owned by @1)\n@2", name, description))
 			update_item(pos,node)
 		end
 		return itemstack
@@ -163,6 +169,7 @@ minetest.register_node("itemframes:frame",{
 		if name == meta:get_string("owner") or
 				minetest.check_player_privs(name, "protection_bypass") then
 			drop_item(pos, node)
+			meta:set_string("infotext", S("Item frame (owned by @1)", name))
 		end
 	end,
 	can_dig = function(pos,player)
@@ -216,6 +223,12 @@ minetest.register_node("itemframes:pedestal",{
 			drop_item(pos,node)
 			local s = itemstack:take_item()
 			meta:set_string("item",s:to_string())
+			local description = ""
+			local item_meta = s:get_meta()
+			if item_meta then
+				description = item_meta:get_string("description") or ""
+			end
+			meta:set_string("infotext", S("Pedestal (owned by @1)\n@2", name, description))
 			update_item(pos,node)
 		end
 		return itemstack
@@ -226,6 +239,7 @@ minetest.register_node("itemframes:pedestal",{
 		if name == meta:get_string("owner") or
 				minetest.check_player_privs(name, "protection_bypass") then
 			drop_item(pos,node)
+			meta:set_string("infotext", S("Pedestal (owned by @1)", name))
 		end
 	end,
 	can_dig = function(pos,player)
