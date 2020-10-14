@@ -153,12 +153,19 @@ minetest.register_node("itemframes:frame",{
 			drop_item(pos,node)
 			local s = itemstack:take_item()
 			meta:set_string("item",s:to_string())
-			local description = ""
 			local item_meta = s:get_meta()
-			if item_meta then
-				description = item_meta:get_string("description") or ""
+			local description = item_meta:get_string("description")
+			if description == "" then
+				local item_name = s:get_name()
+				if minetest.registered_items[item_name]
+					and minetest.registered_items[item_name].description
+				then
+					description = minetest.registered_items[item_name].description
+				else
+					description = item_name
+				end
 			end
-			meta:set_string("infotext", S("Item frame (owned by @1)\n@2", name, description))
+			meta:set_string("infotext", S("Item frame (owned by @1)", name) .. "\n" .. description)
 			update_item(pos,node)
 		end
 		return itemstack
@@ -223,12 +230,19 @@ minetest.register_node("itemframes:pedestal",{
 			drop_item(pos,node)
 			local s = itemstack:take_item()
 			meta:set_string("item",s:to_string())
-			local description = ""
 			local item_meta = s:get_meta()
-			if item_meta then
-				description = item_meta:get_string("description") or ""
+			local description = item_meta:get_string("description")
+			if description == "" then
+				local item_name = s:get_name()
+				if minetest.registered_items[item_name]
+					and minetest.registered_items[item_name].description
+				then
+					description = minetest.registered_items[item_name].description
+				else
+					description = item_name
+				end
 			end
-			meta:set_string("infotext", S("Pedestal (owned by @1)\n@2", name, description))
+			meta:set_string("infotext", S("Pedestal (owned by @1)", name) .. "\n" .. description)
 			update_item(pos,node)
 		end
 		return itemstack
@@ -313,3 +327,4 @@ if minetest.get_modpath("mesecons_mvps") then
 	mesecon.register_mvps_stopper("itemframes:frame")
 	mesecon.register_mvps_stopper("itemframes:pedestal")
 end
+
