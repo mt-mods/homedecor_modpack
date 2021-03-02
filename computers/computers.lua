@@ -270,3 +270,31 @@ minetest.register_node("computers:server_on", {
 		return itemstack
 	end
 })
+
+-- Printer of some kind
+
+minetest.register_node("computers:printer", {
+	description = S("Printer-Scanner Combo"),
+	inventory_image = "computers_printer_inv.png",
+	tiles = {"computers_printer_t.png","computers_printer_bt.png","computers_printer_l.png",
+			"computers_printer_r.png","computers_printer_b.png","computers_printer_f.png"},
+	paramtype = "light",
+	paramtype2 = "facedir",
+	walkable = true,
+	groups = {snappy=3},
+	sound = default.node_sound_wood_defaults(),
+	drawtype = "nodebox",
+	node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.4375, -0.3125, -0.125, 0.4375, -0.0625, 0.375},
+			{-0.4375, -0.5, -0.125, 0.4375, -0.4375, 0.375},
+			{-0.4375, -0.5, -0.125, -0.25, -0.0625, 0.375},
+			{0.25, -0.5, -0.125, 0.4375, -0.0625, 0.375},
+			{-0.4375, -0.5, -0.0625, 0.4375, -0.0625, 0.375},
+			{-0.375, -0.4375, 0.25, 0.375, -0.0625, 0.4375},
+			{-0.25, -0.25, 0.4375, 0.25, 0.0625, 0.5},
+			{-0.25, -0.481132, -0.3125, 0.25, -0.4375, 0}
+		},
+	},
+})
