@@ -1,12 +1,12 @@
 -- Printers of some kind or another
 
-local S = minetest.get_translator("computer")
+local S = minetest.get_translator("computers")
 
-minetest.register_node("computer:printer", {
+minetest.register_node("computers:printer", {
 	description = S("Printer-Scanner Combo"),
-	inventory_image = "computer_printer_inv.png",
-	tiles = {"computer_printer_t.png","computer_printer_bt.png","computer_printer_l.png",
-			"computer_printer_r.png","computer_printer_b.png","computer_printer_f.png"},
+	inventory_image = "computers_printer_inv.png",
+	tiles = {"computers_printer_t.png","computers_printer_bt.png","computers_printer_l.png",
+			"computers_printer_r.png","computers_printer_b.png","computers_printer_f.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = true,
@@ -35,19 +35,19 @@ local cbox = {
 	fixed = {-0.25, -0.25, -0.5, 0.3, 0.3, 0.25 }
 }
 
-minetest.register_node("computer:3dprinter_bedflinger", {
+minetest.register_node("computers:3dprinter_bedflinger", {
 	description = S('3D Printer ("bedflinger" design)'),
-	inventory_image = "computer_3dprinter_bedflinger_inv.png",
+	inventory_image = "computers_3dprinter_bedflinger_inv.png",
 	tiles = {
-		{ name = "computer_3dprinter.png", color = 0xffffffff },
-		"computer_3dprinter_filament.png"
+		{ name = "computers_3dprinter.png", color = 0xffffffff },
+		"computers_3dprinter_filament.png"
 	},
 	paramtype = "light",
 	walkable = true,
 	groups = {snappy=3, ud_param2_colorable = 1},
 	sound = default.node_sound_wood_defaults(),
 	drawtype = "mesh",
-	mesh = "computer_3dprinter_bedflinger.obj",
+	mesh = "computers_3dprinter_bedflinger.obj",
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	selection_box = cbox,
@@ -66,18 +66,18 @@ cbox = {
 	fixed = {-0.4375, -0.5, -0.5, 0.4375, 0.5, 0.375 }
 }
 
-minetest.register_node("computer:3dprinter_corexy", {
+minetest.register_node("computers:3dprinter_corexy", {
 	description = S('3D Printer (CoreXY design)'),
 	tiles = {
-		{ name = "computer_3dprinter.png", color = 0xffffffff },
-		"computer_3dprinter_filament.png"
+		{ name = "computers_3dprinter.png", color = 0xffffffff },
+		"computers_3dprinter_filament.png"
 	},
 	paramtype = "light",
 	walkable = true,
 	groups = {snappy=3, ud_param2_colorable = 1},
 	sound = default.node_sound_wood_defaults(),
 	drawtype = "mesh",
-	mesh = "computer_3dprinter_corexy.obj",
+	mesh = "computers_3dprinter_corexy.obj",
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	selection_box = cbox,

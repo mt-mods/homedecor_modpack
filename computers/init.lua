@@ -1,6 +1,6 @@
-computer = {}
+computers = {}
 
-computer.register = function (name, def)
+computers.register = function (name, def)
 	if (name:sub(1, 1) == ":") then name = name:sub(2) end
 	local modname, basename = name:match("^([^:]+):(.*)")
 	local TEXPFX = modname.."_"..basename.."_"
@@ -60,7 +60,7 @@ computer.register = function (name, def)
 	})
 end
 
-computer.register_handheld = function (name, def)
+computers.register_handheld = function (name, def)
 	if (name:sub(1, 1) == ":") then name = name:sub(2) end
 	local modname, basename = name:match("^([^:]+):(.*)")
 	local TEXPFX = modname.."_"..basename.."_inv"
@@ -72,7 +72,7 @@ computer.register_handheld = function (name, def)
 	})
 end
 
-computer.pixelnodebox = function (size, boxes)
+computers.pixelnodebox = function (size, boxes)
 	local fixed = { }
 	for _, box in ipairs(boxes) do
 		local x, y, z, w, h, l = unpack(box)
@@ -91,8 +91,9 @@ computer.pixelnodebox = function (size, boxes)
 	}
 end
 
-local MODPATH = minetest.get_modpath("computer")
+local MODPATH = minetest.get_modpath("computers")
 dofile(MODPATH.."/computers.lua")
 dofile(MODPATH.."/printers.lua")
 dofile(MODPATH.."/recipes.lua")
 dofile(MODPATH.."/tetris.lua")
+dofile(MODPATH.."/aliases.lua")

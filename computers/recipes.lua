@@ -1,7 +1,7 @@
 -- Copyright (C) 2012-2013 Diego Martínez <kaeza@users.sf.net>
 
 minetest.register_craft({
-	output = "computer:shefriendSOO",
+	output = "computers:shefriendSOO",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
 		{ "basic_materials:plastic_sheet", "default:glass", "basic_materials:plastic_sheet" },
@@ -10,7 +10,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:slaystation",
+	output = "computers:slaystation",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
 		{ "basic_materials:plastic_sheet", "group:wood", "basic_materials:plastic_sheet" }
@@ -18,7 +18,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:vanio",
+	output = "computers:vanio",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "", "" },
 		{ "default:glass", "", "" },
@@ -27,7 +27,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:specter",
+	output = "computers:specter",
 	recipe = {
 		{ "", "", "basic_materials:plastic_sheet" },
 		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
@@ -36,7 +36,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:slaystation2",
+	output = "computers:slaystation2",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
 		{ "basic_materials:plastic_sheet", "default:steel_ingot", "basic_materials:plastic_sheet" }
@@ -44,7 +44,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:admiral64",
+	output = "computers:admiral64",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
 		{ "group:wood", "group:wood", "group:wood" }
@@ -52,7 +52,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:admiral128",
+	output = "computers:admiral128",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
 		{ "default:steel_ingot", "default:steel_ingot", "default:steel_ingot" }
@@ -60,7 +60,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:wee",
+	output = "computers:wee",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
 		{ "basic_materials:plastic_sheet", "default:copper_ingot", "basic_materials:plastic_sheet" }
@@ -68,7 +68,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:piepad",
+	output = "computers:piepad",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
 		{ "basic_materials:plastic_sheet", "default:glass", "basic_materials:plastic_sheet" }
@@ -78,7 +78,7 @@ minetest.register_craft({
 --new stuff
 
 minetest.register_craft({
-	output = "computer:monitor",
+	output = "computers:monitor",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "default:glass","" },
 		{ "basic_materials:plastic_sheet", "default:glass","" },
@@ -87,7 +87,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:router",
+	output = "computers:router",
 	recipe = {
 		{ "default:steel_ingot","","" },
 		{ "default:steel_ingot" ,"basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
@@ -96,7 +96,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:tower",
+	output = "computers:tower",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "default:steel_ingot", "basic_materials:plastic_sheet" },
 		{ "basic_materials:plastic_sheet", "default:mese_crystal", "basic_materials:plastic_sheet" },
@@ -105,7 +105,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:printer",
+	output = "computers:printer",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "default:steel_ingot","" },
 		{ "basic_materials:plastic_sheet", "default:mese_crystal", "basic_materials:plastic_sheet" },
@@ -114,7 +114,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:printer",
+	output = "computers:printer",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "default:steel_ingot","" },
 		{ "basic_materials:plastic_sheet", "default:mese_crystal", "basic_materials:plastic_sheet" },
@@ -123,16 +123,16 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "computer:server",
+	output = "computers:server",
 	recipe = {
-		{ "computer:tower", "computer:tower", "computer:tower", },
-		{ "computer:tower", "computer:tower", "computer:tower" },
-		{ "computer:tower", "computer:tower", "computer:tower" }
+		{ "computers:tower", "computers:tower", "computers:tower", },
+		{ "computers:tower", "computers:tower", "computers:tower" },
+		{ "computers:tower", "computers:tower", "computers:tower" }
 	}
 })
 
 minetest.register_craft({
-	output = "computer:tetris_arcade",
+	output = "computers:tetris_arcade",
 	recipe = {
 		{ "basic_materials:plastic_sheet", "basic_materials:energy_crystal_simple", "basic_materials:plastic_sheet", },
 		{ "dye:black", "default:glass", "dye:black" },

@@ -17,21 +17,29 @@ For now just use creative mode or the `/give' or `/giveme' chat commands
 
 These are the items currently defined by this mod:
 
-computer:printer (printer scanner combo)
-computer:server (rack server)
-computer:tower (modern type)
-computer:monitor (LCD with keyboard)
-computer:router (wifi type)
-computer:babytower
-computer:shefriendSOO
-computer:slaystation
-computer:vanio
-computer:spectre
-computer:slaystation2
-computer:admiral64
-computer:admiral128
+"computers:shefriendSOO",
+"computers:vanio",
+"computers:vanio_off",
+"computers:slaystation",
+"computers:slaystation2",
+"computers:specter",
+"computers:wee",
+"computers:piepad",
+"computers:admiral64",
+"computers:admiral128",
+"computers:hueg_box",
+"computers:monitor",
+"computers:monitor_on",
+"computers:router",
+"computers:tower",
+"computers:server",
+"computers:server_on",
+"computers:printer",
+"computers:3dprinter_bedflinger",
+"computers:3dprinter_corexy",
+"computers:tetris_arcade",
 
-There's also a `computer:computer' alias to `computer:babytower'.
+There's also a `computers:computer' alias to `computers:babytower'.
 
 Thanks to all the people in the forums and the #minetest IRC channel for
  their support and suggestions; in no particular order:

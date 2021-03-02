@@ -1,4 +1,4 @@
-local S = minetest.get_translator("computer")
+local S = minetest.get_translator("computers")
 
 local shapes = {
    {  { x = {0, 1, 0, 1}, y = {0, 0, 1, 1} } },
@@ -27,10 +27,10 @@ local shapes = {
       { x = {0, 1, 2, 1}, y = {1, 1, 1, 2} },
       { x = {0, 1, 1, 1}, y = {1, 0, 1, 2} } } }
 
-local colors = { "computer_cyan.png", "computer_magenta.png", "computer_red.png",
-	"computer_blue.png", "computer_green.png", "computer_orange.png", "computer_yellow.png" }
+local colors = { "computers_cyan.png", "computers_magenta.png", "computers_red.png",
+	"computers_blue.png", "computers_green.png", "computers_orange.png", "computers_yellow.png" }
 
-local background = "image[0,0;3.55,6.66;computer_black.png]"
+local background = "image[0,0;3.55,6.66;computers_black.png]"
 local buttons = "button[3,4.5;0.6,0.6;left;<]"
 	.."button[3.6,4.5;0.6,0.6;rotateleft;"..minetest.formspec_escape(S("L")).."]"
 	.."button[4.2,4.5;0.6,0.6;down;v]"
@@ -242,11 +242,11 @@ local function step(pos, fields)
 	return run
 end
 
-minetest.register_node("computer:tetris_arcade", {
+minetest.register_node("computers:tetris_arcade", {
 	description=S("Tetris Arcade"),
 	drawtype = "mesh",
-	mesh = "tetris_arcade.obj",
-	tiles = {"tetris_arcade.png"},
+	mesh = "computers_tetris_arcade.obj",
+	tiles = {"computers_tetris_arcade.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {snappy=3},
@@ -282,7 +282,7 @@ minetest.register_node("computer:tetris_arcade", {
 			return itemstack
 		end
 		local dir = placer:get_look_dir()
-		local node = {name="computer:tetris_arcade", param1=0, param2 = minetest.dir_to_facedir(dir)}
+		local node = {name="computers:tetris_arcade", param1=0, param2 = minetest.dir_to_facedir(dir)}
 		minetest.set_node(pos, node)
 		itemstack:take_item()
 		return itemstack

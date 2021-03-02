@@ -1,10 +1,10 @@
-local S = minetest.get_translator("computer")
+local S = minetest.get_translator("computers")
 
 -- Amiga 500 lookalike
-computer.register("computer:shefriendSOO", {
+computers.register("computers:shefriendSOO", {
 	description = S("SheFriendSOO"),
 	tiles_off = { front=true },
-	node_box = computer.pixelnodebox(32, {
+	node_box = computers.pixelnodebox(32, {
 		-- X   Y   Z   W   H   L
 		{  0,  0, 17, 32, 32, 12 },   -- Monitor Screen
 		{  3,  3, 29, 26, 26,  3 },   -- Monitor Tube
@@ -13,12 +13,12 @@ computer.register("computer:shefriendSOO", {
 })
 
 -- Some generic laptop
-minetest.register_node("computer:vanio", {
+minetest.register_node("computers:vanio", {
 	drawtype = "mesh",
-	mesh = "computer_laptop.obj",
+	mesh = "computers_laptop.obj",
 	description = S("Pony Vanio"),
-	inventory_image = "computer_laptop_inv.png",
-	tiles = {"computer_laptop.png"},
+	inventory_image = "computers_laptop_inv.png",
+	tiles = {"computers_laptop.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	light_source = 4,
@@ -29,16 +29,16 @@ minetest.register_node("computer:vanio", {
 		fixed = {-0.35, -0.5, -0.35, 0.35, 0.05, 0.35},
 	},
 	on_rightclick = function(pos, node, clicker, itemstack)
-		node.name = "computer:vanio_off"
+		node.name = "computers:vanio_off"
 		minetest.set_node(pos, node)
 		return itemstack
 	end
 })
 
-minetest.register_node("computer:vanio_off", {
+minetest.register_node("computers:vanio_off", {
 	drawtype = "mesh",
-	mesh = "computer_laptop_closed.obj",
-	tiles = {"computer_laptop.png"},
+	mesh = "computers_laptop_closed.obj",
+	tiles = {"computers_laptop.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {snappy=3, not_in_creative_inventory=1},
@@ -47,20 +47,20 @@ minetest.register_node("computer:vanio_off", {
 		type = "fixed",
 		fixed = {-0.35, -0.5, -0.35, 0.35, -0.4, 0.25},
 	},
-	drop = "computer:vanio",
+	drop = "computers:vanio",
 	on_rightclick = function(pos, node, clicker, itemstack)
-		node.name = "computer:vanio"
+		node.name = "computers:vanio"
 		minetest.set_node(pos, node)
 		return itemstack
 	end
 })
 
 -- Sony PlayStation lookalike
-computer.register("computer:slaystation", {
+computers.register("computers:slaystation", {
 	description = S("Pony SlayStation"),
-	inventory_image = "computer_ps1_inv.png",
+	inventory_image = "computers_ps1_inv.png",
 	tiles_off = { top=true },
-	node_box = computer.pixelnodebox(32, {
+	node_box = computers.pixelnodebox(32, {
 		-- X   Y   Z   W   H   L
 		{  0,  0, 11, 32,  6, 21 },   -- Console
 		{  1,  0,  1,  4,  2,  9 },   -- Controller 1 L Grip
@@ -73,11 +73,11 @@ computer.register("computer:slaystation", {
 })
 
 -- Sony PlayStation 2 lookalike
-computer.register("computer:slaystation2", {
+computers.register("computers:slaystation2", {
 	description = S("Pony SlayStation 2"),
-	inventory_image = "computer_ps2_inv.png",
+	inventory_image = "computers_ps2_inv.png",
 	tiles_off = { front=true },
-	node_box = computer.pixelnodebox(32, {
+	node_box = computers.pixelnodebox(32, {
 		-- X   Y   Z   W   H   L
 		{  2,  2, 11, 28,  3, 19 },   -- Console (Upper part)
 		{  2,  0, 11, 26,  2, 19 },   -- Console (Lower part)
@@ -91,11 +91,11 @@ computer.register("computer:slaystation2", {
 })
 
 -- Sinclair ZX Spectrum lookalike
-computer.register("computer:specter", {
+computers.register("computers:specter", {
 	description = S("SX Specter"),
-	inventory_image = "computer_specter_inv.png",
+	inventory_image = "computers_specter_inv.png",
 	tiles_off = { },
-	node_box = computer.pixelnodebox(32, {
+	node_box = computers.pixelnodebox(32, {
 		-- X   Y   Z   W   H   L
 		{  3,  0,  0, 26,  4, 17 },   -- Keyboard
 		{ 18,  0, 18, 12,  6, 14 }   -- Tape Player
@@ -103,11 +103,11 @@ computer.register("computer:specter", {
 })
 
 -- Nintendo Wii lookalike
-computer.register("computer:wee", {
+computers.register("computers:wee", {
 	description = S("Nientiendo Wee"),
-	inventory_image = "computer_wii_inv.png",
+	inventory_image = "computers_wii_inv.png",
 	tiles_off = { front=true },
-	node_box = computer.pixelnodebox(32, {
+	node_box = computers.pixelnodebox(32, {
 		-- X   Y   Z   W   H   L
 		{ 11,  0,  3, 10,  6, 26 },   -- Base
 		{ 12,  6,  4,  8, 22, 24 }   -- Top
@@ -115,12 +115,12 @@ computer.register("computer:wee", {
 })
 
 -- Apple iPad lookalike
-minetest.register_node("computer:piepad", {
+minetest.register_node("computers:piepad", {
 	description = S("Snapple Piepad"),
 	drawtype = "signlike",
-	tiles = {"computer_piepad_inv.png"},
-	inventory_image = "computer_piepad_inv.png",
-	wield_image = "computer_piepad_inv.png",
+	tiles = {"computers_piepad_inv.png"},
+	inventory_image = "computers_piepad_inv.png",
+	wield_image = "computers_piepad_inv.png",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	light_source = 8,
@@ -131,32 +131,32 @@ minetest.register_node("computer:piepad", {
 })
 
 -- Commodore 64 lookalike
-computer.register("computer:admiral64", {
+computers.register("computers:admiral64", {
 	description = S("Admiral64"),
-	inventory_image = "computer_ad64_inv.png",
+	inventory_image = "computers_ad64_inv.png",
 	tiles_off = { },
-	node_box = computer.pixelnodebox(32, {
+	node_box = computers.pixelnodebox(32, {
 		-- X   Y   Z   W   H   L
 		{  0,  0,  0, 32,  4, 18 }   -- Keyboard
 	})
 })
 
 -- Commodore 128 lookalike
-computer.register("computer:admiral128", {
+computers.register("computers:admiral128", {
 	description = S("Admiral128"),
-	inventory_image = "computer_ad128_inv.png",
+	inventory_image = "computers_ad128_inv.png",
 	tiles_off = { },
-	node_box = computer.pixelnodebox(32, {
+	node_box = computers.pixelnodebox(32, {
 		-- X   Y   Z   W   H   L
 		{  0,  0,  0, 32,  4, 27 }   -- Keyboard
 	})
 })
 
 -- XBox lookalike
-computer.register("computer:hueg_box", {
+computers.register("computers:hueg_box", {
 	description = S("HUEG Box"),
 	tiles_off = { },
-	node_box = computer.pixelnodebox(16, {
+	node_box = computers.pixelnodebox(16, {
 		-- X   Y   Z   W   H   L
 		{  0,  0,  7, 16,  6, 9 },   -- Console
 		{  2,  0,  1, 11,  3, 6 },   -- Controller
@@ -171,62 +171,57 @@ local mo_sbox = {
 	fixed = { -0.5, -0.5, -0.43, 0.5, 0.2, 0.25 }
 }
 
-minetest.register_node("computer:monitor", {
+minetest.register_node("computers:monitor", {
 	description = S("Monitor and keyboard"),
-	inventory_image = "computer_monitor_inv.png",
+	inventory_image = "computers_monitor_inv.png",
 	drawtype = "mesh",
-	mesh = "computer_monitor.obj",
-	tiles = {"computer_black.png", "monitor_plastic.png", "computer_black.png", "monitor_plastic.png"},
+	mesh = "computers_monitor.obj",
+	tiles = {"computers_black.png", "computers_monitor_plastic.png", "computers_black.png", "computers_monitor_plastic.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = false,
 	groups = {snappy=3},
 	selection_box = mo_sbox,
 	on_rightclick = function(pos, node, clicker, itemstack)
-		node.name = "computer:monitor_on"
+		node.name = "computers:monitor_on"
 		minetest.set_node(pos, node)
 		return itemstack
 	end
 })
 
-minetest.register_node("computer:monitor_on", {
+minetest.register_node("computers:monitor_on", {
 	drawtype = "mesh",
-	mesh = "computer_monitor.obj",
-	tiles = {"monitor_display.png^[transformFX", "monitor_plastic.png", "computer_black.png", "monitor_plastic.png"},
+	mesh = "computers_monitor.obj",
+	tiles = {"computers_monitor_display.png^[transformFX", "computers_monitor_plastic.png", "computers_black.png", "computers_monitor_plastic.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	light_source = 9,
 	walkable = false,
 	groups = {snappy=3, not_in_creative_inventory=1},
 	selection_box = mo_sbox,
-	drop = "computer:monitor",
+	drop = "computers:monitor",
 	on_rightclick = function(pos, node, clicker, itemstack)
-		node.name = "computer:monitor"
+		node.name = "computers:monitor"
 		minetest.set_node(pos, node)
 		return itemstack
 	end
 })
 
-minetest.register_alias("computer:monitor_bios", "computer:monitor")
-minetest.register_alias("computer:monitor_loading", "computer:monitor")
-minetest.register_alias("computer:monitor_login", "computer:monitor")
-minetest.register_alias("computer:monitor_desktop", "computer:monitor")
-
 --WIFI Router (linksys look-a-like)
-minetest.register_node("computer:router", {
+minetest.register_node("computers:router", {
 	description = S("WIFI Router"),
-	inventory_image = "computer_router_inv.png",
+	inventory_image = "computers_router_inv.png",
 	tiles = {
-		"computer_router_t.png",
-		"computer_router_bt.png",
-		"computer_router_l.png",
-		"computer_router_r.png",
-		"computer_router_b.png",
+		"computers_router_t.png",
+		"computers_router_bt.png",
+		"computers_router_l.png",
+		"computers_router_r.png",
+		"computers_router_b.png",
 		{
-			name = "computer_router_f_animated.png",
+			name = "computers_router_f_animated.png",
 			animation = {type="vertical_frames", aspect_w=32, aspect_h=32, length=1.0}
 		},
-	}, --"computer_router_f.png"},
+	}, --"computers_router_f.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	walkable = false,
@@ -250,12 +245,12 @@ local pct_cbox = {
 }
 
 --Modern PC Tower
-minetest.register_node("computer:tower", {
+minetest.register_node("computers:tower", {
 	description = S("Computer Tower"),
-	inventory_image = "computer_tower_inv.png",
+	inventory_image = "computers_tower_inv.png",
 	drawtype = "mesh",
-	mesh = "computer_tower.obj",
-	tiles = {"computer_tower.png"},
+	mesh = "computers_tower.obj",
+	tiles = {"computers_tower.png"},
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {snappy=3},
@@ -264,21 +259,19 @@ minetest.register_node("computer:tower", {
 	collision_box = pct_cbox
 })
 
-minetest.register_alias("computer:tower_on", "computer:tower")
-
 --Rack Server
-minetest.register_node("computer:server", {
+minetest.register_node("computers:server", {
 	drawtype = "nodebox",
 	description = S("Rack Server"),
 	tiles = {
-		'computer_server_t.png',
-		'computer_server_bt.png',
-		'computer_server_l.png',
-		'computer_server_r.png',
-		'computer_server_bt.png',
-		'computer_server_f_off.png'
+		'computers_server_t.png',
+		'computers_server_bt.png',
+		'computers_server_l.png',
+		'computers_server_r.png',
+		'computers_server_bt.png',
+		'computers_server_f_off.png'
 	},
-	inventory_image = "computer_server_inv.png",
+	inventory_image = "computers_server_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {snappy=3},
@@ -292,7 +285,7 @@ minetest.register_node("computer:server", {
 	},
 	sounds = default.node_sound_wood_defaults(),
 	on_rightclick = function(pos, node, clicker, itemstack)
-		node.name = "computer:server_on"
+		node.name = "computers:server_on"
 		minetest.set_node(pos, node)
 		return itemstack
 	end,
@@ -307,17 +300,17 @@ minetest.register_node("computer:server", {
 	end
 })
 
-minetest.register_node("computer:server_on", {
+minetest.register_node("computers:server_on", {
 	drawtype = "nodebox",
 	tiles = {
-		'computer_server_t.png',
-		'computer_server_bt.png',
-		'computer_server_l.png',
-		'computer_server_r.png',
-		'computer_server_bt.png',
-		'computer_server_f_on.png',
+		'computers_server_t.png',
+		'computers_server_bt.png',
+		'computers_server_l.png',
+		'computers_server_r.png',
+		'computers_server_bt.png',
+		'computers_server_f_on.png',
 	},
-	inventory_image = "computer_server_inv.png",
+	inventory_image = "computers_server_inv.png",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	groups = {snappy=3,not_in_creative_inventory=1},
@@ -330,9 +323,9 @@ minetest.register_node("computer:server_on", {
 		fixed = {-0.5, -0.5, -0.25, 0.5, 1.125, 0.4375}
 	},
 	sounds = default.node_sound_wood_defaults(),
-	drop = 'computer:server',
+	drop = 'computers:server',
 	on_rightclick = function(pos, node, clicker, itemstack)
-		node.name = "computer:server"
+		node.name = "computers:server"
 		minetest.set_node(pos, node)
 		return itemstack
 	end
