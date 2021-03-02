@@ -55,41 +55,6 @@ minetest.register_node("computers:vanio_off", {
 	end
 })
 
--- Sony PlayStation lookalike
-computers.register("computers:slaystation", {
-	description = S("Pony SlayStation"),
-	inventory_image = "computers_ps1_inv.png",
-	tiles_off = { top=true },
-	node_box = computers.pixelnodebox(32, {
-		-- X   Y   Z   W   H   L
-		{  0,  0, 11, 32,  6, 21 },   -- Console
-		{  1,  0,  1,  4,  2,  9 },   -- Controller 1 L Grip
-		{ 10,  0,  1,  4,  2,  9 },   -- Controller 1 R Grip
-		{  5,  0,  4,  5,  2,  5 },   -- Controller 1 Center
-		{ 18,  0,  1,  4,  2,  9 },   -- Controller 2 L Grip
-		{ 27,  0,  1,  4,  2,  9 },   -- Controller 2 R Grip
-		{ 22,  0,  4,  5,  2,  5 }   -- Controller 2 Center
-	})
-})
-
--- Sony PlayStation 2 lookalike
-computers.register("computers:slaystation2", {
-	description = S("Pony SlayStation 2"),
-	inventory_image = "computers_ps2_inv.png",
-	tiles_off = { front=true },
-	node_box = computers.pixelnodebox(32, {
-		-- X   Y   Z   W   H   L
-		{  2,  2, 11, 28,  3, 19 },   -- Console (Upper part)
-		{  2,  0, 11, 26,  2, 19 },   -- Console (Lower part)
-		{  1,  0,  1,  4,  2,  9 },   -- Controller 1 L Grip
-		{ 10,  0,  1,  4,  2,  9 },   -- Controller 1 R Grip
-		{  5,  0,  1,  5,  2,  8 },   -- Controller 1 Center
-		{ 18,  0,  1,  4,  2,  9 },   -- Controller 2 L Grip
-		{ 27,  0,  1,  4,  2,  9 },   -- Controller 2 R Grip
-		{ 22,  0,  1,  5,  2,  8 }   -- Controller 2 Center
-	})
-})
-
 -- Sinclair ZX Spectrum lookalike
 computers.register("computers:specter", {
 	description = S("SX Specter"),
@@ -99,18 +64,6 @@ computers.register("computers:specter", {
 		-- X   Y   Z   W   H   L
 		{  3,  0,  0, 26,  4, 17 },   -- Keyboard
 		{ 18,  0, 18, 12,  6, 14 }   -- Tape Player
-	})
-})
-
--- Nintendo Wii lookalike
-computers.register("computers:wee", {
-	description = S("Nientiendo Wee"),
-	inventory_image = "computers_wii_inv.png",
-	tiles_off = { front=true },
-	node_box = computers.pixelnodebox(32, {
-		-- X   Y   Z   W   H   L
-		{ 11,  0,  3, 10,  6, 26 },   -- Base
-		{ 12,  6,  4,  8, 22, 24 }   -- Top
 	})
 })
 
@@ -149,19 +102,6 @@ computers.register("computers:admiral128", {
 	node_box = computers.pixelnodebox(32, {
 		-- X   Y   Z   W   H   L
 		{  0,  0,  0, 32,  4, 27 }   -- Keyboard
-	})
-})
-
--- XBox lookalike
-computers.register("computers:hueg_box", {
-	description = S("HUEG Box"),
-	tiles_off = { },
-	node_box = computers.pixelnodebox(16, {
-		-- X   Y   Z   W   H   L
-		{  0,  0,  7, 16,  6, 9 },   -- Console
-		{  2,  0,  1, 11,  3, 6 },   -- Controller
-		{  2,  0,  0,  2,  3, 1 },
-		{ 11,  0,  0,  2,  3, 1 },
 	})
 })
 
