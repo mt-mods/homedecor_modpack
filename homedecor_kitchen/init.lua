@@ -139,6 +139,9 @@ end
 local cabinet_sides = "(default_wood.png^[transformR90)^homedecor_kitchen_cabinet_bevel.png"
 local cabinet_sides_colored = "(homedecor_generic_wood_plain.png^[transformR90)^homedecor_kitchen_cabinet_bevel.png"
 
+local ic_cabinet_sides = string.gsub(cabinet_sides, "%^", "&")
+local ic_cabinet_sides_colored = string.gsub(cabinet_sides_colored, "%^", "&")
+
 local cabinet_bottom = "(default_wood.png^[colorize:#000000:100)"
 	.."^(homedecor_kitchen_cabinet_bevel.png^[colorize:#46321580)"
 local cabinet_bottom_colored = "homedecor_generic_wood_plain.png^(homedecor_kitchen_cabinet_bevel.png^[colorize:#46321580)"
@@ -169,6 +172,10 @@ for _, mat in ipairs(counter_materials) do
 			cabinet_sides,
 			'homedecor_kitchen_cabinet_front.png'
 		},
+		inventory_image = "[inventorycube"
+			.."{homedecor_kitchen_cabinet_top"..material..".png"
+			.."{homedecor_kitchen_cabinet_front.png"
+			.."{"..ic_cabinet_sides,
 		mesh = "homedecor_kitchen_cabinet.obj",
 		paramtype2 = "wallmounted",
 		palette = "unifieddyes_palette_colorwallmounted.png",
@@ -199,6 +206,10 @@ for _, mat in ipairs(counter_materials) do
 			cabinet_sides_colored,
 			'homedecor_kitchen_cabinet_colored_front.png'
 		},
+		inventory_image = "[inventorycube"
+			.."{homedecor_kitchen_cabinet_top"..material..".png"
+			.."{homedecor_kitchen_cabinet_front.png"
+			.."{"..ic_cabinet_sides_colored,
 		mesh = "homedecor_kitchen_cabinet.obj",
 		paramtype2 = "colorwallmounted",
 		palette = "unifieddyes_palette_colorwallmounted.png",
@@ -287,6 +298,10 @@ homedecor.register("kitchen_cabinet_colorable_with_sink", {
 		cabinet_sides,
 		"homedecor_kitchen_cabinet_front.png"
 	},
+		inventory_image = "[inventorycube"
+			.."{homedecor_kitchen_sink_top.png"
+			.."{homedecor_kitchen_cabinet_front.png"
+			.."{"..ic_cabinet_sides,
 	paramtype2 = "wallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	airbrush_replacement_node = "homedecor:kitchen_cabinet_colored_with_sink",
@@ -330,6 +345,10 @@ homedecor.register("kitchen_cabinet_colored_with_sink", {
 		cabinet_sides_colored,
 		"homedecor_kitchen_cabinet_colored_front.png",
 	},
+		inventory_image = "[inventorycube"
+			.."{homedecor_kitchen_sink_top.png"
+			.."{homedecor_kitchen_cabinet_front.png"
+			.."{"..ic_cabinet_sides_colored,
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	groups = { snappy = 3, ud_param2_colorable = 1,  not_in_creative_inventory = 1 },
