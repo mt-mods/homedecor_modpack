@@ -90,44 +90,6 @@ for i, mat in ipairs(materials) do
 
 end
 
--- conversion routines for old non-6dfacedir tables
-
-local tlist_s = {}
-local tlist_t = {}
-local dirs2 = { 9, 18, 7, 12 }
-
-for i in ipairs(materials) do
-	local m = materials[i][1]
-	table.insert(tlist_s, "homedecor:"..m.."_table_large_s")
-	table.insert(tlist_s, "homedecor:"..m.."_table_small_square_s")
-	table.insert(tlist_s, "homedecor:"..m.."_table_small_round_s")
-
-	table.insert(tlist_t, "homedecor:"..m.."_table_large_t")
-	table.insert(tlist_t, "homedecor:"..m.."_table_small_square_t")
-	table.insert(tlist_t, "homedecor:"..m.."_table_small_round_t")
-end
-
-minetest.register_abm({
-	nodenames = tlist_s,
-	interval = 1,
-	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		local newnode = string.sub(node.name, 1, -3) -- strip the "_s" from the name
-		local fdir = node.param2 or 0
-		minetest.set_node(pos, {name = newnode, param2 = dirs2[fdir+1]})
-	end
-})
-
-minetest.register_abm({
-	nodenames = tlist_t,
-	interval = 1,
-	chance = 1,
-	action = function(pos, node, active_object_count, active_object_count_wider)
-		local newnode = string.sub(node.name, 1, -3) -- strip the "_t" from the name
-		minetest.set_node(pos, { name = newnode, param2 = 20 })
-	end
-})
-
 -- other tables
 
 homedecor.register("utility_table_top", {
@@ -201,7 +163,6 @@ homedecor.register("utility_table_legs", {
 })
 
 -- crafting
-
 
 minetest.register_craft( {
         output = "homedecor:glass_table_small_round_b 15",
