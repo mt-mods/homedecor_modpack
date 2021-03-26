@@ -790,6 +790,6 @@ minetest.register_lbm({
 			new_fdir = 5
 		end
 
-		minetest.set_node(pos, { name = newname, param2 = new_fdir })
+		minetest.swap_node(pos, { name = newname, param2 = new_fdir })
 	end
 })
