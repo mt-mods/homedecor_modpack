@@ -202,7 +202,7 @@ for _, mat in ipairs(counter_materials) do
 		mesh = "homedecor_kitchen_cabinet.obj",
 		paramtype2 = "colorwallmounted",
 		palette = "unifieddyes_palette_colorwallmounted.png",
-		groups = { snappy = 3, ud_param2_colorable = 1},
+		groups = { snappy = 3, ud_param2_colorable = 1, not_in_creative_inventory = 1 },
 		sounds = default.node_sound_wood_defaults(),
 		infotext=S("Kitchen Cabinet"),
 		inventory = {
@@ -264,7 +264,7 @@ homedecor.register("kitchen_cabinet_colored_half", {
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	selection_box = kitchen_cabinet_half_box,
 	node_box = kitchen_cabinet_half_box,
-	groups = { snappy = 3, ud_param2_colorable = 1 },
+	groups = { snappy = 3, ud_param2_colorable = 1, not_in_creative_inventory = 1  },
 	sounds = default.node_sound_wood_defaults(),
 	infotext=S("Kitchen Cabinet"),
 	inventory = {
@@ -332,7 +332,7 @@ homedecor.register("kitchen_cabinet_colored_with_sink", {
 	},
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
-	groups = { snappy = 3, ud_param2_colorable = 1 },
+	groups = { snappy = 3, ud_param2_colorable = 1,  not_in_creative_inventory = 1 },
 	sounds = default.node_sound_wood_defaults(),
 	infotext=S("Under-sink cabinet"),
 	inventory = {
