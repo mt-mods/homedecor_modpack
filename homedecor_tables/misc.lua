@@ -388,3 +388,8 @@ minetest.register_craft({
 		"homedecor:wood_table_large"
 	}
 })
+
+-- Aliases for the above 3dforniture-like tables
+
+minetest.register_alias("3dforniture:table", "homedecor:table")
+minetest.register_alias('table', 'homedecor:table')

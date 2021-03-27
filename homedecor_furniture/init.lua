@@ -36,8 +36,3 @@ homedecor.register("wall_shelf", {
 		}
 	}
 })
-
--- Aliases for 3dforniture mod.
-
-minetest.register_alias("3dforniture:table", "homedecor:table")
-minetest.register_alias('table', 'homedecor:table')
