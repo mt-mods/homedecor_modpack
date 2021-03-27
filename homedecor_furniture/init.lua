@@ -1,38 +1,5 @@
 local S = minetest.get_translator("homedecor_furniture")
 
-local table_colors = {
-	{ "",           S("Table"),           homedecor.plain_wood },
-	{ "_mahogany",  S("Mahogany Table"),  homedecor.mahogany_wood },
-	{ "_white",     S("White Table"),     homedecor.white_wood }
-}
-
-for _, t in ipairs(table_colors) do
-	local suffix, desc, texture = unpack(t)
-
-	homedecor.register("table"..suffix, {
-		description = desc,
-		tiles = { texture },
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{ -0.4, -0.5, -0.4, -0.3,  0.4, -0.3 },
-				{  0.3, -0.5, -0.4,  0.4,  0.4, -0.3 },
-				{ -0.4, -0.5,  0.3, -0.3,  0.4,  0.4 },
-				{  0.3, -0.5,  0.3,  0.4,  0.4,  0.4 },
-				{ -0.5,  0.4, -0.5,  0.5,  0.5,  0.5 },
-				{ -0.4, -0.2, -0.3, -0.3, -0.1,  0.3 },
-				{  0.3, -0.2, -0.4,  0.4, -0.1,  0.3 },
-				{ -0.3, -0.2, -0.4,  0.4, -0.1, -0.3 },
-				{ -0.3, -0.2,  0.3,  0.3, -0.1,  0.4 },
-			},
-		},
-		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
-		sounds = default.node_sound_wood_defaults(),
-	})
-end
-
-
-
 local ob_cbox = {
 	type = "fixed",
 	fixed = { -0.5, -0.5, 0, 0.5, 0.5, 0.5 }
@@ -71,60 +38,6 @@ homedecor.register("wall_shelf", {
 })
 
 -- Crafts
-
-
-minetest.register_craft({
-	output = "homedecor:table",
-	recipe = {
-		{ "group:wood","group:wood", "group:wood" },
-		{ "group:stick", "", "group:stick" },
-	},
-})
-
-minetest.register_craft({
-	type = "shapeless",
-	output = "homedecor:table_mahogany",
-	recipe = {
-		"homedecor:table",
-		"dye:brown",
-	},
-})
-
-minetest.register_craft({
-	type = "shapeless",
-	output = "homedecor:table_mahogany",
-	recipe = {
-		"homedecor:table",
-		"unifieddyes:dark_orange",
-	},
-})
-
-minetest.register_craft({
-	type = "shapeless",
-	output = "homedecor:table_white",
-	recipe = {
-		"homedecor:table",
-		"dye:white",
-	},
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "homedecor:table",
-	burntime = 30,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "homedecor:table_mahogany",
-	burntime = 30,
-})
-
-minetest.register_craft({
-	type = "fuel",
-	recipe = "homedecor:table_white",
-	burntime = 30,
-})
 
 minetest.register_craft({
 	output = "homedecor:standing_lamp_off",

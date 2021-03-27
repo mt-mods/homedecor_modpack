@@ -124,6 +124,39 @@ for i, mat in ipairs(tabletop_materials) do
 
 end
 
+-- old-style tables that used to be from 3dforniture.
+
+local table_colors = {
+	{ "",           S("Table"),           homedecor.plain_wood },
+	{ "_mahogany",  S("Mahogany Table"),  homedecor.mahogany_wood },
+	{ "_white",     S("White Table"),     homedecor.white_wood }
+}
+
+for _, t in ipairs(table_colors) do
+	local suffix, desc, texture = unpack(t)
+
+	homedecor.register("table"..suffix, {
+		description = desc,
+		tiles = { texture },
+		node_box = {
+			type = "fixed",
+			fixed = {
+				{ -0.4, -0.5, -0.4, -0.3,  0.4, -0.3 },
+				{  0.3, -0.5, -0.4,  0.4,  0.4, -0.3 },
+				{ -0.4, -0.5,  0.3, -0.3,  0.4,  0.4 },
+				{  0.3, -0.5,  0.3,  0.4,  0.4,  0.4 },
+				{ -0.5,  0.4, -0.5,  0.5,  0.5,  0.5 },
+				{ -0.4, -0.2, -0.3, -0.3, -0.1,  0.3 },
+				{  0.3, -0.2, -0.4,  0.4, -0.1,  0.3 },
+				{ -0.3, -0.2, -0.4,  0.4, -0.1, -0.3 },
+				{ -0.3, -0.2,  0.3,  0.3, -0.1,  0.4 },
+			},
+		},
+		groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+		sounds = default.node_sound_wood_defaults(),
+	})
+end
+
 -- crafting
 
 minetest.register_craft( {
@@ -148,8 +181,6 @@ minetest.register_craft( {
 		{ "homedecor:glass_table_small_square", "homedecor:glass_table_small_square" },
 	}
 })
-
---
 
 minetest.register_craft( {
         output = "homedecor:wood_table_small_round_b 15",
@@ -243,6 +274,59 @@ for _, shape in ipairs (table_shapes) do
 	end
 end
 
+minetest.register_craft({
+	output = "homedecor:table",
+	recipe = {
+		{ "group:wood","group:wood", "group:wood" },
+		{ "group:stick", "", "group:stick" },
+	},
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:table_mahogany",
+	recipe = {
+		"homedecor:table",
+		"dye:brown",
+	},
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:table_mahogany",
+	recipe = {
+		"homedecor:table",
+		"unifieddyes:dark_orange",
+	},
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "homedecor:table_white",
+	recipe = {
+		"homedecor:table",
+		"dye:white",
+	},
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "homedecor:table",
+	burntime = 30,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "homedecor:table_mahogany",
+	burntime = 30,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "homedecor:table_white",
+	burntime = 30,
+})
+
 -- recycling
 
 minetest.register_craft({
@@ -304,4 +388,3 @@ minetest.register_craft({
 		"homedecor:wood_table_large"
 	}
 })
-
