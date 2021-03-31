@@ -469,10 +469,7 @@ homedecor.register("kitchen_faucet", {
 	on_rotate = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		local below = minetest.get_node_or_nil({x=pos.x, y=pos.y-1, z=pos.z})
-		if below and
-		  below.name == "homedecor:sink" or
-		  below.name == "homedecor:kitchen_cabinet_with_sink" or
-		  below.name == "homedecor:kitchen_cabinet_with_sink_locked" then
+		if below and string.find(below.name, "homedecor:.*sink") then
 			local particledef = {
 				outlet      = { x = 0, y = -0.19, z = 0.13 },
 				velocity_x  = { min = -0.05, max = 0.05 },
