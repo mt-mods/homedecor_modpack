@@ -154,6 +154,7 @@ homedecor.kitchen_convert_nodes = {}
 for _, mat in ipairs(counter_materials) do
 
 	local desc = S("Kitchen Cabinet")
+	local desc2 = S("Kitchen Cabinet with drawers")
 	local material = ""
 
 	if mat ~= "" then
@@ -240,7 +241,6 @@ for _, mat in ipairs(counter_materials) do
 		paramtype2 = "wallmounted",
 		palette = "unifieddyes_palette_colorwallmounted.png",
 		airbrush_replacement_node = "homedecor:kitchen_cabinet_colored_with_drawers"..material,
-		place_param2 = 0,
 		groups = { snappy = 3, ud_param2_colorable = 1},
 		sounds = default.node_sound_wood_defaults(),
 		infotext=S("Kitchen Cabinet with drawers"),
