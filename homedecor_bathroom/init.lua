@@ -91,6 +91,10 @@ homedecor.register("medicine_cabinet", {
 		node.name = "homedecor:medicine_cabinet_open"
 		minetest.swap_node(pos, node)
 	end,
+	can_dig = function(pos)
+		local inv = minetest.get_meta(pos):get_inventory("main")
+		return inv:is_empty("main")
+	end,
 	infotext=S("Medicine cabinet"),
 	inventory = {
 		size=6,
@@ -114,6 +118,10 @@ homedecor.register("medicine_cabinet_open", {
 	on_punch = function(pos, node, puncher, pointed_thing)
 		node.name = "homedecor:medicine_cabinet"
 		minetest.swap_node(pos, node)
+	end,
+	can_dig = function(pos)
+		local inv = minetest.get_meta(pos):get_inventory("main")
+		return inv:is_empty("main")
 	end,
 })
 
