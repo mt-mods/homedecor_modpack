@@ -12,7 +12,7 @@ read_globals = {
 	"VoxelManip", "VoxelArea",
 	"PseudoRandom", "ItemStack",
 	"default",
-	"screwdriver",
+	"screwdriver", "homedecor",
 }
 
 globals = {

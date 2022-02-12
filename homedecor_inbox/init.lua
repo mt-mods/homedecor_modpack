@@ -3,7 +3,7 @@ local S = minetest.get_translator("inbox")
 local inbox = {}
 
 minetest.register_craft({
-	output ="inbox:empty",
+	output ="homedecor:inbox",
 	recipe = {
 		{"","default:steel_ingot",""},
 		{"default:steel_ingot","","default:steel_ingot"},
@@ -16,17 +16,17 @@ local mb_cbox = {
 	fixed = { -5/16, -8/16, -8/16, 5/16, 2/16, 8/16 }
 }
 
-minetest.register_node("inbox:empty", {
+homedecor.register("inbox", {
 	paramtype = "light",
 	drawtype = "mesh",
-	mesh = "inbox_mailbox.obj",
+	mesh = "homedecor_inbox_mailbox.obj",
 	description = S("Mailbox"),
 	tiles = {
-		"inbox_red_metal.png",
-		"inbox_white_metal.png",
-		"inbox_grey_metal.png",
+		"homedecor_inbox_red_metal.png",
+		"homedecor_inbox_white_metal.png",
+		"homedecor_inbox_grey_metal.png",
 	},
-	inventory_image = "mailbox_inv.png",
+	inventory_image = "homedecor_mailbox_inv.png",
 	selection_box = mb_cbox,
 	collision_box = mb_cbox,
 	paramtype2 = "facedir",
@@ -104,6 +104,8 @@ minetest.register_node("inbox:empty", {
 		return 0
 	end,
 })
+
+minetest.register_alias("inbox:empty", "homedecor:inbox")
 
 function inbox.get_inbox_formspec(pos)
 	local spos = pos.x .. "," .. pos.y .. "," ..pos.z
