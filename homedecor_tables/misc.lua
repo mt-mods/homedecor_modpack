@@ -19,7 +19,7 @@ local tabletop_materials = {
 	}
 }
 
-leg_materials = {
+local leg_materials = {
 	{ "brass",          S("brass") },
 	{ "wrought_iron",   S("wrought iron") },
 	{ "wood",           S("wood") }
@@ -55,7 +55,7 @@ local tables_cbox = {
 }
 
 for i, mat in ipairs(tabletop_materials) do
-	local m, small_s, small_r, large = unpack(mat)
+	local m = unpack(mat)
 	local s
 
 	if m == "glass" then
@@ -101,7 +101,7 @@ for i, mat in ipairs(tabletop_materials) do
 		})
 
 		for _, l in ipairs(leg_materials) do
-			local leg_mat, desc = unpack(l)
+			local leg_mat = unpack(l)
 
 			homedecor.register(string.format("%s_table_%s_with_%s_legs", m, shape, leg_mat), {
 				description = string.format("%s %s table with %s legs", shape, m, leg_mat),
