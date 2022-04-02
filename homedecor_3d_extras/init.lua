@@ -1,14 +1,16 @@
-minetest.override_item("default:bookshelf", {
-	drawtype = "mesh",
-	mesh = "homedecor_3d_bookshelf.obj",
-	tiles = {
-		"default_wood.png",
-		"default_wood.png^homedecor_3d_bookshelf_inside_back.png",
-		"homedecor_3d_bookshelf_books.png",
-	},
-	paramtype = "light",
-	paramtype2 = "facedir",
-})
+if minetest.get_modpath("default") then
+	minetest.override_item("default:bookshelf", {
+		drawtype = "mesh",
+		mesh = "homedecor_3d_bookshelf.obj",
+		tiles = {
+			"default_wood.png",
+			"default_wood.png^homedecor_3d_bookshelf_inside_back.png",
+			"homedecor_3d_bookshelf_books.png",
+		},
+		paramtype = "light",
+		paramtype2 = "facedir",
+	})
+end
 
 if minetest.get_modpath("vessels") then
 	minetest.override_item("vessels:shelf", {
