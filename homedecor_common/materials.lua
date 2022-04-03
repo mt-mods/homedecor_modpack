@@ -14,10 +14,12 @@ homedecor.materials = {
     empty_bucket = "bucket:bucket_empty",
     dye_dark_grey = "dye:dark_grey",
     dye_black = "dye:black",
+    dye_white = "dye:white",
     silicon = "mesecons_materials:silicon",
     string = "farming:string",
     paper = "default:paper",
     book = "default:book",
+    iron_lump = "default:iron_lump",
 }
 
 if minetest.get_modpath("moreores") then
@@ -59,12 +61,14 @@ elseif minetest.get_modpath("fl_ores") and minetest.get_modpath("fl_stone") then
         empty_bucket = "fl_bucket:bucket",
         dye_dark_grey = "fl_dyes:dark_grey_dye",
         dye_black = "fl_dyes:black_dye",
+        dye_white = "fl_dye:white_dye",
         copper_ingot = "fl_ores:copper_ingot",
         tin_ingot = "fl_ores:tin_ingot",
         silver_ingot = "fl_ores:iron_ingot",
         silicon = "mesecons_materials:silicon",
         string = "fl_plantlife:oxeye_daisy",
         paper = "basic_materials:plastic_sheet",
+        iron_lump = "fl_ores:iron_ore",
     }
 elseif minetest.get_modpath("hades_core") then
     homedecor.materials = {
