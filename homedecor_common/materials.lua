@@ -20,6 +20,10 @@ homedecor.materials = {
     paper = "default:paper",
     book = "default:book",
     iron_lump = "default:iron_lump",
+    wool_grey = "wool:grey",
+    wool_green = "wool:green",
+    wool_dark_green = "wool:dark_green",
+    wool_brown = "wool:brown"
 }
 
 if minetest.get_modpath("moreores") then
