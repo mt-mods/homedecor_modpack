@@ -16,6 +16,8 @@ homedecor.materials = {
     dye_black = "dye:black",
     dye_white = "dye:white",
     dye_green = "dye:green",
+    dye_red = "dye:red",
+    dye_yellow = "dye:yellow",
     silicon = "mesecons_materials:silicon",
     string = "farming:string",
     paper = "default:paper",
@@ -24,7 +26,9 @@ homedecor.materials = {
     wool_grey = "wool:grey",
     wool_green = "wool:green",
     wool_dark_green = "wool:dark_green",
-    wool_brown = "wool:brown"
+    wool_brown = "wool:brown",
+    slab_stone = "stairs:slab_stone",
+    slab_wood = "stairs:slab_wood",
 }
 
 if minetest.get_modpath("moreores") then
@@ -68,6 +72,8 @@ elseif minetest.get_modpath("fl_ores") and minetest.get_modpath("fl_stone") then
         dye_black = "fl_dyes:black_dye",
         dye_white = "fl_dyes:white_dye",
         dye_green = "fl_dyes:green_dye",
+        dye_red = "fl_dyes:red_dye",
+        dye_yellow = "fl_dyes:yellow_dye",
         copper_ingot = "fl_ores:copper_ingot",
         tin_ingot = "fl_ores:tin_ingot",
         silver_ingot = "fl_ores:iron_ingot",
@@ -75,6 +81,8 @@ elseif minetest.get_modpath("fl_ores") and minetest.get_modpath("fl_stone") then
         string = "fl_plantlife:oxeye_daisy",
         paper = "basic_materials:plastic_sheet",
         iron_lump = "fl_ores:iron_ore",
+        slab_stone = "fl_stone:stone_slab",
+        slab_wood = "fl_trees:apple_plank_slab",
     }
 elseif minetest.get_modpath("hades_core") then
     homedecor.materials = {

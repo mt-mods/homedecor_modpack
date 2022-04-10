@@ -321,6 +321,14 @@ homedecor.register("chimney", {
 })
 
 -- crafting
+minetest.register_craft({
+	output = "homedecor:chimney 2",
+	recipe = {
+		{ "default:clay_brick", "", "default:clay_brick" },
+		{ "default:clay_brick", "", "default:clay_brick" },
+		{ "default:clay_brick", "", "default:clay_brick" },
+	},
+})
 
 minetest.register_craft( {
         output = "homedecor:skylight 4",
