@@ -1,5 +1,7 @@
 -- Node definitions for Homedecor doors
 
+if not minetest.get_modpath("doors") or not minetest.get_modpath("default") then return end
+
 local S = minetest.get_translator("homedecor_doors_and_gates")
 local mesecons_mp = minetest.get_modpath("mesecons")
 homedecor_doors_and_gates = {}

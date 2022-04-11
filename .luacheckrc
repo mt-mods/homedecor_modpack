@@ -12,6 +12,7 @@ globals = {
     "lavalamp",
     "lrfurn",
     "signs_lib",
+    "homedecor_doors_and_gates",
 
     -- mod-deps
     "armor"
@@ -35,5 +36,6 @@ read_globals = {
     "skins",
     "homedecor_doors_and_gates",
     "stairsplus",
-    "creative"
+    "creative",
+    "doors",
 }
