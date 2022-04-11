@@ -40,6 +40,7 @@ homedecor.materials = {
     slab_wood = "stairs:slab_wood",
     glass_block = "default_glass",
     glass_bottle = "vessels:glass_bottle",
+    coal_lump = "default:coal_lump",
 }
 
 if minetest.get_modpath("moreores") then
@@ -109,6 +110,7 @@ elseif minetest.get_modpath("fl_ores") and minetest.get_modpath("fl_stone") then
         slab_wood = "fl_trees:apple_plank_slab",
         glass_block = "fl_glass:framed_glass",
         glass_bottle = "fl_bottles:bottle",
+        coal_lump = "fl_ores:coal_ore"
     }
 elseif minetest.get_modpath("hades_core") then
     homedecor.materials = {
