@@ -38,4 +38,5 @@ read_globals = {
     "stairsplus",
     "creative",
     "doors",
+    "i3",
 }
