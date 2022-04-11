@@ -21,7 +21,7 @@ homedecor.register("barbecue", {
 		},
 		"homedecor_barbecue_meat.png",
 	},
-	groups = { snappy=3 },
+	groups = { snappy=3, dig_tree = 2 },
 	light_source = 9,
 	selection_box = bbq_cbox,
 	collision_box = bbq_cbox,
@@ -57,7 +57,7 @@ homedecor.register("doghouse", {
 	inventory_image = "homedecor_doghouse_inv.png",
 	selection_box = homedecor.nodebox.slab_y(1.5),
 	collision_box = homedecor.nodebox.slab_y(1.5),
-	groups = {snappy=3},
+	groups = {snappy=3, dig_tree = 2},
 	expand = { top="placeholder" },
 	_sound_def = {
 		key = "node_sound_wood_defaults",
@@ -83,7 +83,7 @@ homedecor.register("stonepath", {
 		minetest.registered_nodes["mapgen_stone"].tiles[1],
 	},
 	inventory_image = "homedecor_stonepath_inv.png",
-	groups = { snappy=3 },
+	groups = { snappy=3, dig_stone = 2 },
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -148,7 +148,7 @@ homedecor.register("lattice_"..name, {
 	tiles = {"homedecor_lattice"..texture},
 	inventory_image = "homedecor_lattice"..texture,
 	use_texture_alpha = "clip",
-	groups = { snappy=3 },
+	groups = { snappy=3, dig_tree = 2 },
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -178,7 +178,7 @@ homedecor.register("swing", {
 	},
 	inventory_image = "homedecor_swing_inv.png",
 	use_texture_alpha = "clip",
-	groups = { snappy=3, oddly_breakable_by_hand=3 },
+	groups = { snappy=3, oddly_breakable_by_hand=3, dig_tree = 2 },
 	_sound_def = {
 		key = "node_sound_wood_defaults",
 	},
@@ -312,7 +312,7 @@ homedecor.register("well", {
 	inventory_image = "homedecor_well_inv.png",
 	description = S("Water well"),
 	use_texture_alpha = "clip",
-	groups = { snappy = 3 },
+	groups = { snappy = 3, dig_stone = 1 },
 	selection_box = homedecor.nodebox.slab_y(2),
 	collision_box = homedecor.nodebox.slab_y(2),
 	expand = { top="placeholder" },
@@ -370,7 +370,7 @@ for color, color_loc in pairs(homedecor_exterior.shrub_colors) do
 		paramtype = "light",
 		is_ground_content = false,
 		use_texture_alpha = "clip",
-		groups = {snappy=3, flammable=2},
+		groups = {snappy=3, flammable=2, dig_tree = 3},
 		_sound_def = {
 			key = "node_sound_leaves_defaults",
 		},
@@ -396,7 +396,7 @@ for color, color_loc in pairs(homedecor_exterior.shrub_colors) do
 		paramtype = "light",
 		is_ground_content = false,
 		use_texture_alpha = "clip",
-		groups = {snappy=3, flammable=2},
+		groups = {snappy=3, flammable=2, dig_tree = 3},
 		_sound_def = {
 			key = "node_sound_leaves_defaults",
 		},

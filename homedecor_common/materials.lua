@@ -27,8 +27,10 @@ homedecor.materials = {
     wool_green = "wool:green",
     wool_dark_green = "wool:dark_green",
     wool_brown = "wool:brown",
+    wool_black = "wool:black",
     slab_stone = "stairs:slab_stone",
     slab_wood = "stairs:slab_wood",
+    glass_block = "default_glass",
 }
 
 if minetest.get_modpath("moreores") then
@@ -83,6 +85,7 @@ elseif minetest.get_modpath("fl_ores") and minetest.get_modpath("fl_stone") then
         iron_lump = "fl_ores:iron_ore",
         slab_stone = "fl_stone:stone_slab",
         slab_wood = "fl_trees:apple_plank_slab",
+        glass_block = "fl_glass:framed_glass"
     }
 elseif minetest.get_modpath("hades_core") then
     homedecor.materials = {
