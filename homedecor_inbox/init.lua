@@ -2,15 +2,6 @@ local S = minetest.get_translator("inbox")
 
 local inbox = {}
 
-minetest.register_craft({
-	output ="homedecor:inbox",
-	recipe = {
-		{"","default:steel_ingot",""},
-		{"default:steel_ingot","","default:steel_ingot"},
-		{"default:steel_ingot","default:steel_ingot","default:steel_ingot"}
-	}
-})
-
 local mb_cbox = {
 	type = "fixed",
 	fixed = { -5/16, -8/16, -8/16, 5/16, 2/16, 8/16 }
@@ -31,7 +22,9 @@ homedecor.register("inbox", {
 	collision_box = mb_cbox,
 	paramtype2 = "facedir",
 	groups = {choppy=2,oddly_breakable_by_hand=2},
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	on_rotate = minetest.get_modpath("screwdriver") and screwdriver.rotate_simple or nil,
 	after_place_node = function(pos, placer, itemstack)
 		local meta = minetest.get_meta(pos)
@@ -103,6 +96,15 @@ homedecor.register("inbox", {
 	allow_metadata_inventory_move = function(pos)
 		return 0
 	end,
+	crafts = {
+		{
+			recipe = {
+				{"","steel_ingot",""},
+				{"steel_ingot","","steel_ingot"},
+				{"steel_ingot","steel_ingot","steel_ingot"}
+			}
+		}
+	}
 })
 
 minetest.register_alias("inbox:empty", "homedecor:inbox")
