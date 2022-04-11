@@ -18,6 +18,7 @@ homedecor.materials = {
     dye_green = "dye:green",
     dye_red = "dye:red",
     dye_yellow = "dye:yellow",
+    dye_brown = "dye:brown",
     silicon = "mesecons_materials:silicon",
     string = "farming:string",
     paper = "default:paper",
@@ -31,6 +32,7 @@ homedecor.materials = {
     slab_stone = "stairs:slab_stone",
     slab_wood = "stairs:slab_wood",
     glass_block = "default_glass",
+    glass_bottle = "vessels:glass_bottle",
 }
 
 if minetest.get_modpath("moreores") then
@@ -76,6 +78,7 @@ elseif minetest.get_modpath("fl_ores") and minetest.get_modpath("fl_stone") then
         dye_green = "fl_dyes:green_dye",
         dye_red = "fl_dyes:red_dye",
         dye_yellow = "fl_dyes:yellow_dye",
+        dye_brown = "fl_dyes:brown_dye",
         copper_ingot = "fl_ores:copper_ingot",
         tin_ingot = "fl_ores:tin_ingot",
         silver_ingot = "fl_ores:iron_ingot",
@@ -85,7 +88,8 @@ elseif minetest.get_modpath("fl_ores") and minetest.get_modpath("fl_stone") then
         iron_lump = "fl_ores:iron_ore",
         slab_stone = "fl_stone:stone_slab",
         slab_wood = "fl_trees:apple_plank_slab",
-        glass_block = "fl_glass:framed_glass"
+        glass_block = "fl_glass:framed_glass",
+        glass_bottle = "fl_bottles:bottle",
     }
 elseif minetest.get_modpath("hades_core") then
     homedecor.materials = {
