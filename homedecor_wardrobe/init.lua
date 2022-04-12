@@ -1,3 +1,5 @@
+if not minetest.get_modpath("player_api") then return end
+
 local S = minetest.get_translator("homedecor_wardrobe")
 modpath = minetest.get_modpath("homedecor_wardrobe")
 
