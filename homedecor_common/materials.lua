@@ -41,6 +41,7 @@ homedecor.materials = {
     glass_block = "default_glass",
     glass_bottle = "vessels:glass_bottle",
     coal_lump = "default:coal_lump",
+    stone = "default:stone",
     cobble = "default:cobble",
     brick = "default:brick",
 }
@@ -113,6 +114,7 @@ elseif minetest.get_modpath("fl_ores") and minetest.get_modpath("fl_stone") then
         glass_block = "fl_glass:framed_glass",
         glass_bottle = "fl_bottles:bottle",
         coal_lump = "fl_ores:coal_ore",
+        stone = "fl_stone:stone",
         cobble = "fl_stone:stone_rubble",
         brick = "",
     }
