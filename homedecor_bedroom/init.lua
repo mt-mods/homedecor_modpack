@@ -2,6 +2,10 @@ local S = minetest.get_translator("homedecor_bedroom")
 
 local sc_disallow = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil
 
+local wood_tex, wool_tex = "default_wood.png", "wool_white.png"
+if not minetest.get_modpath("default") then wood_tex = "[combine:16x16^[noalpha^[colorize:#654321" end
+if not minetest.get_modpath("wool") then wool_tex = "[combine:16x16^[noalpha^[colorize:#ffffff" end
+
 local bed_sbox = {
 	type = "wallmounted",
 	wall_side = { -0.5, -0.5, -0.5, 0.5, 0.5, 1.5 }
@@ -31,26 +35,29 @@ local kbed_cbox = {
 }
 
 
-local bed_on_rightclick = minetest.registered_nodes["beds:bed"].on_rightclick
+local bed_on_rightclick =
+	minetest.registered_nodes["beds:bed"] and minetest.registered_nodes["beds:bed"].on_rightclick or nil
 
 homedecor.register("bed_regular", {
 	mesh = "homedecor_bed_regular.obj",
 	tiles = {
 		{ name = "homedecor_bed_frame.png", color = 0xffffffff },
-		{ name = "default_wood.png", color = 0xffffffff },
-		{ name = "wool_white.png", color = 0xffffffff },
-		"wool_white.png",
+		{ name = wood_tex, color = 0xffffffff },
+		{ name = wool_tex, color = 0xffffffff },
+		wool_tex,
 		{ name = "homedecor_bed_bottom.png", color = 0xffffffff },
-		"wool_white.png^[brighten", -- pillow
+		wool_tex.."^[brighten", -- pillow
 	},
 	inventory_image = "homedecor_bed_inv.png",
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	description = S("Bed"),
-	groups = {snappy=3, ud_param2_colorable = 1},
+	groups = {snappy=3, ud_param2_colorable = 1, dig_generic=2},
 	selection_box = bed_sbox,
 	node_box = bed_cbox,
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	on_rotate = sc_disallow or nil,
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		unifieddyes.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)
@@ -66,11 +73,10 @@ homedecor.register("bed_regular", {
 		local itemname = itemstack:get_name()
 		if itemname == "homedecor:bed_regular" then
 			homedecor.bed_expansion(pos, clicker, itemstack, pointed_thing, true)
-			return itemstack
-		else
+		elseif bed_on_rightclick then
 			bed_on_rightclick(pos, node, clicker)
-			return itemstack
 		end
+		return itemstack
 	end
 })
 
@@ -78,18 +84,20 @@ homedecor.register("bed_extended", {
 	mesh = "homedecor_bed_extended.obj",
 	tiles = {
 		{ name = "homedecor_bed_frame.png", color = 0xffffffff },
-		{ name = "default_wood.png", color = 0xffffffff },
-		{ name = "wool_white.png", color = 0xffffffff },
-		"wool_white.png",
+		{ name = wood_tex, color = 0xffffffff },
+		{ name = wool_tex, color = 0xffffffff },
+		wool_tex,
 		{ name = "homedecor_bed_bottom.png", color = 0xffffffff },
-		"wool_white.png^[brighten",
+		wool_tex.."^[brighten",
 	},
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	selection_box = bed_sbox,
 	node_box = bed_cbox,
-	groups = {snappy=3, ud_param2_colorable = 1},
-	sounds = default.node_sound_wood_defaults(),
+	groups = {snappy=3, ud_param2_colorable = 1, dig_generic=2},
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	expand = { forward = "air" },
 	on_rotate = sc_disallow or nil,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
@@ -97,7 +105,9 @@ homedecor.register("bed_extended", {
 	end,
 	on_dig = unifieddyes.on_dig,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-		bed_on_rightclick(pos, node, clicker)
+		if bed_on_rightclick then
+			bed_on_rightclick(pos, node, clicker)
+		end
 		return itemstack
 	end,
 	drop = "homedecor:bed_regular"
@@ -107,20 +117,22 @@ homedecor.register("bed_kingsize", {
 	mesh = "homedecor_bed_kingsize.obj",
 	tiles = {
 		{ name = "homedecor_bed_frame.png", color = 0xffffffff },
-		{ name = "default_wood.png", color = 0xffffffff },
-		{ name = "wool_white.png", color = 0xffffffff },
-		"wool_white.png",
+		{ name = wood_tex, color = 0xffffffff },
+		{ name = wool_tex, color = 0xffffffff },
+		wool_tex,
 		{ name = "homedecor_bed_bottom.png", color = 0xffffffff },
-		"wool_white.png^[brighten",
+		wool_tex.."^[brighten",
 	},
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	inventory_image = "homedecor_bed_kingsize_inv.png",
 	description = S("Bed (king sized)"),
-	groups = {snappy=3, ud_param2_colorable = 1},
+	groups = {snappy=3, ud_param2_colorable = 1, dig_generic=2},
 	selection_box = kbed_sbox,
 	node_box = kbed_cbox,
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	on_rotate = sc_disallow or nil,
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		unifieddyes.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)
@@ -134,7 +146,9 @@ homedecor.register("bed_kingsize", {
 	end,
 	on_dig = unifieddyes.on_dig,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-		bed_on_rightclick(pos, node, clicker)
+		if bed_on_rightclick then
+			bed_on_rightclick(pos, node, clicker)
+		end
 		return itemstack
 	end,
 })
@@ -159,8 +173,10 @@ for w, d in pairs({ ["mahogany"] = S("mahogany"), ["oak"] = S("oak") }) do
 				{ -8/16, -8/16, -30/64,  8/16, -7/16,   8/16 }	-- bottom
 			}
 		},
-		groups = { snappy = 3 },
-		sounds = default.node_sound_wood_defaults(),
+		groups = { snappy = 3, dig_tree = 2 },
+		_sound_def = {
+			key = "node_sound_wood_defaults",
+		},
 		selection_box = { type = "regular" },
 		infotext=S("One-drawer Nightstand"),
 		inventory = {
@@ -185,8 +201,10 @@ for w, d in pairs({ ["mahogany"] = S("mahogany"), ["oak"] = S("oak") }) do
 				{ -7/16, -7/16, -32/64,  7/16, -1/16, -29/64 },	-- bottom drawer face
 			}
 		},
-		groups = { snappy = 3 },
-		sounds = default.node_sound_wood_defaults(),
+		groups = { snappy = 3, dig_tree = 2 },
+		_sound_def = {
+			key = "node_sound_wood_defaults",
+		},
 		selection_box = { type = "regular" },
 		infotext=S("Two-drawer Nightstand"),
 		inventory = {
