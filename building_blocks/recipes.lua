@@ -20,15 +20,15 @@ end
 minetest.register_craft({
 	output = 'building_blocks:Adobe 3',
 	recipe = {
-		{"default:sand"},
-		{"default:clay"},
+		{homedecor.materials.sand},
+		{homedecor.materials.clay_lump},
 		{"group:stick"},
 	}
 })
 minetest.register_craft({
 	output = 'building_blocks:brobble_spread 4',
 	recipe = {
-		{"default:brick", "default:cobble", "default:brick"},
+		{homedecor.materials.brick, homedecor.materials.cobble, homedecor.materials.brick},
 	}
 })
 minetest.register_craft({
@@ -42,20 +42,20 @@ minetest.register_craft({
 	output = 'building_blocks:fakegrass 2',
 	recipe = {
 		{'group:leaves'},
-		{"default:dirt"},
+		{homedecor.materials.dirt},
 	}
 })
 minetest.register_craft({
 	output = 'building_blocks:Fireplace 1',
 	recipe = {
-		{"default:steel_ingot", "building_blocks:sticks", "default:steel_ingot"},
+		{homedecor.materials.steel_ingot, "building_blocks:sticks", homedecor.materials.steel_ingot},
 	}
 })
 minetest.register_craft({
 	output = 'building_blocks:grate 1',
 	recipe = {
-		{"default:steel_ingot", "default:steel_ingot"},
-		{"default:glass", "default:glass"},
+		{homedecor.materials.steel_ingot, homedecor.materials.steel_ingot},
+		{homedecor.materials.glass_block, homedecor.materials.glass_block},
 	}
 })
 
@@ -63,25 +63,27 @@ if not minetest.get_modpath("moreblocks") or not minetest.get_modpath("gloopbloc
 	minetest.register_craft({
 		output = 'building_blocks:gravel_spread 4',
 		recipe = {
-			{"default:gravel", "default:gravel", "default:gravel"},
+			{homedecor.materials.gravel, homedecor.materials.gravel, homedecor.materials.gravel},
 		}
 	})
 end
 
-minetest.register_craft({
-	output = 'building_blocks:hardwood 2',
-	recipe = {
-		{"default:wood", "default:junglewood"},
-		{"default:junglewood", "default:wood"},
-	}
-})
-minetest.register_craft({
-	output = 'building_blocks:hardwood 2',
-	recipe = {
-		{"default:junglewood", "default:wood"},
-		{"default:wood", "default:junglewood"},
-	}
-})
+if minetest.get_modpath("default") then
+	minetest.register_craft({
+		output = 'building_blocks:hardwood 2',
+		recipe = {
+			{"default:wood", "default:junglewood"},
+			{"default:junglewood", "default:wood"},
+		}
+	})
+	minetest.register_craft({
+		output = 'building_blocks:hardwood 2',
+		recipe = {
+			{"default:junglewood", "default:wood"},
+			{"default:wood", "default:junglewood"},
+		}
+	})
+end
 minetest.register_craft({
 	output = 'building_blocks:knife 1',
 	recipe = {
@@ -92,9 +94,9 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "building_blocks:Marble 9",
 	recipe = {
-		{"default:clay", "group:tar_block", "default:clay"},
-		{"group:tar_block","default:clay", "group:tar_block"},
-		{"default:clay", "group:tar_block","default:clay"},
+		{homedecor.materials.clay_lump, "group:tar_block", homedecor.materials.clay_lump},
+		{"group:tar_block",homedecor.materials.clay_lump, "group:tar_block"},
+		{homedecor.materials.clay_lump, "group:tar_block",homedecor.materials.clay_lump},
 	}
 })
 minetest.register_craft({
@@ -113,15 +115,15 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'building_blocks:tar_base 4',
 	recipe = {
-		{"default:coal_lump", "default:gravel"},
-		{"default:gravel", "default:coal_lump"}
+		{homedecor.materials.coal_lump, homedecor.materials.gravel},
+		{homedecor.materials.gravel, homedecor.materials.coal_lump}
 	}
 })
 minetest.register_craft({
 	output = 'building_blocks:tar_base 4',
 	recipe = {
-		{"default:gravel", "default:coal_lump"},
-		{"default:coal_lump", "default:gravel"}
+		{homedecor.materials.gravel, homedecor.materials.coal_lump},
+		{homedecor.materials.coal_lump, homedecor.materials.gravel}
 	}
 })
 minetest.register_craft({
@@ -140,14 +142,14 @@ minetest.register_craft({
 	output = 'building_blocks:woodglass 1',
 	recipe = {
 		{"group:wood"},
-		{"default:glass"},
+		{homedecor.materials.glass_block},
 	}
 })
 
 minetest.register_craft({
 	type = "cooking",
 	output = "building_blocks:smoothglass",
-	recipe = "default:glass"
+	recipe = homedecor.materials.glass_block
 })
 minetest.register_craft({
 	type = "cooking",
