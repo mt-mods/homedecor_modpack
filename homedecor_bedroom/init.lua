@@ -77,7 +77,16 @@ homedecor.register("bed_regular", {
 			bed_on_rightclick(pos, node, clicker)
 		end
 		return itemstack
-	end
+	end,
+	crafts = {
+		{
+			recipe = {
+				{ "group:stick", "", "group:stick" },
+				{ "wool_white", "wool_white", "wool_white" },
+				{ "group:wood", "", "group:wood" },
+			},
+		}
+	}
 })
 
 homedecor.register("bed_extended", {
@@ -151,6 +160,13 @@ homedecor.register("bed_kingsize", {
 		end
 		return itemstack
 	end,
+	crafts = {
+		{
+			recipe = {
+				{ "homedecor:bed_regular", "homedecor:bed_regular" }
+			},
+		}
+	}
 })
 
 for w, d in pairs({ ["mahogany"] = S("mahogany"), ["oak"] = S("oak") }) do
@@ -336,7 +352,7 @@ minetest.register_craft( {
         output = "homedecor:nightstand_mahogany_one_drawer",
         recipe = {
                 "homedecor:nightstand_oak_one_drawer",
-                "dye:brown",
+                homedecor.materials.dye_brown,
         },
 })
 
@@ -351,7 +367,7 @@ minetest.register_craft( {
         output = "homedecor:nightstand_mahogany_two_drawers",
         recipe = {
                 "homedecor:nightstand_oak_two_drawers",
-                "dye:brown",
+                homedecor.materials.dye_brown,
         },
 })
 
@@ -359,16 +375,6 @@ minetest.register_craft({
         type = "fuel",
         recipe = "homedecor:nightstand_mahogany_two_drawers",
         burntime = 30,
-})
-
-
-minetest.register_craft( {
-	output = "homedecor:bed_regular",
-	recipe = {
-		{ "group:stick", "", "group:stick" },
-		{ "wool:white", "wool:white", "wool:white" },
-		{ "group:wood", "", "group:wood" },
-	},
 })
 
 unifieddyes.register_color_craft({
@@ -380,13 +386,6 @@ unifieddyes.register_color_craft({
 		"NEUTRAL_NODE",
 		"MAIN_DYE"
 	}
-})
-
-minetest.register_craft( {
-	output = "homedecor:bed_kingsize",
-	recipe = {
-		{ "homedecor:bed_regular", "homedecor:bed_regular" }
-	},
 })
 
 unifieddyes.register_color_craft({
