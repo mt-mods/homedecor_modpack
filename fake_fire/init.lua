@@ -142,7 +142,7 @@ minetest.register_node("fake_fire:ice_fire", {
 	drawtype = "plantlike",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	groups = {dig_immediate=3, not_in_creative_inventory=1},
+	groups = {dig_immediate=3, not_in_creative_inventory=1, dig_generic=3},
 	sunlight_propagates = true,
 	buildable_to = true,
 	walkable = false,
@@ -229,7 +229,7 @@ minetest.register_node("fake_fire:embers", {
 		aspect_w=16, aspect_h=16, length=2}},
 	},
 	light_source = 9,
-	groups = {crumbly=3},
+	groups = {crumbly=3, dig_stone=2},
 	paramtype = "light",
 	_sound_def = {
 		key = "node_sound_dirt_defaults",
@@ -259,7 +259,7 @@ for _, mat in ipairs(materials) do
 	minetest.register_node("fake_fire:chimney_top_"..name, {
 		description = desc,
 		tiles = {tex.."^chimney_top.png", tex},
-		groups = {snappy=3},
+		groups = {snappy=3, dig_stone=2},
 		paramtype = "light",
 		_sound_def = {
 			key = "node_sound_stone_defaults",
