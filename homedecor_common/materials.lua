@@ -120,27 +120,58 @@ elseif minetest.get_modpath("fl_ores") and minetest.get_modpath("fl_stone") then
     }
 elseif minetest.get_modpath("hades_core") then
     homedecor.materials = {
-        dirt = "hades_core:dirt",
         sand = "hades_core:fertile_sand",
         gravel = "hades_core:gravel",
+        copper_ingot = "hades_core:copper_ingot",
         steel_ingot = "hades_core:steel_ingot",
         gold_ingot = "hades_core:gold_ingot",
+        tin_ingot = "hades_core:tin_ingot",
+        silver_ingot = "--unknown--",
         mese_crystal_fragment = "hades_core:mese_crystal_fragment",
         torch = "hades_torches:torch",
         diamond = "hades_core:diamond",
         clay_lump = "hades_core:clay_lump",
-        dye_dark_grey = "dye:dark_grey",
-        copper_ingot = "hades_core:copper_ingot",
-        tin_ingot = "hades_core:tin_ingot",
+        clay_brick = "hades_core:clay_brick",
+        
         --[[
             Since hades doesnt have buckets or water for the user,
             using dirt from near water to pull the water out
         ]]
         water_bucket = "hades_core:dirt",
         empty_bucket = "hades_core:fertile_sand",
-        -- Set this to steel unless hadesextraores is present
-        silver_ingot = "hades_core:steel_ingot",
+        dye_dark_grey = "dye:dark_grey",
+        dye_black = "dye:black",
+        dye_white = "dye:white",
+        dye_green = "dye:green",
+        dye_red = "dye:red",
+        dye_yellow = "dye:yellow",
+        dye_brown = "dye:brown",
+        dye_blue = "dye:blue",
+        dye_violet = "dye:violet",
+        dye_grey = "dye:grey",
+        dye_dark_green = "dye:dark_green",
+        dye_orange = "dye:orange",
+        dye_pink = "dye:pink",
         silicon = "hades_materials:silicon",
+        string = "hades_farming:string",
+        paper = "hades_core:paper",
+        book = "hades_core:book",
+        iron_lump = "hades_core:iron_lump",
+        wool_grey = "wool:grey",
+        wool_green = "wool:green",
+        wool_dark_green = "wool:dark_green",
+        wool_brown = "wool:brown",
+        wool_black = "wool:black",
+        wool_white = "wool:white",
+        slab_stone = "stairs:slab_stone",
+        slab_wood = "stairs:slab_wood",
+        glass_block = "hades_core:glass",
+        glass_bottle = "vessels:glass_bottle",
+        obsidian_glass = "hades_core:obsidian_glass",
+        coal_lump = "hades_core:coal_lump",
+        stone = "hades_core:stone",
+        cobble = "hades_core:cobble",
+        brick = "hades_core:brick"
     }
 
     if minetest.get_modpath("hades_bucket") then
