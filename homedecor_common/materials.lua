@@ -132,7 +132,7 @@ elseif minetest.get_modpath("hades_core") then
         diamond = "hades_core:diamond",
         clay_lump = "hades_core:clay_lump",
         clay_brick = "hades_core:clay_brick",
-        
+
         --[[
             Since hades doesnt have buckets or water for the user,
             using dirt from near water to pull the water out
