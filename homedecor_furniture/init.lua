@@ -25,11 +25,13 @@ homedecor.register("openframe_bookshelf", {
 	selection_box = ob_cbox,
 	collision_box = ob_cbox,
 	crafts = {
-		recipe = {
-			{"group:wood", "", "group:wood"},
-			{"book", "book", "book"},
-			{"group:wood", "", "group:wood"},
-		},
+		{
+			recipe = {
+				{"group:wood", "", "group:wood"},
+				{"book", "book", "book"},
+				{"group:wood", "", "group:wood"},
+			},
+		}
 	}
 })
 
