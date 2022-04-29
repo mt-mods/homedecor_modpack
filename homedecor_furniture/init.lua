@@ -24,6 +24,13 @@ homedecor.register("openframe_bookshelf", {
 	paramtype2 = "facedir",
 	selection_box = ob_cbox,
 	collision_box = ob_cbox,
+	crafts = {
+		recipe = {
+			{"group:wood", "", "group:wood"},
+			{"book", "book", "book"},
+			{"group:wood", "", "group:wood"},
+		},
+	}
 })
 
 homedecor.register("wall_shelf", {
