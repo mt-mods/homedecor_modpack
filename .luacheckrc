@@ -35,7 +35,6 @@ read_globals = {
     "hopper",
     "mesecon",
     "skins",
-    "homedecor_doors_and_gates",
     "stairsplus",
     "creative",
     "doors",
