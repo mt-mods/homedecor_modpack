@@ -28,13 +28,7 @@ minetest.register_node(":lrfurn:armchair", {
 	on_dig = unifieddyes.on_dig,
 	on_rotate = unifieddyes.fix_after_screwdriver_nsew,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-		if not clicker:is_player() then
-			return itemstack
-		end
-		pos.y = pos.y-0.5
-		clicker:setpos(pos)
-		clicker:set_hp(20)
-		return itemstack
+		return lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, 1)
 	end
 })
 
@@ -57,6 +51,9 @@ homedecor.register("armchair", {
 	end,
 	on_dig = unifieddyes.on_dig,
 	on_rotate = unifieddyes.fix_after_screwdriver_nsew,
+	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		return lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, 1)
+	end
 })
 
 -- crafts

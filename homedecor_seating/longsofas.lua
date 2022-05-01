@@ -42,12 +42,7 @@ minetest.register_node(":lrfurn:longsofa", {
 	end,
 	on_dig = unifieddyes.on_dig,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-		if not clicker:is_player() then
-			return itemstack
-		end
-		pos.y = pos.y-0.5
-		clicker:setpos(pos)
-		return itemstack
+		return lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, 3)
 	end
 })
 

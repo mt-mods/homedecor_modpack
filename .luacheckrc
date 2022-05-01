@@ -21,6 +21,7 @@ globals = {
 read_globals = {
 	"minetest", "core",
 	"vector", "ItemStack",
+    "dump",
 
 	-- Stdlib
 	string = {fields = {"split", "trim"}},
