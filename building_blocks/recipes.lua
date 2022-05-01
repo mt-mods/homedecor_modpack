@@ -1,3 +1,5 @@
+local materials = homedecor.materials
+
 if minetest.get_modpath("moreblocks") then
 	minetest.register_craft({
 		output = 'building_blocks:sticks 2',
@@ -20,15 +22,15 @@ end
 minetest.register_craft({
 	output = 'building_blocks:Adobe 3',
 	recipe = {
-		{homedecor.materials.sand},
-		{homedecor.materials.clay_lump},
+		{materials.sand},
+		{materials.clay_lump},
 		{"group:stick"},
 	}
 })
 minetest.register_craft({
 	output = 'building_blocks:brobble_spread 4',
 	recipe = {
-		{homedecor.materials.brick, homedecor.materials.cobble, homedecor.materials.brick},
+		{materials.brick, materials.cobble, materials.brick},
 	}
 })
 minetest.register_craft({
@@ -42,20 +44,20 @@ minetest.register_craft({
 	output = 'building_blocks:fakegrass 2',
 	recipe = {
 		{'group:leaves'},
-		{homedecor.materials.dirt},
+		{materials.dirt},
 	}
 })
 minetest.register_craft({
 	output = 'building_blocks:Fireplace 1',
 	recipe = {
-		{homedecor.materials.steel_ingot, "building_blocks:sticks", homedecor.materials.steel_ingot},
+		{materials.steel_ingot, "building_blocks:sticks", materials.steel_ingot},
 	}
 })
 minetest.register_craft({
 	output = 'building_blocks:grate 1',
 	recipe = {
-		{homedecor.materials.steel_ingot, homedecor.materials.steel_ingot},
-		{homedecor.materials.glass_block, homedecor.materials.glass_block},
+		{materials.steel_ingot, materials.steel_ingot},
+		{materials.glass_block, materials.glass_block},
 	}
 })
 
@@ -63,7 +65,7 @@ if not minetest.get_modpath("moreblocks") or not minetest.get_modpath("gloopbloc
 	minetest.register_craft({
 		output = 'building_blocks:gravel_spread 4',
 		recipe = {
-			{homedecor.materials.gravel, homedecor.materials.gravel, homedecor.materials.gravel},
+			{materials.gravel, materials.gravel, materials.gravel},
 		}
 	})
 end
@@ -94,9 +96,9 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "building_blocks:Marble 9",
 	recipe = {
-		{homedecor.materials.clay_lump, "group:tar_block", homedecor.materials.clay_lump},
-		{"group:tar_block",homedecor.materials.clay_lump, "group:tar_block"},
-		{homedecor.materials.clay_lump, "group:tar_block",homedecor.materials.clay_lump},
+		{materials.clay_lump, "group:tar_block", materials.clay_lump},
+		{"group:tar_block",materials.clay_lump, "group:tar_block"},
+		{materials.clay_lump, "group:tar_block",materials.clay_lump},
 	}
 })
 minetest.register_craft({
@@ -115,15 +117,15 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'building_blocks:tar_base 4',
 	recipe = {
-		{homedecor.materials.coal_lump, homedecor.materials.gravel},
-		{homedecor.materials.gravel, homedecor.materials.coal_lump}
+		{materials.coal_lump, materials.gravel},
+		{materials.gravel, materials.coal_lump}
 	}
 })
 minetest.register_craft({
 	output = 'building_blocks:tar_base 4',
 	recipe = {
-		{homedecor.materials.gravel, homedecor.materials.coal_lump},
-		{homedecor.materials.coal_lump, homedecor.materials.gravel}
+		{materials.gravel, materials.coal_lump},
+		{materials.coal_lump, materials.gravel}
 	}
 })
 minetest.register_craft({
@@ -142,14 +144,14 @@ minetest.register_craft({
 	output = 'building_blocks:woodglass 1',
 	recipe = {
 		{"group:wood"},
-		{homedecor.materials.glass_block},
+		{materials.glass_block},
 	}
 })
 
 minetest.register_craft({
 	type = "cooking",
 	output = "building_blocks:smoothglass",
-	recipe = homedecor.materials.glass_block
+	recipe = materials.glass_block
 })
 minetest.register_craft({
 	type = "cooking",
