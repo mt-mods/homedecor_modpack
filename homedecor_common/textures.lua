@@ -17,6 +17,7 @@ homedecor.textures = {
     wool_white = "[combine:16x16^[noalpha^[colorize:#ffffff",
     wool_black = "[combine:16x16^[noalpha^[colorize:#000000",
 	wool_grey = "[combine:16x16^[noalpha^[colorize:#313b3c",
+    wool_dark_grey = "[combine:16x16^[noalpha^[colorize:#313b3c",
 }
 
 if minetest.get_modpath("default") then
@@ -28,5 +29,6 @@ if minetest.get_modpath("default") then
         wool_white = "wool_white.png",
         wool_black = "wool_black.png",
         wool_grey = "wool_grey.png",
+        wool_dark_grey = "wool_dark_grey.png",
     }
 end

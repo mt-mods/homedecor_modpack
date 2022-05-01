@@ -18,7 +18,7 @@ minetest.register_node(":lrfurn:sofa", {
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	inventory_image = "lrfurn_sofa_inv.png",
 	wield_scale = { x = 0.6, y = 0.6, z = 0.6 },
-	groups = {snappy=3, ud_param2_colorable = 1},
+	groups = {snappy=3, ud_param2_colorable = 1, dig_tree=2},
 	_sound_def = {
 		key = "node_sound_wood_defaults",
 	},
@@ -51,8 +51,8 @@ minetest.register_node(":lrfurn:sofa", {
 minetest.register_craft({
 	output = "lrfurn:sofa",
 	recipe = {
-		{"wool:white", "wool:white", "", },
-		{"stairs:slab_wood", "stairs:slab_wood", "", },
+		{homedecor.materials.wool_white, homedecor.materials.wool_white, "", },
+		{homedecor.materials.slab_wood, homedecor.materials.slab_wood, "", },
 		{"group:stick", "group:stick", "", }
 	}
 })
@@ -60,7 +60,7 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "lrfurn:sofa",
 	recipe = {
-		{"wool:white", "wool:white", "", },
+		{homedecor.materials.wool_white, homedecor.materials.wool_white, "", },
 		{"moreblocks:slab_wood", "moreblocks:slab_wood", "", },
 		{"group:stick", "group:stick", "", }
 	}

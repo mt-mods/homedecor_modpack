@@ -10,7 +10,7 @@ homedecor.register("deckchair", {
 	mesh = "homedecor_deckchair.obj",
 	tiles = {"homedecor_deckchair.png"},
 	description = "Deck Chair",
-	groups = { snappy = 3 },
+	groups = { snappy = 3, dig_tree=2 },
 	expand = { forward="placeholder" },
 	_sound_def = {
 		key = "node_sound_wood_defaults",
@@ -27,7 +27,7 @@ homedecor.register("deckchair_striped_blue", {
 	mesh = "homedecor_deckchair.obj",
 	tiles = {"homedecor_deckchair_striped_blue.png"},
 	description = "Deck Chair (blue striped)",
-	groups = { snappy = 3 },
+	groups = { snappy = 3, dig_tree=2 },
 	expand = { forward="placeholder" },
 	_sound_def = {
 		key = "node_sound_wood_defaults",
@@ -40,7 +40,7 @@ homedecor.register("deckchair_striped_blue", {
 homedecor.register("simple_bench", {
 	tiles = { "homedecor_generic_wood_old.png" },
 	description = "Simple Bench",
-	groups = {snappy=3},
+	groups = {snappy=3, dig_tree=2},
 	node_box = {
 	type = "fixed",
 	fixed = {
@@ -75,7 +75,7 @@ homedecor.register("bench_large_1", {
 	},
 	description = "Garden Bench (style 1)",
 	inventory_image = "homedecor_bench_large_1_inv.png",
-	groups = { snappy = 3 },
+	groups = { snappy = 3, dig_tree=2 },
 	expand = { right="placeholder" },
 	_sound_def = {
 		key = "node_sound_wood_defaults",
@@ -106,7 +106,7 @@ homedecor.register("bench_large_2", {
 	mesh = "homedecor_bench_large_2.obj",
 	tiles = { "homedecor_generic_wood_old.png" },
 	inventory_image = "homedecor_bench_large_2_inv.png",
-	groups = {snappy=3},
+	groups = {snappy=3, dig_tree=2},
 	selection_box = bl2_sbox,
 	node_box = bl2_cbox,
 	expand = { right="placeholder" },
@@ -153,7 +153,7 @@ homedecor.register("kitchen_chair_padded", {
 	mesh = "homedecor_kitchen_chair.obj",
 	tiles = {
 		homedecor.plain_wood,
-		"wool_white.png",
+		homedecor.textures.wool_white,
 	},
 	inventory_image = "homedecor_chair_padded_inv.png",
 	paramtype2 = "colorwallmounted",
@@ -202,7 +202,7 @@ for _, c in pairs(chairs) do
 		drawtype = "mesh",
 		tiles = { "homedecor_office_chair_"..name..".png" },
 		mesh = "homedecor_office_chair_"..name..".obj",
-		groups = { snappy = 3 },
+		groups = { snappy = 3, dig_tree=2 },
 		_sound_def = {
 			key = "node_sound_wood_defaults",
 		},
@@ -229,7 +229,7 @@ minetest.register_craft( {
         recipe = {
 			{ "homedecor:shutter_oak", "homedecor:shutter_oak", "homedecor:shutter_oak" },
 			{ "group:wood", "group:wood", "group:wood" },
-			{ "stairs:slab_wood", "", "stairs:slab_wood" }
+			{ homedecor.materials.slab_wood, "", homedecor.materials.slab_wood }
         },
 })
 
@@ -245,8 +245,8 @@ minetest.register_craft( {
 minetest.register_craft( {
         output = "homedecor:simple_bench",
         recipe = {
-			{ "stairs:slab_wood", "stairs:slab_wood", "stairs:slab_wood" },
-			{ "stairs:slab_wood", "", "stairs:slab_wood" }
+			{ homedecor.materials.slab_wood, homedecor.materials.slab_wood, homedecor.materials.slab_wood },
+			{ homedecor.materials.slab_wood, "", homedecor.materials.slab_wood }
         },
 })
 
@@ -291,7 +291,7 @@ minetest.register_craft({
 	output = "homedecor:kitchen_chair_padded",
 	recipe = {
 		"homedecor:kitchen_chair_wood",
-		"wool:white",
+		homedecor.materials.wool_white,
 	},
 })
 
@@ -322,8 +322,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "homedecor:office_chair_basic",
 	recipe = {
-		{ "", "", "wool:black" },
-		{ "", "wool:black", "default:steel_ingot" },
+		{ "", "", homedecor.materials.wool_black },
+		{ "", homedecor.materials.wool_black, homedecor.materials.steel_ingot },
 		{ "group:stick", "basic_materials:steel_bar", "group:stick" }
 	},
 })
@@ -331,8 +331,8 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "homedecor:office_chair_upscale",
 	recipe = {
-		{ "dye:black", "building_blocks:sticks", "group:wool" },
-		{ "basic_materials:plastic_sheet", "group:wool", "default:steel_ingot" },
+		{ homedecor.materials.dye_black, "building_blocks:sticks", "group:wool" },
+		{ "basic_materials:plastic_sheet", "group:wool", homedecor.materials.steel_ingot },
 		{ "building_blocks:sticks", "basic_materials:steel_bar", "building_blocks:sticks" }
 	},
 })
