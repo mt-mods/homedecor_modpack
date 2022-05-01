@@ -1,7 +1,7 @@
 if not minetest.get_modpath("player_api") then return end
 
 local S = minetest.get_translator("homedecor_wardrobe")
-modpath = minetest.get_modpath("homedecor_wardrobe")
+local modpath = minetest.get_modpath("homedecor_wardrobe")
 
 local wd_cbox = {type = "fixed", fixed = {-0.5, -0.5, -0.5, 0.5, 1.5, 0.5}}
 
