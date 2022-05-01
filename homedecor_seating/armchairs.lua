@@ -20,7 +20,9 @@ minetest.register_node(":lrfurn:armchair", {
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	inventory_image = "lrfurn_armchair_inv.png",
 	groups = {snappy=3, ud_param2_colorable = 1},
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	node_box = armchair_cbox,
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		unifieddyes.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)
@@ -44,7 +46,9 @@ homedecor.register("armchair", {
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	groups = {snappy=3, ud_param2_colorable = 1},
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	node_box = armchair_cbox,
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		unifieddyes.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)

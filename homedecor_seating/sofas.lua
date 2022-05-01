@@ -19,7 +19,9 @@ minetest.register_node(":lrfurn:sofa", {
 	inventory_image = "lrfurn_sofa_inv.png",
 	wield_scale = { x = 0.6, y = 0.6, z = 0.6 },
 	groups = {snappy=3, ud_param2_colorable = 1},
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	selection_box = sofa_cbox,
 	node_box = sofa_cbox,
 	on_rotate = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil,
@@ -31,7 +33,7 @@ minetest.register_node(":lrfurn:sofa", {
 		local fdir = minetest.dir_to_facedir(placer:get_look_dir(), false)
 
 		if lrfurn.check_right(pos, fdir, false, placer) then
-			if not creative.is_enabled_for(playername) then
+			if not minetest.is_creative_enabled(playername) then
 				itemstack:take_item()
 			end
 		else

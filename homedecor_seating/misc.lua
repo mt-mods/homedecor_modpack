@@ -12,7 +12,9 @@ homedecor.register("deckchair", {
 	description = "Deck Chair",
 	groups = { snappy = 3 },
 	expand = { forward="placeholder" },
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	selection_box = dc_cbox,
 	collision_box = dc_cbox,
 	on_rotate = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil,
@@ -27,7 +29,9 @@ homedecor.register("deckchair_striped_blue", {
 	description = "Deck Chair (blue striped)",
 	groups = { snappy = 3 },
 	expand = { forward="placeholder" },
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	selection_box = dc_cbox,
 	collision_box = dc_cbox,
 	on_rotate = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil,
@@ -45,7 +49,9 @@ homedecor.register("simple_bench", {
 			{ 0.3, -0.5,  0.1,  0.4, -0.15, 0.3},
 			}
 	},
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 })
 
 local bl1_sbox = {
@@ -71,7 +77,9 @@ homedecor.register("bench_large_1", {
 	inventory_image = "homedecor_bench_large_1_inv.png",
 	groups = { snappy = 3 },
 	expand = { right="placeholder" },
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	selection_box = bl1_sbox,
 	node_box = bl1_cbox,
 	on_rotate = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil,
@@ -102,7 +110,9 @@ homedecor.register("bench_large_2", {
 	selection_box = bl2_sbox,
 	node_box = bl2_cbox,
 	expand = { right="placeholder" },
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	on_rotate = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil,
 })
 
@@ -126,7 +136,9 @@ homedecor.register("kitchen_chair_wood", {
 	selection_box = kc_cbox,
 	collision_box = kc_cbox,
 	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	after_place_node = unifieddyes.fix_rotation_nsew,
 	on_rotate = unifieddyes.fix_after_screwdriver_nsew,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
@@ -149,7 +161,9 @@ homedecor.register("kitchen_chair_padded", {
 	selection_box = kc_cbox,
 	collision_box = kc_cbox,
 	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2, ud_param2_colorable = 1},
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		unifieddyes.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)
 	end,
@@ -189,7 +203,9 @@ for _, c in pairs(chairs) do
 		tiles = { "homedecor_office_chair_"..name..".png" },
 		mesh = "homedecor_office_chair_"..name..".obj",
 		groups = { snappy = 3 },
-		sounds = default.node_sound_wood_defaults(),
+		_sound_def = {
+			key = "node_sound_wood_defaults",
+		},
 		selection_box = ofchairs_sbox,
 		collision_box = ofchairs_cbox,
 		expand = { top = "placeholder" },
