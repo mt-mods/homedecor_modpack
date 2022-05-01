@@ -43,8 +43,7 @@ homedecor.register("barbecue", {
 
 minetest.register_alias("homedecor:barbecue_meat", "air")
 
-local wood_tex = "default_wood.png"
-if not minetest.get_modpath("default") then wood_tex = "[combine:16x16^[noalpha^[colorize:#654321" end
+local wood_tex = homedecor.textures.default_wood
 
 homedecor.register("doghouse", {
 	mesh = "homedecor_doghouse.obj",

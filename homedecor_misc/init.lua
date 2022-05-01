@@ -11,12 +11,8 @@ local S = minetest.get_translator("homedecor_misc")
 
 homedecor_misc = {}
 
-local wool_black, wool_grey, wood_tex = "wool_black.png", "wool_grey.png", "default_wood.png"
-if not minetest.get_modpath("wool") then
-	wool_black = "[combine:16x16^[noalpha^[colorize:#000000"
-	wool_grey = "[combine:16x16^[noalpha^[colorize:#313b3c"
-end
-if not minetest.get_modpath("default") then wood_tex = "[combine:16x16^[noalpha^[colorize:#654321" end
+local wool_black, wool_grey = homedecor.textures.wool_black, homedecor.textures.wool_grey
+local wood_tex = homedecor.textures.default_wood
 
 homedecor.register("ceiling_paint", {
 	description = S("Textured Ceiling Paint"),

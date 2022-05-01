@@ -172,10 +172,7 @@ local sbox = {
 	fixed = { -8/16, -8/16, -8/16, 8/16, -6/16, 8/16},
 }
 
-local wtex = "default_junglewood.png"
-if not minetest.get_modpath("default") then
-	wtex = "[combine:16x16^[noalpha^[colorize:#563d2d"
-end
+local wtex = homedecor.textures.default_junglewood
 
 minetest.register_node("fake_fire:fancy_fire", {
 	inventory_image = "fancy_fire_inv.png",

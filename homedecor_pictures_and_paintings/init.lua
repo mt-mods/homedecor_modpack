@@ -1,11 +1,6 @@
 local S = minetest.get_translator("homedecor_pictures_and_paintings")
 
-local wood_tex
-if minetest.get_modpath("default") then
-	wood_tex = "default_wood.png"
-else
-	wood_tex = "[combine:16x16^[noalpha^[colorize:#563d2d"
-end
+local wood_tex = homedecor.textures.default_wood
 
 local pframe_cbox = {
 	type = "fixed",

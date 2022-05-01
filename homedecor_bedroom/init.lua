@@ -2,9 +2,7 @@ local S = minetest.get_translator("homedecor_bedroom")
 
 local sc_disallow = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil
 
-local wood_tex, wool_tex = "default_wood.png", "wool_white.png"
-if not minetest.get_modpath("default") then wood_tex = "[combine:16x16^[noalpha^[colorize:#654321" end
-if not minetest.get_modpath("wool") then wool_tex = "[combine:16x16^[noalpha^[colorize:#ffffff" end
+local wood_tex, wool_tex = homedecor.textures.default_wood, homedecor.textures.wool_white
 
 local bed_sbox = {
 	type = "wallmounted",
