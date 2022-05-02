@@ -89,6 +89,8 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 		vector.new(0, 0, 1),
 		vector.new(1, 0, 0),
 		vector.new(-1, 0, 0),
+		vector.new(0, 0, 0),
+		vector.new(0, 0, 0)
 	}
 
 	--generate posible seat positions
