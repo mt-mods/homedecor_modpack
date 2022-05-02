@@ -237,8 +237,8 @@ local sandstone_tex = "default_sandstone.png"
 if not minetest.get_modpath("default") then
 	local sname = minetest.registered_nodes["mapgen_stone"].name
 	local names = sname:split(":")
-	local nitem = string.gsub(names[2], "stone", "sandstone")
-	if minetest.registered_nodes[names[1]..":"..nitem] then
+	local nitem = names[2] and string.gsub(names[2], "stone", "sandstone") or nil
+	if nitem and minetest.registered_nodes[names[1]..":"..nitem] then
 		sandstone_tex = minetest.registered_nodes[names[1]..":"..nitem].tiles[1]
 	else
 		sandstone_tex = "[combine:16x16^[noalpha^[colorize:#fefebe"
