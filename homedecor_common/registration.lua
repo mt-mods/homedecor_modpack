@@ -46,9 +46,12 @@ function homedecor.register(name, original_def)
 	if expand then
 		-- dissallow rotating only half the expanded node by default
 		-- unless we know better
-		def.on_rotate = def.on_rotate or
-		(minetest.get_modpath("screwdriver") and (def.mesh and expand.top and screwdriver.rotate_simple) or
-		minetest.get_modpath("screwdriver") and screwdriver.disallow) or nil
+		def.on_rotate = def.on_rotate or (
+			minetest.get_modpath("screwdriver") and (
+				(def.mesh and expand.top and screwdriver.rotate_simple) or
+				screwdriver.disallow
+			)
+		)
 
 		def.on_place = def.on_place or function(itemstack, placer, pointed_thing)
 			if expand.top then
