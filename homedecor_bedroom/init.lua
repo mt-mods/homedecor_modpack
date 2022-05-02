@@ -33,8 +33,8 @@ local kbed_cbox = {
 }
 
 
-local bed_on_rightclick =
-	minetest.registered_nodes["beds:bed"] and minetest.registered_nodes["beds:bed"].on_rightclick or nil
+local bed_def = minetest.registered_nodes["beds:bed"]
+local bed_on_rightclick = bed_def and bed_def.on_rightclick or nil
 
 homedecor.register("bed_regular", {
 	mesh = "homedecor_bed_regular.obj",
