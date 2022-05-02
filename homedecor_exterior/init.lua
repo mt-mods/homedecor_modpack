@@ -330,7 +330,8 @@ homedecor.register("well", {
 	}
 })
 
-if minetest.get_modpath("bucket") then
+--because the engine of all people cant follow right to a name, need to verify bucket empty
+if minetest.get_modpath("bucket") and minetest.registered_items["bucket:bucket_empty"] then
 	local original_bucket_on_use = minetest.registered_items["bucket:bucket_empty"].on_use
 	minetest.override_item("bucket:bucket_empty", {
 		on_use = function(itemstack, user, pointed_thing)
