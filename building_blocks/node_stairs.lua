@@ -1,4 +1,9 @@
 local S = minetest.get_translator("building_blocks")
+local stairs_compat
+
+if minetest.get_modpath("stairs") and not minetest.get_modpath("moreblocks") then
+	stairs_compat = dofile(minetest.get_modpath("building_blocks") .. "/stairs_compat.lua")
+end
 
 local function building_blocks_stairs(nodename, def)
 	minetest.register_node(nodename, def)
@@ -10,6 +15,9 @@ local function building_blocks_stairs(nodename, def)
 		minetest.register_alias("stairs:stair_" .. name, mod .. ":stair_" .. name)
 		minetest.register_alias("stairs:stair_inner_" .. name, mod .. ":stair_" .. name .. "_inner")
 		minetest.register_alias("stairs:stair_outer_" .. name, mod .. ":stair_" .. name .. "_outer")
+	end
+	if stairs_compat then
+		stairs_compat(nodename, def)
 	end
 end
 
