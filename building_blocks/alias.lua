@@ -40,8 +40,10 @@ if not minetest.get_modpath("technic") then
 		    description = S("Granite"),
 		    tiles = { "technic_granite.png" },
 		    is_ground_content = true,
-		    groups = {cracky=1},
-		    sounds = default.node_sound_stone_defaults(),
+		    groups = {cracky=1, dig_stone=2},
+		    _sound_def = {
+				key = "node_sound_stone_defaults",
+			},
 	})
 	minetest.register_craft({
 		output = "technic:granite 9",

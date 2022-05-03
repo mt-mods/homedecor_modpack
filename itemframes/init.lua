@@ -137,7 +137,9 @@ minetest.register_node("itemframes:frame",{
 	sunlight_propagates = true,
 	groups = {choppy = 2, dig_immediate = 2},
 	legacy_wallmounted = true,
-	sounds = default.node_sound_wood_defaults(),
+	_sound_def = {
+		key = "node_sound_wood_defaults",
+	},
 	on_rotate = sd_disallow or nil,
 	after_place_node = function(pos, placer, itemstack)
 		local meta = minetest.get_meta(pos)
@@ -213,8 +215,10 @@ minetest.register_node("itemframes:pedestal",{
 	--},
 	tiles = {"itemframes_pedestal.png"},
 	paramtype = "light",
-	groups = {cracky = 3},
-	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky = 3, dig_stone = 2},
+	_sound_def = {
+		key = "node_sound_stone_defaults",
+	},
 	on_rotate = sd_disallow or nil,
 	after_place_node = function(pos, placer, itemstack)
 		local meta = minetest.get_meta(pos)
@@ -308,7 +312,7 @@ minetest.register_craft({
 	output = 'itemframes:frame',
 	recipe = {
 		{'group:stick', 'group:stick', 'group:stick'},
-		{'group:stick', 'default:paper', 'default:stick'},
+		{'group:stick', homedecor.materials.paper, 'default:stick'},
 		{'group:stick', 'group:stick', 'group:stick'},
 	}
 })
@@ -316,9 +320,9 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'itemframes:pedestal',
 	recipe = {
-		{'default:stone', 'default:stone', 'default:stone'},
-		{'', 'default:stone', ''},
-		{'default:stone', 'default:stone', 'default:stone'},
+		{homedecor.materials.stone, homedecor.materials.stone, homedecor.materials.stone},
+		{'', homedecor.materials.stone, ''},
+		{homedecor.materials.stone, homedecor.materials.stone, homedecor.materials.stone},
 	}
 })
 
