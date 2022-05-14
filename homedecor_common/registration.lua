@@ -121,7 +121,7 @@ function homedecor.register(name, original_def)
 		end
 
 		if cdef.type ~= "toolrepair" and not cdef.output then
-			cdef.output = ":homedecor:" .. name
+			cdef.output = "homedecor:" .. name
 		end
 
 		minetest.register_craft(cdef)
