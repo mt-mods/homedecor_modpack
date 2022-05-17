@@ -241,7 +241,7 @@ for brightness_level = 0, 14 do
 		}
 		overlay = {
 			{ name = "homedecor_glowlight_top_glare.png", color = "white"},
-			"",
+			{ name = "homedecor_glowlight_top_glare.png", color = "white"},
 			{ name = sides_glare, color = "white"},
 			{ name = sides_glare, color = "white"},
 			{ name = sides_glare, color = "white"},
@@ -309,7 +309,7 @@ for brightness_level = 0, 14 do
 		}
 		overlay = {
 			{ name = "homedecor_glowlight_top_glare.png", color = "white"},
-			"",
+			{ name = "homedecor_glowlight_top_glare.png", color = "white"},
 			{ name = sides_glare, color = "white"},
 			{ name = sides_glare, color = "white"},
 			{ name = sides_glare, color = "white"},
@@ -378,7 +378,7 @@ for brightness_level = 0, 14 do
 		}
 		overlay = {
 			{ name = "homedecor_glowlight_cube_top_glare.png", color = "white"},
-			"",
+			{ name = "homedecor_glowlight_cube_top_glare.png", color = "white"},
 			{ name = sides_glare, color = "white"},
 			{ name = sides_glare, color = "white"},
 			{ name = sides_glare, color = "white"},
