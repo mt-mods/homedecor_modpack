@@ -121,7 +121,7 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 
 	--seat the player
 	sit_pos.y = sit_pos.y-0.5
-	clicker:setpos(sit_pos)
+	clicker:set_pos(sit_pos)
 	return itemstack
 end
 
