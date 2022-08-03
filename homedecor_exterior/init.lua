@@ -362,7 +362,7 @@ homedecor_exterior.shrub_colors = {
 local shrub_cbox = { -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 }
 
 for color, color_loc in pairs(homedecor_exterior.shrub_colors) do
-	minetest.register_node(":homedecor:shrubbery_large_"..color, {
+	homedecor.register("shrubbery_large_"..color, {
 		description = S("Shrubbery (large, @1)", color_loc),
 		drawtype = "mesh",
 		mesh = "homedecor_cube.obj",
@@ -384,7 +384,7 @@ for color, color_loc in pairs(homedecor_exterior.shrub_colors) do
 		}
 	})
 
-	minetest.register_node(":homedecor:shrubbery_"..color, {
+	homedecor.register("shrubbery_"..color, {
 		description = S("Shrubbery (@1)", color_loc),
 		drawtype = "mesh",
 		mesh = "homedecor_shrubbery.obj",

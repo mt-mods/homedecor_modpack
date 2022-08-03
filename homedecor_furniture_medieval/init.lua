@@ -79,6 +79,15 @@ homedecor.register("chains", {
 	_sound_def = {
 		key = "node_sound_stone_defaults",
 	},
+	crafts = {
+		{
+			output = "homedecor:chains 4",
+			recipe = {
+				{ "steel_ingot","" },
+				{ "homedecor:bars","homedecor:bars" },
+			},
+		}
+	}
 })
 
 minetest.register_alias("3dforniture:bars", "homedecor:bars")

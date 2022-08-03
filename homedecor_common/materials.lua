@@ -44,6 +44,7 @@ homedecor.materials = {
     stone = "default:stone",
     cobble = "default:cobble",
     brick = "default:brick",
+    obsidian_glass = "default:obsidian_glass",
 }
 
 if minetest.get_modpath("moreores") then

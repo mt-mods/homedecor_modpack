@@ -199,7 +199,7 @@ end
 minetest.register_craft( {
 	output = "homedecor:wardrobe",
 	recipe = {
-		{ "homedecor:drawer_small", "homedecor:kitchen_cabinet" },
+		{ "homedecor:drawer_small", "homedecor:kitchen_cabinet_colorable" },
 		{ "homedecor:drawer_small", "group:wood" },
 		{ "homedecor:drawer_small", "group:wood" }
 	},
