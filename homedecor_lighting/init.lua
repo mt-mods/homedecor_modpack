@@ -1751,6 +1751,22 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "homedecor:rope_light_on_floor_off",
+	type= "shapeless",
+	recipe = {
+		"homedecor:rope_light_on_ceiling_off"
+	}
+})
+
+minetest.register_craft({
+	output = "homedecor:rope_light_on_ceiling_off",
+	type= "shapeless",
+	recipe = {
+		homedecor.materials.steel_ingot, "homedecor:ceiling_lamp"
+	}
+})
+
+minetest.register_craft({
 	output = "homedecor:ceiling_lamp",
 	recipe = {
 		{ "", "basic_materials:chain_steel_top_brass", ""},
