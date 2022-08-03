@@ -290,6 +290,14 @@ homedecor.register("dvd_cd_cabinet", {
 	_sound_def = {
 		key = "node_sound_wood_defaults",
 	},
+	crafts = {
+		{
+			type = "shapeless",
+			recipe = {
+				"homedecor:dvd_player", "homedecor:kitchen_cabinet_colorable"
+			}
+		}
+	}
 })
 
 local pooltable_cbox = {
