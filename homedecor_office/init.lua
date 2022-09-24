@@ -55,13 +55,6 @@ homedecor.register("desk", {
 	crafts = {
 		{
 			recipe = {
-				{ "slab_wood", "slab_wood", "slab_wood" },
-				{ "homedecor:drawer_small", "group:wood", "group:wood" },
-				{ "homedecor:drawer_small", "", "group:wood" },
-			},
-		},
-		{
-			recipe = {
 				{ "moreblocks:slab_wood", "moreblocks:slab_wood", "moreblocks:slab_wood" },
 				{ "homedecor:drawer_small", "group:wood", "group:wood" },
 				{ "homedecor:drawer_small", "", "group:wood" },
@@ -93,13 +86,6 @@ homedecor.register("desk_globe", {
 		key = "node_sound_wood_defaults",
 	},
 	crafts = {
-		{
-			recipe = {
-				{ "group:stick", "basic_materials:plastic_sheet", "dye_green" },
-				{ "group:stick", "basic_materials:plastic_sheet", "basic_materials:plastic_sheet" },
-				{ "group:stick", "slab_wood", "dye_blue" }
-			},
-		},
 		{
 			recipe = {
 				{ "group:stick", "basic_materials:plastic_sheet", "dye_green" },

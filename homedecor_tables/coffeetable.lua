@@ -115,15 +115,6 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	output = "lrfurn:coffeetable",
-	recipe = {
-		{"", "", "", },
-		{"moreblocks:slab_wood", "moreblocks:slab_wood", "moreblocks:slab_wood", },
-		{"group:stick", "", "group:stick", }
-	}
-})
-
 if minetest.settings:get("log_mods") then
 	minetest.log("action", "[lrfurn/coffeetable] Loaded!")
 end

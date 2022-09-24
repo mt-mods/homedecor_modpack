@@ -680,23 +680,7 @@ minetest.register_craft( {
 minetest.register_craft( {
     output = "homedecor:dishwasher_wood",
     recipe = {
-		{ "stairs:slab_wood" },
-		{ "homedecor:dishwasher" },
-    },
-})
-
-minetest.register_craft( {
-    output = "homedecor:dishwasher_wood",
-    recipe = {
 		{ "moreblocks:slab_wood" },
-		{ "homedecor:dishwasher" },
-    },
-})
-
-minetest.register_craft( {
-    output = "homedecor:dishwasher_wood",
-    recipe = {
-		{ "moreblocks:slab_wood_1" },
 		{ "homedecor:dishwasher" },
     },
 })

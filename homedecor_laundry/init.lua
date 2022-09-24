@@ -27,13 +27,6 @@ homedecor.register("washing_machine", {
 				{ "steel_ingot", "water_bucket", "steel_ingot" },
 				{ "steel_ingot", "basic_materials:motor", "steel_ingot" }
 			},
-		},
-		{
-			recipe = {
-				{ "steel_ingot", "steel_ingot", "basic_materials:ic" },
-				{ "steel_ingot", "water_bucket", "steel_ingot" },
-				{ "steel_ingot", "basic_materials:motor", "steel_ingot" }
-			},
 		}
 	}
 })
@@ -58,13 +51,6 @@ homedecor.register("dryer", {
 	selection_box = { type = "regular" },
 	groups = { snappy = 3, dig_stone=3 },
 	crafts = {
-		{
-			recipe = {
-				{ "steel_ingot", "steel_ingot", "basic_materials:ic" },
-				{ "steel_ingot", "empty_bucket", "basic_materials:motor" },
-				{ "steel_ingot", "basic_materials:heating_element", "steel_ingot" }
-			},
-		},
 		{
 			recipe = {
 				{ "steel_ingot", "steel_ingot", "basic_materials:ic" },

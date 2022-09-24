@@ -107,14 +107,6 @@ homedecor.register("stonepath", {
 		{
 			output = "homedecor:stonepath 16",
 			recipe = {
-				{ "slab_stone","","slab_stone" },
-				{ "","slab_stone","" },
-				{ "slab_stone","","slab_stone" }
-			},
-		},
-		{
-			output = "homedecor:stonepath 16",
-			recipe = {
 				{ "moreblocks:slab_stone","","moreblocks:slab_stone" },
 				{ "","moreblocks:slab_stone","" },
 				{ "moreblocks:slab_stone","","moreblocks:slab_stone" }
@@ -248,13 +240,6 @@ homedecor.register("swing", {
 		end
 	end,
 	crafts = {
-		{
-			recipe = {
-				{ "string","","string" },
-				{ "string","","string" },
-				{ "string","slab_wood","string" }
-			},
-		},
 		{
 			recipe = {
 				{ "string","","string" },

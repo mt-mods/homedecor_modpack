@@ -242,30 +242,12 @@ minetest.register_craft( {
 })
 
 minetest.register_craft( {
-        output = "homedecor:bench_large_2_left",
-        recipe = {
-			{ "homedecor:shutter_oak", "homedecor:shutter_oak", "homedecor:shutter_oak" },
-			{ "group:wood", "group:wood", "group:wood" },
-			{ "moreblocks:slab_wood", "", "moreblocks:slab_wood" }
-        },
-})
-
-minetest.register_craft( {
         output = "homedecor:simple_bench",
         recipe = {
 			{ homedecor.materials.slab_wood, homedecor.materials.slab_wood, homedecor.materials.slab_wood },
 			{ homedecor.materials.slab_wood, "", homedecor.materials.slab_wood }
         },
 })
-
-minetest.register_craft( {
-        output = "homedecor:simple_bench",
-        recipe = {
-			{ "moreblocks:slab_wood", "moreblocks:slab_wood", "moreblocks:slab_wood" },
-			{ "moreblocks:slab_wood", "", "moreblocks:slab_wood" }
-        },
-})
-
 
 minetest.register_craft({
 	output = "homedecor:deckchair",

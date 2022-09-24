@@ -71,15 +71,6 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	output = "lrfurn:armchair",
-	recipe = {
-		{"wool:white", "", "", },
-		{"moreblocks:slab_wood", "", "", },
-		{"group:stick", "", "", }
-	}
-})
-
 unifieddyes.register_color_craft({
 	output = "lrfurn:armchair",
 	palette = "wallmounted",

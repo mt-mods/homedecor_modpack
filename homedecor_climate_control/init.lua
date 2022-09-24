@@ -135,13 +135,6 @@ homedecor.register("ceiling_fan", {
 				{ "homedecor:fan_blades" },
 				{ "homedecor:glowlight_small_cube" }
 			}
-		},
-		{
-			recipe = {
-				{ "basic_materials:motor" },
-				{ "homedecor:fan_blades" },
-				{ "homedecor:glowlight_small_cube" }
-			}
 		}
 	}
 })

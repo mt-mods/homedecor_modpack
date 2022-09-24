@@ -57,15 +57,6 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	output = "lrfurn:longsofa",
-	recipe = {
-		{homedecor.materials.wool_white, homedecor.materials.wool_white, homedecor.materials.wool_white, },
-		{"moreblocks:slab_wood", "moreblocks:slab_wood", "moreblocks:slab_wood", },
-		{"group:stick", "group:stick", "group:stick", }
-	}
-})
-
 unifieddyes.register_color_craft({
 	output = "lrfurn:longsofa",
 	palette = "wallmounted",
