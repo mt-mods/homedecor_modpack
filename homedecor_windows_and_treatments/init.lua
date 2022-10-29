@@ -531,21 +531,22 @@ minetest.register_craft({
 	},
 })
 
-minetest.register_craft({
-	output = "homedecor:stained_glass 2",
-	recipe = {
-		{"", "dye:blue", ""},
-		{"dye:red", "cottages:glass_pane_side", "dye:green"},
-		{"", "dye:yellow", ""},
-	},
-})
+if minetest.get_modpath("cottages") then
+	minetest.register_craft({
+		output = "homedecor:stained_glass 2",
+		recipe = {
+			{"", "dye:blue", ""},
+			{"dye:red", "cottages:glass_pane_side", "dye:green"},
+			{"", "dye:yellow", ""},
+		},
+	})
 
-minetest.register_craft({
-	output = "homedecor:stained_glass 2",
-	recipe = {
-		{"", "dye:blue", ""},
-		{"dye:red", "cottages:glass_pane", "dye:green"},
-		{"", "dye:yellow", ""},
-	},
-})
-
+	minetest.register_craft({
+		output = "homedecor:stained_glass 2",
+		recipe = {
+			{"", "dye:blue", ""},
+			{"dye:red", "cottages:glass_pane", "dye:green"},
+			{"", "dye:yellow", ""},
+		},
+	})
+end
