@@ -414,14 +414,16 @@ minetest.register_craft( {
 	},
 })
 
-minetest.register_craft( {
-	output = "homedecor:curtain_open 4",
-		recipe = {
-		{ "cottages:wool", "", ""},
-		{ "cottages:wool", "", ""},
-		{ "cottages:wool", "", ""},
-	},
-})
+if minetest.get_modpath("cottages") then
+	minetest.register_craft( {
+		output = "homedecor:curtain_open 4",
+			recipe = {
+			{ "cottages:wool", "", ""},
+			{ "cottages:wool", "", ""},
+			{ "cottages:wool", "", ""},
+		},
+	})
+end
 
 unifieddyes.register_color_craft({
 	output = "homedecor:curtain_closed",

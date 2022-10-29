@@ -1812,29 +1812,31 @@ minetest.register_craft({
 minetest.register_craft({
 	output = "homedecor:table_lamp_hi",
 	recipe = {
-		{ "cottages:wool", "default:torch", "cottages:wool"},
-		{ "", "group:stick", ""},
-		{ "", "stairs:slab_wood", "" },
-	},
-})
-
-minetest.register_craft({
-	output = "homedecor:table_lamp_hi",
-	recipe = {
 		{ "wool:white", "default:torch", "wool:white"},
 		{ "", "group:stick", ""},
 		{ "", "moreblocks:slab_wood", "" },
 	},
 })
 
-minetest.register_craft({
-	output = "homedecor:table_lamp_hi",
-	recipe = {
-		{ "cottages:wool", "default:torch", "cottages:wool"},
-		{ "", "group:stick", ""},
-		{ "", "moreblocks:slab_wood", "" },
-	},
-})
+if minetest.get_modpath("cottages") then
+	minetest.register_craft({
+		output = "homedecor:table_lamp_hi",
+		recipe = {
+			{ "cottages:wool", "default:torch", "cottages:wool"},
+			{ "", "group:stick", ""},
+			{ "", "stairs:slab_wood", "" },
+		},
+	})
+
+	minetest.register_craft({
+		output = "homedecor:table_lamp_hi",
+		recipe = {
+			{ "cottages:wool", "default:torch", "cottages:wool"},
+			{ "", "group:stick", ""},
+			{ "", "moreblocks:slab_wood", "" },
+		},
+	})
+end
 
 unifieddyes.register_color_craft({
 	output = "homedecor:table_lamp_hi",
