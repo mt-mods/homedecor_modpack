@@ -329,7 +329,7 @@ minetest.register_alias("fake_fire:flint", "fake_fire:flint_and_steel")
 minetest.register_lbm({
 	name = "fake_fire:reload_particles",
 	label = "restart fire particles on reload",
-	nodenames = "fake_fire:fancy_fire",
+	nodenames = { "fake_fire:fancy_fire" },
 	run_at_every_load = true,
 	action = function(pos, node)
 		fire_particles_off(pos)
