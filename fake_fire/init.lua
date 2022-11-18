@@ -343,8 +343,10 @@ minetest.register_lbm({
 	nodenames = fake_fire_reload_particles_nodes,
 	run_at_every_load = true,
 	action = function(pos, node)
-		stop_smoke(pos)
-		start_fire_effects(pos, node, nil, 1)
+		if minetest.get_meta(pos):get_int("smoky") ~= 0 then
+			stop_smoke(pos)
+			start_fire_effects(pos, node, nil, 1)
+		end
 	end
 })
 
