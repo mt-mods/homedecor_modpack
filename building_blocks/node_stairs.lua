@@ -76,7 +76,7 @@ building_blocks_stairs("building_blocks:Adobe", {
 })
 local grasstex = {"[combine:16x16^[noalpha^[colorize:#006400"}
 if minetest.get_modpath("default") then
-	grasstex = minetest.registered_nodes["default:dirt_with_grass"].tiles
+	grasstex = {"default_grass.png", "building_blocks_fakegrass.png"}
 end
 building_blocks_stairs("building_blocks:fakegrass", {
 	tiles = grasstex,
