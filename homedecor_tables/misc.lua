@@ -232,7 +232,7 @@ minetest.register_craft({
 
 minetest.register_craft({
         type = "fuel",
-        recipe = "homedecor:wood_table_large_b",
+        recipe = "homedecor:wood_table_large_square_b",
         burntime = 30,
 })
 
