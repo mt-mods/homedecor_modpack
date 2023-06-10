@@ -281,6 +281,12 @@ function homedecor.register_furnace(name, furnacedef)
 		if dst_full then
 			infotext = S("@1 (output bins are full)", desc)
 			result = false
+			formspec = make_formspec(furnacedef, 0)
+			swap_node(pos, nname .. locked)
+			-- stop timer on the inactive furnace
+			minetest.get_node_timer(pos):stop()
+			meta:set_int("timer_elapsed", 0)
+			fuel_totaltime, fuel_time, src_time = 0, 0, 0
 		end
 
 		if infotext == nil then
