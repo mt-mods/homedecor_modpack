@@ -91,16 +91,6 @@ function homedecor.register_furnace(name, furnacedef)
 
 	local description = furnacedef.description or S("Furnace")
 
-	local furnace_construct = function(pos)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec", make_formspec(furnacedef, 0))
-		meta:set_string("infotext", description)
-		local inv = meta:get_inventory()
-		inv:set_size("fuel", 1)
-		inv:set_size("src", 1)
-		inv:set_size("dst", furnacedef.output_slots)
-	end
-
 	local furnace_allow_put = function(pos, listname, index, stack, player)
 		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
@@ -260,25 +250,10 @@ function homedecor.register_furnace(name, furnacedef)
 		-- Update formspec, infotext and node
 		--
 		local formspec
-		local item_state
-		local item_percent = 0
-		if cookable then
-			item_percent = math.floor(src_time / cooked.time * 100)
-			if dst_full then
-				item_state = S("100% (output full)")
-			else
-				item_state = S("@1%", item_percent)
-			end
-		else
-			if srclist and not srclist[1]:is_empty() then
-				item_state = S("Not cookable")
-			else
-				item_state = S("Empty")
-			end
-		end
+		local infotext
 
-		local fuel_state = S("Empty")
-		local active = false
+		local percent = math.floor(fuel_time / fuel_totaltime * 100)
+
 		local result = false
 
 		local node = minetest.get_node(pos)
@@ -286,26 +261,31 @@ function homedecor.register_furnace(name, furnacedef)
 		local desc = minetest.registered_nodes[nname..locked].description
 
 		if fuel_totaltime ~= 0 then
-			active = true
-			local fuel_percent = 100 - math.floor(fuel_time / fuel_totaltime * 100)
-			fuel_state = S("@1%", fuel_percent)
-			formspec = make_formspec(furnacedef, item_percent)
+			formspec = make_formspec(furnacedef, percent)
 			swap_node(pos, name_active .. locked)
 			-- make sure timer restarts automatically
 			result = true
 		else
-			if fuellist and not fuellist[1]:is_empty() then
-				fuel_state = S("@1%", 0)
-			end
 			formspec = make_formspec(furnacedef, 0)
+			infotext = S("@1 (out of fuel)", desc)
 			swap_node(pos, nname .. locked)
 			-- stop timer on the inactive furnace
 			minetest.get_node_timer(pos):stop()
 			meta:set_int("timer_elapsed", 0)
 		end
 
+		if not cookable and fuellist and not fuellist[1]:is_empty() then
+			infotext = S("@1 (empty)", desc)
+		end
 
-		local infotext = S("@1 (active: @2%)", desc, item_percent)
+		if dst_full then
+			infotext = S("@1 (output bins are full)", desc)
+			result = false
+		end
+
+		if infotext == nil then
+			infotext = S("@1 (active: @2%)", desc, percent)
+		end
 
 		--
 		-- Set meta values
@@ -317,6 +297,15 @@ function homedecor.register_furnace(name, furnacedef)
 		meta:set_string("infotext", infotext)
 
 		return result
+	end
+
+	local furnace_construct = function(pos)
+		local meta = minetest.get_meta(pos)
+		local inv = meta:get_inventory()
+		inv:set_size("fuel", 1)
+		inv:set_size("src", 1)
+		inv:set_size("dst", furnacedef.output_slots)
+		furnace_node_timer(pos, 0)
 	end
 
 	local def = {
