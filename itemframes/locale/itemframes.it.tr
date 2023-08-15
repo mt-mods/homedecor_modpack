@@ -4,6 +4,6 @@
 ### init.lua ###
 
 Item frame=
-Item frame (owned by @1)=%s (di proprietà di %s)
+Item frame (owned by @1)=%s (di proprietà di @1)
 Pedestal=
-Pedestal (owned by @1)=%s (di proprietà di %s)
+Pedestal (owned by @1)=%s (di proprietà di @1)
