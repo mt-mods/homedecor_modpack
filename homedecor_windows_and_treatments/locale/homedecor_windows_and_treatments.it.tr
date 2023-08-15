@@ -3,9 +3,9 @@
 
 ### init.lua ###
 
-Curtain Rod (@1)=Tende (%s)
-Curtains=Tende (%s)
-Curtains (open)=Tende (%s)
+Curtain Rod (@1)=Tende (@1)
+Curtains=Tende
+Curtains (open)=Tende (aprire)
 Stained Glass=
 Window (plain)=
 Window (quartered)=

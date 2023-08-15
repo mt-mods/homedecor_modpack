@@ -3,14 +3,14 @@
 
 ### init.lua ###
 
-@1 (inner corner)=Tegole in legno (angolo interno)
-@1 (outer corner)=Tegole in legno (angolo esterno)
+@1 (inner corner)=@1 (angolo interno)
+@1 (outer corner)=@1 (angolo esterno)
 Asphalt Shingles=Mattonelle di asfalto
 Chimney=
 Glass Shingles=Mattonelle di asfalto
 Glass Skylight=Lucernario di vetro
 Glass Skylight Frosted=Lucernario di vetro satinato
-Shingles (@1)=Tegole in legno
+Shingles (@1)=Scandole del tetto (@1)
 Terracotta Shingles=Tegole di terracotta
 Wood Shingles=Tegole in legno
 asphalt=
