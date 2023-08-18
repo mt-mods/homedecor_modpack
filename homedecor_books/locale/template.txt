@@ -6,4 +6,3 @@ violet=
 grey=
 brown=
 Writable Book (@1)=
-@1 has written in a book (title: "@2"): "@3" at location @4=
