@@ -1,7 +1,13 @@
 # textdomain: homedecor_misc
 Textured Ceiling Paint=Vernice con trama per il soffitto
 Drop-Ceiling Tile=Piastrella del controsoffitto
+small=
+large=
+persian=
 Rug (@1)=
+black=
+green=
+terracotta=
 Flower Pot (@1)=
 Rose=
 Tulip=
@@ -31,6 +37,7 @@ wrought iron=Palo di ferro battuto
 diagonal=
 horizontal=
 Banister for Stairs (@1, @2)=
+Spiral Staircase=
 not enough space=
 Japanese tatami=
 Dartboard=

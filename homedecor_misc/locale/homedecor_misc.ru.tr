@@ -1,7 +1,13 @@
 # textdomain: homedecor_misc
 Textured Ceiling Paint=Текстурированная потолочная краска
 Drop-Ceiling Tile=Потолочная плитка
+small=
+large=
+persian=
 Rug (@1)=Ковёр (@1)
+black=
+green=
+terracotta=
 Flower Pot (@1)=Цветочный горшок (@1)
 Rose=Роза
 Tulip=Тюльпан
@@ -31,6 +37,7 @@ wrought iron=кованное железо
 diagonal=диагональный
 horizontal=горизонтальный
 Banister for Stairs (@1, @2)=Перила для ступеней (@1, @2)
+Spiral Staircase=
 not enough space=не хватает места
 Japanese tatami=Японский татами
 Dartboard=Мишень для дротиков

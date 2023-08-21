@@ -1,7 +1,13 @@
 # textdomain: homedecor_misc
 Textured Ceiling Paint=Pintura Texturizada do Teto
 Drop-Ceiling Tile=Placa de Teto
+small=
+large=
+persian=
 Rug (@1)=Carpete (@1)
+black=
+green=
+terracotta=
 Flower Pot (@1)=Vaso de Flores (@1)
 Rose=Rosa
 Tulip=Tulipa
@@ -31,6 +37,7 @@ wrought iron=ferro forjado
 diagonal=diagonal
 horizontal=horizontal
 Banister for Stairs (@1, @2)=Corrimão para Escadas (@1, @2)
+Spiral Staircase=
 not enough space=espaço insuficiente
 Japanese tatami=Tatami Japonês
 Dartboard=Alvo
