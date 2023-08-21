@@ -31,6 +31,7 @@ wrought iron=
 diagonal=
 horizontal=
 Banister for Stairs (@1, @2)=
+Spiral Staircase=
 not enough space=
 Japanese tatami=
 Dartboard=
