@@ -1,7 +1,13 @@
 # textdomain: homedecor_misc
 Textured Ceiling Paint=
 Drop-Ceiling Tile=
+small=
+large=
+persian=
 Rug (@1)=
+black=
+green=
+terracotta=
 Flower Pot (@1)=
 Rose=
 Tulip=
