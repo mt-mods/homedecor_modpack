@@ -43,13 +43,13 @@ homedecor.register("ceiling_tile", {
 })
 
 local rug_types = {
-	{ S("small"),   "homedecor_small_rug.obj"    },
-	{ S("large"),   homedecor.box.slab_y(0.0625) },
-	{ S("persian"), homedecor.box.slab_y(0.0625) },
+	{ "small", S("small"), "homedecor_small_rug.obj" },
+	{ "large", S("large"), homedecor.box.slab_y(0.0625) },
+	{ "persian", S("persian"), homedecor.box.slab_y(0.0625) },
 }
 
 for _, rt in ipairs(rug_types) do
-	local s, m = unpack(rt)
+	local s, desc, m = unpack(rt)
 
 	local mesh = m
 	local nodebox = nil
@@ -69,7 +69,7 @@ for _, rt in ipairs(rug_types) do
 	end
 
 	homedecor.register("rug_"..s, {
-		description = S("Rug (@1)", s),
+		description = S("Rug (@1)", desc),
 		mesh = mesh,
 		tiles = tiles,
 		node_box = nodebox,
@@ -83,22 +83,29 @@ for _, rt in ipairs(rug_types) do
 	})
 end
 
-local pot_colors = { S("black"), S("green"), S("terracotta") }
+local pot_colors = {
+	{ "black", S("black") },
+	{ "green", S("green") },
+	{ "terracotta", S("terracotta") },
+}
 
-for _, p in ipairs(pot_colors) do
-homedecor.register("flower_pot_"..p, {
-	description = S("Flower Pot (@1)", p),
-	mesh = "homedecor_flowerpot.obj",
-	tiles = {
-		"homedecor_flower_pot_"..p..".png",
-		{ name = default and "default_dirt.png" or wood_tex, color = 0xff505050 },
-	},
-	groups = { snappy = 3, potting_soil=1 },
-	_sound_def = {
-		key = "node_sound_stone_defaults",
-	},
-})
+for _, pot in ipairs(pot_colors) do
+	local p, desc = unpack(pot)
+
+	homedecor.register("flower_pot_"..p, {
+		description = S("Flower Pot (@1)", desc),
+		mesh = "homedecor_flowerpot.obj",
+		tiles = {
+			"homedecor_flower_pot_"..p..".png",
+			{ name = default and "default_dirt.png" or wood_tex, color = 0xff505050 },
+		},
+		groups = { snappy = 3, potting_soil=1 },
+		_sound_def = {
+			key = "node_sound_stone_defaults",
+		},
+	})
 end
+
 if minetest.get_modpath("flowers") then
 	local flowers_list = {
 		{ S("Rose"),				"rose",				"flowers:rose" },
