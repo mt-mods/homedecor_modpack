@@ -9,6 +9,7 @@ minetest.register_node(":homedecor:skylight", {
 	wield_image = homedecor.textures.glass,
 	inventory_image = "homedecor_skylight_inv.png",
 	groups = { snappy = 3, dig_tree = 2 , axey=5},
+	is_ground_content = false,
 	_mcl_hardness=1.6,
 	paramtype = "light",
 	_sound_def = {
@@ -26,6 +27,7 @@ minetest.register_node(":homedecor:skylight_frosted", {
 	inventory_image = "homedecor_skylight_frosted_inv.png",
 	use_texture_alpha = "blend",
 	groups = { snappy = 3, dig_tree = 2, axey=5},
+	is_ground_content = false,
 	_mcl_hardness=1.6,
 	paramtype = "light",
 	_sound_def = {
@@ -45,6 +47,7 @@ for s, s_loc in pairs({ ["asphalt"] = S("asphalt"), ["terracotta"] = S("terracot
 		paramtype = "light",
 		walkable = false,
 		groups = { snappy = 3, dig_tree = 2, axey=5},
+		is_ground_content = false,
 		_mcl_hardness=1.6,
 		_sound_def = {
 			key = "node_sound_wood_defaults",
@@ -104,6 +107,7 @@ homedecor_roofing.register_outer_corner = function(modname, subname, groups, slo
 		selection_box = ocorner_cbox,
 		collision_box = ocorner_cbox,
 		groups = groups,
+		is_ground_content = false,
 		_mcl_hardness=1.6,
 		on_place = minetest.rotate_node,
 		_sound_def = {
@@ -129,6 +133,7 @@ homedecor_roofing.register_inner_corner = function(modname, subname, groups, slo
 		paramtype2 = "facedir",
 		collision_box = icorner_cbox,
 		groups = groups,
+		is_ground_content = false,
 		_mcl_hardness=1.6,
 		on_place = minetest.rotate_node,
 		_sound_def = {
@@ -156,6 +161,7 @@ homedecor_roofing.register_slope = function(modname, subname, recipeitem, groups
 		collision_box = slope_cbox,
 		use_texture_alpha = "blend",
 		groups = groups,
+		is_ground_content = false,
 		_mcl_hardness=1.6,
 		on_place = minetest.rotate_node,
 		_sound_def = {

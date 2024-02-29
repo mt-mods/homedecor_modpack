@@ -136,6 +136,7 @@ minetest.register_node("itemframes:frame",{
 	paramtype2 = "facedir",
 	sunlight_propagates = true,
 	groups = {choppy = 2, dig_immediate = 2, axey=5},
+	is_ground_content = false,
 	_mcl_hardness=1.6,
 	legacy_wallmounted = true,
 	_sound_def = {
@@ -217,6 +218,7 @@ minetest.register_node("itemframes:pedestal",{
 	tiles = {"itemframes_pedestal.png"},
 	paramtype = "light",
 	groups = {cracky = 3, dig_stone = 2, pickaxey=5},
+	is_ground_content = false,
 	_mcl_hardness=1.6,
 	_sound_def = {
 		key = "node_sound_stone_defaults",

@@ -20,6 +20,7 @@ minetest.register_node(":lrfurn:armchair", {
 	palette = "unifieddyes_palette_colorwallmounted.png",
 	inventory_image = "lrfurn_armchair_inv.png",
 	groups = {snappy=3, ud_param2_colorable = 1, dig_tree=2, axey=5},
+	is_ground_content = false,
 	_mcl_hardness=1.6,
 	_sound_def = {
 		key = "node_sound_wood_defaults",
