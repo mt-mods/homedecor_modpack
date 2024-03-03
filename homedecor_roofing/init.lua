@@ -5,8 +5,8 @@ homedecor_roofing = {}
 minetest.register_node(":homedecor:skylight", {
 	description = S("Glass Skylight"),
 	drawtype = "raillike",
-	tiles = { homedecor.textures.glass },
-	wield_image = homedecor.textures.glass,
+	tiles = { homedecor.textures.glass.pane },
+	wield_image = homedecor.textures.glass.pane,
 	inventory_image = "homedecor_skylight_inv.png",
 	groups = { snappy = 3, dig_tree = 2 , axey=5},
 	is_ground_content = false,

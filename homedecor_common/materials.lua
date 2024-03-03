@@ -1,1 +1,0 @@
-homedecor.materials = xcompat.materials

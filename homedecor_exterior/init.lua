@@ -43,7 +43,7 @@ homedecor.register("barbecue", {
 
 minetest.register_alias("homedecor:barbecue_meat", "air")
 
-local wood_tex = homedecor.textures.default_wood
+local wood_tex = homedecor.textures.wood.apple.planks
 
 homedecor.register("doghouse", {
 	mesh = "homedecor_doghouse.obj",

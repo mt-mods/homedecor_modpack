@@ -135,7 +135,7 @@ homedecor.register("grandfather_clock", {
 	description = S("Grandfather Clock"),
 	mesh = "homedecor_grandfather_clock.obj",
 	tiles = {
-		homedecor.textures.glass,
+		homedecor.textures.glass.pane,
 		"homedecor_grandfather_clock_face.png",
 		homedecor.lux_wood,
 		"homedecor_grandfather_clock_face_edge.png",
