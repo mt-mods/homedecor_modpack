@@ -11,8 +11,8 @@ local S = minetest.get_translator("homedecor_misc")
 
 homedecor_misc = {}
 
-local wool_black, wool_grey = homedecor.textures.wool_black, homedecor.textures.wool_grey
-local wood_tex = homedecor.textures.default_wood
+local wool_black, wool_grey = homedecor.textures.wool.black, homedecor.textures.wool.grey
+local wood_tex = homedecor.textures.wood.apple.planks
 
 homedecor.register("ceiling_paint", {
 	description = S("Textured Ceiling Paint"),

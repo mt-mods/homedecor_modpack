@@ -178,7 +178,7 @@ local sbox = {
 	fixed = { -8/16, -8/16, -8/16, 8/16, -6/16, 8/16},
 }
 
-local wtex = homedecor.textures.default_junglewood
+local wtex = homedecor.textures.wood.jungle.planks
 
 minetest.register_node("fake_fire:fancy_fire", {
 	inventory_image = "fancy_fire_inv.png",

@@ -5,8 +5,8 @@ homedecor_roofing = {}
 minetest.register_node(":homedecor:skylight", {
 	description = S("Glass Skylight"),
 	drawtype = "raillike",
-	tiles = { homedecor.textures.glass },
-	wield_image = homedecor.textures.glass,
+	tiles = { homedecor.textures.glass.pane },
+	wield_image = homedecor.textures.glass.pane,
 	inventory_image = "homedecor_skylight_inv.png",
 	groups = { snappy = 3, dig_tree = 2 , axey=5},
 	is_ground_content = false,
@@ -336,8 +336,7 @@ homedecor_roofing.register_slope("homedecor", "glass",
 	S("Glass Shingles")
 )
 
-local brick_tex = "default_brick.png"
-if not minetest.get_modpath("default") then brick_tex = "[combine:16x16^[noalpha^[colorize:#AA4A44" end
+local brick_tex = homedecor.textures.brick
 
 homedecor.register("chimney", {
 	description = S("Chimney"),

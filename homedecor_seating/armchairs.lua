@@ -40,9 +40,9 @@ homedecor.register("armchair", {
 	description = S("Armchair"),
 	mesh = "forniture_armchair.obj",
 	tiles = {
-		homedecor.textures.wool_white,
-		{ name = homedecor.textures.wool_dark_grey, color = 0xffffffff },
-		{ name = homedecor.textures.default_wood, color = 0xffffffff }
+		homedecor.textures.wool.white,
+		{ name = homedecor.textures.wool.dark_grey, color = 0xffffffff },
+		{ name = homedecor.textures.wood.apple.planks, color = 0xffffffff }
 	},
 	inventory_image = "homedecor_armchair_inv.png",
 	paramtype2 = "colorwallmounted",
