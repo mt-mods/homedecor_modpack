@@ -76,10 +76,11 @@ building_blocks_stairs("building_blocks:Adobe", {
 		key = "node_sound_stone_defaults",
 	},
 })
-local grasstex = {"[combine:16x16^[noalpha^[colorize:#006400"}
-if minetest.get_modpath("default") then
-	grasstex = {"default_grass.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"}
-end
+local grasstex = {
+	homedecor.textures.grass.top,
+	homedecor.textures.grass.dirt,
+	homedecor.textures.grass.side
+}
 building_blocks_stairs("building_blocks:fakegrass", {
 	tiles = grasstex,
 	description = S("Fake Grass"),
@@ -147,10 +148,7 @@ minetest.register_node("building_blocks:brobble_spread", {
 })
 
 if not minetest.get_modpath("moreblocks") or not minetest.get_modpath("gloopblocks") then
-	local graveltex = "[combine:16x16^[noalpha^[colorize:#3a3b3c"
-	if minetest.get_modpath("default") then
-		graveltex = "default_gravel.png"
-	end
+	local graveltex = homedecor.textures.gravel
 	minetest.register_node("building_blocks:gravel_spread", {
 		drawtype = "raillike",
 		description = S("Gravel Spread"),

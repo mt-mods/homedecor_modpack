@@ -336,8 +336,7 @@ homedecor_roofing.register_slope("homedecor", "glass",
 	S("Glass Shingles")
 )
 
-local brick_tex = "default_brick.png"
-if not minetest.get_modpath("default") then brick_tex = "[combine:16x16^[noalpha^[colorize:#AA4A44" end
+local brick_tex = homedecor.textures.brick
 
 homedecor.register("chimney", {
 	description = S("Chimney"),

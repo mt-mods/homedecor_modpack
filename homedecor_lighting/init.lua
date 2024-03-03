@@ -452,7 +452,7 @@ for brightness_level = 0, 14 do
 		lighttex = "homedecor_plasma_lamp_off.png"
 	end
 
-	local gtex=minetest.get_modpath("default") and "default_gold_block.png" or "[combine:16x16^[noalpha^[colorize:#FFD700"
+	local gtex=homedecor.textures.metal.gold.block
 	homedecor.register("plasma_lamp_"..brightness_level, {
 		description = S("Plasma Lamp/Light"),
 		drawtype = "mesh",
@@ -703,8 +703,7 @@ for brightness_level = 0, 14 do
 		fixed = { -0.25, -0.5, -0.25, 0.25, 1.5, 0.25 }
 	}
 
-	local wool_brightened=(minetest.get_modpath("wool") and "wool_grey.png" or "[combine:16x16^[noalpha6[colorize:#A9A9A9")
-		.. "^[colorize:#ffffff:"..(brightness_level * 15)
+	local wool_brightened=homedecor.textures.wool.grey .. "^[colorize:#ffffff:"..(brightness_level * 15)
 
 	homedecor.register("table_lamp_"..brightness_level, {
 		description = S("Table Lamp/Light"),
