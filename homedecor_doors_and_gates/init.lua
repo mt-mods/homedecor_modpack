@@ -231,10 +231,10 @@ for i, g in ipairs(gate_list) do
 
 	if gate == "picket" or gate == "picket_white" then
 		tiles = {
-			"homedecor_blanktile.png",
-			"homedecor_blanktile.png",
-			"homedecor_blanktile.png",
-			"homedecor_blanktile.png",
+			"blank.png",
+			"blank.png",
+			"blank.png",
+			"blank.png",
 			"homedecor_gate_"..gate.."_back.png",
 			"homedecor_gate_"..gate.."_front.png"
 		}

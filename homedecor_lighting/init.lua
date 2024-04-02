@@ -795,7 +795,7 @@ for _, light_brightn_name in ipairs({"off", "on"}) do
 	local gen_ls_tex_yellow =          "homedecor_generic_light_source_off.png"
 	if onflag then gen_ls_tex_yellow = "homedecor_generic_light_source_yellow.png" end
 
-	local lighttex = "homedecor_blanktile.png"
+	local lighttex = "blank.png"
 	if onflag then
 		lighttex = {
 			name = "homedecor_plasma_ball_streamers.png",
