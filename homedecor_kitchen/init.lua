@@ -161,6 +161,24 @@ local counter_materials = { "", N_("granite"), N_("marble"), N_("steel") }
 
 homedecor.kitchen_convert_nodes = {}
 
+local old_homedecor_register = homedecor.register
+function homedecor.register(name, def)
+  if not name:match("kitchen_cabinet_colorable") then
+		return old_homedecor_register(name, def)
+	end
+	unifieddyes.register_color_craft({
+    output = "homedecor:"..name:gsub("colorable", "colored"),
+    palette = "wallmounted",
+    type = "shapeless",
+    neutral_node = "homedecor:"..name,
+    recipe = {
+      "NEUTRAL_NODE",
+      "MAIN_DYE"
+    }
+  })
+  return old_homedecor_register(name, def)
+end
+
 for _, mat in ipairs(counter_materials) do
 
 	local desc = S("Kitchen Cabinet")
@@ -462,6 +480,8 @@ homedecor.register("kitchen_cabinet_colored_with_sink", {
 		unifieddyes.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)
 	end
 })
+
+homedecor.register = old_homedecor_register
 
 local cp_cbox = {
 	type = "fixed",

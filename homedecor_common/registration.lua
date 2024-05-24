@@ -115,19 +115,6 @@ function homedecor.register(name, original_def)
 	local crafts = def.crafts and table.copy(def.crafts) or {}
 	def.crafts = nil
 
-  if name:match("kitchen_cabinet_colorable") then
-    unifieddyes.register_color_craft({
-      output = "homedecor:"..name:gsub("colorable", "colored"),
-      palette = "wallmounted",
-      type = "shapeless",
-      neutral_node = "homedecor:"..name,
-      recipe = {
-        "NEUTRAL_NODE",
-        "MAIN_DYE"
-      }
-    })
-  end
-
 	-- register the actual minetest node
 	minetest.register_node(":homedecor:" .. name, def)
 
