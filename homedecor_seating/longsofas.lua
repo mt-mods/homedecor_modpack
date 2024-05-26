@@ -50,6 +50,17 @@ minetest.register_node(":lrfurn:longsofa", {
 	end
 })
 
+unifieddyes.register_color_craft({
+	output = "lrfurn:longsofa",
+	palette = "wallmounted",
+	type = "shapeless",
+	neutral_node = "lrfurn:longsofa",
+	recipe = {
+		"NEUTRAL_NODE",
+		"MAIN_DYE"
+	}
+})
+
 minetest.register_craft({
 	output = "lrfurn:longsofa",
 	recipe = {
@@ -65,17 +76,6 @@ minetest.register_craft({
 		{homedecor.materials.wool_white, homedecor.materials.wool_white, homedecor.materials.wool_white, },
 		{"moreblocks:slab_wood", "moreblocks:slab_wood", "moreblocks:slab_wood", },
 		{"group:stick", "group:stick", "group:stick", }
-	}
-})
-
-unifieddyes.register_color_craft({
-	output = "lrfurn:longsofa",
-	palette = "wallmounted",
-	type = "shapeless",
-	neutral_node = "lrfurn:longsofa",
-	recipe = {
-		"NEUTRAL_NODE",
-		"MAIN_DYE"
 	}
 })
 

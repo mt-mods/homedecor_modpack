@@ -32,6 +32,39 @@ local kbed_cbox = {
 	}
 }
 
+unifieddyes.register_color_craft({
+	output = "homedecor:bed_regular",
+	palette = "wallmounted",
+	type = "shapeless",
+	neutral_node = "homedecor:bed_regular",
+	recipe = {
+		"NEUTRAL_NODE",
+		"MAIN_DYE"
+	}
+})
+
+unifieddyes.register_color_craft({
+	output = "homedecor:bed_kingsize",
+	palette = "wallmounted",
+	type = "shapeless",
+	neutral_node = "homedecor:bed_kingsize",
+	recipe = {
+		"NEUTRAL_NODE",
+		"MAIN_DYE"
+	}
+})
+
+unifieddyes.register_color_craft({
+	output = "homedecor:bed_kingsize",
+	palette = "wallmounted",
+	type = "shapeless",
+	neutral_node = "homedecor:bed_regular",
+	recipe = {
+		"NEUTRAL_NODE",
+		"NEUTRAL_NODE",
+		"MAIN_DYE"
+	}
+})
 
 local bed_def = minetest.registered_nodes["beds:bed"]
 local bed_on_rightclick = bed_def and bed_def.on_rightclick or nil
@@ -373,38 +406,4 @@ minetest.register_craft({
         type = "fuel",
         recipe = "homedecor:nightstand_mahogany_two_drawers",
         burntime = 30,
-})
-
-unifieddyes.register_color_craft({
-	output = "homedecor:bed_regular",
-	palette = "wallmounted",
-	type = "shapeless",
-	neutral_node = "homedecor:bed_regular",
-	recipe = {
-		"NEUTRAL_NODE",
-		"MAIN_DYE"
-	}
-})
-
-unifieddyes.register_color_craft({
-	output = "homedecor:bed_kingsize",
-	palette = "wallmounted",
-	type = "shapeless",
-	neutral_node = "homedecor:bed_kingsize",
-	recipe = {
-		"NEUTRAL_NODE",
-		"MAIN_DYE"
-	}
-})
-
-unifieddyes.register_color_craft({
-	output = "homedecor:bed_kingsize",
-	palette = "wallmounted",
-	type = "shapeless",
-	neutral_node = "homedecor:bed_regular",
-	recipe = {
-		"NEUTRAL_NODE",
-		"NEUTRAL_NODE",
-		"MAIN_DYE"
-	}
 })

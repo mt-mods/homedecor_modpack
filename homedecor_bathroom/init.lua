@@ -5,6 +5,41 @@ local sc_disallow = minetest.get_modpath("screwdriver") and screwdriver.disallow
 local wood_tex = homedecor.textures.wood.apple.planks
 local water_tex = homedecor.textures.water.tile
 
+-- color crafting
+
+unifieddyes.register_color_craft({
+	output = "homedecor:bathroom_tiles_light",
+	palette = "extended",
+	type = "shapeless",
+	neutral_node = "homedecor:bathroom_tiles_light",
+	recipe = {
+		"NEUTRAL_NODE",
+		"MAIN_DYE"
+	}
+})
+
+unifieddyes.register_color_craft({
+	output = "homedecor:bathroom_tiles_medium",
+	palette = "extended",
+	type = "shapeless",
+	neutral_node = "homedecor:bathroom_tiles_medium",
+	recipe = {
+		"NEUTRAL_NODE",
+		"MAIN_DYE"
+	}
+})
+
+unifieddyes.register_color_craft({
+	output = "homedecor:bathroom_tiles_dark",
+	palette = "extended",
+	type = "shapeless",
+	neutral_node = "homedecor:bathroom_tiles_dark",
+	recipe = {
+		"NEUTRAL_NODE",
+		"MAIN_DYE"
+	}
+})
+
 homedecor.register("bathroom_tiles_dark", {
 	description = S("Bathroom/kitchen tiles (dark)"),
 	tiles = {
@@ -685,39 +720,3 @@ minetest.register_lbm({
 		meta:set_string("palette", "ext")
 	end
 })
-
--- color crafting
-
-unifieddyes.register_color_craft({
-	output = "homedecor:bathroom_tiles_light",
-	palette = "extended",
-	type = "shapeless",
-	neutral_node = "homedecor:bathroom_tiles_light",
-	recipe = {
-		"NEUTRAL_NODE",
-		"MAIN_DYE"
-	}
-})
-
-unifieddyes.register_color_craft({
-	output = "homedecor:bathroom_tiles_medium",
-	palette = "extended",
-	type = "shapeless",
-	neutral_node = "homedecor:bathroom_tiles_medium",
-	recipe = {
-		"NEUTRAL_NODE",
-		"MAIN_DYE"
-	}
-})
-
-unifieddyes.register_color_craft({
-	output = "homedecor:bathroom_tiles_dark",
-	palette = "extended",
-	type = "shapeless",
-	neutral_node = "homedecor:bathroom_tiles_dark",
-	recipe = {
-		"NEUTRAL_NODE",
-		"MAIN_DYE"
-	}
-})
-

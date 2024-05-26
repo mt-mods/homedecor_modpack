@@ -85,15 +85,6 @@ minetest.register_node("lavalamp:lavalamp_off", {
 	}
 })
 
-minetest.register_craft({
-	output = "lavalamp:lavalamp",
-	recipe = {
-		{"", homedecor.materials.wool_white, "", },
-		{"", homedecor.materials.water_bucket, "", },
-		{"", homedecor.materials.wool_black, "", }
-	}
-})
-
 unifieddyes.register_color_craft({
 	output = "lavalamp:lavalamp",
 	palette = "extended",
@@ -102,6 +93,15 @@ unifieddyes.register_color_craft({
 	recipe = {
 		"NEUTRAL_NODE",
 		"MAIN_DYE"
+	}
+})
+
+minetest.register_craft({
+	output = "lavalamp:lavalamp",
+	recipe = {
+		{"", homedecor.materials.wool_white, "", },
+		{"", homedecor.materials.water_bucket, "", },
+		{"", homedecor.materials.wool_black, "", }
 	}
 })
 

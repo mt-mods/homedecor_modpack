@@ -377,16 +377,6 @@ minetest.register_lbm({
 
 -- crafting
 
-
-minetest.register_craft( {
-	output = "homedecor:shutter 2",
-	recipe = {
-		{ "group:stick", "group:stick" },
-		{ "group:stick", "group:stick" },
-		{ "group:stick", "group:stick" },
-	},
-})
-
 unifieddyes.register_color_craft({
 	output = "homedecor:shutter_colored",
 	palette = "wallmounted",
@@ -398,29 +388,19 @@ unifieddyes.register_color_craft({
 	}
 })
 
+minetest.register_craft( {
+	output = "homedecor:shutter 2",
+	recipe = {
+		{ "group:stick", "group:stick" },
+		{ "group:stick", "group:stick" },
+		{ "group:stick", "group:stick" },
+	},
+})
+
 minetest.register_craft({
         type = "fuel",
         recipe = "homedecor:shutter_oak",
         burntime = 30,
-})
-
-
-minetest.register_craft( {
-	output = "homedecor:curtain_open 4",
-		recipe = {
-		{ homedecor.materials.wool_white, "", ""},
-		{ homedecor.materials.wool_white, "", ""},
-		{ homedecor.materials.wool_white, "", ""},
-	},
-})
-
-minetest.register_craft( {
-	output = "homedecor:curtain_open 4",
-		recipe = {
-		{ "cottages:wool", "", ""},
-		{ "cottages:wool", "", ""},
-		{ "cottages:wool", "", ""},
-	},
 })
 
 unifieddyes.register_color_craft({
@@ -443,6 +423,24 @@ unifieddyes.register_color_craft({
 		"NEUTRAL_NODE",
 		"MAIN_DYE"
 	}
+})
+
+minetest.register_craft( {
+	output = "homedecor:curtain_open 4",
+		recipe = {
+		{ homedecor.materials.wool_white, "", ""},
+		{ homedecor.materials.wool_white, "", ""},
+		{ homedecor.materials.wool_white, "", ""},
+	},
+})
+
+minetest.register_craft( {
+	output = "homedecor:curtain_open 4",
+		recipe = {
+		{ "cottages:wool", "", ""},
+		{ "cottages:wool", "", ""},
+		{ "cottages:wool", "", ""},
+	},
 })
 
 local mats_craft = {
