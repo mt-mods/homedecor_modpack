@@ -4,12 +4,14 @@ local tmp = {}
 local sd_disallow = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil
 
 minetest.register_entity("itemframes:item",{
-	hp_max = 1,
-	visual="wielditem",
-	visual_size={x = 0.33, y = 0.33},
-	collisionbox = {0, 0, 0, 0, 0, 0},
-	physical = false,
-	textures = {"air"},
+	initial_properties = {
+		hp_max = 1,
+		visual = "wielditem",
+		visual_size = {x = 0.33, y = 0.33},
+		collisionbox = {0, 0, 0, 0, 0, 0},
+		physical = false,
+		textures = {"air"},
+	},
 	on_activate = function(self, staticdata)
 		if tmp.nodename ~= nil and tmp.texture ~= nil then
 			self.nodename = tmp.nodename
