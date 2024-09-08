@@ -85,7 +85,7 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 		return itemstack
 	end
 
-	if xcompat.player.player_attached[clicker:get_player_name()] then
+	if physics_cache[clicker:get_player_name()] then
 		lrfurn.stand(clicker)
 		return itemstack
 	end
@@ -142,7 +142,7 @@ function lrfurn.stand(clicker)
 	xcompat.player.player_attached[clicker:get_player_name()] = false
 	if physics_cache[clicker:get_player_name()] then
 		clicker:set_physics_override(physics_cache[clicker:get_player_name()])
-	else
+	else --in case this is called and the cache is empty
 		clicker:set_physics_override({speed = 1, jump = 1, gravity = 1})
 	end
 end
