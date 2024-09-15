@@ -41,4 +41,5 @@ read_globals = {
     "doors",
     "i3",
     "xcompat",
+    "player_monoids"
 }

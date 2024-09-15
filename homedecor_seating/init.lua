@@ -3,6 +3,7 @@
 
 local S = minetest.get_translator("homedecor_seating")
 local modpath = minetest.get_modpath("homedecor_seating")
+local has_player_monoids = minetest.get_modpath("player_monoids")
 
 lrfurn = {}
 
@@ -85,7 +86,8 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 		return itemstack
 	end
 
-	if physics_cache[clicker:get_player_name()] then
+	local name = clicker:get_player_name()
+	if physics_cache[name] then --already sitting
 		lrfurn.stand(clicker)
 		return itemstack
 	end
@@ -123,26 +125,40 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 		if not pstatus then sit_pos = spos end
 	end
 	if not sit_pos then
-		minetest.chat_send_player(clicker:get_player_name(), "sorry, this seat is currently occupied")
+		minetest.chat_send_player(name, "sorry, this seat is currently occupied")
 		return itemstack
 	end
 
 	--seat the player
 	clicker:set_pos(sit_pos)
 
-	xcompat.player.player_attached[clicker:get_player_name()] = true
+	xcompat.player.player_attached[name] = true
     xcompat.player.set_animation(clicker, "sit", 0)
-	physics_cache[clicker:get_player_name()] = table.copy(clicker:get_physics_override())
-	clicker:set_physics_override({speed = 0, jump = 0, gravity = 0})
+	if has_player_monoids then
+		physics_cache[name] = true
+		player_monoids.speed:add_change(clicker, 0, "homedecor_seating:sit")
+		player_monoids.jump:add_change(clicker, 0, "homedecor_seating:sit")
+		player_monoids.gravity:add_change(clicker, 0, "homedecor_seating:sit")
+	else
+		physics_cache[name] = table.copy(clicker:get_physics_override())
+		clicker:set_physics_override({speed = 0, jump = 0, gravity = 0})
+	end
 
 	return itemstack
 end
 
 function lrfurn.stand(clicker)
-	xcompat.player.player_attached[clicker:get_player_name()] = false
-	if physics_cache[clicker:get_player_name()] then
-		clicker:set_physics_override(physics_cache[clicker:get_player_name()])
-		physics_cache[clicker:get_player_name()] = nil
+	local name = clicker:get_player_name()
+	xcompat.player.player_attached[name] = false
+	if physics_cache[name] then
+		if has_player_monoids then
+			player_monoids.speed:del_change(clicker, "homedecor_seating:sit")
+			player_monoids.jump:del_change(clicker, "homedecor_seating:sit")
+			player_monoids.gravity:del_change(clicker, "homedecor_seating:sit")
+		else
+			clicker:set_physics_override(physics_cache[name])
+		end
+		physics_cache[name] = nil
 	else --in case this is called and the cache is empty
 		clicker:set_physics_override({speed = 1, jump = 1, gravity = 1})
 	end
