@@ -160,7 +160,13 @@ function lrfurn.stand(clicker)
 		end
 		physics_cache[name] = nil
 	else --in case this is called and the cache is empty
-		clicker:set_physics_override({speed = 1, jump = 1, gravity = 1})
+		if has_player_monoids then
+			player_monoids.speed:del_change(clicker, "homedecor_seating:sit")
+			player_monoids.jump:del_change(clicker, "homedecor_seating:sit")
+			player_monoids.gravity:del_change(clicker, "homedecor_seating:sit")
+		else
+			clicker:set_physics_override({speed = 1, jump = 1, gravity = 1})
+		end
 	end
 end
 
