@@ -87,6 +87,7 @@ minetest.register_entity("homedecor_seating:seat", {
 		textures = {"blank.png", "blank.png", "blank.png", "blank.png", "blank.png", "blank.png"},
 		collisionbox = { -0.01, -0.01, -0.01, 0.01, 0.01, 0.01 },
 		selectionbox = { -0.01, -0.01, -0.01, 0.01, 0.01, 0.01, rotate = false },
+		static_save = false,
 	},
 	on_punch = function(self)
 		self.object:remove()
