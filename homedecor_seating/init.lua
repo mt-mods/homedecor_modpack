@@ -3,7 +3,6 @@
 
 local S = minetest.get_translator("homedecor_seating")
 local modpath = minetest.get_modpath("homedecor_seating")
-local has_player_monoids = minetest.get_modpath("player_monoids")
 
 lrfurn = {}
 
@@ -79,7 +78,20 @@ function lrfurn.fix_sofa_rotation_nsew(pos, placer, itemstack, pointed_thing)
 	minetest.swap_node(pos, { name = node.name, param2 = fdir+colorbits })
 end
 
-local physics_cache = {}
+local seated_cache = {}
+
+minetest.register_entity("homedecor_seating:seat", {
+	initial_properties = {
+		visual = "cube",
+		--comment out the following when testing so you can see it
+		textures = {"blank.png", "blank.png", "blank.png", "blank.png", "blank.png", "blank.png"},
+		collisionbox = { -0.01, -0.01, -0.01, 0.01, 0.01, 0.01 },
+		selectionbox = { -0.01, -0.01, -0.01, 0.01, 0.01, 0.01, rotate = false },
+	},
+	on_punch = function(self)
+		self.object:remove()
+	end,
+})
 
 function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 	if not clicker:is_player() then
@@ -87,7 +99,7 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 	end
 
 	local name = clicker:get_player_name()
-	if physics_cache[name] then --already sitting
+	if seated_cache[name] then --already sitting
 		lrfurn.stand(clicker)
 		return itemstack
 	end
@@ -132,17 +144,28 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 	--seat the player
 	clicker:set_pos(sit_pos)
 
+	--we only care about 4 rotations, but just in case someone worldedits, etc - do something other than crash
+	--radians are stupid, using degrees and then converting
+	local p2r = {
+		0*math.pi/180,
+		0*math.pi/180, --correct
+		180*math.pi/180, --correct
+		90*math.pi/180, --correct
+		270*math.pi/180, --correct
+		0*math.pi/180,
+		0*math.pi/180,
+		0*math.pi/180,
+	}
+
+	local entity = minetest.add_entity(sit_pos, "homedecor_seating:seat")
+	if not entity then return itemstack end --catch for when the entity fails to spawn just in case
+
+	clicker:set_attach(entity, "", {x = 0, y = 0, z = 0}, {x = 0, y = 0, z = 0}, true)
+	entity:set_rotation({x = 0, y = p2r[node.param2 % 8], z = 0})
+
 	xcompat.player.player_attached[name] = true
     xcompat.player.set_animation(clicker, "sit", 0)
-	if has_player_monoids then
-		physics_cache[name] = true
-		player_monoids.speed:add_change(clicker, 0, "homedecor_seating:sit")
-		player_monoids.jump:add_change(clicker, 0, "homedecor_seating:sit")
-		player_monoids.gravity:add_change(clicker, 0, "homedecor_seating:sit")
-	else
-		physics_cache[name] = table.copy(clicker:get_physics_override())
-		clicker:set_physics_override({speed = 0, jump = 0, gravity = 0})
-	end
+	seated_cache[name] = true
 
 	return itemstack
 end
@@ -150,23 +173,12 @@ end
 function lrfurn.stand(clicker)
 	local name = clicker:get_player_name()
 	xcompat.player.player_attached[name] = false
-	if physics_cache[name] then
-		if has_player_monoids then
-			player_monoids.speed:del_change(clicker, "homedecor_seating:sit")
-			player_monoids.jump:del_change(clicker, "homedecor_seating:sit")
-			player_monoids.gravity:del_change(clicker, "homedecor_seating:sit")
-		else
-			clicker:set_physics_override(physics_cache[name])
+	if seated_cache[name] then
+		local attached_to = clicker:get_attach()
+		if attached_to then --check, a stupid clearobjects might have been called, etc
+			attached_to:remove() --removing also detaches
 		end
-		physics_cache[name] = nil
-	else --in case this is called and the cache is empty
-		if has_player_monoids then
-			player_monoids.speed:del_change(clicker, "homedecor_seating:sit")
-			player_monoids.jump:del_change(clicker, "homedecor_seating:sit")
-			player_monoids.gravity:del_change(clicker, "homedecor_seating:sit")
-		else
-			clicker:set_physics_override({speed = 1, jump = 1, gravity = 1})
-		end
+		seated_cache[name] = nil
 	end
 end
 
