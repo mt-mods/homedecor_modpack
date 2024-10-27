@@ -169,11 +169,21 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 		0*math.pi/180,
 	}
 
+	local p2r_facedir = {
+		[0] = 180*math.pi/180,
+		[1] = 90*math.pi/180,
+		[2] = 0*math.pi/180,
+		[3] = 270*math.pi/180,
+	}
+
 	local entity = minetest.add_entity(sit_pos, "homedecor_seating:seat")
 	if not entity then return itemstack end --catch for when the entity fails to spawn just in case
 
 	clicker:set_attach(entity, "", {x = 0, y = 0, z = 0}, {x = 0, y = 0, z = 0}, true)
-	if string.find(node.name, "sofa") then
+	local nodedef = minetest.registered_nodes[node.name]
+	if nodedef.paramtype2 == "facedir" then
+		entity:set_rotation({x = 0, y = p2r_facedir[node.param2 % 4], z = 0})
+	elseif string.find(node.name, "sofa") then
 		entity:set_rotation({x = 0, y = p2r_sofa[node.param2 % 8], z = 0})
 	else
 		entity:set_rotation({x = 0, y = p2r[node.param2 % 8], z = 0})
