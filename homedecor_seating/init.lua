@@ -157,6 +157,7 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 		0*math.pi/180,
 		0*math.pi/180,
 	}
+	p2r[0] = p2r[1]
 
 	local p2r_sofa = {
 		0*math.pi/180,
@@ -168,6 +169,7 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 		0*math.pi/180,
 		0*math.pi/180,
 	}
+	p2r_sofa[0] = p2r_sofa[1]
 
 	local p2r_facedir = {
 		[0] = 180*math.pi/180,
