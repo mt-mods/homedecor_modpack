@@ -94,6 +94,39 @@ minetest.register_entity("homedecor_seating:seat", {
 	end,
 })
 
+--we only care about 4 rotations, but just in case someone worldedits, etc - do something other than crash
+--radians are stupid, using degrees and then converting
+local p2r = {
+	0*math.pi/180,
+	0*math.pi/180, --correct
+	180*math.pi/180, --correct
+	90*math.pi/180, --correct
+	270*math.pi/180, --correct
+	0*math.pi/180,
+	0*math.pi/180,
+	0*math.pi/180,
+}
+p2r[0] = p2r[1]
+
+local p2r_sofa = {
+	0*math.pi/180,
+	90*math.pi/180, --correct
+	270*math.pi/180, --correct
+	180*math.pi/180, --correct
+	0*math.pi/180, --correct
+	0*math.pi/180,
+	0*math.pi/180,
+	0*math.pi/180,
+}
+p2r_sofa[0] = p2r_sofa[1]
+
+local p2r_facedir = {
+	[0] = 180*math.pi/180,
+	[1] = 90*math.pi/180,
+	[2] = 0*math.pi/180,
+	[3] = 270*math.pi/180,
+}
+
 function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 	if not clicker:is_player() then
 		return itemstack
@@ -144,39 +177,6 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 
 	--seat the player
 	clicker:set_pos(sit_pos)
-
-	--we only care about 4 rotations, but just in case someone worldedits, etc - do something other than crash
-	--radians are stupid, using degrees and then converting
-	local p2r = {
-		0*math.pi/180,
-		0*math.pi/180, --correct
-		180*math.pi/180, --correct
-		90*math.pi/180, --correct
-		270*math.pi/180, --correct
-		0*math.pi/180,
-		0*math.pi/180,
-		0*math.pi/180,
-	}
-	p2r[0] = p2r[1]
-
-	local p2r_sofa = {
-		0*math.pi/180,
-		90*math.pi/180, --correct
-		270*math.pi/180, --correct
-		180*math.pi/180, --correct
-		0*math.pi/180, --correct
-		0*math.pi/180,
-		0*math.pi/180,
-		0*math.pi/180,
-	}
-	p2r_sofa[0] = p2r_sofa[1]
-
-	local p2r_facedir = {
-		[0] = 180*math.pi/180,
-		[1] = 90*math.pi/180,
-		[2] = 0*math.pi/180,
-		[3] = 270*math.pi/180,
-	}
 
 	local entity = minetest.add_entity(sit_pos, "homedecor_seating:seat")
 	if not entity then return itemstack end --catch for when the entity fails to spawn just in case
