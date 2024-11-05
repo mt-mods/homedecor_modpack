@@ -210,6 +210,13 @@ function lrfurn.stand(clicker)
 	end
 end
 
+--if the player gets killed in the seat, handle it
+minetest.register_on_dieplayer(function(player)
+	if seated_cache[player:get_player_name()] then
+		lrfurn.stand(player)
+	end
+end)
+
 dofile(modpath.."/longsofas.lua")
 dofile(modpath.."/sofas.lua")
 dofile(modpath.."/armchairs.lua")
