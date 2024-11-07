@@ -193,7 +193,7 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 
 	xcompat.player.player_attached[name] = true
     xcompat.player.set_animation(clicker, "sit", 0)
-	seated_cache[name] = true
+	seated_cache[name] = minetest.hash_node_position(pos)
 
 	return itemstack
 end
@@ -207,6 +207,17 @@ function lrfurn.stand(clicker)
 			attached_to:remove() --removing also detaches
 		end
 		seated_cache[name] = nil
+	end
+end
+
+function lrfurn.on_seat_destruct(pos) --called when a seat is destroyed
+	for name, seatpos in pairs(seated_cache) do
+		if seatpos == minetest.hash_node_position(pos) then
+			local player = minetest.get_player_by_name(name)
+			if player then
+				lrfurn.stand(player)
+			end
+		end
 	end
 end
 
