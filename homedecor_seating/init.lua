@@ -173,6 +173,7 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 		if not pstatus then
 			sit_pos = spos
 			sit_hash = hash
+			break;
 		end
 	end
 	if not sit_pos then
