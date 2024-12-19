@@ -225,11 +225,12 @@ function lrfurn.on_seat_movenode(from_pos, to_pos)
 	local hashed_from_pos = core.hash_node_position(from_pos)
 	local hashed_to_pos = core.hash_node_position(to_pos)
 	for name, seatpos in pairs(seated_cache) do
-			local player = minetest.get_player_by_name(name)
 		if seatpos == hashed_from_pos then
+			local player = core.get_player_by_name(name)
 			if player then
 				local attached_to = player:get_attach()
-				if attached_to then --check, a stupid clearobjects might have been called, etc
+				-- Check, clearobjects might have been called, etc
+				if attached_to then
 					attached_to:set_pos(to_pos)
 					seated_cache[name] = hashed_to_pos
 				end
