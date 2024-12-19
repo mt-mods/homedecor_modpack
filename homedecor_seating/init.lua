@@ -222,9 +222,11 @@ function lrfurn.on_seat_destruct(pos) --called when a seat is destroyed
 end
 
 function lrfurn.on_seat_movenode(from_pos, to_pos)
+	local hashed_from_pos = core.hash_node_position(from_pos)
+	local hashed_to_pos = core.hash_node_position(to_pos)
 	for name, seatpos in pairs(seated_cache) do
-		if seatpos == minetest.hash_node_position(from_pos) then
 			local player = minetest.get_player_by_name(name)
+		if seatpos == hashed_from_pos then
 			if player then
 				local attached_to = player:get_attach()
 				if attached_to then --check, a stupid clearobjects might have been called, etc
