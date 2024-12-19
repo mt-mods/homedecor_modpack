@@ -166,7 +166,7 @@ function lrfurn.sit(pos, node, clicker, itemstack, pointed_thing, seats)
 	for hash, spos in pairs(valid_seats) do
 		local pstatus = false
 		for _, ref in pairs(minetest.get_objects_inside_radius(spos, 0.5)) do
-			if ref:is_player() then
+			if ref:is_player() and seated_cache[ref:get_player_name()] then
 				pstatus = true
 			end
 		end
