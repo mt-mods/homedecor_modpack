@@ -212,15 +212,18 @@ function lrfurn.stand(clicker)
 	xcompat.player.player_attached[name] = false
 	if seated_cache[name] then
 		local attached_to = clicker:get_attach()
-		if attached_to then --check, a stupid clearobjects might have been called, etc
-			attached_to:remove() --removing also detaches
+		-- Check, clearobjects might have been called, etc
+		if attached_to then
+			-- Removing also detaches
+			attached_to:remove()
 		end
 		seated_cache[name] = nil
 		offset_cache[name] = nil
 	end
 end
 
-function lrfurn.on_seat_destruct(pos) --called when a seat is destroyed
+-- Called when a seat is destroyed
+function lrfurn.on_seat_destruct(pos)
 	for name, seatpos in pairs(seated_cache) do
 		if seatpos == minetest.hash_node_position(pos) then
 			local player = minetest.get_player_by_name(name)
@@ -242,6 +245,7 @@ function lrfurn.on_seat_movenode(from_pos, to_pos)
 				-- Check, clearobjects might have been called, etc
 				if attached_to then
 					if offset_cache[name] then
+						-- multi-seat node aka sofas
 						attached_to:set_pos(vector.subtract(to_pos,
 							core.get_position_from_hash(offset_cache[name])))
 					else
