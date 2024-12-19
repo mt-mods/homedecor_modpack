@@ -231,6 +231,7 @@ function lrfurn.on_seat_movenode(from_pos, to_pos)
 				local attached_to = player:get_attach()
 				if attached_to then --check, a stupid clearobjects might have been called, etc
 					attached_to:set_pos(to_pos)
+					seated_cache[name] = hashed_to_pos
 				end
 			end
 		end
