@@ -23,7 +23,6 @@ if minetest.get_modpath("vessels") then
 		},
 		paramtype = "light",
 		paramtype2 = "facedir",
-		use_texture_alpha = "blend",
 	})
 
 	local sbox = {
