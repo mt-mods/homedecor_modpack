@@ -1,4 +1,4 @@
-local S = minetest.get_translator("inbox")
+local S = core.get_translator("inbox")
 
 local inbox = {}
 
@@ -25,9 +25,9 @@ homedecor.register("inbox", {
 	_sound_def = {
 		key = "node_sound_wood_defaults",
 	},
-	on_rotate = minetest.get_modpath("screwdriver") and screwdriver.rotate_simple or nil,
+	on_rotate = core.get_modpath("screwdriver") and screwdriver.rotate_simple or nil,
 	after_place_node = function(pos, placer, itemstack)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		local owner = placer:get_player_name()
 		meta:set_string("owner", owner)
 		meta:set_string("infotext", S("@1's Mailbox", owner))
@@ -36,18 +36,18 @@ homedecor.register("inbox", {
 		inv:set_size("drop", 1)
 	end,
 	on_rightclick = function(pos, node, clicker, itemstack)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		local player = clicker:get_player_name()
 		local owner  = meta:get_string("owner")
 		if owner == player or
-				minetest.check_player_privs(player, "protection_bypass") and
+				core.check_player_privs(player, "protection_bypass") and
 				clicker:get_player_control().aux1 then
-			minetest.show_formspec(
+			core.show_formspec(
 				player,
 				"inbox:mailbox",
 				inbox.get_inbox_formspec(pos))
 		else
-			minetest.show_formspec(
+			core.show_formspec(
 				player,
 				"inbox:mailbox",
 				inbox.get_inbox_insert_formspec(pos))
@@ -55,14 +55,14 @@ homedecor.register("inbox", {
 		return itemstack
 	end,
 	can_dig = function(pos,player)
-		local meta = minetest.get_meta(pos);
+		local meta = core.get_meta(pos);
 		local name = player and player:get_player_name()
 		local owner = meta:get_string("owner")
 		local inv = meta:get_inventory()
 		return name == owner and inv:is_empty("main")
 	end,
 	on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		local inv = meta:get_inventory()
 		if listname == "drop" and inv:room_for_item("main", stack) then
 			inv:remove_item("drop", stack)
@@ -74,7 +74,7 @@ homedecor.register("inbox", {
 			return 0
 		end
 		if listname == "drop" then
-			local meta = minetest.get_meta(pos)
+			local meta = core.get_meta(pos)
 			local inv = meta:get_inventory()
 			if inv:room_for_item("main", stack) then
 				return -1
@@ -84,10 +84,10 @@ homedecor.register("inbox", {
 		end
 	end,
 	allow_metadata_inventory_take = function(pos, listname, index, stack, player)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		local owner = meta:get_string("owner")
 		if player:get_player_name() == owner or
-				minetest.check_player_privs(player, "protection_bypass") and
+				core.check_player_privs(player, "protection_bypass") and
 				player:get_player_control().aux1 then
 			return stack:get_count()
 		end
@@ -107,7 +107,7 @@ homedecor.register("inbox", {
 	}
 })
 
-minetest.register_alias("inbox:empty", "homedecor:inbox")
+core.register_alias("inbox:empty", "homedecor:inbox")
 
 function inbox.get_inbox_formspec(pos)
 	local spos = pos.x .. "," .. pos.y .. "," ..pos.z

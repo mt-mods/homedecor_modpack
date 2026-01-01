@@ -1,9 +1,9 @@
-local S = minetest.get_translator("itemframes")
+local S = core.get_translator("itemframes")
 
 local tmp = {}
-local sd_disallow = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil
+local sd_disallow = core.get_modpath("screwdriver") and screwdriver.disallow or nil
 
-minetest.register_entity("itemframes:item",{
+core.register_entity("itemframes:item",{
 	initial_properties = {
 		hp_max = 1,
 		visual = "wielditem",
@@ -35,7 +35,7 @@ minetest.register_entity("itemframes:item",{
 		end
 		if self.texture ~= nil and self.nodename ~= nil then
 			local entity_pos = vector.round(self.object:get_pos())
-			local objs = minetest.get_objects_inside_radius(entity_pos, 0.5)
+			local objs = core.get_objects_inside_radius(entity_pos, 0.5)
 			for _, obj in ipairs(objs) do
 				if obj ~= self.object and
 				   obj:get_luaentity() and
@@ -44,9 +44,9 @@ minetest.register_entity("itemframes:item",{
 				   obj:get_properties() and
 				   obj:get_properties().textures and
 				   obj:get_properties().textures[1] == self.texture then
-					minetest.log("action","[itemframes] Removing extra " ..
+					core.log("action","[itemframes] Removing extra " ..
 						self.texture .. " found in " .. self.nodename .. " at " ..
-						minetest.pos_to_string(entity_pos))
+						core.pos_to_string(entity_pos))
 					self.object:remove()
 					break
 				end
@@ -71,9 +71,9 @@ facedir[3] = {x = -1, y = 0, z = 0}
 local remove_item = function(pos, node)
 	local objs = nil
 	if node.name == "itemframes:frame" then
-		objs = minetest.get_objects_inside_radius(pos, .5)
+		objs = core.get_objects_inside_radius(pos, .5)
 	elseif node.name == "itemframes:pedestal" then
-		objs = minetest.get_objects_inside_radius({x=pos.x,y=pos.y+1,z=pos.z}, .5)
+		objs = core.get_objects_inside_radius({x=pos.x,y=pos.y+1,z=pos.z}, .5)
 	end
 	if objs then
 		for _, obj in ipairs(objs) do
@@ -86,7 +86,7 @@ end
 
 local update_item = function(pos, node)
 	remove_item(pos, node)
-	local meta = minetest.get_meta(pos)
+	local meta = core.get_meta(pos)
 	if meta:get_string("item") ~= "" then
 		if node.name == "itemframes:frame" then
 			local posad = facedir[node.param2]
@@ -99,7 +99,7 @@ local update_item = function(pos, node)
 		end
 		tmp.nodename = node.name
 		tmp.texture = ItemStack(meta:get_string("item")):get_name()
-		local e = minetest.add_entity(pos,"itemframes:item")
+		local e = core.add_entity(pos,"itemframes:item")
 		if node.name == "itemframes:frame" then
 			local yaw = math.pi * 2 - node.param2 * math.pi / 2
 			e:set_yaw(yaw)
@@ -108,19 +108,19 @@ local update_item = function(pos, node)
 end
 
 local drop_item = function(pos, node)
-	local meta = minetest.get_meta(pos)
+	local meta = core.get_meta(pos)
 	if meta:get_string("item") ~= "" then
 		if node.name == "itemframes:frame" then
-			minetest.add_item(pos, meta:get_string("item"))
+			core.add_item(pos, meta:get_string("item"))
 		elseif node.name == "itemframes:pedestal" then
-			minetest.add_item({x=pos.x,y=pos.y+1,z=pos.z}, meta:get_string("item"))
+			core.add_item({x=pos.x,y=pos.y+1,z=pos.z}, meta:get_string("item"))
 		end
 		meta:set_string("item","")
 	end
 	remove_item(pos, node)
 end
 
-minetest.register_node("itemframes:frame",{
+core.register_node("itemframes:frame",{
 	description = S("Item frame"),
 	drawtype = "nodebox",
 	node_box = {
@@ -146,16 +146,16 @@ minetest.register_node("itemframes:frame",{
 	},
 	on_rotate = sd_disallow or nil,
 	after_place_node = function(pos, placer, itemstack)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		meta:set_string("owner",placer:get_player_name())
 		meta:set_string("infotext", S("Item frame (owned by @1)", placer:get_player_name()))
 	end,
 	on_rightclick = function(pos, node, clicker, itemstack)
 		if not itemstack then return end
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		local name = clicker and clicker:get_player_name()
 		if name == meta:get_string("owner") or
-				minetest.check_player_privs(name, "protection_bypass") then
+				core.check_player_privs(name, "protection_bypass") then
 			drop_item(pos,node)
 			local s = itemstack:take_item()
 			meta:set_string("item",s:to_string())
@@ -163,10 +163,10 @@ minetest.register_node("itemframes:frame",{
 			local description = item_meta:get_string("description")
 			if description == "" then
 				local item_name = s:get_name()
-				if minetest.registered_items[item_name]
-					and minetest.registered_items[item_name].description
+				if core.registered_items[item_name]
+					and core.registered_items[item_name].description
 				then
-					description = minetest.registered_items[item_name].description
+					description = core.registered_items[item_name].description
 				else
 					description = item_name
 				end
@@ -177,10 +177,10 @@ minetest.register_node("itemframes:frame",{
 		return itemstack
 	end,
 	on_punch = function(pos,node,puncher)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		local name = puncher and puncher:get_player_name()
 		if name == meta:get_string("owner") or
-				minetest.check_player_privs(name, "protection_bypass") then
+				core.check_player_privs(name, "protection_bypass") then
 			drop_item(pos, node)
 			meta:set_string("infotext", S("Item frame (owned by @1)", name))
 		end
@@ -188,13 +188,13 @@ minetest.register_node("itemframes:frame",{
 	can_dig = function(pos,player)
 		if not player then return end
 		local name = player and player:get_player_name()
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		return name == meta:get_string("owner") or
-				minetest.check_player_privs(name, "protection_bypass")
+				core.check_player_privs(name, "protection_bypass")
 	end,
 	on_destruct = function(pos)
-		local meta = minetest.get_meta(pos)
-		local node = minetest.get_node(pos)
+		local meta = core.get_meta(pos)
+		local node = core.get_node(pos)
 		if meta:get_string("item") ~= "" then
 			drop_item(pos, node)
 		end
@@ -202,7 +202,7 @@ minetest.register_node("itemframes:frame",{
 })
 
 
-minetest.register_node("itemframes:pedestal",{
+core.register_node("itemframes:pedestal",{
 	description = S("Pedestal"),
 	drawtype = "nodebox",
 	node_box = {
@@ -227,16 +227,16 @@ minetest.register_node("itemframes:pedestal",{
 	},
 	on_rotate = sd_disallow or nil,
 	after_place_node = function(pos, placer, itemstack)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		meta:set_string("owner",placer:get_player_name())
 		meta:set_string("infotext", S("Pedestal (owned by @1)", placer:get_player_name()))
 	end,
 	on_rightclick = function(pos, node, clicker, itemstack)
 		if not itemstack then return end
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		local name = clicker and clicker:get_player_name()
 		if name == meta:get_string("owner") or
-				minetest.check_player_privs(name, "protection_bypass") then
+				core.check_player_privs(name, "protection_bypass") then
 			drop_item(pos,node)
 			local s = itemstack:take_item()
 			meta:set_string("item",s:to_string())
@@ -244,10 +244,10 @@ minetest.register_node("itemframes:pedestal",{
 			local description = item_meta:get_string("description")
 			if description == "" then
 				local item_name = s:get_name()
-				if minetest.registered_items[item_name]
-					and minetest.registered_items[item_name].description
+				if core.registered_items[item_name]
+					and core.registered_items[item_name].description
 				then
-					description = minetest.registered_items[item_name].description
+					description = core.registered_items[item_name].description
 				else
 					description = item_name
 				end
@@ -258,10 +258,10 @@ minetest.register_node("itemframes:pedestal",{
 		return itemstack
 	end,
 	on_punch = function(pos,node,puncher)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		local name = puncher and puncher:get_player_name()
 		if name == meta:get_string("owner") or
-				minetest.check_player_privs(name, "protection_bypass") then
+				core.check_player_privs(name, "protection_bypass") then
 			drop_item(pos,node)
 			meta:set_string("infotext", S("Pedestal (owned by @1)", name))
 		end
@@ -269,13 +269,13 @@ minetest.register_node("itemframes:pedestal",{
 	can_dig = function(pos,player)
 		if not player then return end
 		local name = player and player:get_player_name()
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		return name == meta:get_string("owner") or
-				minetest.check_player_privs(name, "protection_bypass")
+				core.check_player_privs(name, "protection_bypass")
 	end,
 	on_destruct = function(pos)
-		local meta = minetest.get_meta(pos)
-		local node = minetest.get_node(pos)
+		local meta = core.get_meta(pos)
+		local node = core.get_node(pos)
 		if meta:get_string("item") ~= "" then
 			drop_item(pos, node)
 		end
@@ -284,26 +284,26 @@ minetest.register_node("itemframes:pedestal",{
 
 -- automatically restore entities lost from frames/pedestals
 -- due to /clearobjects or similar
-minetest.register_lbm({
+core.register_lbm({
 	label = "Maintain itemframe and pedestal entities",
 	name = "itemframes:maintain_entities",
 	nodenames = {"itemframes:frame", "itemframes:pedestal"},
 	run_at_every_load = true,
 	action = function(pos1, node1)
-		minetest.after(0,
+		core.after(0,
 			function(pos, node)
-				local meta = minetest.get_meta(pos)
+				local meta = core.get_meta(pos)
 				local itemstring = meta:get_string("item")
 				if itemstring ~= "" then
 					local entity_pos = pos
 					if node.name == "itemframes:pedestal" then
 						entity_pos = {x=pos.x,y=pos.y+1,z=pos.z}
 					end
-					local objs = minetest.get_objects_inside_radius(entity_pos, 0.5)
+					local objs = core.get_objects_inside_radius(entity_pos, 0.5)
 					if #objs == 0 then
-						minetest.log("action","[itemframes] Replacing missing " ..
+						core.log("action","[itemframes] Replacing missing " ..
 							itemstring .. " in " .. node.name .. " at " ..
-							minetest.pos_to_string(pos))
+							core.pos_to_string(pos))
 						update_item(pos, node)
 					end
 				end
@@ -314,7 +314,7 @@ minetest.register_lbm({
 
 -- crafts
 
-minetest.register_craft({
+core.register_craft({
 	output = 'itemframes:frame',
 	recipe = {
 		{'group:stick', 'group:stick', 'group:stick'},
@@ -323,7 +323,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = 'itemframes:pedestal',
 	recipe = {
 		{homedecor.materials.stone, homedecor.materials.stone, homedecor.materials.stone},
@@ -333,7 +333,7 @@ minetest.register_craft({
 })
 
 -- stop mesecon pistons from pushing itemframes and pedestals
-if minetest.get_modpath("mesecons_mvps") then
+if core.get_modpath("mesecons_mvps") then
 	mesecon.register_mvps_stopper("itemframes:frame")
 	mesecon.register_mvps_stopper("itemframes:pedestal")
 end
