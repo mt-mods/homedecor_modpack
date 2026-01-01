@@ -1,6 +1,6 @@
 # Minetest Homedecor Modpack  
 
-[![ContentDB](https://content.minetest.net/packages/VanessaE/homedecor_modpack/shields/downloads/)](https://content.minetest.net/packages/VanessaE/homedecor_modpack/)
+[![ContentDB](https://content.luanti.org/packages/VanessaE/homedecor_modpack/shields/downloads/)](https://content.luanti.org/packages/VanessaE/homedecor_modpack/)
 
 A fairly feature-filled home decor modpack that is game agnostic.
 
@@ -16,8 +16,8 @@ first class support for:
 ## Links  
 
 * [Github](https://github.com/mt-mods/homedecor_modpack)
-* [Contentdb](https://content.minetest.net/packages/VanessaE/homedecor_modpack/)
-* [Forums](https://forum.minetest.net/viewtopic.php?f=11&t=2041)
+* [Contentdb](https://content.luanti.org/packages/VanessaE/homedecor_modpack/)
+* [Forums](https://forum.luanti.org/viewtopic.php?f=11&t=2041)
 
 # Setup
 
