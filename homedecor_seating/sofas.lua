@@ -1,11 +1,11 @@
-local S = core.get_translator("homedecor_seating")
+local S = minetest.get_translator("homedecor_seating")
 
 local sofa_cbox = {
 	type = "wallmounted",
 	wall_side = {-0.5, -0.5, -0.5, 0.5, 0.5, 1.5}
 }
 
-core.register_node(":lrfurn:sofa", {
+minetest.register_node(":lrfurn:sofa", {
 	description = S("Sofa"),
 	drawtype = "mesh",
 	mesh = "lrfurn_sofa_short.obj",
@@ -26,21 +26,21 @@ core.register_node(":lrfurn:sofa", {
 	},
 	selection_box = sofa_cbox,
 	node_box = sofa_cbox,
-	on_rotate = core.get_modpath("screwdriver") and screwdriver.disallow or nil,
+	on_rotate = minetest.get_modpath("screwdriver") and screwdriver.disallow or nil,
 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		lrfurn.fix_sofa_rotation_nsew(pos, placer, itemstack, pointed_thing)
 		local playername = placer:get_player_name()
-		if core.is_protected(pos, placer:get_player_name()) then return true end
+		if minetest.is_protected(pos, placer:get_player_name()) then return true end
 
-		local fdir = core.dir_to_facedir(placer:get_look_dir(), false)
+		local fdir = minetest.dir_to_facedir(placer:get_look_dir(), false)
 
 		if lrfurn.check_right(pos, fdir, false, placer) then
-			if not core.is_creative_enabled(playername) then
+			if not minetest.is_creative_enabled(playername) then
 				itemstack:take_item()
 			end
 		else
-			core.chat_send_player(placer:get_player_name(), S("No room to place the sofa!"))
-			core.set_node(pos, { name = "air" })
+			minetest.chat_send_player(placer:get_player_name(), S("No room to place the sofa!"))
+			minetest.set_node(pos, { name = "air" })
 		end
 		return itemstack
 	end,
@@ -52,7 +52,7 @@ core.register_node(":lrfurn:sofa", {
 	on_movenode = lrfurn.on_seat_movenode,
 })
 
-core.register_craft({
+minetest.register_craft({
 	output = "lrfurn:sofa",
 	recipe = {
 		{homedecor.materials.wool_white, homedecor.materials.wool_white, "", },
@@ -61,7 +61,7 @@ core.register_craft({
 	}
 })
 
-core.register_craft({
+minetest.register_craft({
 	output = "lrfurn:sofa",
 	recipe = {
 		{homedecor.materials.wool_white, homedecor.materials.wool_white, "", },
@@ -89,7 +89,7 @@ for _, color in ipairs(lrfurn.colors) do
 	table.insert(lrfurn.old_static_sofas, "lrfurn:sofa_"..color)
 end
 
-core.register_lbm({
+minetest.register_lbm({
 	name = ":lrfurn:convert_sofas",
 	label = "Convert lrfurn short sofas to use param2 color",
 	run_at_every_load = false,
@@ -124,13 +124,13 @@ core.register_lbm({
 
 		local param2 = paletteidx + new_fdir
 
-		core.set_node(pos, { name = "lrfurn:sofa", param2 = param2 })
-		local meta = core.get_meta(pos)
+		minetest.set_node(pos, { name = "lrfurn:sofa", param2 = param2 })
+		local meta = minetest.get_meta(pos)
 		meta:set_string("dye", "unifieddyes:"..color)
 
 	end
 })
 
-if core.settings:get("log_mods") then
-	core.log("action", "[lrfurn/sofas] Loaded!")
+if minetest.settings:get("log_mods") then
+	minetest.log("action", "[lrfurn/sofas] Loaded!")
 end

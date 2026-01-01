@@ -1,8 +1,8 @@
 -- formerly lrfurn endtable component
 
-local S = core.get_translator("homedecor_tables")
+local S = minetest.get_translator("homedecor_tables")
 
-core.register_node(":lrfurn:endtable", {
+minetest.register_node(":lrfurn:endtable", {
 	description = S("End Table"),
 	drawtype = "nodebox",
 	tiles = {
@@ -43,7 +43,7 @@ core.register_node(":lrfurn:endtable", {
 	},
 })
 
-core.register_craft({
+minetest.register_craft({
 	output = "lrfurn:endtable",
 	recipe = {
 		{"", "", "", },
@@ -52,7 +52,7 @@ core.register_craft({
 	}
 })
 
-core.register_craft({
+minetest.register_craft({
 	output = "lrfurn:endtable",
 	recipe = {
 		{"", "", "", },
@@ -61,6 +61,6 @@ core.register_craft({
 	}
 })
 
-if core.settings:get("log_mods") then
-	core.log("action", "[lrfurn/endtable] Loaded!")
+if minetest.settings:get("log_mods") then
+	minetest.log("action", "[lrfurn/endtable] Loaded!")
 end

@@ -1,4 +1,4 @@
-local S = core.get_translator("homedecor_books")
+local S = minetest.get_translator("homedecor_books")
 
 local bookcolors = {
 	{ "red",    0xffd26466 },
@@ -27,9 +27,9 @@ for _, c in ipairs(bookcolors) do
 	local color, hue = unpack(c)
 
 	local function book_dig(pos, node, digger)
-		if not digger or core.is_protected(pos, digger:get_player_name()) then return end
-		local meta = core.get_meta(pos)
-		local data = core.serialize({
+		if not digger or minetest.is_protected(pos, digger:get_player_name()) then return end
+		local meta = minetest.get_meta(pos)
+		local data = minetest.serialize({
 			title = meta:get_string("title") or "",
 			text = meta:get_string("text") or "",
 			owner = meta:get_string("owner") or "",
@@ -41,9 +41,9 @@ for _, c in ipairs(bookcolors) do
 		})
 		stack = digger:get_inventory():add_item("main", stack)
 		if not stack:is_empty() then
-			core.item_drop(stack, digger, pos)
+			minetest.item_drop(stack, digger, pos)
 		end
-		core.remove_node(pos)
+		minetest.remove_node(pos)
 	end
 
 	homedecor.register("book_"..color, {
@@ -62,28 +62,28 @@ for _, c in ipairs(bookcolors) do
 		stack_max = 1,
 		on_punch = function(pos, node, puncher, pointed_thing)
 			local fdir = node.param2
-			core.swap_node(pos, { name = "homedecor:book_open_"..color, param2 = fdir })
+			minetest.swap_node(pos, { name = "homedecor:book_open_"..color, param2 = fdir })
 		end,
 		on_place = function(itemstack, placer, pointed_thing)
 			local plname = placer:get_player_name()
 			local pos = pointed_thing.under
-			local node = core.get_node_or_nil(pos)
-			local def = node and core.registered_nodes[node.name]
+			local node = minetest.get_node_or_nil(pos)
+			local def = node and minetest.registered_nodes[node.name]
 			if not def or not def.buildable_to then
 				pos = pointed_thing.above
-				node = core.get_node_or_nil(pos)
-				def = node and core.registered_nodes[node.name]
+				node = minetest.get_node_or_nil(pos)
+				def = node and minetest.registered_nodes[node.name]
 				if not def or not def.buildable_to then return itemstack end
 			end
-			if core.is_protected(pos, plname) then return itemstack end
-			local fdir = core.dir_to_facedir(placer:get_look_dir())
-			core.set_node(pos, {
+			if minetest.is_protected(pos, plname) then return itemstack end
+			local fdir = minetest.dir_to_facedir(placer:get_look_dir())
+			minetest.set_node(pos, {
 				name = "homedecor:book_"..color,
 				param2 = fdir,
 			})
 			local text = itemstack:get_meta():get_string("")
-			local meta = core.get_meta(pos)
-			local data = core.deserialize(text) or {}
+			local meta = minetest.get_meta(pos)
+			local data = minetest.deserialize(text) or {}
 			if type(data) ~= "table" then
 				data = {}
 				-- Store raw metadata in case some data is lost by the
@@ -97,7 +97,7 @@ for _, c in ipairs(bookcolors) do
 			if data.title and data.title ~= "" then
 				meta:set_string("infotext", data.title)
 			end
-			if not core.is_creative_enabled(plname) then
+			if not minetest.is_creative_enabled(plname) then
 				itemstack:take_item()
 			end
 			return itemstack
@@ -121,7 +121,7 @@ for _, c in ipairs(bookcolors) do
 		walkable = false,
 		on_dig = book_dig,
 		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-			local meta = core.get_meta(pos)
+			local meta = minetest.get_meta(pos)
 			local player_name = clicker:get_player_name()
 			local title = meta:get_string("title") or ""
 			local text = meta:get_string("text") or ""
@@ -130,25 +130,25 @@ for _, c in ipairs(bookcolors) do
 			if owner == "" or owner == player_name then
 				formspec = "size[8,8]"..
 					"field[0.5,1;7.5,0;title;Book title :;"..
-						core.formspec_escape(title).."]"..
+						minetest.formspec_escape(title).."]"..
 					"textarea[0.5,1.5;7.5,7;text;Book content :;"..
-						core.formspec_escape(text).."]"..
+						minetest.formspec_escape(text).."]"..
 					"button_exit[2.5,7.5;3,1;save;Save]"
 			else
 				formspec = "size[8,8]"..
 				"button_exit[7,0.25;1,0.5;close;X]"..
 					"label[0.5,0.5;by "..owner.."]"..
-					"label[0.5,0;"..core.formspec_escape(title).."]"..
-					"textarea[0.5,1.5;7.5,7;;"..core.formspec_escape(text)..";]"
+					"label[0.5,0;"..minetest.formspec_escape(title).."]"..
+					"textarea[0.5,1.5;7.5,7;;"..minetest.formspec_escape(text)..";]"
 			end
 			player_current_book[player_name] = pos
-			core.show_formspec(player_name, BOOK_FORMNAME, formspec)
+			minetest.show_formspec(player_name, BOOK_FORMNAME, formspec)
 			return itemstack
 		end,
 		on_punch = function(pos, node, puncher, pointed_thing)
 			local fdir = node.param2
-			core.swap_node(pos, { name = "homedecor:book_"..color, param2 = fdir })
-			core.sound_play("homedecor_book_close", {
+			minetest.swap_node(pos, { name = "homedecor:book_"..color, param2 = fdir })
+			minetest.sound_play("homedecor_book_close", {
 				pos=pos,
 				max_hear_distance = 3,
 				gain = 2,
@@ -161,7 +161,7 @@ for _, c in ipairs(bookcolors) do
 	})
 
 	-- crafting
-	core.register_craft({
+	minetest.register_craft({
 		type = "shapeless",
 		output = "homedecor:book_"..color,
 		recipe = {
@@ -172,7 +172,7 @@ for _, c in ipairs(bookcolors) do
 
 end
 
-core.register_on_player_receive_fields(function(player, form_name, fields)
+minetest.register_on_player_receive_fields(function(player, form_name, fields)
 	if form_name ~= BOOK_FORMNAME then
 		return false
 	end
@@ -181,7 +181,7 @@ core.register_on_player_receive_fields(function(player, form_name, fields)
 	if not pos then
 		return true
 	end
-	local meta = core.get_meta(pos)
+	local meta = minetest.get_meta(pos)
 	local owner = meta:get_string("owner")
 	if owner ~= "" and player_name ~= owner or not fields.save then
 		player_current_book[player_name] = nil
@@ -193,8 +193,8 @@ core.register_on_player_receive_fields(function(player, form_name, fields)
 	if (fields.title or "") ~= "" then
 		meta:set_string("infotext", fields.title)
 	end
-	core.log("action", ("%s has written in a book (title: \"%s\"): \"%s\" at location %s"):format(
-			player:get_player_name(), fields.title, fields.text, core.pos_to_string(pos)))
+	minetest.log("action", ("%s has written in a book (title: \"%s\"): \"%s\" at location %s"):format(
+			player:get_player_name(), fields.title, fields.text, minetest.pos_to_string(pos)))
 
 	player_current_book[player_name] = nil
 	return true
@@ -204,5 +204,5 @@ end)
 
 -- aliases
 
-core.register_alias("homedecor:book", "homedecor:book_grey")
-core.register_alias("homedecor:book_open", "homedecor:book_open_grey")
+minetest.register_alias("homedecor:book", "homedecor:book_grey")
+minetest.register_alias("homedecor:book_open", "homedecor:book_open_grey")

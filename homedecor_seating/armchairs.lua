@@ -1,4 +1,4 @@
-local S = core.get_translator("homedecor_seating")
+local S = minetest.get_translator("homedecor_seating")
 local armchair_cbox = {
 	type = "fixed",
 	fixed = {
@@ -7,7 +7,7 @@ local armchair_cbox = {
 	}
 }
 
-core.register_node(":lrfurn:armchair", {
+minetest.register_node(":lrfurn:armchair", {
 	description = S("Armchair"),
 	drawtype = "mesh",
 	mesh = "lrfurn_armchair.obj",
@@ -68,7 +68,7 @@ homedecor.register("armchair", {
 
 -- crafts
 
-core.register_craft({
+minetest.register_craft({
 	output = "lrfurn:armchair",
 	recipe = {
 		{"wool:white", "", "", },
@@ -77,7 +77,7 @@ core.register_craft({
 	}
 })
 
-core.register_craft({
+minetest.register_craft({
 	output = "lrfurn:armchair",
 	recipe = {
 		{"wool:white", "", "", },
@@ -97,7 +97,7 @@ unifieddyes.register_color_craft({
 	}
 })
 
-core.register_craft({
+minetest.register_craft({
 	output = "homedecor:armchair 2",
 	recipe = {
 	{ homedecor.materials.wool_white,""},
@@ -117,13 +117,13 @@ unifieddyes.register_color_craft({
 	}
 })
 
-core.register_craft({
+minetest.register_craft({
 	type = "fuel",
 	recipe = "homedecor:armchair",
 	burntime = 30,
 })
 
-core.register_alias('armchair', 'homedecor:armchair')
+minetest.register_alias('armchair', 'homedecor:armchair')
 
 -- convert old static nodes to param2 color
 
@@ -133,7 +133,7 @@ for _, color in ipairs(lrfurn.colors) do
 	table.insert(lrfurn.old_static_armchairs, "lrfurn:armchair_"..color)
 end
 
-core.register_lbm({
+minetest.register_lbm({
 	name = ":lrfurn:convert_armchairs",
 	label = "Convert lrfurn armchairs to use param2 color",
 	run_at_every_load = false,
@@ -168,12 +168,12 @@ core.register_lbm({
 
 		local param2 = paletteidx + new_fdir
 
-		core.set_node(pos, { name = "lrfurn:armchair", param2 = param2 })
-		local meta = core.get_meta(pos)
+		minetest.set_node(pos, { name = "lrfurn:armchair", param2 = param2 })
+		local meta = minetest.get_meta(pos)
 		meta:set_string("dye", "unifieddyes:"..color)
 	end
 })
 
-if core.settings:get("log_mods") then
-	core.log("action", "[lrfurn/armchairs] Loaded!")
+if minetest.settings:get("log_mods") then
+	minetest.log("action", "[lrfurn/armchairs] Loaded!")
 end

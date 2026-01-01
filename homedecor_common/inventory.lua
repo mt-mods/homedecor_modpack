@@ -1,6 +1,6 @@
-local S = core.get_translator("homedecor_common")
+local S = minetest.get_translator("homedecor_common")
 
-local has_hopper = core.get_modpath("hopper")
+local has_hopper = minetest.get_modpath("hopper")
 local has_safe_hopper = has_hopper and
 	-- mod from https://github.com/minetest-mods/hopper respects the owner
 	(hopper.neighbors or
@@ -8,7 +8,7 @@ local has_safe_hopper = has_hopper and
 	(hopper.version and hopper.version >= "20220123"))
 
 local default_can_dig = function(pos,player)
-	local meta = core.get_meta(pos)
+	local meta = minetest.get_meta(pos)
 	return meta:get_inventory():is_empty("main")
 end
 
@@ -82,7 +82,7 @@ function homedecor.handle_inventory(name, def, original_def)
 		local on_construct = def.on_construct
 		def.on_construct = function(pos)
 			local size = inventory.size
-			local meta = core.get_meta(pos)
+			local meta = minetest.get_meta(pos)
 			meta:get_inventory():set_size("main", size)
 			meta:set_string("formspec", inventory.formspec or get_formspec_by_size(size))
 			if on_construct then on_construct(pos) end
@@ -92,15 +92,15 @@ function homedecor.handle_inventory(name, def, original_def)
 	def.can_dig = def.can_dig or default_can_dig
 	def.on_metadata_inventory_move = def.on_metadata_inventory_move or
 			function(pos, from_list, from_index, to_list, to_index, count, player)
-		core.log("action", player:get_player_name().." moves stuff in "..name.." at "..core.pos_to_string(pos))
+		minetest.log("action", player:get_player_name().." moves stuff in "..name.." at "..minetest.pos_to_string(pos))
 	end
 	def.on_metadata_inventory_put = def.on_metadata_inventory_put or function(pos, listname, index, stack, player)
-		core.log("action", player:get_player_name().." moves "..stack:get_name()
-			.." to "..name.." at "..core.pos_to_string(pos))
+		minetest.log("action", player:get_player_name().." moves "..stack:get_name()
+			.." to "..name.." at "..minetest.pos_to_string(pos))
 	end
 	def.on_metadata_inventory_take = def.on_metadata_inventory_take or function(pos, listname, index, stack, player)
-		core.log("action", player:get_player_name().." takes "..stack:get_name()
-			.." from "..name.." at "..core.pos_to_string(pos))
+		minetest.log("action", player:get_player_name().." takes "..stack:get_name()
+			.." from "..name.." at "..minetest.pos_to_string(pos))
 	end
 
 	local locked = inventory.locked
@@ -124,7 +124,7 @@ function homedecor.handle_inventory(name, def, original_def)
 	if locked then
 		local after_place_node = def.after_place_node
 		def.after_place_node = function(pos, placer)
-			local meta = core.get_meta(pos)
+			local meta = minetest.get_meta(pos)
 			local owner = placer:get_player_name() or ""
 
 			meta:set_string("owner", owner)
@@ -135,8 +135,8 @@ function homedecor.handle_inventory(name, def, original_def)
 		local allow_move = def.allow_metadata_inventory_move
 		def.allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
 			if not default_can_interact_with_node(player, pos) then
-				core.log("action", player:get_player_name().." tried to access a "..name.." belonging to "
-					..core.get_meta(pos):get_string("owner").." at "..core.pos_to_string(pos))
+				minetest.log("action", player:get_player_name().." tried to access a "..name.." belonging to "
+					..minetest.get_meta(pos):get_string("owner").." at "..minetest.pos_to_string(pos))
 				return 0
 			end
 			return allow_move and allow_move(pos, from_list, from_index, to_list, to_index, count, player) or
@@ -146,8 +146,8 @@ function homedecor.handle_inventory(name, def, original_def)
 		local allow_put = def.allow_metadata_inventory_put
 		def.allow_metadata_inventory_put = function(pos, listname, index, stack, player)
 			if not default_can_interact_with_node(player, pos) then
-				core.log("action", player:get_player_name().." tried to access a "..name.." belonging to"
-					..core.get_meta(pos):get_string("owner").." at "..core.pos_to_string(pos))
+				minetest.log("action", player:get_player_name().." tried to access a "..name.." belonging to"
+					..minetest.get_meta(pos):get_string("owner").." at "..minetest.pos_to_string(pos))
 				return 0
 			end
 			return allow_put and allow_put(pos, listname, index, stack, player) or
@@ -157,8 +157,8 @@ function homedecor.handle_inventory(name, def, original_def)
 		local allow_take = def.allow_metadata_inventory_take
 		def.allow_metadata_inventory_take = function(pos, listname, index, stack, player)
 			if not default_can_interact_with_node(player, pos) then
-				core.log("action", player:get_player_name().." tried to access a "..name.." belonging to"
-					..core.get_meta(pos):get_string("owner").." at ".. core.pos_to_string(pos))
+				minetest.log("action", player:get_player_name().." tried to access a "..name.." belonging to"
+					..minetest.get_meta(pos):get_string("owner").." at ".. minetest.pos_to_string(pos))
 				return 0
 			end
 			return allow_take and allow_take(pos, listname, index, stack, player) or
@@ -171,7 +171,7 @@ function homedecor.handle_inventory(name, def, original_def)
 		end
 
 		def.on_key_use = function(pos, player)
-			local secret = core.get_meta(pos):get_string("key_lock_secret")
+			local secret = minetest.get_meta(pos):get_string("key_lock_secret")
 			local itemstack = player:get_wielded_item()
 			local key_meta = itemstack:get_meta()
 
@@ -179,21 +179,21 @@ function homedecor.handle_inventory(name, def, original_def)
 				return
 			end
 
-			core.show_formspec(
+			minetest.show_formspec(
 				player:get_player_name(),
 				name.."_locked",
-				core.get_meta(pos):get_string("formspec")
+				minetest.get_meta(pos):get_string("formspec")
 			)
 		end
 
 		def.on_skeleton_key_use = function(pos, player, newsecret)
-			local meta = core.get_meta(pos)
+			local meta = minetest.get_meta(pos)
 			local owner = meta:get_string("owner")
 			local playername = player:get_player_name()
 
 			-- verify placer is owner
 			if owner ~= playername then
-				core.record_protection_violation(pos, playername)
+				minetest.record_protection_violation(pos, playername)
 				return nil
 			end
 
@@ -218,7 +218,7 @@ function homedecor.handle_inventory(name, def, original_def)
 
 		local locked_name = name .. "_locked"
 		homedecor.register(locked_name, locked_def)
-		core.register_craft({
+		minetest.register_craft({
 			type = "shapeless",
 			output = "homedecor:" .. locked_name,
 			recipe = { "homedecor:" .. name, "basic_materials:padlock" }
