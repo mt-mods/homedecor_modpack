@@ -382,7 +382,7 @@ homedecor.register("trophy", {
 
 local sb_cbox = {
 	type = "fixed",
-	fixed = { -0.4, -0.5, -0.5, 0.4, 0.375, 0.5 }
+	fixed = { -0.4, -0.5, -0.9, 0.4, 0.375, 0.7 }
 }
 
 homedecor.register("sportbench", {
