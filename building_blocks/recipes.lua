@@ -36,8 +36,8 @@ core.register_craft({
 core.register_craft({
 	output = 'building_blocks:BWtile 10',
 	recipe = {
-		{"group:marble", "group:tar_block"},
-		{"group:tar_block", "group:marble"},
+		{"group:marble", "building_blocks:Tar"},
+		{"building_blocks:Tar", "group:marble"},
 	}
 })
 core.register_craft({
@@ -89,7 +89,7 @@ end
 core.register_craft({
 	output = 'building_blocks:knife 1',
 	recipe = {
-		{"group:tar_block"},
+		{"building_blocks:Tar"},
 		{"group:stick"},
 	}
 })
@@ -131,7 +131,7 @@ core.register_craft({
 core.register_craft({
 	output = 'building_blocks:Tarmac_spread 4',
 	recipe = {
-		{"group:tar_block", "group:tar_block"},
+		{"building_blocks:Tar", "building_blocks:Tar"},
 	}
 })
 core.register_craft({
