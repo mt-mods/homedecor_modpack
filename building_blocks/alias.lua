@@ -8,10 +8,8 @@ if core.get_modpath("moreblocks") or core.get_modpath("stairs") then
 end
 
 if core.get_modpath("moreblocks") then
-	--core.register_alias_force("moreblocks:tar", "building_blocks:Tar")
 	stairsplus:register_alias_all("building_blocks", "tar", "building_blocks", "Tar")
 	stairsplus:register_alias_all("building_blocks", "marble", "building_blocks", "Marble")
-	--stairsplus:register_alias_all("moreblocks", "tar", "building_blocks", "Tar")
 
 	if core.get_modpath("gloopblocks") then
 		core.register_alias("building_blocks:gravel_spread", "gloopblocks:slab_gravel_1")
