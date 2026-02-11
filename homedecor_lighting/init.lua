@@ -26,6 +26,13 @@ local word_to_bright = {
 	["max"] = 14,
 }
 
+local word_to_bright_for_on_off_lights = {
+	["low"] = 3,
+	["med"] = 7,
+	["hi"]  = 11,
+	["max"] = 14,
+}
+
 local rules_alldir = {
 	{x =  0, y =  0, z =  1},
 	{x = -1, y =  0, z =  0},
@@ -1440,7 +1447,6 @@ core.register_alias("homedecor:desk_lamp",                 "homedecor:desk_lamp_
 core.register_alias("homedecor:ceiling_lamp",              "homedecor:ceiling_lamp_14")
 core.register_alias("homedecor:table_lamp",                "homedecor:table_lamp_14")
 core.register_alias("homedecor:standing_lamp",             "homedecor:standing_lamp_14")
-core.register_alias("3dforniture:table_lamp",              "homedecor:table_lamp_14")
 
 core.register_alias("3dforniture:torch_wall",              "homedecor:torch_wall")
 core.register_alias("torch_wall",                          "homedecor:torch_wall")
@@ -1458,10 +1464,7 @@ for name, level in pairs(word_to_bright) do
 	core.register_alias("homedecor:glowlight_half_"..name,        "homedecor:glowlight_half_"..level)
 	core.register_alias("homedecor:glowlight_quarter_"..name,     "homedecor:glowlight_quarter_"..level)
 	core.register_alias("homedecor:glowlight_small_cube_"..name,  "homedecor:glowlight_small_cube_"..level)
-	core.register_alias("homedecor:rope_light_on_floor_"..name,   "homedecor:rope_light_on_floor_"..level)
-	core.register_alias("homedecor:rope_light_on_ceiling_"..name, "homedecor:rope_light_on_ceiling_"..level)
 	core.register_alias("homedecor:plasma_lamp_"..name,           "homedecor:plasma_lamp_"..level)
-	core.register_alias("homedecor:plasma_ball_"..name,           "homedecor:plasma_ball_"..level)
 	core.register_alias("homedecor:ground_lantern_"..name,        "homedecor:ground_lantern_"..level)
 	core.register_alias("homedecor:hanging_lantern_"..name,       "homedecor:hanging_lantern_"..level)
 	core.register_alias("homedecor:ceiling_lantern_"..name,       "homedecor:ceiling_lantern_"..level)
@@ -1472,6 +1475,12 @@ for name, level in pairs(word_to_bright) do
 	core.register_alias("homedecor:table_lamp_"..name,            "homedecor:table_lamp_"..level)
 	core.register_alias("homedecor:standing_lamp_"..name,         "homedecor:standing_lamp_"..level)
 	core.register_alias("3dforniture:table_lamp_"..name,          "homedecor:table_lamp_"..level)
+end
+
+for name, level in pairs(word_to_bright_for_on_off_lights) do
+	core.register_alias("homedecor:plasma_ball_"..name,           "homedecor:plasma_ball_"..level)
+	core.register_alias("homedecor:rope_light_on_floor_"..name,   "homedecor:rope_light_on_floor_"..level)
+	core.register_alias("homedecor:rope_light_on_ceiling_"..name, "homedecor:rope_light_on_ceiling_"..level)
 end
 
 if core.get_modpath("darkage") then
