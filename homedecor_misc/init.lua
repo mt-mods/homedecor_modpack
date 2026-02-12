@@ -512,7 +512,7 @@ for _, side in ipairs({"diagonal_left", "diagonal_right", "horizontal"}) do
 			def.airbrush_replacement_node = "homedecor:banister_wood_"..side.."_grey"
 			def.groups.ud_param2_colorable = 1
 			def.paramtype2 = "colorfacedir"
-			def.on_dig = unifieddyes.on_dig
+			def.preserve_metadata = unifieddyes.preserve_metadata
 		end
 		homedecor.register(nodename, def)
 
