@@ -2,6 +2,10 @@
 
 local S = core.get_translator("homedecor_lighting")
 
+if unifieddyes and not unifieddyes.preserve_metadata then
+	error("Incompatible version of unifieddyes found. Please update it to the latest version.")
+end
+
 homedecor_lighting = {}
 
 local function is_protected(pos, clicker)
@@ -292,7 +296,7 @@ for brightness_level = 0, 14 do
 		after_place_node = function(pos, placer, itemstack, pointed_thing)
 			unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
 		end,
-		on_dig = unifieddyes.on_dig,
+		preserve_metadata = unifieddyes.preserve_metadata,
 		on_rightclick = homedecor_lighting.toggle_light,
 		drop = {
 			items = {
@@ -362,7 +366,7 @@ for brightness_level = 0, 14 do
 		after_place_node = function(pos, placer, itemstack, pointed_thing)
 			unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
 		end,
-		on_dig = unifieddyes.on_dig,
+		preserve_metadata = unifieddyes.preserve_metadata,
 		on_rightclick = homedecor_lighting.toggle_light,
 		drop = {
 			items = {
@@ -433,7 +437,7 @@ for brightness_level = 0, 14 do
 		after_place_node = function(pos, placer, itemstack, pointed_thing)
 			unifieddyes.fix_rotation(pos, placer, itemstack, pointed_thing)
 		end,
-		on_dig = unifieddyes.on_dig,
+		preserve_metadata = unifieddyes.preserve_metadata,
 		on_rightclick = homedecor_lighting.toggle_light,
 		drop = {
 			items = {
@@ -658,7 +662,7 @@ for brightness_level = 0, 14 do
 		after_place_node = function(pos, placer, itemstack, pointed_thing)
 			unifieddyes.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)
 		end,
-		on_dig = unifieddyes.on_dig,
+		preserve_metadata = unifieddyes.preserve_metadata,
 		on_rotate = unifieddyes.fix_after_screwdriver_nsew,
 		light_source = brightness_level,
 		on_rightclick = homedecor_lighting.toggle_light,
@@ -739,7 +743,7 @@ for brightness_level = 0, 14 do
 		mesecons =      homedecor_lighting.mesecon_wall_light,
 		on_rightclick = homedecor_lighting.toggle_light,
 		on_punch =      digiline_on_punch,
-		on_dig = unifieddyes.on_dig,
+		preserve_metadata = unifieddyes.preserve_metadata,
 	})
 
 	homedecor.register("standing_lamp_"..brightness_level, {
@@ -773,7 +777,7 @@ for brightness_level = 0, 14 do
 		mesecons =      homedecor_lighting.mesecon_wall_light,
 		on_rightclick = homedecor_lighting.toggle_light,
 		on_punch =      digiline_on_punch,
-		on_dig = unifieddyes.on_dig,
+		preserve_metadata = unifieddyes.preserve_metadata,
 	})
 end
 
